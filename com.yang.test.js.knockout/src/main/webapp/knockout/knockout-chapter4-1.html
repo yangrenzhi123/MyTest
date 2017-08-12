@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div data-bind='template: "personTemplate"'></div>
+	<script src="knockout-3.3.0.js"></script>
+	<script src="/jquery-1.7.2.js"></script>
+	<script
+		src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	<script id='personTemplate' type='text/html'>
+    <span data-bind="text:name"></span> is <span data-bind="text:age"> years old
+    <button data-bind='click: makeOlder'>Make older</button>
+	</script>
+	<script>
+		var viewModel = {
+			name : ko.observable('Bert'),
+			age : ko.observable(78),
+			makeOlder : function() {
+				this.age(this.age() + 1);
+			}
+		};
+
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

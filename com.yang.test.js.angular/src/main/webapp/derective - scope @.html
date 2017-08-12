@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>AngularJS入门学习</title>
+<script type="text/javascript" src="angular.js"></script>
+</head>
+<body>
+	<div ng-controller="myController">
+		<div>
+			<div>Say：{{name}} 改变父scope的name：<input ng-model="name" /></div>
+		</div>
+		<div>
+			<div isolated-directive name="{{name}}"></div>
+		</div>
+		<div>
+			<div isolated-directive name="456"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = angular.module('myApp', []);
+	app.controller("myController", function($scope) {
+		$scope.name = "123";
+	}).directive("isolatedDirective", function() {
+		return {
+			scope : {
+				name : "@" // 单向
+			},
+			template : 'Say：{{name}} 改变隔离scope的name：<input type="buttom" value="" ng-model="name" class="ng-pristine ng-valid">'
+		};
+	});
+</script>
+</html>

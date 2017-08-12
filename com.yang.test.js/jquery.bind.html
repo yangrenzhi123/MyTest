@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="test">测试自定义事件</div>
+	<script src="jquery-1.7.2.min.js"></script>
+	<script>
+		$(function() {
+			var $x = $("#test");
+			$x.on("diyEvent", function(event, a, b) { //onClick的处理逻辑
+				console.log(event + "-" + a + "-" + b)
+			});
+			$x.click(function() {
+				$(this).trigger("diyEvent", [ "aaa", "bbb" ])
+			})
+
+		});
+	</script>
+</body>
+</html>

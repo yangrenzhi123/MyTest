@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<div id="div" style="height: 200px; background-color: yellow;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<div style="height: 200px; background-color: red;"></div>
+	<script src=jquery-1.7.2.min.js></script>
+	<script>
+		$(window).scroll(function() {
+			// 元素距离页面顶部的高度
+			//console.log($("#div").offset().top);
+			// 元素距离页面顶部的高度
+			//console.log($("#div").position().top);
+			// 元素距离页面顶部的高度
+			//console.log(document.getElementById("div").offsetTop);
+			// 元素距离窗口顶部的高度
+			console.log(document.getElementById("div").getBoundingClientRect().top);
+		});
+	</script>
+</body>
+</html>

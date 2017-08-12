@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="checkbox" name="cc" value="1" />1
+	<input type="checkbox" name="cc" value="2" />2
+	<script src="jquery-1.7.2.min.js"></script>
+	<script>
+		$("input[name=cc]").click(function(){
+			$("input[name=cc]").each(function(){
+				if($(this).attr("checked") == "checked"){
+					alert($(this).val());
+				}
+			});
+		});
+	</script>
+</body>
+</html>

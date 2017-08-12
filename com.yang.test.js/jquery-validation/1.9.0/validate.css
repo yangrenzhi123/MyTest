@@ -1,0 +1,15 @@
+a.error {
+  background:url("images/unchecked.gif") no-repeat left center;
+  padding-left: 16px;
+  padding-bottom: 2px;
+  font-weight: bold;
+  color: #EA5200;
+  cursor: pointer;
+}
+.ipt_box_rz a.error,.order_cont  a.error{
+	display: block;
+	float: left;
+	height: 28px;
+	line-height: 28px;
+	margin: 0 0 0 5px;
+}

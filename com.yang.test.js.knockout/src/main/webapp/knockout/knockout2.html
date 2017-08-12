@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	The name is
+	<span data-bind="text: fullName"></span>
+	<span data-bind="text: lastName2"></span>
+	<script src="../knockoutJ/knockout-3.2.0.js"></script>
+	<script src="../knockoutJ/knockout-postbox.js"></script>
+	<script src="../knockoutJ/knockout.mapping-latest.js"></script>
+	<script src="../knockoutJ/knockout.validation.js"></script>
+	<script>
+		var viewModel = {
+			firstName : ko.observable('Bob'),
+			lastName : ko.observable('Smith'),
+			lastName2 : ko.observable().publishOn("current", "yes")
+		};
+
+		lastName2 = ko.observable().subscribeTo("current");
+		
+		viewModel.fullName = ko.dependentObservable(function() {
+			return this.firstName() + " " + this.lastName();
+		}, viewModel);
+
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

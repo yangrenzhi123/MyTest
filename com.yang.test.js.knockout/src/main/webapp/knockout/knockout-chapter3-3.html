@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	Today's message is:
+	<span data-bind="text: myMessage"></span>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var viewModel = {
+			myMessage : ko.observable()
+		// Initially blank
+		};
+		viewModel.myMessage("Hello, world2!"); // Text appears
+
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

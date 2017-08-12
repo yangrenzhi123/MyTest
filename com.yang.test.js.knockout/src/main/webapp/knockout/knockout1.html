@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	The name is<span data-bind="text: firstName2"></span>
+	
+	<br />
+	
+	The a content is <a data-bind="text: lastName, attr: {href:'www.baidu.com'}"></a>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		function MyViewModel() {
+			var self = this;
+			self.firstName2 = ko.observable();
+			self.firstName2("5");
+			self.firstName2 = ko.observable();
+			self.firstName = ko.observable('Planet');
+			self.lastName = ko.observable('Earth');
+			self.fullName = ko.computed(function() {
+				return self.firstName() + " " + self.lastName();
+			});
+		}
+
+		ko.applyBindings(new MyViewModel());
+	</script>
+</body>
+</html>

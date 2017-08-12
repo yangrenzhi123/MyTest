@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div data-bind="template: {name:'data-template',foreach:datas,as:'t'}"></div>
+
+	<script src="knockout-3.3.0.js"></script>
+	<script type="text/html" id="data-template">
+      <div data-bind="text: gN"></div>
+      <div data-bind="template: {name:'value-template',foreach:us}"></div>
+  	</script>
+
+	<script type="text/html" id="value-template">
+     <div data-bind="text:$data.name"></div>
+ 	</script>
+	<script>
+		var Person = function(name, group) {
+			var self = this;
+			this.name = ko.observable(name);
+			this.group = ko.observable(group);
+			return self;
+		}
+
+		var viewMode = {
+			datas : ko.observableArray([ {
+				gN : "A",
+				us : [ new Person('Jack1_1', 'A'), new Person('Jack1_2', 'A') ]
+			}, {
+				gN : "B",
+				us : [ new Person('Jack1_3', 'B'), new Person('Jack1_4', 'B') ]
+			} ])
+		};
+
+		ko.applyBindings(viewMode);
+	</script>
+</body>
+</html>

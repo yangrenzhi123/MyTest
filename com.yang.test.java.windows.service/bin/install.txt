@@ -1,0 +1,3 @@
+JavaService.exe -uninstall TestService
+
+JavaService.exe -install TestService C:\jvm.dll -Djava.class.path="C:\tools.jar;D:\projects\test\com.yang.test.java.windows.service\bin" -start Test

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="jqzoom.css" type="text/css" media="screen">
+<link rel="stylesheet" href="chosen_v1.4.2/chosen.min.css" type="text/css" media="screen">
+</head>
+<body>
+	<select flag="sel" size="2" style="width: 100px;">
+		<option value="1" selected="selected">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6" selected="selected">11</option>
+		<option value="7">12</option>
+		<option value="8">13</option>
+		<option value="9">14</option>
+		<option value="10">15</option>
+		<option value="11">abc</option>
+		<option value="12">def</option>
+		<option value="13">ghi</option>
+	</select>
+	<script src="jquery-1.7.2.min.js"></script>
+	<script src="chosen_v1.4.2/chosen.jquery.min.js"></script>
+	<script>
+		$("select[flag=sel]").click(function() {
+			console.log($("select[flag=sel]").val());
+		});
+		
+		$("select[flag=sel]").chosen();
+
+	</script>
+</body>
+</html>

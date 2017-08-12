@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="app2">
+<body ng-controller="MainCtrl">
+	<input ng-model="test" />
+	<script src="/angular.js"></script>
+	<script>
+		app = angular.module("app2", []);
+	
+		app.controller('MainCtrl', function($scope) {
+			$scope.$watch('ngModel', function(newValue, oldValue) {
+				if(newValue != oldValue){
+					console.log(newValue);
+				}
+	        });
+		});
+	</script>
+</body>
+</html>

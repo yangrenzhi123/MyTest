@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script src="knockout-3.3.0.js"></script>
+	<script src="http://cdn.bootcss.com/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+	<script>
+		var data = {
+			serverTime : '2010-01-07',
+			numUsers : 3
+		}
+
+		var viewModel = ko.mapping.fromJS(data);
+		//相似写法
+		//ko.mapping.fromJS(data, viewModel);
+		
+		console.log(viewModel);
+		
+		
+		var unmapped = ko.mapping.toJS(viewModel);
+		console.log(unmapped);
+	</script>
+</body>
+</html>

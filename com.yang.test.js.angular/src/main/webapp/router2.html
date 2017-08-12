@@ -1,0 +1,30 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<title>route</title>
+</head>
+<body ng-app="routeApp" class="ng-app:routeApp" id="routeApp">
+	<div ng-view></div>
+</body>
+<script src="/angular.js"></script>
+<script src="/angular-route.js"></script>
+<script>
+	var routeApp = angular.module('routeApp', [ 'ngRoute' ]);
+	routeApp.config([ '$routeProvider', function($routeProvider) {
+		$routeProvider.when('/list', {
+			templateUrl : 'list.html',
+			controller : 'RouteListCtl'
+		}).when('/list/:id', {
+			templateUrl : 'detail.html',
+			controller : 'RouteDetailCtl'
+		}).otherwise({
+			redirectTo : '/list'
+		});
+	} ]);
+	routeApp.controller('RouteListCtl', function($scope) {
+	});
+	routeApp.controller('RouteDetailCtl', function($scope, $routeParams) {
+		$scope.id = $routeParams.id;
+	});
+</script>
+</html>

@@ -1,0 +1,7 @@
+com\yang\com\yang\test\jpa\domain\User.class
+com\yang\com\yang\test\jpa\domain\TaskStatus.class
+com\yang\com\yang\test\jpa\dao\UserDaoImpl.class
+com\yang\com\yang\test\jpa\dao\TaskImpl.class
+com\yang\com\yang\test\jpa\dao\UserDao.class
+com\yang\com\yang\test\jpa\domain\Task.class
+com\yang\com\yang\test\jpa\domain\BaseEntity.class

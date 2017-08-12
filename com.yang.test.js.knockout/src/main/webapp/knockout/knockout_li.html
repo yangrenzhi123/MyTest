@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div data-bind="foreach:{data:gNames,as:'g'}"><span data-bind="text:g"></span>
+	  <ul  data-bind="foreach:{data:g,as:'p'}">
+	     <li><span data-bind="text:p"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a data-bind="click:add">+</a></li>
+	 </ul>
+	</div>
+	
+	<ul data-bind="foreach:array1"><li><span data-bind="text:name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<a data-bind="click:del">-</a></li></ul>
+	
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var availableMeals = [];
+		
+		var Person=function(name, group){
+			var self=this;
+			this.name = ko.observable(name);
+			this.group = ko.observable(group);
+			return self;
+		}
+
+		function viewModel () {
+			var self=this;
+			this.t = ko.observable(availableMeals[1]);
+			this.gNames=ko.observableArray();
+			this.array1=ko.observableArray();
+			this.data = ko.observableArray();
+			this.data.push(data);
+			
+			var data = [{gN:"A", us:[new Person('Jack1_1','A'), new Person('Jack1_2','A')]}, {gN:"B", us:[new Person('Jack1_3','B'), new Person('Jack1_4','B')]}];
+			
+			for(var i in data){
+				gNames.push(data[i].gN);
+				self[data[i].gN]=ko.observableArray();
+				for(var j in data[i].us){
+					self[data[i].gN].push(data[i].us[j]);
+				}
+			}
+			
+			self.add=function(){
+				self[this].remove(this);
+				array1.push(this);
+			};
+			
+
+			self.del=function(){
+				self[this].push(this);
+				array1.remove(this);
+			};
+		};
+
+
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

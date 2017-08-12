@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div data-bind="visible: myValues().length > 0">You will see this
+		message only when 'myValues' has at least one member.</div>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var viewModel = {
+			myValues : ko.observableArray([])
+		// Initially empty, so message hidden
+		};
+		viewModel.myValues.push("some value"); // Now visible
+
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

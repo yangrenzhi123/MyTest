@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<body>
+	<hello></hello>
+</body>
+
+<script src="/angular.js"></script>
+<script>
+	var appModule = angular.module('app', []);
+	appModule.directive('hello', function() {
+		return {
+			restrict : 'E',
+			template : '<div>Hi there</div>',
+			replace : true
+		};
+	});
+</script>
+</html>

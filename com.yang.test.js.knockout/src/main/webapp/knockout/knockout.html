@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>Meal upgrades</h3>
+	<p>Make your flight more bearable by selecting a meal to match your
+		social and economic status.</p>
+	Chosen meal:
+	<select
+		data-bind="options: availableMeals, optionsText: 'mealName', value: t"></select>
+	<p>
+		You've chosen: <b data-bind="text: t().description"></b> (price: <span
+			data-bind='text: formatPrice(t().extraCost)'></span>)
+	</p>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var availableMeals = [ {
+			mealName : 'Standard',
+			description : 'Dry crusts of bread',
+			extraCost : 0
+		}, {
+			mealName : 'Premium',
+			description : 'Fresh bread with cheese',
+			extraCost : 9.95
+		}, {
+			mealName : 'Deluxe',
+			description : 'Caviar and vintage Dr Pepper',
+			extraCost : 18.50
+		} ];
+
+		var viewModel = {
+			t : ko.observable(availableMeals[1])
+		};
+
+		ko.applyBindings(viewModel);
+		
+
+		function formatPrice(price) {
+			return price == 0 ? "Free" : "$" + price.toFixed(2);
+		}
+	</script>
+</body>
+</html>

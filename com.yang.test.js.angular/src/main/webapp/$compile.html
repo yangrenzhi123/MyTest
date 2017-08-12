@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<body ng-controller="MainCtrl">
+	r<input ng-model=r>
+</body>
+<script src="/angular.js"></script>
+<script>
+	var app = angular.module("app", []);
+
+
+
+	app.controller('MainCtrl2', function($scope) {
+	});
+	
+	app.controller('MainCtrl', function($scope, $compile, $rootScope) {
+
+		var i = 0;
+		
+		var s = "<div ng-controller='MainCtrl2'>t<input ng-model='t'></div>";
+
+		var scope = $rootScope.$new();
+		
+		var el = $compile(s)(scope);
+
+		angular.element(document.body).append(el);
+		
+
+		$scope.$watch("r", function(){
+			scope.t = i++;
+		});
+	});
+</script>
+</html>

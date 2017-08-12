@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		Enter a numeric value: <input data-bind="value: attemptedValue" />
+	</p>
+	<div data-bind="visible: !lastInputWasValid()">That's not a
+		number!</div>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var viewModel = {
+			acceptedNumericValue : ko.observable(123),
+			lastInputWasValid : ko.observable(true)
+		};
+
+		viewModel.attemptedValue = ko.dependentObservable({
+			read : viewModel.acceptedNumericValue,
+			write : function(value) {
+				if (isNaN(value))
+					this.lastInputWasValid(false);
+				else {
+					this.lastInputWasValid(true);
+					this.acceptedNumericValue(value); // Write to underlying storage
+				}
+			},
+			owner : viewModel
+		});
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

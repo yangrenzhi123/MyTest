@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul
+		data-bind='template: { name: displayMode,
+                           foreach: employees }'>
+	</ul>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var viewModel = {
+			employees : ko.observableArray([ {
+				name : "Kari",
+				active : ko.observable(true)
+			}, {
+				name : "Brynn",
+				active : ko.observable(false)
+			}, {
+				name : "Nora",
+				active : ko.observable(false)
+			} ]),
+			displayMode : function(employee) {
+				return employee.active() ? "active" : "inactive";
+				// Initially "Kari" uses the "active" template, while the others use "inactive"
+			}
+		};
+
+		// ... then later ...
+		viewModel.employees()[1].active(true);
+		// Now "Brynn" is also rendered using the "active" template.
+
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

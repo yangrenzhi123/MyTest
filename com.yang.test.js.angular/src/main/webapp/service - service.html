@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<script src="/angular.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+</head>
+<body ng-controller="MainCtrl">
+	public variable: {{foo.variable}}
+	<br /> private variable (through getter): {{foo.getPrivate()}}
+</body>
+</html>
+<script>
+	app = angular.module("app", []);
+
+	app.controller('MainCtrl', function($scope, foo2) {
+		$scope.foo = foo2;
+	});
+
+	app.service('foo', function() {
+		var thisIsPrivate = "3333";
+		this.variable = "4444";
+		this.getPrivate = function() {
+			return thisIsPrivate;
+		};
+	});
+
+	// This is the same as the service.
+	app.factory('foo2', function() {
+		return new Foobar();
+	});
+
+	function Foobar() {
+		var thisIsPrivate = "11111";
+		this.variable = "22222";
+		this.getPrivate = function() {
+			return thisIsPrivate;
+		};
+	}
+
+	// Or even this
+	app.service('foo3', Foobar);
+</script>

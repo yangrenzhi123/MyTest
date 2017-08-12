@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		Name: <input data-bind="hasFocus: editingName" />
+	</p>
+	<!-- Showing that we can both read and write the focus state -->
+	<div data-bind="visible: editingName">You're editing the name</div>
+	<button
+		data-bind="enable: !editingName(), click:function() { editingName(true) }">Edit
+		name</button>
+	<script src="knockout-3.3.0.js"></script>
+
+	<script>
+		var viewModel = {
+			editingName : ko.observable()
+		};
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

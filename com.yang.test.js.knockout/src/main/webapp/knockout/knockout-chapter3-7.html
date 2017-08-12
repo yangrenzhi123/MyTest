@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.red {
+	border: 1px solid red;
+}
+
+.yellow {
+	border: 1px solid yellow;
+}
+</style>
+</head>
+<body>
+	<div
+		data-bind="style: { color: currentProfit() < 0 ? 'red' : 'black' }">
+		Profit Information</div>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var viewModel = {
+			currentProfit : ko.observable(150000)
+		// Positive value, so initially we don't apply the "profitWarning" class
+		};
+
+		viewModel.currentProfit(-100);
+
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

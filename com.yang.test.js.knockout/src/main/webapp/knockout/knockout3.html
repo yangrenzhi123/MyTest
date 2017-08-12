@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		First name: <span data-bind="text: firstName"></span>
+	</p>
+	<p>
+		Last name: <span data-bind="text: lastName"></span>
+	</p>
+	<h2>
+		Hello, <input data-bind="value: fullName" />!
+	</h2>
+	<script src="knockout-3.3.0.js"></script>
+	<script>
+		var viewModel = {
+			firstName : ko.observable("Planet"),
+			lastName : ko.observable("Earth")
+		};
+
+		viewModel.fullName = ko.dependentObservable({
+
+			read : function() {
+				return this.firstName() + " " + this.lastName();
+			},
+
+			write : function(value) {
+				var lastSpacePos = value.lastIndexOf(" ");
+				if (lastSpacePos > 0) { // Ignore values with no space character
+					this.firstName(value.substring(0, lastSpacePos)); // Update "firstName"
+					this.lastName(value.substring(lastSpacePos + 1)); // Update "lastName"
+				}
+			},
+			owner : viewModel
+		});
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>

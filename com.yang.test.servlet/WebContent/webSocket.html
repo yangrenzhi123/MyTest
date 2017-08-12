@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width" />
+<title>WebSocket Clent</title>
+</head>
+<body>
+	<div>
+		<input type="button" id="btnConnection" value="connect" />
+		<input type="button" id="btnClose" value="close" />
+		<input type="button" id="btnSend" value="send" />
+		<input id="content" />
+	</div>
+	<script src="jquery-1.7.2.min.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script type="text/javascript">
+		var socket;
+		if (typeof (WebSocket) == "undefined") {
+			alert("not support");
+		}
+
+		$("#btnConnection").click(function() {
+			socket = new WebSocket("ws://192.168.19.111:8080/push");
+			socket.onopen = function() {
+				alert("opened");
+			};
+			socket.onmessage = function(msg) {
+				$("#content").val(msg);
+			};
+			socket.onclose = function() {
+				alert("closed");
+			};
+			socket.onerror = function() {
+				alert("error");
+			}
+		});
+
+		$("#btnSend").click(function() {
+			socket.send("from client mess" + location.href + new Date());
+		});
+
+		$("#btnClose").click(function() {
+			socket.close();
+		});
+	</script>
+</body>
+</html>

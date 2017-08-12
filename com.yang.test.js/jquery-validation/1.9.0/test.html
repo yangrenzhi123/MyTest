@@ -1,0 +1,32 @@
+﻿<html>
+<link href="validate.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+input {margin: 20px;}
+</style>
+<body>
+
+<form id="f" method="post">
+	<input name="ipt1" type="text" value="111" /><br/>
+	<input name="ipt2" type="text" value="222" /><br/>
+
+	<input type="submit" type="button" value="tijiao">
+</form>
+
+<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="jquery.validate.min.js" type="text/javascript"></script>
+<script src="messages_cn.js" type="text/javascript"></script>
+<script type="text/javascript">
+$("#f").validate({
+	rules: {
+		ipt1 : {
+			required: true
+		},
+		ipt2 : {
+			required: true
+		}
+	}
+});
+</script>
+</body>
+</html>

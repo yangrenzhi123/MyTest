@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app2">
+<head>
+<script src="/angular.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+</head>
+<body ng-controller="MainCtrl">
+	config1: {{fooConfig.config1}}
+	<br /> config2: {{fooConfig.config2}}
+</body>
+</html>
+<script>
+	app = angular.module("app2", []);
+
+	app.controller('MainCtrl', function($scope, fooConfig) {
+		$scope.fooConfig = fooConfig;
+	});
+
+	app.constant('fooConfig', {
+		config1 : true,
+		config2 : "Default config2"
+	});
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<script src="/angular.js"></script>
+<meta charset=utf-8 />
+</head>
+<body ng-controller="MainCtrl">
+	<select ng-model="receiptType"
+		ng-options="item.id as item.name for item in receiptTypes"></select>
+		<input type="button" value="点击" ng-click="click()" />
+</body>
+</html>
+<script>
+	var app = angular.module("app", []);
+
+	app.controller('MainCtrl', function($scope) {
+		$scope.receiptTypes = [ {
+			id : 1,
+			name : "11"
+		}, {
+			id : 2,
+			name : "22"
+		} ];
+		
+		$scope.receiptType = 1;
+		
+		$scope.click = function(){
+			alert($scope.receiptType);
+		}
+	});
+</script>

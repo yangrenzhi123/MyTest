@@ -1,0 +1,66 @@
+<script type="text/javascript">
+	function formatMoney(mnum) {
+		var mnum = parseFloat(mnum);
+		var strOutput = "", strTemp = "", strInTemp = '';
+		var unitArray = new Array("Ô²ÍòÒÚ", "Çª°ÛÊ°", "ÁãÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾Á");
+		var mnumArray = mnum.toString().split('.');
+		var integralnum = mnumArray[0];
+		var integrallen = integralnum.length;
+		var decimalnum = (mnum.toString().indexOf('.') >= 0) ? mnumArray[1]
+				.substr(0, 2) : '0';
+		var decimallen = decimalnum.length;
+		var ints = parseInt(integrallen / 4);
+		var inty = integrallen % 4;
+		if (ints > 3 || (ints == 3 && inty > 0))
+			return "³¬³ö·¶Î§";
+		if (inty > 0) {
+			ints++;
+			integralnum = "0000".substr(inty) + integralnum;
+			integrallen = integralnum.length;
+		}
+		var i = 0;
+		while (i < integrallen) {
+			var strOutTemp = "";
+			strTemp = integralnum.substr(i, 4);
+			i += 4;
+			for (var j = 0; j < 4; j++) {
+				strInTemp = parseInt(strTemp.substr(j, 1));
+				strOutTemp += unitArray[2].substr(strInTemp, 1);
+				if (strInTemp > 0 && j < 3)
+					strOutTemp += unitArray[1].substr(j, 1);
+			}
+			strOutTemp = strOutTemp.replace(/Áã+$/, "");
+			ints--;
+			if (strOutTemp != "")
+				strOutTemp += unitArray[0].substr(ints, 1);
+			if (strTemp.substr(3, 1) == '0')
+				strOutTemp += "Áã";
+			strOutput += strOutTemp;
+		}
+		strOutput = strOutput.replace(/Áã+/g, "Áã").replace(/^Áã/, "").replace(
+				/Áã$/, "");
+		if (strOutput == "Ô²")
+			strOutput = "";
+		if (decimallen == 2) {
+			strOutput += (decimalnum.charAt(0) != '0') ? unitArray[2].substr(
+					parseInt(decimalnum.charAt(0)), 1)
+					+ "½Ç" : "Áã";
+			if (strOutput == "Áã")
+				strOutput = "";
+			strOutput += unitArray[2].substr(parseInt(decimalnum.charAt(1)), 1)
+					+ "·Ö";
+		} else {
+			if (decimalnum != '0')
+				strOutput += unitArray[2].substr(parseInt(decimalnum), 1) + "½Ç";
+			if (strOutput != "")
+				strOutput += "Õû";
+		}
+		if (strOutput == "")
+			strOutput = "½ğ¶îÎªÁã";
+		return strOutput;
+	}
+</script>
+<input type="text" id="money" name="money" value="123456789.54">
+<input type="button" value="×ª»»"
+	onclick="document.getElementById('show').innerHTML=formatMoney(document.getElementById('money').value)">
+<div id="show"></div>

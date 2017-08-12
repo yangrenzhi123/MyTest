@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form id="test2">
+		<input class="fs" flag="ns" name="id" value="1" />
+		<input class="fs" flag="ns" name="id" value="2" />
+		<input class="fs" flag="ns" name="id" value="3" />
+		<input class="fs" flag="ns" name="di" value="4" />
+		<select class="fs" flag="ns" name="test" multiple="multiple">
+			<option value="2" selected="selected">2</option>
+			<option value="1" selected="selected">1</option></select>
+	</form>
+	<script src="jquery-1.7.2.min.js"></script>
+	<script>
+		$(function() {
+			//alert($("#test2").serialize());
+
+			//alert($("input[name=id]").serialize());
+			var a = {};
+			a["id["+0+"]"] = 1;
+			a["id["+1+"]"] = 2;
+			console.log(a);
+			var b = {};
+			b[0] = 1;
+			b[1] = 2;
+			console.log(b);
+			
+			alert($(".fs").serialize());
+		});
+	</script>
+</body>
+</html>
