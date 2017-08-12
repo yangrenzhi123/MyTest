@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="GBK" standalone="yes"?>
+<HUMAN xmlns:ns2="test.yang.com2" xmlns:ns3="test.yang.com">
+	<ns3:GENDER>female</ns3:GENDER>
+	<ns2:NAME>alice</ns2:NAME>
+</HUMAN>

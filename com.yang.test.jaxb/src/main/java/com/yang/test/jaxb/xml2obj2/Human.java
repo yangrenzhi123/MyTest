@@ -1,4 +1,4 @@
-package com.yang.test.jaxb.obj2xml.with.ns;
+package com.yang.test.jaxb.xml2obj2;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -12,7 +12,7 @@ public class Human {
 	@XmlElement(name = "GENDER", defaultValue = "WOMEN", namespace = "test.yang.com")
 	private String gender;
 
-	@XmlElement(name = "NAME", required = true, nillable = true, namespace = "test.yang.com2")
+	@XmlElement(name = "NAME", required = true, nillable = true)
 	private String name;
 
 	public String getGender() {
