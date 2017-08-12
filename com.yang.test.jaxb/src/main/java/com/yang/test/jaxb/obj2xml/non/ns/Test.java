@@ -1,4 +1,4 @@
-package com.yang.test.jaxb.Student;
+package com.yang.test.jaxb.obj2xml.non.ns;
 
 import java.io.StringWriter;
 import java.util.ArrayList;

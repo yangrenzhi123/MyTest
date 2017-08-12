@@ -1,4 +1,4 @@
-package com.yang.test.jaxb.Student;
+package com.yang.test.jaxb.obj2xml.non.ns;
 
 public class InnerPar {
 

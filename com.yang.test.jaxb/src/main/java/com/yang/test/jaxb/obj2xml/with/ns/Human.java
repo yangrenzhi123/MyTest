@@ -1,4 +1,4 @@
-package com.yang.test.jaxb.Student;
+package com.yang.test.jaxb.obj2xml.with.ns;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -6,10 +6,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "HUMAN")
+@XmlRootElement(name = "HUMAN", namespace = "test.yang.com")
 public class Human {
 
-	@XmlElement(name = "GENDER", defaultValue = "WOMEN"/*, namespace = "test.yang.com"*/)
+	@XmlElement(name = "GENDER", defaultValue = "WOMEN")
 	private String gender;
 
 	@XmlElement(name = "NAME", required = true, nillable = true)
