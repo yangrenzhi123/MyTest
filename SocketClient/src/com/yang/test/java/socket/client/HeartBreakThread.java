@@ -1,5 +1,8 @@
+package com.yang.test.java.socket.client;
 import java.io.IOException;
 import java.net.Socket;
+
+import com.yang.test.java.socket.common.SocketUtil;
 
 public class HeartBreakThread implements Runnable {
 

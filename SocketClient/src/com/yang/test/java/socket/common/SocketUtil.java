@@ -1,3 +1,4 @@
+package com.yang.test.java.socket.common;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;

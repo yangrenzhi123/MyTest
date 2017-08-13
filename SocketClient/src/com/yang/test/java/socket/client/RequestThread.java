@@ -1,7 +1,10 @@
+package com.yang.test.java.socket.client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+
+import com.yang.test.java.socket.common.SocketUtil;
 
 public class RequestThread implements Runnable {
 
@@ -9,7 +12,7 @@ public class RequestThread implements Runnable {
 	public void run() {
 		Socket request = null;
 		try {
-			request = new Socket("192.168.19.111", 4700);
+			request = new Socket("localhost", 8080);
 			BufferedReader sin = new BufferedReader(new InputStreamReader(System.in));
 			String readline;
 
