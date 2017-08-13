@@ -1,4 +1,4 @@
-package com.yang.test.java.socket.common;
+package com.example.helloword;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,6 +32,7 @@ public class SocketUtil {
 				break;
 			}
 		}
-		return result.toString();
+		System.out.println("Server:" + result);
+		return null;
 	}
 }
