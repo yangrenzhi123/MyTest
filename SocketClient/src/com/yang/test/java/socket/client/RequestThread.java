@@ -12,7 +12,7 @@ public class RequestThread implements Runnable {
 	public void run() {
 		Socket request = null;
 		try {
-			request = new Socket("localhost", 8080);
+			request = new Socket("192.168.19.112", 8080);
 			BufferedReader sin = new BufferedReader(new InputStreamReader(System.in));
 			String readline;
 
