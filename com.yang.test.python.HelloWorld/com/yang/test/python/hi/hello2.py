@@ -12,7 +12,7 @@ for line in data:
     row = line.strip().split(",")
     xList.append(row)
 print len(xList)
-ncol = xList[1]
+ncol = len(xList[1])
 type = [0] * 3
 colCounts = []
 for col in range(ncol):
@@ -29,4 +29,7 @@ for col in range(ncol):
     colCounts.append(type);
     type = [0] * 3
 sys.stdout.write("Col#" + '\t' + "Number" + '\t' + "Strings" + '\t' + "Other\n")
-    
+iCol = 0
+for types in colCounts:
+    sys.stdout.write(str(iCol) + '\t\t' + str(types[0]) + '\t\t' + str(types[1]) + '\t\t' + str(types[2]) + "\n")
+    iCol += 1
