@@ -1,12 +1,73 @@
 package com.yang.test.java.socket.client;
+
+import java.io.IOException;
+import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.yang.test.java.socket.common.SocketUtil;
+
 public class SocketClient {
 
-	public static void main(String[] args) {
-		ExecutorService executor = Executors.newCachedThreadPool();
+	public static Socket request = null;
 
-		executor.execute(new RequestThread());
+	public static void main(String[] args) throws InterruptedException {
+		int i = 0;
+		while ((i++) < 100) {
+			ExecutorService executor = Executors.newCachedThreadPool();
+			executor.execute(new RequestThread());
+
+			synchronized (SocketClient.class) {
+				SocketClient.class.wait();
+			}
+		}
+	}
+}
+
+class RequestThread implements Runnable {
+
+	@Override
+	public void run() {
+		try {
+			SocketClient.request = new Socket("localhost", 8080);
+
+			SocketUtil.writeStr2Stream("F0001", SocketClient.request.getOutputStream());
+			while (true) {
+				String got = SocketUtil.readStrFromStream(SocketClient.request.getInputStream());
+				System.out.println("Server: " + got);
+				if("quit".equals(got)){
+					SocketClient.request.close();
+					break;
+				}
+				if(got.startsWith("wait-")){
+					SocketClient.request.close();
+					String order = got.split("-")[1];
+					try {
+						Thread.sleep(Long.parseLong(order));
+					} catch (NumberFormatException e) {
+						e.printStackTrace();
+						SocketClient.request.close();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+						SocketClient.request.close();
+					}
+
+					synchronized (SocketClient.class) {
+						SocketClient.class.notifyAll();
+					}
+				}
+			}
+		} catch (IOException e) {
+			try {
+				SocketClient.request.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				e.printStackTrace();
+			}
+			e.printStackTrace();
+			synchronized (SocketClient.class) {
+				SocketClient.class.notifyAll();
+			}
+		}
 	}
 }
