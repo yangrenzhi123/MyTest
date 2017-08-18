@@ -29,7 +29,7 @@ class RequestThread implements Runnable {
 	@Override
 	public void run() {
 		try {
-			SocketClient.request = new Socket("localhost", 8080);
+			SocketClient.request = new Socket("192.168.19.111", 8080);
 
 			SocketUtil.writeStr2Stream("F0001", SocketClient.request.getOutputStream());
 			while (true) {
@@ -55,6 +55,7 @@ class RequestThread implements Runnable {
 					synchronized (SocketClient.class) {
 						SocketClient.class.notifyAll();
 					}
+					break;
 				}
 			}
 		} catch (IOException e) {
