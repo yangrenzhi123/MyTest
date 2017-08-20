@@ -19,25 +19,25 @@ public class MainActivity extends AppCompatActivity {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tv.setText("被点击了");
+                tv.setText("被点击了2");
             }
         });
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try{
-                    Socket request = new Socket("192.168.19.112", 8080);
+                    Socket request = new Socket("192.168.19.111", 8080);
 
-                    SocketUtil.writeStr2Stream("客户端发数据过来了", request.getOutputStream());
+                    SocketUtil.writeStr2Stream("F0001", request.getOutputStream());
 
                     while(true){
                         String got = SocketUtil.readStrFromStream(request.getInputStream());
-                        System.out.println("Server: " + got);
+                        System.out.print("Server111:"+got);
                     }
                 }catch(Exception e){
-                    tv.setText("异常了");
+                    System.out.print("异常了");
                 }
             }
-        }).start();
+        }, "指令接收器").start();
     }
 }
