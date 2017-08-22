@@ -23,6 +23,12 @@ public class WaitAndSleep {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
                 System.out.println("thread1 is going on ....");
                 System.out.println("thread1 is over!!!");
             }
@@ -33,6 +39,9 @@ public class WaitAndSleep {
         public void run() {
             synchronized (WaitAndSleep.class) {
                 WaitAndSleep.class.notify();
+            }
+            synchronized (WaitAndSleep.class) {
+                System.out.println(1);
             }
         }
     }

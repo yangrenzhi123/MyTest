@@ -1,22 +1,27 @@
 package com.yang.test.java;
 
+/**
+ * 测试java对象锁的效果
+ * 
+ */
 public class WaitAndSleep2 {
 
-	public static void main(String[] args) {
-		new Thread(new R1(), "11").start();
-		new Thread(new R2(), "22").start();
+	public static Integer t = new Integer(1);
+	
+	public static void main(String[] args) throws InterruptedException {
+		new Thread(new R1()).start();
+		Thread.sleep(1000);
+
+		new Thread(new R2()).start();
 	}
 
 	private static class R1 implements Runnable {
 		public void run() {
-			synchronized (Single.get()) {
-				while (true) {
-					way();
-					try {
-						Thread.sleep(10000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+			synchronized (WaitAndSleep2.t) {
+				try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
 			}
 		}
@@ -24,21 +29,9 @@ public class WaitAndSleep2 {
 
 	private static class R2 implements Runnable {
 		public void run() {
-			synchronized (Single.get()) {
-				while (true) {
-					way();
-					try {
-						Thread.sleep(10000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+			synchronized (WaitAndSleep2.t) {
+				System.out.println(WaitAndSleep2.t);
 			}
 		}
-	}
-
-	public static void way() {
-		Single.get().id = Single.get().id + 1;
-		System.out.println(Single.get().id);
 	}
 }
