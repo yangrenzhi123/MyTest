@@ -30,7 +30,7 @@ public class SocketClient {
 			@Override
 			public void run() {
 				try {
-					SocketClient.request = new Socket("192.168.19.111", 8080);
+					SocketClient.request = new Socket("127.0.0.1", 8081);
 
 					SocketUtil.writeStr2Stream("F0002", SocketClient.request.getOutputStream());
 					while (true) {

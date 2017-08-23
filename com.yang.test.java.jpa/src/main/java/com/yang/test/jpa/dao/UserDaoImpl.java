@@ -20,9 +20,17 @@ public class UserDaoImpl implements UserDao {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("DBPersistenceUnit");
 		EntityManager em = emf.createEntityManager();
 		
-		Query q = em.createQuery("SELECT new User(name, qq) FROM User");
+		Query qspid = em.createNativeQuery("select @@spid");
+		Short spid = (Short)qspid.getSingleResult();
+		System.out.println(spid);
+		
+		Query q = em.createQuery("FROM User");
 		List<User> l = q.getResultList();
 		
+		for(User item : l){
+			item.setQq("1");
+			em.refresh(item);
+		}
 		emf.close();
 		return l ;
 	}
