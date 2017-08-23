@@ -4,7 +4,7 @@ package com.yang.test.java;
  * 测试java对象锁的效果
  * 
  */
-public class WaitAndSleep2 {
+public class Synchronized {
 
 	public static Integer t = new Integer(1);
 	
@@ -17,7 +17,7 @@ public class WaitAndSleep2 {
 
 	private static class R1 implements Runnable {
 		public void run() {
-			synchronized (WaitAndSleep2.t) {
+			synchronized (Synchronized.t) {
 				try {
 					Thread.sleep(10000);
 				} catch (InterruptedException e) {
@@ -29,8 +29,8 @@ public class WaitAndSleep2 {
 
 	private static class R2 implements Runnable {
 		public void run() {
-			synchronized (WaitAndSleep2.t) {
-				System.out.println(WaitAndSleep2.t);
+			synchronized (Synchronized.t) {
+				System.out.println(Synchronized.t);
 			}
 		}
 	}
