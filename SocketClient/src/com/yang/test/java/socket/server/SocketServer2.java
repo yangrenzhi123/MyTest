@@ -53,7 +53,6 @@ class HandlerThread2 implements Runnable {
 
 	public HandlerThread2(Socket client) {
 		socket = client;
-		new Thread(this).start();
 	}
 
 	public void run() {
@@ -66,7 +65,7 @@ class HandlerThread2 implements Runnable {
 			SocketServer2.socketMap.put(code, socket);
 
 			OutputStream os = socket.getOutputStream();
-			SocketUtil.writeStr2Stream("I got", os);
+			SocketUtil.writeStr2Stream("I got 2", os);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
