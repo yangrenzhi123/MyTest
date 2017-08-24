@@ -32,7 +32,6 @@ public class SocketUtil {
 				break;
 			}
 		}
-		System.out.println("Server:" + result);
-		return null;
+		return result.toString();
 	}
 }

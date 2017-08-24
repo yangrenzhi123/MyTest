@@ -40,7 +40,7 @@ public class SocketServer2 {
 			}
 		}).start();
 
-		ServerSocket serverSocket = new ServerSocket(8080);
+		ServerSocket serverSocket = new ServerSocket(8081);
 		while (true) {
 			Socket client = serverSocket.accept();
 			new Thread(new HandlerThread2(client)).start();

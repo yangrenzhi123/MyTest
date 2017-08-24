@@ -26,11 +26,8 @@ import java.util.regex.Pattern;
 @SuppressWarnings("deprecation")
 public class Test {
 
-	private static int i = 0;
-
 	public static void main(String[] args) throws Exception {
-		System.out.println(new Integer(1) == 1);
-		System.out.println(new Integer(1000) == 1000);
+		startT();
 	}
 
 	public static void test28() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
@@ -101,19 +98,14 @@ public class Test {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
-	
-	private static synchronized void setI() {
-		System.out.println(i++);
-	}
 
 	private static void startT() {
 		Thread t = new Thread(new Runnable() {
 			public void run() {
-				// timer 没有办法设置name
-				Timer timer = new Timer();
+				Timer timer = new Timer("123");
 				timer.schedule(new TimerTask() {
 					public void run() {
-						setI();
+						System.out.println(System.currentTimeMillis());
 					}
 				}, 0, 10000);
 			}

@@ -11,7 +11,11 @@ public class User extends BaseEntity {
 	private String name;
 
 	private String qq;
-	
+
+	public User() {
+		super();
+	}
+
 	public User(String name, String qq) {
 		super();
 		this.name = name;
@@ -35,5 +39,4 @@ public class User extends BaseEntity {
 	public void setQq(String qq) {
 		this.qq = qq;
 	}
-
 }
