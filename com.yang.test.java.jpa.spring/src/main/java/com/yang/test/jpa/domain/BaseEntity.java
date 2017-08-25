@@ -13,9 +13,7 @@ public class BaseEntity {
 
 	private Long id;
 
-	@GenericGenerator(name = "generator", strategy = "hilo", parameters = {
-			@Parameter(name = "max_lo", value = "100"),
-			@Parameter(name = "table", value = "HILO") })
+	@GenericGenerator(name = "generator", strategy = "hilo", parameters = { @Parameter(name = "max_lo", value = "100"), @Parameter(name = "table", value = "HILO") })
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "ID", unique = true, nullable = false)
@@ -26,5 +24,4 @@ public class BaseEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 }

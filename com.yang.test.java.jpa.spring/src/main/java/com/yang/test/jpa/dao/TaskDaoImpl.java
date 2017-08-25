@@ -10,30 +10,27 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
-import com.yang.test.jpa.domain.Task;
+import com.yang.test.jpa.domain.T;
 
 @SuppressWarnings("unchecked")
 @Repository("taskDao")
-public class TaskDaoImpl implements TaskDao{
+public class TaskDaoImpl implements TaskDao {
 
 	@PersistenceContext
 	private EntityManager em;
 
 	public static void main(String[] args) {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
-		TaskDao b = (TaskDao)ac.getBean("taskDao");
-		List<Task> l = b.list();
-	    System.out.println(l);
+		TaskDao b = (TaskDao) ac.getBean("taskDao");
+		List<T> l = b.list();
+		System.out.println(l);
 	}
 
-	public List<Task> list() {
-
-		Query q = em
-				.createQuery("SELECT new Task(one.deadline, one.createdOn, one.taskTitle,one.description, one.handleBy) FROM Task one WHERE one.handleBy = :handleBy");
-		q.setParameter("handleBy", 11);
-		List<Task> l = q.getResultList();
+	public List<T> list() {
+		Query q = em.createQuery("from T WHERE value = :value");
+		q.setParameter("value", 1);
+		List<T> l = q.getResultList();
 
 		return l;
 	}
-
 }
