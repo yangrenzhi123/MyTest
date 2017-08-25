@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
-import com.yang.test.jpa.domain.T;
+import com.yang.test.jpa.spring.entity.T;
 
 @SuppressWarnings("unchecked")
 @Repository("taskDao")

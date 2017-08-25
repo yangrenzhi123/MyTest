@@ -4,7 +4,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
     http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
-	<persistence-unit name="DBPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="DBPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<class>com.yang.test.jpa.spring.entity.T</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver" />
 			<property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://127.0.0.1:1433/Test" />

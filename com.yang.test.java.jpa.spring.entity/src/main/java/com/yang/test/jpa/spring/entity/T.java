@@ -1,4 +1,4 @@
-package com.yang.test.jpa.domain;
+package com.yang.test.jpa.spring.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
