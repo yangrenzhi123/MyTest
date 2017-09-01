@@ -33,4 +33,8 @@ public class TaskDaoImpl implements TaskDao {
 
 		return l;
 	}
+
+	public List<T> list2() {
+		return null;
+	}
 }

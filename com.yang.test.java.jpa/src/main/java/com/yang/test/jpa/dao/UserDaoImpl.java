@@ -15,29 +15,23 @@ public class UserDaoImpl implements UserDao {
 	public static void main(String[] args) {
 		new UserDaoImpl().list();
 	}
-	
+
 	public List<User> list() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("DBPersistenceUnit");
 		EntityManager em = emf.createEntityManager();
-		
+
 		Query qspid = em.createNativeQuery("select @@spid");
-		Short spid = (Short)qspid.getSingleResult();
+		Short spid = (Short) qspid.getSingleResult();
 		System.out.println(spid);
-		
+
 		Query q = em.createQuery("FROM User");
 		List<User> l = q.getResultList();
-		
-		for(User item : l){
+
+		for (User item : l) {
 			item.setQq("1");
 			em.refresh(item);
 		}
 		emf.close();
-		return l ;
+		return l;
 	}
-
-	public User save(User accountInfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

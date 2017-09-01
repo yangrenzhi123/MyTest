@@ -7,4 +7,5 @@ import com.yang.test.jpa.spring.entity.T;
 public interface TaskDao {
 
 	List<T> list();
+	List<T> list2();
 }
