@@ -16,7 +16,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,7 +29,10 @@ import java.util.regex.Pattern;
 public class Test {
 
 	public static void main(String[] args) throws Exception {
-		startT();
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		map.put(new Integer(10000), new Integer(10000));
+		
+		System.out.println(map.get(new Integer(10000)));;
 	}
 
 	public static void test28() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
