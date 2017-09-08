@@ -1,9 +1,24 @@
+# -*- coding: gbk -*-
+import urllib2
+import pylab
 import numpy as np
+from scipy import stats
+target_url= ("https://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/sonar.all-data")
+data = urllib2.urlopen(target_url)
 
-print np.percentile([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 50)
-a = np.array([[1, 2, 3], [4, 5]])
-b = np.mean([1, 1, 1])
-c = np.std([1, 4])
-print a
-print b
-print c
+xList = [] # 所有数据
+labels = []
+for line in data:
+    row = line.strip().split(",") #每行数据
+    xList.append(row)
+nrow = len(xList) #总行数
+ncol = len(xList[1]) #总列数
+
+type = [0] * 3
+colCounts = []
+col = 3
+colData = []
+for row in xList:
+    colData.append(float(row[col]))
+stats.probplot(colData, dist="norm", plot=pylab)
+pylab.show();
