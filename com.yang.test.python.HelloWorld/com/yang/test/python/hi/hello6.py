@@ -8,6 +8,9 @@ target_url = ("https://archive.ics.uci.edu/ml/machine-learning-databases/abalone
 abalone = pd.read_csv(target_url, header=None, prefix="V")
 abalone.columns = ['Sex', 'Length', 'Diameter', 'Height', 'Whole weight', 'Shucked weight', 'Viscera weight', 'Shell weight', 'Rings']
 
+# 打印第1行，8列数据
+# print abalone.iloc[0, 0:9]
+
 # print(abalone.head())
 # print(abalone.tail())
 
@@ -26,13 +29,13 @@ print(summary)
 # plot.ylabel("Quartile Ranges")
 # show()
 
-abaloneNormalized = abalone.iloc[:,1:9]
+abaloneNormalized = abalone.iloc[:, 1:9]
 for i in range(8):
     mean = summary.iloc[1, i]
     sd = summary.iloc[2, i]
-    abaloneNormalized.iloc[:,i:(i+1)] = (abaloneNormalized.iloc[:,i:(i+1)] - mean) /sd
+    abaloneNormalized.iloc[:, i:(i + 1)] = (abaloneNormalized.iloc[:, i:(i + 1)] - mean) / sd
 array3 = abaloneNormalized.values
 boxplot(array3)
 plot.xlabel("Attribute Index")
 plot.ylabel("Quartile Ranges - Normalized")
-show()
+# show()
