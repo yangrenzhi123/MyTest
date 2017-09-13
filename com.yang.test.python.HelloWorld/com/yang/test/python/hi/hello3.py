@@ -1,24 +1,24 @@
+# -*- coding: gbk -*-
 import urllib2
 import sys
 import numpy as np
 target_url= ("https://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/sonar.all-data")
 data = urllib2.urlopen(target_url)
 
-xList = []
+xList = [] # 所有数据
 labels = []
 for line in data:
-    row = line.strip().split(",")
+    row = line.strip().split(",") #每行数据
     xList.append(row)
-nrow = len(xList)
-ncol = len(xList[1])
+nrow = len(xList) #总行数
+ncol = len(xList[1]) #总列数
 
-colCounts = []
-
-col = 3
+col = 3 #统计第四列数据
 colData = []
 for row in xList:
     colData.append(float(row[col]))
 colArray = np.array(colData)
+print colArray
 colMean = np.mean(colArray)
 colsd = np.std(colArray)
 sys.stdout.write("Mean = " + '\t' + str(colMean) + '\t\t' + "Standard Deviation = " + '\t' + str(colsd) + "\n")
