@@ -9,7 +9,9 @@ public class Test {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("DBPersistenceUnit");
+		EntityManagerFactory emf2 = Persistence.createEntityManagerFactory("DBPersistenceUnit");
 		final EntityManager em = emf.createEntityManager();
+		final EntityManager em2 = emf2.createEntityManager();
 
 		new Thread(new Runnable() {
 
@@ -23,7 +25,7 @@ public class Test {
 		new Thread(new Runnable() {
 
 			public void run() {
-				Query qspid = em.createNativeQuery("select @@spid");
+				Query qspid = em2.createNativeQuery("select @@spid");
 				Short spid = (Short) qspid.getSingleResult();
 				System.out.println(spid);
 			}
