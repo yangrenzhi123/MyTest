@@ -13,7 +13,7 @@
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="1qazxcvbnm,./" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
-			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.show_sql" value="true" />
 			<property name="Hibernate.default_schema" value="dbo" />
 		</properties>
 	</persistence-unit>
