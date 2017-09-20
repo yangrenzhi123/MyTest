@@ -1,13 +1,11 @@
 package com.yang.test.jpa.dao;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.yang.test.jpa.domain.Task;
+import com.yang.test.jpa.domain.Tab;
 
-public interface TaskDao extends JpaRepository<Task, Long> {
-	@Query("from Task")
-	public List<Task> findTop10();
+public interface TaskDao extends JpaRepository<Tab, Long>, JpaSpecificationExecutor<Tab> {
+
+	Tab findById(Integer id);
 }

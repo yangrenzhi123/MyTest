@@ -5,17 +5,14 @@
     http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 	<persistence-unit name="DBPersistenceUnit" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider><!-- 
-		<class>com.yang.test.jpa.domain.Task</class> -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://192.168.137.2/TEST" />
+			<property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://127.0.0.1:1433/TEST" />
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="1qazxcvbnm,./" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
 			<property name="hibernate.show_sql" value="false" />
-			<property name="Hibernate.default_schema" value="dbo" />
-			<property name="Hibernate.default_catalog" value="Test" />
 		</properties>
 	</persistence-unit>
 </persistence>
