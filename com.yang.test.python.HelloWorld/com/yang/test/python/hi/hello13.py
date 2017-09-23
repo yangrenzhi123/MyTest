@@ -36,7 +36,7 @@ indexSet = set(index) #ÁÐÊý
 indexSeq = []
 oosError = []
 for i in index:
-    if(i == 1): break;
+    #if(i == 1): break;
     attSet = set(attributeList)
     attTrySet = indexSet - attSet
     attTry = [ii for ii in attTrySet]
@@ -53,7 +53,6 @@ for i in index:
         yTest = numpy.array(lablesTest)
         wineQModel = linear_model.LinearRegression()
         wineQModel.fit(xTrain, yTrain)
-        print wineQModel.predict(xTest)
         rmsError = numpy.linalg.norm((yTest - wineQModel.predict(xTest)), 2) / sqrt(len(yTest))
         errorList.append(rmsError)
         attTemp = []
@@ -73,21 +72,22 @@ for i in index:
 # plt.ylabel('Error (RMS)')
 # plt.show()
 # 
-# indexBest = oosError.index(min(oosError))
-# attributesBest = attributeList[1: (indexBest + 1)]
+indexBest = oosError.index(min(oosError))
+attributesBest = attributeList[1: (indexBest + 1)]
+print attributesBest
 # 
-# xTrainTemp = xattrSelect(xListTrain, attributesBest)
-# xTestTemp = xattrSelect(xListTest, attributesBest)
-# xTrain = numpy.array(xTrainTemp); xTest = numpy.array(xTestTemp)
+xTrainTemp = xattrSelect(xListTrain, attributesBest)
+xTestTemp = xattrSelect(xListTest, attributesBest)
+xTrain = numpy.array(xTrainTemp); xTest = numpy.array(xTestTemp)
 # 
-# wineQModel = linear_model.LinearRegression()
-# wineQModel.fit(xTrain, yTrain)
-# errorVector = yTest - wineQModel.predict(xTest)
-# plt.hist(errorVector)
-# plt.xlabel("Bin Boundaries")
-# plt.ylabel("Counts")
-# plt.show()
+wineQModel = linear_model.LinearRegression()
+wineQModel.fit(xTrain, yTrain)
+errorVector = yTest - wineQModel.predict(xTest)
+plt.hist(errorVector)
+plt.xlabel("Bin Boundaries")
+plt.ylabel("Counts")
+plt.show()
 # 
-# plt.scatter(wineQModel.predict(xTest), yTest, s=100, alpha=0.10)
-# plt.ylabel("Actual Taste Score")
-# plt.show()
+plt.scatter(wineQModel.predict(xTest), yTest, s=100, alpha=0.10)
+plt.ylabel("Actual Taste Score")
+plt.show()
