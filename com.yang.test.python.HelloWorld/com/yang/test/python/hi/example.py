@@ -1,7 +1,7 @@
 # -*- coding: gbk -*-
 import numpy
 
-print numpy.linalg.norm([1, 2, 3], 2)
+print 2**3
 
 # print np.array([[1, 2, 3], [4, 5]])
 # 先排序，再取50%位置的数字，得出这些数字的平均值。
