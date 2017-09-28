@@ -1,7 +1,7 @@
 # -*- coding: gbk -*-
 import numpy
 import urllib2
-from sklearn import datasets, linear_model
+from sklearn import linear_model
 import matplotlib.pyplot as plt
 from math import sqrt
 target_url = ("https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv")
