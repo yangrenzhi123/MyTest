@@ -10,27 +10,41 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 
+import com.yang.test.jpa.dao.SpidGetter;
 import com.yang.test.jpa.dao.TaskDao;
-import com.yang.test.jpa.domain.Tab;
+import com.yang.test.jpa.domain.T;
 
 public class Test {
 
 	public static void main(String[] args) {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
+//		SpidGetter spidGetter = (SpidGetter) ac.getBean("spidGetter");
+//		Short spid = spidGetter.getSpid();
+//		System.out.println(spid);
 
 		TaskDao b = (TaskDao) ac.getBean("taskDao");
-		List<Tab> t = (List<Tab>) b.findAll(new Specification<Tab>() {
+		b.delete(1);
+		
 
-			public Predicate toPredicate(Root<Tab> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				List<Predicate> list = new ArrayList<Predicate>();
-				list.add(cb.equal(root.get("id").as(Integer.class), 1));
-
-				Predicate[] p = new Predicate[list.size()];
-				return cb.and(list.toArray(p));
-			}
-		});
-		System.out.println(t);
+//		Sort sort = new Sort(Direction.DESC, "id");
+//		Pageable pageable = new PageRequest(0, 1, sort);
+//		
+//		Page<T> t = (Page<T>) b.findAll(new Specification<T>() {
+//
+//			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+//				List<Predicate> list = new ArrayList<Predicate>();
+//				list.add(cb.equal(root.get("id").as(Integer.class), 1));
+//
+//				Predicate[] p = new Predicate[list.size()];
+//				return cb.and(list.toArray(p));
+//			}
+//		}, pageable);
 	}
 }
