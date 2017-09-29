@@ -72,4 +72,9 @@ public class TaskDaoImpl3 implements TaskDao {
 	public List<T> list2() {
 		return null;
 	}
+
+	public void getPrint() {
+		// TODO Auto-generated method stub
+		
+	}
 }

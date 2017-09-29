@@ -60,4 +60,10 @@ public class TaskDaoImpl2 implements TaskDao {
 		System.out.println(spid2);
 		return null;
 	}
+
+
+	public void getPrint() {
+		// TODO Auto-generated method stub
+		
+	}
 }
