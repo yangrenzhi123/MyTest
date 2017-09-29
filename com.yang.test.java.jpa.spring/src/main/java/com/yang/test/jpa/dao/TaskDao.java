@@ -8,4 +8,5 @@ public interface TaskDao {
 
 	List<T> list();
 	List<T> list2();
+	void getPrint();
 }

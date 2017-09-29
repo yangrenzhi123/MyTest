@@ -22,6 +22,12 @@ public class TaskDaoImpl implements TaskDao {
 	public static void main(String[] args) {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
 		TaskDao b = (TaskDao) ac.getBean("taskDao");
+		b.getPrint();
+	}
+
+	public static void main2(String[] args) {
+		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
+		TaskDao b = (TaskDao) ac.getBean("taskDao");
 		List<T> l = b.list();
 		System.out.println(l);
 	}
@@ -36,5 +42,11 @@ public class TaskDaoImpl implements TaskDao {
 
 	public List<T> list2() {
 		return null;
+	}
+
+	public void getPrint() {
+		Query q = em.createNativeQuery("exec TP");
+		List<Object[]> l = (List<Object[]>) q.getResultList();
+		System.out.println(l);
 	}
 }
