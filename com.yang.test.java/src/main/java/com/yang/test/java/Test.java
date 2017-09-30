@@ -23,17 +23,6 @@ import java.util.regex.Pattern;
 @SuppressWarnings("deprecation")
 public class Test {
 
-	public static void main(String[] args) throws Exception {
-		long l = System.currentTimeMillis();
-		
-		long max = 100000000000L;
-		System.out.println(max);
-		for (long i = 0; i < max; i++) {
-		}
-		
-		System.out.println(System.currentTimeMillis() - l);
-	}
-
 	public static void test27(){
 		System.out.println(System.getProperty("java.version"));
 		System.out.println(System.getProperty("java.home"));
