@@ -1,7 +1,10 @@
 # -*- coding: gbk -*-
 import numpy
+import matplotlib.pyplot as plot
 
-print 2**3
+print range(3)
+# plot.plot([0, 0.5, 1, 1.5], [1, 2, 3, 4])
+# plot.show()
 
 # print np.array([[1, 2, 3], [4, 5]])
 # 先排序，再取50%位置的数字，得出这些数字的平均值。
