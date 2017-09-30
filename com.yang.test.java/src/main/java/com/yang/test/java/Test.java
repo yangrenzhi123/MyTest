@@ -5,9 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -27,10 +24,14 @@ import java.util.regex.Pattern;
 public class Test {
 
 	public static void main(String[] args) throws Exception {
-		String s = "1\r2\n";
-//		s = s.replaceAll("\r", "");
-//		s = s.replaceAll("\n", "");
-		System.out.println(s);
+		long l = System.currentTimeMillis();
+		
+		long max = 100000000000L;
+		System.out.println(max);
+		for (long i = 0; i < max; i++) {
+		}
+		
+		System.out.println(System.currentTimeMillis() - l);
 	}
 
 	public static void test27(){
