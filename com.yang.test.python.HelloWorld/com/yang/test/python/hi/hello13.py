@@ -1,7 +1,7 @@
 # -*- coding: gbk -*-
 import numpy
 import urllib2
-from sklearn import datasets, linear_model
+from sklearn import linear_model
 import matplotlib.pyplot as plt
 from math import sqrt
 def xattrSelect(x, idxSet):
