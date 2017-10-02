@@ -84,7 +84,7 @@ for ixval in range(nxval):
             labelsHat = sum([xTest[j][k] * beta[k] for k in range(ncols)])
             err = labelTest[j] - labelsHat
             errors[iStep].append(err)
-# print errors
+print errors
 # cvCurve = []
 # for errVect in errors:
 #     mse = sum(x*x for x in errVect) / len(errVect)
