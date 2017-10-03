@@ -2,7 +2,9 @@
 import numpy
 import matplotlib.pyplot as plot
 
-print numpy.random.normal(scale=0.1)
+s = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print s[0:1]
+print s[1:9]
 
 # print np.array([[1, 2, 3], [4, 5]])
 # 先排序，再取50%位置的数字，得出这些数字的平均值。
