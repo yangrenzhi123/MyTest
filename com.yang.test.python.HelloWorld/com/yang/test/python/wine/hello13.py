@@ -9,7 +9,8 @@ def xattrSelect(x, idxSet):
     for row in x:
         xOut.append([row[i] for i in idxSet])
     return xOut
-target_url = ("https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv")
+#target_url = ("https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv")
+target_url = ("http://127.0.0.1:8080/winequality-red.txt")
 data = urllib2.urlopen(target_url)
 xList = []
 labels = []
@@ -36,6 +37,7 @@ indexSet = set(index) #ÁÐÊý
 indexSeq = []
 oosError = []
 for i in index:
+    print attributeList
     #if(i == 1): break;
     attSet = set(attributeList)
     attTrySet = indexSet - attSet
@@ -66,28 +68,27 @@ for i in index:
 # namesList = [names[i] for i in attributeList]
 # print("\n" + "Best attribute names")
 # print(namesList)
-# x = range(len(oosError))
-# plt.plot(x, oosError, 'k')
-# plt.xlabel('Number of Attributes')
-# plt.ylabel('Error (RMS)')
+x = range(len(oosError))
+plt.plot(x, oosError, 'k')
+plt.xlabel('Number of Attributes')
+plt.ylabel('Error (RMS)')
+plt.show()
+# 
+# indexBest = oosError.index(min(oosError))
+# attributesBest = attributeList[1: (indexBest + 1)]
+# 
+# xTrainTemp = xattrSelect(xListTrain, attributesBest)
+# xTestTemp = xattrSelect(xListTest, attributesBest)
+# xTrain = numpy.array(xTrainTemp); xTest = numpy.array(xTestTemp)
+# 
+# wineQModel = linear_model.LinearRegression()
+# wineQModel.fit(xTrain, yTrain)
+# errorVector = yTest - wineQModel.predict(xTest)
+# plt.hist(errorVector)
+# plt.xlabel("Bin Boundaries")
+# plt.ylabel("Counts")
 # plt.show()
 # 
-indexBest = oosError.index(min(oosError))
-attributesBest = attributeList[1: (indexBest + 1)]
-print attributesBest
-# 
-xTrainTemp = xattrSelect(xListTrain, attributesBest)
-xTestTemp = xattrSelect(xListTest, attributesBest)
-xTrain = numpy.array(xTrainTemp); xTest = numpy.array(xTestTemp)
-# 
-wineQModel = linear_model.LinearRegression()
-wineQModel.fit(xTrain, yTrain)
-errorVector = yTest - wineQModel.predict(xTest)
-plt.hist(errorVector)
-plt.xlabel("Bin Boundaries")
-plt.ylabel("Counts")
-plt.show()
-# 
-plt.scatter(wineQModel.predict(xTest), yTest, s=100, alpha=0.10)
-plt.ylabel("Actual Taste Score")
-plt.show()
+# plt.scatter(wineQModel.predict(xTest), yTest, s=100, alpha=0.10)
+# plt.ylabel("Actual Taste Score")
+# plt.show()

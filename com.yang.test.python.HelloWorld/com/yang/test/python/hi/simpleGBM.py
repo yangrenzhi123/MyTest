@@ -7,7 +7,6 @@ from sklearn.tree import DecisionTreeRegressor
 from math import floor
 import random
 
-
 #Build a simple data set with y = x + random
 nPoints = 1000
 
@@ -19,7 +18,7 @@ x = [[s] for s in xPlot]
 
 #y (labels) has random noise added to x-value
 #set seed
-random.seed(1)
+numpy.random.seed(1)
 y = [s + numpy.random.normal(scale=0.1) for s in xPlot]
 
 #take fixed test set 30% of sample
@@ -38,31 +37,34 @@ yTest = [y[r] for r in idxTest]
 #collect the models in a list and check error of composite as list grows
 
 #maximum number of models to generate
-numTreesMax = 20
+numTreesMax = 30
 
 #tree depth - typically at the high end
-treeDepth = 1
+treeDepth = 5
 
 #initialize a list to hold models
 modelList = []
 predList = []
+eps = 0.3
 
-#number of samples to draw for stochastic bagging
-nBagSamples = int(len(xTrain) * 0.5)
+#initialize residuals to be the labels y
+residuals = list(yTrain)
 
 for iTrees in range(numTreesMax):
-    idxBag = []
-    for i in range(nBagSamples):
-        idxBag.append(random.choice(range(len(xTrain))))
-    xTrainBag = [xTrain[i] for i in idxBag]
-    yTrainBag = [yTrain[i] for i in idxBag]
 
     modelList.append(DecisionTreeRegressor(max_depth=treeDepth))
-    modelList[-1].fit(xTrainBag, yTrainBag)
+    modelList[-1].fit(xTrain, residuals)
 
     #make prediction with latest model and add to list of predictions
-    latestPrediction = modelList[-1].predict(xTest)
-    predList.append(list(latestPrediction))
+    latestInSamplePrediction = modelList[-1].predict(xTrain)
+    print latestInSamplePrediction
+
+    #use new predictions to update residuals
+    residuals = [residuals[i] - eps * latestInSamplePrediction
+                 [i] for i in range(len(residuals))]
+
+    latestOutSamplePrediction = modelList[-1].predict(xTest)
+    predList.append(list(latestOutSamplePrediction))
 
 
 #build cumulative prediction from first "n" models
@@ -70,10 +72,10 @@ mse = []
 allPredictions = []
 for iModels in range(len(modelList)):
 
-    #average first "iModels" of the predictions
+    #add the first "iModels" of the predictions and multiply by eps
     prediction = []
     for iPred in range(len(xTest)):
-        prediction.append(sum([predList[i][iPred] for i in range(iModels + 1)])/(iModels + 1))
+        prediction.append(sum([predList[i][iPred] for i in range(iModels + 1)]) * eps)
 
     allPredictions.append(prediction)
     errors = [(yTest[i] - prediction[i]) for i in range(len(yTest))]
@@ -89,26 +91,17 @@ plot.ylabel('Mean Squared Error')
 plot.ylim((0.0, max(mse)))
 plot.show()
 
-
-plotList = [0, 9, 19]
-for iPlot in plotList:
-    plot.plot(xTest, allPredictions[iPlot])
-plot.plot(xTest, yTest, linestyle="--")
+plotList = [0, 14, 29]
+lineType = [':', '-.', '--']
+plot.figure()
+for i in range(len(plotList)):
+    iPlot = plotList[i]
+    textLegend = 'Prediction with ' + str(iPlot) + ' Trees'
+    plot.plot(xTest, allPredictions[iPlot], label = textLegend, linestyle = lineType[i])
+plot.plot(xTest, yTest, label='True y Value', alpha=0.25)
+plot.legend(bbox_to_anchor=(1,0.3))
 plot.axis('tight')
 plot.xlabel('x value')
 plot.ylabel('Predictions')
 plot.show()
 
-print('Minimum MSE')
-print(min(mse))
-
-
-#With treeDepth = 1
-#Minimum MSE
-#0.0242960117899
-
-
-
-#With treeDepth = 5
-#Minimum MSE
-#0.0118893503384

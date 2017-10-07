@@ -4,7 +4,8 @@ import urllib2
 from sklearn import linear_model
 import matplotlib.pyplot as plt
 from math import sqrt
-target_url = ("https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv")
+#target_url = ("https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv")
+target_url = ("http://127.0.0.1:8080/winequality-red.txt")
 data = urllib2.urlopen(target_url)
 xList = []
 labels = []
@@ -36,26 +37,26 @@ for alph in alphaList:
     wineRidgeModel = linear_model.Ridge(alpha = alph)
     wineRidgeModel.fit(xTrain, yTrain)
     rmsError.append(numpy.linalg.norm((yTest-wineRidgeModel.predict(xTest)), 2) / sqrt(len(yTest)))
-print("RMS Error    alpha")   
-for i in range(len(rmsError)):
-    print (rmsError[i], alphaList[i])
+# print("RMS Error    alpha")   
+# for i in range(len(rmsError)):
+#     print (rmsError[i], alphaList[i])
 x = range(len(rmsError))
 plt.plot(x, rmsError, 'K')
 plt.xlabel('-log(alpha)')
 plt.ylabel('Error(RMS)')
 plt.show()
 
-indexBest = rmsError.index(min(rmsError))
-alph = alphaList[indexBest]
-wineRidgeModel = linear_model.Ridge(alpha=alph)
-wineRidgeModel.fit(xTrain, yTrain)
-errorVector = yTest - wineRidgeModel.predict(xTest)
-plt.hist(errorVector)
-plt.xlabel("Bin Boundaries")
-plt.ylabel("Counts")
-plt.show()
-
-plt.scatter(wineRidgeModel.predict(xTest), yTest, s=100, alpha = 0.1)
-plt.xlabel('Predicted Taste Score')
-plt.ylabel('Actual Taste Score')
-plt.show()
+# indexBest = rmsError.index(min(rmsError))
+# alph = alphaList[indexBest]
+# wineRidgeModel = linear_model.Ridge(alpha=alph)
+# wineRidgeModel.fit(xTrain, yTrain)
+# errorVector = yTest - wineRidgeModel.predict(xTest)
+# plt.hist(errorVector)
+# plt.xlabel("Bin Boundaries")
+# plt.ylabel("Counts")
+# plt.show()
+# 
+# plt.scatter(wineRidgeModel.predict(xTest), yTest, s=100, alpha = 0.1)
+# plt.xlabel('Predicted Taste Score')
+# plt.ylabel('Actual Taste Score')
+# plt.show()
