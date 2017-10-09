@@ -3,7 +3,7 @@ public class SpeedTest {
 	public static void main(String[] args) {
 		try {
 
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 1; i++) {
 				new Thread(new Runnable() {
 
 					public void run() {
