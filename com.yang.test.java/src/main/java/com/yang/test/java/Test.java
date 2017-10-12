@@ -23,7 +23,19 @@ import java.util.regex.Pattern;
 @SuppressWarnings("deprecation")
 public class Test {
 
-	public static void test27(){
+	public static void main(String[] args) {
+		String content = "331003198506261332";
+
+		String pattern = "[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)";
+		boolean isMatch = Pattern.matches(pattern, content);
+
+		if (isMatch) {
+			String s = content.substring(6, 14);
+			System.out.println(s);
+		}
+	}
+
+	public static void test27() {
 		System.out.println(System.getProperty("java.version"));
 		System.out.println(System.getProperty("java.home"));
 		System.out.println(System.getProperty("os.name"));
@@ -33,7 +45,7 @@ public class Test {
 		System.out.println(System.getProperty("user.dir"));
 		System.out.println();
 	}
-	
+
 	public static void test26(){
 		BigDecimal b = new BigDecimal(100000.0000001);
 		b=b.setScale(2, BigDecimal.ROUND_DOWN);
