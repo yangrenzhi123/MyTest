@@ -2,17 +2,13 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://192.168.1.100:1433/TEST</property>
+		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://127.0.0.1:1433/Test</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">1qazxcvbnm,./</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<property name="hibernate.show_sql">false</property>
 		<property name="Hibernate.default_schema">dbo</property>
-		<property name="Hibernate.default_catalog">Test</property>
 
-		<!-- xml文件配置 -->
-		<!-- <mapping resource="User.hbm.xml" /> -->
-		<!-- 注解方式 -->
-		<mapping class="com.yang.test.java.hibernate.User2" />
+		<mapping resource="User.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
