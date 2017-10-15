@@ -54,40 +54,35 @@ public class Server implements Runnable {
 	}
 
 	public void read(SelectionKey key) throws Exception {
-		ByteBuffer buf = ByteBuffer.allocate(512);
-
-		// 通过选择键来找到之前注册的通道
 		SocketChannel socketChannel = (SocketChannel) key.channel();
+		ByteBuffer buf = ByteBuffer.allocate(1024);
+		buf.clear();
 
 		try {
 			// 从通道里面读取数据到缓冲区并返回读取字节数
 			int count = socketChannel.read(buf);
-
 			if (count == -1) {
-				// 取消这个通道的注册
-//				socketChannel.close();
 				key.cancel();
-				//System.out.println("关闭通道");
 				return;
 			}
 		} catch (Exception e) {
+			key.cancel();
 			socketChannel.close(); // 通道未解除注册，导致死循环
+			System.out.println("关闭通道");
 			throw e;
-		} finally {
-			//System.out.println("关闭通道");
 		}
 
 		// 将数据从缓冲区中拿出来
-		String input = new String(buf.array()).trim();
-
-		//System.out.println("您的输入为：" + input);
+		byte[] b = buf.array();
+		String input = new String(b).trim();
+		System.out.println("您的输入为：" + input);
 	}
 
 	public void run() {
 		while (true) {
 			try {
 				this.selector.select();
-				//System.out.println("开始处理");
+				System.out.println("开始处理");
 
 				// 返回此选择器的已选择键集
 				Iterator selectorKeys = this.selector.selectedKeys().iterator();
@@ -98,10 +93,10 @@ public class Server implements Runnable {
 						continue;
 					}
 					if (key.isAcceptable()) {
-						//System.out.println("accept");
+						System.out.println("accept");
 						accept(key);
 					} else if (key.isReadable()) {
-						//System.out.println("read");
+						System.out.println("read");
 						read(key);
 					}
 				}
