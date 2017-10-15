@@ -13,7 +13,7 @@ public class SocketServer {
 	
 	public static void main(String[] args) {
 		try {
-			ServerSocket serverSocket = new ServerSocket(8081);
+			ServerSocket serverSocket = new ServerSocket(8099);
 			while (true) {
 				Socket client = serverSocket.accept();
 				new Thread(new HandlerThread(client)).start();
