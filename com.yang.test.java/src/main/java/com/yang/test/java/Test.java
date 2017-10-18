@@ -20,19 +20,58 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@SuppressWarnings("deprecation")
+import sun.nio.ch.Interruptible;
+
+class FF{
+	public void d() {
+		this.a();
+	}
+	
+	public void a() {
+		System.out.println(2);
+	}
+}
+class SS extends FF{
+	public void a() {
+		System.out.println(1);
+	}
+}
+
+@SuppressWarnings({ "deprecation", "restriction" })
 public class Test {
 
 	public static void main(String[] args) {
-		String content = "331003198506261332";
+		SS s = new SS();
+		s.d();
+	}
+	
+	public static void main2(String[] args) throws InterruptedException {
 
-		String pattern = "[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)";
-		boolean isMatch = Pattern.matches(pattern, content);
+		sun.misc.SharedSecrets.getJavaLangAccess().blockedOn(Thread.currentThread(), new Interruptible() {
+			public void interrupt(Thread target) {
+			}
+		});
 
-		if (isMatch) {
-			String s = content.substring(6, 14);
-			System.out.println(s);
+		final Thread t = Thread.currentThread();
+		new Thread(new Runnable() {
+			
+			public void run() {
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				t.interrupt();
+			}
+		}).start();
+		
+		try {
+			t.sleep(100000);
+		}catch(Exception e) {
+			//e.printStackTrace();
 		}
+		
+		System.out.println(2);
 	}
 
 	public static void test27() {
@@ -46,46 +85,48 @@ public class Test {
 		System.out.println();
 	}
 
-	public static void test26(){
+	public static void test26() {
 		BigDecimal b = new BigDecimal(100000.0000001);
-		b=b.setScale(2, BigDecimal.ROUND_DOWN);
+		b = b.setScale(2, BigDecimal.ROUND_DOWN);
 		System.out.println(b.scale());
 		System.out.println(b.toPlainString());
 	}
-	
-	public static void test25(){
+
+	public static void test25() {
 		Integer i = new Integer(25);
 		System.out.println(i == new Integer(25));
 	}
-	
-	public static void test24() throws IOException{
-		File f = new File("D:\\projects\\test\\com.yang.test.java\\src\\main\\java\\com\\yang\\test\\java\\conf.properties");
+
+	public static void test24() throws IOException {
+		File f = new File(
+				"D:\\projects\\test\\com.yang.test.java\\src\\main\\java\\com\\yang\\test\\java\\conf.properties");
 		InputStream is = new FileInputStream(f);
-		
-		
+
 		Properties prop = new Properties();
 		prop.load(is);
-		
-		String s = (String)prop.get("abc.fileFolder");
-		
+
+		String s = (String) prop.get("abc.fileFolder");
+
 		File f2 = new File(s);
 		System.out.println(f2);
 	}
-	
-	public static void test23() throws IOException{
+
+	public static void test23() throws IOException {
 		File file = new File("D:\\7505.6644500029583378.171537279779776-D-03");
 		InputStream is = null;
-		try{
+		try {
 			is = new FileInputStream(file);
 			byte[] b = new byte[is.available()];
 			is.read(b);
-			
+
 			String s = new String(b, "GBK");
 			System.out.println(s);
-			
-			if(is != null) is.close();
-		}catch(Exception e){
-			if(is != null) is.close();
+
+			if (is != null)
+				is.close();
+		} catch (Exception e) {
+			if (is != null)
+				is.close();
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
@@ -107,8 +148,7 @@ public class Test {
 
 	public static void z1() {
 		String str = "中国";
-		Pattern pattern = Pattern.compile("^[\u4e00-\u9fa5]+$",
-				Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("^[\u4e00-\u9fa5]+$", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(str);
 		System.out.println(matcher.matches());
 	}
@@ -122,8 +162,7 @@ public class Test {
 
 	public static void z3() {
 		String str = "ceponline...111";
-		Pattern pattern = Pattern.compile("^[a-z0-9A-Z]+$",
-				Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("^[a-z0-9A-Z]+$", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(str);
 		System.out.println(matcher.matches());
 	}
@@ -133,8 +172,7 @@ public class Test {
 	}
 
 	public static void test22() {
-		System.out.println(new BigDecimal(6.105)
-				.multiply(new BigDecimal(10000)));
+		System.out.println(new BigDecimal(6.105).multiply(new BigDecimal(10000)));
 	}
 
 	public static void test21() {
@@ -147,8 +185,7 @@ public class Test {
 	}
 
 	@SuppressWarnings("restriction")
-	public static void test20() throws UnsupportedEncodingException,
-			IOException {
+	public static void test20() throws UnsupportedEncodingException, IOException {
 		sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
 		System.out.println(new String(decoder.decodeBuffer("MTIzNDU="), "GBK"));
 		;
@@ -240,12 +277,13 @@ public class Test {
 	public static void test9() throws UnsupportedEncodingException {
 		encode("益生股份");
 		System.out.println(URLDecoder.decode("%E6%B1%BD%E8%BD%A6%E4%B9%8B%E5%AE%B6", "utf-8"));
-		
+
 		/*
-		System.out.println(URLDecoder.decode("%3D", "utf-8"));
-		System.out.println(URLEncoder.encode("广", "gbk"));
-		System.out.println(URLEncoder.encode("广", "utf-8"));
-		System.out.println(URLEncoder.encode("广", "unicode"));*/
+		 * System.out.println(URLDecoder.decode("%3D", "utf-8"));
+		 * System.out.println(URLEncoder.encode("广", "gbk"));
+		 * System.out.println(URLEncoder.encode("广", "utf-8"));
+		 * System.out.println(URLEncoder.encode("广", "unicode"));
+		 */
 	}
 
 	public static void hexToInt(String value) {
@@ -271,8 +309,7 @@ public class Test {
 	}
 
 	public static void encode(String value) throws UnsupportedEncodingException {
-		System.out.println(value + "的UTF-8编码为"
-				+ URLEncoder.encode(value, "utf-8"));
+		System.out.println(value + "的UTF-8编码为" + URLEncoder.encode(value, "utf-8"));
 		System.out.println(value + "的二进制" + value.getBytes());
 
 		String[] b = new String[value.getBytes().length];
@@ -300,8 +337,7 @@ public class Test {
 	}
 
 	public static void test5() throws ParseException {
-		SimpleDateFormat fmt = new SimpleDateFormat(
-				"yyyy-MM-dd-HH.mm.ss.SSSSSS");
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss.SSSSSS");
 		System.out.println(fmt.format(new Date()));
 		System.out.println(fmt.parse("2016-07-19-16.44.30.711188"));
 	}
@@ -324,14 +360,14 @@ public class Test {
 	}
 
 	public static void test2() {
-		System.getProperty("endPoint",
-				"http://wsbeta.fedex.com:443/web-services/openship");
+		System.getProperty("endPoint", "http://wsbeta.fedex.com:443/web-services/openship");
 	}
 
 	public static void test() {
 		System.out.println(new Date().toLocaleString());
 	}
 }
+
 class T1 extends T2 {
 
 	private Integer id1 = 1;
@@ -341,6 +377,7 @@ class T1 extends T2 {
 		return id1;
 	}
 }
+
 class T2 {
 
 	public Integer id3 = 3;
