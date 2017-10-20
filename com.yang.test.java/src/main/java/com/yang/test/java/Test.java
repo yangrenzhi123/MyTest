@@ -42,7 +42,9 @@ public class Test {
 
 	public static void main(String[] args) {
 		SS s = new SS();
-		s.d();
+		FF f = (FF) s;
+		f.a();
+				
 	}
 	
 	public static void main2(String[] args) throws InterruptedException {
