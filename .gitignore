@@ -2,5 +2,7 @@
 */.project
 */bin
 */.settings
-
+*/.idea
 */.classpath
+*/out
+*.iml
