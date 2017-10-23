@@ -15,7 +15,6 @@ public class Test extends BaseJunit4Test {
 	@Transactional
 	@Rollback(true)
 	public void test() {
-		Long count = taskDao.countById(15);
-		System.out.println(count);
+		taskDao.findAll();
 	}
 }

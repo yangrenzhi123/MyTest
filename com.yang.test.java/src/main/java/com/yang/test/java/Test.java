@@ -2,8 +2,11 @@ package com.yang.test.java;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
@@ -23,15 +26,20 @@ import java.util.regex.Pattern;
 @SuppressWarnings("deprecation")
 public class Test {
 
-	public static void main(String[] args) {
-		String content = "331003198506261332";
+	public static void main(String[] args) throws FileNotFoundException {
+		String[] s = new String[]{"1", "2", "3"};
+		System.out.println(s.toString());
+	}
 
-		String pattern = "[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)";
-		boolean isMatch = Pattern.matches(pattern, content);
-
-		if (isMatch) {
-			String s = content.substring(6, 14);
-			System.out.println(s);
+	public static void searchFile(String directory) {
+		File f = new File(directory);
+		for (String item : f.list()) {
+			File f2 = new File(directory + "/" + item);
+			if(f2.isDirectory()){
+				searchFile(directory + "/" + item);
+			}else{
+				System.out.println(directory + "/" + item);
+			}
 		}
 	}
 

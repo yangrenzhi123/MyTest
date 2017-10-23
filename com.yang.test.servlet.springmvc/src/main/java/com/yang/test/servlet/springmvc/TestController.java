@@ -13,6 +13,6 @@ public class TestController {
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	@ResponseBody
 	public void test(HttpServletResponse response) {
-		throw new RuntimeException("测试异常");
+		throw new TipException();
 	}
 }

@@ -6,14 +6,14 @@ import javax.persistence.Id;
 @Entity
 public class T {
 
-	private Integer id;
+	private Integer Id;
 
 	@Id
 	public Integer getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		Id = id;
 	}
 }
