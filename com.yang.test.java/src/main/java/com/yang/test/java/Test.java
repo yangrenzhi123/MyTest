@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -27,10 +28,18 @@ import java.util.regex.Pattern;
 public class Test {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		String[] s = new String[]{"1", "2", "3"};
-		System.out.println(s.toString());
+
+
+		String[] s = "1|2".split("\\|");		
+		
+		
+		System.out.println(Arrays.asList(s));
 	}
 
+	public static void t (String s){
+		s = "123";
+	}
+	
 	public static void searchFile(String directory) {
 		File f = new File(directory);
 		for (String item : f.list()) {
