@@ -28,7 +28,7 @@ public class App {
 		
 		String json = "{\"aa\":\"bb\",\"a\":{\"b\":[\"中\", \"国\", \"3\", \"4\"]}}";
 		InputStream is = new ByteArrayInputStream(json.getBytes());
-		JasperPrint p4 = JasperFillManager.fillReport("C:\\Users\\yangrenzhi\\JaspersoftWorkspace\\MyReports\\Blank_A4.jasper", new HashMap<String, Object>(), new JsonDataSource(is));
+		JasperPrint p4 = JasperFillManager.fillReport("C:/Users/yangrenzhi/Documents/GitHub/MyTest/MyReports/Blank_A4.jasper", new HashMap<String, Object>(), new JsonDataSource(is));
 		JasperExportManager.exportReportToPdfFile(p4, "c:/1.pdf");
 	}
 }
