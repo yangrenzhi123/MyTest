@@ -26,5 +26,11 @@
 			<artifactId>jtds</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: antlr.TokenStream -->
+		<dependency>
+			<groupId>antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<version>2.7.7</version>
+		</dependency>
 	</dependencies>
 </project>
