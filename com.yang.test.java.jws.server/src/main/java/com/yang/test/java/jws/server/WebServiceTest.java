@@ -1,21 +1,21 @@
 package com.yang.test.java.jws.server;
 
-import javax.jws.WebService;
 import javax.jws.WebParam;
+import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 
-
-
-//@WebService(name="ComplexPortType", serviceName="ComplexService", targetNamespace="http://example.org")
-//name对应接口类名，serviceName对应client实现类名
-@WebService(targetNamespace="http://www.xikesoft.com/")
+@SuppressWarnings("restriction")
+@WebService(targetNamespace = "http://www.xikesoft.com/")
 public class WebServiceTest {
 
 	public static void main(String[] args) {
-		Endpoint.publish("http://192.168.6.152:9001/UploadService.asmx", new WebServiceTest());
+		Endpoint.publish("http://localhost:801/UploadService.asmx", new WebServiceTest());
 	}
-	
-	public String AccountInfo(@WebParam(targetNamespace="http://www.xikesoft.com/") Model t){
+
+	public String AccountInfo(@WebParam(name = "_user", targetNamespace = "http://www.xikesoft.com/") User _user,
+			@WebParam(name = "_account", targetNamespace = "http://www.xikesoft.com/") Account _account,
+			@WebParam(name = "_company", targetNamespace = "http://www.xikesoft.com/") Company _company,
+			@WebParam(name = "isSendSms", targetNamespace = "http://www.xikesoft.com/") Boolean isSendSms) {
 		return "";
 	}
 }

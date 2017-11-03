@@ -12,7 +12,7 @@ public class TestController {
 
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	@ResponseBody
-	public void test(HttpServletResponse response) {
-		throw new TipException();
+	public String test(HttpServletResponse response) {
+		return "{\"aa\":\"bb\",\"a\":{\"b\":[\"5\", \"6\", \"3\", \"4\"]}}";
 	}
 }
