@@ -3,22 +3,25 @@ package com.yang.test.java;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Matcher;
@@ -27,26 +30,49 @@ import java.util.regex.Pattern;
 @SuppressWarnings("deprecation")
 public class Test {
 
-	public static void main(String[] args) throws FileNotFoundException {
-
-
-		String[] s = "1|2".split("\\|");		
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		T1 t1 = (T1)Class.forName("com.yang.test.java.T2").newInstance();
+		t1.setId(2);
 		
-		
-		System.out.println(Arrays.asList(s));
+		System.out.println(t1);
 	}
 
-	public static void t (String s){
-		s = "123";
+	public static void main111(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
+		Timestamp t = new Timestamp(System.currentTimeMillis());
+		System.out.println(t.getYear() + 1900);
 	}
 	
+	public static void main1(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
+		int str1=123;
+		DecimalFormat df=new DecimalFormat("000000");
+		String str2=df.format(str1);
+		System.out.println(str2);
+	}
+
+	public static void main3(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
+		// 生成一个MD5加密计算摘要
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		// 计算md5函数
+		md.update("123".getBytes());
+		// digest()最后确定返回md5 hash值，返回值为8为字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
+		// BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+		System.out.println(new BigInteger(1, md.digest()).toString(16));
+	}
+
+	public static void main11(String[] args) throws FileNotFoundException {
+		Random r = new Random();
+		for(int i = 0;i<100;i++){
+			System.out.println(r.nextInt(2));
+		}
+	}
+
 	public static void searchFile(String directory) {
 		File f = new File(directory);
 		for (String item : f.list()) {
 			File f2 = new File(directory + "/" + item);
-			if(f2.isDirectory()){
+			if (f2.isDirectory()) {
 				searchFile(directory + "/" + item);
-			}else{
+			} else {
 				System.out.println(directory + "/" + item);
 			}
 		}
@@ -63,46 +89,48 @@ public class Test {
 		System.out.println();
 	}
 
-	public static void test26(){
+	public static void test26() {
 		BigDecimal b = new BigDecimal(100000.0000001);
-		b=b.setScale(2, BigDecimal.ROUND_DOWN);
+		b = b.setScale(2, BigDecimal.ROUND_DOWN);
 		System.out.println(b.scale());
 		System.out.println(b.toPlainString());
 	}
-	
-	public static void test25(){
+
+	public static void test25() {
 		Integer i = new Integer(25);
 		System.out.println(i == new Integer(25));
 	}
-	
-	public static void test24() throws IOException{
-		File f = new File("D:\\projects\\test\\com.yang.test.java\\src\\main\\java\\com\\yang\\test\\java\\conf.properties");
+
+	public static void test24() throws IOException {
+		File f = new File(
+				"D:\\projects\\test\\com.yang.test.java\\src\\main\\java\\com\\yang\\test\\java\\conf.properties");
 		InputStream is = new FileInputStream(f);
-		
-		
+
 		Properties prop = new Properties();
 		prop.load(is);
-		
-		String s = (String)prop.get("abc.fileFolder");
-		
+
+		String s = (String) prop.get("abc.fileFolder");
+
 		File f2 = new File(s);
 		System.out.println(f2);
 	}
-	
-	public static void test23() throws IOException{
+
+	public static void test23() throws IOException {
 		File file = new File("D:\\7505.6644500029583378.171537279779776-D-03");
 		InputStream is = null;
-		try{
+		try {
 			is = new FileInputStream(file);
 			byte[] b = new byte[is.available()];
 			is.read(b);
-			
+
 			String s = new String(b, "GBK");
 			System.out.println(s);
-			
-			if(is != null) is.close();
-		}catch(Exception e){
-			if(is != null) is.close();
+
+			if (is != null)
+				is.close();
+		} catch (Exception e) {
+			if (is != null)
+				is.close();
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
@@ -124,8 +152,7 @@ public class Test {
 
 	public static void z1() {
 		String str = "中国";
-		Pattern pattern = Pattern.compile("^[\u4e00-\u9fa5]+$",
-				Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("^[\u4e00-\u9fa5]+$", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(str);
 		System.out.println(matcher.matches());
 	}
@@ -139,8 +166,7 @@ public class Test {
 
 	public static void z3() {
 		String str = "ceponline...111";
-		Pattern pattern = Pattern.compile("^[a-z0-9A-Z]+$",
-				Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("^[a-z0-9A-Z]+$", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(str);
 		System.out.println(matcher.matches());
 	}
@@ -150,8 +176,7 @@ public class Test {
 	}
 
 	public static void test22() {
-		System.out.println(new BigDecimal(6.105)
-				.multiply(new BigDecimal(10000)));
+		System.out.println(new BigDecimal(6.105).multiply(new BigDecimal(10000)));
 	}
 
 	public static void test21() {
@@ -164,8 +189,7 @@ public class Test {
 	}
 
 	@SuppressWarnings("restriction")
-	public static void test20() throws UnsupportedEncodingException,
-			IOException {
+	public static void test20() throws UnsupportedEncodingException, IOException {
 		sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
 		System.out.println(new String(decoder.decodeBuffer("MTIzNDU="), "GBK"));
 		;
@@ -251,18 +275,20 @@ public class Test {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		System.out.println(dateFormat.format(new Date(1441526075000L)));
 
-		// System.out.println(dateFormat.parse("2015-09-28 00:00:00").getTime());
+		// System.out.println(dateFormat.parse("2015-09-28
+		// 00:00:00").getTime());
 	}
 
 	public static void test9() throws UnsupportedEncodingException {
 		encode("益生股份");
 		System.out.println(URLDecoder.decode("%E6%B1%BD%E8%BD%A6%E4%B9%8B%E5%AE%B6", "utf-8"));
-		
+
 		/*
-		System.out.println(URLDecoder.decode("%3D", "utf-8"));
-		System.out.println(URLEncoder.encode("广", "gbk"));
-		System.out.println(URLEncoder.encode("广", "utf-8"));
-		System.out.println(URLEncoder.encode("广", "unicode"));*/
+		 * System.out.println(URLDecoder.decode("%3D", "utf-8"));
+		 * System.out.println(URLEncoder.encode("广", "gbk"));
+		 * System.out.println(URLEncoder.encode("广", "utf-8"));
+		 * System.out.println(URLEncoder.encode("广", "unicode"));
+		 */
 	}
 
 	public static void hexToInt(String value) {
@@ -288,8 +314,7 @@ public class Test {
 	}
 
 	public static void encode(String value) throws UnsupportedEncodingException {
-		System.out.println(value + "的UTF-8编码为"
-				+ URLEncoder.encode(value, "utf-8"));
+		System.out.println(value + "的UTF-8编码为" + URLEncoder.encode(value, "utf-8"));
 		System.out.println(value + "的二进制" + value.getBytes());
 
 		String[] b = new String[value.getBytes().length];
@@ -317,8 +342,7 @@ public class Test {
 	}
 
 	public static void test5() throws ParseException {
-		SimpleDateFormat fmt = new SimpleDateFormat(
-				"yyyy-MM-dd-HH.mm.ss.SSSSSS");
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss.SSSSSS");
 		System.out.println(fmt.format(new Date()));
 		System.out.println(fmt.parse("2016-07-19-16.44.30.711188"));
 	}
@@ -341,25 +365,30 @@ public class Test {
 	}
 
 	public static void test2() {
-		System.getProperty("endPoint",
-				"http://wsbeta.fedex.com:443/web-services/openship");
+		System.getProperty("endPoint", "http://wsbeta.fedex.com:443/web-services/openship");
 	}
 
 	public static void test() {
 		System.out.println(new Date().toLocaleString());
 	}
 }
-class T1 extends T2 {
 
-	private Integer id1 = 1;
-	public Integer id2 = 2;
+class T1 {
+	private Integer id;
 
-	public Integer getId1() {
-		return id1;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
-class T2 {
 
-	public Integer id3 = 3;
-	public Integer id4 = 4;
+class T2 extends T1 {
+	private Integer id;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }

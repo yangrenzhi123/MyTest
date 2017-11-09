@@ -3,7 +3,7 @@ package com.yang.test.java.beanutils;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 
-//import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanUtils;
 
 public class Test {
 
@@ -15,7 +15,7 @@ public class Test {
 
 		B b = new B();
 
-//		BeanUtils.copyProperties(a, b);
+		BeanUtils.copyProperties(a, b);
 		System.out.println(a.getI().hashCode());
 		System.out.println(b.getI().hashCode());
 		System.out.println(a.getK().hashCode());

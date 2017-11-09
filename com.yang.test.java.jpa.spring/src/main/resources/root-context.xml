@@ -16,11 +16,9 @@
 	<context:component-scan base-package="com.yang.test.jpa" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
-
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -30,6 +28,20 @@
 		</property>
 	</bean>
 
+	<tx:annotation-driven transaction-manager="transactionManagerForC3p0" />
+	<bean id="transactionManagerForC3p0" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="entityManagerFactoryForC3p0" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="forC3po" />
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="false" />
+				<property name="showSql" value="false" />
+			</bean>
+		</property>
+	</bean>
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="net.sourceforge.jtds.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:jtds:sqlserver://127.0.0.1:1433/Test" />
@@ -43,16 +55,5 @@
 		<property name="maxIdleTime" value="60" />
 		<!-- 当连接达到上限时，程序等待连接的超时时间，单位：毫秒 -->
 		<property name="checkoutTimeout" value="10000" />
-	</bean>
-
-	<bean id="entityManagerFactoryForC3p0" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="forC3po" />
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="generateDdl" value="false" />
-				<property name="showSql" value="false" />
-			</bean>
-		</property>
 	</bean>
 </beans>
