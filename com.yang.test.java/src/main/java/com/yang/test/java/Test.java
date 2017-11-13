@@ -31,6 +31,20 @@ import java.util.regex.Pattern;
 public class Test {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		int i;
+		
+		if((i = t()) == 1){
+			System.out.println();
+		}else{
+			System.out.println();
+		}
+	}
+	
+	public static int t (){
+		return 2;
+	}
+	
+	public static void main1111(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		T1 t1 = (T1)Class.forName("com.yang.test.java.T2").newInstance();
 		t1.setId(2);
 		

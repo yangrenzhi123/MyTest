@@ -31,6 +31,7 @@
 	</style>
 	<subDataset name="Dataset1" uuid="f2f17d31-b5f1-47e0-845f-12839f336e5c">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+		<property name="net.sf.jasperreports.data.adapter" value="NewDataAdapter.xml"/>
 		<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false"/>
 		<parameter name="net.sf.jasperreports.json.source" class="java.lang.String" isForPrompting="false"/>
 		<parameter name="net.sf.jasperreports.json.sources" class="java.util.List" isForPrompting="false"/>
@@ -47,6 +48,7 @@
 			<property name="net.sf.jasperreports.json.field.expression" value="."/>
 			<fieldDescription><![CDATA[.]]></fieldDescription>
 		</field>
+		<variable name="Variable_1" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false"/>
 	<parameter name="net.sf.jasperreports.json.source" class="java.lang.String" isForPrompting="false"/>
@@ -57,6 +59,7 @@
 	<parameter name="net.sf.jasperreports.json.locale.code" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="JSON_TIME_ZONE" class="java.util.TimeZone" isForPrompting="false"/>
 	<parameter name="net.sf.jasperreports.json.timezone.id" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Parameter1" class="java.util.List"/>
 	<queryString language="json">
 		<![CDATA[]]>
 	</queryString>

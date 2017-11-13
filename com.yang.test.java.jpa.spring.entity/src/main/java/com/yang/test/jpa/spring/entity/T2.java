@@ -6,16 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class T extends Super {
+public class T2 extends Super {
 
 	private Long id;
 	private Integer value;
-
-	public T(Long id, Integer value) {
-		super();
-		this.id = id;
-		this.value = value;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
