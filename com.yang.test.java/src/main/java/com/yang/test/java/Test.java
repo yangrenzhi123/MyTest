@@ -31,6 +31,18 @@ import java.util.regex.Pattern;
 public class Test {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		long s = System.currentTimeMillis();
+		for(int i=0;i<1000000;i++){
+/*			try{
+				throw new RuntimeException("1");
+			}catch(Exception e){
+				
+			}*/
+		}
+		System.out.println(System.currentTimeMillis() - s);
+	}
+	
+	public static void main11111(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		int i;
 		
 		if((i = t()) == 1){

@@ -25,11 +25,11 @@ public class App {
 //		JasperPrint p3 = JasperFillManager.fillReport(r, params, new JsonDataSource(new File("C:/Users/yangrenzhi/Desktop/test2.json")));
 		
 
-		String json = "{\"aa\":\"dd\",\"a\":{\"b\":[\"5\", \"6\", \"3\", \"4\"]}}";
+		String json = "{\"aa\":\"1中\",\"a\":{\"b\":[\"5\", \"6\", \"3\", \"4\"]}}";
 		InputStream is = new ByteArrayInputStream(json.getBytes());
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("JSON_INPUT_STREAM", is);
-		JasperPrint p4 = JasperFillManager.fillReport("C:/Users/yangrenzhi/Documents/GitHub/MyTest/MyReports/Blank_A4.jasper", params/*, new JsonDataSource(is)*/);
+		JasperPrint p4 = JasperFillManager.fillReport("C:/Users/yangrenzhi/Documents/GitHub/MyTest/MyReports/Blank_A4.jasper", params, new JsonDataSource(is));
+		JasperExportManager.exportReportToHtmlFile(p4, "c:/1.html");
 		JasperExportManager.exportReportToPdfFile(p4, "c:/1.pdf");
 	}
 }

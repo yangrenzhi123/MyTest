@@ -15,4 +15,14 @@ public class TestController {
 	public String test(HttpServletResponse response) {
 		return "{\"aa\":\"bb\",\"a\":{\"b\":[\"5\", \"6\", \"3\", \"4\"]}}";
 	}
+
+	@RequestMapping(value = "/iframeTest", method = RequestMethod.GET)
+	public String iframeTest() {
+		return "/iframeTest";
+	}
+
+	@RequestMapping(value = "/iframeTest2", method = RequestMethod.GET)
+	public String iframeTest2() {
+		return "/iframeTest2";
+	}
 }

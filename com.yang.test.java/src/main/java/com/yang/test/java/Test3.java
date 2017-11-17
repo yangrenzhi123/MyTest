@@ -21,6 +21,7 @@ import sun.misc.BASE64Encoder;
 /*
  * AES对称加密和解密
  */
+@SuppressWarnings("restriction")
 public class Test3 {
 	/*
 	 * 加密 1.构造密钥生成器 2.根据ecnodeRules规则初始化密钥生成器 3.产生密钥 4.创建和初始化密码器 5.内容加密 6.返回字符串
