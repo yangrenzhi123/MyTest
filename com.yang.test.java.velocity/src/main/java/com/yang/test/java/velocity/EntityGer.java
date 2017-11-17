@@ -1,19 +1,16 @@
 package com.yang.test.java.velocity;
 
 import java.io.StringWriter;
+import java.util.List;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 
-public class App {
+public class EntityGer {
 
-	public static void main(String[] args) {
-		System.out.println(exportFixedVelocity());
-	}
-
-	public static String exportFixedVelocity() {
+	public static String exportFixedVelocity(String tableName, List<Column> columns) {
 		// 创建引擎
 		VelocityEngine ve = new VelocityEngine();
 		// 设置模板加载路径，这里设置的是class下
@@ -23,19 +20,13 @@ public class App {
 		// 进行初始化操作
 		ve.init();
 		// 加载模板，设定模板编码
-		Template t = ve.getTemplate("com/yang/test/java/velocity/1.vm", "UTF-8");
+		Template t = ve.getTemplate("com/yang/test/java/velocity/entity.vm", "UTF-8");
 		// 设置初始化数据
 		VelocityContext context = new VelocityContext();
-		TestO o = new TestO();
-		o.setId(1);
-		context.put("o", o);
-		
-		
-		context.put("name", "张三");
-
-		String[] hobbyArray = { "吃饭", "喝水", "洗澡" };
-		context.put("hobby", "爱好");
-		context.put("hobbyArray", hobbyArray);
+		context.put("package", "com.xk.hb.entity");
+		context.put("tableName", tableName);
+		context.put("imports", new String[] { "javax.persistence.Entity", "javax.persistence.Id" });
+		context.put("columns", columns);
 
 		// 设置输出
 		StringWriter writer = new StringWriter();

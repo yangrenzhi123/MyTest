@@ -1,0 +1,29 @@
+package $package;
+
+#foreach($import in $imports)
+import $import;
+#end
+
+@Entity
+public class $tableName {
+
+#foreach($column in $columns)
+	public $column.type $column.name;
+#end
+
+#foreach($column in $columns)
+#set($temp="get"+$column.bigName+"()")
+#if($column.isPk==true)	@Id
+#end
+#if($column.isPk==true)	@GeneratedValue(strategy = GenerationType.IDENTITY)
+#end
+	public $column.type $temp {
+		return $column.name;
+	}
+
+#set($temp="set"+$column.bigName+"("+$column.type+" "+$column.name+")")
+	public void $temp {
+		$column.name = $column.name;
+	}
+#end
+}
