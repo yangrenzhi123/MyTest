@@ -1,5 +1,8 @@
 package com.yang.test.jpa.dao;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +27,14 @@ public class TaskDaoImpl implements TaskDao {
 	@PersistenceContext(unitName = "default")
 	private EntityManager df;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
 		final TaskDao b = (TaskDao) ac.getBean("taskDao");
 		b.test();
 	}
 
 	@Transactional(value = "transactionManager")
-	public void test() {
+	public void test() throws IOException {
 		String sql = 
 		"SELECT"+
 		    " B.NAME AS column_name,"+
@@ -70,6 +73,10 @@ public class TaskDaoImpl implements TaskDao {
 			columns.add(column);
 		}
 		
+		File file = new File("T.java");
+		FileWriter fileWriter = new FileWriter(file);
+		fileWriter.write(EntityGer.exportFixedVelocity("T", columns));
+		fileWriter.close();
 		System.out.println(EntityGer.exportFixedVelocity("T", columns));
 	}
 }
