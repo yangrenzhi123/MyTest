@@ -58,6 +58,8 @@ public class TaskDaoImpl implements TaskDao {
 			String t = (String)item[1];
 			if("int".equals(t) || "bigint".equals(t)){
 				type = "Integer";
+			}else if("datetime".equals(t) || "datetime2".equals(t)){
+				type = "Date";
 			}else{
 				type = "String";
 			}
