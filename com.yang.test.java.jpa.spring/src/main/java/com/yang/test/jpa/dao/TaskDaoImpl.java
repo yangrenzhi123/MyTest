@@ -77,8 +77,8 @@ public class TaskDaoImpl implements TaskDao {
 		
 		File file = new File("T.java");
 		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.write(EntityGer.exportFixedVelocity("T", columns));
+		fileWriter.write(EntityGer.createEntity("T", columns));
 		fileWriter.close();
-		System.out.println(EntityGer.exportFixedVelocity("T", columns));
+		System.out.println(EntityGer.createEntity("T", columns));
 	}
 }
