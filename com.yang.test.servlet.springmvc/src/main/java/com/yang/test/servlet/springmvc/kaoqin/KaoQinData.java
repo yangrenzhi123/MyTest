@@ -1,12 +1,10 @@
 package com.yang.test.servlet.springmvc.kaoqin;
 
-import java.util.Date;
-
 public class KaoQinData {
 
 	public String stuNum;
 	public Integer clockType;
-	public Date clockTime;
+	public String clockTime;
 	public String imgUrl;
 	public String schoolId;
 	public String passType;
@@ -22,10 +20,10 @@ public class KaoQinData {
 	public void setClockType(Integer clockType) {
 		this.clockType = clockType;
 	}
-	public Date getClockTime() {
+	public String getClockTime() {
 		return clockTime;
 	}
-	public void setClockTime(Date clockTime) {
+	public void setClockTime(String clockTime) {
 		this.clockTime = clockTime;
 	}
 	public String getImgUrl() {

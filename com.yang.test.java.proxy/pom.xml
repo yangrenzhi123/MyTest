@@ -16,12 +16,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.spring-library</artifactId>
-			<type>libd</type>
-			<version>3.0.5.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.5</version>
