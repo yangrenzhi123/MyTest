@@ -2,7 +2,7 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://127.0.0.1:1433/Test</property>
+		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://192.168.5.152:1433/Test</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">1qazxcvbnm,./</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>

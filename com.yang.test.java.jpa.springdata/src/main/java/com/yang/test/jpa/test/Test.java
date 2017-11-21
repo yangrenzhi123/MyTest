@@ -12,9 +12,24 @@ public class Test extends BaseJunit4Test {
 	TaskDao taskDao;
 
 	@org.junit.Test
-	@Transactional
+	//@Transactional
 	@Rollback(true)
 	public void test() {
-		taskDao.findAll();
+		
+		new Thread(new Runnable() {
+			
+			public void run() {
+				taskDao.findAll();
+			}
+		}).start();
+		
+		new Thread(new Runnable() {
+			
+			public void run() {
+				taskDao.findAll();
+			}
+		}).start();
+		
+		System.out.println();
 	}
 }
