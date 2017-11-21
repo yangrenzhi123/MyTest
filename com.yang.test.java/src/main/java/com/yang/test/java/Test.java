@@ -29,19 +29,6 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("deprecation")
 public class Test {
-
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		long s = System.currentTimeMillis();
-		for(int i=0;i<1000000;i++){
-/*			try{
-				throw new RuntimeException("1");
-			}catch(Exception e){
-				
-			}*/
-		}
-		System.out.println(System.currentTimeMillis() - s);
-	}
-	
 	public static void main11111(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		int i;
 		
@@ -218,7 +205,6 @@ public class Test {
 	public static void test20() throws UnsupportedEncodingException, IOException {
 		sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
 		System.out.println(new String(decoder.decodeBuffer("MTIzNDU="), "GBK"));
-		;
 	}
 
 	public static void test19() {
@@ -353,49 +339,6 @@ public class Test {
 
 	public static void test8() {
 		System.out.println(Test.class.getResource("/").getPath());
-	}
-
-	public static void test7() {
-		String s = (String) null;
-		System.out.println(s);
-	}
-
-	public static void test6() {
-		File file = new File("D:/222");
-		if (!file.exists()) {
-			file.mkdir();
-		}
-	}
-
-	public static void test5() throws ParseException {
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss.SSSSSS");
-		System.out.println(fmt.format(new Date()));
-		System.out.println(fmt.parse("2016-07-19-16.44.30.711188"));
-	}
-
-	public static void test4() {
-		List<String> l = new ArrayList<String>();
-		l.add("1");
-		l.add("2");
-		l.add("3");
-		l.add("4");
-		l.add("5");
-		l.add("6");
-		String[] s = l.toArray(new String[] {});
-		System.out.println(s);
-	}
-
-	public static void test3() {
-		String s = "1.0000";
-		System.out.println(s.split("\\.")[0]);
-	}
-
-	public static void test2() {
-		System.getProperty("endPoint", "http://wsbeta.fedex.com:443/web-services/openship");
-	}
-
-	public static void test() {
-		System.out.println(new Date().toLocaleString());
 	}
 }
 
