@@ -1,6 +1,8 @@
 package com.yang.test.jpa.test;
 
-import java.util.List;
+import java.util.Random;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -14,10 +16,15 @@ public class Test extends BaseJunit4Test {
 	TDao tDao;
 
 	@org.junit.Test
-	//@Transactional
-	@Rollback(true)
+	@Transactional
+	@Rollback(false)
 	public void test() {
-		List<T> l = tDao.findAll();
-		System.out.println(l);
+		Random r = new Random();
+		
+		
+		T t = tDao.findById(15).get();
+		t.setValue(r.nextInt(1000));
+		tDao.save(t);
+		System.out.println();
 	}
 }
