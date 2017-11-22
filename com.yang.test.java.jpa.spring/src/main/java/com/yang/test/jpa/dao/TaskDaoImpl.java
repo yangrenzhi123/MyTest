@@ -56,11 +56,15 @@ public class TaskDaoImpl implements TaskDao {
 		for(Object[] item : l){
 			String type;
 			String t = (String)item[1];
-			if("int".equals(t) || "bigint".equals(t)){
+			if("int".equals(t) || "bigint".equals(t)||"tinyint".equals(t)){
 				type = "Integer";
-			}else if("datetime".equals(t) || "datetime2".equals(t)){
+			}else if("bit".equals(t)){
+				type = "Boolean";
+			}else if("datetime".equals(t)){
 				type = "Date";
-			}else{
+			}else if("datetime".equals(t)||"date".equals(t)){
+				type = "Date";
+			}else {
 				type = "String";
 			}
 

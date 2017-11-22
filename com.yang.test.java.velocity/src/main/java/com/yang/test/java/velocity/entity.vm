@@ -23,7 +23,7 @@ public class $tableName {
 
 #set($temp="set"+$column.bigName+"("+$column.type+" "+$column.name+")")
 	public void $temp {
-		$column.name = $column.name;
+		this.$column.name = $column.name;
 	}
 #end
 }
