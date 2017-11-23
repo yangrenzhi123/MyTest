@@ -1,0 +1,5 @@
+package com.xk.campushealth.service.intf;
+
+#set($temp="I"+$entityName+"Service")
+public interface $temp {
+}

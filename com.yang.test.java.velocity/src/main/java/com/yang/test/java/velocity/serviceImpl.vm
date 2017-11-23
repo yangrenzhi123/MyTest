@@ -1,0 +1,16 @@
+package com.xk.campushealth.service.impl;
+
+#set($temp="com.xk.campushealth.dao.I"+$entityName+"Dao;")
+import $temp
+#set($temp="com.xk.campushealth.service.intf.I"+$entityName+"Service;")
+import $temp
+
+#set($temp=$entityName+"Service")
+#set($temp2="I"+$entityName+"Service")
+@Service
+public class $temp implements $temp2 {
+
+	#set($temp3="I"+$entityName+"Dao")
+@Autowired
+	IPassRecordDao passRecordDao;
+}

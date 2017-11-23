@@ -30,11 +30,14 @@ public class TaskDaoImpl implements TaskDao {
 	public static void main(String[] args) throws IOException {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
 		final TaskDao b = (TaskDao) ac.getBean("taskDao");
-		b.test();
+
+		for (String item : new String[] { "Role", "ZjRoleMenu", "Menu" }) {
+			b.test(item);
+		}
 	}
 
 	@Transactional(value = "transactionManager")
-	public void test() throws IOException {
+	public void test(String tableName) throws IOException {
 		String sql = 
 		"SELECT"+
 		    " B.NAME AS column_name,"+
@@ -48,7 +51,7 @@ public class TaskDaoImpl implements TaskDao {
 		    " LEFT JOIN sys.extended_properties C ON C.major_id = B.object_id"+
 		    " AND C.minor_id = B.column_id"+
 		" WHERE"+
-		    " A.NAME = 'T'";
+		    " A.NAME = '"+tableName+"'";
 
 		Query q = df.createNativeQuery(sql);
 		List<Object[]> l = q.getResultList();
@@ -79,10 +82,10 @@ public class TaskDaoImpl implements TaskDao {
 			columns.add(column);
 		}
 		
-		File file = new File("T.java");
+		File file = new File(tableName + ".java");
 		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.write(EntityGer.createEntity("T", columns));
+		fileWriter.write(EntityGer.createEntity(tableName, "com.xk.campushealth.entity", columns));
 		fileWriter.close();
-		System.out.println(EntityGer.createEntity("T", columns));
+		//System.out.println(EntityGer.createEntity("T", columns));
 	}
 }

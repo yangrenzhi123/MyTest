@@ -4,5 +4,5 @@ import java.io.IOException;
 
 public interface TaskDao {
 
-	void test() throws IOException;
+	void test(String tableName) throws IOException;
 }
