@@ -22,4 +22,9 @@
 		<beans:property name="prefix" value="/WEB-INF/views" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+
+
+	<mvc:interceptors>
+		<beans:bean class="com.yang.test.servlet.springmvc.intercept.TestInterceptor" />
+	</mvc:interceptors>
 </beans:beans>
