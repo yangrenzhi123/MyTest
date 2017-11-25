@@ -29,13 +29,10 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("deprecation")
 public class Test {
-	public static void main11111(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		int i;
-		
-		if((i = t()) == 1){
-			System.out.println();
-		}else{
-			System.out.println();
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Integer a = null;
+		if(1 == a){
+			
 		}
 	}
 	

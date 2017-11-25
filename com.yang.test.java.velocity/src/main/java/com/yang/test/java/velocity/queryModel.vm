@@ -1,0 +1,39 @@
+package com.xk.campushealth.query;
+
+import java.util.Date;
+
+public class ${tableName}Query {
+
+#foreach($column in $columns)
+#if($column.type=="Date")
+	public $column.type ${column.name}Start;
+	public $column.type ${column.name}End;
+#else
+	public $column.type $column.name;
+#end
+#end
+
+#foreach($column in $columns)
+#if($column.type=="Date")
+	public $column.type get${column.bigName}Start() {
+		return ${column.name}Start;
+	}
+	public void set${column.bigName}Start(${column.type} ${column.name}) {
+		this.${column.name}Start = $column.name;
+	}
+	public $column.type get${column.bigName}End() {
+		return ${column.name}End;
+	}
+	public void set${column.bigName}End(${column.type} ${column.name}) {
+		this.${column.name}End = $column.name;
+	}
+#else
+	public $column.type get${column.bigName}() {
+		return $column.name;
+	}
+	public void set${column.bigName}(${column.type} ${column.name}) {
+		this.$column.name = $column.name;
+	}
+#end
+#end
+}

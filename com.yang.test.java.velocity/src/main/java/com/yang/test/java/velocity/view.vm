@@ -1,0 +1,25 @@
+package $package;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class $tableName {
+
+#foreach($column in $columns)
+	public $column.type $column.name;
+#end
+
+#foreach($column in $columns)
+#set($temp="get"+$column.bigName+"()")
+#if($column.isPk==true)	@Id
+#end
+	public $column.type $temp {
+		return $column.name;
+	}
+#set($temp="set"+$column.bigName+"("+$column.type+" "+$column.name+")")
+	public void $temp {
+		this.$column.name = $column.name;
+	}
+#end
+}

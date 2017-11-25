@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yang.test.servlet.springmvc.kaoqin.KaoQinDto;
 import com.yang.test.servlet.springmvc.kaoqin.KaoQinReponse;
 
-@Test
 @Controller
 public class TestController {
 
@@ -24,7 +23,6 @@ public class TestController {
 		return result;
 	}
 
-	@Test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	@ResponseBody
 	public String test(HttpServletResponse response) {

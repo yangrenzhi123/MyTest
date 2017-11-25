@@ -3,7 +3,7 @@ package com.xk.campushealth.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.xk.campushealth.entity.$entityName;
+import com.xk.campushealth.entity.PassRecord;
 
-public interface I${entityName}Dao extends JpaRepository<$entityName, Integer>, JpaSpecificationExecutor<$entityName> {
+public interface IPassRecordDao extends JpaRepository<PassRecord, Integer>, JpaSpecificationExecutor<PassRecord> {
 }
