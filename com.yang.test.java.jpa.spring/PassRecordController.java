@@ -1,6 +1,7 @@
 package com.xk.campushealth.web.business.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -29,7 +30,7 @@ import com.xk.campushealth.support.dto.Pager;
 
 @SuppressWarnings({"deprecation", "serial"})
 @Controller
-@RequestMapping(value = "/PassRecord")
+@RequestMapping(value = "/passRecord")
 public class PassRecordController {
 
 	@Autowired
