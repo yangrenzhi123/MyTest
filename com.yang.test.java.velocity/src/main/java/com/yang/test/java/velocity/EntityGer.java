@@ -35,8 +35,8 @@ public class EntityGer {
 		//t();
 		//t2();
 		//t3();
-		t4("ViewAccountRoleMenu");
-		t2(new String[] {"ViewAccountRoleMenu"});
+		t4("ViewPassRecord");
+		t2(new String[] {"ViewPassRecord"});
 		//System.out.println(test());
 	}
 
@@ -61,7 +61,7 @@ public class EntityGer {
 		id.type = "Integer";
 		columns.add(id);
 
-		String[] c = { "accountId", "code", "name", "icon", "url" };
+		String[] c = { "studentNo", "type", "time", "isInlegal", "imagePath", "schoolId", "passType", "createTime", "className", "grade" };
 		for(String item : c){
 			Column column = new Column();
 			column.name = item;

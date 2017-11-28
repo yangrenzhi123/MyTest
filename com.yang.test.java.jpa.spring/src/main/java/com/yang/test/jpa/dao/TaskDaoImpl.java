@@ -31,7 +31,7 @@ public class TaskDaoImpl implements TaskDao {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
 		final TaskDao b = (TaskDao) ac.getBean("taskDao");
 
-		for (String item : new String[] { "PassRecord" }) {
+		for (String item : new String[] { "JHCheckdata" }) {
 			b.test(item);
 		}
 	}
@@ -81,25 +81,34 @@ public class TaskDaoImpl implements TaskDao {
 			column.isPk = is_identity;
 			columns.add(column);
 		}
-		
 
-		File file4 = new File("I"+tableName+"Dao.java");
+		File file6 = new File(tableName + "Service.java");
+		FileWriter fileWriter6 = new FileWriter(file6);
+		fileWriter6.write(EntityGer.createServiceImpl(tableName));
+		fileWriter6.close();
+
+		File file5 = new File("I" + tableName + "Service.java");
+		FileWriter fileWriter5 = new FileWriter(file5);
+		fileWriter5.write(EntityGer.createService(tableName));
+		fileWriter5.close();
+
+		File file4 = new File("I" + tableName + "Dao.java");
 		FileWriter fileWriter4 = new FileWriter(file4);
 		String re4 = EntityGer.createDao(tableName);
 		fileWriter4.write(re4);
 		fileWriter4.close();
-		
+
 		File file3 = new File(tableName + "Query.java");
 		FileWriter fileWriter3 = new FileWriter(file3);
 		String re3 = EntityGer.createQueryModel(tableName, columns);
 		fileWriter3.write(re3);
 		fileWriter3.close();
-		
+
 		File file2 = new File(tableName + "Controller.java");
 		FileWriter fileWriter2 = new FileWriter(file2);
 		fileWriter2.write(EntityGer.createController(tableName, columns));
 		fileWriter2.close();
-		
+
 		File file = new File(tableName + ".java");
 		FileWriter fileWriter = new FileWriter(file);
 		fileWriter.write(EntityGer.createEntity(tableName, "com.xk.campushealth.entity", columns));

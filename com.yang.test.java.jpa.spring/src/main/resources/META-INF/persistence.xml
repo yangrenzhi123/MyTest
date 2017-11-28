@@ -8,7 +8,7 @@
 		<class>com.yang.test.jpa.spring.entity.T</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://127.0.0.1:1433/jkxy" />
+			<property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://127.0.0.1:1433/hb6" />
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="1qazxcvbnm,./" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />

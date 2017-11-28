@@ -1,26 +1,21 @@
-package com.xk.campushealth.entity;
+package com.xk.campushealth.query;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Date;
 
-@Entity
-public class PassRecord {
+public class ViewPassRecordQuery {
 
 	public Integer id;
 	public String studentNo;
-	public Integer type;
-	public Date time;
-	public Integer status;
-	public Boolean isInlegal;
+	public String type;
+	public String time;
+	public String isInlegal;
 	public String imagePath;
 	public String schoolId;
 	public String passType;
-	public Date createTime;
+	public String createTime;
+	public String className;
+	public String grade;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
@@ -33,28 +28,22 @@ public class PassRecord {
 	public void setStudentNo(String studentNo) {
 		this.studentNo = studentNo;
 	}
-	public Integer getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(Integer type) {
+	public void setType(String type) {
 		this.type = type;
 	}
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-	public Boolean getIsInlegal() {
+	public String getIsInlegal() {
 		return isInlegal;
 	}
-	public void setIsInlegal(Boolean isInlegal) {
+	public void setIsInlegal(String isInlegal) {
 		this.isInlegal = isInlegal;
 	}
 	public String getImagePath() {
@@ -75,10 +64,22 @@ public class PassRecord {
 	public void setPassType(String passType) {
 		this.passType = passType;
 	}
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 }

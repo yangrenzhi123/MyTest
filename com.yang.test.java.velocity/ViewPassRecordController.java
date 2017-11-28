@@ -21,28 +21,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.xk.campushealth.dao.IPassRecordDao;
-import com.xk.campushealth.entity.PassRecord;
-import com.xk.campushealth.query.PassRecordQuery;
+import com.xk.campushealth.dao.IViewPassRecordDao;
+import com.xk.campushealth.entity.ViewPassRecord;
+import com.xk.campushealth.query.ViewPassRecordQuery;
 import com.xk.campushealth.support.constant.HbConstant;
 import com.xk.campushealth.support.dto.DtoResult;
 import com.xk.campushealth.support.dto.Pager;
 
 @SuppressWarnings({"deprecation", "serial"})
 @Controller
-@RequestMapping(value = "/passRecord")
-public class PassRecordController {
+@RequestMapping(value = "/viewPassRecord")
+public class ViewPassRecordController {
 
 	@Autowired
-	IPassRecordDao passRecordDao;
+	IViewPassRecordDao viewPassRecordDao;
 
 	@ResponseBody
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	public Pager page(final PassRecordQuery query, Integer pageNow, Integer pageSize) {
+	public Pager page(final ViewPassRecordQuery query, Integer pageNow, Integer pageSize) {
 
 		Pageable pageable = new PageRequest(pageNow, pageSize);
-		Page<PassRecord> p = passRecordDao.findAll(new Specification<PassRecord>() {
-			public Predicate toPredicate(Root<PassRecord> root, CriteriaQuery<?> q, CriteriaBuilder cb) {
+		Page<ViewPassRecord> p = viewPassRecordDao.findAll(new Specification<ViewPassRecord>() {
+			public Predicate toPredicate(Root<ViewPassRecord> root, CriteriaQuery<?> q, CriteriaBuilder cb) {
 				List<Predicate> list = new ArrayList<Predicate>();
 				if (query.id != null) {
 					list.add(cb.equal(root.get("id"), query.id));
@@ -50,20 +50,14 @@ public class PassRecordController {
 				if (!StringUtils.isEmpty(query.studentNo)) {
 					list.add(cb.like(root.get("studentNo").as(String.class), "%" + query.studentNo + "%"));
 				}
-				if (query.type != null) {
-					list.add(cb.equal(root.get("type"), query.type));
+				if (!StringUtils.isEmpty(query.type)) {
+					list.add(cb.like(root.get("type").as(String.class), "%" + query.type + "%"));
 				}
-				if (query.timeStart != null) {
-					list.add(cb.greaterThan(root.get("time").as(Date.class), query.timeStart));
+				if (!StringUtils.isEmpty(query.time)) {
+					list.add(cb.like(root.get("time").as(String.class), "%" + query.time + "%"));
 				}
-				if (query.timeEnd != null) {
-					list.add(cb.lessThan(root.get("time").as(Date.class), query.timeEnd));
-				}
-				if (query.status != null) {
-					list.add(cb.equal(root.get("status"), query.status));
-				}
-				if (query.isInlegal != null) {
-					list.add(cb.equal(root.get("isInlegal"), query.isInlegal));
+				if (!StringUtils.isEmpty(query.isInlegal)) {
+					list.add(cb.like(root.get("isInlegal").as(String.class), "%" + query.isInlegal + "%"));
 				}
 				if (!StringUtils.isEmpty(query.imagePath)) {
 					list.add(cb.like(root.get("imagePath").as(String.class), "%" + query.imagePath + "%"));
@@ -74,11 +68,14 @@ public class PassRecordController {
 				if (!StringUtils.isEmpty(query.passType)) {
 					list.add(cb.like(root.get("passType").as(String.class), "%" + query.passType + "%"));
 				}
-				if (query.createTimeStart != null) {
-					list.add(cb.greaterThan(root.get("createTime").as(Date.class), query.createTimeStart));
+				if (!StringUtils.isEmpty(query.createTime)) {
+					list.add(cb.like(root.get("createTime").as(String.class), "%" + query.createTime + "%"));
 				}
-				if (query.createTimeEnd != null) {
-					list.add(cb.lessThan(root.get("createTime").as(Date.class), query.createTimeEnd));
+				if (!StringUtils.isEmpty(query.className)) {
+					list.add(cb.like(root.get("className").as(String.class), "%" + query.className + "%"));
+				}
+				if (!StringUtils.isEmpty(query.grade)) {
+					list.add(cb.like(root.get("grade").as(String.class), "%" + query.grade + "%"));
 				}
 				Predicate[] p = new Predicate[list.size()];
 				return cb.and(list.toArray(p));

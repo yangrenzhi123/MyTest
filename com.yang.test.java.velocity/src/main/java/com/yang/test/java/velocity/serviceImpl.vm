@@ -10,7 +10,6 @@ import $temp
 @Service
 public class $temp implements $temp2 {
 
-	#set($temp3="I"+$entityName+"Dao")
-@Autowired
-	IPassRecordDao passRecordDao;
+	@Autowired
+	I${entityName}Dao ${entityName}Dao;
 }
