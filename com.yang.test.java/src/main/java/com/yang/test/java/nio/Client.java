@@ -12,11 +12,13 @@ public class Client {
 		InetSocketAddress address = new InetSocketAddress(InetAddress.getByName(host), port);
 		SocketChannel socket = SocketChannel.open();
 		socket.connect(address);
-		int i = 0;
-		ByteBuffer buffer = ByteBuffer.allocate(1024000);
+		ByteBuffer buffer = ByteBuffer.allocate(1024);
+		byte[] a = new byte[100];
 		while (true) {
+			System.in.read(a);
+
 			buffer.clear();
-			buffer.put((i++ + "\n").getBytes());
+			buffer.put(a);
 			buffer.flip();
 			socket.write(buffer);
 		}
