@@ -75,4 +75,28 @@ public class ${entityName}Controller {
 		re.setResult(p.getContent());
 		return re;
 	}
+
+	@RequestMapping(value = "/start/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public DtoResult start(@PathVariable("id") Integer id) {
+
+		DtoResult re = new DtoResult(HbConstant.RESULT_CODE_SUCCESS);
+		return re;
+	}
+
+	@RequestMapping(value = "/stop/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public DtoResult stop(@PathVariable("id") Integer id) {
+
+		DtoResult re = new DtoResult(HbConstant.RESULT_CODE_SUCCESS);
+		return re;
+	}
+
+	@RequestMapping(value = "/addOrUpdate", method = RequestMethod.POST)
+	@ResponseBody
+	public DtoResult addOrUpdate() {
+
+		DtoResult re = new DtoResult(HbConstant.RESULT_CODE_SUCCESS);
+		return re;
+	}
 }

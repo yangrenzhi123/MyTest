@@ -31,7 +31,7 @@ public class TaskDaoImpl implements TaskDao {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
 		final TaskDao b = (TaskDao) ac.getBean("taskDao");
 
-		for (String item : new String[] { "JHCheckdata" }) {
+		for (String item : new String[] { "TimePlan", "TimeDistance" }) {
 			b.test(item);
 		}
 	}
