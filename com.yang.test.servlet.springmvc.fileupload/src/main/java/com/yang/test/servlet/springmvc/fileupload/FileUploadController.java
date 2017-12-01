@@ -31,31 +31,22 @@ public class FileUploadController {
 		System.out.println();
 	}
 
-	@RequestMapping("/download")
-	public ResponseEntity<byte[]> download() throws IOException {
-		File file = new File("D:/123.png");
-		byte[] body = null;
-		InputStream is = new FileInputStream(file);
-		body = new byte[is.available()];
-		is.read(body);
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Disposition", "attchement;filename=" + file.getName());
-		HttpStatus statusCode = HttpStatus.OK;
-		ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(body, headers, statusCode);
-
-		is.close();
-		return entity;
-	}
-
 	@RequestMapping("/downloadExcel")
 	public ResponseEntity<byte[]> downloadExcel() throws IOException {
+		//读取模板
 		HSSFWorkbook wb = new HSSFWorkbook(getClass().getResourceAsStream("1.xls"));
+		
+		
+		
+		//插入数据
+		// 此处省略N行代码
+		
+		//获取字节流
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         wb.write(baos);
-		// 以上都是excel数据获取
 
 		
-		
+		//下载
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "attchement;filename=1.xls");
 		HttpStatus statusCode = HttpStatus.OK;
