@@ -4,11 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,16 +48,18 @@ public class FileUploadController {
 
 	@RequestMapping("/downloadExcel")
 	public ResponseEntity<byte[]> downloadExcel() throws IOException {
-		File file = new File("D:/1.xls");
 		byte[] body = null;
-		InputStream is = new FileInputStream(file);
+		InputStream is = getClass().getResourceAsStream("1.xls");
 		body = new byte[is.available()];
 		is.read(body);
+		// 以上都是excel数据获取
+
+		
+		
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Disposition", "attchement;filename=" + file.getName());
+		headers.add("Content-Disposition", "attchement;filename=1.xls");
 		HttpStatus statusCode = HttpStatus.OK;
 		ResponseEntity<byte[]> entity = new ResponseEntity<byte[]>(body, headers, statusCode);
-
 		is.close();
 		return entity;
 	}
