@@ -1,8 +1,13 @@
 fun main(args: Array<String>) {
-    var t = KtTest()
-    t.test3()
+    //var t = KtTest()
+    //t.test3()
 
-    var a = 1_0000;
+    var testModel = TestModel()
+
+    var setBook = setOf(TestModel(1), TestModel(2))
+    setBook.forEach { println(it.id) }
+
+    //var a = 1_0000;
 }
 
 class KtTest {
