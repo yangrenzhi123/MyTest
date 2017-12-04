@@ -99,4 +99,12 @@ public class ${entityName}Controller {
 		DtoResult re = new DtoResult(HbConstant.RESULT_CODE_SUCCESS);
 		return re;
 	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public DtoResult delete(@PathVariable("id") Integer id) {
+
+		DtoResult re = new DtoResult(HbConstant.RESULT_CODE_SUCCESS);
+		return re;
+	}
 }
