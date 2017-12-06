@@ -29,11 +29,8 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("deprecation")
 public class Test {
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		Integer a = null;
-		if(1 == a){
-			
-		}
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, UnsupportedEncodingException {
+		encode("非法");
 	}
 	
 	public static int t (){
@@ -324,6 +321,7 @@ public class Test {
 
 	public static void encode(String value) throws UnsupportedEncodingException {
 		System.out.println(value + "的UTF-8编码为" + URLEncoder.encode(value, "utf-8"));
+		System.out.println(value + "的GBK编码为" + URLEncoder.encode(value, "gbk"));
 		System.out.println(value + "的二进制" + value.getBytes());
 
 		String[] b = new String[value.getBytes().length];

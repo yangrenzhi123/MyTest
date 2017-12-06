@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body ng-controller="MainCtrl">
+	<img src="{{src}}" />
+</body>
+<script src="/resources/angular.js"></script>
+<script>
+	app = angular.module("myApp", []);
+
+	app.controller('MainCtrl', function($scope, $http) {
+
+		
+		$scope.src = "https://www.baidu.com/cache/icon/favicon.ico";
+		alert(1);
+		alert(1);
+		$scope.src = "http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png";
+	});
+</script>
+</html>
