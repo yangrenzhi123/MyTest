@@ -54,8 +54,7 @@ public class Test {
 	public static void main2(String[] args) throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 
-		HttpGet method = new HttpGet(
-				"/hug_interview/getPhysicalExamReport.token?organCode=47174063-8&pageNum=1&pageSize=1&startDate=2017-11-01&endDate=2017-11-28");
+		HttpGet method = new HttpGet("/hug_interview/getPhysicalExamReport.token?organCode=47174063-8&pageNum=1&pageSize=1&startDate=2017-11-01&endDate=2017-11-28");
 
 		HttpHost host = new HttpHost("test.joinhealth.cn", 80, "http");
 		HttpResponse response = httpClient.execute(host, method);
