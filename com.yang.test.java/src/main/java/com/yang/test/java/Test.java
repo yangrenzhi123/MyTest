@@ -29,6 +29,8 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("deprecation")
 public class Test {
+	public static String s = "123";
+	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, UnsupportedEncodingException {
 		encode("非法");
 	}
