@@ -3,4 +3,4 @@ spring:
     name: mmb-eureka-client-consumer
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://localhost:8889
