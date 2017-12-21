@@ -122,13 +122,15 @@ public class Test3 {
 	public static void main(String[] args) {
 		Test3 se = new Test3();
 		Scanner scanner = new Scanner(System.in);
+		String encodeRules;
+		String content;
 		/*
 		 * 加密
 		 */
 		System.out.println("使用AES对称加密，请输入加密的规则");
-		String encodeRules = scanner.next();
+		encodeRules = scanner.next();
 		System.out.println("请输入要加密的内容:");
-		String content = scanner.next();
+		content = scanner.next();
 		System.out.println("根据输入的规则" + encodeRules + "加密后的密文是:" + se.AESEncode(encodeRules, content));
 
 		/*

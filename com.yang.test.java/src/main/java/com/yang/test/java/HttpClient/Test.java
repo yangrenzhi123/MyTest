@@ -33,6 +33,17 @@ public class Test {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpGet get = new HttpGet("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=5_6R3s3uNlQ2mvgxifHbd6MFBBmSpNfyUNL7nH3ofLDVp8jZJ1aRjppX6SA0AXBE884a6ig3em23_urErocxjDKSB77JVSrymcRriAWtPaF1d0FkpsZol2xmkc3jADJqPz6R-Vf7FOC3AB2wS3AXAbAAALIL");
+		HttpResponse response = httpClient.execute(get);
+		HttpEntity httpEntity = response.getEntity();
+		String result = EntityUtils.toString(httpEntity, "utf-8");
+		result.replaceAll("\\", "");
+		System.out.println(result);
+	}
+
+
+	public static void main3(String[] args) throws ClientProtocolException, IOException {
+		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=nNABUQ1OGTIq2uP90U1iVAnfDqHBM3mRrsCym4vt75STnitKcZpv4aCY46e7Yzv1HtkC0ASwxUZhP5nOSzUTkPro3iw7FZstOifVj1_dnnQPLUMyGTK4Jui9y8C-YXkUJFJeAEAUQU");
 		String data = 
 		"{"+
