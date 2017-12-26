@@ -5,7 +5,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Scanner;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -120,26 +119,7 @@ public class Test3 {
 	}
 
 	public static void main(String[] args) {
-		Test3 se = new Test3();
-		Scanner scanner = new Scanner(System.in);
-		String encodeRules;
-		String content;
-		/*
-		 * 加密
-		 */
-		System.out.println("使用AES对称加密，请输入加密的规则");
-		encodeRules = scanner.next();
-		System.out.println("请输入要加密的内容:");
-		content = scanner.next();
-		System.out.println("根据输入的规则" + encodeRules + "加密后的密文是:" + se.AESEncode(encodeRules, content));
-
-		/*
-		 * 解密
-		 */
-		System.out.println("使用AES对称解密，请输入加密的规则：(须与加密相同)");
-		encodeRules = scanner.next();
-		System.out.println("请输入要解密的内容（密文）:");
-		content = scanner.next();
-		System.out.println("根据输入的规则" + encodeRules + "解密后的明文是:" + se.AESDncode(encodeRules, content));
+		System.out.println(Test3.AESEncode("123456", "18272164654"));
+		//Test3.AESDncode("123456", "");
 	}
 }

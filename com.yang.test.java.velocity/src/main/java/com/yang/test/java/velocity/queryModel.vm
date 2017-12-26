@@ -6,10 +6,10 @@ public class ${tableName}Query {
 
 #foreach($column in $columns)
 #if($column.type=="Date")
-	public $column.type ${column.name}Start;
-	public $column.type ${column.name}End;
+	private $column.type ${column.name}Start;
+	private $column.type ${column.name}End;
 #else
-	public $column.type $column.name;
+	private $column.type $column.name;
 #end
 #end
 
