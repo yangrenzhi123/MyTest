@@ -2,6 +2,8 @@ package com.yang.test.java;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -118,8 +120,12 @@ public class Test3 {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(Test3.AESEncode("123456", "18272164654"));
-		//Test3.AESDncode("123456", "");
+	public static void main(String[] args) throws UnsupportedEncodingException {
+		//System.out.println(Test3.AESDncode("123456", "6CmfYIA1et3DpyblfkgtMg=="));
+		//System.out.println(Test3.AESDncode("123456", URLDecoder.decode("5YHo2TCpWggVZwFoEzLK9w%3D%3D", "utf-8")));
+		//System.out.println(URLDecoder.decode("C3mga4C0mswVsVHwUxA5Bg%3D%3D", "utf-8"));
+		
+		System.out.println(URLEncoder.encode(Test3.AESEncode("123456", "13575682008"), "utf-8"));
+		//System.out.println(URLEncoder.encode("6CmfYIA1et3DpyblfkgtMg==", "utf-8"));
 	}
 }

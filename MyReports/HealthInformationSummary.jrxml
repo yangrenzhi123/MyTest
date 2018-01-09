@@ -204,28 +204,7 @@
 		<initialValueExpression><![CDATA[$P{jsonInputList}.get(Integer.valueOf("1"))]]></initialValueExpression>
 	</variable>
 	<pageHeader>
-		<band height="44" splitType="Stretch">
-			<image scaleImage="FillFrame" onErrorType="Blank">
-				<reportElement x="-20" y="15" width="595" height="19" uuid="e09b559a-589b-4663-a51c-3f85ee2e7ee3">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-				</reportElement>
-				<graphicElement fill="Solid"/>
-				<imageExpression><![CDATA[Optional.ofNullable($P{publicImage}).orElse("C:\\评估报告\\最新样式修改\\pic\\")+"pageheader.png"]]></imageExpression>
-			</image>
-			<textField evaluationTime="Report" isBlankWhenNull="true">
-				<reportElement x="380" y="15" width="173" height="17" forecolor="#6C5185" uuid="b9536b11-8f54-44bf-a51d-aa55cc029791">
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
-					<font fontName="黑体" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA["体检编号："+Optional.ofNullable($P{seqNumber}).orElse("--")]]></textFieldExpression>
-			</textField>
-			<image scaleImage="FillFrame" onErrorType="Blank">
-				<reportElement x="18" y="15" width="71" height="19" uuid="f4cbd4c3-6567-4c53-896e-61ea957aed3a"/>
-				<imageExpression><![CDATA[Optional.ofNullable($P{ip}).orElse("C:\\评估报告\\最新样式修改\\pic\\")+Optional.ofNullable($P{littleLogoPath}).orElse("littleLogoPath.png")]]></imageExpression>
-			</image>
-		</band>
+		<band height="44" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
@@ -234,7 +213,7 @@
 				<textElement>
 					<font fontName="黑体" size="32"/>
 				</textElement>
-				<text><![CDATA[健康信息汇总]]></text>
+				<text><![CDATA[健康信息汇总1]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

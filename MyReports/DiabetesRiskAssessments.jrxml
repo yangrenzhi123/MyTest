@@ -65,6 +65,7 @@
 	<parameter name="littleLogoPath" class="java.lang.String"/>
 	<parameter name="seqNumber" class="java.lang.String"/>
 	<parameter name="jsonInputList" class="java.util.ArrayList"/>
+	<parameter name="baseNumber" class="java.lang.Integer"/>
 	<queryString language="json">
 		<![CDATA[riskEvaluation]]>
 	</queryString>
@@ -129,10 +130,6 @@
 				<reportElement x="-20" y="3" width="595" height="19" uuid="7c0bf53f-ec2f-4785-bd5b-9b5be74303db"/>
 				<graphicElement fill="Solid"/>
 				<imageExpression><![CDATA[Optional.ofNullable($P{publicImage}).orElse("C:\\评估报告\\最新样式修改\\pic\\")+"pageheader.png"]]></imageExpression>
-			</image>
-			<image scaleImage="FillFrame" onErrorType="Blank">
-				<reportElement x="25" y="4" width="64" height="19" uuid="69bd5e11-9225-4d92-87dd-b526fb09bcfd"/>
-				<imageExpression><![CDATA[Optional.ofNullable($P{ip}).orElse("D:\\java报表工具\\评估报告\\最新样式\\评估报告\\png\\small\\")+Optional.ofNullable($P{littleLogoPath}).orElse("littleLogoPath.png")]]></imageExpression>
 			</image>
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="77" width="556" height="30" forecolor="#737272" uuid="d6f8ce42-d706-4aed-8ca7-6a7f17323675"/>
@@ -337,7 +334,9 @@
 				<text><![CDATA[可调因素建议]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="1" y="34" width="555" height="120" uuid="798067e2-63b9-4429-aa32-b2a57b7dacc2"/>
+				<reportElement x="1" y="31" width="555" height="104" uuid="798067e2-63b9-4429-aa32-b2a57b7dacc2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="Dataset2" uuid="87307d29-440f-497a-86db-7b33352f87e8">
 						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
@@ -373,7 +372,7 @@
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:listContents height="120" width="555">
+					<jr:listContents height="104" width="555">
 						<image onErrorType="Blank">
 							<reportElement x="0" y="1" width="170" height="31" uuid="b2c6e953-5112-4d2c-a58b-4225066f2b72"/>
 							<imageExpression><![CDATA[Optional.ofNullable($P{publicImage}).orElse("C:\\评估报告\\最新样式修改\\pic\\")+"tabphy.png"]]></imageExpression>
@@ -427,7 +426,7 @@
 		<band height="143" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<rectangle>
-				<reportElement x="0" y="60" width="555" height="46" forecolor="#EEFBCF" backcolor="#EEFBCF" uuid="04e1442f-5aad-48d8-8fa7-808ab2231d0c">
+				<reportElement x="0" y="64" width="555" height="46" forecolor="#EEFBCF" backcolor="#EEFBCF" uuid="04e1442f-5aad-48d8-8fa7-808ab2231d0c">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -435,13 +434,13 @@
 				</reportElement>
 			</rectangle>
 			<image onErrorType="Blank">
-				<reportElement x="20" y="60" width="63" height="52" uuid="fd95f856-d27b-4b96-9444-68918654c796">
+				<reportElement x="20" y="62" width="63" height="52" uuid="fd95f856-d27b-4b96-9444-68918654c796">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<imageExpression><![CDATA[Optional.ofNullable($P{publicImage}).orElse("C:\\评估报告\\最新样式修改\\pic\\")+"tip.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="84" y="60" width="466" height="44" forecolor="#737272" uuid="7dafaf6d-1ca7-4fdd-9d44-7ea71e5bb947">
+				<reportElement x="84" y="65" width="466" height="44" forecolor="#737272" uuid="7dafaf6d-1ca7-4fdd-9d44-7ea71e5bb947">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box padding="3"/>
@@ -462,7 +461,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["-"+$V{PAGE_NUMBER}+"-"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["- "+new Integer($P{baseNumber}+$V{PAGE_NUMBER})+" -"]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
