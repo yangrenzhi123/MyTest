@@ -1,5 +1,6 @@
 package com.yang.test.servlet.springmvc;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,16 @@ public class TestController {
 	}
 
 	@RequestMapping(value = "/iframeTest", method = RequestMethod.GET)
-	public String iframeTest() {
+	public String iframeTest(HttpServletResponse response) {
+
+		HttpServletResponse httpServletResponse = (HttpServletResponse)response;
+		Cookie cookie = new Cookie("t", "123");
+		cookie.setDomain("218.244.151.137");
+		cookie.setMaxAge(31536000);
+		cookie.setPath("/");
+		httpServletResponse.addCookie(cookie);
+		
+		
 		return "/iframeTest";
 	}
 

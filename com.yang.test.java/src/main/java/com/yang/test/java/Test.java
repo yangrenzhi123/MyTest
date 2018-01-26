@@ -30,11 +30,12 @@ import java.util.regex.Pattern;
 @SuppressWarnings("deprecation")
 public class Test {
 	public static String s = "123";
-	
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, UnsupportedEncodingException {
-		encode("非法");
+
+	public static void main(String[] args) {
+		BigDecimal b3 = new BigDecimal(1).divide(new BigDecimal(3), 3, BigDecimal.ROUND_DOWN);
+		System.out.println(b3);
 	}
-	
+
 	public static int t (){
 		return 2;
 	}

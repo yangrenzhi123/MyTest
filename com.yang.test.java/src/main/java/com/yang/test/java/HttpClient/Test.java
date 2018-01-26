@@ -15,6 +15,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -32,6 +33,10 @@ import org.codehaus.jackson.map.ObjectMapper;
 public class Test {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
+		testProxy();
+	}
+	
+	public static void main4(String[] args) throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpGet get = new HttpGet("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=5_6R3s3uNlQ2mvgxifHbd6MFBBmSpNfyUNL7nH3ofLDVp8jZJ1aRjppX6SA0AXBE884a6ig3em23_urErocxjDKSB77JVSrymcRriAWtPaF1d0FkpsZol2xmkc3jADJqPz6R-Vf7FOC3AB2wS3AXAbAAALIL");
 		HttpResponse response = httpClient.execute(get);
@@ -41,6 +46,18 @@ public class Test {
 		System.out.println(result);
 	}
 
+	public static void testProxy() throws ClientProtocolException, IOException {
+	    HttpHost proxy = new HttpHost("127.0.0.1", 8888); 
+	    RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
+		HttpGet get = new HttpGet("http://www.baidu.com");
+		get.setConfig(config);
+
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpResponse response = httpClient.execute(get);
+		HttpEntity httpEntity = response.getEntity();
+		String result = EntityUtils.toString(httpEntity, "utf-8");
+		System.out.println(result);
+	}
 
 	public static void main3(String[] args) throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
