@@ -32,8 +32,8 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) {
-		BigDecimal b3 = new BigDecimal(1).divide(new BigDecimal(3), 3, BigDecimal.ROUND_DOWN);
-		System.out.println(b3);
+		String s = "1\r\n2";
+		System.out.println(s.replaceAll("\r", "").replaceAll("\n", ""));
 	}
 
 	public static int t (){
