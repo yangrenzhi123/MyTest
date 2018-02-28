@@ -27,11 +27,12 @@ public class Test {
 		//创建节点
 		zk.create("/com.xk.msa.registry/com.xk.hb.hbplatform/address-", "192.168.5.152.8080".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 		
-		List<String> l = zk.getChildren("/com.xk.msa.registry/com.xk.hb.hbplatform", false);
-		
-		byte[] bs = zk.getData("/com.xk.msa.registry/com.xk.hb.hbplatform/" + l.get(0),true,new Stat());
-		System.out.println(new String(bs));
-		System.out.println();
+//		List<String> l = zk.getChildren("/com.xk.msa.registry/com.xk.hb.hbplatform", false);
+//		
+//		byte[] bs = zk.getData("/com.xk.msa.registry/com.xk.hb.hbplatform/" + l.get(0),true,new Stat());
+//		System.out.println(new String(bs));
+//		System.out.println();
+		Thread.sleep(1000000000);
 	}
 }
 

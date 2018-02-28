@@ -42,7 +42,7 @@ public class Executor implements Watcher, Runnable, DataMonitor.DataMonitorListe
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		if (args.length < 4) {
+		if (args.length < 3) {
 			System.err.println("USAGE: Executor hostPort znode filename program [args ...]");
 			System.exit(2);
 		}
@@ -64,6 +64,7 @@ public class Executor implements Watcher, Runnable, DataMonitor.DataMonitorListe
 	 * @see org.apache.zookeeper.Watcher#process(org.apache.zookeeper.proto.WatcherEvent)
 	 */
 	public void process(WatchedEvent event) {
+		System.out.println(1);
 		dm.process(event);
 	}
 

@@ -31,9 +31,12 @@ import java.util.regex.Pattern;
 public class Test {
 	public static String s = "123";
 
-	public static void main(String[] args) {
-		String s = "1\r\n2";
-		System.out.println(s.replaceAll("\r", "").replaceAll("\n", ""));
+	public static void main(String[] args) throws UnsupportedEncodingException {
+		System.out.println(URLEncoder.encode("中", "utf8"));
+		System.out.println(URLEncoder.encode("中", "gbk"));
+		System.out.println(URLEncoder.encode("中", "unicode"));
+		System.out.println(URLEncoder.encode("中", "ISO-8859-1"));
+		System.out.println(URLDecoder.decode("%E4%B8%AD", "utf8"));
 	}
 
 	public static int t (){
