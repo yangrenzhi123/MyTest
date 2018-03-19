@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
@@ -32,13 +34,48 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		System.out.println(URLEncoder.encode("中", "utf8"));
+		/*System.out.println(URLEncoder.encode("中", "utf8"));
 		System.out.println(URLEncoder.encode("中", "gbk"));
 		System.out.println(URLEncoder.encode("中", "unicode"));
 		System.out.println(URLEncoder.encode("中", "ISO-8859-1"));
-		System.out.println(URLDecoder.decode("%E4%B8%AD", "utf8"));
+		System.out.println(URLDecoder.decode("%E4%B8%AD", "utf8"));*/
+		
+
+		//System.out.println(URLEncoder.encode(" ", "unicode"));
+
+		System.out.println(decodeUnicode("\\u8425\\u517b\\u6a21\\u578b\\u6a21\\u5757"));
 	}
 
+	public static String decodeUnicode(String str) {
+		  Charset set = Charset.forName("UTF-16");
+		  Pattern p = Pattern.compile("\\\\u([0-9a-fA-F]{4})");
+		  Matcher m = p.matcher( str );
+		  int start = 0 ;
+		  int start2 = 0 ;
+		  StringBuffer sb = new StringBuffer();
+		  while( m.find( start ) ) {
+		   start2 = m.start() ;
+		   if( start2 > start ){
+		    String seg = str.substring(start, start2) ;
+		    sb.append( seg );
+		   }
+		   String code = m.group( 1 );
+		   int i = Integer.valueOf( code , 16 );
+		   byte[] bb = new byte[ 4 ] ;
+		   bb[ 0 ] = (byte) ((i >> 8) & 0xFF );
+		   bb[ 1 ] = (byte) ( i & 0xFF ) ;
+		   ByteBuffer b = ByteBuffer.wrap(bb);
+		   sb.append( String.valueOf( set.decode(b) ).trim() );
+		   start = m.end() ;
+		  }
+		  start2 = str.length() ;
+		  if( start2 > start ){
+		   String seg = str.substring(start, start2) ;
+		   sb.append( seg );
+		  }
+		  return sb.toString() ;
+		 }
+	
 	public static int t (){
 		return 2;
 	}
