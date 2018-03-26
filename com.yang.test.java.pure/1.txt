@@ -1,0 +1,1313 @@
+'==========01以下是按键精灵录制的内容==========
+MoveTo 105, 678
+Delay 78
+KeyUp "I", 1
+Delay 125
+KeyUp "Shift", 1
+Delay 1016
+LeftClick 1
+MoveTo 699, 408
+Delay 4968
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+MoveTo 700, 408
+Delay 277
+KeyDown "Ctrl", 1
+Delay 4
+Delay 321
+KeyDown "A", 1
+Delay 5
+Delay 118
+KeyUp "A", 1
+Delay 3
+Delay 45
+KeyUp "Ctrl", 1
+Delay 3
+Delay 506
+KeyDown "BackSpace", 1
+Delay 6
+Delay 42
+KeyUp "BackSpace", 1
+Delay 14
+Delay 541
+KeyDown "0", 1
+Delay 6
+Delay 57
+KeyUp "0", 1
+Delay 3
+Delay 444
+KeyDown "5", 1
+Delay 27
+Delay 49
+KeyUp "5", 1
+Delay 3
+Delay 739
+KeyDown "7", 1
+Delay 25
+Delay 67
+KeyUp "7", 1
+Delay 5
+Delay 103
+KeyDown "6", 1
+Delay 26
+Delay 21
+KeyUp "6", 1
+Delay 2
+Delay 523
+KeyDown "3", 1
+Delay 24
+Delay 100
+KeyUp "3", 1
+Delay 2
+Delay 122
+KeyDown "0", 1
+Delay 5
+Delay 56
+KeyUp "0", 1
+Delay 2
+Delay 137
+KeyDown "9", 1
+Delay 13
+Delay 51
+KeyUp "9", 1
+Delay 5
+Delay 211
+KeyDown "4", 1
+Delay 24
+Delay 84
+KeyUp "4", 1
+Delay 3
+Delay 555
+KeyDown "0", 1
+Delay 3
+Delay 85
+KeyUp "0", 1
+Delay 3
+Delay 198
+KeyDown "1", 1
+Delay 26
+Delay 129
+KeyUp "1", 1
+Delay 2
+Delay 338
+KeyDown "Tab", 1
+Delay 5
+Delay 134
+KeyUp "Tab", 1
+Delay 3
+Delay 925
+KeyDown "1", 1
+Delay 5
+Delay 116
+KeyDown "2", 1
+Delay 6
+Delay 73
+KeyUp "1", 1
+Delay 3
+Delay 58
+KeyDown "3", 1
+Delay 5
+Delay 59
+KeyUp "2", 1
+Delay 4
+Delay 3
+KeyUp "3", 1
+Delay 3
+Delay 189
+KeyDown "4", 1
+Delay 21
+Delay 103
+KeyUp "4", 1
+Delay 5
+Delay 165
+KeyDown "5", 1
+Delay 25
+Delay 98
+KeyUp "5", 1
+Delay 3
+Delay 135
+KeyDown "6", 1
+Delay 5
+Delay 57
+KeyUp "6", 1
+Delay 3
+Delay 653
+KeyDown "Enter", 1
+Delay 2
+Delay 44
+KeyUp "Enter", 1
+Delay 3
+MoveTo 739, 477
+Delay 1898
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 743, 472
+Delay 1004
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 4
+LeftUp 1
+MoveTo 742, 468
+Delay 1095
+LeftDown 1
+Delay 6
+LeftDown 1
+MoveTo 742, 469
+Delay 83
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 704, 362
+Delay 570
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 453, 437
+Delay 1174
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 661, 239
+Delay 569
+LeftDown 1
+Delay 5
+LeftDown 1
+MoveTo 662, 239
+Delay 104
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 460, 474
+Delay 646
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 704, 637
+Delay 849
+LeftDown 1
+Delay 4
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 494, 544
+Delay 5320
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 1
+LeftUp 1
+Delay 719
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+'==========01以上是按键精灵录制的内容==========
+
+'==========02以下是按键精灵录制的内容==========
+MoveTo 105, 678
+Delay 78
+KeyUp "I", 1
+Delay 125
+KeyUp "Shift", 1
+Delay 1016
+LeftClick 1
+MoveTo 699, 408
+Delay 4968
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+MoveTo 700, 408
+Delay 277
+KeyDown "Ctrl", 1
+Delay 4
+Delay 321
+KeyDown "A", 1
+Delay 5
+Delay 118
+KeyUp "A", 1
+Delay 3
+Delay 45
+KeyUp "Ctrl", 1
+Delay 3
+Delay 506
+KeyDown "BackSpace", 1
+Delay 6
+Delay 42
+KeyUp "BackSpace", 1
+Delay 14
+Delay 541
+KeyDown "0", 1
+Delay 6
+Delay 57
+KeyUp "0", 1
+Delay 3
+Delay 444
+KeyDown "5", 1
+Delay 27
+Delay 49
+KeyUp "5", 1
+Delay 3
+Delay 739
+KeyDown "7", 1
+Delay 25
+Delay 67
+KeyUp "7", 1
+Delay 5
+Delay 103
+KeyDown "6", 1
+Delay 26
+Delay 21
+KeyUp "6", 1
+Delay 2
+Delay 523
+KeyDown "3", 1
+Delay 24
+Delay 100
+KeyUp "3", 1
+Delay 2
+Delay 122
+KeyDown "0", 1
+Delay 5
+Delay 56
+KeyUp "0", 1
+Delay 2
+Delay 137
+KeyDown "9", 1
+Delay 13
+Delay 51
+KeyUp "9", 1
+Delay 5
+Delay 211
+KeyDown "4", 1
+Delay 24
+Delay 84
+KeyUp "4", 1
+Delay 3
+Delay 555
+KeyDown "0", 1
+Delay 3
+Delay 85
+KeyUp "0", 1
+Delay 3
+Delay 198
+KeyDown "1", 1
+Delay 26
+Delay 129
+KeyUp "1", 1
+Delay 2
+Delay 338
+KeyDown "Tab", 1
+Delay 5
+Delay 134
+KeyUp "Tab", 1
+Delay 3
+Delay 925
+KeyDown "1", 1
+Delay 5
+Delay 116
+KeyDown "2", 1
+Delay 6
+Delay 73
+KeyUp "1", 1
+Delay 3
+Delay 58
+KeyDown "3", 1
+Delay 5
+Delay 59
+KeyUp "2", 1
+Delay 4
+Delay 3
+KeyUp "3", 1
+Delay 3
+Delay 189
+KeyDown "4", 1
+Delay 21
+Delay 103
+KeyUp "4", 1
+Delay 5
+Delay 165
+KeyDown "5", 1
+Delay 25
+Delay 98
+KeyUp "5", 1
+Delay 3
+Delay 135
+KeyDown "6", 1
+Delay 5
+Delay 57
+KeyUp "6", 1
+Delay 3
+Delay 653
+KeyDown "Enter", 1
+Delay 2
+Delay 44
+KeyUp "Enter", 1
+Delay 3
+MoveTo 739, 477
+Delay 1898
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 743, 472
+Delay 1004
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 4
+LeftUp 1
+MoveTo 742, 468
+Delay 1095
+LeftDown 1
+Delay 6
+LeftDown 1
+MoveTo 742, 469
+Delay 83
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 704, 362
+Delay 570
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 453, 437
+Delay 1174
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 661, 239
+Delay 569
+LeftDown 1
+Delay 5
+LeftDown 1
+MoveTo 662, 239
+Delay 104
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 460, 474
+Delay 646
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 704, 637
+Delay 849
+LeftDown 1
+Delay 4
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 494, 544
+Delay 5320
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 1
+LeftUp 1
+Delay 719
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+'==========02以上是按键精灵录制的内容==========
+
+'==========03以下是按键精灵录制的内容==========
+MoveTo 105, 678
+Delay 78
+KeyUp "I", 1
+Delay 125
+KeyUp "Shift", 1
+Delay 1016
+LeftClick 1
+MoveTo 699, 408
+Delay 4968
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+MoveTo 700, 408
+Delay 277
+KeyDown "Ctrl", 1
+Delay 4
+Delay 321
+KeyDown "A", 1
+Delay 5
+Delay 118
+KeyUp "A", 1
+Delay 3
+Delay 45
+KeyUp "Ctrl", 1
+Delay 3
+Delay 506
+KeyDown "BackSpace", 1
+Delay 6
+Delay 42
+KeyUp "BackSpace", 1
+Delay 14
+Delay 541
+KeyDown "0", 1
+Delay 6
+Delay 57
+KeyUp "0", 1
+Delay 3
+Delay 444
+KeyDown "5", 1
+Delay 27
+Delay 49
+KeyUp "5", 1
+Delay 3
+Delay 739
+KeyDown "7", 1
+Delay 25
+Delay 67
+KeyUp "7", 1
+Delay 5
+Delay 103
+KeyDown "6", 1
+Delay 26
+Delay 21
+KeyUp "6", 1
+Delay 2
+Delay 523
+KeyDown "3", 1
+Delay 24
+Delay 100
+KeyUp "3", 1
+Delay 2
+Delay 122
+KeyDown "0", 1
+Delay 5
+Delay 56
+KeyUp "0", 1
+Delay 2
+Delay 137
+KeyDown "9", 1
+Delay 13
+Delay 51
+KeyUp "9", 1
+Delay 5
+Delay 211
+KeyDown "4", 1
+Delay 24
+Delay 84
+KeyUp "4", 1
+Delay 3
+Delay 555
+KeyDown "0", 1
+Delay 3
+Delay 85
+KeyUp "0", 1
+Delay 3
+Delay 198
+KeyDown "1", 1
+Delay 26
+Delay 129
+KeyUp "1", 1
+Delay 2
+Delay 338
+KeyDown "Tab", 1
+Delay 5
+Delay 134
+KeyUp "Tab", 1
+Delay 3
+Delay 925
+KeyDown "1", 1
+Delay 5
+Delay 116
+KeyDown "2", 1
+Delay 6
+Delay 73
+KeyUp "1", 1
+Delay 3
+Delay 58
+KeyDown "3", 1
+Delay 5
+Delay 59
+KeyUp "2", 1
+Delay 4
+Delay 3
+KeyUp "3", 1
+Delay 3
+Delay 189
+KeyDown "4", 1
+Delay 21
+Delay 103
+KeyUp "4", 1
+Delay 5
+Delay 165
+KeyDown "5", 1
+Delay 25
+Delay 98
+KeyUp "5", 1
+Delay 3
+Delay 135
+KeyDown "6", 1
+Delay 5
+Delay 57
+KeyUp "6", 1
+Delay 3
+Delay 653
+KeyDown "Enter", 1
+Delay 2
+Delay 44
+KeyUp "Enter", 1
+Delay 3
+MoveTo 739, 477
+Delay 1898
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 743, 472
+Delay 1004
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 4
+LeftUp 1
+MoveTo 742, 468
+Delay 1095
+LeftDown 1
+Delay 6
+LeftDown 1
+MoveTo 742, 469
+Delay 83
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 704, 362
+Delay 570
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 453, 437
+Delay 1174
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 661, 239
+Delay 569
+LeftDown 1
+Delay 5
+LeftDown 1
+MoveTo 662, 239
+Delay 104
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 460, 474
+Delay 646
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 704, 637
+Delay 849
+LeftDown 1
+Delay 4
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 494, 544
+Delay 5320
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 1
+LeftUp 1
+Delay 719
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+'==========03以上是按键精灵录制的内容==========
+
+'==========04以下是按键精灵录制的内容==========
+MoveTo 105, 678
+Delay 78
+KeyUp "I", 1
+Delay 125
+KeyUp "Shift", 1
+Delay 1016
+LeftClick 1
+MoveTo 699, 408
+Delay 4968
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+MoveTo 700, 408
+Delay 277
+KeyDown "Ctrl", 1
+Delay 4
+Delay 321
+KeyDown "A", 1
+Delay 5
+Delay 118
+KeyUp "A", 1
+Delay 3
+Delay 45
+KeyUp "Ctrl", 1
+Delay 3
+Delay 506
+KeyDown "BackSpace", 1
+Delay 6
+Delay 42
+KeyUp "BackSpace", 1
+Delay 14
+Delay 541
+KeyDown "0", 1
+Delay 6
+Delay 57
+KeyUp "0", 1
+Delay 3
+Delay 444
+KeyDown "5", 1
+Delay 27
+Delay 49
+KeyUp "5", 1
+Delay 3
+Delay 739
+KeyDown "7", 1
+Delay 25
+Delay 67
+KeyUp "7", 1
+Delay 5
+Delay 103
+KeyDown "6", 1
+Delay 26
+Delay 21
+KeyUp "6", 1
+Delay 2
+Delay 523
+KeyDown "3", 1
+Delay 24
+Delay 100
+KeyUp "3", 1
+Delay 2
+Delay 122
+KeyDown "0", 1
+Delay 5
+Delay 56
+KeyUp "0", 1
+Delay 2
+Delay 137
+KeyDown "9", 1
+Delay 13
+Delay 51
+KeyUp "9", 1
+Delay 5
+Delay 211
+KeyDown "4", 1
+Delay 24
+Delay 84
+KeyUp "4", 1
+Delay 3
+Delay 555
+KeyDown "0", 1
+Delay 3
+Delay 85
+KeyUp "0", 1
+Delay 3
+Delay 198
+KeyDown "1", 1
+Delay 26
+Delay 129
+KeyUp "1", 1
+Delay 2
+Delay 338
+KeyDown "Tab", 1
+Delay 5
+Delay 134
+KeyUp "Tab", 1
+Delay 3
+Delay 925
+KeyDown "1", 1
+Delay 5
+Delay 116
+KeyDown "2", 1
+Delay 6
+Delay 73
+KeyUp "1", 1
+Delay 3
+Delay 58
+KeyDown "3", 1
+Delay 5
+Delay 59
+KeyUp "2", 1
+Delay 4
+Delay 3
+KeyUp "3", 1
+Delay 3
+Delay 189
+KeyDown "4", 1
+Delay 21
+Delay 103
+KeyUp "4", 1
+Delay 5
+Delay 165
+KeyDown "5", 1
+Delay 25
+Delay 98
+KeyUp "5", 1
+Delay 3
+Delay 135
+KeyDown "6", 1
+Delay 5
+Delay 57
+KeyUp "6", 1
+Delay 3
+Delay 653
+KeyDown "Enter", 1
+Delay 2
+Delay 44
+KeyUp "Enter", 1
+Delay 3
+MoveTo 739, 477
+Delay 1898
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 743, 472
+Delay 1004
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 4
+LeftUp 1
+MoveTo 742, 468
+Delay 1095
+LeftDown 1
+Delay 6
+LeftDown 1
+MoveTo 742, 469
+Delay 83
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 704, 362
+Delay 570
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 453, 437
+Delay 1174
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 661, 239
+Delay 569
+LeftDown 1
+Delay 5
+LeftDown 1
+MoveTo 662, 239
+Delay 104
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 460, 474
+Delay 646
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 704, 637
+Delay 849
+LeftDown 1
+Delay 4
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 494, 544
+Delay 5320
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 1
+LeftUp 1
+Delay 719
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+'==========04以上是按键精灵录制的内容==========
+
+'==========05以下是按键精灵录制的内容==========
+MoveTo 105, 678
+Delay 78
+KeyUp "I", 1
+Delay 125
+KeyUp "Shift", 1
+Delay 1016
+LeftClick 1
+MoveTo 699, 408
+Delay 4968
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+MoveTo 700, 408
+Delay 277
+KeyDown "Ctrl", 1
+Delay 4
+Delay 321
+KeyDown "A", 1
+Delay 5
+Delay 118
+KeyUp "A", 1
+Delay 3
+Delay 45
+KeyUp "Ctrl", 1
+Delay 3
+Delay 506
+KeyDown "BackSpace", 1
+Delay 6
+Delay 42
+KeyUp "BackSpace", 1
+Delay 14
+Delay 541
+KeyDown "0", 1
+Delay 6
+Delay 57
+KeyUp "0", 1
+Delay 3
+Delay 444
+KeyDown "5", 1
+Delay 27
+Delay 49
+KeyUp "5", 1
+Delay 3
+Delay 739
+KeyDown "7", 1
+Delay 25
+Delay 67
+KeyUp "7", 1
+Delay 5
+Delay 103
+KeyDown "6", 1
+Delay 26
+Delay 21
+KeyUp "6", 1
+Delay 2
+Delay 523
+KeyDown "3", 1
+Delay 24
+Delay 100
+KeyUp "3", 1
+Delay 2
+Delay 122
+KeyDown "0", 1
+Delay 5
+Delay 56
+KeyUp "0", 1
+Delay 2
+Delay 137
+KeyDown "9", 1
+Delay 13
+Delay 51
+KeyUp "9", 1
+Delay 5
+Delay 211
+KeyDown "4", 1
+Delay 24
+Delay 84
+KeyUp "4", 1
+Delay 3
+Delay 555
+KeyDown "0", 1
+Delay 3
+Delay 85
+KeyUp "0", 1
+Delay 3
+Delay 198
+KeyDown "1", 1
+Delay 26
+Delay 129
+KeyUp "1", 1
+Delay 2
+Delay 338
+KeyDown "Tab", 1
+Delay 5
+Delay 134
+KeyUp "Tab", 1
+Delay 3
+Delay 925
+KeyDown "1", 1
+Delay 5
+Delay 116
+KeyDown "2", 1
+Delay 6
+Delay 73
+KeyUp "1", 1
+Delay 3
+Delay 58
+KeyDown "3", 1
+Delay 5
+Delay 59
+KeyUp "2", 1
+Delay 4
+Delay 3
+KeyUp "3", 1
+Delay 3
+Delay 189
+KeyDown "4", 1
+Delay 21
+Delay 103
+KeyUp "4", 1
+Delay 5
+Delay 165
+KeyDown "5", 1
+Delay 25
+Delay 98
+KeyUp "5", 1
+Delay 3
+Delay 135
+KeyDown "6", 1
+Delay 5
+Delay 57
+KeyUp "6", 1
+Delay 3
+Delay 653
+KeyDown "Enter", 1
+Delay 2
+Delay 44
+KeyUp "Enter", 1
+Delay 3
+MoveTo 739, 477
+Delay 1898
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 743, 472
+Delay 1004
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 4
+LeftUp 1
+MoveTo 742, 468
+Delay 1095
+LeftDown 1
+Delay 6
+LeftDown 1
+MoveTo 742, 469
+Delay 83
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 704, 362
+Delay 570
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 453, 437
+Delay 1174
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 661, 239
+Delay 569
+LeftDown 1
+Delay 5
+LeftDown 1
+MoveTo 662, 239
+Delay 104
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 460, 474
+Delay 646
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 704, 637
+Delay 849
+LeftDown 1
+Delay 4
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 494, 544
+Delay 5320
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 1
+LeftUp 1
+Delay 719
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+'==========05以上是按键精灵录制的内容==========
+
+'==========06以下是按键精灵录制的内容==========
+MoveTo 105, 678
+Delay 78
+KeyUp "I", 1
+Delay 125
+KeyUp "Shift", 1
+Delay 1016
+LeftClick 1
+MoveTo 699, 408
+Delay 4968
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+MoveTo 700, 408
+Delay 277
+KeyDown "Ctrl", 1
+Delay 4
+Delay 321
+KeyDown "A", 1
+Delay 5
+Delay 118
+KeyUp "A", 1
+Delay 3
+Delay 45
+KeyUp "Ctrl", 1
+Delay 3
+Delay 506
+KeyDown "BackSpace", 1
+Delay 6
+Delay 42
+KeyUp "BackSpace", 1
+Delay 14
+Delay 541
+KeyDown "0", 1
+Delay 6
+Delay 57
+KeyUp "0", 1
+Delay 3
+Delay 444
+KeyDown "5", 1
+Delay 27
+Delay 49
+KeyUp "5", 1
+Delay 3
+Delay 739
+KeyDown "7", 1
+Delay 25
+Delay 67
+KeyUp "7", 1
+Delay 5
+Delay 103
+KeyDown "6", 1
+Delay 26
+Delay 21
+KeyUp "6", 1
+Delay 2
+Delay 523
+KeyDown "3", 1
+Delay 24
+Delay 100
+KeyUp "3", 1
+Delay 2
+Delay 122
+KeyDown "0", 1
+Delay 5
+Delay 56
+KeyUp "0", 1
+Delay 2
+Delay 137
+KeyDown "9", 1
+Delay 13
+Delay 51
+KeyUp "9", 1
+Delay 5
+Delay 211
+KeyDown "4", 1
+Delay 24
+Delay 84
+KeyUp "4", 1
+Delay 3
+Delay 555
+KeyDown "0", 1
+Delay 3
+Delay 85
+KeyUp "0", 1
+Delay 3
+Delay 198
+KeyDown "1", 1
+Delay 26
+Delay 129
+KeyUp "1", 1
+Delay 2
+Delay 338
+KeyDown "Tab", 1
+Delay 5
+Delay 134
+KeyUp "Tab", 1
+Delay 3
+Delay 925
+KeyDown "1", 1
+Delay 5
+Delay 116
+KeyDown "2", 1
+Delay 6
+Delay 73
+KeyUp "1", 1
+Delay 3
+Delay 58
+KeyDown "3", 1
+Delay 5
+Delay 59
+KeyUp "2", 1
+Delay 4
+Delay 3
+KeyUp "3", 1
+Delay 3
+Delay 189
+KeyDown "4", 1
+Delay 21
+Delay 103
+KeyUp "4", 1
+Delay 5
+Delay 165
+KeyDown "5", 1
+Delay 25
+Delay 98
+KeyUp "5", 1
+Delay 3
+Delay 135
+KeyDown "6", 1
+Delay 5
+Delay 57
+KeyUp "6", 1
+Delay 3
+Delay 653
+KeyDown "Enter", 1
+Delay 2
+Delay 44
+KeyUp "Enter", 1
+Delay 3
+MoveTo 739, 477
+Delay 1898
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 743, 472
+Delay 1004
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 4
+LeftUp 1
+MoveTo 742, 468
+Delay 1095
+LeftDown 1
+Delay 6
+LeftDown 1
+MoveTo 742, 469
+Delay 83
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 704, 362
+Delay 570
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 453, 437
+Delay 1174
+LeftDown 1
+Delay 5
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 661, 239
+Delay 569
+LeftDown 1
+Delay 5
+LeftDown 1
+MoveTo 662, 239
+Delay 104
+LeftUp 1
+Delay 2
+LeftUp 1
+MoveTo 460, 474
+Delay 646
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 2
+LeftUp 1
+MoveTo 704, 637
+Delay 849
+LeftDown 1
+Delay 4
+LeftClick 1
+Delay 1
+LeftUp 1
+MoveTo 494, 544
+Delay 5320
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 1
+LeftUp 1
+Delay 719
+LeftDown 1
+Delay 3
+LeftClick 1
+Delay 3
+LeftUp 1
+'==========06以上是按键精灵录制的内容==========
