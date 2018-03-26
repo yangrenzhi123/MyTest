@@ -1,8 +1,0 @@
-server:
-  port: 8763
-spring:
-  application:
-    name: mmb-eureka-client-provider
-  cloud:
-    config:
-      uri: http://localhost:8888

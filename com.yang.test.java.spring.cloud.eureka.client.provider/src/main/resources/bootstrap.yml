@@ -1,0 +1,8 @@
+server:
+  port: 8762
+spring:
+  application:
+    name: mmb-eureka-client-provider
+  cloud:
+    config:
+      uri: http://localhost:8889

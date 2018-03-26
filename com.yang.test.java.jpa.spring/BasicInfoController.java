@@ -21,47 +21,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.xk.campushealth.dao.I${entityName}Dao;
-import com.xk.campushealth.entity.${entityName};
-import com.xk.campushealth.query.${entityName}Query;
+import com.xk.campushealth.dao.IBasicInfoDao;
+import com.xk.campushealth.entity.BasicInfo;
+import com.xk.campushealth.query.BasicInfoQuery;
 import com.xk.campushealth.support.constant.HbConstant;
 import com.xk.campushealth.support.dto.DtoResult;
 import com.xk.campushealth.support.dto.Pager;
 
 @SuppressWarnings({"deprecation", "serial"})
 @Controller
-@RequestMapping(value = "/${smEntityName}")
-public class ${entityName}Controller {
+@RequestMapping(value = "/basicInfo")
+public class BasicInfoController {
 
 	@Autowired
-	I${entityName}Dao ${smEntityName}Dao;
+	IBasicInfoDao basicInfoDao;
 
 	@ResponseBody
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	public Pager page(final ${entityName}Query query, Integer pageNow, Integer pageSize) {
+	public Pager page(final BasicInfoQuery query, Integer pageNow, Integer pageSize) {
 
 		Pageable pageable = new PageRequest(pageNow, pageSize);
-		Page<${entityName}> p = ${smEntityName}Dao.findAll(new Specification<${entityName}>() {
-			public Predicate toPredicate(Root<${entityName}> root, CriteriaQuery<?> q, CriteriaBuilder cb) {
+		Page<BasicInfo> p = basicInfoDao.findAll(new Specification<BasicInfo>() {
+			public Predicate toPredicate(Root<BasicInfo> root, CriteriaQuery<?> q, CriteriaBuilder cb) {
 				List<Predicate> list = new ArrayList<Predicate>();
-#foreach($column in $columns)
-#if($column.type=="String")
-				if (!StringUtils.isEmpty(query.${column.name})) {
-					list.add(cb.like(root.get("${column.name}").as(String.class), "%" + query.${column.name} + "%"));
+				if (query.id != null) {
+					list.add(cb.equal(root.get("id"), query.id));
 				}
-#elseif($column.type=="Date")
-				if (query.${column.name}Start != null) {
-					list.add(cb.greaterThan(root.get("${column.name}").as(Date.class), query.${column.name}Start));
+				if (!StringUtils.isEmpty(query.code)) {
+					list.add(cb.like(root.get("code").as(String.class), "%" + query.code + "%"));
 				}
-				if (query.${column.name}End != null) {
-					list.add(cb.lessThan(root.get("${column.name}").as(Date.class), query.${column.name}End));
+				if (!StringUtils.isEmpty(query.name)) {
+					list.add(cb.like(root.get("name").as(String.class), "%" + query.name + "%"));
 				}
-#else
-				if (query.${column.name} != null) {
-					list.add(cb.equal(root.get("${column.name}"), query.${column.name}));
+				if (!StringUtils.isEmpty(query.phone)) {
+					list.add(cb.like(root.get("phone").as(String.class), "%" + query.phone + "%"));
 				}
-#end
-#end
+				if (!StringUtils.isEmpty(query.wxOpenid)) {
+					list.add(cb.like(root.get("wxOpenid").as(String.class), "%" + query.wxOpenid + "%"));
+				}
 				Predicate[] p = new Predicate[list.size()];
 				return cb.and(list.toArray(p));
 			}

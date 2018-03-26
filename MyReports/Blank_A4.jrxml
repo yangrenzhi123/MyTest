@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="032062b2-7895-4adb-a17d-f056d90002ee">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="50abbec1-d31b-464f-9e7b-95536436f888">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
-	<subDataset name="Dataset1" uuid="f2f17d31-b5f1-47e0-845f-12839f336e5c">
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="f3abb4ed-8356-4d89-bfd4-40dc40452363">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
-		<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false">
-			<defaultValueExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></defaultValueExpression>
-		</parameter>
-		<parameter name="net.sf.jasperreports.json.source" class="java.lang.String" isForPrompting="false"/>
-		<parameter name="net.sf.jasperreports.json.sources" class="java.util.List" isForPrompting="false"/>
-		<parameter name="net.sf.jasperreports.json.date.pattern" class="java.lang.String" isForPrompting="false"/>
-		<parameter name="net.sf.jasperreports.json.number.pattern" class="java.lang.String" isForPrompting="false"/>
-		<parameter name="JSON_LOCALE" class="java.util.Locale" isForPrompting="false"/>
-		<parameter name="net.sf.jasperreports.json.locale.code" class="java.lang.String" isForPrompting="false"/>
-		<parameter name="JSON_TIME_ZONE" class="java.util.TimeZone" isForPrompting="false"/>
-		<parameter name="net.sf.jasperreports.json.timezone.id" class="java.lang.String" isForPrompting="false"/>
-		<queryString language="JSON">
-			<![CDATA[a.b]]>
+		<queryString language="json">
+			<![CDATA[c]]>
 		</queryString>
-		<field name="node" class="java.lang.String">
-			<property name="net.sf.jasperreports.json.field.expression" value="."/>
-			<fieldDescription><![CDATA[.]]></fieldDescription>
-		</field>
 	</subDataset>
-	<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.source" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.sources" class="java.util.List" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.date.pattern" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.number.pattern" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="JSON_LOCALE" class="java.util.Locale" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.locale.code" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="JSON_TIME_ZONE" class="java.util.TimeZone" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.timezone.id" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="Parameter1" class="java.util.List"/>
-	<queryString language="json">
-		<![CDATA[aa]]>
+	<queryString>
+		<![CDATA[]]>
 	</queryString>
-	<field name="aa" class="java.lang.String">
-		<fieldDescription><![CDATA[aa]]></fieldDescription>
+	<field name="a" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="a"/>
+		<fieldDescription><![CDATA[a]]></fieldDescription>
 	</field>
-	<variable name="V1" class="java.io.InputStream">
-		<variableExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></variableExpression>
-	</variable>
+	<field name="b" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="b"/>
+		<fieldDescription><![CDATA[b]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -52,19 +56,34 @@
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
-			<staticText>
-				<reportElement x="220" y="0" width="100" height="30" uuid="a3310dc4-abd9-43fa-9d10-b8f94187dc82"/>
-				<text><![CDATA[a中]]></text>
-			</staticText>
-		</band>
+		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="277" splitType="Stretch">
+		<band height="251" splitType="Stretch">
 			<textField>
-				<reportElement x="220" y="49" width="100" height="30" uuid="4e8e1134-0757-4b0c-b914-bd4d7d8a5428"/>
-				<textFieldExpression><![CDATA[$F{aa}]]></textFieldExpression>
+				<reportElement x="111" y="45" width="100" height="30" uuid="d963e284-866a-4fab-aa15-118d718d9746"/>
+				<textFieldExpression><![CDATA[$F{a}]]></textFieldExpression>
 			</textField>
+			<componentElement>
+				<reportElement x="301" y="51" width="200" height="200" uuid="442a340b-673c-4422-be67-9d2f82932a9e">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="f9d63a4f-44a8-4a9f-806d-8c0fb3e18ec8">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="40" uuid="6baab3ca-dde1-4985-a92e-e5cde3eb06e2">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30"/>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
 		</band>
 	</detail>
 	<columnFooter>

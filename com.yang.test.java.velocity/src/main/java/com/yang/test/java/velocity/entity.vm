@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class $tableName {
 
 #foreach($column in $columns)
-	public $column.type $column.name;
+	private $column.type $column.name;
 #end
 
 #foreach($column in $columns)

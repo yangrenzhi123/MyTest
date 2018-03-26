@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: mmb-eureka-client-consumer
-  cloud:
-    config:
-      uri: http://localhost:8888

@@ -21,47 +21,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.xk.campushealth.dao.I${entityName}Dao;
-import com.xk.campushealth.entity.${entityName};
-import com.xk.campushealth.query.${entityName}Query;
+import com.xk.campushealth.dao.IPlaceOfOriginDao;
+import com.xk.campushealth.entity.PlaceOfOrigin;
+import com.xk.campushealth.query.PlaceOfOriginQuery;
 import com.xk.campushealth.support.constant.HbConstant;
 import com.xk.campushealth.support.dto.DtoResult;
 import com.xk.campushealth.support.dto.Pager;
 
 @SuppressWarnings({"deprecation", "serial"})
 @Controller
-@RequestMapping(value = "/${smEntityName}")
-public class ${entityName}Controller {
+@RequestMapping(value = "/placeOfOrigin")
+public class PlaceOfOriginController {
 
 	@Autowired
-	I${entityName}Dao ${smEntityName}Dao;
+	IPlaceOfOriginDao placeOfOriginDao;
 
 	@ResponseBody
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	public Pager page(final ${entityName}Query query, Integer pageNow, Integer pageSize) {
+	public Pager page(final PlaceOfOriginQuery query, Integer pageNow, Integer pageSize) {
 
 		Pageable pageable = new PageRequest(pageNow, pageSize);
-		Page<${entityName}> p = ${smEntityName}Dao.findAll(new Specification<${entityName}>() {
-			public Predicate toPredicate(Root<${entityName}> root, CriteriaQuery<?> q, CriteriaBuilder cb) {
+		Page<PlaceOfOrigin> p = placeOfOriginDao.findAll(new Specification<PlaceOfOrigin>() {
+			public Predicate toPredicate(Root<PlaceOfOrigin> root, CriteriaQuery<?> q, CriteriaBuilder cb) {
 				List<Predicate> list = new ArrayList<Predicate>();
-#foreach($column in $columns)
-#if($column.type=="String")
-				if (!StringUtils.isEmpty(query.${column.name})) {
-					list.add(cb.like(root.get("${column.name}").as(String.class), "%" + query.${column.name} + "%"));
+				if (query.id != null) {
+					list.add(cb.equal(root.get("id"), query.id));
 				}
-#elseif($column.type=="Date")
-				if (query.${column.name}Start != null) {
-					list.add(cb.greaterThan(root.get("${column.name}").as(Date.class), query.${column.name}Start));
+				if (!StringUtils.isEmpty(query.placeName)) {
+					list.add(cb.like(root.get("placeName").as(String.class), "%" + query.placeName + "%"));
 				}
-				if (query.${column.name}End != null) {
-					list.add(cb.lessThan(root.get("${column.name}").as(Date.class), query.${column.name}End));
-				}
-#else
-				if (query.${column.name} != null) {
-					list.add(cb.equal(root.get("${column.name}"), query.${column.name}));
-				}
-#end
-#end
 				Predicate[] p = new Predicate[list.size()];
 				return cb.and(list.toArray(p));
 			}

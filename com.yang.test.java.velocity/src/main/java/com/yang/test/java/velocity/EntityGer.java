@@ -35,8 +35,8 @@ public class EntityGer {
 		//t();
 		//t2();
 		//t3();
-		t4("ViewZjRoleMenu");
-		t2(new String[] {"ViewZjRoleMenu"});
+		t4("PlaceOfOrigin");
+		t2(new String[] {"PlaceOfOrigin"});
 		//System.out.println(test());
 	}
 
@@ -61,7 +61,7 @@ public class EntityGer {
 		id.type = "Integer";
 		columns.add(id);
 
-		String[] c = {"roleCode", "menuCode", "active", "roleId"};
+		String[] c = {"placeName"};
 		for(String item : c){
 			Column column = new Column();
 			column.name = item;

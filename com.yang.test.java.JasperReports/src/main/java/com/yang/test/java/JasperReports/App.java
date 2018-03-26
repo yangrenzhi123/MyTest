@@ -1,7 +1,9 @@
 package com.yang.test.java.JasperReports;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.jasperreports.engine.JRException;
@@ -31,5 +33,7 @@ public class App {
 		JasperPrint p4 = JasperFillManager.fillReport("C:/Users/yangrenzhi/Documents/GitHub/MyTest/MyReports/Blank_A4.jasper", params, new JsonDataSource(is));
 		JasperExportManager.exportReportToHtmlFile(p4, "c:/1.html");
 		JasperExportManager.exportReportToPdfFile(p4, "c:/1.pdf");
+		
+		List l = new ArrayList();
 	}
 }
