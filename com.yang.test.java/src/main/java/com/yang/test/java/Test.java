@@ -21,7 +21,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Timer;
@@ -34,16 +36,11 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		/*System.out.println(URLEncoder.encode("中", "utf8"));
-		System.out.println(URLEncoder.encode("中", "gbk"));
-		System.out.println(URLEncoder.encode("中", "unicode"));
-		System.out.println(URLEncoder.encode("中", "ISO-8859-1"));
-		System.out.println(URLDecoder.decode("%E4%B8%AD", "utf8"));*/
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("1", 1);
 		
-
-		//System.out.println(URLEncoder.encode(" ", "unicode"));
-
-		System.out.println(decodeUnicode("\\u8425\\u517b\\u6a21\\u578b\\u6a21\\u5757"));
+		m.clear();
+		System.out.println(1);
 	}
 
 	public static String decodeUnicode(String str) {

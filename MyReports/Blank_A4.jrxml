@@ -34,6 +34,10 @@
 		<queryString language="json">
 			<![CDATA[c]]>
 		</queryString>
+		<field name="d" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value="d"/>
+			<fieldDescription><![CDATA[d]]></fieldDescription>
+		</field>
 	</subDataset>
 	<queryString>
 		<![CDATA[]]>
@@ -45,6 +49,10 @@
 	<field name="b" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="b"/>
 		<fieldDescription><![CDATA[b]]></fieldDescription>
+	</field>
+	<field name="c" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="c"/>
+		<fieldDescription><![CDATA[c]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -59,28 +67,33 @@
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="251" splitType="Stretch">
+		<band height="260" splitType="Stretch">
 			<textField>
 				<reportElement x="111" y="45" width="100" height="30" uuid="d963e284-866a-4fab-aa15-118d718d9746"/>
 				<textFieldExpression><![CDATA[$F{a}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="301" y="51" width="200" height="200" uuid="442a340b-673c-4422-be67-9d2f82932a9e">
+				<reportElement x="274" y="60" width="200" height="200" uuid="d1c2ad07-2e47-4aa4-ac36-82162f3452f3">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="f9d63a4f-44a8-4a9f-806d-8c0fb3e18ec8">
+					<datasetRun subDataset="Dataset1" uuid="f478b21a-3b71-47ad-9b90-8e90ac67d7d7">
+						<datasetParameter name="JSON_INPUT_STREAM">
+							<datasetParameterExpression><![CDATA[new ByteArrayInputStream(Optional.ofNullable("{\"c\":"+$F{c}+"}").orElse("{}").getBytes())]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="40" uuid="6baab3ca-dde1-4985-a92e-e5cde3eb06e2">
-						<jr:tableHeader style="Table_TH" height="30"/>
-						<jr:tableFooter style="Table_TH" height="30"/>
-						<jr:columnHeader style="Table_CH" height="30"/>
-						<jr:columnFooter style="Table_CH" height="30"/>
-						<jr:detailCell style="Table_TD" height="30"/>
+					<jr:column width="40" uuid="40d4410e-bce3-4e5b-bb48-467bfa154818">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="8e555819-fba3-45cf-93f6-6986bdf6ede6"/>
+								<textFieldExpression><![CDATA[$F{d}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 				</jr:table>
 			</componentElement>
