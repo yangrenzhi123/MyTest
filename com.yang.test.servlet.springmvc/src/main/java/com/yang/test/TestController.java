@@ -11,14 +11,12 @@ import com.yang.test.jpa.dao.TaskDao;
 public class TestController {
 
 	@Autowired
-	ITestService testService;
-	
-
-	@Autowired
 	TaskDao taskDao;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String iframeTest2() {
+		taskDao.findAll();
+		
 		return "/iframeTest2";
 	}
 }
