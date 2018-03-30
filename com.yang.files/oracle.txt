@@ -1,0 +1,10 @@
+#本机登录oracle
+$ORACLE_HOME/bin/sqlplus / as sysdba
+
+#创建用户
+create user testdb identified by testdb;
+
+#授权
+grant connect, resource to testdb;
+
+show parameter name

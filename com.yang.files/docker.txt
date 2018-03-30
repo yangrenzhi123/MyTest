@@ -1,17 +1,11 @@
-docker port HelloDocker
-
-
 docker run -d --name ttom -p 81:8080 test/tomcat /usr/local/apache-tomcat-8.5.29/bin/catalina.sh run
-
-docker run -d --name oracle -p 1531:1531 docker.io/sath89/oracle-12c /bin/bash
-
-#/my/oracle/data 是机器路径，/u01/app/oracle是容器内路径
-docker run -it --name oracle -p 1531:1531 -v /my/oracle/data:/u01/app/oracle sath89/oracle-12c
-docker run -it --name oracle -p 1531:1531 -m 1024M sath89/oracle-12c /bin/bash
-docker run -it --name oracle -p 1531:1531 sath89/oracle-12c
 
 #删除所有容器
 docker rm $(docker ps -a -q)
+#/my/oracle/data 是机器路径，/u01/app/oracle是容器内路径
+docker run -it --name oracle -p 1521:1521 -v /my/oracle/data:/u01/app/oracle sath89/oracle-12c
+docker run -it --name oracle -p 1521:1521 -m 1024M sath89/oracle-12c
+docker run -it --name oracle -p 1521:1521 sath89/oracle-12c
 
 docker logs -f oracle
 
