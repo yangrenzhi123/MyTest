@@ -1,12 +1,233 @@
-docker run -d --name ttom -p 81:8080 test/tomcat /usr/local/apache-tomcat-8.5.29/bin/catalina.sh run
+docker load --input iconfig.tar
+docker run -d --name cconfig -p 3100:3100 image/config
+
+docker load --input i4100.tar
+docker run -it --name c4100 -p 4100:4100 image/4100 /bin/bash #nodejs
+
+docker load --input i101.tar
+docker run -d --name c101 -p 3101:3101 image/101
+
+docker load --input ica.tar
+docker run -d --name cca -p 3102:3102 image/ca
+
+docker load --input ipush.tar
+docker run -d --name cpush -p 3104:3104 image/push
+
+docker load --input isms.tar
+docker run -d --name csms -p 3105:3105 image/sms
+
+docker load --input i108.tar
+docker run -d --name c108 -p 3108:3108 image/108
+
+docker load --input i109.tar
+docker run -d --name c109 -p 3109:3109 image/109
+
+docker load --input i110.tar
+docker run -d --name c110 -p 3110:3110 image/110
+
+docker load --input i112.tar
+docker run -d --name c112 -p 3112:3112 image/112
+
+docker load --input i115.tar
+docker run -d --name c115 -p 3115:3115 image/115
+
+docker load --input i118.tar
+docker run -d --name c118 -p 3118:3118 image/118
+
+docker load --input i120.tar
+docker run -d --name c120 -p 3120:3120 image/120
+
+docker load --input i122.tar
+docker run -d --name c122 -p 3122:3122 image/122
+
+docker load --input i125.tar
+docker run -d --name c125 -p 3125:3125 image/125
+
+docker load --input i126.tar
+docker run -d --name c126 -p 3126:3126 image/126
+
+docker load --input ihb.tar
+docker run -d --name chb -p 8088:8088 -p 801:801 image/hb
+
+docker load --input iportal.tar
+docker run -it --name cportal -p 4120:4120 image/portal /bin/bash #nodejs
+
+docker load --input iconfigui.tar
+docker run -it --name cconfigui -p 4121:4121 image/configui /bin/bash #nodejs
 
 #删除所有容器
 docker rm $(docker ps -a -q)
+
 #/my/oracle/data 是机器路径，/u01/app/oracle是容器内路径
 docker run -it --name oracle -p 1521:1521 -v /my/oracle/data:/u01/app/oracle sath89/oracle-12c
 docker run -it --name oracle -p 1521:1521 -m 1024M sath89/oracle-12c
-docker run -it --name oracle -p 1521:1521 sath89/oracle-12c
+docker run -it --name oracle -p 1521:vi1521 sath89/oracle-12c
 
-docker logs -f oracle
+docker logs -f c120
 
-docker exec -it oracle /bin/bash
+docker exec -it v3config /bin/bash
+docker exec -it v3system /usr/local/apache-tomcat-8.5.29/bin/catalina.sh run
+
+
+docker run -d --name ttom -p 81:8080 test/tomcat sh /usr/local/apache-tomcat-8.5.29/bin/catalina.sh run
+
+docker pull docker.io/zookeeper
+docker run -d --name zookeeper -p 2001:2181 jplock/zookeeper
+
+FROM ubuntu
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.xk.msa.config-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.xk.msa.config-1.0.0.jar", "com.xk.msa.config.ApplicationConfig", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.sysadmin.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.sysadmin.jar", "com.zyxk.sl.sysadmin.ApplicationSysAdmin", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.xk.msa.caservice-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.xk.msa.caservice-1.0.0.jar", "com.xk.msa.ca.ApplicationCA", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.xk.hb.hbpush-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.xk.hb.hbpush-1.0.0.jar", "com.xk.hb.hbpush.ApplicationHbPush", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.xk.hb.hbsms-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.xk.hb.hbsms-1.0.0.jar", "com.xk.hb.hbsms.ApplicationHbsmsService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.ctservice-0.11.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.ctservice-0.11.jar", "com.zyxk.sl.ctservice.ApplicationCTService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.cgservice-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.cgservice-1.0.0.jar", "com.zyxk.sl.cgservice.ApplicationCG", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.fileservice-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.fileservice-1.0.0.jar", "com.zyxk.sl.fileservice.ApplicationFileService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.forumservice-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.forumservice-1.0.0.jar", "com.zyxk.sl.forumservice.ApplicationForumService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.adapter.cardservice-3.0.0.0-SNAPSHOT.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.adapter.cardservice-3.0.0.0-SNAPSHOT.jar", "com.zyxk.sl.adapter.cardservice.ApplicationCardService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.wsgwservice-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.wsgwservice-1.0.0.jar", "com.zyxk.sl.wsgwservice.ApplicationWsgwService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.logservice-0.0.1.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.logservice-0.0.1.jar", "com.zyxk.sl.logservice.ApplicationLogService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.mailservice-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.mailservice-1.0.0.jar", "com.zyxk.sl.mailservice.ApplicationMailService", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx:
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.kcglservice-1.0.0.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.kcglservice-1.0.0.jar", "com.zyxk.sl.kcglservice.ApplicationKCGL", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx:
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+COPY com.zyxk.sl.portal-0.1.jar /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+CMD ["java", "-jar", "/usr/local/com.zyxk.sl.portal-0.1.jar", "com.zyxk.sl.portal.ApplicationPortal", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu:14.04
+MAINTAINER linx
+ADD jdk-8u161-linux-x64.tar.gz /usr/local
+ADD apache-tomcat-8.5.29.tar.gz /usr/local
+ENV JAVA_HOME /usr/local/jdk1.8.0_161
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV CATALINA_HOME /usr/local/apache-tomcat-8.5.29
+ENV CATALINA_BASE /usr/local/apache-tomcat-8.5.29
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
+CMD ["sh", "/usr/local/apache-tomcat-8.5.29/bin/catalina.sh", "run"]
+
+FROM ubuntu
+MAINTAINER linx
+ADD node-v6.11.3-linux-x64.tar.gz /usr/local
+ADD com.zyxk.sl.portal.ui.tar.gz /usr/local
+ENV PATH $PATH:/usr/local/node-v6.11.3-linux-x64/bin
+
+FROM ubuntu
+MAINTAINER linx
+ADD node-v6.11.3-linux-x64.tar.gz /usr/local
+ADD com.xk.msa.config.ui.tar.gz /usr/local
+ENV PATH $PATH:/usr/local/node-v6.11.3-linux-x64/bin

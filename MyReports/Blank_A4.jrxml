@@ -84,7 +84,6 @@
 						<datasetParameter name="JSON_INPUT_STREAM">
 							<datasetParameterExpression><![CDATA[new ByteArrayInputStream(Optional.ofNullable("{\"c\":"+$F{c}+"}").orElse("{}").getBytes())]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="40" uuid="40d4410e-bce3-4e5b-bb48-467bfa154818">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
