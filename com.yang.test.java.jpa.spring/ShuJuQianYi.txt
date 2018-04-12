@@ -1,0 +1,603 @@
+delete from [Account]
+insert into [Account] ([AccountID],[AccountName],[UserPwd],[TenantCode],[Email],[RealName],[IDNumber],[LeftTime],[Phone],[AllowIDLogin],[AccountNameLeftTime],[ArchivingCode],[Status],[CompanyTenantCode],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[AccountCode],[AccountBindTime],[openid],[contact],[BeSystem],[StaffCode],[active],[phonestatus],[pycode],[fromtype],[os],[VipRole],[birth],[IsVIP],[PlatAccountID],[Post],[gender],[LastLoginIP],[VipCardNumber],[iswxbind],[CompanyDeptID],[LastLoginTime],[IsAuth]) select [AccountID],[AccountName],[UserPwd],[TenantCode],[Email],[RealName],[IDNumber],[LeftTime],[Phone],[AllowIDLogin],[AccountNameLeftTime],[ArchivingCode],[Status],[CompanyTenantCode],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[AccountCode],[AccountBindTime],[openid],[contact],[BeSystem],[StaffCode],[active],[phonestatus],[pycode],[fromtype],[os],[VipRole],[birth],[IsVIP],[PlatAccountID],[Post],[gender],[LastLoginIP],[VipCardNumber],[iswxbind],[CompanyDeptID],[LastLoginTime],[IsAuth] from yzdl.dbo.[Account]
+
+delete from [AccountNewData]
+insert into [AccountNewData] ([AccountID],[SeqNumber],[QRID],[ARID],[TIID],[CheckCount],[GanYuCount],[AssessCount],[QuestionCount]) select [AccountID],[SeqNumber],[QRID],[ARID],[TIID],[CheckCount],[GanYuCount],[AssessCount],[QuestionCount] from yzdl.dbo.[AccountNewData]
+
+delete from [AssessReportGeneration]
+insert into [AssessReportGeneration] ([ARPID],[ReportID],[UserCode],[CreateTime],[CreateUser],[ReportType]) select [ARPID],[ReportID],[UserCode],[CreateTime],[CreateUser],[ReportType] from yzdl.dbo.[AssessReportGeneration]
+
+delete from [BaseModel]
+insert into [BaseModel] ([MID],[ModelId],[Name],[TenantCode],[Disease],[Type],[Sex],[Average],[Intor],[State],[Share],[Price],[TenantID],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[Explain],[ChangeSet]) select [MID],[ModelId],[Name],[TenantCode],[Disease],[Type],[Sex],[Average],[Intor],[State],[Share],[Price],[TenantID],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[Explain],[ChangeSet] from yzdl.dbo.[BaseModel]
+
+delete from [Channel]
+insert into [Channel] ([ID],[ChannelName],[TenantCode],[TopID],[ChannelTemplateID],[ContentTemplateID],[Default],[Status],[BelSystem],[CreatePeople],[CreateTime],[TemplateID],[ShortCut],[orderSort],[Icon]) select [ID],[ChannelName],[TenantCode],[TopID],[ChannelTemplateID],[ContentTemplateID],[Default],[Status],[BelSystem],[CreatePeople],[CreateTime],[TemplateID],[ShortCut],[orderSort],[Icon] from yzdl.dbo.[Channel]
+
+delete from [ChannelTemplate]
+insert into [ChannelTemplate] ([ID],[TempName],[Code],[Image],[Type],[GroupID],[Status],[Default],[BelSystem],[Remark],[CreatePeople],[CreateTime],[TenantCode]) select [ID],[TempName],[Code],[Image],[Type],[GroupID],[Status],[Default],[BelSystem],[Remark],[CreatePeople],[CreateTime],[TenantCode] from yzdl.dbo.[ChannelTemplate]
+
+delete from [ChannelTemplateGroup]
+insert into [ChannelTemplateGroup] ([GroupID],[GroupName],[Remark],[CreatePeople],[CreateTime]) select [GroupID],[GroupName],[Remark],[CreatePeople],[CreateTime] from yzdl.dbo.[ChannelTemplateGroup]
+
+delete from [CharacterCode]
+insert into [CharacterCode] ([CCHAR],[CPY],[CWB],[CreateTime],[CreatePeople],[Remark]) select [CCHAR],[CPY],[CWB],[CreateTime],[CreatePeople],[Remark] from yzdl.dbo.[CharacterCode]
+
+delete from [CHECKDATA2011]
+set IDENTITY_INSERT [CHECKDATA2011] on
+insert into [CHECKDATA2011] ([InputItemUnit],[Field3],[RefValue],[Field6],[CheckDoctor],[Field1],[InputItemName],[DeptDisplayOrder],[SeqNumber],[Field4],[Result],[ItemNumber],[ReportItemID],[DeptNumber],[Field7],[CheckTime],[ItemName],[ValueType],[CDID],[Value],[ImportID],[ValueText],[Field5],[ReportItemName],[DeptName],[Field2],[Field8],[InputItemNumber]) select [InputItemUnit],[Field3],[RefValue],[Field6],[CheckDoctor],[Field1],[InputItemName],[DeptDisplayOrder],[SeqNumber],[Field4],[Result],[ItemNumber],[ReportItemID],[DeptNumber],[Field7],[CheckTime],[ItemName],[ValueType],[CDID],[Value],[ImportID],[ValueText],[Field5],[ReportItemName],[DeptName],[Field2],[Field8],[InputItemNumber] from yzdl.dbo.[CHECKDATA2011]
+set IDENTITY_INSERT [CHECKDATA2011] off
+
+delete from [CHECKDATA2012]
+set IDENTITY_INSERT [CHECKDATA2012] on
+insert into [CHECKDATA2012] ([Field5],[CheckTime],[Field8],[Field2],[Value],[ImportID],[Field7],[ReportItemID],[Field1],[ItemName],[CDID],[Field4],[ValueType],[DeptNumber],[InputItemUnit],[InputItemName],[SeqNumber],[Field6],[DeptDisplayOrder],[Result],[ItemNumber],[Field3],[ValueText],[RefValue],[DeptName],[ReportItemName],[InputItemNumber],[CheckDoctor]) select [Field5],[CheckTime],[Field8],[Field2],[Value],[ImportID],[Field7],[ReportItemID],[Field1],[ItemName],[CDID],[Field4],[ValueType],[DeptNumber],[InputItemUnit],[InputItemName],[SeqNumber],[Field6],[DeptDisplayOrder],[Result],[ItemNumber],[Field3],[ValueText],[RefValue],[DeptName],[ReportItemName],[InputItemNumber],[CheckDoctor] from yzdl.dbo.[CHECKDATA2012]
+set IDENTITY_INSERT [CHECKDATA2012] off
+
+delete from [CHECKDATA2013]
+set IDENTITY_INSERT [CHECKDATA2013] on
+insert into [CHECKDATA2013] ([Field6],[DeptDisplayOrder],[ItemNumber],[Field3],[InputItemUnit],[SeqNumber],[InputItemName],[Field4],[ValueType],[Result],[DeptNumber],[Field1],[Field7],[CDID],[Field2],[Value],[Field5],[ReportItemID],[ItemName],[CheckTime],[Field8],[ReportItemName],[InputItemNumber],[ImportID],[CheckDoctor],[ValueText],[RefValue],[DeptName]) select [Field6],[DeptDisplayOrder],[ItemNumber],[Field3],[InputItemUnit],[SeqNumber],[InputItemName],[Field4],[ValueType],[Result],[DeptNumber],[Field1],[Field7],[CDID],[Field2],[Value],[Field5],[ReportItemID],[ItemName],[CheckTime],[Field8],[ReportItemName],[InputItemNumber],[ImportID],[CheckDoctor],[ValueText],[RefValue],[DeptName] from yzdl.dbo.[CHECKDATA2013]
+set IDENTITY_INSERT [CHECKDATA2013] off
+
+delete from [CHECKDATA2014]
+set IDENTITY_INSERT [CHECKDATA2014] on
+insert into [CHECKDATA2014] ([ItemNumber],[DeptDisplayOrder],[Field6],[Result],[SeqNumber],[InputItemUnit],[InputItemName],[Field4],[DeptNumber],[ValueType],[Field1],[ReportItemID],[CDID],[Field7],[ItemName],[Field2],[ImportID],[Value],[Field8],[Field5],[CheckTime],[ReportItemName],[InputItemNumber],[CheckDoctor],[Field3],[DeptName],[ValueText],[RefValue]) select [ItemNumber],[DeptDisplayOrder],[Field6],[Result],[SeqNumber],[InputItemUnit],[InputItemName],[Field4],[DeptNumber],[ValueType],[Field1],[ReportItemID],[CDID],[Field7],[ItemName],[Field2],[ImportID],[Value],[Field8],[Field5],[CheckTime],[ReportItemName],[InputItemNumber],[CheckDoctor],[Field3],[DeptName],[ValueText],[RefValue] from yzdl.dbo.[CHECKDATA2014]
+set IDENTITY_INSERT [CHECKDATA2014] off
+
+delete from [CHECKDATA2015]
+set IDENTITY_INSERT [CHECKDATA2015] on
+insert into [CHECKDATA2015] ([CheckTime],[Field5],[ImportID],[Value],[Field2],[Field8],[RefValue],[Field3],[ReportItemName],[ValueText],[CheckDoctor],[InputItemNumber],[DeptName],[InputItemName],[InputItemUnit],[ItemNumber],[Result],[CDID],[Field6],[DeptDisplayOrder],[SeqNumber],[ItemName],[Field1],[Field7],[ReportItemID],[DeptNumber],[Field4],[ValueType]) select [CheckTime],[Field5],[ImportID],[Value],[Field2],[Field8],[RefValue],[Field3],[ReportItemName],[ValueText],[CheckDoctor],[InputItemNumber],[DeptName],[InputItemName],[InputItemUnit],[ItemNumber],[Result],[CDID],[Field6],[DeptDisplayOrder],[SeqNumber],[ItemName],[Field1],[Field7],[ReportItemID],[DeptNumber],[Field4],[ValueType] from yzdl.dbo.[CHECKDATA2015]
+set IDENTITY_INSERT [CHECKDATA2015] off
+
+delete from [CHECKDATA2016]
+set IDENTITY_INSERT [CHECKDATA2016] on
+insert into [CHECKDATA2016] ([Result],[CDID],[DeptDisplayOrder],[ItemNumber],[InputItemUnit],[SeqNumber],[Field1],[InputItemName],[ReportItemID],[ValueType],[Field4],[DeptNumber],[Value],[Field7],[ItemName],[ImportID],[Field8],[Field2],[CheckTime],[ValueText],[Field5],[DeptName],[CheckDoctor],[Field6],[InputItemNumber],[RefValue],[ReportItemName],[Field3]) select [Result],[CDID],[DeptDisplayOrder],[ItemNumber],[InputItemUnit],[SeqNumber],[Field1],[InputItemName],[ReportItemID],[ValueType],[Field4],[DeptNumber],[Value],[Field7],[ItemName],[ImportID],[Field8],[Field2],[CheckTime],[ValueText],[Field5],[DeptName],[CheckDoctor],[Field6],[InputItemNumber],[RefValue],[ReportItemName],[Field3] from yzdl.dbo.[CHECKDATA2016]
+set IDENTITY_INSERT [CHECKDATA2016] off
+
+delete from [CompanyAccount]
+insert into [CompanyAccount] ([CompanyAccountID],[TenantCode],[UserName],[Password],[CompanyName],[CompanyAddress],[ContactPerson],[Email],[Telphone],[Phone],[Status],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[AllowSeeStaffHealth],[CompanyCode],[AllowPublicUserReserve],[ReserveUserName],[LastLoginIP],[ReservePassword],[LastLoginTime],[IsAuth],[CompanyTenantCode]) select [CompanyAccountID],[TenantCode],[UserName],[Password],[CompanyName],[CompanyAddress],[ContactPerson],[Email],[Telphone],[Phone],[Status],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[AllowSeeStaffHealth],[CompanyCode],[AllowPublicUserReserve],[ReserveUserName],[LastLoginIP],[ReservePassword],[LastLoginTime],[IsAuth],[CompanyTenantCode] from yzdl.dbo.[CompanyAccount]
+
+delete from [CustomFieldList]
+set IDENTITY_INSERT [CustomFieldList] on
+insert into [CustomFieldList] ([FLID],[FieldCode],[FieldName],[DisplayName],[Remark]) select [FLID],[FieldCode],[FieldName],[DisplayName],[Remark] from yzdl.dbo.[CustomFieldList]
+set IDENTITY_INSERT [CustomFieldList] off
+
+delete from [CustomLabel]
+insert into [CustomLabel] ([ID],[GroupID],[LabelCode],[LabelName],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[LabelType]) select [ID],[GroupID],[LabelCode],[LabelName],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[LabelType] from yzdl.dbo.[CustomLabel]
+
+delete from [CustomPageField]
+set IDENTITY_INSERT [CustomPageField] on
+insert into [CustomPageField] ([FID],[PageCode],[Field],[FieldName],[FieldSeq],[IsDisplay],[FieldCode]) select [FID],[PageCode],[Field],[FieldName],[FieldSeq],[IsDisplay],[FieldCode] from yzdl.dbo.[CustomPageField]
+set IDENTITY_INSERT [CustomPageField] off
+
+delete from [CustomPageList]
+set IDENTITY_INSERT [CustomPageList] on
+insert into [CustomPageList] ([PID],[PageCode],[PageName],[Remark]) select [PID],[PageCode],[PageName],[Remark] from yzdl.dbo.[CustomPageList]
+set IDENTITY_INSERT [CustomPageList] off
+
+delete from [darea]
+insert into [darea] ([name],[updateddate],[createdby],[updatedby],[description],[status],[dar_areaid],[areaid],[createddate],[code]) select [name],[updateddate],[createdby],[updatedby],[description],[status],[dar_areaid],[areaid],[createddate],[code] from yzdl.dbo.[darea]
+
+delete from [dauthority]
+insert into [dauthority] ([updateddate],[dau_authorityid],[createdby],[name],[createddate],[status],[description],[flag],[updatedby],[authorityid]) select [updateddate],[dau_authorityid],[createdby],[name],[createddate],[status],[description],[flag],[updatedby],[authorityid] from yzdl.dbo.[dauthority]
+
+delete from [ddepartment]
+insert into [ddepartment] ([createdby],[description],[updateddate],[updatedby],[hospitalid],[brief],[status],[createddate],[name],[departmentid]) select [createdby],[description],[updateddate],[updatedby],[hospitalid],[brief],[status],[createddate],[name],[departmentid] from yzdl.dbo.[ddepartment]
+
+delete from [ddisease]
+insert into [ddisease] ([name],[dictionaryid],[updatedby],[diseaseid],[updateddate],[createdby],[ICD9],[createddate],[medicaldescription],[ICD10],[status]) select [name],[dictionaryid],[updatedby],[diseaseid],[updateddate],[createdby],[ICD9],[createddate],[medicaldescription],[ICD10],[status] from yzdl.dbo.[ddisease]
+
+delete from [ddoctor]
+insert into [ddoctor] ([certification],[vswitch],[switchv],[userid],[brief],[licensepath],[updatedby],[qualification],[qrcodepath140],[license],[workcardpath],[speciality],[workcard],[createddate],[departmentid],[qrcodepath],[status],[qrcode],[updateddate],[createdby]) select [certification],[vswitch],[switchv],[userid],[brief],[licensepath],[updatedby],[qualification],[qrcodepath140],[license],[workcardpath],[speciality],[workcard],[createddate],[departmentid],[qrcodepath],[status],[qrcode],[updateddate],[createdby] from yzdl.dbo.[ddoctor]
+
+delete from [dgoods]
+insert into [dgoods] ([tenantcode],[name],[createdby],[updateddate],[price],[createddate],[status],[goodsid],[updatedby],[description],[dgo_goodsid]) select [tenantcode],[name],[createdby],[updateddate],[price],[createddate],[status],[goodsid],[updatedby],[description],[dgo_goodsid] from yzdl.dbo.[dgoods]
+
+delete from [Dictionary]
+set IDENTITY_INSERT [Dictionary] on
+insert into [Dictionary] ([DictionaryID],[DictType],[DictCode],[DictContent],[Status],[Remark],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[active],[tenanttype]) select [DictionaryID],[DictType],[DictCode],[DictContent],[Status],[Remark],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[active],[tenanttype] from yzdl.dbo.[Dictionary]
+set IDENTITY_INSERT [Dictionary] off
+
+delete from [dlable]
+insert into [dlable] ([lablename],[createddate],[status],[dictionaryid],[description],[updatedby],[lableid],[updateddate],[userid],[createdby]) select [lablename],[createddate],[status],[dictionaryid],[description],[updatedby],[lableid],[updateddate],[userid],[createdby] from yzdl.dbo.[dlable]
+
+delete from [dprofile]
+insert into [dprofile] ([createddate],[userid],[status],[value],[profileid],[updatedby],[dictionaryid],[updateddate],[createdby]) select [createddate],[userid],[status],[value],[profileid],[updatedby],[dictionaryid],[updateddate],[createdby] from yzdl.dbo.[dprofile]
+
+delete from [dresult]
+insert into [dresult] ([updatedby],[result],[status],[code],[createddate],[updateddate],[createdby],[resultid]) select [updatedby],[result],[status],[code],[createddate],[updateddate],[createdby],[resultid] from yzdl.dbo.[dresult]
+
+delete from [dshelf]
+insert into [dshelf] ([tenantcode],[updatedby],[remain],[customprice],[enddate],[goodsid],[updateddate],[createdby],[userid],[createddate],[total],[shelfid],[status],[startdate]) select [tenantcode],[updatedby],[remain],[customprice],[enddate],[goodsid],[updateddate],[createdby],[userid],[createddate],[total],[shelfid],[status],[startdate] from yzdl.dbo.[dshelf]
+
+delete from [ELMAH_Error]
+set IDENTITY_INSERT [ELMAH_Error] on
+insert into [ELMAH_Error] ([ErrorId],[Application],[Host],[Type],[Source],[Message],[User],[StatusCode],[TimeUtc],[Sequence],[AllXml]) select [ErrorId],[Application],[Host],[Type],[Source],[Message],[User],[StatusCode],[TimeUtc],[Sequence],[AllXml] from yzdl.dbo.[ELMAH_Error]
+set IDENTITY_INSERT [ELMAH_Error] off
+
+delete from [ImportBaseInfo]
+insert into [ImportBaseInfo] ([ImportID],[SeqNumber],[TenantCode],[AccountID],[RelationType],[CustomID],[CardNumber],[Password],[Name],[Sex],[IDCard],[Birthday],[Nationality],[Nation],[MaritalStatus],[PostAnnealing],[Occupation],[Telephone],[HomeAddress],[StartTime],[SamplingTime],[EndTime],[AdmissionTime],[DischargeTime],[CompanyName],[DepartName],[IsNoTeamReport],[IsManualInput],[MainSuggestion],[createpeople],[Field4],[AgencyName],[Field1],[active],[Field7],[Field2],[ImportTime],[lastmodifytime],[CompanyTenantCode],[AgencyTenantCode],[DoctorFinalUser],[checkstate],[Field8],[ConclusionSummary],[MainConclusion],[Field5],[PhyExamUnit],[lastmodifypeople],[CheckYear],[Field6],[createtime],[Field3],[Age]) select [ImportID],[SeqNumber],[TenantCode],[AccountID],[RelationType],[CustomID],[CardNumber],[Password],[Name],[Sex],[IDCard],[Birthday],[Nationality],[Nation],[MaritalStatus],[PostAnnealing],[Occupation],[Telephone],[HomeAddress],[StartTime],[SamplingTime],[EndTime],[AdmissionTime],[DischargeTime],[CompanyName],[DepartName],[IsNoTeamReport],[IsManualInput],[MainSuggestion],[createpeople],[Field4],[AgencyName],[Field1],[active],[Field7],[Field2],[ImportTime],[lastmodifytime],[CompanyTenantCode],[AgencyTenantCode],[DoctorFinalUser],[checkstate],[Field8],[ConclusionSummary],[MainConclusion],[Field5],[PhyExamUnit],[lastmodifypeople],[CheckYear],[Field6],[createtime],[Field3],[Age] from yzdl.dbo.[ImportBaseInfo]
+
+delete from [IntPrimaryKey]
+insert into [IntPrimaryKey] ([Remark],[KeyValue],[KeyName]) select [Remark],[KeyValue],[KeyName] from yzdl.dbo.[IntPrimaryKey]
+
+delete from [MedCustomer]
+set IDENTITY_INSERT [MedCustomer] on
+insert into [MedCustomer] ([RecID],[TenantCode],[Introduction],[Address],[Name],[MobilePhone],[OfficePhone],[Email],[Corporation],[EstablishTime],[LastModifyTime],[LastModifyPeople],[password],[supportuserid],[manageuserid],[reviewremark],[website]) select [RecID],[TenantCode],[Introduction],[Address],[Name],[MobilePhone],[OfficePhone],[Email],[Corporation],[EstablishTime],[LastModifyTime],[LastModifyPeople],[password],[supportuserid],[manageuserid],[reviewremark],[website] from yzdl.dbo.[MedCustomer]
+set IDENTITY_INSERT [MedCustomer] off
+
+delete from [MessageTemplate]
+insert into [MessageTemplate] ([MessageTemplateID],[TemplateName],[TemplateContent],[Status],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[TemplateType],[TenantCode],[Description],[SendType],[active],[MessageType]) select [MessageTemplateID],[TemplateName],[TemplateContent],[Status],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[TemplateType],[TenantCode],[Description],[SendType],[active],[MessageType] from yzdl.dbo.[MessageTemplate]
+
+delete from [ModelLevel]
+insert into [ModelLevel] ([MLID],[Name],[UpperLimit],[LowerLimit],[Intor],[MID],[TenantID],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[information],[NeedOtherType],[OtherUpperLimit],[OtherLowerLimit]) select [MLID],[Name],[UpperLimit],[LowerLimit],[Intor],[MID],[TenantID],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[information],[NeedOtherType],[OtherUpperLimit],[OtherLowerLimit] from yzdl.dbo.[ModelLevel]
+
+delete from [ModelRecord]
+insert into [ModelRecord] ([MRID],[MID],[ModelID],[ReportID],[AccountID],[Score],[VariableScore],[TenantCode],[CreateTime],[UpdateTime],[CreateUser],[ImportID],[IsNew]) select [MRID],[MID],[ModelID],[ReportID],[AccountID],[Score],[VariableScore],[TenantCode],[CreateTime],[UpdateTime],[CreateUser],[ImportID],[IsNew] from yzdl.dbo.[ModelRecord]
+
+delete from [ModelResultDistribute]
+set IDENTITY_INSERT [ModelResultDistribute] on
+insert into [ModelResultDistribute] ([MRID],[TenantCode],[ModelID],[LevelName],[PeopleCount],[TotalCount],[Status],[UpdateTime],[DisplayOrder]) select [MRID],[TenantCode],[ModelID],[LevelName],[PeopleCount],[TotalCount],[Status],[UpdateTime],[DisplayOrder] from yzdl.dbo.[ModelResultDistribute]
+set IDENTITY_INSERT [ModelResultDistribute] off
+
+delete from [Options]
+insert into [Options] ([OID],[TID],[QBOID],[Name],[Score],[ChangeScore],[Explain],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser]) select [OID],[TID],[QBOID],[Name],[Score],[ChangeScore],[Explain],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser] from yzdl.dbo.[Options]
+
+delete from [PhysicalDept]
+insert into [PhysicalDept] ([DeptID],[TenantCode],[DeptCode],[DeptName],[PYCode],[DisplayOrader],[Remark],[DeptCodeId],[IsMatch],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [DeptID],[TenantCode],[DeptCode],[DeptName],[PYCode],[DisplayOrader],[Remark],[DeptCodeId],[IsMatch],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PhysicalDept]
+
+delete from [PhysicalItem]
+insert into [PhysicalItem] ([ItemID],[TenantCode],[ItemCode],[ItemName],[ProjectID],[DisplayOrader],[PYCode],[EnglishName],[AppScope],[MaleUppLimit],[MaleLowerLimit],[FeMaleUppLimit],[FeMaleLowerLimit],[ItemUnit],[BePosition],[ResultType],[ItemExplan],[Purpose],[Proposal],[Remark],[ItemCodeId],[IsMatch],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[NormalWord]) select [ItemID],[TenantCode],[ItemCode],[ItemName],[ProjectID],[DisplayOrader],[PYCode],[EnglishName],[AppScope],[MaleUppLimit],[MaleLowerLimit],[FeMaleUppLimit],[FeMaleLowerLimit],[ItemUnit],[BePosition],[ResultType],[ItemExplan],[Purpose],[Proposal],[Remark],[ItemCodeId],[IsMatch],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[NormalWord] from yzdl.dbo.[PhysicalItem]
+
+delete from [PhysicalProject]
+insert into [PhysicalProject] ([ProjectID],[TenantCode],[ProjectCode],[ProjectName],[DeptID],[DisplayOrader],[PYCode],[Purpose],[Remark],[ProjectCodeId],[IsMatch],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [ProjectID],[TenantCode],[ProjectCode],[ProjectName],[DeptID],[DisplayOrader],[PYCode],[Purpose],[Remark],[ProjectCodeId],[IsMatch],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PhysicalProject]
+
+delete from [PlatformAbnormalItem]
+insert into [PlatformAbnormalItem] ([AbnormalID],[ItemID],[AbnormalName],[ResultType],[ProposalLevel],[ItemUppLimit],[ItemLowerLimit],[MedicalExplan],[CausePrompt],[HealthMain],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[LifeStyle]) select [AbnormalID],[ItemID],[AbnormalName],[ResultType],[ProposalLevel],[ItemUppLimit],[ItemLowerLimit],[MedicalExplan],[CausePrompt],[HealthMain],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[LifeStyle] from yzdl.dbo.[PlatformAbnormalItem]
+
+delete from [PlatformAllDisease]
+insert into [PlatformAllDisease] ([DiseaseID],[DiseaseName],[BeDept],[BeDeptName],[BePosition],[BePositionName],[LearnName],[EnglishName],[OtherName],[PYCode],[DiseSummary],[DiseSummaryPhone],[DiseCause],[DiseCausePhone],[Symptom],[SymptomPhone],[DietaryHealth],[DietaryHealthPhone],[Nurse],[NursePhone],[Examine],[ExaminePhone],[Diagnosis],[DiagnosisPhone],[Prevention],[PreventionPhone],[Complication],[ComplicationPhone],[Treatment],[TreatmentPhone],[Medicate],[MedicatePhone],[State],[CreateUser],[CreateTime],[VerifyUser],[VerifyTime],[LastModifyUser],[LastModifyTime],[Field1],[Field2],[Field3],[Field4],[Field5],[Field6],[Field7],[Field8],[Field9],[Field10],[active],[diseasetypeid],[diseasetypename],[icd9],[icd10],[generalname],[isassessitem]) select [DiseaseID],[DiseaseName],[BeDept],[BeDeptName],[BePosition],[BePositionName],[LearnName],[EnglishName],[OtherName],[PYCode],[DiseSummary],[DiseSummaryPhone],[DiseCause],[DiseCausePhone],[Symptom],[SymptomPhone],[DietaryHealth],[DietaryHealthPhone],[Nurse],[NursePhone],[Examine],[ExaminePhone],[Diagnosis],[DiagnosisPhone],[Prevention],[PreventionPhone],[Complication],[ComplicationPhone],[Treatment],[TreatmentPhone],[Medicate],[MedicatePhone],[State],[CreateUser],[CreateTime],[VerifyUser],[VerifyTime],[LastModifyUser],[LastModifyTime],[Field1],[Field2],[Field3],[Field4],[Field5],[Field6],[Field7],[Field8],[Field9],[Field10],[active],[diseasetypeid],[diseasetypename],[icd9],[icd10],[generalname],[isassessitem] from yzdl.dbo.[PlatformAllDisease]
+
+delete from [PlatformAllDiseaseApprovalHistory]
+set IDENTITY_INSERT [PlatformAllDiseaseApprovalHistory] on
+insert into [PlatformAllDiseaseApprovalHistory] ([AHID],[DiseaseID],[ChangeSet],[ApplyTime],[ApplyUser],[ApprovalTime],[ApprovalUser],[State],[ApprovalRemark]) select [AHID],[DiseaseID],[ChangeSet],[ApplyTime],[ApplyUser],[ApprovalTime],[ApprovalUser],[State],[ApprovalRemark] from yzdl.dbo.[PlatformAllDiseaseApprovalHistory]
+set IDENTITY_INSERT [PlatformAllDiseaseApprovalHistory] off
+
+delete from [PlatformAllDiseaseChangeHistory]
+set IDENTITY_INSERT [PlatformAllDiseaseChangeHistory] on
+insert into [PlatformAllDiseaseChangeHistory] ([CHID],[DiseaseID],[ExpandID],[ChangeSet],[ChangeField],[OldContent],[NewContent],[AppContent],[AppType],[ExpandType],[CreateUser],[CreateTime],[LastModifyUser],[LastModifyTime]) select [CHID],[DiseaseID],[ExpandID],[ChangeSet],[ChangeField],[OldContent],[NewContent],[AppContent],[AppType],[ExpandType],[CreateUser],[CreateTime],[LastModifyUser],[LastModifyTime] from yzdl.dbo.[PlatformAllDiseaseChangeHistory]
+set IDENTITY_INSERT [PlatformAllDiseaseChangeHistory] off
+
+delete from [PlatformAssessReportStyle]
+insert into [PlatformAssessReportStyle] ([StyleID],[StyleName],[ReportPath],[ImagePath],[StyleType],[IsMultiSelect],[TNo],[NeedExpandList]) select [StyleID],[StyleName],[ReportPath],[ImagePath],[StyleType],[IsMultiSelect],[TNo],[NeedExpandList] from yzdl.dbo.[PlatformAssessReportStyle]
+
+delete from [PlatformAssessReportTemplate]
+set IDENTITY_INSERT [PlatformAssessReportTemplate] on
+insert into [PlatformAssessReportTemplate] ([ARTID],[TenantCode],[TNO],[TTitle],[TCode],[TType],[DisplayOrader],[RTState],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Explain],[SubTitle],[CustomTNo],[AssessModelType]) select [ARTID],[TenantCode],[TNO],[TTitle],[TCode],[TType],[DisplayOrader],[RTState],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Explain],[SubTitle],[CustomTNo],[AssessModelType] from yzdl.dbo.[PlatformAssessReportTemplate]
+set IDENTITY_INSERT [PlatformAssessReportTemplate] off
+
+delete from [PlatformCheckReportStyle]
+insert into [PlatformCheckReportStyle] ([StyleID],[StyleName],[TenantCode],[ReportPath],[ImagePath]) select [StyleID],[StyleName],[TenantCode],[ReportPath],[ImagePath] from yzdl.dbo.[PlatformCheckReportStyle]
+
+delete from [PlatformDept]
+insert into [PlatformDept] ([DeptID],[DeptCode],[DeptName],[PYCode],[DisplayOrader],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [DeptID],[DeptCode],[DeptName],[PYCode],[DisplayOrader],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PlatformDept]
+
+delete from [PlatformDictionary]
+set IDENTITY_INSERT [PlatformDictionary] on
+insert into [PlatformDictionary] ([PDID],[DictType],[DictCode],[DictContent],[Status],[Remark],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[tenanttype],[DisplayOrder],[DictName],[TypeName]) select [PDID],[DictType],[DictCode],[DictContent],[Status],[Remark],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[tenanttype],[DisplayOrder],[DictName],[TypeName] from yzdl.dbo.[PlatformDictionary]
+set IDENTITY_INSERT [PlatformDictionary] off
+
+delete from [PlatformDisease]
+insert into [PlatformDisease] ([DiseaseID],[BeDept],[DiseaseName],[PYCode],[EnglishName],[Lifestyle],[MovementGuide],[MedicalKnowledge],[NutritionalGuid],[MedicalExplan],[CausePrompt],[Proposal],[Complication],[HealthMain],[Note],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[DiseaseCode]) select [DiseaseID],[BeDept],[DiseaseName],[PYCode],[EnglishName],[Lifestyle],[MovementGuide],[MedicalKnowledge],[NutritionalGuid],[MedicalExplan],[CausePrompt],[Proposal],[Complication],[HealthMain],[Note],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[DiseaseCode] from yzdl.dbo.[PlatformDisease]
+
+delete from [PlatformDiseaseItem]
+set IDENTITY_INSERT [PlatformDiseaseItem] on
+insert into [PlatformDiseaseItem] ([DIID],[DiseaseID],[ItemID]) select [DIID],[DiseaseID],[ItemID] from yzdl.dbo.[PlatformDiseaseItem]
+set IDENTITY_INSERT [PlatformDiseaseItem] off
+
+delete from [PlatformDiseaseRelation]
+insert into [PlatformDiseaseRelation] ([DRID],[DiseaseID],[DiseaseRelation],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [DRID],[DiseaseID],[DiseaseRelation],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PlatformDiseaseRelation]
+
+delete from [PlatformDiseaseRelationAbnormal]
+set IDENTITY_INSERT [PlatformDiseaseRelationAbnormal] on
+insert into [PlatformDiseaseRelationAbnormal] ([DRAID],[DRID],[ItemID],[AbnormalID],[Relation]) select [DRAID],[DRID],[ItemID],[AbnormalID],[Relation] from yzdl.dbo.[PlatformDiseaseRelationAbnormal]
+set IDENTITY_INSERT [PlatformDiseaseRelationAbnormal] off
+
+delete from [PlatformItem]
+insert into [PlatformItem] ([ItemID],[ItemCode],[ItemName],[ProjectID],[DisplayOrader],[PYCode],[EnglishName],[AppScope],[MaleUppLimit],[MaleLowerLimit],[FeMaleUppLimit],[FeMaleLowerLimit],[ItemUnit],[BePosition],[ResultType],[ItemExplan],[Proposal],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Purpose]) select [ItemID],[ItemCode],[ItemName],[ProjectID],[DisplayOrader],[PYCode],[EnglishName],[AppScope],[MaleUppLimit],[MaleLowerLimit],[FeMaleUppLimit],[FeMaleLowerLimit],[ItemUnit],[BePosition],[ResultType],[ItemExplan],[Proposal],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Purpose] from yzdl.dbo.[PlatformItem]
+
+delete from [PlatformLifeProposal]
+set IDENTITY_INSERT [PlatformLifeProposal] on
+insert into [PlatformLifeProposal] ([LPID],[QOID],[AbnormalID],[Conclusion],[Proposal],[AffectDegree],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [LPID],[QOID],[AbnormalID],[Conclusion],[Proposal],[AffectDegree],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PlatformLifeProposal]
+set IDENTITY_INSERT [PlatformLifeProposal] off
+
+delete from [PlatformModelChangeHistory]
+set IDENTITY_INSERT [PlatformModelChangeHistory] on
+insert into [PlatformModelChangeHistory] ([CHID],[MID],[ModelID],[ChangeSet],[ChangeExplain],[CreateUser],[CreateTime],[LastModifyUser],[LastModifyTime]) select [CHID],[MID],[ModelID],[ChangeSet],[ChangeExplain],[CreateUser],[CreateTime],[LastModifyUser],[LastModifyTime] from yzdl.dbo.[PlatformModelChangeHistory]
+set IDENTITY_INSERT [PlatformModelChangeHistory] off
+
+delete from [PlatformNutritionPrograms]
+set IDENTITY_INSERT [PlatformNutritionPrograms] on
+insert into [PlatformNutritionPrograms] ([NPID],[DiseaseID],[NPTitle],[FoodType],[EnergyInterUppLimit],[EnergyInterLowerLimit],[NPContent],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [NPID],[DiseaseID],[NPTitle],[FoodType],[EnergyInterUppLimit],[EnergyInterLowerLimit],[NPContent],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PlatformNutritionPrograms]
+set IDENTITY_INSERT [PlatformNutritionPrograms] off
+
+delete from [PlatformProject]
+insert into [PlatformProject] ([ProjectID],[ProjectCode],[ProjectName],[DeptID],[DisplayOrader],[PYCode],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Purpose],[ItemType]) select [ProjectID],[ProjectCode],[ProjectName],[DeptID],[DisplayOrader],[PYCode],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Purpose],[ItemType] from yzdl.dbo.[PlatformProject]
+
+delete from [PlatformSportPrograms]
+set IDENTITY_INSERT [PlatformSportPrograms] on
+insert into [PlatformSportPrograms] ([SPID],[AbnormalID],[SportPurpose],[SportProject],[SportRate],[SportClass],[SportStrength],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [SPID],[AbnormalID],[SportPurpose],[SportProject],[SportRate],[SportClass],[SportStrength],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PlatformSportPrograms]
+set IDENTITY_INSERT [PlatformSportPrograms] off
+
+delete from [PlatformTeamAssessReportStyle]
+insert into [PlatformTeamAssessReportStyle] ([StyleID],[StyleName],[ReportPath],[ImagePath],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [StyleID],[StyleName],[ReportPath],[ImagePath],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PlatformTeamAssessReportStyle]
+
+delete from [PlatformTeamAssessReportTemplate]
+set IDENTITY_INSERT [PlatformTeamAssessReportTemplate] on
+insert into [PlatformTeamAssessReportTemplate] ([ARTID],[TenantCode],[TNO],[TTitle],[TCode],[TType],[DisplayOrader],[RTState],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [ARTID],[TenantCode],[TNO],[TTitle],[TCode],[TType],[DisplayOrader],[RTState],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[PlatformTeamAssessReportTemplate]
+set IDENTITY_INSERT [PlatformTeamAssessReportTemplate] off
+
+delete from [QuestionBank]
+insert into [QuestionBank] ([QBID],[Name],[Type],[Explain],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[IsSub],[UpID],[Variable],[Sort]) select [QBID],[Name],[Type],[Explain],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[IsSub],[UpID],[Variable],[Sort] from yzdl.dbo.[QuestionBank]
+
+delete from [QuestionBankOption]
+insert into [QuestionBankOption] ([QBOID],[Name],[QBID],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[IsTrue],[NQBID]) select [QBOID],[Name],[QBID],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[IsTrue],[NQBID] from yzdl.dbo.[QuestionBankOption]
+
+delete from [QuestionResult]
+insert into [QuestionResult] ([QRID],[AccountID],[TenantAssessPackageid],[SeqNumber],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[AssessType],[TenantCode]) select [QRID],[AccountID],[TenantAssessPackageid],[SeqNumber],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[AssessType],[TenantCode] from yzdl.dbo.[QuestionResult]
+
+delete from [QuestionResultDetail2017]
+set IDENTITY_INSERT [QuestionResultDetail2017] on
+insert into [QuestionResultDetail2017] ([UpdateUser],[QuestionResultId],[QBDID],[CreateTime],[Variable],[QBOID],[CreateUser],[UpdateTime],[Value],[QBID]) select [UpdateUser],[QuestionResultId],[QBDID],[CreateTime],[Variable],[QBOID],[CreateUser],[UpdateTime],[Value],[QBID] from yzdl.dbo.[QuestionResultDetail2017]
+set IDENTITY_INSERT [QuestionResultDetail2017] off
+
+delete from [QuestionResultDetail2018]
+set IDENTITY_INSERT [QuestionResultDetail2018] on
+insert into [QuestionResultDetail2018] ([UpdateUser],[QuestionResultId],[CreateTime],[QBDID],[QBID],[UpdateTime],[Value],[Variable],[QBOID],[CreateUser]) select [UpdateUser],[QuestionResultId],[CreateTime],[QBDID],[QBID],[UpdateTime],[Value],[Variable],[QBOID],[CreateUser] from yzdl.dbo.[QuestionResultDetail2018]
+set IDENTITY_INSERT [QuestionResultDetail2018] off
+
+delete from [ReserveExportExcelFormat]
+set IDENTITY_INSERT [ReserveExportExcelFormat] on
+insert into [ReserveExportExcelFormat] ([REEF],[TenantCode],[AllNames],[Orders],[Fields],[Names],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [REEF],[TenantCode],[AllNames],[Orders],[Fields],[Names],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[ReserveExportExcelFormat]
+set IDENTITY_INSERT [ReserveExportExcelFormat] off
+
+delete from [Score]
+insert into [Score] ([SID],[TID],[ProjectId],[UpperLimit],[LowerLimit],[Unit],[Score],[ChangeScore],[Explain],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[IsDiagnoseItem]) select [SID],[TID],[ProjectId],[UpperLimit],[LowerLimit],[Unit],[Score],[ChangeScore],[Explain],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[IsDiagnoseItem] from yzdl.dbo.[Score]
+
+delete from [SignGroupItem]
+set IDENTITY_INSERT [SignGroupItem] on
+insert into [SignGroupItem] ([GIID],[GroupID],[ItemID]) select [GIID],[GroupID],[ItemID] from yzdl.dbo.[SignGroupItem]
+set IDENTITY_INSERT [SignGroupItem] off
+
+delete from [SignItem]
+insert into [SignItem] ([ItemID],[AccountID],[UserType],[ItemName],[ItemCode],[MedicalType],[UpperLimit],[LowerLimit],[ItemUnit],[Remark],[TenantItemCode],[tenantcode],[feature],[validateul],[validatell]) select [ItemID],[AccountID],[UserType],[ItemName],[ItemCode],[MedicalType],[UpperLimit],[LowerLimit],[ItemUnit],[Remark],[TenantItemCode],[tenantcode],[feature],[validateul],[validatell] from yzdl.dbo.[SignItem]
+
+delete from [SignItemData]
+set IDENTITY_INSERT [SignItemData] on
+insert into [SignItemData] ([DataID],[RecordID],[ItemCode],[MedicalType],[ItemValue],[IsAbnormal],[IsDeal],[DealRemark],[ItemID],[IsSign],[textvalue]) select [DataID],[RecordID],[ItemCode],[MedicalType],[ItemValue],[IsAbnormal],[IsDeal],[DealRemark],[ItemID],[IsSign],[textvalue] from yzdl.dbo.[SignItemData]
+set IDENTITY_INSERT [SignItemData] off
+
+delete from [SignItemGroup]
+insert into [SignItemGroup] ([GroupID],[AccountID],[GroupName],[GroupCode],[UserType],[Remark],[IsSign],[tenantcode],[linecolor],[pointcolor]) select [GroupID],[AccountID],[GroupName],[GroupCode],[UserType],[Remark],[IsSign],[tenantcode],[linecolor],[pointcolor] from yzdl.dbo.[SignItemGroup]
+
+delete from [SignItemRecord]
+insert into [SignItemRecord] ([RecordID],[AccountID],[UserType],[PhoneID],[TestTime],[CreateTime],[CreateUser],[Remark],[feature1],[feature2],[feature3],[feature4],[detectdeviceid],[type]) select [RecordID],[AccountID],[UserType],[PhoneID],[TestTime],[CreateTime],[CreateUser],[Remark],[feature1],[feature2],[feature3],[feature4],[detectdeviceid],[type] from yzdl.dbo.[SignItemRecord]
+
+delete from [SysActions]
+insert into [SysActions] ([SysActionsID],[PerCode],[DisplayName],[ActionName]) select [SysActionsID],[PerCode],[DisplayName],[ActionName] from yzdl.dbo.[SysActions]
+
+delete from [SysChannel]
+insert into [SysChannel] ([ID],[ChannelName],[TopID],[ChannelTemplateID],[ContentTemplateID],[Default],[Status],[TenantType],[CreatePeople],[CreateTime],[Icon],[ShortCut]) select [ID],[ChannelName],[TopID],[ChannelTemplateID],[ContentTemplateID],[Default],[Status],[TenantType],[CreatePeople],[CreateTime],[Icon],[ShortCut] from yzdl.dbo.[SysChannel]
+
+delete from [SysPermission]
+set IDENTITY_INSERT [SysPermission] on
+insert into [SysPermission] ([SysPerID],[PerCode],[FatherPermiID],[PermiName],[PermiEnable],[ClassType],[Urllink],[ControllerName],[Icon],[Remark],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [SysPerID],[PerCode],[FatherPermiID],[PermiName],[PermiEnable],[ClassType],[Urllink],[ControllerName],[Icon],[Remark],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[SysPermission]
+set IDENTITY_INSERT [SysPermission] off
+
+delete from [SysRole]
+insert into [SysRole] ([SysRoleID],[RoleName],[Remark],[Status],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [SysRoleID],[RoleName],[Remark],[Status],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[SysRole]
+
+delete from [SysRolePermission]
+set IDENTITY_INSERT [SysRolePermission] on
+insert into [SysRolePermission] ([RecID],[RoleID],[PerCode],[SysActionsID],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [RecID],[RoleID],[PerCode],[SysActionsID],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[SysRolePermission]
+set IDENTITY_INSERT [SysRolePermission] off
+
+delete from [SysTheme]
+insert into [SysTheme] ([ID],[ThemeName],[ThemePath],[GroupID],[TenantLoginCode],[AgencyLoginCode],[Status],[PreviewImage],[BelSystem],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[zhztys]) select [ID],[ThemeName],[ThemePath],[GroupID],[TenantLoginCode],[AgencyLoginCode],[Status],[PreviewImage],[BelSystem],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[zhztys] from yzdl.dbo.[SysTheme]
+
+delete from [SysUser]
+insert into [SysUser] ([SysUserID],[LoginName],[UserPwd],[RealName],[RoleID],[IDNumber],[Dept],[Job],[Mobile],[Phone],[Address],[Email],[Status],[CreateTime],[CreatePeople],[StartTime],[StartPeople],[LastLoginTime],[LastLoginIp],[LastModifyTime],[LastModifyPeople]) select [SysUserID],[LoginName],[UserPwd],[RealName],[RoleID],[IDNumber],[Dept],[Job],[Mobile],[Phone],[Address],[Email],[Status],[CreateTime],[CreatePeople],[StartTime],[StartPeople],[LastLoginTime],[LastLoginIp],[LastModifyTime],[LastModifyPeople] from yzdl.dbo.[SysUser]
+
+delete from [Template]
+set IDENTITY_INSERT [Template] on
+insert into [Template] ([ID],[TenantCode],[TemplateID],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople]) select [ID],[TenantCode],[TemplateID],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople] from yzdl.dbo.[Template]
+set IDENTITY_INSERT [Template] off
+
+delete from [Tenant]
+insert into [Tenant] ([TenantCode],[TenantName],[Province],[City],[TenantType],[DomainType],[TenantDomain],[SubDomain],[Status],[OpenTime],[EndTime],[StopTime],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[BussinessUserId],[openid],[active],[releasetypeid],[infostatus],[OpenUserCount],[DaoqiTipFre],[ICPNumber],[SendNumber],[ICPTime],[DbInstance],[TenantCode_Sandbox],[TenantDomain_Sandbox],[ICPDaoqiTipDay]) select [TenantCode],[TenantName],[Province],[City],[TenantType],[DomainType],[TenantDomain],[SubDomain],[Status],[OpenTime],[EndTime],[StopTime],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[BussinessUserId],[openid],[active],[releasetypeid],[infostatus],[OpenUserCount],[DaoqiTipFre],[ICPNumber],[SendNumber],[ICPTime],[DbInstance],[TenantCode_Sandbox],[TenantDomain_Sandbox],[ICPDaoqiTipDay] from yzdl.dbo.[Tenant]
+
+delete from [TenantAbnormalItem]
+insert into [TenantAbnormalItem] ([AbnormalID],[TenantCode],[ItemID],[AbnormalName],[ResultType],[ProposalLevel],[ItemUppLimit],[ItemLowerLimit],[MedicalExplan],[CausePrompt],[HealthMain],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[LifeStyle]) select [AbnormalID],[TenantCode],[ItemID],[AbnormalName],[ResultType],[ProposalLevel],[ItemUppLimit],[ItemLowerLimit],[MedicalExplan],[CausePrompt],[HealthMain],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[LifeStyle] from yzdl.dbo.[TenantAbnormalItem]
+
+delete from [TenantAccountAssessPackage]
+set IDENTITY_INSERT [TenantAccountAssessPackage] on
+insert into [TenantAccountAssessPackage] ([APID],[AccountID],[PackageID]) select [APID],[AccountID],[PackageID] from yzdl.dbo.[TenantAccountAssessPackage]
+set IDENTITY_INSERT [TenantAccountAssessPackage] off
+
+delete from [TenantAccountHealthManage]
+set IDENTITY_INSERT [TenantAccountHealthManage] on
+insert into [TenantAccountHealthManage] ([HMID],[AccountID],[HealthManageID],[BegTime],[EndTime],[Status],[userroleid]) select [HMID],[AccountID],[HealthManageID],[BegTime],[EndTime],[Status],[userroleid] from yzdl.dbo.[TenantAccountHealthManage]
+set IDENTITY_INSERT [TenantAccountHealthManage] off
+
+delete from [TenantAssessImportItemLevel]
+insert into [TenantAssessImportItemLevel] ([ILID],[TenantCode],[IGID],[ItemCode],[Name],[ErrorFlag],[UpperLimit],[LowerLimit],[Information],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser],[ItemName]) select [ILID],[TenantCode],[IGID],[ItemCode],[Name],[ErrorFlag],[UpperLimit],[LowerLimit],[Information],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser],[ItemName] from yzdl.dbo.[TenantAssessImportItemLevel]
+
+delete from [TenantAssessPackage]
+insert into [TenantAssessPackage] ([PackageID],[TenantCode],[PackageName],[PackagePrice],[PackageIntro],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[isDefault]) select [PackageID],[TenantCode],[PackageName],[PackagePrice],[PackageIntro],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[isDefault] from yzdl.dbo.[TenantAssessPackage]
+
+delete from [TenantAssessPackageModel]
+set IDENTITY_INSERT [TenantAssessPackageModel] on
+insert into [TenantAssessPackageModel] ([PMID],[PackageID],[ModelID],[ModelType]) select [PMID],[PackageID],[ModelID],[ModelType] from yzdl.dbo.[TenantAssessPackageModel]
+set IDENTITY_INSERT [TenantAssessPackageModel] off
+
+delete from [TenantAssessReport]
+set IDENTITY_INSERT [TenantAssessReport] on
+insert into [TenantAssessReport] ([ARID],[TenantCode],[SeqNumber],[TNO],[TTitle],[RCode],[DisplayOrader],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [ARID],[TenantCode],[SeqNumber],[TNO],[TTitle],[RCode],[DisplayOrader],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantAssessReport]
+set IDENTITY_INSERT [TenantAssessReport] off
+
+delete from [TenantAssessReportStyle]
+set IDENTITY_INSERT [TenantAssessReportStyle] on
+insert into [TenantAssessReportStyle] ([ARSID],[TenantCode],[StyleID],[LogoPath],[LittleLogoPath]) select [ARSID],[TenantCode],[StyleID],[LogoPath],[LittleLogoPath] from yzdl.dbo.[TenantAssessReportStyle]
+set IDENTITY_INSERT [TenantAssessReportStyle] off
+
+delete from [TenantAssessReportView]
+set IDENTITY_INSERT [TenantAssessReportView] on
+insert into [TenantAssessReportView] ([ARID],[TenantCode],[SeqNumber],[Report],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[QuestionResultID],[bgtpdz],[TenantAssessPackageid],[TenantAssessPackageName],[ReportPath],[pgbgys],[AccountID]) select [ARID],[TenantCode],[SeqNumber],[Report],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[QuestionResultID],[bgtpdz],[TenantAssessPackageid],[TenantAssessPackageName],[ReportPath],[pgbgys],[AccountID] from yzdl.dbo.[TenantAssessReportView]
+set IDENTITY_INSERT [TenantAssessReportView] off
+
+delete from [TenantCheckReportStyle]
+set IDENTITY_INSERT [TenantCheckReportStyle] on
+insert into [TenantCheckReportStyle] ([CRSID],[TenantCode],[StyleID],[IsTenantUse],[AdditionPath],[HeadLogoPath],[PageLogoPath]) select [CRSID],[TenantCode],[StyleID],[IsTenantUse],[AdditionPath],[HeadLogoPath],[PageLogoPath] from yzdl.dbo.[TenantCheckReportStyle]
+set IDENTITY_INSERT [TenantCheckReportStyle] off
+
+delete from [TenantConfigSetUp]
+set IDENTITY_INSERT [TenantConfigSetUp] on
+insert into [TenantConfigSetUp] ([SUID],[TenantCode],[ConfigType],[ConfigValue],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [SUID],[TenantCode],[ConfigType],[ConfigValue],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantConfigSetUp]
+set IDENTITY_INSERT [TenantConfigSetUp] off
+
+delete from [TenantCrowdGroup]
+insert into [TenantCrowdGroup] ([CGID],[TenantCode],[GroupName],[GroupLevel],[ItemID],[GroupIntro],[UpperLimit],[LowerLimit],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [CGID],[TenantCode],[GroupName],[GroupLevel],[ItemID],[GroupIntro],[UpperLimit],[LowerLimit],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantCrowdGroup]
+
+delete from [TenantDept]
+insert into [TenantDept] ([DeptID],[TenantCode],[DeptCode],[DeptName],[PYCode],[DisplayOrader],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DeptCodeId],[IsMatch]) select [DeptID],[TenantCode],[DeptCode],[DeptName],[PYCode],[DisplayOrader],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DeptCodeId],[IsMatch] from yzdl.dbo.[TenantDept]
+
+delete from [TenantDictionary]
+set IDENTITY_INSERT [TenantDictionary] on
+insert into [TenantDictionary] ([PDID],[TenantCode],[DictType],[DictCode],[DictContent],[Status],[Remark],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[DisplayOrder],[DictName],[TypeName]) select [PDID],[TenantCode],[DictType],[DictCode],[DictContent],[Status],[Remark],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[DisplayOrder],[DictName],[TypeName] from yzdl.dbo.[TenantDictionary]
+set IDENTITY_INSERT [TenantDictionary] off
+
+delete from [TenantDisease]
+insert into [TenantDisease] ([DiseaseID],[TenantCode],[BeDept],[DiseaseName],[PYCode],[EnglishName],[Lifestyle],[MovementGuide],[MedicalKnowledge],[NutritionalGuid],[MedicalExplan],[CausePrompt],[Proposal],[Complication],[HealthMain],[Note],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[DiseaseCode]) select [DiseaseID],[TenantCode],[BeDept],[DiseaseName],[PYCode],[EnglishName],[Lifestyle],[MovementGuide],[MedicalKnowledge],[NutritionalGuid],[MedicalExplan],[CausePrompt],[Proposal],[Complication],[HealthMain],[Note],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[DietTaboo],[SportTaboo],[DiseaseCode] from yzdl.dbo.[TenantDisease]
+
+delete from [TenantDiseaseItem]
+set IDENTITY_INSERT [TenantDiseaseItem] on
+insert into [TenantDiseaseItem] ([DIID],[TenantCode],[DiseaseID],[ItemID]) select [DIID],[TenantCode],[DiseaseID],[ItemID] from yzdl.dbo.[TenantDiseaseItem]
+set IDENTITY_INSERT [TenantDiseaseItem] off
+
+delete from [TenantDiseaseRelation]
+insert into [TenantDiseaseRelation] ([DRID],[TenantCode],[DiseaseID],[DiseaseRelation],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [DRID],[TenantCode],[DiseaseID],[DiseaseRelation],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantDiseaseRelation]
+
+delete from [TenantDiseaseRelationAbnormal]
+set IDENTITY_INSERT [TenantDiseaseRelationAbnormal] on
+insert into [TenantDiseaseRelationAbnormal] ([DRAID],[TenantCode],[DRID],[ItemID],[AbnormalID],[Relation]) select [DRAID],[TenantCode],[DRID],[ItemID],[AbnormalID],[Relation] from yzdl.dbo.[TenantDiseaseRelationAbnormal]
+set IDENTITY_INSERT [TenantDiseaseRelationAbnormal] off
+
+delete from [TenantInterpose]
+insert into [TenantInterpose] ([TIID],[TenantCode],[AccountID],[PlanPackageID],[StartTime],[EndTime],[State],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [TIID],[TenantCode],[AccountID],[PlanPackageID],[StartTime],[EndTime],[State],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantInterpose]
+
+delete from [TenantInterposeCount]
+insert into [TenantInterposeCount] ([PRID],[TenantCode],[AccountID],[InterposeID],[InterventionItemID],[ItemType],[State],[StartTime],[ServerCount],[ServerAlready],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[ItemRate],[OptType]) select [PRID],[TenantCode],[AccountID],[InterposeID],[InterventionItemID],[ItemType],[State],[StartTime],[ServerCount],[ServerAlready],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[ItemRate],[OptType] from yzdl.dbo.[TenantInterposeCount]
+
+delete from [TenantInterposePackage]
+insert into [TenantInterposePackage] ([PackageID],[TenantCode],[PackageName],[PackagePrice],[PackageIntro],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[imagepath]) select [PackageID],[TenantCode],[PackageName],[PackagePrice],[PackageIntro],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[imagepath] from yzdl.dbo.[TenantInterposePackage]
+
+delete from [TenantInterposePackageProject]
+set IDENTITY_INSERT [TenantInterposePackageProject] on
+insert into [TenantInterposePackageProject] ([IPPID],[PackageID],[ProjectID],[Time],[ServiceModel],[RemindTime],[IsSet],[BeginDay],[ContentId],[RemindType],[RadType],[ItemRate]) select [IPPID],[PackageID],[ProjectID],[Time],[ServiceModel],[RemindTime],[IsSet],[BeginDay],[ContentId],[RemindType],[RadType],[ItemRate] from yzdl.dbo.[TenantInterposePackageProject]
+set IDENTITY_INSERT [TenantInterposePackageProject] off
+
+delete from [TenantInterposePlanRemind]
+insert into [TenantInterposePlanRemind] ([PRID],[TenantCode],[AccountID],[InterposeID],[InterventionItemID],[AllowRemind],[RemindTime],[RemindType],[ExecuteType],[ServerType],[State],[ContentID],[Content],[Evluation],[Remark],[InterventionDoctor],[InterventionTime],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[source],[relationid],[active],[ExecuteParam]) select [PRID],[TenantCode],[AccountID],[InterposeID],[InterventionItemID],[AllowRemind],[RemindTime],[RemindType],[ExecuteType],[ServerType],[State],[ContentID],[Content],[Evluation],[Remark],[InterventionDoctor],[InterventionTime],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[source],[relationid],[active],[ExecuteParam] from yzdl.dbo.[TenantInterposePlanRemind]
+
+delete from [TenantInterposeProject]
+insert into [TenantInterposeProject] ([ProjectID],[TenantCode],[ProjectName],[ProjectType],[ProjectPrice],[ChargeMode],[ProjectIntro],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[execType],[imagepath],[gyxmdw]) select [ProjectID],[TenantCode],[ProjectName],[ProjectType],[ProjectPrice],[ChargeMode],[ProjectIntro],[Status],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[execType],[imagepath],[gyxmdw] from yzdl.dbo.[TenantInterposeProject]
+
+delete from [TenantItem]
+insert into [TenantItem] ([ItemID],[TenantCode],[ItemCode],[ItemName],[ProjectID],[DisplayOrader],[PYCode],[EnglishName],[AppScope],[MaleUppLimit],[MaleLowerLimit],[FeMaleUppLimit],[FeMaleLowerLimit],[ItemUnit],[BePosition],[ResultType],[ItemExplan],[Proposal],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Purpose],[ItemCodeId],[IsMatch]) select [ItemID],[TenantCode],[ItemCode],[ItemName],[ProjectID],[DisplayOrader],[PYCode],[EnglishName],[AppScope],[MaleUppLimit],[MaleLowerLimit],[FeMaleUppLimit],[FeMaleLowerLimit],[ItemUnit],[BePosition],[ResultType],[ItemExplan],[Proposal],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[Purpose],[ItemCodeId],[IsMatch] from yzdl.dbo.[TenantItem]
+
+delete from [TenantLifeProposal]
+set IDENTITY_INSERT [TenantLifeProposal] on
+insert into [TenantLifeProposal] ([LPID],[TenantCode],[QOID],[AbnormalID],[Conclusion],[Proposal],[AffectDegree],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [LPID],[TenantCode],[QOID],[AbnormalID],[Conclusion],[Proposal],[AffectDegree],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantLifeProposal]
+set IDENTITY_INSERT [TenantLifeProposal] off
+
+delete from [TenantMessageSetUp]
+insert into [TenantMessageSetUp] ([MSID],[TenantCode],[SendType],[CreatePeople],[CreateTime]) select [MSID],[TenantCode],[SendType],[CreatePeople],[CreateTime] from yzdl.dbo.[TenantMessageSetUp]
+
+delete from [TenantMessageTemplate]
+insert into [TenantMessageTemplate] ([MTID],[TenantCode],[TemplateName],[TemplateContent],[MessageType],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[MessageCode],[Status]) select [MTID],[TenantCode],[TemplateName],[TemplateContent],[MessageType],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[MessageCode],[Status] from yzdl.dbo.[TenantMessageTemplate]
+
+delete from [TenantMessageUse]
+insert into [TenantMessageUse] ([MSID],[TenantCode],[TotalNum],[SurplusNum],[Remark],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[TijianReport],[PingguReport],[CostType],[MessageSurplus],[WarningNum],[MessagePrice],[FreeMessageCount]) select [MSID],[TenantCode],[TotalNum],[SurplusNum],[Remark],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[TijianReport],[PingguReport],[CostType],[MessageSurplus],[WarningNum],[MessagePrice],[FreeMessageCount] from yzdl.dbo.[TenantMessageUse]
+
+delete from [TenantModelChangeHistory]
+set IDENTITY_INSERT [TenantModelChangeHistory] on
+insert into [TenantModelChangeHistory] ([CHID],[TenantCode],[MID],[ModelID],[State],[CreateTime],[ApprovalUser],[ApprovalTime]) select [CHID],[TenantCode],[MID],[ModelID],[State],[CreateTime],[ApprovalUser],[ApprovalTime] from yzdl.dbo.[TenantModelChangeHistory]
+set IDENTITY_INSERT [TenantModelChangeHistory] off
+
+delete from [TenantNutritionPrograms]
+set IDENTITY_INSERT [TenantNutritionPrograms] on
+insert into [TenantNutritionPrograms] ([NPID],[TenantCode],[DiseaseID],[NPTitle],[FoodType],[EnergyInterUppLimit],[EnergyInterLowerLimit],[NPContent],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [NPID],[TenantCode],[DiseaseID],[NPTitle],[FoodType],[EnergyInterUppLimit],[EnergyInterLowerLimit],[NPContent],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantNutritionPrograms]
+set IDENTITY_INSERT [TenantNutritionPrograms] off
+
+delete from [TenantPackage]
+insert into [TenantPackage] ([PackageID],[TenantCode],[PackageName],[AdaptObject],[PackageFeature],[Tips],[MarketPrice],[DiscountPrice],[PackageType],[PackageState],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[PackageCode],[image],[IsPublish]) select [PackageID],[TenantCode],[PackageName],[AdaptObject],[PackageFeature],[Tips],[MarketPrice],[DiscountPrice],[PackageType],[PackageState],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[PackageCode],[image],[IsPublish] from yzdl.dbo.[TenantPackage]
+
+delete from [TenantPackageItem]
+set IDENTITY_INSERT [TenantPackageItem] on
+insert into [TenantPackageItem] ([PIID],[PackageID],[ItemID]) select [PIID],[PackageID],[ItemID] from yzdl.dbo.[TenantPackageItem]
+set IDENTITY_INSERT [TenantPackageItem] off
+
+delete from [TenantPackageType]
+insert into [TenantPackageType] ([PackageTypeID],[TenantCode],[PackageTypeName],[TypeState],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [PackageTypeID],[TenantCode],[PackageTypeName],[TypeState],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantPackageType]
+
+delete from [TenantPermission]
+set IDENTITY_INSERT [TenantPermission] on
+insert into [TenantPermission] ([TenantPermissionID],[TenantPerCode],[FatherPermiID],[PermiName],[PermiEnable],[TenantType],[ClassType],[ControllerName],[Urllink],[Icon],[Remark],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[DefaultActionName],[RouteName],[Order]) select [TenantPermissionID],[TenantPerCode],[FatherPermiID],[PermiName],[PermiEnable],[TenantType],[ClassType],[ControllerName],[Urllink],[Icon],[Remark],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[DefaultActionName],[RouteName],[Order] from yzdl.dbo.[TenantPermission]
+set IDENTITY_INSERT [TenantPermission] off
+
+delete from [TenantProject]
+insert into [TenantProject] ([ProjectID],[TenantCode],[ProjectCode],[ProjectName],[DeptID],[DisplayOrader],[PYCode],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[ProjectCodeId],[IsMatch],[Purpose]) select [ProjectID],[TenantCode],[ProjectCode],[ProjectName],[DeptID],[DisplayOrader],[PYCode],[Remark],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[ProjectCodeId],[IsMatch],[Purpose] from yzdl.dbo.[TenantProject]
+
+delete from [TenantProjectTemplate]
+insert into [TenantProjectTemplate] ([PTID],[TenantCode],[CompanyName],[TempName],[TempRemark],[Status],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople]) select [PTID],[TenantCode],[CompanyName],[TempName],[TempRemark],[Status],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople] from yzdl.dbo.[TenantProjectTemplate]
+
+delete from [TenantProjectTemplateItem]
+set IDENTITY_INSERT [TenantProjectTemplateItem] on
+insert into [TenantProjectTemplateItem] ([PTIID],[PTID],[TenantCode],[ItemID],[physicalprojectitemid]) select [PTIID],[PTID],[TenantCode],[ItemID],[physicalprojectitemid] from yzdl.dbo.[TenantProjectTemplateItem]
+set IDENTITY_INSERT [TenantProjectTemplateItem] off
+
+delete from [TenantSetUpInfo]
+insert into [TenantSetUpInfo] ([ID],[TenantCode],[LoginLogoPath],[IndexLogoPath],[LogoPath],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[WechatLogoPath],[groupid]) select [ID],[TenantCode],[LoginLogoPath],[IndexLogoPath],[LogoPath],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[WechatLogoPath],[groupid] from yzdl.dbo.[TenantSetUpInfo]
+
+delete from [TenantSportPrograms]
+set IDENTITY_INSERT [TenantSportPrograms] on
+insert into [TenantSportPrograms] ([SPID],[TenantCode],[AbnormalID],[SportPurpose],[SportProject],[SportRate],[SportClass],[SportStrength],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [SPID],[TenantCode],[AbnormalID],[SportPurpose],[SportProject],[SportRate],[SportClass],[SportStrength],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantSportPrograms]
+set IDENTITY_INSERT [TenantSportPrograms] off
+
+delete from [TenantSysActions]
+insert into [TenantSysActions] ([TenantSysActionsID],[TenantPerCode],[DisplayName],[ActionName],[ten_TenantSysActionsID],[IsControl]) select [TenantSysActionsID],[TenantPerCode],[DisplayName],[ActionName],[ten_TenantSysActionsID],[IsControl] from yzdl.dbo.[TenantSysActions]
+
+delete from [TenantSysPerDistribution]
+set IDENTITY_INSERT [TenantSysPerDistribution] on
+insert into [TenantSysPerDistribution] ([RecID],[TenantCode],[TenantPerCode],[TenantSysActionsID],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [RecID],[TenantCode],[TenantPerCode],[TenantSysActionsID],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantSysPerDistribution]
+set IDENTITY_INSERT [TenantSysPerDistribution] off
+
+delete from [TenantTeamAssessImportDisease]
+insert into [TenantTeamAssessImportDisease] ([IDID],[TenantCode],[DiseaseID],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser]) select [IDID],[TenantCode],[DiseaseID],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser] from yzdl.dbo.[TenantTeamAssessImportDisease]
+
+delete from [TenantTeamAssessImportDiseaseGroup]
+insert into [TenantTeamAssessImportDiseaseGroup] ([DGID],[TenantCode],[Name],[Explan],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser],[TempID],[DisplayOrder]) select [DGID],[TenantCode],[Name],[Explan],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser],[TempID],[DisplayOrder] from yzdl.dbo.[TenantTeamAssessImportDiseaseGroup]
+
+delete from [TenantTeamAssessImportItemGroup]
+insert into [TenantTeamAssessImportItemGroup] ([IGID],[TenantCode],[DGID],[Name],[DiseaseID],[Suggest],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser],[TempID],[DisplayOrder],[DiseaseName]) select [IGID],[TenantCode],[DGID],[Name],[DiseaseID],[Suggest],[CreateTime],[CreateUser],[UpdateTime],[UpdateUser],[TempID],[DisplayOrder],[DiseaseName] from yzdl.dbo.[TenantTeamAssessImportItemGroup]
+
+delete from [TenantTeamAssessReportStyle]
+set IDENTITY_INSERT [TenantTeamAssessReportStyle] on
+insert into [TenantTeamAssessReportStyle] ([ARSID],[TenantCode],[StyleID],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[LogoPath],[HeadLogoPath],[BannerPath]) select [ARSID],[TenantCode],[StyleID],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime],[LogoPath],[HeadLogoPath],[BannerPath] from yzdl.dbo.[TenantTeamAssessReportStyle]
+set IDENTITY_INSERT [TenantTeamAssessReportStyle] off
+
+delete from [TenantTeamAssessTemplate]
+insert into [TenantTeamAssessTemplate] ([TempID],[TenantCode],[TempName],[TempIntro],[Status],[AddInfo],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime]) select [TempID],[TenantCode],[TempName],[TempIntro],[Status],[AddInfo],[CreateUser],[CreateTime],[LastModifyPeople],[LastModifyTime] from yzdl.dbo.[TenantTeamAssessTemplate]
+
+delete from [Topic]
+insert into [Topic] ([TID],[Name],[Sex],[Modelid],[Type],[Suggestion],[Sort],[Questionbank],[BankType],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[Important],[IsPastHistory],[Parameter],[ChangeSet]) select [TID],[Name],[Sex],[Modelid],[Type],[Suggestion],[Sort],[Questionbank],[BankType],[CreateTime],[UpdateTime],[CreateUser],[UpdateUser],[Important],[IsPastHistory],[Parameter],[ChangeSet] from yzdl.dbo.[Topic]
+
+delete from [User]
+insert into [User] ([UserID],[UserName],[Password],[RealName],[TenantCode],[IDNumber],[UserStatus],[UserType],[Position],[PhoneNumber],[Telephone],[Email],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[IsHealth],[TechnicianID],[introduce],[years],[level],[gender],[company],[birthday],[nickname],[pycode],[dpcode],[active],[fromtype],[phonestatus],[os],[LastLoginIP],[LastLoginTime],[HeaderImg]) select [UserID],[UserName],[Password],[RealName],[TenantCode],[IDNumber],[UserStatus],[UserType],[Position],[PhoneNumber],[Telephone],[Email],[CreateTime],[CreatePeople],[LastModifyTime],[LastModifyPeople],[IsHealth],[TechnicianID],[introduce],[years],[level],[gender],[company],[birthday],[nickname],[pycode],[dpcode],[active],[fromtype],[phonestatus],[os],[LastLoginIP],[LastLoginTime],[HeaderImg] from yzdl.dbo.[User]
+
+delete from [UserRightPermission]
+set IDENTITY_INSERT [UserRightPermission] on
+insert into [UserRightPermission] ([URPID],[roleid],[TenantPerCode],[TenantSysActionsID],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[active]) select [URPID],[roleid],[TenantPerCode],[TenantSysActionsID],[CreatePeople],[CreateTime],[LastModifyPeople],[LastModifyTime],[active] from yzdl.dbo.[UserRightPermission]
+set IDENTITY_INSERT [UserRightPermission] off
+
+delete from [xbmi]
+insert into [xbmi] ([tzzsbm],[lastmodifytime],[bmizdz],[createtime],[tzzsmc],[lastmodifypeople],[bmizxz],[bmiid],[active],[createpeople]) select [tzzsbm],[lastmodifytime],[bmizdz],[createtime],[tzzsmc],[lastmodifypeople],[bmizxz],[bmiid],[active],[createpeople] from yzdl.dbo.[xbmi]
+
+delete from [xbodyneedheat]
+insert into [xbodyneedheat] ([active],[createpeople],[sxnlzdz],[dztxmc],[lastmodifytime],[tlhdlx],[lastmodifypeople],[createtime],[bodyneedheatid],[dztxbm],[sxnlzxz]) select [active],[createpeople],[sxnlzdz],[dztxmc],[lastmodifytime],[tlhdlx],[lastmodifypeople],[createtime],[bodyneedheatid],[dztxbm],[sxnlzxz] from yzdl.dbo.[xbodyneedheat]
+
+delete from [xdevicetype]
+insert into [xdevicetype] ([devicetypeid],[name],[groupcode],[manufacturer],[brand],[type],[description],[createtime],[createpeople],[Lastmodifytime],[lastmodifypeople],[active],[imagepath],[child]) select [devicetypeid],[name],[groupcode],[manufacturer],[brand],[type],[description],[createtime],[createpeople],[Lastmodifytime],[lastmodifypeople],[active],[imagepath],[child] from yzdl.dbo.[xdevicetype]
+
+delete from [xdiseasetype]
+insert into [xdiseasetype] ([diseasetypeid],[dis_diseasetypeid],[name],[category],[status],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active]) select [diseasetypeid],[dis_diseasetypeid],[name],[category],[status],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active] from yzdl.dbo.[xdiseasetype]
+
+delete from [xdrug]
+insert into [xdrug] ([active],[relationid],[ypjj],[ypywmc],[ypbm],[sccs],[createpeople],[ywxhzy],[ypfl],[yptpdz],[yfyl],[drugid],[infostatus],[blfy],[ypspmc],[yplx],[lastmodifytime],[pzwh],[ypsyz],[tenantcode],[syfs],[ypmc],[createtime],[zycf],[lastmodifypeople],[ypdw],[ypxtdz]) select [active],[relationid],[ypjj],[ypywmc],[ypbm],[sccs],[createpeople],[ywxhzy],[ypfl],[yptpdz],[yfyl],[drugid],[infostatus],[blfy],[ypspmc],[yplx],[lastmodifytime],[pzwh],[ypsyz],[tenantcode],[syfs],[ypmc],[createtime],[zycf],[lastmodifypeople],[ypdw],[ypxtdz] from yzdl.dbo.[xdrug]
+
+delete from [xenergyneed]
+insert into [xenergyneed] ([lastmodifypeople],[energyneedid],[createtime],[nlmin],[lastmodifytime],[srswfx],[nlsrfs],[active],[nlmax],[createpeople]) select [lastmodifypeople],[energyneedid],[createtime],[nlmin],[lastmodifytime],[srswfx],[nlsrfs],[active],[nlmax],[createpeople] from yzdl.dbo.[xenergyneed]
+
+delete from [xhealthproposal]
+insert into [xhealthproposal] ([healthproposalid],[tenantcode],[name],[signitemgroupid],[levelcode],[content],[remark],[createtime],[createuser]) select [healthproposalid],[tenantcode],[name],[signitemgroupid],[levelcode],[content],[remark],[createtime],[createuser] from yzdl.dbo.[xhealthproposal]
+
+delete from [xnutrientneeds]
+insert into [xnutrientneeds] ([nlxx],[createtime],[ysznan],[lastmodifypeople],[nutrientneedsid],[ysznv],[fjtj],[createpeople],[active],[nlsx],[wlyys],[lastmodifytime],[yszdw]) select [nlxx],[createtime],[ysznan],[lastmodifypeople],[nutrientneedsid],[ysznv],[fjtj],[createpeople],[active],[nlsx],[wlyys],[lastmodifytime],[yszdw] from yzdl.dbo.[xnutrientneeds]
+
+delete from [xphysicalprojectitem]
+set IDENTITY_INSERT [xphysicalprojectitem] on
+insert into [xphysicalprojectitem] ([physicalprojectitemid],[projectid],[itemid],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active]) select [physicalprojectitemid],[projectid],[itemid],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active] from yzdl.dbo.[xphysicalprojectitem]
+set IDENTITY_INSERT [xphysicalprojectitem] off
+
+delete from [xplatformprojectitem]
+set IDENTITY_INSERT [xplatformprojectitem] on
+insert into [xplatformprojectitem] ([platformprojectitemid],[projectid],[itemid],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active]) select [platformprojectitemid],[projectid],[itemid],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active] from yzdl.dbo.[xplatformprojectitem]
+set IDENTITY_INSERT [xplatformprojectitem] off
+
+delete from [xrelationrelative]
+insert into [xrelationrelative] ([relationrelativeid],[zhclbm],[tenantcode],[lastmodifypeople],[createtime],[gxgllx],[relationid],[lastmodifytime],[createpeople],[active]) select [relationrelativeid],[zhclbm],[tenantcode],[lastmodifypeople],[createtime],[gxgllx],[relationid],[lastmodifytime],[createpeople],[active] from yzdl.dbo.[xrelationrelative]
+
+delete from [xresult]
+insert into [xresult] ([resultid],[code],[result],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active]) select [resultid],[code],[result],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active] from yzdl.dbo.[xresult]
+
+delete from [xrole]
+insert into [xrole] ([roleid],[tenantcode],[name],[flag],[rolecode],[description],[path],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active],[status]) select [roleid],[tenantcode],[name],[flag],[rolecode],[description],[path],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active],[status] from yzdl.dbo.[xrole]
+
+delete from [xsmschannel]
+insert into [xsmschannel] ([smschannelid],[sn],[pwd],[code],[balance],[registtime],[company],[contact],[phone],[status],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active]) select [smschannelid],[sn],[pwd],[code],[balance],[registtime],[company],[contact],[phone],[status],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active] from yzdl.dbo.[xsmschannel]
+
+delete from [xsport]
+insert into [xsport] ([relationid],[active],[yddwnh],[createpeople],[ydtpdz],[lastmodifytime],[ydxmmc],[infostatus],[ydxmbm],[ydxtdz],[tenantcode],[sportid],[createtime],[lastmodifypeople]) select [relationid],[active],[yddwnh],[createpeople],[ydtpdz],[lastmodifytime],[ydxmmc],[infostatus],[ydxmbm],[ydxtdz],[tenantcode],[sportid],[createtime],[lastmodifypeople] from yzdl.dbo.[xsport]
+
+delete from [xtenantprojectitem]
+set IDENTITY_INSERT [xtenantprojectitem] on
+insert into [xtenantprojectitem] ([tenantprojectitemid],[projectid],[itemid],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active]) select [tenantprojectitemid],[projectid],[itemid],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active] from yzdl.dbo.[xtenantprojectitem]
+set IDENTITY_INSERT [xtenantprojectitem] off
+
+delete from [xtopicandmodelrelationship]
+insert into [xtopicandmodelrelationship] ([relationship],[topicid],[modelid],[times],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active]) select [relationship],[topicid],[modelid],[times],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active] from yzdl.dbo.[xtopicandmodelrelationship]
+
+delete from [xuserrole]
+insert into [xuserrole] ([userroleid],[userid],[roleid],[commend],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active],[infostatus]) select [userroleid],[userid],[roleid],[commend],[createtime],[createpeople],[lastmodifytime],[lastmodifypeople],[active],[infostatus] from yzdl.dbo.[xuserrole]
+
+delete from [xzdinerinfo]
+insert into [xzdinerinfo] ([createtime],[grkhbm],[ycxxbm],[lastmodifytime],[jhyclx],[jcjysj],[active],[jgctbm],[createpeople],[lastmodifypeople],[dinerinfoid]) select [createtime],[grkhbm],[ycxxbm],[lastmodifytime],[jhyclx],[jcjysj],[active],[jgctbm],[createpeople],[lastmodifypeople],[dinerinfoid] from yzdl.dbo.[xzdinerinfo]
+
+delete from [xzdinerinfodetail]
+insert into [xzdinerinfodetail] ([xsswbm],[createpeople],[active],[swsysl],[jymxbm],[lastmodifytime],[dinerinfodetailid],[lastmodifypeople],[dinerinfoid],[createtime]) select [xsswbm],[createpeople],[active],[swsysl],[jymxbm],[lastmodifytime],[dinerinfodetailid],[lastmodifypeople],[dinerinfoid],[createtime] from yzdl.dbo.[xzdinerinfodetail]
+
+delete from [xzdiseasematerial]
+insert into [xzdiseasematerial] ([createtime],[diseasematerialid],[lastmodifypeople],[lastmodifytime],[materialid],[active],[createpeople],[diseaseid]) select [createtime],[diseasematerialid],[lastmodifypeople],[lastmodifytime],[materialid],[active],[createpeople],[diseaseid] from yzdl.dbo.[xzdiseasematerial]
+
+delete from [xzfood]
+insert into [xzfood] ([swtpdz],[swnlxh],[zhswbm],[active],[foodid],[swsyxg],[sfzx],[tenantcode],[lastmodifytime],[swxtdz],[swywmc],[lastmodifypeople],[swsyrq],[swtjzt],[createtime],[swjs],[createpeople],[swyyjz],[swdwzl],[swyclx],[swbgbh],[zhswmc]) select [swtpdz],[swnlxh],[zhswbm],[active],[foodid],[swsyxg],[sfzx],[tenantcode],[lastmodifytime],[swxtdz],[swywmc],[lastmodifypeople],[swsyrq],[swtjzt],[createtime],[swjs],[createpeople],[swyyjz],[swdwzl],[swyclx],[swbgbh],[zhswmc] from yzdl.dbo.[xzfood]
+
+delete from [xzfoodmaterial]
+insert into [xzfoodmaterial] ([swclbh],[lastmodifypeople],[createtime],[createpeople],[foodmaterialid],[materialid],[active],[swclzl],[lastmodifytime],[foodid]) select [swclbh],[lastmodifypeople],[createtime],[createpeople],[foodmaterialid],[materialid],[active],[swclzl],[lastmodifytime],[foodid] from yzdl.dbo.[xzfoodmaterial]
+
+delete from [xzfoodnutrition]
+insert into [xzfoodnutrition] ([swyycc],[active],[createpeople],[yycfdw],[foodnutritionid],[lastmodifytime],[yycchl],[lastmodifypeople],[createtime],[foodid]) select [swyycc],[active],[createpeople],[yycfdw],[foodnutritionid],[lastmodifytime],[yycchl],[lastmodifypeople],[createtime],[foodid] from yzdl.dbo.[xzfoodnutrition]
+
+delete from [xzmaterial]
+insert into [xzmaterial] ([createtime],[cltpdz],[clnlxh],[swclmc],[tenantcode],[infostatus],[swclbm],[lastmodifypeople],[clxtdz],[cljs],[active],[relationid],[createpeople],[cltjzt],[lastmodifytime],[materialid],[clsyrq],[clywmc]) select [createtime],[cltpdz],[clnlxh],[swclmc],[tenantcode],[infostatus],[swclbm],[lastmodifypeople],[clxtdz],[cljs],[active],[relationid],[createpeople],[cltjzt],[lastmodifytime],[materialid],[clsyrq],[clywmc] from yzdl.dbo.[xzmaterial]
+
+delete from [xzmaterialcategory]
+insert into [xzmaterialcategory] ([lastmodifypeople],[wlfllx],[createtime],[tenantcode],[swflmc],[sjflid],[lastmodifytime],[materialcategoryid],[createpeople],[active],[swflbm]) select [lastmodifypeople],[wlfllx],[createtime],[tenantcode],[swflmc],[sjflid],[lastmodifytime],[materialcategoryid],[createpeople],[active],[swflbm] from yzdl.dbo.[xzmaterialcategory]
+
+delete from [xzmaterialcategoryinfo]
+insert into [xzmaterialcategoryinfo] ([materialid],[lastmodifytime],[materialcategoryinfoid],[lastmodifypeople],[createtime],[createpeople],[materialcategoryid],[active]) select [materialid],[lastmodifytime],[materialcategoryinfoid],[lastmodifypeople],[createtime],[createpeople],[materialcategoryid],[active] from yzdl.dbo.[xzmaterialcategoryinfo]
+
+delete from [xzmaterialnutrition]
+insert into [xzmaterialnutrition] ([active],[materialnutritionid],[yycfdw],[yycchl],[lastmodifytime],[createtime],[lastmodifypeople],[materialid],[clyycc],[createpeople]) select [active],[materialnutritionid],[yycfdw],[yycchl],[lastmodifytime],[createtime],[lastmodifypeople],[materialid],[clyycc],[createpeople] from yzdl.dbo.[xzmaterialnutrition]
+
+delete from [xzrestaurant]
+insert into [xzrestaurant] ([sjjgid],[createpeople],[active],[jgctmc],[lastmodifytime],[jgctbz],[createtime],[jgctbm],[lastmodifypeople],[restaurantid]) select [sjjgid],[createpeople],[active],[jgctmc],[lastmodifytime],[jgctbz],[createtime],[jgctbm],[lastmodifypeople],[restaurantid] from yzdl.dbo.[xzrestaurant]
+

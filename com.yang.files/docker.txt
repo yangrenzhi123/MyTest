@@ -2,7 +2,7 @@ docker load --input iconfig.tar
 docker run -d --name cconfig -p 3100:3100 image/config
 
 docker load --input i4100.tar
-docker run -it --name c4100 -p 4100:4100 image/4100 /bin/bash #nodejs
+docker run -d --name c4100 -p 4100:4100 image/4100 #nodejs configui
 
 docker load --input i101.tar
 docker run -d --name c101 -p 3101:3101 image/101
@@ -50,20 +50,23 @@ docker load --input ihb.tar
 docker run -d --name chb -p 8088:8088 -p 801:801 image/hb
 
 docker load --input iportal.tar
-docker run -it --name cportal -p 4120:4120 image/portal /bin/bash #nodejs
+docker run -d --name cportal -p 4120:4120 image/portal
 
-docker load --input iconfigui.tar
-docker run -it --name cconfigui -p 4121:4121 image/configui /bin/bash #nodejs
+docker load --input iconsole.tar
+docker run -d --name cconsole -p 4121:4121 image/console
+
+docker logs -f cconsole
+
+docker run -it --privileged -v /database:/database image/report
 
 #删除所有容器
 docker rm $(docker ps -a -q)
+docker rmi $(docker images) 
 
 #/my/oracle/data 是机器路径，/u01/app/oracle是容器内路径
 docker run -it --name oracle -p 1521:1521 -v /my/oracle/data:/u01/app/oracle sath89/oracle-12c
 docker run -it --name oracle -p 1521:1521 -m 1024M sath89/oracle-12c
 docker run -it --name oracle -p 1521:vi1521 sath89/oracle-12c
-
-docker logs -f c120
 
 docker exec -it v3config /bin/bash
 docker exec -it v3system /usr/local/apache-tomcat-8.5.29/bin/catalina.sh run
@@ -82,6 +85,13 @@ ENV JAVA_HOME /usr/local/jdk1.8.0_161
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ENV PATH $PATH:$JAVA_HOME/bin
 CMD ["java", "-jar", "/usr/local/com.xk.msa.config-1.0.0.jar", "com.xk.msa.config.ApplicationConfig", "--spring.profiles.active=native,test211,linux"]
+
+FROM ubuntu
+MAINTAINER linx
+ADD node-v6.11.3-linux-x64.tar.gz /usr/local
+ADD com.xk.msa.config.ui.tar.gz /usr/local
+ENV PATH $PATH:/usr/local/node-v6.11.3-linux-x64/bin
+CMD ["sh", "/usr/local/com.xk.msa.config.ui/start.sh"]
 
 FROM ubuntu:14.04
 MAINTAINER linx
@@ -225,9 +235,11 @@ MAINTAINER linx
 ADD node-v6.11.3-linux-x64.tar.gz /usr/local
 ADD com.zyxk.sl.portal.ui.tar.gz /usr/local
 ENV PATH $PATH:/usr/local/node-v6.11.3-linux-x64/bin
+CMD ["sh", "/usr/local/com.zyxk.sl.portal.ui/start.sh"]
 
 FROM ubuntu
 MAINTAINER linx
 ADD node-v6.11.3-linux-x64.tar.gz /usr/local
-ADD com.xk.msa.config.ui.tar.gz /usr/local
+ADD com.zyxk.sl.console.ui.tar.gz /usr/local
 ENV PATH $PATH:/usr/local/node-v6.11.3-linux-x64/bin
+CMD ["sh", "/usr/local/com.zyxk.sl.console.ui/start.sh"]

@@ -1,0 +1,11 @@
+#foreach($table in $tables)
+delete from $table.tableName
+#if($table.hsIdentity==true)
+set IDENTITY_INSERT $table.tableName on
+#end
+insert into $table.tableName ($table.columnLink) select $table.columnLink from yzdl.dbo.$table.tableName
+#if($table.hsIdentity==true)
+set IDENTITY_INSERT $table.tableName off
+#end
+
+#end

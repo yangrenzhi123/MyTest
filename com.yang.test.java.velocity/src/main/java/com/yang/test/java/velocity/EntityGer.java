@@ -14,15 +14,35 @@ import org.apache.velocity.app.VelocityEngine;
 
 public class EntityGer {
 
-	public static void t3() throws IOException{
-		String[] s = {"Role"};
+	public static void main(String[] args) throws IOException {
+		// t();
+		// t2();
+		// t3();
+		t4("PlaceOfOrigin");
+		t2(new String[] { "PlaceOfOrigin" });
+		// System.out.println(test());
+	}
+
+	public static void t2(String[] s) throws IOException {
+		for (String entityName : s) {
+			File file = new File("I" + entityName + "Dao.java");
+			FileWriter fileWriter = new FileWriter(file);
+
+			String re = createDao(entityName);
+			fileWriter.write(re);
+			fileWriter.close();
+		}
+	}
+
+	public static void t3() throws IOException {
+		String[] s = { "Role" };
 		for (String entityName : s) {
 			File file2 = new File(entityName + "Service.java");
 			FileWriter fileWriter2 = new FileWriter(file2);
 			String re2 = createServiceImpl(entityName);
 			fileWriter2.write(re2);
 			fileWriter2.close();
-			
+
 			File file = new File("I" + entityName + "Service.java");
 			FileWriter fileWriter = new FileWriter(file);
 			String re = createService(entityName);
@@ -31,29 +51,9 @@ public class EntityGer {
 		}
 	}
 
-	public static void main(String[] args) throws IOException {
-		//t();
-		//t2();
-		//t3();
-		t4("PlaceOfOrigin");
-		t2(new String[] {"PlaceOfOrigin"});
-		//System.out.println(test());
-	}
-
-	public static void t2(String[] s) throws IOException{
-		for (String entityName : s) {
-			File file = new File("I"+entityName+"Dao.java");
-			FileWriter fileWriter = new FileWriter(file);
-
-			String re = createDao(entityName);
-			fileWriter.write(re);
-			fileWriter.close();
-		}
-	}
-	
-	public static void t4(String entityName) throws IOException{
+	public static void t4(String entityName) throws IOException {
 		List<Column> columns = new ArrayList<Column>();
-		
+
 		Column id = new Column();
 		id.isPk = true;
 		id.name = "id";
@@ -61,8 +61,8 @@ public class EntityGer {
 		id.type = "Integer";
 		columns.add(id);
 
-		String[] c = {"placeName"};
-		for(String item : c){
+		String[] c = { "placeName" };
+		for (String item : c) {
 			Column column = new Column();
 			column.name = item;
 			column.bigName = item.substring(0, 1).toUpperCase() + item.substring(1);
@@ -70,8 +70,6 @@ public class EntityGer {
 			columns.add(column);
 		}
 
-
-		
 		File file3 = new File(entityName + "Query.java");
 		FileWriter fileWriter3 = new FileWriter(file3);
 		String re3 = createQueryModel(entityName, columns);
@@ -83,7 +81,7 @@ public class EntityGer {
 		String re2 = createController(entityName, columns);
 		fileWriter2.write(re2);
 		fileWriter2.close();
-		
+
 		File file = new File(entityName + ".java");
 		FileWriter fileWriter = new FileWriter(file);
 		String re = createView(entityName, "com.xk.campushealth.entity", columns);
@@ -137,7 +135,7 @@ public class EntityGer {
 
 		return writer.toString();
 	}
-	
+
 	public static String createController(String entityName, List<Column> columns) {
 		// 创建引擎
 		VelocityEngine ve = new VelocityEngine();
@@ -274,6 +272,29 @@ public class EntityGer {
 		context.put("package", packageName);
 		context.put("tableName", tableName);
 		context.put("columns", columns);
+
+		// 设置输出
+		StringWriter writer = new StringWriter();
+		// 将环境数据转化输出
+		t.merge(context, writer);
+
+		return writer.toString();
+	}
+
+	public static String createShuJuQianYi(List<ShuJuQianYiTable> tables) {
+		// 创建引擎
+		VelocityEngine ve = new VelocityEngine();
+		// 设置模板加载路径，这里设置的是class下
+		ve.setProperty(Velocity.RESOURCE_LOADER, "class");
+		ve.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+
+		// 进行初始化操作
+		ve.init();
+		// 加载模板，设定模板编码
+		Template t = ve.getTemplate("com/yang/test/java/velocity/ShuJuQianYi.vm", "UTF-8");
+		// 设置初始化数据
+		VelocityContext context = new VelocityContext();
+		context.put("tables", tables);
 
 		// 设置输出
 		StringWriter writer = new StringWriter();
