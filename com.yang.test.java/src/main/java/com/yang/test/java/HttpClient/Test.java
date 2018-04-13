@@ -32,11 +32,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 @SuppressWarnings("deprecation")
 public class Test {
 
-	public static void main(String[] args) throws ClientProtocolException, IOException {
+	public static void main111(String[] args) throws ClientProtocolException, IOException {
 		testProxy();
 	}
 	
-	public static void main4(String[] args) throws ClientProtocolException, IOException {
+	public static void main(String[] args) throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpGet get = new HttpGet("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=5_6R3s3uNlQ2mvgxifHbd6MFBBmSpNfyUNL7nH3ofLDVp8jZJ1aRjppX6SA0AXBE884a6ig3em23_urErocxjDKSB77JVSrymcRriAWtPaF1d0FkpsZol2xmkc3jADJqPz6R-Vf7FOC3AB2wS3AXAbAAALIL");
 		HttpResponse response = httpClient.execute(get);

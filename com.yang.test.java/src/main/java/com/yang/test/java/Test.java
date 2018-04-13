@@ -36,10 +36,6 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("1", 1);
-		
-		m.clear();
 		System.out.println(1);
 	}
 
