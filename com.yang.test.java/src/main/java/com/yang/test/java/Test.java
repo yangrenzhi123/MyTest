@@ -10,8 +10,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
@@ -21,9 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Timer;
@@ -37,47 +33,6 @@ public class Test {
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		System.out.println(1);
-	}
-
-	public static String decodeUnicode(String str) {
-		  Charset set = Charset.forName("UTF-16");
-		  Pattern p = Pattern.compile("\\\\u([0-9a-fA-F]{4})");
-		  Matcher m = p.matcher( str );
-		  int start = 0 ;
-		  int start2 = 0 ;
-		  StringBuffer sb = new StringBuffer();
-		  while( m.find( start ) ) {
-		   start2 = m.start() ;
-		   if( start2 > start ){
-		    String seg = str.substring(start, start2) ;
-		    sb.append( seg );
-		   }
-		   String code = m.group( 1 );
-		   int i = Integer.valueOf( code , 16 );
-		   byte[] bb = new byte[ 4 ] ;
-		   bb[ 0 ] = (byte) ((i >> 8) & 0xFF );
-		   bb[ 1 ] = (byte) ( i & 0xFF ) ;
-		   ByteBuffer b = ByteBuffer.wrap(bb);
-		   sb.append( String.valueOf( set.decode(b) ).trim() );
-		   start = m.end() ;
-		  }
-		  start2 = str.length() ;
-		  if( start2 > start ){
-		   String seg = str.substring(start, start2) ;
-		   sb.append( seg );
-		  }
-		  return sb.toString() ;
-		 }
-	
-	public static int t (){
-		return 2;
-	}
-	
-	public static void main1111(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		T1 t1 = (T1)Class.forName("com.yang.test.java.T2").newInstance();
-		t1.setId(2);
-		
-		System.out.println(t1);
 	}
 
 	public static void main111(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
@@ -370,25 +325,5 @@ public class Test {
 
 	public static void test8() {
 		System.out.println(Test.class.getResource("/").getPath());
-	}
-}
-
-class T1 {
-	private Integer id;
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-}
-
-class T2 extends T1 {
-	private Integer id;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 }

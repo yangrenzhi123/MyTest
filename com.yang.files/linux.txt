@@ -1,3 +1,0 @@
-unzip -o -d . myfile.zip
-
-tar -czf  .tar.gz 

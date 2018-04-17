@@ -9,3 +9,8 @@ spring:
       server:
         git:
           uri: https://github.com/yangrenzhi123/TestConfig
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
