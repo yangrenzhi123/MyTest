@@ -11,6 +11,10 @@ public class T extends Super {
 	private Long id;
 	private Integer value;
 
+	public T() {
+		super();
+	}
+
 	public T(Long id, Integer value) {
 		super();
 		this.id = id;

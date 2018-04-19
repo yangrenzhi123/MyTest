@@ -6,6 +6,7 @@ import com.yang.test.java.velocity.ShuJuQianYiTable;
 
 public interface TaskDao {
 
+	void test();
 	void test(String tableName) throws IOException;
 	ShuJuQianYiTable test2(String tableName) throws IOException;
 }

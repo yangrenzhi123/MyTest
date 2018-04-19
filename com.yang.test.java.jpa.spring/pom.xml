@@ -44,7 +44,6 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>3.6.5.Final</version>
 		</dependency>
-		<!-- c3p0 -->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
@@ -54,6 +53,11 @@
 			<groupId>com.yang</groupId>
 			<artifactId>com.yang.test.java.velocity</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.9</version>
 		</dependency>
 	</dependencies>
 </project>
