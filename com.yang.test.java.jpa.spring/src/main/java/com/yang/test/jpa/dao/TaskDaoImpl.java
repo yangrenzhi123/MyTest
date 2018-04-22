@@ -18,17 +18,32 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yang.test.java.velocity.Column;
 import com.yang.test.java.velocity.EntityGer;
 import com.yang.test.java.velocity.ShuJuQianYiTable;
+import com.yang.test.jpa.spring.entity.T;
 
 @SuppressWarnings("unchecked")
 @Repository("taskDao")
 public class TaskDaoImpl implements TaskDao {
 
-	@PersistenceContext(unitName = "forC3po")
+	//@PersistenceContext(unitName = "forC3po")
 	private EntityManager em;
-	@PersistenceContext(unitName = "default")
+	//@PersistenceContext(unitName = "default")
 	private EntityManager df;
+	//@PersistenceContext(unitName = "forJdbc")
+	private EntityManager jbdc;
+	@PersistenceContext(unitName = "forDurid")
+	private EntityManager durid;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
+		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
+		final TaskDao b = (TaskDao) ac.getBean("taskDao");
+		b.test();
+	}
+
+	public void test() {
+		System.out.println(durid.find(T.class, 16L));
+	}
+	
+	public static void main22(String[] args) throws IOException {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
 		final TaskDao b = (TaskDao) ac.getBean("taskDao");
 
