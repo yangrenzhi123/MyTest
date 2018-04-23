@@ -1,0 +1,14 @@
+server:
+  port: 8889
+management:
+  security:
+    enabled: false
+spring:
+  profiles: 
+    active: native #不配置，一直提示uri for git
+  rabbitmq:
+    host: 192.168.6.248
+    port: 5672
+    username: yy
+    password: yy
+    virtual-host: yy

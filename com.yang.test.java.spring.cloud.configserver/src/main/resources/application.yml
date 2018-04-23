@@ -1,16 +1,6 @@
-server:
-  port: 8889
-management:
-  security:
-    enabled: false
 spring:
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/yangrenzhi123/TestConfig
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+        native:
+          search-locations: C:/Users/yangrenzhi/Documents/GitHub/MyTest/com.yang.test.java.spring.cloud.configserver/src/main/resources/conf
