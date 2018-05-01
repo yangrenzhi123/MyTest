@@ -4,14 +4,16 @@
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} %M %L - %msg%xEx%n" />
 		</Console>
-		<File name="log" fileName="C:/log/test.log" append="false">
-			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} %M %L - %msg%xEx%n" />
+		<File name="log" fileName="C:/log/error.log" append="false">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} %M %L - %msg%xEx%n - 11" />
 		</File>
 	</Appenders>
 	<Loggers>
+		<logger name="com.yang.test.java.log.log4j" level="ERROR">
+			<AppenderRef ref="log" />
+		</logger>
 		<Root level="INFO">
 			<AppenderRef ref="Console" />
-			<AppenderRef ref="log" />
 		</Root>
 	</Loggers>
 </Configuration>

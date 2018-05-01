@@ -3,7 +3,7 @@ server:
 management:
   security:
     enabled: false
-spring:
+spring: 
   profiles: 
     active: native #不配置，一直提示uri for git
   rabbitmq:
