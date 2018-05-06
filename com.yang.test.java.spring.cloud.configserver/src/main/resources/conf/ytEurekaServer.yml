@@ -1,0 +1,20 @@
+server:
+  port: 8761
+security:
+  basic:
+    enabled: false
+eureka:
+  server:
+    enableSelfPreservation: false #false删除不可用实例
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /

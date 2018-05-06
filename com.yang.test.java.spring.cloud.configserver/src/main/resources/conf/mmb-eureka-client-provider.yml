@@ -1,0 +1,15 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+words: you,me,he4r
+spring:
+  rabbitmq:
+    host: 192.168.6.248
+    port: 5672
+    username: yy
+    password: yy
+    publisher-confirms: true
+    publisher-returns: true
+    mandatory: true
+    virtual-host: yy

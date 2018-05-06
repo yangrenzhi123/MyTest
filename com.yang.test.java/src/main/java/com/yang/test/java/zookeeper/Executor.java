@@ -31,9 +31,8 @@ public class Executor implements Watcher, Runnable, DataMonitor.DataMonitorListe
 
 	Process child;
 
-	public Executor(String hostPort, String znode, String filename, String exec[]) throws KeeperException, IOException {
+	public Executor(String hostPort, String znode, String filename) throws KeeperException, IOException {
 		this.filename = filename;
-		this.exec = exec;
 		zk = new ZooKeeper(hostPort, 3000, this);
 		dm = new DataMonitor(zk, znode, null, this);
 	}
@@ -42,17 +41,11 @@ public class Executor implements Watcher, Runnable, DataMonitor.DataMonitorListe
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		if (args.length < 3) {
-			System.err.println("USAGE: Executor hostPort znode filename program [args ...]");
-			System.exit(2);
-		}
-		String hostPort = args[0];
-		String znode = args[1];
-		String filename = args[2];
-		String exec[] = new String[args.length - 3];
-		System.arraycopy(args, 3, exec, 0, exec.length);
+		String hostPort = "127.0.0.1:2181";
+		String znode = "/com.xk.msa.registry";
+		String filename = "/tt";
 		try {
-			new Executor(hostPort, znode, filename, exec).run();
+			new Executor(hostPort, znode, filename).run();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

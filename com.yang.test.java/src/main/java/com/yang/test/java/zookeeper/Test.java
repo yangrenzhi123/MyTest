@@ -7,6 +7,7 @@ import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
@@ -25,13 +26,14 @@ public class Test {
 		
 
 		//创建节点
-		zk.create("/com.xk.msa.registry/com.xk.hb.hbplatform/address-", "192.168.5.152.8080".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+		zk.create("/com.xk.msa.registry/address-", "192.168.5.152:8080".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+		zk.create("/com.xk.msa.registry/address-", "192.168.5.152:8080".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 		
-//		List<String> l = zk.getChildren("/com.xk.msa.registry/com.xk.hb.hbplatform", false);
-//		
-//		byte[] bs = zk.getData("/com.xk.msa.registry/com.xk.hb.hbplatform/" + l.get(0),true,new Stat());
-//		System.out.println(new String(bs));
-//		System.out.println();
+		List<String> l = zk.getChildren("/com.xk.msa.registry", false);
+		
+		byte[] bs = zk.getData("/com.xk.msa.registry/" + l.get(0),true,new Stat());
+		System.out.println(new String(bs));
+		System.out.println();
 		Thread.sleep(1000000000);
 	}
 }
@@ -39,6 +41,7 @@ public class Test {
 class TestWatcher implements Watcher {
 
 	public void process(WatchedEvent arg0) {
-		System.out.println(1);
+		System.out.println(arg0.getState());
+		System.out.println(arg0.getType());
 	}	
 }
