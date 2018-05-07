@@ -1,3 +1,7 @@
-JavaService.exe -uninstall TestService
+https://blog.csdn.net/zhulinu/article/details/8601848
 
-JavaService.exe -install TestService C:\jvm.dll -Djava.class.path="C:\tools.jar;D:\projects\test\com.yang.test.java.windows.service\bin" -start Test
+<dependency>
+    <groupId>tanukisoft</groupId>
+    <artifactId>wrapper</artifactId>
+    <version>3.2.3</version>
+</dependency>

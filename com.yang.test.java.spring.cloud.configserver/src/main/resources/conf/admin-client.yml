@@ -1,0 +1,4 @@
+spring: 
+  boot:  
+    admin:  
+      url: http://localhost:64000/svc-monitor # 向服务端注册的地址  
