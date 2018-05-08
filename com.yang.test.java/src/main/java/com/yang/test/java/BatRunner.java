@@ -1,4 +1,4 @@
-package com.yang.bat;
+package com.yang.test.java;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,19 +6,17 @@ import java.io.InputStreamReader;
 import java.util.Date;
 
 public class BatRunner {
-	public static void main(String[] args) throws IOException,
-			InterruptedException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		way7();
 	}
 
 	public static void way7() throws IOException{
-		Process p = Runtime.getRuntime().exec("cmd.exe /c xcopy /s/i/y C:\\QSTEMP\\usr\\com.qs*.jar C:\\virgo-tomcat-server-3.0.3.RELEASE4\\usr");
+		Process p = Runtime.getRuntime().exec("ping mail.163.com");
 		console(p);
 	}
 
 	private static void console(Process p) throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-				p.getInputStream(), "GBK"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
 		String line;
 		while ((line = br.readLine()) != null) {
 			System.out.println(line);
