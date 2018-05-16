@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<frequency>300000</frequency>
+	<processes>
+		<process>
+			<port>8088</port>
+			<exec>cmd /c D:\apache-tomcat-8.5.29\bin\catalina.bat run</exec>
+			<execTime>120000</execTime>
+		</process>
+	</processes>
+</config>

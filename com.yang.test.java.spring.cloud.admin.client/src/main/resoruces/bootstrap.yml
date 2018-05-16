@@ -1,0 +1,13 @@
+spring: 
+  application:
+    name: admin-client
+  cloud:
+    config:
+      uri: http://127.0.0.1:8889 
+  boot:  
+    admin:  
+      client:  
+        prefer-ip: true # 解决windows下运行时无法识别主机名的问题
+management:
+  security:
+    enabled: false
