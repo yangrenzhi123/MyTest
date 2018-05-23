@@ -14,7 +14,6 @@ import javax.net.ssl.SSLSocket;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
@@ -34,9 +33,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 public class Test {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
-		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpVersion ver = (HttpVersion)httpClient.getParams().getParameter("http.protocol.version");
-		System.out.println(ver);
+		testProxy();
 	}
 	
 	public static void main1111(String[] args) throws ClientProtocolException, IOException {
@@ -50,7 +47,7 @@ public class Test {
 	}
 
 	public static void testProxy() throws ClientProtocolException, IOException {
-	    HttpHost proxy = new HttpHost("127.0.0.1", 8888); 
+	    HttpHost proxy = new HttpHost("192.168.208.135", 8888); 
 	    RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
 		HttpGet get = new HttpGet("http://www.baidu.com");
 		get.setConfig(config);

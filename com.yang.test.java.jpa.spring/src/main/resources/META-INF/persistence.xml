@@ -16,6 +16,15 @@
 			<property name="Hibernate.default_schema" value="dbo" />
 		</properties>
 	</persistence-unit>
+	<persistence-unit name="forOracle" transaction-type="RESOURCE_LOCAL">
+		<class>com.yang.test.jpa.spring.entity.G</class>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver" />
+			<property name="hibernate.connection.url" value="jdbc:oracle:thin:@192.168.0.211:1521:orcl" />
+			<property name="hibernate.connection.username" value="orcl" />
+			<property name="hibernate.connection.password" value="orcl" />
+		</properties>
+	</persistence-unit>
 	<persistence-unit name="forJdbc" transaction-type="RESOURCE_LOCAL">
 		<class>com.yang.test.jpa.spring.entity.T</class>
 	</persistence-unit>

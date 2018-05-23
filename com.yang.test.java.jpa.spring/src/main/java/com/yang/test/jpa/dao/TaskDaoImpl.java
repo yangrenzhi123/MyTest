@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yang.test.java.velocity.Column;
 import com.yang.test.java.velocity.EntityGer;
 import com.yang.test.java.velocity.ShuJuQianYiTable;
-import com.yang.test.jpa.spring.entity.T;
+import com.yang.test.jpa.spring.entity.G;
 
 @SuppressWarnings("unchecked")
 @Repository("taskDao")
@@ -30,8 +30,11 @@ public class TaskDaoImpl implements TaskDao {
 	private EntityManager df;
 	//@PersistenceContext(unitName = "forJdbc")
 	private EntityManager jbdc;
-	@PersistenceContext(unitName = "forDurid")
+	//@PersistenceContext(unitName = "forDurid")
 	private EntityManager durid;
+	@PersistenceContext(unitName = "forOracle")
+	private EntityManager oracle;
+	
 
 	public static void main(String[] args) {
 		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:root-context.xml");
@@ -39,8 +42,12 @@ public class TaskDaoImpl implements TaskDao {
 		b.test();
 	}
 
+	@Transactional(value = "transactionManagerForOracle")
 	public void test() {
-		System.out.println(durid.find(T.class, 16L));
+		G g = new G();
+		g.setValueId(2L);
+		
+		oracle.persist(g);
 	}
 	
 	public static void main22(String[] args) throws IOException {

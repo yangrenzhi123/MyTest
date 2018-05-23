@@ -15,18 +15,19 @@
 
 	<context:component-scan base-package="com.yang.test.jpa" />
 
-<!-- 	<tx:annotation-driven transaction-manager="transactionManager" />
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	<tx:annotation-driven transaction-manager="transactionManagerForOracle" />
+	<bean id="transactionManagerForOracle" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryForOracle" />
 	</bean>
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="entityManagerFactoryForOracle" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="forOracle" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="generateDdl" value="false" />
 				<property name="showSql" value="false" />
 			</bean>
 		</property>
-	</bean> -->
+	</bean>
 
 <!-- 	<bean id="entityManagerFactoryForJdbc" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="forJdbc" />
@@ -74,42 +75,4 @@
 		当连接达到上限时，程序等待连接的超时时间，单位：毫秒
 		<property name="checkoutTimeout" value="10000" />
 	</bean> -->
-
-	<bean id="entityManagerFactoryForDurid" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="forDurid" />
-		<property name="dataSource" ref="durid"></property>
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="generateDdl" value="false" />
-				<property name="showSql" value="false" />
-			</bean>
-		</property>
-	</bean>
-	<bean id="durid" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-		<property name="url" value="jdbc:jtds:sqlserver://127.0.0.1:1433/Test" />
-		<property name="username" value="sa" />
-		<property name="password" value="1qazxcvbnm,./" />
-		<!-- 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时 -->
-		<property name="initialSize" value="20" />
-		<property name="minIdle" value="20" />
-		<property name="maxActive" value="200" />
-		<property name="maxWait" value="60000" />
-		<property name="filters" value="stat" />
-		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-		<property name ="timeBetweenEvictionRunsMillis" value="120000" />
-		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-		<property name ="minEvictableIdleTimeMillis" value="300000" />
-		<property name="validationQuery" value="SELECT 'x'" />
-		<property name="testWhileIdle" value="true" />
-		<property name="testOnBorrow" value="false" />
-		<property name="testOnReturn" value="false" />
-		<!-- 是否缓存preparedStatement，也就是PSCache。 
-			 PSCache对支持游标的数据库性能提升巨大，比如说oracle。 
-			 在mysql5.5以下的版本中没有PSCache功能，建议关闭掉。
-			 作者在5.5版本中使用PSCache，通过监控界面发现PSCache有缓存命中率记录， 
-			 该应该是支持PSCache。 -->
-		<property name="poolPreparedStatements" value="true" />
-		<property name="maxOpenPreparedStatements" value="100" />
-		<property name="maxPoolPreparedStatementPerConnectionSize" value="50" />
-	</bean>
 </beans>
