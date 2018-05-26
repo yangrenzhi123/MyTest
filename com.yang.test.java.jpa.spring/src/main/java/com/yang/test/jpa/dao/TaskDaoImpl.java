@@ -44,10 +44,10 @@ public class TaskDaoImpl implements TaskDao {
 
 	@Transactional(value = "transactionManagerForOracle")
 	public void test() {
-		G g = new G();
-		g.setValueId(2L);
+		G t = new G();
+		t.setValueId(1L);
 		
-		oracle.persist(g);
+		oracle.persist(t);
 	}
 	
 	public static void main22(String[] args) throws IOException {

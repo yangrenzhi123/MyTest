@@ -19,7 +19,7 @@ import javax.crypto.spec.IvParameterSpec;
 public class DesTest {
 
 	public static void main(String[] args) throws Exception {
-		//test1();
+		test1();
 		test2();
 	}
 	
