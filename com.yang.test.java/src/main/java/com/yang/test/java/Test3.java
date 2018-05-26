@@ -125,7 +125,7 @@ public class Test3 {
 		//System.out.println(Test3.AESDncode("123456", URLDecoder.decode("5YHo2TCpWggVZwFoEzLK9w%3D%3D", "utf-8")));
 		//System.out.println(URLDecoder.decode("C3mga4C0mswVsVHwUxA5Bg%3D%3D", "utf-8"));
 		
-		System.out.println(URLEncoder.encode(Test3.AESEncode("123456", "13575682008"), "utf-8"));
+		System.out.println(Test3.AESEncode("fdfefe43", "helloworlds"));
 		//System.out.println(URLEncoder.encode("6CmfYIA1et3DpyblfkgtMg==", "utf-8"));
 	}
 }

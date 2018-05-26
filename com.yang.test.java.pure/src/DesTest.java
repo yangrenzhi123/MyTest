@@ -1,3 +1,4 @@
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,8 +20,7 @@ import javax.crypto.spec.IvParameterSpec;
 public class DesTest {
 
 	public static void main(String[] args) throws Exception {
-		test1();
-		test2();
+		test3();
 	}
 	
 	public static void test1() throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException, IllegalBlockSizeException, BadPaddingException {
@@ -28,7 +28,7 @@ public class DesTest {
 		FileOutputStream fos = new FileOutputStream(f2);
 		BufferedOutputStream bos = new BufferedOutputStream(fos);
 		
-		File f1 = new File("D:/Downloads/hjd2048.com-0412ssni178-h264/1.mp4");
+		File f1 = new File("D:/Downloads/1.mp4");
 		FileInputStream fis = new FileInputStream(f1);
 		byte[] b = new byte[2047];
 		while(fis.read(b) != -1) {
@@ -84,24 +84,27 @@ public class DesTest {
 		bos.close();
 	}
 
-	public static void main11111(String[] args) throws InterruptedException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
-		byte[] cs = new byte[] {49, 50, 51, 52, 53, 54, 55};
-		byte[] key = "12345678".getBytes();
+	public static void test3() throws InterruptedException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
+		byte[] key = "fdfefe43".getBytes();
 		DESKeySpec desKey = new DESKeySpec(key);
 		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, SecretKeyFactory.getInstance("DES").generateSecret(desKey), new IvParameterSpec(key));
-		byte[] t = cipher.doFinal(cs);
-
-		byte[] a = new byte[] {t[0], t[1], t[2], t[3], t[4], t[5], t[6], t[7]};
-		String s = new String(decrypt(a, "12345678"));
+		byte[] t = cipher.doFinal("helloworlds".getBytes());
+		
+		
+		String s = new String(t);
 		System.out.println(s);
 	}
 
+	public static void test4() throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
+		String s = new String(decrypt("2esxXE87E+XYIleb/dcNwA==".getBytes(), "fdfefe43"));
+		System.out.println(s);
+	}
+	
 	private static byte[] decrypt(byte[] src, String key) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
 		DESKeySpec desKey = new DESKeySpec(key.getBytes());
 		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 		cipher.init(Cipher.DECRYPT_MODE, SecretKeyFactory.getInstance("DES").generateSecret(desKey), new IvParameterSpec(key.getBytes()));
-		// 鐪熸寮�濮嬭В瀵嗘搷浣�
 		return cipher.doFinal(src);
 	}
 }
