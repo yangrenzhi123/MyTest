@@ -15,6 +15,7 @@ import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
@@ -31,31 +32,20 @@ public class Checkor {
 	public static final Map<Integer, java.lang.Process> pm = new HashMap<Integer, java.lang.Process>();
 
 	public static void justDo() {
-        //InputStream is = Checkor.class.getResourceAsStream("/config.xml");
-        //byte[] filecontent = new byte[is.available()];
-		//is.read(filecontent);
-
 		while(true){
 			try{
-				String configFilePath = System.getProperty("configFilePath");
-				File file = new File(configFilePath);
-				byte[] filecontent = new byte[(int)file.length()];
-				FileInputStream in = new FileInputStream(file);  
-	            in.read(filecontent);  
-	            in.close();
-				
-				String xml = new String(filecontent);
-				
-				StreamSource streamSource = new StreamSource(new StringReader(xml));
-				JAXBContext jaxbRes = JAXBContext.newInstance(PConfig.class.getPackage().getName(), PConfig.class.getClassLoader());
-				Unmarshaller unmarshaller = jaxbRes.createUnmarshaller();
-				JAXBElement<PConfig> reponseElement = unmarshaller.unmarshal(streamSource, PConfig.class);
-				PConfig config = reponseElement.getValue();
+				PConfig config = getConfig();
 				
 				if(scaning){
 					logger.info("scan started");
 					
 					for(final Process process : config.getProcesses().getProcess()){
+						PConfig pc = getConfig();
+						if(new Integer(1).equals(pc.getSuspend())){
+							break;
+						}
+						
+						
 						Socket socket = new Socket();
 						
 						boolean timeout = false;
@@ -115,11 +105,29 @@ public class Checkor {
 		}
 	}
 
+	private static PConfig getConfig() throws IOException, JAXBException{
+		String configFilePath = System.getProperty("configFilePath");
+		File file = new File(configFilePath);
+		byte[] filecontent = new byte[(int)file.length()];
+		FileInputStream in = new FileInputStream(file);  
+        in.read(filecontent);  
+        in.close();
+		
+		String xml = new String(filecontent);
+		
+		StreamSource streamSource = new StreamSource(new StringReader(xml));
+		JAXBContext jaxbRes = JAXBContext.newInstance(PConfig.class.getPackage().getName(), PConfig.class.getClassLoader());
+		Unmarshaller unmarshaller = jaxbRes.createUnmarshaller();
+		JAXBElement<PConfig> reponseElement = unmarshaller.unmarshal(streamSource, PConfig.class);
+		PConfig config = reponseElement.getValue();
+		return config;
+	}
+	
 	private static void getErrorStream(java.lang.Process p) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(p.getErrorStream(), "GBK"));
 		String line;
 		while ((line = br.readLine()) != null) {
-			System.out.println(line);
+			//System.out.println(line);
 		}
 		br.close();
 	}
@@ -128,7 +136,7 @@ public class Checkor {
 		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
 		String line;
 		while ((line = br.readLine()) != null) {
-			System.out.println(line);
+			//System.out.println(line);
 		}
 		br.close();
 	}

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+suspend 1表示暂停监控
+frequency 300000 表示300秒执行一次检查
+process port 表示服务端口 exec表用其中的命令启动程序 execTime经过多少时间，执行下一个程序
+
+
+-DconfigFilePath=C:/V3Check/config.xml -Djava.ext.dirs=C:\V3Check\lib -cp C:\V3Check\com.zyxk.sevice.check-0.0.1-SNAPSHOT.jar com.zyxk.sevice.check.BootController
+ -->
 <config>
 	<frequency>300000</frequency>
+	<suspend>1</suspend>
 	<processes>
 		<process>
 			<port>8088</port>

@@ -1,0 +1,22 @@
+DECLARE @sy nvarchar(max)
+declare @sql nvarchar(max)
+select @sy=name from sys.indexes where object_id = (select object_id from sys.TABLES where name = 'xdiseasecomplication')
+set @sql = 'ALTER TABLE xdiseasecomplication DROP CONSTRAINT ' + @sy
+EXEC SP_EXECUTESQL @sql
+GO
+ALTER TABLE [dbo].[xdiseasecomplication] ALTER COLUMN [diseasecomplicationid] int NULL
+GO
+IF EXISTS(select 1 from sysobjects where type='tr' and name='trig_xdiseasecomplication')
+drop trigger trig_xdiseasecomplication
+GO
+create trigger trig_xdiseasecomplication on [xdiseasecomplication] after insert
+as
+begin
+	declare @id int;
+	
+	select @id=gen_value from ID_GENERATOR where gen_name = 'decrease'
+	update ID_GENERATOR set gen_value = (@id-1) where gen_name = 'decrease'
+
+	update xdiseasecomplication set diseasecomplicationid = @id where diseasecomplicationid is null
+end
+GO
