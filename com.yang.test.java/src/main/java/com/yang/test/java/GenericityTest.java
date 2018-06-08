@@ -1,6 +1,6 @@
 package com.yang.test.java;
 
-public class Test2 {
+public class GenericityTest {
 
 	public static void main(String[] args) {
 		Pi<S> p1 = new Pi<S>();
