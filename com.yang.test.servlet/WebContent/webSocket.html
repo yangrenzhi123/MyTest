@@ -20,12 +20,12 @@
 		}
 
 		$("#btnConnection").click(function() {
-			socket = new WebSocket("ws://192.168.19.111:8080/push");
+			socket = new WebSocket("ws://127.0.0.1:8081/push");
 			socket.onopen = function() {
 				alert("opened");
 			};
 			socket.onmessage = function(msg) {
-				$("#content").val(msg);
+				$("#content").val(msg.data);
 			};
 			socket.onclose = function() {
 				alert("closed");
