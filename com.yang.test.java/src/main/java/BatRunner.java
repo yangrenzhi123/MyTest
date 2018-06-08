@@ -14,8 +14,6 @@ public class BatRunner {
 	public static void way7() throws IOException {
 		
 		new Thread(new Runnable() {
-			
-			@Override
 			public void run() {
 				try {
 					Process p = Runtime.getRuntime().exec("ping mail.163.com -t");
