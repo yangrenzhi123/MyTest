@@ -26,7 +26,7 @@ public class EchoEndpoint {
 	@OnMessage
 	public void onMessage(String message) throws IOException {
 		for(Session item : EchoEndpoint.l) {
-			item.getBasicRemote().sendText("123456");
+			item.getBasicRemote().sendText("我是推送消息");
 		}
 	}
 

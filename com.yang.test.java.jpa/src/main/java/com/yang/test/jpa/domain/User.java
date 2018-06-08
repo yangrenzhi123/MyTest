@@ -2,24 +2,29 @@ package com.yang.test.jpa.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "\"USER\"")
-public class User extends BaseEntity {
+public class User {
 
+	private Integer id;
+	
 	private String name;
 
 	private String qq;
 
 	public User() {
-		super();
 	}
 
-	public User(String name, String qq) {
-		super();
-		this.name = name;
-		this.qq = qq;
+	@Id
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Column(name = "NAME")
