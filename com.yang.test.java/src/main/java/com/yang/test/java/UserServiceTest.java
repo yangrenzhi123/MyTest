@@ -6,7 +6,7 @@ public class UserServiceTest {
 		UserServiceProxy pro = new UserServiceProxy();
 		UserServiceBean bean = new UserServiceBean("wuq");
 		UserService se = (UserService) pro.createProxyIntance(bean);
-		se.say();
+		se.hello();
 	}
 
 }

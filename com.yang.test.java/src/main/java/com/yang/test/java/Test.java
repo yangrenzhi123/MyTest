@@ -32,7 +32,9 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		System.out.println(1);
+		String[] s = "1:2".split(":");
+		System.out.println(s[0]);
+		System.out.println(s[1]);
 	}
 
 	public static void main111(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {

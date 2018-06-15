@@ -82,7 +82,7 @@ public class Checkor {
 									}
 								}
 							}).start();
-							pm.put(process.getPort(), p);
+							pm.put(process.getPort(), p2);
 							
 							Long execTime = process.getExecTime();
 							if(execTime != null){

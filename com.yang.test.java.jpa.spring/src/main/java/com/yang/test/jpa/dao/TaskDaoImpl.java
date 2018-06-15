@@ -19,6 +19,7 @@ import com.yang.test.java.velocity.Column;
 import com.yang.test.java.velocity.EntityGer;
 import com.yang.test.java.velocity.ShuJuQianYiTable;
 import com.yang.test.jpa.spring.entity.G;
+import com.yang.test.jpa.spring.entity.User;
 
 @SuppressWarnings("unchecked")
 @Repository("taskDao")
@@ -26,13 +27,13 @@ public class TaskDaoImpl implements TaskDao {
 
 	//@PersistenceContext(unitName = "forC3po")
 	private EntityManager em;
-	//@PersistenceContext(unitName = "default")
+	@PersistenceContext(unitName = "default")
 	private EntityManager df;
 	//@PersistenceContext(unitName = "forJdbc")
 	private EntityManager jbdc;
 	//@PersistenceContext(unitName = "forDurid")
 	private EntityManager durid;
-	@PersistenceContext(unitName = "forOracle")
+	//@PersistenceContext(unitName = "forOracle")
 	private EntityManager oracle;
 	
 
@@ -42,12 +43,8 @@ public class TaskDaoImpl implements TaskDao {
 		b.test();
 	}
 
-	@Transactional(value = "transactionManagerForOracle")
 	public void test() {
-		G t = new G();
-		t.setValueId(1L);
-		
-		oracle.persist(t);
+		df.find(User.class, 1);
 	}
 	
 	public static void main22(String[] args) throws IOException {

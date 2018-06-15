@@ -9,13 +9,12 @@ public class UserServiceProxy implements InvocationHandler {
 
 	public Object createProxyIntance(Object targetObject) {
 		this.targetObject = targetObject;
-		return Proxy.newProxyInstance(this.targetObject.getClass()
-				.getClassLoader(),
-				this.targetObject.getClass().getInterfaces(), this);
+		return Proxy.newProxyInstance(this.targetObject.getClass().getClassLoader(), this.targetObject.getClass().getInterfaces(), this);
 	}
 
-	public Object invoke(Object proxy, Method method, Object[] args)
-			throws Throwable {
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		System.out.println(123);
+		
 		UserServiceBean bean = (UserServiceBean) this.targetObject;
 		Object obj = null;
 		if (bean.getName() != null) {
