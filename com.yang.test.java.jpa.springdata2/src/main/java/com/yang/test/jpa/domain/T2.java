@@ -2,12 +2,14 @@ package com.yang.test.jpa.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.OptimisticLocking;
 
 @Entity
+@Table(name = "T")
 @OptimisticLocking
-public class T {
+public class T2 {
 
 	private Integer id;
 	private Integer value;

@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,15 @@ public class Test extends BaseJunit4Test {
 	@Rollback(false)
 	public void test() {
 		tDao.findAll(new Specification<T>() {
-			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> q, CriteriaBuilder cb) {
-				List<Predicate> list = new ArrayList<Predicate>();
-				list.add(cb.equal(root.get("id"), 18));
-				Predicate[] p = new Predicate[list.size()];
-				Predicate p2 = cb.or(new Predicate[]{cb.equal(root.get("id"), 16), cb.equal(root.get("id"), 17)});
-				list.add(p2);
-				return cb.and(list.toArray(p));
+			public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		        List<Selection<?>> selections = new ArrayList<Selection<?>>();
+		        selections.add(root.get("id").alias("id"));
+		        
+		        query.multiselect(selections);
+		        
+		        query.groupBy(root.get("id"));
+				
+				return query.getGroupRestriction();
 			}
 		});
 	}

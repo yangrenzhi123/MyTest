@@ -9,6 +9,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -18,8 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yang.test.java.velocity.Column;
 import com.yang.test.java.velocity.EntityGer;
 import com.yang.test.java.velocity.ShuJuQianYiTable;
-import com.yang.test.jpa.spring.entity.G;
-import com.yang.test.jpa.spring.entity.User;
+import com.yang.test.jpa.spring.entity.T;
 
 @SuppressWarnings("unchecked")
 @Repository("taskDao")
@@ -43,8 +47,48 @@ public class TaskDaoImpl implements TaskDao {
 		b.test();
 	}
 
+
+	@SuppressWarnings("rawtypes")
 	public void test() {
-		df.find(User.class, 1);
+		CriteriaBuilder cb = df.getCriteriaBuilder();
+		CriteriaQuery<?> query = cb.createQuery();
+        Root<T> root = query.from(T.class);
+        
+        List<Selection<?>> selections = new ArrayList<Selection<?>>();
+        selections.add(root.get("id").alias("id"));
+        //selections.add(cb.min(root.get("id").as(Integer.class)));
+
+        query.multiselect(selections);
+        //query.groupBy(root.get("id"));
+        //query.having(cb.greaterThan(cb.count(root.get("value")).as(Integer.class), 1));
+        
+        
+        TypedQuery q = df.createQuery(query);
+        q.setFirstResult(1);
+        q.setMaxResults(1);
+		List l = q.getResultList();
+		System.out.println();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void test2() {
+		CriteriaBuilder cb = df.getCriteriaBuilder();
+		CriteriaQuery<?> query = cb.createQuery();
+        Root<T> root = query.from(T.class);
+        
+        List<Selection<?>> selections = new ArrayList<Selection<?>>();
+        selections.add(root.get("id").alias("id"));
+        selections.add(cb.min(root.get("id").as(Integer.class)));
+
+        query.multiselect(selections);
+        query.groupBy(root.get("id"));
+        query.having(cb.greaterThan(cb.count(root.get("value")).as(Integer.class), 1));
+        
+        
+        TypedQuery q = df.createQuery(query);
+        q.setFirstResult(0);
+        q.setMaxResults(10);
+		q.getResultList();
 	}
 	
 	public static void main22(String[] args) throws IOException {

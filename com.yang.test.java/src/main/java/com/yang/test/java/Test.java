@@ -18,6 +18,8 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -32,9 +34,25 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		String[] s = "1:2".split(":");
-		System.out.println(s[0]);
-		System.out.println(s[1]);
+		t();
+	}
+	
+	public static void t(){
+		List<BigDecimal> l = new ArrayList<BigDecimal>();
+		l.add(new BigDecimal(2));
+		l.add(new BigDecimal(1));
+		
+		Collections.sort(l, new Comparator<BigDecimal>() {
+			public int compare(BigDecimal o1, BigDecimal o2) {
+				return o1.compareTo(o2) == 1 ? 1: -1;
+			}
+		});
+		
+		System.out.println();
+	}
+	
+	public static void tt(){
+		System.out.println(Math.sqrt(9));
 	}
 
 	public static void main111(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
