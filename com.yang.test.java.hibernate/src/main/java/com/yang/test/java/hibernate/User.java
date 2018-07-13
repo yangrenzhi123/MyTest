@@ -1,5 +1,7 @@
 package com.yang.test.java.hibernate;
 
+import javax.persistence.Column;
+
 public class User {
 
 	private Integer id;
@@ -7,6 +9,8 @@ public class User {
 	private String name;
 
 	private String qq;
+	
+	private String tenantId;
 
 	public String getName() {
 		return name;
@@ -30,5 +34,14 @@ public class User {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@Column(name = "TENANT_ID")
+	public String getTenantId() {
+		return tenantId;
+	}
+
+	public void setTenantId(String tenantId) {
+		this.tenantId = tenantId;
 	}
 }

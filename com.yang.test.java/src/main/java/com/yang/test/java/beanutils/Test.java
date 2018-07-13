@@ -14,7 +14,7 @@ public class Test {
 		A b = new A();
 		BeanUtils.copyProperties(a, b);
 
-		b.setI(new Timestamp(0));
+		//b.setI(new Timestamp(0));
 		
 		System.out.println(a.getI());
 		System.out.println(b.getI());

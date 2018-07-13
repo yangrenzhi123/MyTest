@@ -3,9 +3,9 @@ package com.yang.test.java.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.metamodel.MetadataSources;
 
 public class Test {
 
@@ -14,15 +14,14 @@ public class Test {
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 		SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.withOptions().tenantIdentifier("test").openSession();
+		
 		Transaction t = session.beginTransaction();
-		System.out.println(t);
-		t.begin();
+		
+		User user = new User();
+		session.persist(user);
+		
 		t.commit();
-
-		Transaction t2 = session.beginTransaction();
-		System.out.println(t2);
-		t2.commit();
 		session.close();
 	}
 }
