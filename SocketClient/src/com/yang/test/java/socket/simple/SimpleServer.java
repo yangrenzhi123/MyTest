@@ -29,6 +29,7 @@ public class SimpleServer {
 							System.out.println(b[0]);
 							
 							os.write(c);
+							os.write(c);
 						}
 					} catch (IOException e) {
 						e.printStackTrace();
