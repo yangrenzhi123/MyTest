@@ -21,10 +21,12 @@ public class Client {
 			buffer.put(a);
 			buffer.flip();
 			socket.write(buffer);
+			
+			System.out.println();
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Client().query("192.168.1.102", 8099);
+		new Client().query("127.0.0.1", 8777);
 	}
 }

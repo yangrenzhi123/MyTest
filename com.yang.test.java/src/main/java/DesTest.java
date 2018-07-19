@@ -2,8 +2,11 @@
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.WriteAbortedException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -20,7 +23,7 @@ import javax.crypto.spec.IvParameterSpec;
 public class DesTest {
 
 	public static void main(String[] args) throws Exception {
-		test3();
+		simple();
 	}
 	
 	public static void test1() throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException, IllegalBlockSizeException, BadPaddingException {
@@ -71,17 +74,14 @@ public class DesTest {
 		bos.close();
 	}
 	
-	public static void main11(String[] args) throws IOException {
+	public static void simple() throws IOException {
 		byte[] b1 = new byte[] {49};
-		byte[] b2 = new byte[] {50};
 		
+		File file = new File("D:/1.txt");
+		OutputStream fos = new FileOutputStream(file);
 		
-		File file = new File("E:/1.txt");
-		FileOutputStream fos = new FileOutputStream(file);
-		BufferedOutputStream bos = new BufferedOutputStream(fos);
-		bos.write(b1);
-		bos.write(b2);
-		bos.close();
+		fos.write(b1);
+		fos.close();
 	}
 
 	public static void test3() throws InterruptedException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {

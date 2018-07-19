@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class Server implements Runnable {
 
 	// 第一个端口
-	private Integer port = 8099;
+	private Integer port = 8777;
 	// 第一个服务器通道
 	private ServerSocketChannel serverSocketChannel;
 	// 连接
@@ -33,7 +33,7 @@ public class Server implements Runnable {
 			// 告诉程序现在不是阻塞方式的
 			this.serverSocketChannel.configureBlocking(false);
 			// 获取现在与该通道关联的套接字
-			this.serverSocketChannel.socket().bind(new InetSocketAddress("192.168.1.102", this.port));
+			this.serverSocketChannel.socket().bind(new InetSocketAddress("127.0.0.1", this.port));
 
 			// 创建选择器
 			this.selector = SelectorProvider.provider().openSelector();
