@@ -18,6 +18,11 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
+import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLContextBuilder;
 import org.apache.http.conn.ssl.TrustStrategy;
@@ -26,14 +31,57 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
-import org.codehaus.jackson.map.ObjectMapper;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "unused"})
 public class Test {
 
-	public static void main(String[] args) throws ClientProtocolException, IOException {
-		https();
+	static CloseableHttpClient httpClient = null;
+	
+	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
+		testSimple();
+	}
+
+	/** 一请求一连接 */
+	public static void testSimple() throws ClientProtocolException, IOException {
+		HttpGet get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
+
+		httpClient = HttpClients.createDefault();
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		httpClient.execute(get);
+		
+		System.out.println();
+	}
+	
+
+	public static void testPooling() throws ClientProtocolException, IOException, NoSuchAlgorithmException {
+		LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContext.getDefault());
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
+                .register("https", sslsf)
+                .register("http", new PlainConnectionSocketFactory())
+                .build();
+        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+        cm.setMaxTotal(200);
+        cm.setDefaultMaxPerRoute(20);
+
+		CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(cm).build();
+		HttpGet get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
+		httpClient.execute(get);
+		
+		
+		httpClient = HttpClients.custom().setConnectionManager(cm).build();
+		httpClient.execute(get);
+		
+		System.out.println();
 	}
 	
 	public static void https() throws ClientProtocolException, IOException {
@@ -77,23 +125,6 @@ public class Test {
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);
 		System.out.println(result);
-	}
-
-	public static void main2(String[] args) throws ClientProtocolException, IOException {
-		CloseableHttpClient httpClient = HttpClients.createDefault();
-
-		HttpGet method = new HttpGet("/hug_interview/getPhysicalExamReport.token?organCode=47174063-8&pageNum=1&pageSize=1&startDate=2017-11-01&endDate=2017-11-28");
-
-		HttpHost host = new HttpHost("test.joinhealth.cn", 80, "http");
-		HttpResponse response = httpClient.execute(host, method);
-		HttpEntity httpEntity = response.getEntity();
-		String result = EntityUtils.toString(httpEntity);
-
-		ObjectMapper mapper = new ObjectMapper();
-
-		Data data = mapper.readValue(result, Data.class);
-		Data2 data2 = mapper.readValue(data.getModel(), Data2.class);
-		System.out.println(data2);
 	}
 
 	private static SSLConnectionSocketFactory createSSLConnSocketFactory() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
