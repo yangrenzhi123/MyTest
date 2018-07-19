@@ -1,4 +1,4 @@
-package com.yang.test.java.rabbtmq;
+package com.yang.test.java.rabbtmq.workqueue;
 
 import java.io.IOException;
 
@@ -16,9 +16,9 @@ public class Worker {
 
 	public static void main(String[] argv) throws Exception {
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("192.168.1.105");
-		factory.setUsername("admin");
-		factory.setPassword("admin");
+		factory.setHost("127.0.0.1");
+		factory.setUsername("guest");
+		factory.setPassword("guest");
 
 		final Connection connection = factory.newConnection();
 		final Channel channel = connection.createChannel();
@@ -45,14 +45,10 @@ public class Worker {
 	}
 
 	private static void doWork(String task) {
-		for (char ch : task.toCharArray()) {
-			if (ch == '.') {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException _ignored) {
-					Thread.currentThread().interrupt();
-				}
-			}
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException _ignored) {
+			Thread.currentThread().interrupt();
 		}
 	}
 }

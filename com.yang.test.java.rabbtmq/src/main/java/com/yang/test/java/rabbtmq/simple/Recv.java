@@ -1,4 +1,4 @@
-package com.yang.test.java.rabbtmq;
+package com.yang.test.java.rabbtmq.simple;
 
 import com.rabbitmq.client.*;
 
@@ -12,9 +12,9 @@ public class Recv {
 
 		ConnectionFactory factory = new ConnectionFactory();
 
-		factory.setHost("192.168.1.105");
-		factory.setUsername("admin");
-		factory.setPassword("admin");
+		factory.setHost("127.0.0.1");
+		factory.setUsername("guest");
+		factory.setPassword("guest");
 
 		Connection connection = factory.newConnection();
 
