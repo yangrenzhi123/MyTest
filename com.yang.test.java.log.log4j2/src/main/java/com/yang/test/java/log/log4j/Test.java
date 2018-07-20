@@ -10,7 +10,7 @@ public class Test {
 	public static Logger logger = LogManager.getLogger();
 
 	public static void main(String[] args) {
-		logger.info("com.yang.test.java.log.log4j");
+		logger.debug("Test debug");
 		
 		Test2.log();
 	}

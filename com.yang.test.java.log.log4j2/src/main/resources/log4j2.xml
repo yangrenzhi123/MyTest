@@ -5,11 +5,11 @@
 			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} %M %L - %msg%xEx%n" />
 		</Console>
 		<File name="log" fileName="C:/log/error.log" append="false">
-			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} %M %L - %msg%xEx%n - 11" />
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} %M %L - %msg%xEx - f %n" />
 		</File>
 	</Appenders>
 	<Loggers>
-		<logger name="com.yang.test.java.log.log4j" level="ERROR">
+		<logger name="com.yang.test.java.log.log4j.Test" level="DEBUG">
 			<AppenderRef ref="log" />
 		</logger>
 		<Root level="INFO">
