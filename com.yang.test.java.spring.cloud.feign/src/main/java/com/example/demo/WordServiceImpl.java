@@ -17,6 +17,6 @@ public class WordServiceImpl implements WordService {
 	}
 
 	public String getFallbackNoun() {
-		return "某物";
+		return "1234";
 	}
 }

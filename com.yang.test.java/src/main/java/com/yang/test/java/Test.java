@@ -34,9 +34,20 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		t();
+		t2();
 	}
 	
+	
+	public static void t2(){
+		try{
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			df.format(null);
+			
+			System.out.println(1);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	public static void t(){
 		List<BigDecimal> l = new ArrayList<BigDecimal>();
 		l.add(new BigDecimal(2));

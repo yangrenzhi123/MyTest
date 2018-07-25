@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yang.test.java.velocity.Column;
 import com.yang.test.java.velocity.EntityGer;
 import com.yang.test.java.velocity.ShuJuQianYiTable;
+import com.yang.test.jpa.spring.entity.Account;
 import com.yang.test.jpa.spring.entity.T;
 
 @SuppressWarnings("unchecked")
@@ -31,11 +32,11 @@ public class TaskDaoImpl implements TaskDao {
 
 	//@PersistenceContext(unitName = "forC3po")
 	private EntityManager em;
-	@PersistenceContext(unitName = "default")
+	//@PersistenceContext(unitName = "default")
 	private EntityManager df;
 	//@PersistenceContext(unitName = "forJdbc")
 	private EntityManager jbdc;
-	//@PersistenceContext(unitName = "forDurid")
+	@PersistenceContext(unitName = "forDurid")
 	private EntityManager durid;
 	//@PersistenceContext(unitName = "forOracle")
 	private EntityManager oracle;
@@ -47,27 +48,16 @@ public class TaskDaoImpl implements TaskDao {
 		b.test();
 	}
 
-
-	@SuppressWarnings("rawtypes")
 	public void test() {
-		CriteriaBuilder cb = df.getCriteriaBuilder();
-		CriteriaQuery<?> query = cb.createQuery();
-        Root<T> root = query.from(T.class);
-        
-        List<Selection<?>> selections = new ArrayList<Selection<?>>();
-        selections.add(root.get("id").alias("id"));
-        //selections.add(cb.min(root.get("id").as(Integer.class)));
-
-        query.multiselect(selections);
-        //query.groupBy(root.get("id"));
-        //query.having(cb.greaterThan(cb.count(root.get("value")).as(Integer.class), 1));
-        
-        
-        TypedQuery q = df.createQuery(query);
-        q.setFirstResult(1);
-        q.setMaxResults(1);
-		List l = q.getResultList();
-		System.out.println();
+		Query q = durid.createQuery("from Account");
+		List<Account> l = q.getResultList();
+		if(l != null && l.size() > 0){
+			for(Account item : l){
+				System.out.println(item.getAccessAccountId());
+			}
+		}else{
+			System.out.println("empty");
+		}
 	}
 	
 	@SuppressWarnings("rawtypes")

@@ -31,9 +31,9 @@
 		<class>com.yang.test.jpa.spring.entity.T</class>
 	</persistence-unit>
 	<persistence-unit name="forC3po" transaction-type="RESOURCE_LOCAL">
-		<class>com.yang.test.jpa.spring.entity.T</class>
+		<class>com.yang.test.jpa.spring.entity.Account</class>
 	</persistence-unit>
 	<persistence-unit name="forDurid" transaction-type="RESOURCE_LOCAL">
-		<class>com.yang.test.jpa.spring.entity.T</class>
+		<class>com.yang.test.jpa.spring.entity.Account</class>
 	</persistence-unit>
 </persistence>
