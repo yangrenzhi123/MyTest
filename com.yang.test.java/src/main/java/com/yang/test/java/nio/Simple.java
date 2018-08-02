@@ -10,11 +10,11 @@ public class Simple {
 	public static void main(String[] args) throws IOException {
 		RandomAccessFile f = new RandomAccessFile("C:/1.txt", "rw");
 		FileChannel fileChannel = f.getChannel();
-		ByteBuffer buf = ByteBuffer.allocate(13);
+		ByteBuffer buf = ByteBuffer.allocate(100);
 
 
 		buf.clear();
-		buf.put("456".getBytes());
+		buf.put("12345678901111\r\n12345678901111".getBytes());
 		buf.flip();
 		while (buf.hasRemaining()) {
 			fileChannel.write(buf);

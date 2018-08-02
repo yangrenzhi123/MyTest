@@ -40,9 +40,34 @@ public class Test {
 	static CloseableHttpClient httpClient = null;
 	
 	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		testSimple();
+		testPooling();
 	}
 
+	public static void testPooling() throws ClientProtocolException, IOException, NoSuchAlgorithmException {
+		LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContext.getDefault());
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
+                .register("https", sslsf)
+                .register("http", new PlainConnectionSocketFactory())
+                .build();
+        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+        cm.setMaxTotal(200);
+        cm.setDefaultMaxPerRoute(20);
+
+		CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(cm).build();
+		HttpGet get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
+		httpClient.execute(get);
+		
+
+		get = new HttpGet("http://localhost:8080/hbmx/api/test");
+		httpClient.execute(get);
+		
+
+		get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
+		httpClient.execute(get);
+		
+		System.out.println();
+	}
+	
 	/** 一请求一连接 */
 	public static void testSimple() throws ClientProtocolException, IOException {
 		HttpGet get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
@@ -61,29 +86,7 @@ public class Test {
 		
 		System.out.println();
 	}
-	
 
-	public static void testPooling() throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContext.getDefault());
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
-                .register("https", sslsf)
-                .register("http", new PlainConnectionSocketFactory())
-                .build();
-        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-        cm.setMaxTotal(200);
-        cm.setDefaultMaxPerRoute(20);
-
-		CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(cm).build();
-		HttpGet get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
-		httpClient.execute(get);
-		
-		
-		httpClient = HttpClients.custom().setConnectionManager(cm).build();
-		httpClient.execute(get);
-		
-		System.out.println();
-	}
-	
 	public static void https() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpGet get = new HttpGet("https://localhost:8443");
