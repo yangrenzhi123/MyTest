@@ -34,9 +34,39 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		t2();
+		t3();
 	}
 	
+	public static void t3(){
+		BigDecimal x1 = new BigDecimal(5);
+		BigDecimal x2 = new BigDecimal(6);
+		BigDecimal x3 = new BigDecimal(7);
+
+		BigDecimal y1 = new BigDecimal(5);
+		BigDecimal y2 = new BigDecimal(6);
+		BigDecimal y3 = new BigDecimal(7);
+		
+		BigDecimal x1y1 = x1.multiply(y1);
+		BigDecimal x2y2 = x2.multiply(y2);
+		BigDecimal x3y3 = x3.multiply(y3);
+		
+		BigDecimal x1x1 = x1.multiply(x1);
+		BigDecimal x2x2 = x2.multiply(x2);
+		BigDecimal x3x3 = x3.multiply(x3);
+		BigDecimal y1y1 = y1.multiply(y1);
+		BigDecimal y2y2 = y2.multiply(y2);
+		BigDecimal y3y3 = y3.multiply(y3);
+		
+		BigDecimal addResult1 = x1y1.add(x2y2).add(x3y3);
+		BigDecimal addResult2 = x1x1.add(x2x2).add(x3x3);
+		BigDecimal addResult3 = y1y1.add(y2y2).add(y3y3);
+		
+		double s1 = Math.sqrt(addResult2.doubleValue());
+		double s2 = Math.sqrt(addResult3.doubleValue());
+		
+		BigDecimal result = addResult1.divide(new BigDecimal(s1).multiply(new BigDecimal(s2)), 16, BigDecimal.ROUND_DOWN);
+		System.out.println(result);
+	}
 	
 	public static void t2(){
 		try{
