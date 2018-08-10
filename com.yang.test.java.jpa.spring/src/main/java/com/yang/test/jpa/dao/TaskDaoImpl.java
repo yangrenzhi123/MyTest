@@ -53,7 +53,7 @@ public class TaskDaoImpl implements TaskDao {
 		List<Account> l = q.getResultList();
 		if(l != null && l.size() > 0){
 			for(Account item : l){
-				System.out.println(item.getAccessAccountId());
+				System.out.println(item.getAccountid());
 			}
 		}else{
 			System.out.println("empty");

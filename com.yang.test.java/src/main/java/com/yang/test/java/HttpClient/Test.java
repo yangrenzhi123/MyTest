@@ -98,8 +98,12 @@ public class Test {
 	}
 
 	public static void testProxy() throws ClientProtocolException, IOException {
-	    HttpHost proxy = new HttpHost("192.168.208.135", 8888); 
+	    HttpHost proxy = new HttpHost("127.0.0.1", 8888); 
 	    RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
+	    
+
+	    
+	    
 		HttpGet get = new HttpGet("http://www.baidu.com");
 		get.setConfig(config);
 
@@ -108,6 +112,10 @@ public class Test {
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity, "utf-8");
 		System.out.println(result);
+		
+		
+
+		CloseableHttpClient hc = HttpClients.custom().setDefaultRequestConfig(config).build();
 	}
 
 	public static void main3(String[] args) throws ClientProtocolException, IOException {

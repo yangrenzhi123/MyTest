@@ -1,10 +1,19 @@
 package com.zyxk.sevice.check;
 
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.io.StringWriter;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +33,38 @@ public class BootController {
 	@ResponseBody
 	Boolean home() {
 		return Checkor.scaning;
+	}
+
+	
+	@SuppressWarnings("restriction")
+	@RequestMapping("/doSuspend")
+	@ResponseBody
+	Integer doSuspend() throws IOException, JAXBException {
+		PConfig configXml = Checkor.getConfig();
+		configXml.setSuspend(1);
+		
+
+		JAXBContext jaxb = JAXBContext.newInstance(PConfig.class.getPackage().getName());
+		Marshaller marshaller = jaxb.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+		StringWriter strWriter = new StringWriter();
+		marshaller.marshal(configXml, strWriter);
+
+		String configFilePath = System.getProperty("configFilePath");
+		
+		RandomAccessFile f = new RandomAccessFile(configFilePath, "rw");
+		FileChannel fileChannel = f.getChannel();
+		ByteBuffer buf = ByteBuffer.allocate(10240);
+		buf.clear();
+		buf.put(strWriter.toString().getBytes());
+		buf.flip();
+		while (buf.hasRemaining()) {
+			fileChannel.write(buf);
+		}
+		f.close();
+		
+		configXml = Checkor.getConfig();
+		return configXml.getSuspend();
 	}
 
 

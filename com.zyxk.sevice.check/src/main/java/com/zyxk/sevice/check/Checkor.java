@@ -105,7 +105,7 @@ public class Checkor {
 		}
 	}
 
-	private static PConfig getConfig() throws IOException, JAXBException{
+	public static PConfig getConfig() throws IOException, JAXBException{
 		String configFilePath = System.getProperty("configFilePath");
 		File file = new File(configFilePath);
 		byte[] filecontent = new byte[(int)file.length()];

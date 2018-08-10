@@ -79,9 +79,9 @@
 	</bean>
 	<bean id="durid" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<property name="driverClassName" value="sgcc.nds.jdbc.driver.NdsDriver" />
-		<property name="url" value="jdbc:nds://172.28.15.234:18600,172.28.15.226:18600/v_houqin_1?appname=app_houqin_1" />
-		<property name="username" value="NanRui" />
-		<property name="password" value="NanRui" />
+		<property name="url" value="jdbc:nds://172.28.15.234:18600,172.28.15.226:18600/v_houqin_3?appname=app_houqin_3" />
+		<property name="username" value="hb6" />
+		<property name="password" value="hb6" />
 		<!-- 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时 -->
 		<property name="initialSize" value="1" />
 		<property name="minIdle" value="1" />

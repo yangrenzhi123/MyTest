@@ -5,16 +5,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "S_ACCESS_ACCOUNT")
+@Table(name = "Account")
 public class Account {
 
-	private String accessAccountId;
+	private Integer accountid;
 
 	@Id
-	public String getAccessAccountId() {
-		return accessAccountId;
+	public Integer getAccountid() {
+		return accountid;
 	}
-	public void setAccessAccountId(String accessAccountId) {
-		this.accessAccountId = accessAccountId;
+
+	public void setAccountid(Integer accountid) {
+		this.accountid = accountid;
 	}
 }

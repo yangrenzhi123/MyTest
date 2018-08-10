@@ -10,11 +10,11 @@ process port 表示服务端口 exec表用其中的命令启动程序 execTime�
 <config>
 	<frequency>300000</frequency>
 	<suspend>1</suspend>
-	<processes>
+	<processes><!-- 
 		<process>
 			<port>8088</port>
 			<exec>cmd /c D:\apache-tomcat-8.5.29\bin\catalina.bat run</exec>
 			<execTime>120000</execTime>
-		</process>
+		</process> -->
 	</processes>
 </config>
