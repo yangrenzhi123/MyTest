@@ -2,7 +2,6 @@ package com.yang.test.java.socket.simple;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -18,18 +17,12 @@ public class SimpleServer {
 				public void run() {
 					try {
 						byte [] b = new byte[1];
-						byte [] c = new byte[]{2};
 						
 						InputStream is = socket.getInputStream();
-						OutputStream os = socket.getOutputStream();
 						
 						while(true){
 							is.read(b);
-							
 							System.out.println(b[0]);
-							
-							os.write(c);
-							os.write(c);
 						}
 					} catch (IOException e) {
 						e.printStackTrace();
