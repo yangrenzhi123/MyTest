@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<input id=file type=file name=file data-url=/uploadAjax>说明：支持拖拽
+	<input id=file type=file name=file data-url=/uploadAjax>说明：支持拖拽。进度：<a id=process></a>
 	<script src=/resources/jquery-1.7.2.min.js></script>
 	<script src=/resources/jquery.ui.widget.js></script>
 	<script src=/resources/jquery.fileupload.js></script>
@@ -13,11 +13,10 @@
 	<script>
 		$('#file').fileupload({
 			done : function(e, data) {
-				debugger;
 			},
 			progressall : function(e, data) {
 				var progress = parseInt(data.loaded / data.total * 100, 10);
-				console.log(progress + '%');
+				$("#process").html(progress + '%');
 			},
 			dropZone : $('#file'),
 			pasteZone : $('#file')

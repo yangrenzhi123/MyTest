@@ -50,9 +50,9 @@ public class TaskDaoImpl implements TaskDao {
 
 	public void test() {
 		Query q = durid.createQuery("from Account");
-		List<Account> l = q.getResultList();
+		List<Acc> l = q.getResultList();
 		if(l != null && l.size() > 0){
-			for(Account item : l){
+			for(Acc item : l){
 				System.out.println(item.getAccountid());
 			}
 		}else{

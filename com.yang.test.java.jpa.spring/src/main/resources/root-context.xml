@@ -78,22 +78,22 @@
 		</property>
 	</bean>
 	<bean id="durid" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-		<property name="driverClassName" value="sgcc.nds.jdbc.driver.NdsDriver" />
-		<property name="url" value="jdbc:nds://172.28.15.234:18600,172.28.15.226:18600/v_houqin_3?appname=app_houqin_3" />
-		<property name="username" value="hb6" />
-		<property name="password" value="hb6" />
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.6.109:1521:GitDB" />
+		<property name="username" value="health" />
+		<property name="password" value="health" />
 		<!-- 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时 -->
-		<property name="initialSize" value="1" />
-		<property name="minIdle" value="1" />
-		<property name="maxActive" value="20" />
-		<property name="maxWait" value="60000" />
+		<property name="initialSize" value="10" />
+		<property name="minIdle" value="10" />
+		<property name="maxActive" value="200" />
+		<property name="maxWait" value="10000" />
 		<property name="filters" value="stat" />
+		<property name="testWhileIdle" value="true" />
 		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
 		<property name ="timeBetweenEvictionRunsMillis" value="120000" />
 		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-		<property name ="minEvictableIdleTimeMillis" value="300000" />
+		<property name ="minEvictableIdleTimeMillis" value="120000" />
 		<property name="validationQuery" value="SELECT 1 from dual" />
-		<property name="testWhileIdle" value="true" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
 		<!-- 是否缓存preparedStatement，也就是PSCache。 
