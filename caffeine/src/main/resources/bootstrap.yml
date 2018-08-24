@@ -1,0 +1,10 @@
+server:
+  port: 8887
+spring:
+  cache:
+    type: CAFFEINE
+    cache-names:
+      - getPersonById
+      - name2
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=5s
