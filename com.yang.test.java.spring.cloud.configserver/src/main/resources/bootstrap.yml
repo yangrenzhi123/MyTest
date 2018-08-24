@@ -5,10 +5,10 @@ management:
     enabled: false
 spring: 
   profiles: 
-    active: native #不配置，一直提示uri for git
+    active: native
   rabbitmq:
-    host: 127.0.0.1
+    host: 172.28.51.33
     port: 5672
-    username: guest
-    password: guest
-    virtual-host: /
+    username: test
+    password: test
+    virtual-host: test
