@@ -13,12 +13,12 @@ public class MD5 {
 	}
 
 	public static void t4() throws NoSuchAlgorithmException {
-		// 生成一个MD5加密计算摘要
+		// 鐢熸垚涓�涓狹D5鍔犲瘑璁＄畻鎽樿
 		MessageDigest md = MessageDigest.getInstance("MD5");
-		// 计算md5函数
+		// 璁＄畻md5鍑芥暟
 		md.update("123".getBytes());
-		// digest()最后确定返回md5 hash值，返回值为8为字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
-		// BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+		// digest()鏈�鍚庣‘瀹氳繑鍥瀖d5 hash鍊硷紝杩斿洖鍊间负8涓哄瓧绗︿覆銆傚洜涓簃d5 hash鍊兼槸16浣嶇殑hex鍊硷紝瀹為檯涓婂氨鏄�8浣嶇殑瀛楃
+		// BigInteger鍑芥暟鍒欏皢8浣嶇殑瀛楃涓茶浆鎹㈡垚16浣峢ex鍊硷紝鐢ㄥ瓧绗︿覆鏉ヨ〃绀猴紱寰楀埌瀛楃涓插舰寮忕殑hash鍊�
 		System.out.println(new BigInteger(1, md.digest()).toString(16));
 	}
 
@@ -28,7 +28,7 @@ public class MD5 {
 		File a = new File("C:/1.zip");
 
 		InputStream is = new FileInputStream(a);
-		md.update(is.readAllBytes());
+		//md.update(is.readAllBytes());
 		System.out.println(new BigInteger(1, md.digest()).toString(16));
 
 		is.close();
