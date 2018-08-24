@@ -1,0 +1,7 @@
+server: 
+  port: 8886
+zuul: 
+  routes: 
+    test: 
+      path: /test/**
+      url: forward:/user
