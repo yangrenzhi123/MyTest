@@ -24,8 +24,8 @@ public class Controller {
 	@RequestMapping("/")
 	public String getWord() {
 		ServiceInstance si = balanceClient.choose("mmb-eureka-client-provider");
-		System.out.println(si);
 		URI uri = si.getUri();
-        return (new RestTemplate()).getForObject(uri,String.class);
+		System.out.println(uri);
+        return new RestTemplate().getForObject(uri,String.class);
 	}
 }

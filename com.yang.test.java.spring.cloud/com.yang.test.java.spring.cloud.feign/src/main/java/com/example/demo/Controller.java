@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +19,7 @@ public class Controller {
 
 	@RequestMapping("/")
 	public @ResponseBody String getSentence() {
-		return nounClient.getWord();
+		return nounClient.getWord(UUID.randomUUID().toString());
 	}
 	
 	@RequestMapping("/strix")
