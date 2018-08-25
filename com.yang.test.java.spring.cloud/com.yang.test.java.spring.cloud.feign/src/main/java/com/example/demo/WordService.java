@@ -2,5 +2,5 @@ package com.example.demo;
 
 public interface WordService {
 
-	String getNoun();
+	String getNoun(String uuid);
 }

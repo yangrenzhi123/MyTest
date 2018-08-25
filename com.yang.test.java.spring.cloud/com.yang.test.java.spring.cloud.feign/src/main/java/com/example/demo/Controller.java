@@ -24,6 +24,10 @@ public class Controller {
 	
 	@RequestMapping("/strix")
 	public @ResponseBody String getS() {
-		return wordService.getNoun();
+		String flag = UUID.randomUUID().toString();
+		
+		System.out.println("flag:"+flag);
+		String s = wordService.getNoun(flag);
+		return s;
 	}
 }

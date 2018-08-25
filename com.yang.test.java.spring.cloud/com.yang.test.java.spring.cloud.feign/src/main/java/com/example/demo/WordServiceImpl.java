@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +12,11 @@ public class WordServiceImpl implements WordService {
 	NounClient nounClient;
 
 	@HystrixCommand(fallbackMethod = "getFallbackNoun")
-	public String getNoun() {
-		return nounClient.getWord(UUID.randomUUID().toString());
+	public String getNoun(String uuid) {
+		return nounClient.getWord(uuid);
 	}
 
-	public String getFallbackNoun() {
+	public String getFallbackNoun(String uuid) {
 		return "1234";
 	}
 }
