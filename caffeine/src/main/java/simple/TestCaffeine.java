@@ -1,4 +1,4 @@
-package com.yang.test.java.caffeine;
+package simple;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;

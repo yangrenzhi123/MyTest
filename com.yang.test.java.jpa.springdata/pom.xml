@@ -52,36 +52,4 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	<profiles>
-		<profile>
-			<!-- 测试环境 -->
-			<id>test</id>
-			<properties>
-				<profiles.active>test</profiles.active>
-			</properties>
-		</profile>
-		<profile>
-			<!-- 生产环境 -->
-			<id>pro</id>
-			<properties>
-				<profiles.active>pro</profiles.active>
-			</properties>
-		</profile>
-	</profiles>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<!-- 资源根目录排除各环境的配置，防止在生成目录中多余其它目录 -->
-				<excludes>
-					<exclude>test/*</exclude>
-					<exclude>pro/*</exclude>
-					<exclude>1.txt</exclude>
-				</excludes>
-			</resource>
-			<resource>
-				<directory>src/main/resources/${profiles.active}</directory>
-			</resource>
-		</resources>
-	</build>
 </project>
