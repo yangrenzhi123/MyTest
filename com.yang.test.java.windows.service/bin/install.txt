@@ -1,7 +1,0 @@
-https://blog.csdn.net/zhulinu/article/details/8601848
-
-<dependency>
-    <groupId>tanukisoft</groupId>
-    <artifactId>wrapper</artifactId>
-    <version>3.2.3</version>
-</dependency>
