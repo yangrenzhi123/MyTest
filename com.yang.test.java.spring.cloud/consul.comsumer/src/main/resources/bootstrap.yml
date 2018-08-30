@@ -1,0 +1,14 @@
+server:
+    port: 8081
+spring:
+  application:
+    name: consul-comsumer
+  cloud:
+    consul:
+      host: 172.28.51.33
+      port: 8500
+      discovery:
+        preferIpAddress: true
+        register: false
+      ribbon:
+        enabled: true
