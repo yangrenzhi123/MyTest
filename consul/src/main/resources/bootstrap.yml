@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: consul-producer
+  cloud:
+    consul:
+      host: 172.28.51.33
+      port: 8500
+      discovery:
+        healthCheckPath: /
+        healthCheckInterval: 5s
+        preferIpAddress: true
