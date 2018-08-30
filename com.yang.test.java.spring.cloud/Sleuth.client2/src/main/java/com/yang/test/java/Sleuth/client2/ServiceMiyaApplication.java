@@ -17,7 +17,7 @@ public class ServiceMiyaApplication {
 
     @RequestMapping("/miya")
     public String info(){
-        return restTemplate.getForObject("http://localhost:9000/hiEnd",String.class);
+        return restTemplate.getForObject("http://127.0.0.1:9000/hiEnd",String.class);
     }
 
     @Autowired

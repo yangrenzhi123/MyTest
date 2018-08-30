@@ -5,3 +5,6 @@ spring:
     baseUrl: http://127.0.0.1:9411
   application:
     name: service-hi
+  sleuth:
+    sampler:
+      probability: 1.0

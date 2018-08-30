@@ -15,6 +15,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<parent>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-starter-parent</artifactId>
+	    <version>Finchley.RELEASE</version>
+	</parent>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -28,12 +34,21 @@
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-gradle-plugin-core</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
 	</dependencies>
 	<repositories>

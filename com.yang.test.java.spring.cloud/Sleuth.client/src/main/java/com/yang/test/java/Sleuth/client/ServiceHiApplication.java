@@ -25,7 +25,7 @@ public class ServiceHiApplication {
 
 	@RequestMapping("/hi")
 	public String callHome() {
-		return "123";
+		return restTemplate.getForObject("http://127.0.0.1:9001/miya", String.class);
 	}
 
 	@RequestMapping("/hiEnd")
