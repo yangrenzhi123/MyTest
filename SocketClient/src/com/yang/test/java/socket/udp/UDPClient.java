@@ -9,7 +9,7 @@ public class UDPClient {
 
 	public static void main(String[] args) throws IOException {
         InetAddress address = InetAddress.getByName("localhost");
-        int port = 8800;
+        int port = 8080;
         byte[] data = "123456".getBytes();
         DatagramPacket packet = new DatagramPacket(data, data.length, address, port);
         
@@ -17,7 +17,7 @@ public class UDPClient {
         DatagramSocket socket = new DatagramSocket();
         socket.send(packet);
         
-        a(socket);
+        //a(socket);
 	}
 	
 	public static void a(DatagramSocket socket) throws IOException {

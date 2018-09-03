@@ -10,19 +10,25 @@ public class Client {
 
 	public void query(String host, int port) throws IOException {
 		InetSocketAddress address = new InetSocketAddress(InetAddress.getByName(host), port);
-		SocketChannel socket = SocketChannel.open();
-		socket.connect(address);
-		ByteBuffer buffer = ByteBuffer.allocate(1024);
+		SocketChannel channel = SocketChannel.open();
+		channel.connect(address);
+		
+		channel.socket().setSoTimeout(10000);
+		
+		ByteBuffer b1 = ByteBuffer.allocate(1024);
+		ByteBuffer b2 = ByteBuffer.allocate(1024);
 		byte[] a = new byte[100];
 		while (true) {
 			System.in.read(a);
 
-			buffer.clear();
-			buffer.put(a);
-			buffer.flip();
-			socket.write(buffer);
+			b1.clear();
+			b1.put(a);
+			b1.flip();
+			channel.write(b1);
+
+			channel.read(b2);
 			
-			System.out.println();
+			System.out.println(b1.get(0));
 		}
 	}
 

@@ -28,7 +28,7 @@ public class SimpleClient {
 			
 
 			byte[] c = new byte[2];
-			is.read(c);
+			//is.read(c);
 			System.out.println(c[0]);
 		}
 	}

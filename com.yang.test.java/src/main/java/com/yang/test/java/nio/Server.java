@@ -76,6 +76,12 @@ public class Server implements Runnable {
 		byte[] b = buf.array();
 		String input = new String(b).trim();
 		System.out.println("您的输入为：" + input);
+		
+		
+		buf.clear();
+		buf.put("1".getBytes());
+		buf.flip();
+		socketChannel.write(buf);
 	}
 
 	public void run() {
