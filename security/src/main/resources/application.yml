@@ -1,0 +1,9 @@
+security:
+  basic:
+    enabled: true # 启用SpringSecurity的安全配置项
+  user:
+    name: root  # 认证用户名
+    password: 123456 # 认证密码
+    role:        # 授权角色
+    - USER
+  sessions: stateless 

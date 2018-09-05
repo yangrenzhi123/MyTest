@@ -1,0 +1,7 @@
+http://root:123456@localhost:8080/oauth/authorize?client_id=client&response_type=code&redirect_uri=http://www.baidu.com
+
+用户名是user
+密码打印在控制台
+
+
+http://root:123456@localhost:8080/oauth/token?grant_type=authorization_code&code=V7aNU7&redirect_uri=http://www.baidu.com
