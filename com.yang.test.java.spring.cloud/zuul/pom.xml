@@ -5,21 +5,15 @@
 
 	<groupId>com.yang.test.java.spring.cloud</groupId>
 	<artifactId>zuul</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>zuul</name>
 	<url>http://maven.apache.org</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<parent>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Camden.SR6</version>
-		<relativePath />
+		<groupId>com.yang.test.java</groupId>
+		<artifactId>maven.parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>

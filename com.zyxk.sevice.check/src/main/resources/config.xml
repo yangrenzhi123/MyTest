@@ -5,7 +5,7 @@ frequency 300000 表示300秒执行一次检查
 process port 表示服务端口 exec表用其中的命令启动程序 execTime经过多少时间，执行下一个程序
 
 
--DconfigFilePath=C:/V3Check/config.xml -Djava.ext.dirs=C:\V3Check\lib -cp C:\V3Check\com.zyxk.sevice.check-0.0.1-SNAPSHOT.jar com.zyxk.sevice.check.BootController
+nohup java -DconfigFilePath=/opt/check/config.xml -Djava.ext.dirs=/opt/check/lib -cp /opt/check/com.zyxk.sevice.check-0.0.1-SNAPSHOT.jar com.zyxk.sevice.check.BootController & cd .
  -->
 <config>
 	<frequency>300000</frequency>
@@ -16,5 +16,15 @@ process port 表示服务端口 exec表用其中的命令启动程序 execTime�
 			<exec>cmd /c D:\apache-tomcat-8.5.29\bin\catalina.bat run</exec>
 			<execTime>120000</execTime>
 		</process> -->
+		<process>
+			<port>2181</port>
+			<exec>docker start zookeeper</exec>
+			<execTime>10000</execTime>
+		</process>
+		<process>
+			<port>9092</port>
+			<exec>sh /opt/kafka_2.12-2.0.0/bin/kafka-server-start.sh /opt/kafka_2.12-2.0.0/config/server.properties</exec>
+			<execTime>10000</execTime>
+		</process>
 	</processes>
 </config>
