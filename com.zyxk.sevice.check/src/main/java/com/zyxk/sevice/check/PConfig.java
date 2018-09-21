@@ -4,14 +4,14 @@ public class PConfig {
 
 	private Long frequency;
 	private Processes processes;
-	private Integer suspend;
+	private Integer satrt;
 
-	public Integer getSuspend() {
-		return suspend;
+	public Integer getSatrt() {
+		return satrt;
 	}
 
-	public void setSuspend(Integer suspend) {
-		this.suspend = suspend;
+	public void setSatrt(Integer satrt) {
+		this.satrt = satrt;
 	}
 
 	public Long getFrequency() {

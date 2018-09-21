@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-suspend 1表示暂停监控
+start 1表示启动监控
 frequency 300000 表示300秒执行一次检查
 process port 表示服务端口 exec表用其中的命令启动程序 execTime经过多少时间，执行下一个程序
 
@@ -9,7 +9,7 @@ nohup java -DconfigFilePath=/opt/check/config.xml -Djava.ext.dirs=/opt/check/lib
  -->
 <config>
 	<frequency>300000</frequency>
-	<suspend>1</suspend>
+	<start>1</start>
 	<processes><!-- 
 		<process>
 			<port>8088</port>

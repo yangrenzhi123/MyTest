@@ -22,12 +22,13 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@SuppressWarnings("restriction")
 public class Checkor {
 
 	public static Logger logger = LogManager.getLogger();
 
 	public static Boolean scaning = true;
+	
+	private static boolean start = true;
 	
 	public static final Map<Integer, java.lang.Process> pm = new HashMap<Integer, java.lang.Process>();
 
@@ -41,11 +42,10 @@ public class Checkor {
 					
 					for(final Process process : config.getProcesses().getProcess()){
 						PConfig pc = getConfig();
-						if(new Integer(1).equals(pc.getSuspend())){
+						if(!new Integer(1).equals(pc.getSatrt()) || start != true){
 							break;
 						}
-						
-						
+
 						Socket socket = new Socket();
 						
 						boolean timeout = false;
@@ -76,7 +76,7 @@ public class Checkor {
 							new Thread(new Runnable() {
 								public void run() {
 									try {
-										getErrorStream(p2);
+										getErrorStream(p2, process.getPort());
 									} catch (IOException e) {
 										logger.error("", e);
 									}
@@ -123,11 +123,11 @@ public class Checkor {
 		return config;
 	}
 	
-	private static void getErrorStream(java.lang.Process p) throws IOException {
+	private static void getErrorStream(java.lang.Process p, Integer port) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(p.getErrorStream(), "GBK"));
 		String line;
 		while ((line = br.readLine()) != null) {
-			//System.out.println(line);
+			logger.info("[["+port+"]] "+line);
 		}
 		br.close();
 	}

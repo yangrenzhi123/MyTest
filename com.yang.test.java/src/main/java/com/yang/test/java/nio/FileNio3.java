@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 @SuppressWarnings("resource")
-public class FileNio {
+public class FileNio3 {
 
 	public static void main(String[] args) throws IOException {
 		RandomAccessFile f = new RandomAccessFile("C:/1.txt", "rw");
@@ -14,23 +14,23 @@ public class FileNio {
 		ByteBuffer buf = ByteBuffer.allocate(1024);
 
 		for (int i = 0; i < 10; i++) {
-			String newData = i + "\r\n";
+			String newData = (i+1) + "\r\n";
 			buf.clear();
 			buf.put(newData.getBytes());
 			buf.flip();
 			while (buf.hasRemaining()) {
 				fileChannel.write(buf);
 			}
+		}
 
-			int bytesRead;
-			do {
-				buf.clear();
-				bytesRead = fileChannel.read(buf);
-				buf.flip();
-				byte[] content = new byte[buf.limit()];
-				buf.get(content);
-				System.out.print(new String(content));
-			} while (bytesRead != -1);
+		for (int i = 0; i < 10; i++) {
+			String newData = (i+1) + "\r\n";
+			buf.clear();
+			buf.put(newData.getBytes());
+			buf.flip();
+			while (buf.hasRemaining()) {
+				fileChannel.write(buf);
+			}
 		}
 	}
 }
