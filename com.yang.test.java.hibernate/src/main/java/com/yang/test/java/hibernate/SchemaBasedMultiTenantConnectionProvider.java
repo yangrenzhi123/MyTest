@@ -36,6 +36,9 @@ public class SchemaBasedMultiTenantConnectionProvider implements MultiTenantConn
 
 	public Connection getConnection(String tenantIdentifier) throws SQLException {
 		final Connection connection = connectionProvider.getConnection();
+		
+		connection.createStatement().execute("USE " + tenantIdentifier);
+		
 		return connection;
 	}
 

@@ -14,12 +14,13 @@ public class Test {
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 		SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 
-		Session session = sessionFactory.withOptions().tenantIdentifier("test").openSession();
+		Session session = sessionFactory.withOptions()/*.tenantIdentifier("test")*/.openSession();
 		
 		Transaction t = session.beginTransaction();
 		
-		User user = new User();
-		session.persist(user);
+		User user = session.get(User.class, 6);
+		
+		System.out.println(user.getTenantId());
 		
 		t.commit();
 		session.close();

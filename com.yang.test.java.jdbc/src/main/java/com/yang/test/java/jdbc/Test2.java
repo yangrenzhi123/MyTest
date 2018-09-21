@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import oracle.jdbc.driver.OracleTypes;
+//import oracle.jdbc.driver.OracleTypes;
 
 public class Test2 {
 
@@ -24,7 +24,7 @@ public class Test2 {
 			public void run() {
 				try {
 					CallableStatement cs = conn.prepareCall("{call test(?)}");
-					cs.registerOutParameter(1, OracleTypes.CURSOR);
+					//cs.registerOutParameter(1, OracleTypes.CURSOR);
 					cs.execute();
 
 					ResultSet rs = (ResultSet) cs.getObject(1);

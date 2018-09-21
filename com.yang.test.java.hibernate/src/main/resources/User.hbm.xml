@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.yang.test.java.hibernate.User" table="[USER]">
+	<class name="com.yang.test.java.hibernate.User" table="t">
 		<id name="id" column="ID" type="java.lang.Integer">
 			<generator class="native" />
 		</id>
-		<property name="name" />
-		<property name="qq" />
+		<property name="tenantId" />
 	</class>
 </hibernate-mapping>

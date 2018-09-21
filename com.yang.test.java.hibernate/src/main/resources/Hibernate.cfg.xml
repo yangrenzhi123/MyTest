@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hibernate-configuration>
-	<session-factory>
-		<property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://127.0.0.1:1433/Test</property>
-		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.connection.password">1qazxcvbnm,./</property><!-- 
-		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
+	<session-factory><!-- 
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://172.28.51.33:3306/test</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123456</property> -->
 		<property name="hibernate.show_sql">false</property>
-		<property name="Hibernate.default_schema">dbo</property>
+		
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		
  		<property name="hibernate.tenant_identifier_resolver">com.yang.test.java.hibernate.TenantIdResolver</property>
-		<property name="hibernate.multiTenancy">DISCRIMINATOR</property>
+		<property name="hibernate.multiTenancy">DATABASE</property>
 		<property name="hibernate.multi_tenant_connection_provider">com.yang.test.java.hibernate.ConfigurableMultiTenantConnectionProvider</property>
 
 		<mapping resource="User.hbm.xml" />

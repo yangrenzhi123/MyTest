@@ -1,21 +1,24 @@
 package com.yang.test.java.hibernate;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
+import org.hibernate.cfg.Environment;
 import org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl;
 import org.hibernate.engine.jdbc.connections.spi.AbstractMultiTenantConnectionProvider;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
-import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
 
-public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider implements MultiTenantConnectionProvider {
+public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider {
 
-	private static final long serialVersionUID = -6910514036999028636L;
-	private final Map<String, ConnectionProvider> connectionProviderMap = new HashMap<String, ConnectionProvider>();
-	
-	public ConfigurableMultiTenantConnectionProvider(Map<String, ConnectionProvider> connectionProviderMap) {
-		this.connectionProviderMap.putAll(connectionProviderMap);
+	public ConfigurableMultiTenantConnectionProvider() {
+	    registerConnectionProvider("test");
+	    //registerConnectionProvider("test2");
 	}
+	
+	private final Map<String, ConnectionProvider> connectionProviderMap = new HashMap<String, ConnectionProvider>();
 
 	@Override
 	protected ConnectionProvider getAnyConnectionProvider() {
@@ -27,13 +30,25 @@ public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTena
 		return connectionProviderMap.get(tenantIdentifier);
 	}
 	
-	private void init() {
-	    registerConnectionProvider( "1" );
-	    registerConnectionProvider( "2" );
+
+	@Override
+	public Connection getConnection(String tenantIdentifier) throws SQLException {
+		return connectionProviderMap.get(tenantIdentifier).getConnection();
 	}
-	
+
 	protected void registerConnectionProvider(String tenantIdentifier) {
 	    DriverManagerConnectionProviderImpl connectionProvider = new DriverManagerConnectionProviderImpl();
-	    connectionProviderMap.put( tenantIdentifier, connectionProvider );
+	    
+	    Properties properties = new Properties();
+	    properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+	    properties.put(Environment.URL, "jdbc:mysql://172.28.51.33:3306/"+tenantIdentifier);
+	    properties.put(Environment.USER, "root");
+	    properties.put(Environment.PASS, "123456");
+	    properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+
+
+	    
+	    connectionProvider.configure(properties);
+	    connectionProviderMap.put(tenantIdentifier, connectionProvider);
 	}
 }
