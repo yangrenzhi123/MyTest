@@ -42,7 +42,8 @@ public class Checkor {
 					
 					for(final Process process : config.getProcesses().getProcess()){
 						PConfig pc = getConfig();
-						if(!new Integer(1).equals(pc.getSatrt()) || start != true){
+						logger.info(pc.getStart() + "" + start);
+						if(!new Integer(1).equals(pc.getStart()) || start != true){
 							break;
 						}
 
@@ -50,7 +51,7 @@ public class Checkor {
 						
 						boolean timeout = false;
 						try{
-							socket.connect(new InetSocketAddress("127.0.0.1", process.getPort()), 3000);
+							socket.connect(new InetSocketAddress(process.getIp() != null ? process.getIp() : "127.0.0.1", process.getPort()), 3000);
 						}catch(SocketTimeoutException e){
 							timeout = true;
 						}catch(ConnectException e){
@@ -97,9 +98,14 @@ public class Checkor {
 					}
 					logger.info("scan stoped");
 				}
-				
-				Thread.sleep(config.getFrequency());
 			}catch(Exception e){
+				logger.error("", e);
+			}
+			
+
+			try {
+				Thread.sleep(30000L);
+			} catch (InterruptedException e) {
 				logger.error("", e);
 			}
 		}

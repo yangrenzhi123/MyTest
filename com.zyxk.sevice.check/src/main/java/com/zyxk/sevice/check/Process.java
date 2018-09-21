@@ -2,9 +2,18 @@ package com.zyxk.sevice.check;
 
 public class Process {
 
+	private String ip;
 	private Integer port;
 	private String exec;
 	private Long execTime;
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 
 	public Integer getPort() {
 		return port;

@@ -4,14 +4,14 @@ public class PConfig {
 
 	private Long frequency;
 	private Processes processes;
-	private Integer satrt;
+	private Integer start;
 
-	public Integer getSatrt() {
-		return satrt;
+	public Integer getStart() {
+		return start;
 	}
 
-	public void setSatrt(Integer satrt) {
-		this.satrt = satrt;
+	public void setStart(Integer start) {
+		this.start = start;
 	}
 
 	public Long getFrequency() {
