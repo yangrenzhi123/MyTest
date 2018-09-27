@@ -29,10 +29,16 @@ public class BootController {
 		return Checkor.scaning;
 	}
 
-	@RequestMapping("/doSuspend")
+	@RequestMapping("/0")
 	@ResponseBody
-	void doSuspend() throws IOException, JAXBException {
+	void end() throws IOException, JAXBException {
+		Checkor.start = false;
+	}
 
+	@RequestMapping("/1")
+	@ResponseBody
+	void start() throws IOException, JAXBException {
+		Checkor.start = true;
 	}
 
 	@RequestMapping("/process/info")

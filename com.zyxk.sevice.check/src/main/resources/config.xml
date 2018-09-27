@@ -6,83 +6,16 @@ process port 表示服务端口 exec表用其中的命令启动程序 execTime�
 
 
 nohup java -DconfigFilePath=/opt/check/config.xml -Djava.ext.dirs=/opt/check/lib -cp /opt/check/com.zyxk.sevice.check-0.0.1-SNAPSHOT.jar com.zyxk.sevice.check.BootController > nohup.check.out & cd .
+nohup java -DconfigFilePath=/opt/check/config.xml -jar /opt/check/com.lyzh.check.jar > nohup.check.out & cd .
  -->
 <config>
 	<frequency>30000</frequency>
 	<start>1</start>
 	<processes>
 		<process>
-		        <port>80</port>
-		        <exec>/usr/local/nginx/sbin/nginx</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>2181</port>
-		        <exec>docker start zookeeper</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>8066</port>
-		        <exec>/opt/mycat/bin/mycat start</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>8761</port>
-		        <exec>java -Djava.ext.dirs=/data/applictaion/eurekaService/lib -cp /data/applictaion/eurekaService/eureka.jar com.example.demo.EurekaServerApplication</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>8886</port>
-		        <exec>java -jar /data/applictaion/zuulService/zuulServer.jar</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>8889</port>
-		        <exec>java -Djava.ext.dirs=/data/applictaion/configService/lib -cp /data/applictaion/configService/config.jar com.yang.test.java.spring.cloud.configserver.ConfigServerApplication --spring.cloud.config.server.native.search-locations=/data/applictaion/configService/config</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>9092</port>
-		        <exec>sh /opt/kafka_2.12-2.0.0/bin/kafka-server-start.sh /opt/kafka_2.12-2.0.0/config/server.properties</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>27001</port>
-		        <exec>mongod --bind_ip 0.0.0.0 --port 27001 --oplogSize 100 --dbpath /mgdata/shard1 --replSet r1/192.168.30.120:27001 --journal --shardsvr</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>27002</port>
-		        <exec>mongod --bind_ip 0.0.0.0 --port 27002 --oplogSize 100 --dbpath /mgdata/shard2 --replSet r2/192.168.30.120:27002 --journal --shardsvr</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>27003</port>
-		        <exec>mongod --bind_ip 0.0.0.0 --port 27003 --dbpath=/mgdata/cnf  --replSet rc/192.168.30.120:27003 --journal --configsvr</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <port>27017</port>
-		        <exec>mongos --bind_ip 0.0.0.0 --port 27017 --configdb rc/192.168.10.10:27003,192.168.30.120:27003,192.168.30.121:27003</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-		        <ip>192.168.30.120</ip>
-		        <port>50010</port>
-		        <exec>/usr/redis/bin/redis-server /usr/redis/50010/redis.conf</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-				<ip>192.168.30.120</ip>
-		        <port>50020</port>
-		        <exec>/usr/redis/bin/redis-server /usr/redis/50020/redis.conf</exec>
-		        <execTime>10000</execTime>
-		</process>
-		<process>
-				<ip>192.168.30.120</ip>
-		        <port>50030</port>
-		        <exec>/usr/redis/bin/redis-server /usr/redis/50030/redis.conf</exec>
-		        <execTime>10000</execTime>
+			<port>9092</port>
+			<exec>sh /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties</exec>
+			<execTime>10000</execTime>
 		</process>
 	</processes>
 </config>

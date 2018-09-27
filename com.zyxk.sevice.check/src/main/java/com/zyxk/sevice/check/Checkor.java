@@ -28,7 +28,7 @@ public class Checkor {
 
 	public static Boolean scaning = true;
 	
-	private static boolean start = true;
+	public static boolean start = true;
 	
 	public static final Map<Integer, java.lang.Process> pm = new HashMap<Integer, java.lang.Process>();
 

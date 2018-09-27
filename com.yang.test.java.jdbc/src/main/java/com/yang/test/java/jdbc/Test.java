@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class Test {
 
@@ -19,18 +20,21 @@ public class Test {
 	static final String USER = "root";
 	static final String PASS = "123456";
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
 		Class.forName(DRIVER);
 		
-		int num = 50;
+		int num = 20;
 		
+		long b = System.currentTimeMillis();
 		final List<Connection> l = new ArrayList<Connection>();
 		for(int i=0;i<num;i++) {
 			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			conn.setAutoCommit(true);
 			l.add(conn);
 		}
+		System.out.println(System.currentTimeMillis() - b);
 
+		final CountDownLatch latch = new CountDownLatch(num);
 		List<Thread> l2 = new ArrayList<Thread>();
 		for(int i=0;i<num;i++) {
 			final int j = i;
@@ -39,19 +43,19 @@ public class Test {
 				
 				public void run() {
 					try {
-						long a = System.currentTimeMillis();
 						Connection conn = l.get(j);
-						PreparedStatement stmt = conn.prepareStatement("select id from t");
-						ResultSet rs = stmt.executeQuery();
-						while (rs.next()) {
-							//String UserName = rs.getString("id");
-							//System.out.print("UserName: " + UserName);
+						for(int h=0;h<1000;h++) {
+							PreparedStatement stmt = conn.prepareStatement("select id from t");
+							ResultSet rs = stmt.executeQuery();
+							while (rs.next()) {
+							}
+							rs.close();
+							stmt.close();
 						}
-						rs.close();
-						stmt.close();
 						conn.close();
-						System.out.println(System.currentTimeMillis() - a);
+						latch.countDown();
 					}catch(Exception e) {
+						e.printStackTrace();
 					}
 				}
 			});
@@ -59,8 +63,13 @@ public class Test {
 			l2.add(t);
 		}
 		
+		long a = System.currentTimeMillis();
 		for(int i=0;i<num;i++) {
 			l2.get(i).start();
 		}
+		
+		latch.await();
+		System.out.println(System.currentTimeMillis() - a);
+		System.out.println(1);
 	}
 }
