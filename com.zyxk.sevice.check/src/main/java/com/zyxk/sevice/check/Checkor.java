@@ -30,6 +30,8 @@ public class Checkor {
 	
 	public static boolean start = true;
 	
+	public static long suspend;
+	
 	public static final Map<Integer, java.lang.Process> pm = new HashMap<Integer, java.lang.Process>();
 
 	public static void justDo() {
@@ -45,6 +47,11 @@ public class Checkor {
 						logger.info(pc.getStart() + "" + start);
 						if(!new Integer(1).equals(pc.getStart()) || start != true){
 							break;
+						}
+						
+						if(suspend > 0) {
+							Thread.sleep(suspend);
+							suspend = 0;
 						}
 
 						Socket socket = new Socket();

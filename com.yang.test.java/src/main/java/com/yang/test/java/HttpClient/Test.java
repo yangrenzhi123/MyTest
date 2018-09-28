@@ -50,22 +50,19 @@ public class Test {
                 .register("http", new PlainConnectionSocketFactory())
                 .build();
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-        cm.setMaxTotal(200);
-        cm.setDefaultMaxPerRoute(20);
+        cm.setMaxTotal(2);
+        cm.setDefaultMaxPerRoute(2);
 
 		CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(cm).build();
-		HttpGet get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
+		HttpGet get = new HttpGet("http://jinnianshilongnian.iteye.com/blog/2089792");
 		httpClient.execute(get);
+		System.out.println(1);
 		
 
-		get = new HttpGet("http://localhost:8080/hbmx/api/test");
+		httpClient = HttpClients.custom().setConnectionManager(cm).build();
+		get = new HttpGet("http://172.28.51.33:8081/login?from=%2F");
 		httpClient.execute(get);
-		
-
-		get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
-		httpClient.execute(get);
-		
-		System.out.println();
+		System.out.println(2);
 	}
 	
 	/** 一请求一连接 */

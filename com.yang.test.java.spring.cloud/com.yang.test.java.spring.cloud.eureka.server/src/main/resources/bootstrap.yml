@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ytEurekaServer
+    name: ytEurekaServer,common
   cloud:
     config:
-      uri: http://192.168.30.120:8889
+      uri: http://127.0.0.1:8889

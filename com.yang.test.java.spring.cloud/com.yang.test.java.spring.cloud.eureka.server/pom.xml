@@ -8,31 +8,29 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>com.yang.test.java.spring.cloud.eureka.server</name>
-	<description>Demo project for Spring Boot</description>
-
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Camden.SR5</version>
+		<version>Finchley.RELEASE</version>
 		<relativePath />
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<version>Camden.SR6</version>
+		<version>Finchley.RELEASE</version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<version>1.4.5.RELEASE</version>
 		</dependency>
-		<!-- 用于注册中心访问账号认证 -->
+		<!-- 用于注册中心访问账号认证 --><!-- 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency> -->
 		<!-- 从configserver读取配置 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
