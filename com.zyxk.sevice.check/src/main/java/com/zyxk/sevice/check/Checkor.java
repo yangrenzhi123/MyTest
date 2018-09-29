@@ -41,72 +41,71 @@ public class Checkor {
 			try{
 				PConfig config = getConfig();
 				
-				if(scaning){
-					logger.info("scan started");
-					
-					for(final Process process : config.getProcesses().getProcess()){
-						PConfig pc = getConfig();
-						logger.info(pc.getStart() + "" + start);
-						if(!new Integer(1).equals(pc.getStart()) || start != true){
-							break;
-						}
-						
-						if(suspend > 0) {
-							Thread.sleep(suspend);
-							suspend = 0;
-						}
 
-						Socket socket = new Socket();
-						
-						boolean timeout = false;
-						try{
-							socket.connect(new InetSocketAddress(process.getIp() != null ? process.getIp() : "127.0.0.1", process.getPort()), 3000);
-						}catch(SocketTimeoutException e){
-							timeout = true;
-						}catch(ConnectException e){
-							timeout = true;
-						}
-						if(timeout){
-							logger.info("start:"+process.getExec());
-							
-							java.lang.Process p = pm.get(process.getPort());
-							if(p != null){
-								p.destroy();
-							}
-							final java.lang.Process p2 = Runtime.getRuntime().exec(process.getExec());
-							new Thread(new Runnable() {
-								public void run() {
-									try {
-										getInputStream(p2);
-									} catch (IOException e) {
-										logger.error("", e);
-									}
-								}
-							}).start();
-							new Thread(new Runnable() {
-								public void run() {
-									try {
-										getErrorStream(p2, process.getPort());
-									} catch (IOException e) {
-										logger.error("", e);
-									}
-								}
-							}).start();
-							pm.put(process.getPort(), p2);
-							
-							Long execTime = process.getExecTime();
-							if(execTime != null){
-								Thread.sleep(execTime);
-							}else{
-								Thread.sleep(30000);
-							}
-							logger.info("end:"+process.getExec());
-						}
-
-						socket.close();
+				logger.info("scan started");
+				
+				for(final Process process : config.getProcesses().getProcess()){
+					PConfig pc = getConfig();
+					logger.info(pc.getStart() + "" + start);
+					if(!new Integer(1).equals(pc.getStart()) || start != true){
+						break;
 					}
-					logger.info("scan stoped");
+					
+					if(suspend > 0) {
+						Thread.sleep(suspend);
+						suspend = 0;
+					}
+
+					Socket socket = new Socket();
+					
+					boolean timeout = false;
+					try{
+						socket.connect(new InetSocketAddress(process.getIp() != null ? process.getIp() : "127.0.0.1", process.getPort()), 3000);
+					}catch(SocketTimeoutException e){
+						timeout = true;
+					}catch(ConnectException e){
+						timeout = true;
+					}
+					if(timeout){
+						logger.info("start:"+process.getExec());
+						
+						java.lang.Process p = pm.get(process.getPort());
+						if(p != null){
+							p.destroy();
+						}
+						final java.lang.Process p2 = Runtime.getRuntime().exec(process.getExec());
+						new Thread(new Runnable() {
+							public void run() {
+								try {
+									getInputStream(p2);
+								} catch (IOException e) {
+									logger.error("", e);
+								}
+							}
+						}).start();
+						new Thread(new Runnable() {
+							public void run() {
+								try {
+									getErrorStream(p2, process.getPort());
+								} catch (IOException e) {
+									logger.error("", e);
+								}
+							}
+						}).start();
+						pm.put(process.getPort(), p2);
+						
+						Long execTime = process.getExecTime();
+						if(execTime != null){
+							Thread.sleep(execTime);
+						}else{
+							Thread.sleep(30000);
+						}
+						logger.info("end:"+process.getExec());
+					}
+
+					socket.close();
 				}
+				logger.info("scan stoped");
 			}catch(Exception e){
 				logger.error("", e);
 			}

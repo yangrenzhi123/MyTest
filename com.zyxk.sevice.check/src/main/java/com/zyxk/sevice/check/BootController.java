@@ -4,10 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.xml.bind.JAXBException;
 
@@ -38,6 +35,48 @@ public class BootController {
 		SpringApplication.run(BootController.class, args);
 	}
 
+	@RequestMapping("/runStatus")
+	@ResponseBody
+	public String runStatus() throws IOException, JAXBException {
+		PConfig c = Checkor.getConfig();
+		Integer start = c.getStart();
+		
+		if(start == 1 && Checkor.start == true) {
+			return "运行中";
+		}else {
+			return "停止运行";
+		}
+	}
+	
+	@RequestMapping("/serviceStatus")
+	@ResponseBody
+	public List<String> status() throws IOException, JAXBException {
+		List<String> out = new ArrayList<String>();
+
+		PConfig c = Checkor.getConfig();
+		if (c != null && c.getProcesses() != null && c.getProcesses().getProcess() != null && c.getProcesses().getProcess().size() > 0) {
+			for (Process element : c.getProcesses().getProcess()) {
+				String[] command = {"/bin/sh", "-c", "netstat -anp | grep -w LISTEN | grep -w "+element.getPort()};
+				java.lang.Process p = Runtime.getRuntime().exec(command);
+
+				BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
+				String line;
+				while ((line = br.readLine()) != null) {
+					out.add(line);
+				}
+				br.close();
+
+				br = new BufferedReader(new InputStreamReader(p.getErrorStream(), "GBK"));
+				while ((line = br.readLine()) != null) {
+					out.add(line);
+				}
+				br.close();
+			}
+		}
+
+		return out;
+	}
+
     @RequestMapping("/ps")
     @ResponseBody
     public List<String> page1(String cmd) throws IOException{
@@ -62,44 +101,12 @@ public class BootController {
 		br.close();
 		return out;
     }
-    
 
-
-    @RequestMapping("/test")
+    @RequestMapping("/console")
     public ModelAndView test2() throws IOException{
-        ModelAndView mav = new ModelAndView("test");
+        ModelAndView mav = new ModelAndView("console");
         return mav;
     }
-
-    @RequestMapping("/1111111111")
-    public ModelAndView test() throws IOException{
-    	List<String> out = new ArrayList<String>();
-    	java.lang.Process p = Runtime.getRuntime().exec("netstat -anp | grep LISTEN");
-		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
-		String line;
-		while ((line = br.readLine()) != null) {
-			out.add(line);
-		}
-		br.close();
-		
-		br = new BufferedReader(new InputStreamReader(p.getErrorStream(), "GBK"));
-		while ((line = br.readLine()) != null) {
-			out.add(line);
-		}
-		br.close();
-    	
-    	
-    	
-        ModelAndView mav = new ModelAndView("ps");
-        mav.addObject("out", out);
-        return mav;
-    }
-	
-	@RequestMapping("/")
-	@ResponseBody
-	Boolean home() {
-		return Checkor.scaning;
-	}
 
 	@RequestMapping("/0")
 	@ResponseBody
@@ -123,29 +130,5 @@ public class BootController {
 	@ResponseBody
 	void suspend2(@PathVariable(value = "value") int value) throws IOException, JAXBException {
 		Checkor.suspend = value;
-	}
-
-	@RequestMapping("/process/info")
-	@ResponseBody
-	List<ProcessInfo> process() {
-		List<ProcessInfo> l = new ArrayList<ProcessInfo>();
-		try {
-			Iterator<Entry<Integer, java.lang.Process>> iter = Checkor.pm.entrySet().iterator();
-			while (iter.hasNext()) {
-				Map.Entry<Integer, java.lang.Process> entry = (Map.Entry<Integer, java.lang.Process>) iter.next();
-				Integer port = (Integer) entry.getKey();
-				java.lang.Process process = (java.lang.Process) entry.getValue();
-
-				ProcessInfo item = new ProcessInfo();
-				item.setPort(port);
-				item.setIsAlive(process.isAlive());
-				l.add(item);
-			}
-		} catch (Exception e) {
-			logger.error("", e);
-			throw new RuntimeException(e);
-		}
-
-		return l;
 	}
 }
