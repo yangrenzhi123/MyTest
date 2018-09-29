@@ -10,6 +10,7 @@ import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.util.StringUtils;
 
 public class Checkor {
 
@@ -120,7 +122,15 @@ public class Checkor {
 
 	public static PConfig getConfig() throws IOException, JAXBException{
 		String configFilePath = System.getProperty("configFilePath");
-		File file = new File(configFilePath);
+		
+		File file = null;
+		if(StringUtils.isEmpty(configFilePath)) {
+			URL url = Checkor.class.getClassLoader().getResource("config.xml");
+			file = new File(url.getFile());
+		}else {
+			file = new File(configFilePath);
+		}
+
 		byte[] filecontent = new byte[(int)file.length()];
 		FileInputStream in = new FileInputStream(file);  
         in.read(filecontent);  
