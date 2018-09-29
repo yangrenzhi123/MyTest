@@ -12,6 +12,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +21,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zyxk.sevice.check.filter.ExceptionFilter;
+
 @Controller
 @EnableAutoConfiguration
 public class BootController {
 
 	public static Logger logger = LogManager.getLogger();
 
+    @Bean
+    public FilterRegistrationBean testFilterRegistration() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new ExceptionFilter(123));//添加过滤器
+        registration.addUrlPatterns("/*");//设置过滤路径，/*所有路径
+        registration.setName("ExceptionFilter");//设置优先级
+        registration.setOrder(1);//设置优先级
+        return registration;
+    }
+	
 	public static void main(String[] args) throws Exception {
 		new Thread(new Runnable() {
 			public void run() {

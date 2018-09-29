@@ -15,6 +15,7 @@ public class TestServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		response.setStatus(201);
 		out.println("Hello,Fucilu.");
 	}
 }
