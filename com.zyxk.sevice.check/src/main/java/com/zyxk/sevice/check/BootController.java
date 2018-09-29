@@ -59,6 +59,8 @@ public class BootController {
 				String[] command = {"/bin/sh", "-c", "netstat -anp | grep -w LISTEN | grep -w "+element.getPort()};
 				java.lang.Process p = Runtime.getRuntime().exec(command);
 
+				out.add("[[element.getPort()]]");
+				
 				BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
 				String line;
 				while ((line = br.readLine()) != null) {
