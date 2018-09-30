@@ -1,4 +1,5 @@
 */target
+*/*/target
 */.project
 */bin
 */.settings
@@ -6,3 +7,4 @@
 */.classpath
 */out
 *.iml
+com.yang.test.java.spring.cloud/consul.producer/target/classes/META-INF/maven/com.yang.test.java/consul.producer/pom.properties
