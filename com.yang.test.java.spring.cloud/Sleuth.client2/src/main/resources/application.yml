@@ -4,7 +4,7 @@ spring:
   application:
     name: service-miya
   zipkin:
-    baseUrl: http://127.0.0.1:9411
+    baseUrl: http://192.168.30.153:9411
   sleuth:
     sampler:
       probability: 1.0

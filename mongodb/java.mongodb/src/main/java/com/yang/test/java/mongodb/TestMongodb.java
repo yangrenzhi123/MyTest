@@ -12,9 +12,13 @@ public class TestMongodb {
 
 	public static void main(String[] args) {
 		List<ServerAddress> l = new ArrayList<ServerAddress>();
-		l.add(new ServerAddress("192.168.30.120", 27017));
+		/*l.add(new ServerAddress("192.168.30.120", 27017));
 		l.add(new ServerAddress("192.168.30.121", 27017));
-		l.add(new ServerAddress("192.168.10.10", 27017));
+		l.add(new ServerAddress("192.168.10.10", 27017));*/
+		
+
+		l.add(new ServerAddress("192.168.30.60", 27017));
+		l.add(new ServerAddress("192.168.30.61", 27017));
 				
 				
 				
@@ -32,8 +36,7 @@ public class TestMongodb {
 		for(int i=0;i<100;i++) {
 			
 			
-			c.count();
-			System.out.println("MongoDatabase inof is : ");
+			System.out.println("MongoDatabase inof is : "+c.count());
 		}
 		
 		mongoClient.close();

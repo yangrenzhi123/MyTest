@@ -12,9 +12,15 @@ public class Kafka {
 		Properties props = new Properties();
 
 
-      //String topic = "my-replicated-topic";
-      //props.put("bootstrap.servers", "172.28.51.33:9092,172.28.51.33:9093,172.28.51.33:9094");
-		props.put("bootstrap.servers", "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
+        //String topic = "my-replicated-topic";
+        //props.put("bootstrap.servers", "172.28.51.33:9092,172.28.51.33:9093,172.28.51.33:9094");
+		
+		//props.put("bootstrap.servers", "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
+		
+
+		props.put("bootstrap.servers", "192.168.10.248:9092");
+		
+		//props.put("bootstrap.servers", "192.168.30.60:9092,192.168.30.61:9092,192.168.30.62:9092");
 
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");
