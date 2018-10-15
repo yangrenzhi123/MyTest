@@ -5,3 +5,9 @@ zuul:
     test: 
       path: /test/**
       url: forward:/user
+spring:
+  zipkin:
+    baseUrl: http://172.28.51.33:9411
+  sleuth:
+    sampler:
+      probability: 1.0
