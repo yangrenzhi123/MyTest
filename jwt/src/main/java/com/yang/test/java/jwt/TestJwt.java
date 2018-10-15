@@ -35,5 +35,8 @@ public class TestJwt {
 
 		String jwt = base64Header + "." + base64Claim + "." + signature;
 		System.out.println(jwt);
+		
+		System.out.println(new String(Base64.decodeBase64(base64Header)));
+		System.out.println(new String(Base64.decodeBase64(base64Claim)));
 	}
 }
