@@ -1,6 +1,25 @@
 spring:
   application:
-    name: ytEurekaServer,common
+    name: ytEurekaServer
   cloud:
     config:
       uri: http://127.0.0.1:8889
+  rabbitmq:
+    host: 172.28.51.33
+    port: 5672
+    username: test
+    password: test
+    virtual-host: test
+server:
+  port: 8761
+security:
+  basic:
+    enabled: false
+eureka:
+  server:
+    enableSelfPreservation: false #false删除不可用实例
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka

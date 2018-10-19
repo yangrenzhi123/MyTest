@@ -2,7 +2,7 @@ server:
   port: 9000
 spring:
   zipkin:
-    baseUrl: http://192.168.30.153:9411
+    baseUrl: http://172.28.51.33:9411
   application:
     name: service-hi
   sleuth:

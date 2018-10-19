@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
 	@RequestMapping("/")
-	public String getWord() {
+	public String getWord() throws InterruptedException {
+		Thread.sleep(20000L);
+		
 		return "1";
 	}
 }

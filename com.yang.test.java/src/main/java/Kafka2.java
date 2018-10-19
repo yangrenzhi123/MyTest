@@ -21,7 +21,7 @@ public class Kafka2 {
 		
 
 		//properties.put("zookeeper.connect", "192.168.10.248:2181");
-		properties.put("metadata.broker.list", "192.168.10.248:9092");
+		properties.put("metadata.broker.list", "192.168.8.155:9092");
 		
 
 		//properties.put("zookeeper.connect", "192.168.30.60:2181,192.168.30.61:2181,192.168.30.62:2181");
