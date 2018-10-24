@@ -1,7 +1,13 @@
 package com.yang.test.java.springboot;
 
+import java.io.File;
+
+import javax.servlet.MultipartConfigElement;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -17,6 +23,23 @@ public class TestMultipartFile {
 			registry.addResourceHandler("/download/**").addResourceLocations("file:/tmp/");
 			super.addResourceHandlers(registry);
 		}
+	}
+
+//	server:
+//		  port: 3106
+//		  tomcat:
+//		    basedir: /tmp
+
+	@Bean
+	MultipartConfigElement multipartConfigElement() {
+		File file = new File("/tmp");
+		if (!file.exists() && !file.isDirectory()) {
+			file.mkdir();
+		}
+
+		MultipartConfigFactory factory = new MultipartConfigFactory();
+		factory.setLocation("/tmp");
+		return factory.createMultipartConfig();
 	}
 
 	public static void main(String[] args) {
