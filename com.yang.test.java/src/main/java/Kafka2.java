@@ -21,7 +21,7 @@ public class Kafka2 {
 		
 
 		//properties.put("zookeeper.connect", "192.168.10.248:2181");
-		properties.put("metadata.broker.list", "192.168.8.155:9092");
+		properties.put("metadata.broker.list", "192.168.10.239:9092");
 		
 
 		//properties.put("zookeeper.connect", "192.168.30.60:2181,192.168.30.61:2181,192.168.30.62:2181");
@@ -29,6 +29,6 @@ public class Kafka2 {
 
 		Producer producer = new Producer<Integer, String>(new ProducerConfig(properties));
 
-		producer.send(new KeyedMessage<Integer, String>("t0", "message: 1"));
+		producer.send(new KeyedMessage<Integer, String>("test", "message: 1"));
 	}
 }

@@ -27,8 +27,8 @@ public class TestMongodb {
 				
 		
 		
-		//MongoClient mongoClient = new MongoClient("127.0.0.1", 27017);
-		MongoClient mongoClient = new MongoClient(l);
+		MongoClient mongoClient = new MongoClient("192.168.10.239", 27017);
+		//MongoClient mongoClient = new MongoClient(l);
 
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 		

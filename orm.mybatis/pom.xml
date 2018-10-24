@@ -13,16 +13,20 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+
 	<parent>
-		<groupId>com.yang.test.java</groupId>
-		<artifactId>maven.parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Finchley.RELEASE</version>
+		<relativePath />
 	</parent>
+
 
 	<dependencies>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
+			<version>3.4.6</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

@@ -7,7 +7,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 public class Kafka {
 	public static void main(String[] args) throws Exception {
-		String topic = "t0";
+		String topic = "test";
 		String group = "testGroup2";
 		Properties props = new Properties();
 
@@ -18,7 +18,7 @@ public class Kafka {
 		//props.put("bootstrap.servers", "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
 		
 
-		props.put("bootstrap.servers", "192.168.8.155:9092");
+		props.put("bootstrap.servers", "192.168.10.239:9092");
 		
 		//props.put("bootstrap.servers", "192.168.30.60:9092,192.168.30.61:9092,192.168.30.62:9092");
 

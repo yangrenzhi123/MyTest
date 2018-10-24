@@ -3,7 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yang.test.java.orm.mybatis">
-  <select id="selectBlog" resultType="com.yang.test.java.orm.mybatis.T">
-    select * from T where id = #{id}
-  </select>
+	<select id="selectBlog" resultType="com.yang.test.java.orm.mybatis.T">
+		select * from t where id = #{id}
+	</select>
+	<insert id="add" parameterType="java.lang.String">
+		insert into t(id) values(#{id})
+	</insert>
 </mapper>
