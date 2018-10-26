@@ -1,9 +1,15 @@
-package com.xk.campushealth.dao;
+package com.lyzh.msa.dao.dao.console;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import com.lyzh.msa.dao.base.dao.BaseDAO;
+import com.lyzh.msa.framework.common.entity.console.${entityCN};
 
-import com.xk.campushealth.entity.$entityName;
-
-public interface I${entityName}Dao extends JpaRepository<$entityName, Integer>, JpaSpecificationExecutor<$entityName> {
+/**
+ * ${entityCN}
+ * 
+ * @author yangrenzhi
+ * @date  ${date}
+ * @Description ${entityCN}DAO
+ * @since 4.0.1
+ */
+public interface ${entity}DAO extends BaseDAO<${entity}, ${entity}> {
 }

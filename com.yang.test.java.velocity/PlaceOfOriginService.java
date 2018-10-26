@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lyzh.msa.framework.common.entity.console.${entity};
-import com.lyzh.saas.console.rpc.${entity}RPC;
+import com.lyzh.msa.framework.common.entity.console.PlaceOfOrigin;
+import com.lyzh.saas.console.rpc.PlaceOfOriginRPC;
 
 /**
  * 角色管理
  * 
  * @author yangrenzhi
- * @date  ${date}
+ * @date  2018-10-26 17:14
  * @Description  
  * @since 4.0.1
  */
 @Service
-public class ${entity}Service {
+public class PlaceOfOriginService {
 	
 	@Autowired
-	${entity}RPC rpc;
+	PlaceOfOriginRPC rpc;
 	
 	/**
 	 * 获取产品分组列表
 	 * @return
 	 */
-	public List<${entity}> find() {
+	public List<PlaceOfOrigin> find() {
 		return rpc.find();
 	}
 }

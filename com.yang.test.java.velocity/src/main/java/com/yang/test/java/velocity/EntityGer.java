@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.velocity.Template;
@@ -15,40 +17,77 @@ import org.apache.velocity.app.VelocityEngine;
 public class EntityGer {
 
 	public static void main(String[] args) throws IOException {
-		// t();
-		// t2();
-		// t3();
-		t4("PlaceOfOrigin");
-		t2(new String[] { "PlaceOfOrigin" });
-		// System.out.println(test());
+		String[] s = new String[] {"PlaceOfOrigin", "实体中文"};
+		t1(s);
+		t2(s);
+		t3(s);
+		t4(s);
+		t5(s);
+		t6(s);
+		t7(s);
+	}
+
+	public static void t1(String[] s) throws IOException {
+		File file = new File(s[0] + "Mapping.xml");
+		FileWriter fileWriter = new FileWriter(file);
+
+		String re = createMapper(s[0], s[1]);
+		fileWriter.write(re);
+		fileWriter.close();
 	}
 
 	public static void t2(String[] s) throws IOException {
-		for (String entityName : s) {
-			File file = new File("I" + entityName + "Dao.java");
-			FileWriter fileWriter = new FileWriter(file);
+		File file = new File(s[0] + ".java");
+		FileWriter fileWriter = new FileWriter(file);
 
-			String re = createDao(entityName);
-			fileWriter.write(re);
-			fileWriter.close();
-		}
+		String re = createEntity(s[0], s[1]);
+		fileWriter.write(re);
+		fileWriter.close();
 	}
 
-	public static void t3() throws IOException {
-		String[] s = { "Role" };
-		for (String entityName : s) {
-			File file2 = new File(entityName + "Service.java");
-			FileWriter fileWriter2 = new FileWriter(file2);
-			String re2 = createServiceImpl(entityName);
-			fileWriter2.write(re2);
-			fileWriter2.close();
+	public static void t3(String[] s) throws IOException {
+		File file = new File(s[0] + "DAO.java");
+		FileWriter fileWriter = new FileWriter(file);
 
-			File file = new File("I" + entityName + "Service.java");
-			FileWriter fileWriter = new FileWriter(file);
-			String re = createService(entityName);
-			fileWriter.write(re);
-			fileWriter.close();
-		}
+		String re = createDao(s[0], s[1]);
+		fileWriter.write(re);
+		fileWriter.close();
+	}
+
+	public static void t4(String[] s) throws IOException {
+		File file = new File(s[0] + "DAOController.java");
+		FileWriter fileWriter = new FileWriter(file);
+
+		String re = createDaoController(s[0], s[1]);
+		fileWriter.write(re);
+		fileWriter.close();
+	}
+
+	public static void t5(String[] s) throws IOException {
+		File file = new File(s[0] + "RPC.java");
+		FileWriter fileWriter = new FileWriter(file);
+
+		String re = createRPC(s[0], s[1]);
+		fileWriter.write(re);
+		fileWriter.close();
+	}
+
+	public static void t6(String[] s) throws IOException {
+		File file = new File(s[0] + "Service.java");
+		FileWriter fileWriter = new FileWriter(file);
+
+		String re = createService(s[0], s[1]);
+		fileWriter.write(re);
+		fileWriter.close();
+	}
+
+	public static void t7(String[] s) throws IOException {
+		File file = new File(s[0] + "Controller.java");
+		FileWriter fileWriter = new FileWriter(file);
+
+		String re = createController(s[0], s[1]);
+		fileWriter.write(re);
+		fileWriter.close();
 	}
 
 	public static void t4(String entityName) throws IOException {
@@ -208,7 +247,7 @@ public class EntityGer {
 		return writer.toString();
 	}
 
-	public static String createDao(String entityName) {
+	public static String createDao(String entity, String entityCN) {
 		// 创建引擎
 		VelocityEngine ve = new VelocityEngine();
 		// 设置模板加载路径，这里设置的是class下
@@ -221,7 +260,9 @@ public class EntityGer {
 		Template t = ve.getTemplate("com/yang/test/java/velocity/dao.vm", "UTF-8");
 		// 设置初始化数据
 		VelocityContext context = new VelocityContext();
-		context.put("entityName", entityName);
+		context.put("entity", entity);
+		context.put("entityCN", entityCN);
+		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
 
 		// 设置输出
 		StringWriter writer = new StringWriter();
@@ -255,27 +296,122 @@ public class EntityGer {
 
 		return writer.toString();
 	}
+	
 
-	public static String createEntity(String tableName, String packageName, List<Column> columns) {
-		// 创建引擎
+	public static String createMapper(String entity, String entityCN) {
 		VelocityEngine ve = new VelocityEngine();
-		// 设置模板加载路径，这里设置的是class下
 		ve.setProperty(Velocity.RESOURCE_LOADER, "class");
 		ve.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
-
-		// 进行初始化操作
 		ve.init();
-		// 加载模板，设定模板编码
-		Template t = ve.getTemplate("com/yang/test/java/velocity/entity.vm", "UTF-8");
-		// 设置初始化数据
-		VelocityContext context = new VelocityContext();
-		context.put("package", packageName);
-		context.put("tableName", tableName);
-		context.put("columns", columns);
 
-		// 设置输出
+		Template t = ve.getTemplate("com/yang/test/java/velocity/mapper.vm", "UTF-8");
+
+		VelocityContext context = new VelocityContext();
+		context.put("entity", entity);
+		context.put("entitym", entity.substring(0, 1).toLowerCase() + entity.substring(1, entity.length()));
+		context.put("entityCN", entityCN);
+		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
+
 		StringWriter writer = new StringWriter();
-		// 将环境数据转化输出
+		t.merge(context, writer);
+
+		return writer.toString();
+	}
+
+	public static String createDaoController(String entity, String entityCN) {
+		VelocityEngine ve = new VelocityEngine();
+		ve.setProperty(Velocity.RESOURCE_LOADER, "class");
+		ve.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		ve.init();
+
+		Template t = ve.getTemplate("com/yang/test/java/velocity/daocontroller.vm", "UTF-8");
+
+		VelocityContext context = new VelocityContext();
+		context.put("entity", entity);
+		context.put("entitym", entity.substring(0, 1).toLowerCase() + entity.substring(1, entity.length()));
+		context.put("entityCN", entityCN);
+		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
+
+		StringWriter writer = new StringWriter();
+		t.merge(context, writer);
+
+		return writer.toString();
+	}
+
+	public static String createEntity(String entity, String entityCN) {
+		VelocityEngine ve = new VelocityEngine();
+		ve.setProperty(Velocity.RESOURCE_LOADER, "class");
+		ve.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		ve.init();
+
+		Template t = ve.getTemplate("com/yang/test/java/velocity/entity.vm", "UTF-8");
+
+		VelocityContext context = new VelocityContext();
+		context.put("entity", entity);
+		context.put("entityCN", entityCN);
+		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
+
+		StringWriter writer = new StringWriter();
+		t.merge(context, writer);
+
+		return writer.toString();
+	}
+	
+
+
+	public static String createRPC(String entity, String entityCN) {
+		VelocityEngine ve = new VelocityEngine();
+		ve.setProperty(Velocity.RESOURCE_LOADER, "class");
+		ve.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		ve.init();
+
+		Template t = ve.getTemplate("com/yang/test/java/velocity/rpc.vm", "UTF-8");
+
+		VelocityContext context = new VelocityContext();
+		context.put("entity", entity);
+		context.put("entityCN", entityCN);
+		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
+
+		StringWriter writer = new StringWriter();
+		t.merge(context, writer);
+
+		return writer.toString();
+	}
+
+	public static String createService(String entity, String entityCN) {
+		VelocityEngine ve = new VelocityEngine();
+		ve.setProperty(Velocity.RESOURCE_LOADER, "class");
+		ve.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		ve.init();
+
+		Template t = ve.getTemplate("com/yang/test/java/velocity/service.vm", "UTF-8");
+
+		VelocityContext context = new VelocityContext();
+		context.put("entity", entity);
+		context.put("entityCN", entityCN);
+		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
+
+		StringWriter writer = new StringWriter();
+		t.merge(context, writer);
+
+		return writer.toString();
+	}
+
+	public static String createController(String entity, String entityCN) {
+		VelocityEngine ve = new VelocityEngine();
+		ve.setProperty(Velocity.RESOURCE_LOADER, "class");
+		ve.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		ve.init();
+
+		Template t = ve.getTemplate("com/yang/test/java/velocity/controller.vm", "UTF-8");
+
+		VelocityContext context = new VelocityContext();
+		context.put("entity", entity);
+		context.put("entityCN", entityCN);
+		context.put("entitym", entity.substring(0, 1).toLowerCase() + entity.substring(1, entity.length()));
+		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
+
+		StringWriter writer = new StringWriter();
 		t.merge(context, writer);
 
 		return writer.toString();

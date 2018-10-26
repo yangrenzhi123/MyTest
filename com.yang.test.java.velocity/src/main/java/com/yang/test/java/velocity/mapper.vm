@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyzh.msa.dao.dao.console.${entity}DAO">
+
+    <sql id="Base_Column_List" >
+    </sql>
+    
+    <insert id="insert" parameterType="${entity}">
+    </insert>
+    
+	<delete id="delete" parameterType="String" >
+    </delete>
+    
+    <insert id="update" parameterType="${entity}">
+    </insert>
+    
+    <select id="find" resultType="${entity}" parameterType="${entity}">
+    </select>
+    
+    <select id="findOne" resultType="${entity}" parameterType="${entity}">
+    </select>
+</mapper>
