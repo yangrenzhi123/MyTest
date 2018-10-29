@@ -1,0 +1,48 @@
+package com.lyzh.saas.console.test;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import com.lyzh.msa.framework.common.entity.console.${entity};
+import com.lyzh.saas.console.ConsoleApplication;
+import com.lyzh.saas.console.service.${entity}Service;
+
+@SpringBootTest(classes = ConsoleApplication.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+public class ${entity}ServiceTest {
+
+	@Autowired
+	${entity}Service ${entitym}Service;
+
+
+	@Test
+	public void find() {
+		String id = UUID.randomUUID().toString();
+		
+		${entity} entity = new ${entity}();
+		${entitym}Service.save(entity);
+		
+		${entitym}Service.update(entity);
+		
+		
+		
+		List<${entity}> l = ${entitym}Service.find();
+		System.out.println(l.size());
+		
+		${entity}DTO dto = new ${entity}DTO();
+		dto.setPageNum(1);
+		dto.setPageSize(10);
+		PageDataInfo<${entity}DTO> p = ${entitym}Service.page(dto);
+		System.out.println(p);
+		
+		
+		${entitym}Service.delete(entity);
+	}
+}

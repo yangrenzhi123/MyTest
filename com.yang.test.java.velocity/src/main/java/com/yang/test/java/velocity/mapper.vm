@@ -16,6 +16,8 @@
     
     <select id="find" resultType="${entity}" parameterType="${entity}">
     </select>
+    <select id="page" resultType="${entity}" parameterType="${entity}">
+    </select>
     
     <select id="findOne" resultType="${entity}" parameterType="${entity}">
     </select>

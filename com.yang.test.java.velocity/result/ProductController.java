@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lyzh.msa.framework.common.entity.MsgInfo;
-import com.lyzh.msa.framework.common.entity.console.${entity};
+import com.lyzh.msa.framework.common.entity.console.Product;
 import com.lyzh.msa.framework.common.exception.TipException;
-import com.lyzh.saas.console.service.${entity}Service;
+import com.lyzh.saas.console.service.ProductService;
 
 /**
  * 
  * @author yangrenzhi
  * @date  2018/10/26 17:17
- * @Description   ${entityCN}API接口
+ * @Description   产品API接口
  * @since
   */
 @RestController
-@RequestMapping("/${entity}")
-public class ${entity}Controller {
+@RequestMapping("/Product")
+public class ProductController {
 
 	@Autowired
-	${entity}Service ${entitym}Service;
+	ProductService productService;
 	
 	/**
 	 * 列表
@@ -36,22 +36,22 @@ public class ${entity}Controller {
 	 * @throws TipException 
 	 */
 	@PostMapping("/l")
-	public MsgInfo<List<${entity}>> l() throws TipException {
-		MsgInfo<List<${entity}>> msgInfo = new MsgInfo<>();
-		List<${entity}> l = ${entitym}Service.find();
+	public MsgInfo<List<Product>> l() throws TipException {
+		MsgInfo<List<Product>> msgInfo = new MsgInfo<>();
+		List<Product> l = productService.find();
 		msgInfo.setData(l);
 		return msgInfo;
 	}
 	
 	
 	/**
-	 * 获取${entityCN}列表
+	 * 获取产品列表
 	 * @param
 	 * @return
 	 */
 	@PostMapping("/l")
-	public PageDataInfo<${entity}DTO> l(@RequestBody ${entity}DTO dto){
-		PageDataInfo<${entity}DTO> dataInfo = new PageDataInfo<>();
+	public PageDataInfo<ProductDTO> l(@RequestBody ProductDTO dto){
+		PageDataInfo<ProductDTO> dataInfo = new PageDataInfo<>();
 		Integer pageNum = dto.getPageNum();
 		Integer pageSize = dto.getPageSize();
 		if(pageNum==null || pageNum.intValue()==0){
@@ -65,7 +65,7 @@ public class ${entity}Controller {
 			return dataInfo;
 		}
 
-		dataInfo = ${entitym}Service.pageList(dto);
+		dataInfo = productService.pageList(dto);
 		dataInfo.setCode(CodeEnum.SUCESS.getCode());
 		dataInfo.setMessage("success");
 		return dataInfo;
@@ -79,7 +79,7 @@ public class ${entity}Controller {
 	 * @throws TipException 
 	 */
 	@PostMapping("/c")
-	public MsgInfo<String> c(@RequestBody ${entity} entity) throws TipException {
+	public MsgInfo<String> c(@RequestBody Product entity) throws TipException {
 		MsgInfo<String> msgInfo = new MsgInfo<>();
 		
 
@@ -94,7 +94,7 @@ public class ${entity}Controller {
 	 * @throws TipException 
 	 */
 	@PostMapping("/u")
-	public MsgInfo<String> u(@RequestBody ${entity} entity) throws TipException {
+	public MsgInfo<String> u(@RequestBody Product entity) throws TipException {
 		MsgInfo<String> msgInfo = new MsgInfo<>();
 		
 		
@@ -110,7 +110,7 @@ public class ${entity}Controller {
 	 * @throws TipException 
 	 */
 	@PostMapping("/d")
-	public MsgInfo<String> d(@RequestBody ${entity} entity) throws TipException {
+	public MsgInfo<String> d(@RequestBody Product entity) throws TipException {
 		MsgInfo<String> msgInfo = new MsgInfo<>();
 		
 		

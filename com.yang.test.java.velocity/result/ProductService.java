@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageInfo;
 
-import com.lyzh.msa.framework.common.entity.console.${entity};
-import com.lyzh.msa.framework.common.dto.console.${entity}DTO;
-import com.lyzh.saas.console.rpc.${entity}RPC;
+import com.lyzh.msa.framework.common.entity.console.Product;
+import com.lyzh.msa.framework.common.dto.console.ProductDTO;
+import com.lyzh.saas.console.rpc.ProductRPC;
 import com.lyzh.msa.framework.common.entity.PageDataInfo;
 
 
@@ -18,18 +18,18 @@ import com.lyzh.msa.framework.common.entity.PageDataInfo;
 
 
 /**
- * ${entityCN}
+ * 产品
  * 
  * @author yangrenzhi
- * @date  ${date}
+ * @date  2018-10-29 16:27
  * @Description  
  * @since 4.0.1
  */
 @Service
-public class ${entity}Service {
+public class ProductService {
 	
 	@Autowired
-	${entity}RPC rpc;
+	ProductRPC rpc;
 	
 	
 	/**
@@ -37,9 +37,9 @@ public class ${entity}Service {
 	 * @param 
 	 * @return
 	 */
-	public PageDataInfo<${entity}DTO> pageList(${entity}DTO dto){
-		PageInfo<${entity}DTO> pageInfo = rpc.page(dto);
-		PageDataInfo<${entity}DTO> dataInfo = new PageDataInfo<>();
+	public PageDataInfo<ProductDTO> pageList(ProductDTO dto){
+		PageInfo<ProductDTO> pageInfo = rpc.page(dto);
+		PageDataInfo<ProductDTO> dataInfo = new PageDataInfo<>();
 		dataInfo.setPageNum(pageInfo.getPageNum());
 		dataInfo.setPageSize(pageInfo.getPageSize());
 		dataInfo.setTotal(pageInfo.getTotal());
@@ -48,10 +48,10 @@ public class ${entity}Service {
 	}
 	
 	/**
-	 * 获取${entityCN}列表
+	 * 获取产品列表
 	 * @return
 	 */
-	public List<${entity}> find() {
+	public List<Product> find() {
 		return rpc.find();
 	}
 
@@ -59,7 +59,7 @@ public class ${entity}Service {
 	 * 新增
 	 * @return
 	 */
-	public void save(${entity} entity) {
+	public void save(Product entity) {
 		rpc.insert(entity);
 	}
 	
@@ -67,7 +67,7 @@ public class ${entity}Service {
 	 * 修改
 	 * @return
 	 */
-	public void update(${entity} entity) {
+	public void update(Product entity) {
 		rpc.update(entity);
 	}
 	
@@ -75,7 +75,7 @@ public class ${entity}Service {
 	 * 删除
 	 * @return
 	 */
-	public void delete(${entity} entity) {
+	public void delete(Product entity) {
 		rpc.delete(entity);
 	}
 }

@@ -1,0 +1,19 @@
+package com.lyzh.msa.framework.common.dto.console;
+
+import com.lyzh.msa.framework.common.base.BaseDTO;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * ${entityCN} DTO
+ * 
+ * @author yangrenzhi
+ * @date  ${date}
+ * @Description
+ * @since 4.0.1
+ */
+public class ${entity}DTO extends BaseDTO implements Serializable {
+
+	private static final long serialVersionUID = -7383101901173981640L;
+}

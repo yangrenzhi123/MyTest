@@ -9,50 +9,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lyzh.msa.dao.dao.console.${entity}DAO;
-import com.lyzh.msa.framework.common.entity.console.${entity};
+import com.lyzh.msa.dao.dao.console.ProductDAO;
+import com.lyzh.msa.framework.common.entity.console.Product;
 import com.lyzh.msa.framework.common.util.ThreadLocalUtils;
 
 /**
  * @Auther: yangrenzhi
- * @Date: ${date}
- * @Description: ${entityCN}DAO接口
+ * @Date: 2018-10-29 16:27
+ * @Description: 产品DAO接口
  */
 @RestController
-@RequestMapping("/dao/console/${entity}")
-public class ${entity}DAOController {
+@RequestMapping("/dao/console/Product")
+public class ProductDAOController {
 
 	@Autowired
-	private ${entity}DAO ${entitym}DAO;
+	private ProductDAO productDAO;
 	
 		/**
 	 * 增加
 	 */
 	@RequestMapping("/insert")
-	public void insert(@RequestBody ${entity} entity) {
+	public void insert(@RequestBody Product entity) {
 		entity.setCreateuser(ThreadLocalUtils.getCurrentUser());
 		entity.setCreatetime(new Date());
 
-		${entitym}DAO.insert(entity);
+		productDAO.insert(entity);
 	}
 
 	/**
 	 * 修改
 	 */
 	@RequestMapping("/update")
-	public void update(@RequestBody ${entity} entity) {
+	public void update(@RequestBody Product entity) {
 		entity.setLastmodifyuser(ThreadLocalUtils.getCurrentUser());
 		entity.setLastmodifytime(new Date());
 
-		${entitym}DAO.update(entity);
+		productDAO.update(entity);
 	}
 
 	/**
 	 * 列表
 	 */
 	@RequestMapping("/find")
-	public List<${entity}> find() {
-		return ${entitym}DAO.find();
+	public List<Product> find() {
+		return productDAO.find();
 	}
 	
 		/**
