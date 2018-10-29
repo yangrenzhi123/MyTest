@@ -16,14 +16,14 @@ public class Test {
 	//static final String USER = "sa";
 	//static final String PASS = "1qazxcvbnm,./";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://192.168.30.120:8066/TESTDB";
+	static final String DB_URL = "jdbc:mysql://192.168.10.10:3306/test";
 	static final String USER = "root";
 	static final String PASS = "123456";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
 		Class.forName(DRIVER);
 		
-		int num = 20;
+		int num = 10;
 		
 		long b = System.currentTimeMillis();
 		final List<Connection> l = new ArrayList<Connection>();
