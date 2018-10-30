@@ -33,4 +33,10 @@ public interface ${entity}RPC {
 	 */
 	@RequestMapping("/dao/console/${entity}/find")
 	List<${entity}> find();
+
+	/**
+	 * 明细
+	 */
+	@RequestMapping("/dao/console/${entity}/findOne")
+	void findOne(${entity} entity);
 }
