@@ -1,8 +1,12 @@
+import java.util.Random;
+
 public class Test2 {
 
 	public static void main(String[] args) {
-		A ab = new B();
-		ab = new B();
+		Random r = new Random();
+		while(true) {
+			System.out.println(r.nextInt(20));
+		}
 	}
 }
 

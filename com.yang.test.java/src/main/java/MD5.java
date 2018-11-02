@@ -14,7 +14,7 @@ public class MD5 {
 
 	public static void t4() throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update("654321".getBytes());
+		md.update("123456".getBytes());
 		System.out.println(new BigInteger(1, md.digest()).toString(16));
 	}
 
