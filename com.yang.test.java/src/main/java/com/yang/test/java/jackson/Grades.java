@@ -2,6 +2,8 @@ package com.yang.test.java.jackson;
 
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Grades {
 
 	private String name;// 班级名称
