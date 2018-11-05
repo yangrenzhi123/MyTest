@@ -5,6 +5,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+@SuppressWarnings("resource")
 public class Kafka {
 	public static void main(String[] args) throws Exception {
 		String topic = "test";
@@ -15,10 +16,10 @@ public class Kafka {
         //String topic = "my-replicated-topic";
         //props.put("bootstrap.servers", "172.28.51.33:9092,172.28.51.33:9093,172.28.51.33:9094");
 		
-		//props.put("bootstrap.servers", "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
+		props.put("bootstrap.servers", "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
 		
 
-		props.put("bootstrap.servers", "192.168.8.70:9092");
+		//props.put("bootstrap.servers", "192.168.8.70:9092");
 		
 		//props.put("bootstrap.servers", "192.168.30.60:9092,192.168.30.61:9092,192.168.30.62:9092");
 
@@ -32,10 +33,17 @@ public class Kafka {
 
 		consumer.subscribe(Arrays.asList(topic));
 		System.out.println("Subscribed to topic " + topic);
-		int i = 0;
 
 		while (true) {
-			ConsumerRecords<String, String> records = consumer.poll(100);
+			ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
+			System.out.println("1111111111111111111111111111111111111111111111111111");
+			System.out.println("1111111111111111111111111111111111111111111111111111");
+			System.out.println("1111111111111111111111111111111111111111111111111111");
+			System.out.println("1111111111111111111111111111111111111111111111111111");
+			System.out.println("1111111111111111111111111111111111111111111111111111");
+			System.out.println("1111111111111111111111111111111111111111111111111111");
+			System.out.println("1111111111111111111111111111111111111111111111111111");
+			System.out.println("1111111111111111111111111111111111111111111111111111");
 			for (ConsumerRecord<String, String> record : records)
 				System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
 		}

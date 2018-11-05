@@ -3,7 +3,6 @@ import java.util.Random;
 public class Test2 {
 
 	public static void main(String[] args) {
-		"Duplicate entry 'cc-2-' for key 'menu_name'".split("'");
 	}
 }
 
