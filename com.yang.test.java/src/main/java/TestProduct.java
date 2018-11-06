@@ -13,7 +13,7 @@ import kafka.serializer.StringEncoder;
 @SuppressWarnings({"deprecation", "unchecked", "rawtypes"})
 public class TestProduct {
 
-	public static final int count = 5000;
+	public static final int count = 10000;
 	public static final Properties properties = new Properties();
 	
 	public static void main(String[] args) throws InterruptedException {
@@ -25,8 +25,17 @@ public class TestProduct {
 		pl.add(new Producer<Integer, String>(new ProducerConfig(properties)));
 		pl.add(new Producer<Integer, String>(new ProducerConfig(properties)));
 		pl.add(new Producer<Integer, String>(new ProducerConfig(properties)));
+		pl.add(new Producer<Integer, String>(new ProducerConfig(properties)));
+		pl.add(new Producer<Integer, String>(new ProducerConfig(properties)));
+		pl.add(new Producer<Integer, String>(new ProducerConfig(properties)));
+		pl.add(new Producer<Integer, String>(new ProducerConfig(properties)));
+		int i=0;
 		while (true) {
 			test(pl);
+			
+//			if(i++ > 100) {
+//				break;
+//			}
 		}
 	}
 
@@ -38,7 +47,7 @@ public class TestProduct {
 			Thread a = new Thread(new Runnable() {
 				public void run() {
 					try {
-						pl.get(new Random().nextInt(4)).send(new KeyedMessage<Integer, String>("test", "message: 1"));
+						pl.get(new Random().nextInt(pl.size())).send(new KeyedMessage<Integer, String>("test", "message: 1"));
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {

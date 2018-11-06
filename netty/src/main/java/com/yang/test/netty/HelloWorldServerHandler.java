@@ -8,8 +8,8 @@ public class HelloWorldServerHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		System.out.println("server channelRead..");
-		System.out.println(ctx.channel().remoteAddress() + "->Server :" + msg.toString());
+		//System.out.println("server channelRead..");
+		//System.out.println(ctx.channel().remoteAddress() + "->Server :" + msg.toString());
 		ctx.write("server write" + msg);
 		ctx.flush();
 	}

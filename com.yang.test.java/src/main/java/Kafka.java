@@ -1,9 +1,16 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.bson.Document;
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 @SuppressWarnings("resource")
 public class Kafka {
@@ -34,18 +41,29 @@ public class Kafka {
 		consumer.subscribe(Arrays.asList(topic));
 		System.out.println("Subscribed to topic " + topic);
 
+		MongoClient mongoClient = new MongoClient("192.168.10.239", 27017);
+		MongoDatabase mgdb = mongoClient.getDatabase("test");
+		MongoCollection c = mgdb.getCollection("c8");
+
+		
+		int i=0;
+		long a=0;
 		while (true) {
 			ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111111111111111111111");
-			for (ConsumerRecord<String, String> record : records)
-				System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
+			List<Document> documents = new ArrayList<Document>();
+			for (ConsumerRecord<String, String> record : records) {
+				if(i==0) {
+					a = System.currentTimeMillis();
+				}
+				i++;
+				//System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
+				
+
+				Document doc = Document.parse("{\""+record.key()+"\":\""+record.value()+"\"}");
+				documents.add(doc);
+			}
+			c.insertMany(documents);
+			System.out.println("耗时："+(System.currentTimeMillis()-a)+"，总条数："+i);
 		}
 	}
 }
