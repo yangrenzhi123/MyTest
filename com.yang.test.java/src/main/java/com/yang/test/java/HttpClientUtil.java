@@ -2,6 +2,7 @@ package com.yang.test.java;
 
 import javax.net.ssl.SSLContext;
 
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
@@ -23,13 +24,17 @@ public class HttpClientUtil {
 
 	static {
 		try {
+
+	        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(60 * 1000).setSocketTimeout(60 * 1000).setConnectionRequestTimeout(60 * 1000).build();
+			
+			
 			LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContext.getDefault());
-			Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
-					.register("https", sslsf).register("http", new PlainConnectionSocketFactory()).build();
+			Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("https", sslsf).register("http", new PlainConnectionSocketFactory()).build();
 			PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-			cm.setMaxTotal(2000);
-			cm.setDefaultMaxPerRoute(2000);
+			cm.setMaxTotal(20000);
+			cm.setDefaultMaxPerRoute(20000);
 			hb = HttpClients.custom().setConnectionManager(cm);
+			hb.setDefaultRequestConfig(requestConfig);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -22,13 +22,13 @@ public class TestProduct {
 	}
 
 	public static HttpPost getPost() {
-		HttpPost p1 = new HttpPost("http://127.0.0.1:3106/api-console/Product/l");
+		HttpPost p1 = new HttpPost("http://192.168.8.70:3106/api-console/Product/l");
 		StringEntity e1 = new StringEntity("{\"pageNum\":\"1\",\"pageSize\":\"10\"}", "utf-8");
 		e1.setContentEncoding("UTF-8");
 		e1.setContentType("application/json");
 		p1.setEntity(e1);
 
-		HttpPost p2 = new HttpPost("http://127.0.0.1:3106/api-console/t/save");
+		HttpPost p2 = new HttpPost("http://192.168.8.70:3106/api-console/t/save");
 		StringEntity e2 = new StringEntity("{\"id\":\"1\",\"name\":\2\",\"type\":\"3\"}","utf-8");
 		e2.setContentEncoding("UTF-8");
 		e2.setContentType("application/json");
@@ -38,7 +38,7 @@ public class TestProduct {
 		if (a == 0) {
 			return p1;
 		} else {
-			return p2;
+			return p1;
 		}
 	}
 
