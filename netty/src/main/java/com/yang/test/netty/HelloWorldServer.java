@@ -1,6 +1,11 @@
 package com.yang.test.netty;
 
 import java.net.InetSocketAddress;
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -33,11 +38,25 @@ public class HelloWorldServer {
 		EventLoopGroup bossGroup = new NioEventLoopGroup(2);
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {
+
+			Properties properties = new Properties();
+		    // 服务器ip:端口号，集群用逗号分隔
+			properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
+	        // key序列化指定类
+			properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+	        // value序列化指定类
+			properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+			
+			KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
+			
+			final HelloWorldServerHandler hnd = new HelloWorldServerHandler();
+			hnd.setProducer(producer);
+			
 			ServerBootstrap sbs = new ServerBootstrap().group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).localAddress(new InetSocketAddress(port)).childHandler(new ChannelInitializer<SocketChannel>() {
 				protected void initChannel(SocketChannel ch) throws Exception {
 					ch.pipeline().addLast("decoder", new StringDecoder());
 					ch.pipeline().addLast("encoder", new StringEncoder());
-					ch.pipeline().addLast(new HelloWorldServerHandler());
+					ch.pipeline().addLast(hnd);
 				};
 			}).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, true);
 			// 绑定端口，开始接收进来的连接
@@ -46,6 +65,7 @@ public class HelloWorldServer {
 			System.out.println("Server start listen at " + port);
 			future.channel().closeFuture().sync();
 		} catch (Exception e) {
+			e.printStackTrace();
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
 		}

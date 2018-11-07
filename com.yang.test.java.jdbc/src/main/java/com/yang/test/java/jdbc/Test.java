@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 public class Test {
@@ -19,21 +20,34 @@ public class Test {
 	static final String DB_URL = "jdbc:mysql://192.168.10.10:3306/test";
 	static final String USER = "root";
 	static final String PASS = "123456";
+	
+	static final int num = 10;
+	static final List<Connection> l = new ArrayList<Connection>();
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
 		Class.forName(DRIVER);
 		
-		int num = 10;
-		
-		long b = System.currentTimeMillis();
-		final List<Connection> l = new ArrayList<Connection>();
 		for(int i=0;i<num;i++) {
 			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			conn.setAutoCommit(true);
 			l.add(conn);
 		}
-		System.out.println(System.currentTimeMillis() - b);
-
+		
+		while(true) {
+			test();
+		}
+	}
+	
+	public static String getSql() {
+		int v = new Random().nextInt(2);
+		if(v == 1) {
+			return "select id from t limit 0, 10";
+		}else {
+			return "insert into t values";
+		}
+	}
+	
+	public static void test() throws SQLException, InterruptedException {
 		final CountDownLatch latch = new CountDownLatch(num);
 		List<Thread> l2 = new ArrayList<Thread>();
 		for(int i=0;i<num;i++) {
@@ -44,15 +58,14 @@ public class Test {
 				public void run() {
 					try {
 						Connection conn = l.get(j);
-						for(int h=0;h<1000;h++) {
-							PreparedStatement stmt = conn.prepareStatement("select id from t");
+						for(int h=0;h<700;h++) {
+							PreparedStatement stmt = conn.prepareStatement(getSql());
 							ResultSet rs = stmt.executeQuery();
 							while (rs.next()) {
 							}
 							rs.close();
 							stmt.close();
 						}
-						conn.close();
 						latch.countDown();
 					}catch(Exception e) {
 						e.printStackTrace();
@@ -70,6 +83,5 @@ public class Test {
 		
 		latch.await();
 		System.out.println(System.currentTimeMillis() - a);
-		System.out.println(1);
 	}
 }

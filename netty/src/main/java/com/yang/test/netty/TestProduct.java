@@ -31,7 +31,7 @@ public class TestProduct {
 	}
 
 	static void test() throws InterruptedException, UnknownHostException, IOException {
-		int count = 12000;
+		int count = 10000;
 		final CountDownLatch latch = new CountDownLatch(count);
 		
 		
