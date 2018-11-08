@@ -9,7 +9,7 @@ import java.nio.channels.FileChannel;
 public class FileNio2 {
 
 	public static void main(String[] args) throws IOException {
-		RandomAccessFile f = new RandomAccessFile("F:/1.txt", "r");
+		RandomAccessFile f = new RandomAccessFile("C:/1.txt", "r");
 		FileChannel fileChannel = f.getChannel();
 		ByteBuffer buf = ByteBuffer.allocate(10);
 

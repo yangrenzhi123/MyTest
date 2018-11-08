@@ -31,8 +31,8 @@ public class HttpClientUtil {
 			LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContext.getDefault());
 			Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create().register("https", sslsf).register("http", new PlainConnectionSocketFactory()).build();
 			PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-			cm.setMaxTotal(20000);
-			cm.setDefaultMaxPerRoute(20000);
+			cm.setMaxTotal(500);
+			cm.setDefaultMaxPerRoute(200);
 			hb = HttpClients.custom().setConnectionManager(cm);
 			hb.setDefaultRequestConfig(requestConfig);
 		} catch (Exception e) {

@@ -14,17 +14,7 @@ public class FileNio3 {
 		ByteBuffer buf = ByteBuffer.allocate(1024);
 
 		for (int i = 0; i < 10; i++) {
-			String newData = (i+1) + "\r\n";
-			buf.clear();
-			buf.put(newData.getBytes());
-			buf.flip();
-			while (buf.hasRemaining()) {
-				fileChannel.write(buf);
-			}
-		}
-
-		for (int i = 0; i < 10; i++) {
-			String newData = (i+1) + "\r\n";
+			String newData = (i+100) + "\r\n";
 			buf.clear();
 			buf.put(newData.getBytes());
 			buf.flip();
