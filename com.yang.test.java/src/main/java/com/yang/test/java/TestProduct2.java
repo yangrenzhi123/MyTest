@@ -22,7 +22,7 @@ public class TestProduct2 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 3000;
+	static int count = 4000;
 	static CountDownLatch latch;
 	
 	public static void main(String[] args) throws InterruptedException, IOException {
