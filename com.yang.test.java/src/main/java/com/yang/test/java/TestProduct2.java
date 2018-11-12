@@ -11,6 +11,7 @@ import java.util.concurrent.CountDownLatch;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -34,6 +35,8 @@ public class TestProduct2 {
 		
 		f = new RandomAccessFile("C:/1.txt", "rw");
 		
+		
+		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
 
 		StringEntity e3 = new StringEntity("{\"dictionarydata\":\"true\"}", "utf-8");
@@ -44,7 +47,8 @@ public class TestProduct2 {
 		
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < count; i++) {
-			hcl.add(HttpClients.createDefault());
+			CloseableHttpClient hc = HttpClients.custom().setDefaultRequestConfig(config).build();
+			hcl.add(hc);
 		}
 		
 		rl = new ArrayList<>();
