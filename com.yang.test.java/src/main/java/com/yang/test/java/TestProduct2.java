@@ -25,6 +25,7 @@ public class TestProduct2 {
 	static List<Runnable> rl;
 	static int count = 4000;
 	static CountDownLatch latch;
+	static long totalDistance;
 	
 	public static void main(String[] args) throws InterruptedException, IOException {
 		File log = new File(logPath);
@@ -87,13 +88,13 @@ public class TestProduct2 {
 		
 		
 		for(int i=0;i<1000;i++) {
-			test();
+			test(i);
 		}
 		
 		Thread.sleep(2000);
 	}
 
-	static void test() throws InterruptedException, IOException {
+	static void test(int index) throws InterruptedException, IOException {
 		latch = new CountDownLatch(count);
 
 		
@@ -109,6 +110,14 @@ public class TestProduct2 {
 		}
 
 		latch.await();
+		long distance = System.currentTimeMillis() - a;
+		
+		if(index == 0) {
+			return ;
+		}
+		totalDistance = totalDistance + distance;
+		long avg = totalDistance / index;
+		System.out.println("本次耗时："+distance+"，平均耗时："+avg);
 		System.out.println(System.currentTimeMillis() - a);
 	}
 }
