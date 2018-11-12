@@ -23,7 +23,7 @@ public class TestProduct2 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 4000;
+	static int count = 1000;
 	static CountDownLatch latch;
 	static long totalDistance;
 	
@@ -118,6 +118,5 @@ public class TestProduct2 {
 		totalDistance = totalDistance + distance;
 		long avg = totalDistance / index;
 		System.out.println("本次耗时："+distance+"，平均耗时："+avg);
-		System.out.println(System.currentTimeMillis() - a);
 	}
 }
