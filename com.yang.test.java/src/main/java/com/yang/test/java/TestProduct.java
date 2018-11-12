@@ -7,12 +7,12 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -23,7 +23,7 @@ public class TestProduct {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 710;
+	static int count = 1000;
 	static CountDownLatch latch;
 	
 	public static void main(String[] args) throws InterruptedException, IOException {
@@ -35,18 +35,19 @@ public class TestProduct {
 		
 		f = new RandomAccessFile("C:/1.txt", "rw");
 		
-
+		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
 		StringEntity e3 = new StringEntity("{\"dictionarydata\":\"true\"}", "utf-8");
 		e3.setContentType("application/json");
-		final HttpPost p3 = new HttpPost("http://192.168.30.120:4108/api-console/dictionary/menuestatues.do");
-		p3.setHeader("Cookie", "lyzh-saas=s%3ASC6Rj8eCCp48BQO286ZoahuoSKVHLxMA.cooCvTXOGf3agzeBdqGUhaC0iTq%2F0XZW5jcbkFmhxxI");
+		final HttpGet p3 = new HttpGet("http://192.168.30.120:4108/");
+		//p3.setHeader("Cookie", "lyzh-saas=s%3ASC6Rj8eCCp48BQO286ZoahuoSKVHLxMA.cooCvTXOGf3agzeBdqGUhaC0iTq%2F0XZW5jcbkFmhxxI");
 		p3.setHeader("Connection", "Keep-Alive");
-		p3.setEntity(e3);
+		//p3.setEntity(e3);
 		
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < count; i++) {
-			hcl.add(HttpClients.createDefault());
+			CloseableHttpClient hc = HttpClients.custom().setDefaultRequestConfig(config).build();
+			hcl.add(hc);
 		}
 		
 		rl = new ArrayList<>();
