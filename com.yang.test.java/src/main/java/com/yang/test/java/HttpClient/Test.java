@@ -40,26 +40,18 @@ public class Test {
 	static CloseableHttpClient httpClient = null;
 	
 	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		testPooling();
+		getAccessToken();
 	}
 	
 
 
 	public static void getAccessToken() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=nNABUQ1OGTIq2uP90U1iVAnfDqHBM3mRrsCym4vt75STnitKcZpv4aCY46e7Yzv1HtkC0ASwxUZhP5nOSzUTkPro3iw7FZstOifVj1_dnnQPLUMyGTK4Jui9y8C-YXkUJFJeAEAUQU");
-		String data = 
-		"{"+
-		"  \"touser\": \"ojD0F1DnQOIklqRxT-i-NCzyiqZA\","+
-		"  \"template_id\": \"7B0NnHfBnisHtgtxfuvVl7iLCFV88UaXalWECcdF6dg\","+
-		"  \"url\": \"http://www.baidu.com\","+
-		"  \"data\": {\"keyword1\":{\"value\":123,\"color\":\"#0000FF\"}}"+
-		"}";
-		StringEntity entity = new StringEntity(data, ContentType.create("application/json", "UTF-8"));
-		post.setEntity(entity);
+		HttpGet request = new HttpGet("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxcc79d67b43519897&secret=4a9bb164fc23668193b3263ebfbb71ee");
+
 		
 		
-		HttpResponse response = httpClient.execute(post);
+		HttpResponse response = httpClient.execute(request);
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);
 		System.out.println(result);
