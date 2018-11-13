@@ -40,17 +40,19 @@ public class Test {
 	static CloseableHttpClient httpClient = null;
 	
 	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		getAccessToken();
+		getJsapi();
 	}
-	
-
-
 	public static void getAccessToken() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpGet request = new HttpGet("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxcc79d67b43519897&secret=4a9bb164fc23668193b3263ebfbb71ee");
-
-		
-		
+		HttpResponse response = httpClient.execute(request);
+		HttpEntity httpEntity = response.getEntity();
+		String result = EntityUtils.toString(httpEntity);
+		System.out.println(result);
+	}
+	public static void getJsapi() throws ClientProtocolException, IOException {
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpGet request = new HttpGet("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=15_uCL8u6rnHaPQZ4uvtPWELOOZGdtWEaqaEi1Vcz4gvS_ycGEiywBSo5SGsVUJWVjNlRdvj-iBNF_LAzn_WWhxORFTOQYem7GmuCbXozEcvv_jd4RZxbHP6p3F-ZM6IM_IR9BKKS37Rizm9RctFNNbAJAVDD&type=jsapi");
 		HttpResponse response = httpClient.execute(request);
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);

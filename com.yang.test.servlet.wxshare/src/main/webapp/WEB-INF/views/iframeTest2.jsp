@@ -14,7 +14,7 @@ wx.config({
     appId: 'wxcc79d67b43519897', // 必填，公众号的唯一标识     
 　　timestamp: ${timestamp}, // 必填，生成签名的时间戳
     nonceStr: '${nonceStr}', // 必填，生成签名的随机串
-    signature: '91b3eb0a416981c215519cc01876d56fc9cd486d',// 必填，签名，见附录1
+    signature: '${signature}',// 必填，签名，见附录1
     jsApiList: [//需要调用的JS接口列表
         'checkJsApi',//判断当前客户端版本是否支持指定JS接口
         'onMenuShareTimeline',//分享给好友
