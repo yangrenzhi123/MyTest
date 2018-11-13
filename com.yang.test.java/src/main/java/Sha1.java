@@ -4,6 +4,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class Sha1 {
 
 	public static void main(String[] args) {
-		System.out.println(DigestUtils.shaHex("jsapi_ticket=sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg&noncestr=Wm3WZYTPz0wzccnW&timestamp=1414587457&url=http://mp.weixin.qq.com?params=value"));
+//		String uuid = UUID.randomUUID().toString();
+//		String timestamp = Long.toString(System.currentTimeMillis() / 1000);
+//		
+//		System.out.println(uuid);
+//		System.out.println(timestamp);
+		System.out.println(DigestUtils.shaHex("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9sTpVMbQ4kfaVd_UnjEDtjzMPG_GfL2z3EYhIYyrDrJF3tNcROy09MHRbafe43UtFg&noncestr=27ff9be5-4d0f-400c-8a10-aa15ec6eb4ba&timestamp=1542110890&url=http://192.168.8.70:8080/"));
 	}
 }

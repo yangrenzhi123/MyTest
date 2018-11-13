@@ -23,7 +23,7 @@ public class TestProduct2 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 1000;
+	static int count = 6000;
 	static CountDownLatch latch;
 	static long totalDistance;
 	
@@ -42,7 +42,7 @@ public class TestProduct2 {
 
 		StringEntity e3 = new StringEntity("{\"dictionarydata\":\"true\"}", "utf-8");
 		e3.setContentType("application/json");
-		final HttpGet p3 = new HttpGet("http://192.168.10.238:3106/api-file/test");
+		final HttpGet p3 = new HttpGet("http://192.168.30.120:3105/test");
 		p3.setHeader("Cookie", "lyzh-saas=s%3ASC6Rj8eCCp48BQO286ZoahuoSKVHLxMA.cooCvTXOGf3agzeBdqGUhaC0iTq%2F0XZW5jcbkFmhxxI");
 		p3.setHeader("Connection", "Keep-Alive");
 		
@@ -87,7 +87,7 @@ public class TestProduct2 {
 		}
 		
 		
-		for(int i=0;i<1000;i++) {
+		for(int i=0;i<20;i++) {
 			test(i);
 		}
 		
