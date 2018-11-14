@@ -17,7 +17,7 @@ import org.apache.velocity.app.VelocityEngine;
 public class EntityGer {
 
 	public static void main(String[] args) throws IOException {
-		String[] s = new String[] {"Product", "产品"};
+		String[] s = new String[] {"MoniRule", "模拟程序规则"};
 		t1(s);
 		t2(s);
 		t3(s);
@@ -219,6 +219,7 @@ public class EntityGer {
 		// 设置初始化数据
 		VelocityContext context = new VelocityContext();
 		context.put("entityName", entityName);
+		context.put("entityMini", entityName.toLowerCase());
 		context.put("smEntityName", entityName.substring(0, 1).toLowerCase() + entityName.substring(1));
 		context.put("columns", columns);
 
@@ -501,6 +502,7 @@ public class EntityGer {
 
 		VelocityContext context = new VelocityContext();
 		context.put("entity", entity);
+		context.put("entityMini", entity.toLowerCase());
 		context.put("entityCN", entityCN);
 		context.put("entitym", entity.substring(0, 1).toLowerCase() + entity.substring(1, entity.length()));
 		context.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));

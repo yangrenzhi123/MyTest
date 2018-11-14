@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lyzh.msa.framework.common.entity.MsgInfo;
-import com.lyzh.msa.framework.common.entity.console.Product;
+import com.lyzh.msa.framework.common.entity.console.MoniRule;
 import com.lyzh.msa.framework.common.exception.TipException;
-import com.lyzh.saas.console.service.ProductService;
+import com.lyzh.saas.console.service.MoniRuleService;
 
 /**
  * 
  * @author yangrenzhi
  * @date  2018/10/26 17:17
- * @Description   产品API接口
+ * @Description   模拟程序规则API接口
  * @since
   */
 @RestController
-@RequestMapping("/Product")
-public class ProductController {
+@RequestMapping("/monirule")
+public class MoniRuleController {
 
 	@Autowired
-	ProductService productService;
+	MoniRuleService moniRuleService;
 	
 	/**
 	 * 列表
@@ -36,22 +36,22 @@ public class ProductController {
 	 * @throws TipException 
 	 */
 	@PostMapping("/l")
-	public MsgInfo<List<Product>> l() throws TipException {
-		MsgInfo<List<Product>> msgInfo = new MsgInfo<>();
-		List<Product> l = productService.find();
+	public MsgInfo<List<MoniRule>> l() throws TipException {
+		MsgInfo<List<MoniRule>> msgInfo = new MsgInfo<>();
+		List<MoniRule> l = moniRuleService.find();
 		msgInfo.setData(l);
 		return msgInfo;
 	}
 	
 	
 	/**
-	 * 获取产品列表
+	 * 获取模拟程序规则列表
 	 * @param
 	 * @return
 	 */
 	@PostMapping("/l")
-	public PageDataInfo<ProductDTO> l(@RequestBody ProductDTO dto){
-		PageDataInfo<ProductDTO> dataInfo = new PageDataInfo<>();
+	public PageDataInfo<MoniRuleDTO> l(@RequestBody MoniRuleDTO dto){
+		PageDataInfo<MoniRuleDTO> dataInfo = new PageDataInfo<>();
 		Integer pageNum = dto.getPageNum();
 		Integer pageSize = dto.getPageSize();
 		if(pageNum==null || pageNum.intValue()==0){
@@ -65,7 +65,7 @@ public class ProductController {
 			return dataInfo;
 		}
 
-		dataInfo = productService.pageList(dto);
+		dataInfo = moniRuleService.pageList(dto);
 		dataInfo.setCode(CodeEnum.SUCESS.getCode());
 		dataInfo.setMessage("success");
 		return dataInfo;
@@ -79,7 +79,7 @@ public class ProductController {
 	 * @throws TipException 
 	 */
 	@PostMapping("/c")
-	public MsgInfo<String> c(@RequestBody Product entity) throws TipException {
+	public MsgInfo<String> c(@RequestBody MoniRule entity) throws TipException {
 		MsgInfo<String> msgInfo = new MsgInfo<>();
 		
 
@@ -94,7 +94,7 @@ public class ProductController {
 	 * @throws TipException 
 	 */
 	@PostMapping("/u")
-	public MsgInfo<String> u(@RequestBody Product entity) throws TipException {
+	public MsgInfo<String> u(@RequestBody MoniRule entity) throws TipException {
 		MsgInfo<String> msgInfo = new MsgInfo<>();
 		
 		
@@ -110,7 +110,7 @@ public class ProductController {
 	 * @throws TipException 
 	 */
 	@PostMapping("/d")
-	public MsgInfo<String> d(@RequestBody Product entity) throws TipException {
+	public MsgInfo<String> d(@RequestBody MoniRule entity) throws TipException {
 		MsgInfo<String> msgInfo = new MsgInfo<>();
 		
 		

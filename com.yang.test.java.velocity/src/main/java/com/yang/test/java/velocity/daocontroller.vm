@@ -61,8 +61,8 @@ public class ${entity}DAOController {
 	 * @return
 	 */
 	@RequestMapping("/page")
-	public PageInfo<TenantDTO> page(@RequestBody TenantDTO tenantDTO){
-		PageInfo<TenantDTO> pageInfo = tenantDAO.page(tenantDTO).toPageInfo();
+	public PageInfo<${entity}DTO> page(@RequestBody ${entity}DTO ${entitym}DTO){
+		PageInfo<${entity}DTO> pageInfo = ${entitym}DAO.page(${entitym}DTO).toPageInfo();
 		return pageInfo;
 	}
 }

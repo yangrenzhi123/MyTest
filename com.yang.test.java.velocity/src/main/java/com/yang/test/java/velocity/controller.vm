@@ -15,6 +15,10 @@ import com.lyzh.msa.framework.common.entity.console.${entity};
 import com.lyzh.msa.framework.common.exception.TipException;
 import com.lyzh.saas.console.service.${entity}Service;
 
+import com.lyzh.msa.framework.common.common.CodeEnum;
+import com.lyzh.msa.framework.common.dto.console.${entity}DTO;
+import com.lyzh.msa.framework.common.entity.PageDataInfo;
+
 /**
  * 
  * @author yangrenzhi
@@ -23,7 +27,7 @@ import com.lyzh.saas.console.service.${entity}Service;
  * @since
   */
 @RestController
-@RequestMapping("/${entity}")
+@RequestMapping("/${entityMini}")
 public class ${entity}Controller {
 
 	@Autowired

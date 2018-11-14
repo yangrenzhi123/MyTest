@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageInfo;
 
-import com.lyzh.msa.framework.common.entity.console.Product;
-import com.lyzh.msa.framework.common.dto.console.ProductDTO;
-import com.lyzh.saas.console.rpc.ProductRPC;
+import com.lyzh.msa.framework.common.entity.console.MoniRule;
+import com.lyzh.msa.framework.common.dto.console.MoniRuleDTO;
+import com.lyzh.saas.console.rpc.MoniRuleRPC;
 import com.lyzh.msa.framework.common.entity.PageDataInfo;
 
 
@@ -18,18 +18,18 @@ import com.lyzh.msa.framework.common.entity.PageDataInfo;
 
 
 /**
- * 产品
+ * 模拟程序规则
  * 
  * @author yangrenzhi
- * @date  2018-10-29 16:27
+ * @date  2018-11-14 17:58
  * @Description  
  * @since 4.0.1
  */
 @Service
-public class ProductService {
+public class MoniRuleService {
 	
 	@Autowired
-	ProductRPC rpc;
+	MoniRuleRPC rpc;
 	
 	
 	/**
@@ -37,9 +37,9 @@ public class ProductService {
 	 * @param 
 	 * @return
 	 */
-	public PageDataInfo<ProductDTO> pageList(ProductDTO dto){
-		PageInfo<ProductDTO> pageInfo = rpc.page(dto);
-		PageDataInfo<ProductDTO> dataInfo = new PageDataInfo<>();
+	public PageDataInfo<MoniRuleDTO> pageList(MoniRuleDTO dto){
+		PageInfo<MoniRuleDTO> pageInfo = rpc.page(dto);
+		PageDataInfo<MoniRuleDTO> dataInfo = new PageDataInfo<>();
 		dataInfo.setPageNum(pageInfo.getPageNum());
 		dataInfo.setPageSize(pageInfo.getPageSize());
 		dataInfo.setTotal(pageInfo.getTotal());
@@ -48,10 +48,10 @@ public class ProductService {
 	}
 	
 	/**
-	 * 获取产品列表
+	 * 获取模拟程序规则列表
 	 * @return
 	 */
-	public List<Product> find() {
+	public List<MoniRule> find() {
 		return rpc.find();
 	}
 
@@ -59,7 +59,7 @@ public class ProductService {
 	 * 新增
 	 * @return
 	 */
-	public void save(Product entity) {
+	public void save(MoniRule entity) {
 		rpc.insert(entity);
 	}
 	
@@ -67,7 +67,7 @@ public class ProductService {
 	 * 修改
 	 * @return
 	 */
-	public void update(Product entity) {
+	public void update(MoniRule entity) {
 		rpc.update(entity);
 	}
 	
@@ -75,7 +75,7 @@ public class ProductService {
 	 * 删除
 	 * @return
 	 */
-	public void delete(Product entity) {
+	public void delete(MoniRule entity) {
 		rpc.delete(entity);
 	}
 }

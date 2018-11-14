@@ -1,5 +1,10 @@
 package com.lyzh.msa.framework.common.entity.console;
 
+
+import java.io.Serializable;
+
+import com.lyzh.msa.framework.common.base.BaseEntity;
+
 /**
  * ${entityCN} 实体类
  * 

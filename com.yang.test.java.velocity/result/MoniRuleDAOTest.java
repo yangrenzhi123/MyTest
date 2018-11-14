@@ -11,20 +11,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.lyzh.msa.dao.DaoApplication;
-import com.lyzh.msa.dao.dao.console.ProductDAO;
-import com.lyzh.msa.framework.common.entity.console.Product;
+import com.lyzh.msa.dao.dao.console.MoniRuleDAO;
+import com.lyzh.msa.framework.common.entity.console.MoniRule;
 
 /**
  * @Auther: yrz
  * @Date: 2018/10/19 11:58
- * @Description: 产品 DAO 测试
+ * @Description: 模拟程序规则 DAO 测试
  */
 @SpringBootTest(classes = DaoApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-public class ProductDAOTest {
+public class MoniRuleDAOTest {
 	@Autowired
-	private ProductDAO dao;
+	private MoniRuleDAO dao;
 
 	@Test
 	public void test() throws InterruptedException {
