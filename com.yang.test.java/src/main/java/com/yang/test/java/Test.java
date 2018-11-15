@@ -19,6 +19,29 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
+		System.out.println(convertHexToString("4C595A4831353038383635323039303100000000000000000000000000000000"));
+	}
+
+	public static String convertHexToString(String hex) {
+		StringBuilder sb = new StringBuilder();
+		StringBuilder temp = new StringBuilder();
+		for (int i = 0; i < hex.length() - 1; i += 2) {
+			String output = hex.substring(i, (i + 2));
+			int decimal = Integer.parseInt(output, 16);
+			sb.append((char) decimal);
+			temp.append(decimal);
+		}
+		return sb.toString();
+	}
+
+	public static void jinzhi() {
+		// 10转16进制
+		System.out.println(Integer.toHexString(-129));
+
+		// 16转10进制
+		System.out.println(Integer.valueOf("-128", 16));
+
+		byte[] bs = new byte[] {0x55, 0x00, 0x01, 0x21, (byte) 0x90, 0x70, 0x26, 0x41, (byte) 0xE5, 0x00};
 	}
 	
 	public static void t3(){
