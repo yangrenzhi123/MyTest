@@ -19,9 +19,48 @@ public class Test {
 	public static String s = "123";
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-		System.out.println(convertHexToString("4C595A4831353038383635323039303100000000000000000000000000000000"));
+		//System.out.println(convertHexToString("4C595A4831353038383635323039303100000000000000000000000000000000"));
+		//System.out.println(strTo16("LYZH150886520901"));
+		
+		//jinzhi();
+		
+		//System.out.println(hexString2Bytes("FF")[0]);
+		//System.out.println((byte) 0xFF);
+		
+		//test();
+		
+		userFlag2Hex();
 	}
 
+	public static String userFlag2Hex() {
+		String s = strTo16("LYZH150886520901");
+		String t = "";
+		for (int i = 0; i < (64 - s.length()); i++) {
+			t = t + "0";
+		}
+		return s + t;
+	}
+
+	public static void test() {
+		DateFormat df = new SimpleDateFormat("yyMMddHHmmss");
+		String s = df.format(new Date());
+		String s2= intToHex(Integer.parseInt(s.substring(0, 2)))+intToHex(Integer.parseInt(s.substring(2, 4)))
+		+intToHex(Integer.parseInt(s.substring(4, 6)))+intToHex(Integer.parseInt(s.substring(6, 8)))+intToHex(Integer.parseInt(s.substring(8, 10)))+intToHex(Integer.parseInt(s.substring(10, 12)));
+		System.out.println(s2);
+	}
+	
+	public static String strTo16(String s) {
+	    String str = "";
+	    for (int i = 0; i < s.length(); i++) {
+	        int ch = (int) s.charAt(i);
+	        String s4 = Integer.toHexString(ch).toUpperCase();
+	        str = str + s4;
+	    }
+	    return str;
+	}
+	
+	
+	// 16进制字符串转AscII字符串
 	public static String convertHexToString(String hex) {
 		StringBuilder sb = new StringBuilder();
 		StringBuilder temp = new StringBuilder();
@@ -36,14 +75,44 @@ public class Test {
 
 	public static void jinzhi() {
 		// 10转16进制
-		System.out.println(Integer.toHexString(-129));
+		System.out.println(intToHex(15));
 
 		// 16转10进制
-		System.out.println(Integer.valueOf("-128", 16));
+		System.out.println(Integer.valueOf("ff", 16));
 
 		byte[] bs = new byte[] {0x55, 0x00, 0x01, 0x21, (byte) 0x90, 0x70, 0x26, 0x41, (byte) 0xE5, 0x00};
 	}
+
+	public static String intToHex(int i) {
+		String s = Integer.toHexString(i).toUpperCase();
+		if(s.length() == 1) {
+			s = "0"+s;
+		}
+		return s;
+	}
 	
+	public static byte[] hexString2Bytes(String hex) {
+		if ((hex == null) || (hex.equals(""))) {
+			return null;
+		} else if (hex.length() % 2 != 0) {
+			return null;
+		} else {
+			hex = hex.toUpperCase();
+			int len = hex.length() / 2;
+			byte[] b = new byte[len];
+			char[] hc = hex.toCharArray();
+			for (int i = 0; i < len; i++) {
+				int p = 2 * i;
+				b[i] = (byte) (charToByte(hc[p]) << 4 | charToByte(hc[p + 1]));
+			}
+			return b;
+		}
+	}
+
+	private static byte charToByte(char c) {
+		return (byte) "0123456789ABCDEF".indexOf(c);
+	}
+
 	public static void t3(){
 		BigDecimal x1 = new BigDecimal(5);
 		BigDecimal x2 = new BigDecimal(6);
