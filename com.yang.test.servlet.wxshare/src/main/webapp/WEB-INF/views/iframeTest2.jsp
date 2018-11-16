@@ -59,19 +59,12 @@ wx.ready(function () {
         },
         cancel: function () {
             // 用户取消分享后执行的回调函数
-        	console.log(778)
+            alert("456");
         }
     });
     wx.error(function (res) {
         alert(res.errMsg);
-    });                
-    wx.checkJsApi({
-        jsApiList: ['onMenuShareTimeline'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-        success: function(res) {
-        	console.log(123)
-        }
     });
-	console.log(110)
 });
 </script>
 </html>

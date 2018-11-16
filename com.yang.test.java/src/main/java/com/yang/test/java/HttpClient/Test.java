@@ -52,7 +52,7 @@ public class Test {
 	}
 	public static void getJsapi() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet request = new HttpGet("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=15_uCL8u6rnHaPQZ4uvtPWELOOZGdtWEaqaEi1Vcz4gvS_ycGEiywBSo5SGsVUJWVjNlRdvj-iBNF_LAzn_WWhxORFTOQYem7GmuCbXozEcvv_jd4RZxbHP6p3F-ZM6IM_IR9BKKS37Rizm9RctFNNbAJAVDD&type=jsapi");
+		HttpGet request = new HttpGet("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=15_6km_TQDbYSIz7091LRHlJcLJA7QRZUgSUGAm01duSs0zqNNSv-pw2QFe4Z1yy6gJf4EKBDoUDVokmHXpzIwr6EsZHcAqoaKczcnEApHKtGSguneBcD6tRipTuyyrNbN-oSNoYRMK1B7bz3vKIFFjAAAURR&type=jsapi");
 		HttpResponse response = httpClient.execute(request);
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);

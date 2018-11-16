@@ -2,6 +2,8 @@ package com.yang.test;
 
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String iframeTest2(Model model) {
+	public String iframeTest2(Model model, HttpServletRequest request) {
 		String uuid = UUID.randomUUID().toString();
 		String timestamp = Long.toString(System.currentTimeMillis() / 1000);
 		model.addAttribute("nonceStr", uuid);
 		model.addAttribute("timestamp", timestamp);
 		
-		String signature = DigestUtils.shaHex("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9sTpVMbQ4kfaVd_UnjEDtjzMPG_GfL2z3EYhIYyrDrJF3tNcROy09MHRbafe43UtFg&noncestr="+uuid+"&timestamp="+timestamp+"&url=http://www.yaoee.com:8080/");
+		String signature = DigestUtils.shaHex("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9sTpVMbQ4kfaVd_UnjEDtjwHpqYLOU9YxUfNqrSnSjNghVsf3062B0utFDNt90NkJA&noncestr="+uuid+"&timestamp="+timestamp+"&url="+request.getRequestURL());
 		model.addAttribute("signature", signature);
 		return "/iframeTest2";
 	}
