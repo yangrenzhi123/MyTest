@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.http.HttpEntity;
@@ -25,15 +26,17 @@ public class TestProduct3 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 9000;
+	static int count = 11000;
 	static CountDownLatch counttime;
 	static long totalDistance;
 	
-	static Integer countZhengchang;
-	static Integer count500;
-	static Integer count502;
-	static Integer countTimeout;
-	static Integer countException;
+	
+	
+	static FileChannel countZhengchang;
+	static FileChannel count500;
+	static FileChannel count502;
+	static FileChannel countTimeout;
+	static FileChannel countException;
 	
 	static long totalTime;
 	static String ip="127.0.0.1";
@@ -67,39 +70,52 @@ public class TestProduct3 {
 						CloseableHttpClient hc = hcl.get(j);
 						HttpResponse response = hc.execute(p3);
 						HttpEntity httpEntity = response.getEntity();
-						String result = EntityUtils.toString(httpEntity, "utf-8");
+						EntityUtils.toString(httpEntity, "utf-8");
 
-
-//						FileChannel fileChannel = f.getChannel();
-//						ByteBuffer buf = ByteBuffer.allocate(1024);
-//						buf.clear();
-//						buf.put("已返回\r\n".getBytes());
-//						buf.flip();
-//						while (buf.hasRemaining()) {
-//							fileChannel.write(buf);
-//						}
-						
 						int httpCode = response.getStatusLine().getStatusCode();
 						if(httpCode == 500) {
-							synchronized (count500) {
-								count500 = count500 + 1;
-							}
+							String newData = "1";
+							ByteBuffer buf = ByteBuffer.allocate(1);
+							buf.clear();
+							buf.put(newData.getBytes());
+							buf.flip();
+							count500.write(buf);
 						}else if(httpCode == 502) {
-							synchronized (count502) {
-								count502 = count502 + 1;
-							}
+							String newData = "1";
+							ByteBuffer buf = ByteBuffer.allocate(1);
+							buf.clear();
+							buf.put(newData.getBytes());
+							buf.flip();
+							count502.write(buf);
 						}else {
-							synchronized (countZhengchang) {
-								countZhengchang = countZhengchang + 1;
-							}
+							String newData = "1";
+							ByteBuffer buf = ByteBuffer.allocate(1);
+							buf.clear();
+							buf.put(newData.getBytes());
+							buf.flip();
+							countZhengchang.write(buf);
 						}
 					} catch (HttpHostConnectException e) {
-						synchronized (countTimeout) {
-							countTimeout = countTimeout + 1;
+						String newData = "1";
+						ByteBuffer buf = ByteBuffer.allocate(1);
+						buf.clear();
+						buf.put(newData.getBytes());
+						buf.flip();
+						try {
+							countTimeout.write(buf);
+						} catch (IOException e1) {
+							e1.printStackTrace();
 						}
 					} catch (Exception e) {
-						synchronized (countException) {
-							countException = countException + 1;
+						String newData = "1";
+						ByteBuffer buf = ByteBuffer.allocate(1);
+						buf.clear();
+						buf.put(newData.getBytes());
+						buf.flip();
+						try {
+							countException.write(buf);
+						} catch (IOException e1) {
+							e1.printStackTrace();
 						}
 					} finally {
 						counttime.countDown();
@@ -118,11 +134,30 @@ public class TestProduct3 {
 
 	static void test(int index) throws InterruptedException, IOException {
 		counttime = new CountDownLatch(count);
-		countZhengchang = 0;
-		count500 = 0;
-		count502 = 0;
-		countTimeout = 0;
-		countException = 0;
+
+		String countZhengchangFM = UUID.randomUUID().toString();
+		String count500FM = UUID.randomUUID().toString();
+		String count502FM = UUID.randomUUID().toString();
+		String countTimeoutFM = UUID.randomUUID().toString();
+		String countExceptionFM = UUID.randomUUID().toString();
+		
+		File txt;
+		txt = new File("C:/tmp/"+countZhengchangFM);
+		txt.createNewFile();
+		txt = new File("C:/tmp/"+count500FM);
+		txt.createNewFile();
+		txt = new File("C:/tmp/"+count502FM);
+		txt.createNewFile();
+		txt = new File("C:/tmp/"+countTimeoutFM);
+		txt.createNewFile();
+		txt = new File("C:/tmp/"+countExceptionFM);
+		txt.createNewFile();
+
+		countZhengchang = new RandomAccessFile("C:/tmp/"+countZhengchangFM, "rw").getChannel();
+		count500 = new RandomAccessFile("C:/tmp/"+count500FM, "rw").getChannel();
+		count502 = new RandomAccessFile("C:/tmp/"+count502FM, "rw").getChannel();
+		countTimeout = new RandomAccessFile("C:/tmp/"+countTimeoutFM, "rw").getChannel();
+		countException = new RandomAccessFile("C:/tmp/"+countExceptionFM, "rw").getChannel();
 
 		List<Thread> l = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
@@ -154,11 +189,11 @@ public class TestProduct3 {
 		br.close();
 		
 		if(index == 0) {
-			System.out.println("第一次耗时："+distance+"，平均耗时：不计入平均时，正常数："+countZhengchang+"，500："+count500+"，502："+count502+"，超时数："+countTimeout+"，异常数："+countException+"，连接数："+count+"，总耗时："+(System.currentTimeMillis()-totalTime));
+			System.out.println("第一次耗时："+distance+"，平均耗时：不计入平均时，正常数："+new File("C:/tmp/"+countZhengchangFM).length()+"，500："+new File("C:/tmp/"+count500FM).length()+"，502："+new File("C:/tmp/"+count502).length()+"，超时数："+new File("C:/tmp/"+countTimeoutFM).length()+"，异常数："+new File("C:/tmp/"+countExceptionFM).length()+"，连接数："+count+"，总耗时："+(System.currentTimeMillis()-totalTime));
 			return ;
 		}
 		totalDistance = totalDistance + distance;
 		long avg = totalDistance / index;
-		System.out.println("本次耗时："+distance+"，平均耗时："+avg+",正常数："+countZhengchang+"，500："+count500+"，502："+count502+"，超时数："+countTimeout+"，异常数："+countException+"，连接数："+count+"，总耗时："+(System.currentTimeMillis()-totalTime));
+		System.out.println("本次耗时："+distance+"，平均耗时："+avg+",正常数："+new File("C:/tmp/"+countZhengchangFM).length()+"，500："+new File("C:/tmp/"+count500FM).length()+"，502："+new File("C:/tmp/"+count502FM).length()+"，超时数："+new File("C:/tmp/"+countTimeoutFM).length()+"，异常数："+new File("C:/tmp/"+countException).length()+"，连接数："+count+"，总耗时："+(System.currentTimeMillis()-totalTime));
 	}
 }
