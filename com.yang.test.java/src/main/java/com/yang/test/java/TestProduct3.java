@@ -26,7 +26,7 @@ public class TestProduct3 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 11000;
+	static int count = 1100;
 	static CountDownLatch counttime;
 	static long totalDistance;
 	
@@ -125,7 +125,7 @@ public class TestProduct3 {
 		}
 		
 		totalTime = System.currentTimeMillis();
-		for(int i=0;i<2000;i++) {
+		for(int i=0;i<20;i++) {
 			test(i);
 		}
 		

@@ -20,9 +20,15 @@ public class TestController {
 		String timestamp = Long.toString(System.currentTimeMillis() / 1000);
 		model.addAttribute("nonceStr", uuid);
 		model.addAttribute("timestamp", timestamp);
+		System.out.println(uuid);
+		System.out.println(timestamp);
 		
-		String signature = DigestUtils.shaHex("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9sTpVMbQ4kfaVd_UnjEDtjwHpqYLOU9YxUfNqrSnSjNghVsf3062B0utFDNt90NkJA&noncestr="+uuid+"&timestamp="+timestamp+"&url="+request.getRequestURL());
+		//String url = "https://m.yaoee.com/shop/detail/5tnoeovha6iikrcqija87b8om8";
+		StringBuffer url = request.getRequestURL();
+		
+		String signature = DigestUtils.shaHex("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9sTpVMbQ4kfaVd_UnjEDtjwigChMu98aZl9_929NXnSvMgotewtwj5vXYyb3mciIVg&noncestr="+uuid+"&timestamp="+timestamp+"&url="+url);
 		model.addAttribute("signature", signature);
+		System.out.println(signature);
 		return "/iframeTest2";
 	}
 }
