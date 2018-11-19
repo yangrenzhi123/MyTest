@@ -1,4 +1,4 @@
-/*import java.util.Comparator;
+import java.util.Comparator;
 import java.util.function.Consumer;
 
 public class Lambda {
@@ -16,19 +16,19 @@ public class Lambda {
 
 	public static void test2() {
 		Consumer<String> consumer = (x) -> System.out.println(x);
-		consumer.accept("����˧��");
+		consumer.accept("345678");
 	}
 
 	public static void test3() {
 		Consumer<String> consumer = x -> {
 			System.out.println(x);
 		};
-		consumer.accept("����˧��2");
+		consumer.accept("123456");
 	}
 
 	public static void test4() {
 		Comparator<Integer> comparable = (x, y) -> {
-			System.out.println("����ʽ�ӿ�");
+			System.out.println("234567");
 			return Integer.compare(x, y);
 		};
 
@@ -69,6 +69,7 @@ interface T {
 	void run();
 }
 
+@FunctionalInterface
 interface Three {
 	void compare(Integer x, Integer y, String z);
-}*/
+}

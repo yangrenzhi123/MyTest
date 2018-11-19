@@ -13,7 +13,7 @@ public class SimpleNioClient {
 		SocketChannel channel = SocketChannel.open();
 		channel.connect(address);
 
-		//channel.socket().setSoTimeout(1000000);
+		channel.socket().setSoTimeout(10000);
 
 		ByteBuffer b1 = ByteBuffer.allocate(10);
 		byte[] a = new byte[100];
