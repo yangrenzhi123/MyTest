@@ -9,26 +9,13 @@ import java.net.Socket;
 public class SimpleServer {
 
 	public static void main(String[] args) throws IOException {
-
 		ServerSocket serverSocket = new ServerSocket(8099);
-		while (true) {
-			final Socket socket = serverSocket.accept();
-			new Thread(new Runnable() {
-				public void run() {
-					try {
-						byte [] b = new byte[1];
-						
-						InputStream is = socket.getInputStream();
-						
-						while(true){
-							is.read(b);
-							System.out.println(b[0]);
-						}
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}).start();
+		final Socket socket = serverSocket.accept();
+		while(true) {
+			InputStream is = socket.getInputStream();
+			byte[] b = new byte[1];
+			is.read(b);
+			System.out.println(new String(b));
 		}
 	}
 }

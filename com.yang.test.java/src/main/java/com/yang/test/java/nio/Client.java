@@ -13,10 +13,9 @@ public class Client {
 		SocketChannel channel = SocketChannel.open();
 		channel.connect(address);
 		
-		channel.socket().setSoTimeout(10000);
+		channel.socket().setSoTimeout(1000000);
 		
 		ByteBuffer b1 = ByteBuffer.allocate(1024);
-		ByteBuffer b2 = ByteBuffer.allocate(1024);
 		byte[] a = new byte[100];
 		while (true) {
 			System.in.read(a);
@@ -25,14 +24,10 @@ public class Client {
 			b1.put(a);
 			b1.flip();
 			channel.write(b1);
-
-			channel.read(b2);
-			
-			System.out.println(b1.get(0));
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Client().query("127.0.0.1", 8777);
+		new Client().query("127.0.0.1", 8099);
 	}
 }

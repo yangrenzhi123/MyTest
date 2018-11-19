@@ -26,7 +26,7 @@ public class TestProduct3 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 1100;
+	static int count = 20;
 	static CountDownLatch counttime;
 	static long totalDistance;
 	
@@ -39,7 +39,7 @@ public class TestProduct3 {
 	static FileChannel countException;
 	
 	static long totalTime;
-	static String ip="127.0.0.1";
+	static String ip="192.168.10.240";
 	
 	public static void main(String[] args) throws InterruptedException, IOException {
 		File log = new File(logPath);
