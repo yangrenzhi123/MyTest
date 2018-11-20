@@ -17,8 +17,7 @@ public class TestCanal {
 
 	public static void main(String args[]) {
 		// 创建链接
-		CanalConnector connector = CanalConnectors
-				.newSingleConnector(new InetSocketAddress("172.28.51.33", 11111), "example", "", "");
+		CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("172.28.51.33", 11111), "example", "", "");
 		int batchSize = 1000;
 		int emptyCount = 0;
 		try {
@@ -94,5 +93,4 @@ public class TestCanal {
 			System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
 		}
 	}
-
 }

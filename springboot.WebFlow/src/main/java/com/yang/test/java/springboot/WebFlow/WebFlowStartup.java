@@ -19,7 +19,7 @@ public class WebFlowStartup {
 class HelloController {
 
 	@GetMapping("/hello")
-	public Mono<String> hello() {
-		return Mono.just("Welcome to reactive world ~");
+	public Mono<Object> hello() {
+		return Mono.just(new String("1234"));
 	}
 }
