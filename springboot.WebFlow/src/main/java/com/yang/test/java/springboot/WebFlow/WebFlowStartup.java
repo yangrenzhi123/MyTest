@@ -20,6 +20,11 @@ class HelloController {
 
 	@GetMapping("/hello")
 	public Mono<Object> hello() {
-		return Mono.just(new String("1234"));
+		return Mono.just("1234567");
+	}
+
+	@GetMapping("/hello2")
+	public String hello2() {
+		return "1234567";
 	}
 }
