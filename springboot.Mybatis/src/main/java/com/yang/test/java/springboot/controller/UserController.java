@@ -19,10 +19,17 @@ public class UserController {
 	@Resource
 	private UserDao userDao;
 
-	@GetMapping("/showUser")
+	@GetMapping("/webflow/showUser")
 	@ResponseBody
 	public Mono<User> hello() {
 		User user = userDao.selectByPrimaryKey(1);
 		return Mono.just(user);
+	}
+
+	@GetMapping("/mvc/showUser")
+	@ResponseBody
+	public User hello2() {
+		User user = userDao.selectByPrimaryKey(1);
+		return user;
 	}
 }

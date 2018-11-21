@@ -23,7 +23,7 @@ public class TestProduct4 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 500;
+	static int count = 8000;
 	static CountDownLatch counttime;
 	static long totalDistance;
 
@@ -48,8 +48,12 @@ public class TestProduct4 {
 		
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
-		final HttpGet p3 = new HttpGet("http://"+ip+":8080/");
-		p3.setHeader("Connection", "Keep-Alive");
+		final HttpGet p1 = new HttpGet("http://"+ip+":8080/user/webflow/showUser");
+		p1.setHeader("Connection", "Keep-Alive");
+
+		final HttpGet p2 = new HttpGet("http://"+ip+":8081/user/webflow/showUser");
+		p2.setHeader("Connection", "Keep-Alive");
+		
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < count; i++) {
 			CloseableHttpClient hc = HttpClients.custom().setDefaultRequestConfig(config).build();
@@ -62,8 +66,14 @@ public class TestProduct4 {
 			rl.add(new Runnable() {
 				public void run() {
 					try {
+						HttpGet p;
+						if(j % 2 == 0) {
+							p = p1;
+						}else {
+							p = p2;
+						}
 						CloseableHttpClient hc = hcl.get(j);
-						HttpResponse response = hc.execute(p3);
+						HttpResponse response = hc.execute(p);
 						HttpEntity httpEntity = response.getEntity();
 						EntityUtils.toString(httpEntity, "utf-8");
 

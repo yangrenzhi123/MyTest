@@ -1,29 +1,17 @@
-import java.util.Random;
-
 public class Test2 {
 
 	public static void main(String[] args) {
-	}
-}
-
-class A {
-
-	static {
-		System.out.print("1");
-	}
-
-	public A() {
-		System.out.print("2");
-	}
-}
-
-class B extends A {
-
-	static {
-		System.out.print("a");
-	}
-
-	public B() {
-		System.out.print("b");
+		System.out.println(0 % 3);
+		System.out.println(1 % 3);
+		System.out.println(2 % 3);
+		System.out.println(3 % 3);
+		System.out.println(4 % 3);
+		System.out.println(5 % 3);
+		System.out.println(6 % 3);
+		System.out.println(7 % 3);
+		System.out.println(8 % 3);
+		System.out.println(9 % 3);
+		System.out.println(10 % 3);
+		System.out.println(11 % 3);
 	}
 }
