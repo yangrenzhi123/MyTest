@@ -18,13 +18,22 @@ public class WebFlowStartup {
 @RestController
 class HelloController {
 
-	@GetMapping("/hello")
-	public Mono<Object> hello() {
-		return Mono.just("1234567");
+	static String result;
+	static {
+		StringBuilder sb = new StringBuilder();
+		for(int i=0;i<100;i++) {
+			sb.append("0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+		}
+		result = sb.toString();
+	}
+	
+	@GetMapping("/1")
+	public Mono<String> hello() {
+		return Mono.just(result);
 	}
 
-	@GetMapping("/hello2")
+	@GetMapping("/2")
 	public String hello2() {
-		return "1234567";
+		return result;
 	}
 }
