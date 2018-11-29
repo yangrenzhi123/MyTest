@@ -60,7 +60,7 @@
     </dependencies>
   </dependencyManagement>
   <properties>
-    <nutzboot.version>2.3-SNAPSHOT</nutzboot.version>
+    <nutzboot.version>2.2.1</nutzboot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>
