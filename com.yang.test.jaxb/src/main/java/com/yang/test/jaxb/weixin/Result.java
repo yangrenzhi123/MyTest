@@ -2,13 +2,12 @@ package com.yang.test.jaxb.weixin;
 
 public class Result {
 
-	private String return_code;
+	private String trade_state;
 
-	public String getReturn_code() {
-		return return_code;
+	public String getTrade_state() {
+		return trade_state;
 	}
-
-	public void setReturn_code(String return_code) {
-		this.return_code = return_code;
+	public void setTrade_state(String trade_state) {
+		this.trade_state = trade_state;
 	}
 }

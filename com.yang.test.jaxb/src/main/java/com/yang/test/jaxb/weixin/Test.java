@@ -47,6 +47,6 @@ public class Test {
 		JAXBElement<Result> reponseElement = unmarshaller.unmarshal(streamSource, Result.class);
 		Result result = reponseElement.getValue();
 		
-		System.out.println(result);
+		System.out.println(result.getTrade_state());
 	}
 }

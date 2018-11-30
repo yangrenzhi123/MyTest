@@ -21,7 +21,8 @@ public class WeixinQuery {
 		String appid = "wxcc79d67b43519897";
 		String mch_id = "1504805211";
 		String nonce_str = UUID.randomUUID().toString().replaceAll("-", "");
-		String out_trade_no = "20181005165754284023";
+		//String out_trade_no = "20181005165754284023";
+		String out_trade_no = "20181130203422465001";
 		
 		
 		CloseableHttpClient httpClient = HttpClients.createDefault();
