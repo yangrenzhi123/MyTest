@@ -13,7 +13,7 @@ import com.github.benmanes.caffeine.cache.LoadingCache;
 public class TestCaffeine {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		t0();
+		t3();
 	}
 	
 	//手动
@@ -42,8 +42,7 @@ public class TestCaffeine {
 		LoadingCache<Integer, Object> a = Caffeine.newBuilder().expireAfterWrite(10, TimeUnit.SECONDS).maximumSize(100).build(k -> "i got " + k);
 
 		System.out.println(a.get(1));
-		
-		a.getAll(Arrays.asList(2, 3, 4));
+		System.out.println(a.getAll(Arrays.asList(2, 3, 4)));
 	}
 
 	//异步加载
@@ -51,17 +50,13 @@ public class TestCaffeine {
 		AsyncLoadingCache<Integer, Object> a = Caffeine.newBuilder().maximumSize(100).expireAfterWrite(1, TimeUnit.MINUTES).buildAsync(k -> "i got " + k);
 		
 		
-		CompletableFuture<Void> b = a.get(1).thenAccept(o -> {
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
+		CompletableFuture<Void> b = a.get(1).thenAcceptAsync(o -> {
 			System.out.println(o);
 		});
 		
 		
 		System.out.println(b.get());
+		
+		Thread.sleep(10000L);
 	}
 }
