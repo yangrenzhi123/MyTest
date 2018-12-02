@@ -16,7 +16,7 @@ public class Synchronized {
 	private static class R1 implements Runnable {
 		
 		public void run() {
-			String s = "123";
+			String s = 1+""+1+""+1;
 			synchronized (s) {
 				System.out.println(1);
 			}
@@ -25,7 +25,7 @@ public class Synchronized {
 
 	private static class R2 implements Runnable {
 		public void run() {
-			String s = "123";
+			String s = 1+""+1+""+1;
 			synchronized (s) {
 				System.out.println(2);
 			}

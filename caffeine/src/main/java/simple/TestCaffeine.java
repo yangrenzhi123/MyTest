@@ -13,7 +13,7 @@ import com.github.benmanes.caffeine.cache.LoadingCache;
 public class TestCaffeine {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		t3();
+		t0();
 	}
 	
 	//手动
@@ -21,8 +21,13 @@ public class TestCaffeine {
 		Cache<Integer, Object> a = Caffeine.newBuilder().expireAfterWrite(10, TimeUnit.SECONDS).maximumSize(100).build();
 		
 		a.put(1, "123");
+		a.put(2, "456");
 
 		System.out.println(a.getIfPresent(1));
+		System.out.println(a.getIfPresent(2));
+		a.invalidateAll();
+		System.out.println(a.getIfPresent(1));
+		System.out.println(a.getIfPresent(2));
 	}
 
 	//手动
