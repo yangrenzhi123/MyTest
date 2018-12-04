@@ -5,11 +5,11 @@ spring:
     config:
       uri: http://127.0.0.1:8889
   rabbitmq:
-    host: 172.28.51.33
+    host: 127.0.0.1
     port: 5672
-    username: test
-    password: test
-    virtual-host: test
+    username: guest
+    password: guest
+    virtual-host: /
 server:
   port: 8761
 security:

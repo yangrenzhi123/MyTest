@@ -5,11 +5,4 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
-words: you,me,he4r
-spring:
-  rabbitmq:
-    host: 172.28.51.33
-    port: 5672
-    username: test
-    password: test
-    virtual-host: test
+words: you,me,he8r

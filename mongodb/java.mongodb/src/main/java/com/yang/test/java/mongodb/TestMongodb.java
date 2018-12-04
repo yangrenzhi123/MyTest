@@ -31,17 +31,22 @@ public class TestMongodb {
 
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 
-		Document doc = Document.parse("{\"myKey\":\"123\"}");
-		MongoCollection c = mgdb.getCollection("c8");
-		c.insertOne(doc);
+		MongoCollection c = mgdb.getCollection("c9");
+		
+		long a = System.currentTimeMillis();
+		for(int i=0;i<10000;i++) {
+			Document doc = Document.parse("{\"myKey\":\"123\"}");
+			c.insertOne(doc);
+		}
+		System.out.println(System.currentTimeMillis() - a);
 		
 		
-		FindIterable<Document> iter = c.find();
-		iter.forEach(new Block<Document>() {
-			public void apply(Document _doc) {
-				System.out.println(_doc.toJson());
-			}
-		});
+//		FindIterable<Document> iter = c.find();
+//		iter.forEach(new Block<Document>() {
+//			public void apply(Document _doc) {
+//				System.out.println(_doc.toJson());
+//			}
+//		});
 
 		mongoClient.close();
 	}

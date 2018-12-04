@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
-@SpringBootApplication
-@EnableZuulProxy
+//@SpringBootApplication
+//@EnableZuulProxy
 public class ZuulApplication {
 
 	@Bean

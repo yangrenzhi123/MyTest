@@ -3,12 +3,16 @@ server:
 management:
   security:
     enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
 spring: 
   profiles: 
     active: native
-#  rabbitmq:
-#    host: 172.28.51.33
-#    port: 5672
-#    username: test
-#    password: test
-#    virtual-host: test
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
