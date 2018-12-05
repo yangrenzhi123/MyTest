@@ -8,7 +8,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 @SuppressWarnings("resource")
 public class Kafka {
 	public static void main(String[] args) throws Exception {
-		String topic = "xxx";
+		String topic = "test";
 		String group = "yyGroup";
 		Properties props = new Properties();
 
@@ -16,13 +16,13 @@ public class Kafka {
         //String topic = "my-replicated-topic";
         //props.put("bootstrap.servers", "172.28.51.33:9092,172.28.51.33:9093,172.28.51.33:9094");
 
-		props.put("zookeeper.connect", "192.168.30.120:2181,192.168.30.121:2181,192.168.10.10:2181");
-		props.put("bootstrap.servers", "192.168.30.120:9092,192.168.8.70:9092");
+//		props.put("zookeeper.connect", "192.168.30.120:2181,192.168.30.121:2181,192.168.10.10:2181");
+//		props.put("bootstrap.servers", "192.168.30.120:9092,192.168.8.70:9092");
 		
 
 
-//		props.put("zookeeper.connect", "192.168.8.157:2181");
-//		props.put("bootstrap.servers", "192.168.8.157:9092");
+		props.put("zookeeper.connect", "192.168.30.151:2181");
+		props.put("bootstrap.servers", "192.168.30.151:9092");
 		
 
 		//props.put("bootstrap.servers", "192.168.8.70:9092");

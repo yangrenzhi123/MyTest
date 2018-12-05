@@ -21,12 +21,12 @@ public class Kafka2 {
 //		properties.put("metadata.broker.list", "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
 		
 
-//		properties.put("zookeeper.connect", "192.168.8.157:2181");
-//		properties.put("metadata.broker.list", "192.168.8.157:9092");
+		properties.put("zookeeper.connect", "192.168.30.151:2181");
+		properties.put("metadata.broker.list", "192.168.30.151:9092");
 		
 		
-		properties.put("zookeeper.connect", "192.168.30.120:2181,192.168.30.121:2181,192.168.10.10:2181");
-		properties.put("metadata.broker.list", "192.168.30.120:9092,192.168.8.70:9092");
+//		properties.put("zookeeper.connect", "192.168.30.120:2181,192.168.30.121:2181,192.168.10.10:2181");
+//		properties.put("metadata.broker.list", "192.168.30.120:9092,192.168.8.70:9092");
 		
 
 		//properties.put("zookeeper.connect", "192.168.10.248:2181");
@@ -37,7 +37,7 @@ public class Kafka2 {
 		//properties.put("metadata.broker.list", "192.168.30.60:9092,192.168.30.61:9092,192.168.30.62:9092");
 
 		
-		String topic = "yyy";
+		String topic = "test";
 		Producer producer = new Producer<String, String>(new ProducerConfig(properties));
 		producer.send(new KeyedMessage<String, String>(topic, "message: 1"));
 	}
