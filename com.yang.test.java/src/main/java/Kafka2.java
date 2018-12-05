@@ -37,7 +37,7 @@ public class Kafka2 {
 		//properties.put("metadata.broker.list", "192.168.30.60:9092,192.168.30.61:9092,192.168.30.62:9092");
 
 		
-		String topic = "xxx";
+		String topic = "yyy";
 		Producer producer = new Producer<String, String>(new ProducerConfig(properties));
 		producer.send(new KeyedMessage<String, String>(topic, "message: 1"));
 	}
