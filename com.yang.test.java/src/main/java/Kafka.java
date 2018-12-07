@@ -8,7 +8,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 @SuppressWarnings("resource")
 public class Kafka {
 	public static void main(String[] args) throws Exception {
-		String topic = "test";
+		String topic = "ab49026f-2af3-467b-af63-e43d9363894f";
 		String group = "yyGroup";
 		Properties props = new Properties();
 
@@ -21,8 +21,8 @@ public class Kafka {
 		
 
 
-		props.put("zookeeper.connect", "192.168.30.151:2181");
-		props.put("bootstrap.servers", "192.168.30.151:9092");
+		props.put("zookeeper.connect", "192.168.10.239:2181");
+		props.put("bootstrap.servers", "192.168.10.239:9092");
 		
 
 		//props.put("bootstrap.servers", "192.168.8.70:9092");
@@ -40,11 +40,14 @@ public class Kafka {
 		consumer.subscribe(Arrays.asList(topic));
 		System.out.println("Subscribed to topic " + topic);
 
+		int i = 0;
 		while (true) {
 			ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
 			for (ConsumerRecord<String, String> record : records) {
 				System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
+				i++;
 			}
+			System.out.println(i);
 		}
 	}
 }
