@@ -1,4 +1,4 @@
-/*package com.example.demo;
+package com.example.demo;
 
 import org.springframework.cloud.bus.event.RefreshListener;
 import org.springframework.cloud.bus.event.RefreshRemoteApplicationEvent;
@@ -17,4 +17,4 @@ public class TestRefreshListener extends RefreshListener {
 		super.onApplicationEvent(event);
 		System.out.println(2);
 	}
-}*/
+}

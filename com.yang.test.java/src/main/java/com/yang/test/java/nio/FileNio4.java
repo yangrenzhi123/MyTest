@@ -31,8 +31,8 @@ public class FileNio4 {
 			for(int h=0;h<1000;h++) {
 				tl.add(new Thread(new Runnable() {
 					public void run() {
-						String newData = "1";
-						ByteBuffer buf = ByteBuffer.allocate(1);
+						String newData = "1\r\n";
+						ByteBuffer buf = ByteBuffer.allocate(3);
 						buf.clear();
 						buf.put(newData.getBytes());
 						buf.flip();

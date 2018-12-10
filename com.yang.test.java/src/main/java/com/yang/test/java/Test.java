@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Test {
 	public static String s = "123";
@@ -29,7 +30,12 @@ public class Test {
 		
 		//test();
 		
-		userFlag2Hex();
+		//userFlag2Hex();
+		
+		
+		//test9();
+		
+		System.out.println(UUID.randomUUID().toString());
 	}
 
 	public static String userFlag2Hex() {
@@ -194,7 +200,7 @@ public class Test {
 
 	public static void test9() throws UnsupportedEncodingException {
 		encode("益生股份");
-		System.out.println(URLDecoder.decode("%E6%B1%BD%E8%BD%A6%E4%B9%8B%E5%AE%B6", "utf-8"));
+		System.out.println(URLDecoder.decode("%E8%B4%B9%E7%94%A8%E5%90%8D%E7%A7%B0%E4%B8%8D%E8%83%BD%E9%87%8D%E5%A4%8D%EF%BC%8C%E8%AF%B7%E9%87%8D%E6%96%B0%E9%80%89%E6%8B%A9%21", "utf-8"));
 
 		/*
 		 * System.out.println(URLDecoder.decode("%3D", "utf-8"));

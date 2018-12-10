@@ -1,8 +1,0 @@
-words: you,me,he10r
-spring:
-  rabbitmq:
-    host: 192.168.6.248
-    port: 5672
-    username: yy
-    password: yy
-    virtual-host: yy

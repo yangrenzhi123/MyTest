@@ -1,6 +1,15 @@
 spring:
   application:
     name: noun
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+  cloud:
+    config:
+      uri: http://localhost:8889
 server:
   port: 8030
 eureka:
