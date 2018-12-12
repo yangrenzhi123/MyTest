@@ -10,7 +10,7 @@ import redis.clients.jedis.JedisCluster;
 
 public class RedisTest {
 	public static void main(String[] args) throws IOException {
-		Jedis j = new Jedis("172.28.51.33", 6379);
+//		Jedis j = new Jedis("172.28.51.33", 6379);
 		
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.238", 7001));
@@ -21,14 +21,14 @@ public class RedisTest {
 //		nodes.add(new HostAndPort("192.168.10.240", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 		
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.30.62", 7001));
-//		nodes.add(new HostAndPort("192.168.30.62", 7002));
-//		nodes.add(new HostAndPort("192.168.30.62", 7003));
-//		nodes.add(new HostAndPort("192.168.30.62", 7004));
-//		nodes.add(new HostAndPort("192.168.30.62", 7005));
-//		nodes.add(new HostAndPort("192.168.30.62", 7006));
-//		JedisCluster j = new JedisCluster(nodes);
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.30.62", 7001));
+		nodes.add(new HostAndPort("192.168.30.62", 7002));
+		nodes.add(new HostAndPort("192.168.30.62", 7003));
+		nodes.add(new HostAndPort("192.168.30.62", 7004));
+		nodes.add(new HostAndPort("192.168.30.62", 7005));
+		nodes.add(new HostAndPort("192.168.30.62", 7006));
+		JedisCluster j = new JedisCluster(nodes);
 
 
 		//String a = j.set("testKey", "YangRenZhi", "NX", "PX", 60000);
