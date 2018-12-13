@@ -1,19 +1,16 @@
-server: 
-  port: 8886
 spring:
   application:
     name: testZuul
-  zipkin:
-    baseUrl: http://172.28.51.33:9411
-  sleuth:
-    sampler:
-      probability: 1.0
-  cloud:
-    config:
-      uri: http://127.0.0.1:8889
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /
+server:
+  port: 3106
+  tomcat:
+    basedir: /tmp
+zuul:
+  routes:
+    api-a:
+      path: /**
+      serviceId: mmb-eureka-client-provider
+  semaphore:
+    max-semaphores: 10000
+ribbon:
+  ReadTimeout: 10000
