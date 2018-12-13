@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: feign.httpclient
+  cloud:
+    config:
+      uri: http://localhost:8889
+server:
+  port: 8030
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+ribbon:
+  ReadTimeout: 10000
+  
+  
+  
+feign:
+  httpclient:
+    enabled: true
