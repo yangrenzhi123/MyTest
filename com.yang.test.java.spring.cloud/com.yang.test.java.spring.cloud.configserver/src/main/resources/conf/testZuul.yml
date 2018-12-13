@@ -1,7 +1,0 @@
-zuul:
-  routes:
-    api-a:
-      path: /**
-      serviceId: mmb-eureka-client-provider2
-  semaphore:
-    max-semaphores: 2000
