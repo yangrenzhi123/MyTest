@@ -7,9 +7,9 @@ import java.net.UnknownHostException;
 
 public class SimpleClient2 {
 
-	public static void main(String[] args) throws UnknownHostException, IOException {
+	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 
-		Socket request = new Socket("192.168.3.17", 8099);
+		Socket request = new Socket("192.168.9.119", 8099);
 
 		OutputStream os = request.getOutputStream();
 
@@ -18,5 +18,8 @@ public class SimpleClient2 {
 		os.close();
 		
 		request.close();
+		
+		
+		Thread.sleep(100000L);
 	}
 }
