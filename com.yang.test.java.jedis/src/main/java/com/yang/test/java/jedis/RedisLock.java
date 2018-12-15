@@ -9,18 +9,18 @@ public class RedisLock {
 		Jedis j = new Jedis("172.28.51.33", 6379);
 
 		//如果存在则不做任何动作
-		String a = j.set("testKey", "YangRenZhi", "NX", "PX", 60000);
-		System.out.println("a:" + a);
+//		String a = j.set("testKey", "YangRenZhi", "NX", "PX", 60000);
+//		System.out.println("a:" + a);
 
 
 		//使过期
-//		j.expire("testKey", 0);
+		j.expire("testKey", 0);
 		
 		
 		
 		//如果存在则不做任何动作
-//		long a = j.setnx("testKey", "YangRenZhi");
-//		System.out.println("a:" + a);
+		long a = j.setnx("testKey", "YangRenZhi");
+		System.out.println("a:" + a);
 		
 		
 		
