@@ -12,8 +12,8 @@ import java.util.concurrent.CountDownLatch;
 public class TestSendToNetty {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-		int count = Integer.parseInt(args[0]); //由于设备号限制，不要大于这个值
-		final int recount = Integer.parseInt(args[1]);
+		int c1 = Integer.parseInt(args[0]);
+		int c2 = Integer.parseInt(args[1]);
 
 //		List<String> devices = new ArrayList<String>();
 //		FileReader fr = new FileReader("D:\\Readline");
@@ -28,10 +28,10 @@ public class TestSendToNetty {
 		
 
 		long a = System.currentTimeMillis();
-		final List<OutputStream> osl = new ArrayList<OutputStream>();
-		final List<InputStream> isl = new ArrayList<InputStream>();
+		List<OutputStream> osl = new ArrayList<OutputStream>();
+		List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < c1; i++) {
 			Socket request = new Socket("192.168.10.238", 3113);
 			OutputStream os = request.getOutputStream();
 			InputStream is = request.getInputStream();
@@ -43,10 +43,10 @@ public class TestSendToNetty {
 
 		
 
-		final CountDownLatch latch = new CountDownLatch(count);
+		final CountDownLatch latch = new CountDownLatch(c1);
 		
-		final List<String> deviceNos = new ArrayList<>();
-		for (int i = 0; i < count; i++) {
+		List<String> deviceNos = new ArrayList<>();
+		for (int i = 0; i < c1; i++) {
 			String deviceNo = String.format("%014d", i);
 			String aa = deviceNo.substring(0, 2);
 			String bb = deviceNo.substring(2, 4);
@@ -105,34 +105,32 @@ public class TestSendToNetty {
 			}
 			
 			deviceNo = aa + bb + cc + dd + ee + ff + gg;
-			
-			long b = Long.parseLong(deviceNo);
-			deviceNo = String.format("%014d", b);
 			deviceNos.add(deviceNo);
 		}
 		
 		a = System.currentTimeMillis();
 		List<Thread> tl = new ArrayList<Thread>();
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < c1; i++) {
 			final int j = i;
 			Thread t = new Thread(new Runnable() {
 				public void run() {
 					OutputStream os = osl.get(j);
 					InputStream is = isl.get(j);
 					
-					for(int m=0;m<recount;m++) {
+					//for(int m=0;m<c2;m++) {
 						//byte[] bs = hexString2Bytes("554000E0010200000000000012120C0B0A0B11000000000000000000000000000000000000000000000000000000000000000004E80301000000000000A4B655");
 
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
-						
-						//byte[] bs = hexString2Bytes("554000E00102"+devices.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
+						//空卡
+						//byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
+						//垃圾袋
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120C0B0F08375a4a4c593032303231383032303037313231000000000000000000000000000004010001000000000000A4B655");
 						try {
 							os.write(bs);
 							is.read(new byte[1024]);
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					}
+					//}
 					latch.countDown();
 				}
 			});

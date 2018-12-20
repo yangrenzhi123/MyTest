@@ -4,28 +4,21 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestSendToNettyHeart {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 		int countStart = Integer.parseInt(args[0]);
 		int countEnd = Integer.parseInt(args[1]);
+//		int countStart = 10000;
+//		int countEnd = 10100;
 
-		long a = System.currentTimeMillis();
-		List<OutputStream> osl = new ArrayList<OutputStream>();
-		List<InputStream> isl = new ArrayList<InputStream>();
-		List<Socket> sl = new ArrayList<Socket>();
-		for (int i = 0; i < (countEnd - countStart); i++) {
-			Socket request = new Socket("192.168.10.238", 3113);
-			OutputStream os = request.getOutputStream();
-			InputStream is = request.getInputStream();
-			isl.add(is);
-			osl.add(os);
-			sl.add(request);
-		}
-		System.out.println("连接耗时："+(System.currentTimeMillis() - a));
-
+		Map<String, OutputStream> osMap = new HashMap<>();
+		Map<String, InputStream> isMap = new HashMap<>();
+		
 		List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < (countEnd - countStart); i++) {
 			String deviceNo = String.format("%014d", i+countStart);
@@ -86,18 +79,23 @@ public class TestSendToNettyHeart {
 			}
 			
 			deviceNo = aa + bb + cc + dd + ee + ff + gg;
-			
-			long b = Long.parseLong(deviceNo);
-			deviceNo = String.format("%014d", b);
 			deviceNos.add(deviceNo);
+			
+
+			Socket request = new Socket("192.168.10.238", 3113);
+			OutputStream os = request.getOutputStream();
+			InputStream is = request.getInputStream();
+			osMap.put(deviceNo, os);
+			isMap.put(deviceNo, is);
 		}
 
 		while (true) {
 			for (int i = (deviceNos.size() - 1); i >= 0; i--) {
-				OutputStream os = osl.get(i);
-				InputStream is = isl.get(i);
+				String deviceNo = deviceNos.get(i);
+				OutputStream os = osMap.get(deviceNo);
+				InputStream is = isMap.get(deviceNo);
 
-				byte[] bs = hexString2Bytes("554000E00102" + deviceNos.get(i) + "CA3F55");
+				byte[] bs = hexString2Bytes("551000A00102" + deviceNo + "CA3F55");
 				try {
 					os.write(bs);
 					is.read(new byte[1024]);
