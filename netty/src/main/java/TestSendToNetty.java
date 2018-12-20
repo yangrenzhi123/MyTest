@@ -27,8 +27,8 @@ public class TestSendToNetty {
 		
 
 		long a = System.currentTimeMillis();
-		List<OutputStream> osl = new ArrayList<OutputStream>();
-		List<InputStream> isl = new ArrayList<InputStream>();
+		final List<OutputStream> osl = new ArrayList<OutputStream>();
+		final List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
 		for (int i = 0; i < count; i++) {
 			Socket request = new Socket("192.168.10.238", 3113);
@@ -44,7 +44,7 @@ public class TestSendToNetty {
 
 		final CountDownLatch latch = new CountDownLatch(count);
 		
-		List<String> deviceNos = new ArrayList<>();
+		final List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
 			String deviceNo = String.format("%014d", i);
 			String aa = deviceNo.substring(0, 2);
@@ -122,10 +122,9 @@ public class TestSendToNetty {
 					//for(int m=0;m<15;m++) {
 						//byte[] bs = hexString2Bytes("554000E0010200000000000012120C0B0A0B11000000000000000000000000000000000000000000000000000000000000000004E80301000000000000A4B655");
 
-						//空卡
-						//byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
-						//垃圾袋
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120C0B0F08375a4a4c593032303231383032303037313231000000000000000000000000000004010001000000000000A4B655");
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
+						
+						//byte[] bs = hexString2Bytes("554000E00102"+devices.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
 						try {
 							os.write(bs);
 							is.read(new byte[1024]);

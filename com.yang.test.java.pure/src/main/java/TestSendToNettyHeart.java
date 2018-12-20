@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -7,30 +5,18 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
-public class TestSendToNetty {
+public class TestSendToNettyHeart {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-		int count = Integer.parseInt(args[0]); //由于设备号限制，不要大于这个值
-
-//		List<String> devices = new ArrayList<String>();
-//		FileReader fr = new FileReader("D:\\Readline");
-//		BufferedReader bf = new BufferedReader(fr);
-//		String str; // 按行读取字符串
-//		while ((str = bf.readLine()) != null) {
-//			devices.add(str);
-//		}
-//		bf.close();
-		
-		
-		
+		int countStart = Integer.parseInt(args[0]);
+		int countEnd = Integer.parseInt(args[1]);
 
 		long a = System.currentTimeMillis();
 		List<OutputStream> osl = new ArrayList<OutputStream>();
 		List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < (countEnd - countStart); i++) {
 			Socket request = new Socket("192.168.10.238", 3113);
 			OutputStream os = request.getOutputStream();
 			InputStream is = request.getInputStream();
@@ -40,13 +26,9 @@ public class TestSendToNetty {
 		}
 		System.out.println("连接耗时："+(System.currentTimeMillis() - a));
 
-		
-
-		final CountDownLatch latch = new CountDownLatch(count);
-		
 		List<String> deviceNos = new ArrayList<>();
-		for (int i = 0; i < count; i++) {
-			String deviceNo = String.format("%014d", i);
+		for (int i = 0; i < (countEnd - countStart); i++) {
+			String deviceNo = String.format("%014d", i+countStart);
 			String aa = deviceNo.substring(0, 2);
 			String bb = deviceNo.substring(2, 4);
 			String cc = deviceNo.substring(4, 6);
@@ -109,46 +91,26 @@ public class TestSendToNetty {
 			deviceNo = String.format("%014d", b);
 			deviceNos.add(deviceNo);
 		}
-		
-		a = System.currentTimeMillis();
-		List<Thread> tl = new ArrayList<Thread>();
-		for (int i = 0; i < count; i++) {
-			final int j = i;
-			Thread t = new Thread(new Runnable() {
-				public void run() {
-					OutputStream os = osl.get(j);
-					InputStream is = isl.get(j);
-					
-					//for(int m=0;m<15;m++) {
-						//byte[] bs = hexString2Bytes("554000E0010200000000000012120C0B0A0B11000000000000000000000000000000000000000000000000000000000000000004E80301000000000000A4B655");
 
-						//空卡
-						//byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
-						//垃圾袋
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120C0B0F08375a4a4c593032303231383032303037313231000000000000000000000000000004010001000000000000A4B655");
-						try {
-							os.write(bs);
-							is.read(new byte[1024]);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					//}
-					latch.countDown();
+		while (true) {
+			for (int i = (deviceNos.size() - 1); i >= 0; i--) {
+				OutputStream os = osl.get(i);
+				InputStream is = isl.get(i);
+
+				byte[] bs = hexString2Bytes("554000E00102" + deviceNos.get(i) + "CA3F55");
+				try {
+					os.write(bs);
+					is.read(new byte[1024]);
+				} catch (IOException e) {
+					e.printStackTrace();
+					deviceNos.remove(i);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			});
-			tl.add(t);
-		}
-		System.out.println("线程创建耗时："+(System.currentTimeMillis() - a));
-
-		a = System.currentTimeMillis();
-		for(Thread t : tl) {
-			t.start();
-		}
-		latch.await();
-		System.out.println("执行耗时："+(System.currentTimeMillis() - a));
-		
-		for(Socket request : sl) {
-			request.close();
+			}
+			System.out.println("剩余设备数：" + deviceNos.size());
+			
+			Thread.sleep(60000);
 		}
 	}
 	
