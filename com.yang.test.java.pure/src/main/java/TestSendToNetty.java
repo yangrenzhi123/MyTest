@@ -12,8 +12,13 @@ import java.util.concurrent.CountDownLatch;
 public class TestSendToNetty {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-		int c1 = Integer.parseInt(args[0]);
-		int c2 = Integer.parseInt(args[1]);
+//		int c1 = Integer.parseInt(args[0]);
+//		int c2 = Integer.parseInt(args[1]);
+		
+		int c1 = 2;
+		int c2 = 1;
+
+		
 
 //		List<String> devices = new ArrayList<String>();
 //		FileReader fr = new FileReader("D:\\Readline");
@@ -117,20 +122,15 @@ public class TestSendToNetty {
 					OutputStream os = osl.get(j);
 					InputStream is = isl.get(j);
 					
-					//for(int m=0;m<c2;m++) {
-						//byte[] bs = hexString2Bytes("554000E0010200000000000012120C0B0A0B11000000000000000000000000000000000000000000000000000000000000000004E80301000000000000A4B655");
-
-						//空卡
-						//byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120A1D0108040000000000000000000000000000000000000000000000000000000000000000043E88011F0000000000A4B655");
-						//垃圾袋
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120C0B0F08375a4a4c593032303231383032303037313231000000000000000000000000000004010001000000000000A4B655");
+					for(int m=0;m<c2;m++) {
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120C0B0F0B265a4a4c593032303231383032303037313231000000000000000000000000000004010001000000000000A4B655");
 						try {
 							os.write(bs);
 							is.read(new byte[1024]);
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					//}
+					}
 					latch.countDown();
 				}
 			});

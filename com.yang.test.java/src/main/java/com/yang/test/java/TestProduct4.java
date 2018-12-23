@@ -23,7 +23,7 @@ public class TestProduct4 {
 	static String logPath = "C:/1.txt";
 	static RandomAccessFile f;
 	static List<Runnable> rl;
-	static int count = 8000;
+	static int count = 1000;
 	static CountDownLatch counttime;
 	static long totalDistance;
 
@@ -48,12 +48,10 @@ public class TestProduct4 {
 		
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
-		final HttpGet p1 = new HttpGet("http://"+ip+":8080/user/webflow/showUser");
-		p1.setHeader("Connection", "Keep-Alive");
+		final HttpGet p = new HttpGet("http://"+ip+":81/api-console/tenant/l.do");
+		p.setHeader("Connection", "Keep-Alive");
+		p.setHeader("Cookie", "lyzh-saas=s%3ALWQu_Apzg7uTV7ZsI5zQbRoc4-63S0eO.7Ro4LSuzD6wFl9aucZoxY%2BMqLxD4aNtQG%2Biu0%2FKEPxw");
 
-		final HttpGet p2 = new HttpGet("http://"+ip+":8081/user/webflow/showUser");
-		p2.setHeader("Connection", "Keep-Alive");
-		
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < count; i++) {
 			CloseableHttpClient hc = HttpClients.custom().setDefaultRequestConfig(config).build();
@@ -66,12 +64,6 @@ public class TestProduct4 {
 			rl.add(new Runnable() {
 				public void run() {
 					try {
-						HttpGet p;
-						if(j % 2 == 0) {
-							p = p1;
-						}else {
-							p = p2;
-						}
 						CloseableHttpClient hc = hcl.get(j);
 						HttpResponse response = hc.execute(p);
 						HttpEntity httpEntity = response.getEntity();
@@ -101,7 +93,10 @@ public class TestProduct4 {
 			test(i);
 		}
 		
-		Thread.sleep(2000);
+		
+		for(CloseableHttpClient hc : hcl) {
+			hc.close();
+		}
 	}
 
 	static void test(int index) throws InterruptedException, IOException {
