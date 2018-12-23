@@ -6,14 +6,13 @@ jetcache:
       type: linkedhashmap
       keyConvertor: fastjson
   remote:
-    default:
-      type: redis
-      keyConvertor: fastjson
-      valueEncoder: java
-      valueDecoder: java
-      poolConfig:
-        minIdle: 5
-        maxIdle: 20
-        maxTotal: 50
-      host: 172.28.51.33
-      port: 6379
+      default:
+        type: redis.lettuce
+        keyConvertor: fastjson
+        uri:
+          - redis://192.168.30.120:50010
+          - redis://192.168.30.120:50020
+          - redis://192.168.30.120:50030
+          - redis://192.168.30.121:50040
+          - redis://192.168.30.121:50050
+          - redis://192.168.30.121:50060
