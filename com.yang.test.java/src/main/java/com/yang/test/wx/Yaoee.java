@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -19,7 +17,7 @@ import org.apache.http.util.EntityUtils;
 public class Yaoee {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		sendMessage();
+		messageSend2();
 	}
 
 	public static void getAccessToken() throws ClientProtocolException, IOException {
@@ -30,10 +28,78 @@ public class Yaoee {
 		String result = EntityUtils.toString(httpEntity);
 		System.out.println(result);
 	}
+
+	public static void batchget_material() throws ClientProtocolException, IOException {
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=16_2Ef0e_lXwRktUV0akjMxA4UuRHiDrehwLa5BOkUXhr7yu3pJPZ7ahOCZLHVpS3F22Prrvg7b7TtakR1tv4tp1jic0hYU3wMGC2hCzyifKzjH-CLuvwBeVieejaKDDaTTy3zaHv3ARnUd-_e4DHDjAFAQUQ");
+		
+		String data = 
+		"{"+
+		"    \"type\":\"news\","+
+		"    \"offset\":\"0\","+
+		"    \"count\":\"20\""+
+		"}";
+		System.out.println(data);
+		StringEntity entity = new StringEntity(data, ContentType.create("application/json", "UTF-8"));
+		post.setEntity(entity);
+
+		HttpResponse response = httpClient.execute(post);
+		HttpEntity httpEntity = response.getEntity();
+		String result = EntityUtils.toString(httpEntity);
+		System.out.println(result);
+	}
+
+	/**
+	 * 要求：用户在24小时之内与公众号有过交互
+	 * 
+	 */
+	public static void messageSend() throws ClientProtocolException, IOException {
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=16_2Ef0e_lXwRktUV0akjMxA4UuRHiDrehwLa5BOkUXhr7yu3pJPZ7ahOCZLHVpS3F22Prrvg7b7TtakR1tv4tp1jic0hYU3wMGC2hCzyifKzjH-CLuvwBeVieejaKDDaTTy3zaHv3ARnUd-_e4DHDjAFAQUQ");
+		
+		String data = 
+		"{"+
+		"    \"touser\":\"oEynf0jA5bCSa4QraReOd2tZ_zjk\","+
+		"    \"msgtype\":\"text\","+
+		"    \"text\":{\"content\":\"测试客服消息，内容：111111\"}"+
+		"}";
+		System.out.println(data);
+		StringEntity entity = new StringEntity(data, ContentType.create("application/json", "UTF-8"));
+		post.setEntity(entity);
+
+		HttpResponse response = httpClient.execute(post);
+		HttpEntity httpEntity = response.getEntity();
+		String result = EntityUtils.toString(httpEntity);
+		System.out.println(result);
+	}
 	
 
 
-	public static void sendMessage() throws ClientProtocolException, IOException {
+	/**
+	 * 要求：用户在24小时之内与公众号有过交互
+	 * 
+	 */
+	public static void messageSend2() throws ClientProtocolException, IOException {
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=16_2Ef0e_lXwRktUV0akjMxA4UuRHiDrehwLa5BOkUXhr7yu3pJPZ7ahOCZLHVpS3F22Prrvg7b7TtakR1tv4tp1jic0hYU3wMGC2hCzyifKzjH-CLuvwBeVieejaKDDaTTy3zaHv3ARnUd-_e4DHDjAFAQUQ");
+		
+		String data = 
+		"{"+
+		"    \"touser\":\"oEynf0jA5bCSa4QraReOd2tZ_zjk\","+
+		"    \"msgtype\":\"mpnews\","+
+		"    \"mpnews\":{\"media_id\":\"aU_co04b70_nfVaTgT0OvqAf1YyviehGUNBoTRwENwc\"}"+
+		"}";
+		System.out.println(data);
+		StringEntity entity = new StringEntity(data, ContentType.create("application/json", "UTF-8"));
+		post.setEntity(entity);
+
+		HttpResponse response = httpClient.execute(post);
+		HttpEntity httpEntity = response.getEntity();
+		String result = EntityUtils.toString(httpEntity);
+		System.out.println(result);
+	}
+
+	public static void messageTemplateSend() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=16_bnyP6wy9oVNlOE-rjQj6x9GcxPm685nkujRf10Y5t2UkFHc3lz0Asge8xh-SRVQAL37Rnirys4UR5u0CS1BYVePoLSIsdkfiQyDxA9L54m6ZGq3GBY3Bzk4as7J18ABL29JQaXaj8FB2HwsNNVFbAJAYGQ");
 		
