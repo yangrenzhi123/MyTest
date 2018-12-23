@@ -1,0 +1,19 @@
+jetcache:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  local:
+    default:
+      type: linkedhashmap
+      keyConvertor: fastjson
+  remote:
+    default:
+      type: redis
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: 172.28.51.33
+      port: 6379
