@@ -17,7 +17,7 @@ public class Test {
 	//static final String USER = "sa";
 	//static final String PASS = "1qazxcvbnm,./";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://192.168.10.10:3306/test";
+	static final String DB_URL = "jdbc:mysql://172.28.51.33:23306/test";
 	static final String USER = "root";
 	static final String PASS = "123456";
 	

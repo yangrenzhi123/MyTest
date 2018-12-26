@@ -37,8 +37,5 @@ public class Kafka2 {
 		String topic = "test";
 		Producer producer = new Producer<String, String>(new ProducerConfig(properties));
 		producer.send(new KeyedMessage<String, String>(topic, "110"));
-		producer.send(new KeyedMessage<String, String>(topic, "111"));
-		producer.send(new KeyedMessage<String, String>(topic, "112"));
-		producer.send(new KeyedMessage<String, String>(topic, "113"));
 	}
 }
