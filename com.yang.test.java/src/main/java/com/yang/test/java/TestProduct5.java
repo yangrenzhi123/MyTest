@@ -1,12 +1,11 @@
 package com.yang.test.java;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.http.HttpEntity;
@@ -18,12 +17,13 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-public class TestProduct4 {
+public class TestProduct5 {
 
-	static String logPath = "C:/1.txt";
-	static RandomAccessFile f;
+
+	static String ip="192.168.8.107";
+	static int count = 10;
+	
 	static List<Runnable> rl;
-	static int count = 1000;
 	static CountDownLatch counttime;
 	static long totalDistance;
 
@@ -34,23 +34,15 @@ public class TestProduct4 {
 	static int[] countExceptionArray;
 	
 	static long totalTime;
-	static String ip="192.168.10.240";
 	
 	public static void main(String[] args) throws InterruptedException, IOException {
-		File log = new File(logPath);
-		if(log.exists()) {
-			log.delete();
-		}
-		log.createNewFile();
-		
-		f = new RandomAccessFile("C:/1.txt", "rw");
-		
-		
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
-		final HttpGet p = new HttpGet("http://"+ip+":81/api-console/tenant/l.do");
+		String orderNo = UUID.randomUUID().toString().replaceAll("-", "");
+		final HttpGet p = new HttpGet("http://"+ip+":3114/NewVendingMachine/check?mchinesn=000000600001&ordersn="+orderNo+"&timestamp=1545793115&code=LYZH181225000202&sign=6794F8DF8F1B13FFCC3BDB7B8D2B6147");
 		p.setHeader("Connection", "Keep-Alive");
-		p.setHeader("Cookie", "lyzh-saas=s%3ALWQu_Apzg7uTV7ZsI5zQbRoc4-63S0eO.7Ro4LSuzD6wFl9aucZoxY%2BMqLxD4aNtQG%2Biu0%2FKEPxw");
+		final HttpGet p1 = new HttpGet("http://"+ip+":3114/NewVendingMachine/checkresult/?mchinesn=000000600001&ordersn="+orderNo+"&timestamp=1545793121&goodsCode=ZJLY02021807078389&sign=7C30E9DCBB56A7FCCF603298D3F60AD5&mark=00000");
+		p1.setHeader("Connection", "Keep-Alive");
 
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < count; i++) {
@@ -65,9 +57,23 @@ public class TestProduct4 {
 				public void run() {
 					try {
 						CloseableHttpClient hc = hcl.get(j);
+						
+						
 						HttpResponse response = hc.execute(p);
 						HttpEntity httpEntity = response.getEntity();
-						EntityUtils.toString(httpEntity, "utf-8");
+						String content = EntityUtils.toString(httpEntity, "utf-8");
+						if(!content.startsWith("{\"code\":\"0\"")) {
+							System.out.println(content);
+						}
+						
+
+						response = hc.execute(p);
+						httpEntity = response.getEntity();
+						content = EntityUtils.toString(httpEntity, "utf-8");
+						if(!content.startsWith("{\"code\":\"0\"")) {
+							System.out.println(content);
+						}
+						
 
 						int httpCode = response.getStatusLine().getStatusCode();
 						if(httpCode == 500) {
