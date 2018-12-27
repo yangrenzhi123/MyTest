@@ -10,17 +10,16 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-public class Test2 {
+public class Test3 {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
-		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sh600550");
+		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz002739");
 
 		HttpClient hc = HttpClients.createDefault();
 
 		HttpResponse response = hc.execute(get);
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);
-		//System.out.println(result);
 
 		String[] ss = result.split("\"");
 		String s = ss[1];

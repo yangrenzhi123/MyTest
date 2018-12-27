@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.http.HttpEntity;
@@ -17,13 +16,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-public class TestProduct5 {
+public class XingNengTest2 {
 
-
-	static String ip="127.0.0.1";
-	static int count = 100;
-	
 	static List<Runnable> rl;
+	static int count = 400;
 	static CountDownLatch counttime;
 	static long totalDistance;
 
@@ -34,15 +30,13 @@ public class TestProduct5 {
 	static int[] countExceptionArray;
 	
 	static long totalTime;
+	static String ip="192.168.10.240";
 	
 	public static void main(String[] args) throws InterruptedException, IOException {
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
-		String orderNo = UUID.randomUUID().toString().replaceAll("-", "");
-		final HttpGet p = new HttpGet("http://"+ip+":3114/NewVendingMachine/check?mchinesn=000000600001&ordersn="+orderNo+"&timestamp=1545793115&code=LYZH181225000202&sign=6794F8DF8F1B13FFCC3BDB7B8D2B6147");
+		final HttpGet p = new HttpGet("http://127.0.0.1:3107/dao/fl/equipdispenser/test");
 		p.setHeader("Connection", "Keep-Alive");
-		final HttpGet p1 = new HttpGet("http://"+ip+":3114/NewVendingMachine/checkresult/?mchinesn=000000600001&ordersn="+orderNo+"&timestamp=1545793121&goodsCode=ZJLY02021807078389&sign=7C30E9DCBB56A7FCCF603298D3F60AD5&mark=00000");
-		p1.setHeader("Connection", "Keep-Alive");
 
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < count; i++) {
@@ -57,23 +51,9 @@ public class TestProduct5 {
 				public void run() {
 					try {
 						CloseableHttpClient hc = hcl.get(j);
-						
-						
 						HttpResponse response = hc.execute(p);
 						HttpEntity httpEntity = response.getEntity();
-						String content = EntityUtils.toString(httpEntity, "utf-8");
-						if(!content.startsWith("{\"code\":\"0\"")) {
-							System.out.println(content);
-						}
-						
-
-//						response = hc.execute(p);
-//						httpEntity = response.getEntity();
-//						content = EntityUtils.toString(httpEntity, "utf-8");
-//						if(!content.startsWith("{\"code\":\"0\"")) {
-//							System.out.println(content);
-//						}
-						
+						EntityUtils.toString(httpEntity, "utf-8");
 
 						int httpCode = response.getStatusLine().getStatusCode();
 						if(httpCode == 500) {

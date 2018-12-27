@@ -10,7 +10,7 @@ public class Config {
 	@Bean
 	public LettuceConnectionFactory connectionFactory() {
 		LettuceConnectionFactory r = new LettuceConnectionFactory();
-		r.setHostName("192.168.137.213");
+		r.setHostName("172.28.51.33");
 //		r.setPort(6379);
 //		r.afterPropertiesSet();
 //		r.setShareNativeConnection(true);
