@@ -3,6 +3,7 @@ package com.yang.test.java;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +15,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 public class Test {
 	public static String s = "123";
@@ -23,7 +23,7 @@ public class Test {
 		//System.out.println(convertHexToString("4C595A4831353038383635323039303100000000000000000000000000000000"));
 		//System.out.println(strTo16("LYZH150886520901"));
 		
-		//jinzhi();
+		jinzhi();
 		
 		//System.out.println(hexString2Bytes("FF")[0]);
 		//System.out.println((byte) 0xFF);
@@ -34,8 +34,6 @@ public class Test {
 		
 		
 		//test9();
-		
-		System.out.println(UUID.randomUUID().toString());
 	}
 
 	public static String userFlag2Hex() {
@@ -81,12 +79,14 @@ public class Test {
 
 	public static void jinzhi() {
 		// 10转16进制
-		System.out.println(intToHex(15));
+		System.out.println(intToHex(1000));
 
 		// 16转10进制
-		System.out.println(Integer.valueOf("ff", 16));
-
-		byte[] bs = new byte[] {0x55, 0x00, 0x01, 0x21, (byte) 0x90, 0x70, 0x26, 0x41, (byte) 0xE5, 0x00};
+		System.out.println(Integer.valueOf("FC18", 16));
+		
+		// 解决负数问题
+		BigInteger bi = new BigInteger("03E8", 16);
+		System.out.println(bi.intValue());
 	}
 
 	public static String intToHex(int i) {
