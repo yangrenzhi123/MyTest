@@ -1,0 +1,24 @@
+server:
+  port: 6666
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+        prefer-ip: true
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: ["health","info","shutdown"]
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
