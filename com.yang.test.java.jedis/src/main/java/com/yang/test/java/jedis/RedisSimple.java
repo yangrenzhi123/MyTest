@@ -30,25 +30,25 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.30.62", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.228", 7001));
-		nodes.add(new HostAndPort("192.168.10.228", 7002));
-		nodes.add(new HostAndPort("192.168.10.228", 7003));
-		nodes.add(new HostAndPort("192.168.10.229", 7004));
-		nodes.add(new HostAndPort("192.168.10.229", 7005));
-		nodes.add(new HostAndPort("192.168.10.229", 7006));
-		JedisCluster j = new JedisCluster(nodes);
-
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.30.120", 50010));
-//		nodes.add(new HostAndPort("192.168.30.120", 50020));
-//		nodes.add(new HostAndPort("192.168.30.120", 50030));
-//		nodes.add(new HostAndPort("192.168.30.121", 50040));
-//		nodes.add(new HostAndPort("192.168.30.121", 50050));
-//		nodes.add(new HostAndPort("192.168.30.121", 50060));
+//		nodes.add(new HostAndPort("192.168.10.228", 7001));
+//		nodes.add(new HostAndPort("192.168.10.228", 7002));
+//		nodes.add(new HostAndPort("192.168.10.228", 7003));
+//		nodes.add(new HostAndPort("192.168.10.229", 7004));
+//		nodes.add(new HostAndPort("192.168.10.229", 7005));
+//		nodes.add(new HostAndPort("192.168.10.229", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-		String key = "testKey";
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.30.120", 50010));
+		nodes.add(new HostAndPort("192.168.30.120", 50020));
+		nodes.add(new HostAndPort("192.168.30.120", 50030));
+		nodes.add(new HostAndPort("192.168.30.121", 50040));
+		nodes.add(new HostAndPort("192.168.30.121", 50050));
+		nodes.add(new HostAndPort("192.168.30.121", 50060));
+		JedisCluster j = new JedisCluster(nodes);
+
+		String key = "IncrProductCpbm";
 		System.out.println(j.get(key));
 
 		j.close();
