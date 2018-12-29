@@ -1,0 +1,1 @@
+consul agent -dev -bind 172.28.51.33 -client 0.0.0.0
