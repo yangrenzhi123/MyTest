@@ -1,4 +1,4 @@
-package com.yang.test.java;
+package com.yang.test.java.proxy2;
 
 public class UserServiceTest {
 
@@ -8,5 +8,4 @@ public class UserServiceTest {
 		UserService se = (UserService) pro.createProxyIntance(bean);
 		se.hello();
 	}
-
 }

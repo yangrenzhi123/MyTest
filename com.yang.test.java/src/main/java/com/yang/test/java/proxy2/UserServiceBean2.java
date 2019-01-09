@@ -1,13 +1,13 @@
-package com.yang.test.java;
+package com.yang.test.java.proxy2;
 
-public class UserServiceBean implements UserService {
+public class UserServiceBean2 implements UserService {
 
 	private String name;
 
-	public UserServiceBean() {
-	};
+	public UserServiceBean2() {
+	}
 
-	public UserServiceBean(String name) {
+	public UserServiceBean2(String name) {
 		this.name = name;
 	}
 

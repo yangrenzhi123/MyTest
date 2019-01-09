@@ -1,4 +1,4 @@
-package com.yang.test.java;
+package com.yang.test.java.proxy;
 
 public interface UserService {
 

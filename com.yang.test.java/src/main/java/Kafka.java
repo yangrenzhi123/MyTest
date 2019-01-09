@@ -11,24 +11,15 @@ public class Kafka {
 		String group = "yyGroup";
 		Properties props = new Properties();
 
-
-        //String topic = "my-replicated-topic";
-        //props.put("bootstrap.servers", "172.28.51.33:9092,172.28.51.33:9093,172.28.51.33:9094");
-
-//		props.put("zookeeper.connect", "192.168.30.120:2181,192.168.30.121:2181,192.168.10.10:2181");
-//		props.put("bootstrap.servers", "192.168.30.120:9092,192.168.8.70:9092");
 		
-
-
+		
 		String topic = "test";
-		props.put("bootstrap.servers", "192.168.30.151:9092");
-		
+		props.put("bootstrap.servers", "192.168.10.19:9092");
 
-		//String topic = "test";
-		//props.put("bootstrap.servers", "192.168.30.151:9092");
 		
-		//props.put("bootstrap.servers", "192.168.30.60:9092,192.168.30.61:9092,192.168.30.62:9092");
-
+		
+		
+		
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");
 		props.put("auto.commit.interval.ms", "1000");
