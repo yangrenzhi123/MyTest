@@ -32,7 +32,6 @@ public class RedisClear {
 
 	public static void main(String[] args) throws IOException {
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.30.121", 50060));
 		nodes.add(new HostAndPort("192.168.10.240", 7001));
 		nodes.add(new HostAndPort("192.168.10.240", 7002));
 		nodes.add(new HostAndPort("192.168.10.240", 7003));
