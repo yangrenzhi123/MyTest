@@ -1,0 +1,17 @@
+mysql:
+  datasource:
+    #读库数目
+    num: 1
+    type-aliases-package: com.example.dxfl.dao
+    mapper-locations: classpath:/mapper/*.xml
+    config-location: classpath:/mybatis-config.xml
+    write:
+      url: jdbc:mysql://192.168.10.20:3306/lyzhhw4?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: Lenovo@@7788
+      driver-class-name: com.mysql.jdbc.Driver
+    read:
+      url: jdbc:mysql://192.168.10.22:3306/lyzhhw4?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: Lenovo@@7788
+      driver-class-name: com.mysql.jdbc.Driver

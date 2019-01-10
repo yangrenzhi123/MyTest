@@ -32,12 +32,13 @@ public class RedisClear {
 
 	public static void main(String[] args) throws IOException {
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.30.120", 50010));
-		nodes.add(new HostAndPort("192.168.30.120", 50020));
-		nodes.add(new HostAndPort("192.168.30.120", 50030));
-		nodes.add(new HostAndPort("192.168.30.121", 50040));
-		nodes.add(new HostAndPort("192.168.30.121", 50050));
 		nodes.add(new HostAndPort("192.168.30.121", 50060));
+		nodes.add(new HostAndPort("192.168.10.240", 7001));
+		nodes.add(new HostAndPort("192.168.10.240", 7002));
+		nodes.add(new HostAndPort("192.168.10.240", 7003));
+		nodes.add(new HostAndPort("192.168.10.240", 7004));
+		nodes.add(new HostAndPort("192.168.10.240", 7005));
+		nodes.add(new HostAndPort("192.168.10.240", 7006));
 		JedisCluster j = new JedisCluster(nodes);
 
 		TreeSet<String> keys = keys(j, "*");
