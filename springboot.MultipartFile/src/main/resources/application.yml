@@ -4,18 +4,21 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:8080
+        url: http://localhost:8788
         prefer-ip: true
+        
 management:
-  endpoint:
-    shutdown:
-      enabled: true
-    health:
-      show-details: always
   endpoints:
     web:
       exposure:
-        include: ["health","info","shutdown"]
+        include: "*"  #<2>
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
+    reload:
+      enabled: true
 info:
   app:
     name: "@project.name@"

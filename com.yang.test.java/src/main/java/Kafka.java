@@ -14,7 +14,7 @@ public class Kafka {
 		
 		
 		String topic = "test";
-		props.put("bootstrap.servers", "192.168.10.19:9092");
+		props.put("bootstrap.servers", "192.168.10.239:9092");
 
 		
 		
