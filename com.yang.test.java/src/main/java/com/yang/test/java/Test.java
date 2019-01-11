@@ -87,6 +87,14 @@ public class Test {
 		// 解决负数问题
 		BigInteger bi = new BigInteger("03E8", 16);
 		System.out.println(bi.intValue());
+		
+		// 字节转16
+        String s = Integer.toHexString("E".getBytes()[0] & 0xFF);
+        if (s.length() == 1){
+            System.out.println("0" + s);
+        }else{
+            System.out.println(s);
+        }
 	}
 
 	public static String intToHex(int i) {

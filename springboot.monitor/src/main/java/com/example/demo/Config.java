@@ -18,9 +18,23 @@ public class Config {
 	private List<String> gw;
 	private List<String> uiConsole;
 	private List<String> uiPlatform;
+	private List<String> device;
+	private List<String> third;
 	
 
 
+	public List<String> getDevice() {
+		return device;
+	}
+	public void setDevice(List<String> device) {
+		this.device = device;
+	}
+	public List<String> getThird() {
+		return third;
+	}
+	public void setThird(List<String> third) {
+		this.third = third;
+	}
 	public List<String> getUiConsole() {
 		return uiConsole;
 	}

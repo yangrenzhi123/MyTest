@@ -34,6 +34,8 @@ public class DemoApplication {
 	MonitorForRedis monitorForRedis;
 	@Autowired
 	MonitorForService monitorForService;
+	@Autowired
+	MonitorForDevice monitorForDevice;
 
 	@Bean
 	public String getInitor() {
@@ -45,6 +47,7 @@ public class DemoApplication {
 					monitorForKafka.execute();
 					monitorForRedis.execute();
 					monitorForService.execute();
+					monitorForDevice.execute();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
