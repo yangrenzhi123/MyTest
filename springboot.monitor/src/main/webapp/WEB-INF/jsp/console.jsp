@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>监控</title>
 </head>
 <body>
 	<div id="content"></div>
 </body>
 <script src="/resources/jquery/jquery-1.7.2.min.js"></script>
 <Script>
-	setInterval(function(){
+	function ajax(){
 		$.ajax({
 			url : "/info",
 			success : function(result) {
@@ -25,6 +25,11 @@
 				$("#content").html(a);
 			}
 		});
+	}
+
+	ajax();
+	setInterval(function(){
+		ajax();
 	}, 60000);
 </Script>
 </html>

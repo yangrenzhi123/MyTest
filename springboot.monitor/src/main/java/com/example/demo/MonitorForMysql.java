@@ -35,14 +35,15 @@ public class MonitorForMysql {
 			stmt.close();
 			
 			MoniResult result = new MoniResult();
+			result.setName("Mysql");
 			result.setCheckTime(new Date());
 			
 			if(rs) {
 				result.setResult(1);
-				DemoApplication.result.put(s, result);
+				DemoApplication.result.put(infos[0] + " " + infos[1] + " ******", result);
 			}else {
 				result.setResult(0);
-				DemoApplication.result.put(s, result);
+				DemoApplication.result.put(infos[0] + " " + infos[1] + " ******", result);
 			}
 		}
 	}

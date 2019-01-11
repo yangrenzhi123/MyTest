@@ -29,6 +29,7 @@ public class MonitorForKafka {
 		Producer producer = new Producer<String, String>(new ProducerConfig(properties));
 
 		MoniResult result = new MoniResult();
+		result.setName("Kafka");
 		result.setCheckTime(new Date());
 		try {
 			producer.send(new KeyedMessage<String, String>(topic, "110"));

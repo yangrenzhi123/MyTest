@@ -1,0 +1,49 @@
+package com.example.demo;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.JedisCluster;
+
+@Service
+public class MonitorForRedis {
+
+	@Autowired
+	Config config;
+
+	public void execute() throws ClassNotFoundException, SQLException, IOException {
+		String s = config.getRedis();
+
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		for (String it : s.split(",")) {
+			String[] ss = it.split(":");
+			String ip = ss[0];
+			String po = ss[1];
+			nodes.add(new HostAndPort(ip, Integer.parseInt(po)));
+		}
+		JedisCluster j = new JedisCluster(nodes);
+
+		String key = "testKey";
+
+		MoniResult result = new MoniResult();
+		result.setName("Redis");
+		result.setCheckTime(new Date());
+		try {
+			j.get(key);
+			result.setResult(1);
+			DemoApplication.result.put(s, result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setResult(0);
+			DemoApplication.result.put(s, result);
+		}
+		j.close();
+	}
+}

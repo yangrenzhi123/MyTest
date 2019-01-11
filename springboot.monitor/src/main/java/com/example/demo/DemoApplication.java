@@ -30,6 +30,10 @@ public class DemoApplication {
 	MonitorForMysql monitorForMysql;
 	@Autowired
 	MonitorForKafka monitorForKafka;
+	@Autowired
+	MonitorForRedis monitorForRedis;
+	@Autowired
+	MonitorForService monitorForService;
 
 	@Bean
 	public String getInitor() {
@@ -39,13 +43,13 @@ public class DemoApplication {
 				try {
 					monitorForMysql.execute();
 					monitorForKafka.execute();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (SQLException e) {
+					monitorForRedis.execute();
+					monitorForService.execute();
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		}, 300000);
+		}, 0, 300000);
 
 		return "1";
 	}
@@ -66,7 +70,7 @@ class HelloController {
 	@GetMapping("/info")
 	public List<String> info() throws ClassNotFoundException, SQLException {
 		List<String> l = new ArrayList<>();
-		DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 		Iterator<Entry<String, MoniResult>> iter = DemoApplication.result.entrySet().iterator();
 		while (iter.hasNext()) {
@@ -74,8 +78,7 @@ class HelloController {
 			Object key = entry.getKey();
 			MoniResult val = (MoniResult) entry.getValue();
 
-			l.add("检测时间：" + yyyy.format(val.getCheckTime()) + "，" + key + "，结果："
-					+ (val.getResult() == 1 ? "成功" : "失败"));
+			l.add("检测时间：" + yyyy.format(val.getCheckTime()) + "，" + val.getName() + "，结果：" + (val.getResult() == 1 ? "成功" : "失败") + "，备注：" + key);
 		}
 		return l;
 	}
