@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-@ConfigurationProperties(prefix = "db")
+@ConfigurationProperties
 public class Config {
 
 	private List<String> dbList = new ArrayList<>();

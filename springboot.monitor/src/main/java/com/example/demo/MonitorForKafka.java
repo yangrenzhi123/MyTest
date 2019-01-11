@@ -2,7 +2,6 @@ package com.example.demo;
 
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +20,24 @@ public class MonitorForKafka {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException {
-		List<String> l = config.getDbList();
+		String s = config.getKafka();
 
-		for (String s : l) {
-			Properties properties = new Properties();
-			properties.put("serializer.class", StringEncoder.class.getName());
-			String topic = "test";
-			properties.put("metadata.broker.list", s);
-			Producer producer = new Producer<String, String>(new ProducerConfig(properties));
+		Properties properties = new Properties();
+		properties.put("serializer.class", StringEncoder.class.getName());
+		String topic = "test";
+		properties.put("metadata.broker.list", s);
+		Producer producer = new Producer<String, String>(new ProducerConfig(properties));
 
-			MoniResult result = new MoniResult();
-			result.setCheckTime(new Date());
-			try {
-				producer.send(new KeyedMessage<String, String>(topic, "110"));
-				result.setResult(1);
-				DemoApplication.result.put(s, result);
-			} catch (Exception e) {
-				result.setResult(0);
-				DemoApplication.result.put(s, result);
-			}
+		MoniResult result = new MoniResult();
+		result.setCheckTime(new Date());
+		try {
+			producer.send(new KeyedMessage<String, String>(topic, "110"));
+			result.setResult(1);
+			DemoApplication.result.put(s, result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setResult(0);
+			DemoApplication.result.put(s, result);
 		}
 	}
 }

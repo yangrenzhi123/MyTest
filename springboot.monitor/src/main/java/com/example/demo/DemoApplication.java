@@ -45,7 +45,7 @@ public class DemoApplication {
 					e.printStackTrace();
 				}
 			}
-		}, 60000);
+		}, 300000);
 
 		return "1";
 	}
