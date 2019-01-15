@@ -22,7 +22,7 @@
 				$("#content").html(s);
 			},
 			error : function(a) {
-				$("#content").html(a);
+				$("#content").html("访问失败");
 			}
 		});
 	}

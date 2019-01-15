@@ -1,0 +1,32 @@
+PID=`ps -aux | grep java | grep com.lyzh.msa.ca.jar | awk '{print $2}'`
+if [ -n "${PID}" ];then
+	kill -9 ${PID}
+fi
+rm -f /usr/local/include/msa/com.lyzh.msa.ca.jar
+
+cd $WORKSPACE
+rm -f com.lyzh.msa.ca.jar
+cp target/com.lyzh.msa.ca.jar /usr/local/include/msa/com.lyzh.msa.ca.jar
+
+BUILD_ID=dontKillMe
+nohup /usr/local/include/jdk1.8.0_191/bin/java -jar /usr/local/include/msa/com.lyzh.msa.ca.jar --spring.cloud.config.uri=http://127.0.0.1:3101 > /tmp/ca.nohup & cd .
+
+
+
+
+
+cd $WORKSPACE/target
+cp /etc/lyzhconfig/dockerfile/deviceDockerfile $WORKSPACE/target
+
+docker stop device
+docker rm device
+
+
+IMAGE_ID=`sudo docker images | grep device | awk '{print $3}'`
+if [ -n "${IMAGE_ID}" ];then
+    docker rmi device
+fi
+
+
+docker build -t device -f ./deviceDockerfile .
+docker run --name device -p 3113:3113 -d device

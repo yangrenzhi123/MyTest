@@ -40,5 +40,7 @@ public class MonitorForKafka {
 			result.setResult(0);
 			DemoApplication.result.put(s, result);
 		}
+		
+		producer.close();
 	}
 }

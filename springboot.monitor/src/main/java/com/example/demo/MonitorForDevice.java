@@ -33,6 +33,11 @@ public class MonitorForDevice {
 			String[] ss = uiConsole.split(":");
 			common(ss[0], Integer.parseInt(ss[1]), "发放机服务");
 		}
+		
+
+		String mongodb = config.getMongodb();
+		String[] ss = mongodb.split(":");
+		common(ss[0], Integer.parseInt(ss[1]), "MongoDB");
 	}
 	
 	private void common(String ip, int port, String name) {

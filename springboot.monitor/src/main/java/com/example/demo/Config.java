@@ -20,9 +20,16 @@ public class Config {
 	private List<String> uiPlatform;
 	private List<String> device;
 	private List<String> third;
+	private String mongodb;
 	
 
 
+	public String getMongodb() {
+		return mongodb;
+	}
+	public void setMongodb(String mongodb) {
+		this.mongodb = mongodb;
+	}
 	public List<String> getDevice() {
 		return device;
 	}

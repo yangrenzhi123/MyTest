@@ -26,27 +26,27 @@ public class TestMongodb {
 		//l.add(new ServerAddress("192.168.30.60", 27017));
 		//l.add(new ServerAddress("192.168.30.61", 27017));
 
-		MongoClient mongoClient = new MongoClient("192.168.10.239", 27017);
+		MongoClient mongoClient = new MongoClient("192.168.10.239", 7777);
 		// MongoClient mongoClient = new MongoClient(l);
 
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 
-		MongoCollection c = mgdb.getCollection("c9");
+		MongoCollection c = mgdb.getCollection("test");
 		
-		long a = System.currentTimeMillis();
-		for(int i=0;i<10000;i++) {
-			Document doc = Document.parse("{\"myKey\":\"123\"}");
-			c.insertOne(doc);
-		}
-		System.out.println(System.currentTimeMillis() - a);
+//		long a = System.currentTimeMillis();
+//		for(int i=0;i<10000;i++) {
+//			Document doc = Document.parse("{\"myKey\":\"123\"}");
+//			c.insertOne(doc);
+//		}
+//		System.out.println(System.currentTimeMillis() - a);
 		
 		
-//		FindIterable<Document> iter = c.find();
-//		iter.forEach(new Block<Document>() {
-//			public void apply(Document _doc) {
-//				System.out.println(_doc.toJson());
-//			}
-//		});
+		FindIterable<Document> iter = c.find();
+		iter.forEach(new Block<Document>() {
+			public void apply(Document _doc) {
+				System.out.println(_doc.toJson());
+			}
+		});
 
 		mongoClient.close();
 	}

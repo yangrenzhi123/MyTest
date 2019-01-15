@@ -12,11 +12,11 @@ import java.util.concurrent.CountDownLatch;
 public class TestSendToNetty {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-//		int c1 = Integer.parseInt(args[0]);
-//		int c2 = Integer.parseInt(args[1]);
+		int c1 = Integer.parseInt(args[0]);
+		int c2 = Integer.parseInt(args[1]);
 		
-		int c1 = 2;
-		int c2 = 1;
+//		int c1 = 10;
+//		int c2 = 1;
 
 		
 
@@ -37,7 +37,7 @@ public class TestSendToNetty {
 		List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
 		for (int i = 0; i < c1; i++) {
-			Socket request = new Socket("192.168.10.238", 3113);
+			Socket request = new Socket("192.168.10.239", 3113);
 			OutputStream os = request.getOutputStream();
 			InputStream is = request.getInputStream();
 			isl.add(is);
@@ -52,7 +52,7 @@ public class TestSendToNetty {
 		
 		List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < c1; i++) {
-			String deviceNo = String.format("%014d", i);
+			String deviceNo = String.format("%014d", 61000000000001L+i);
 			String aa = deviceNo.substring(0, 2);
 			String bb = deviceNo.substring(2, 4);
 			String cc = deviceNo.substring(4, 6);
@@ -123,7 +123,8 @@ public class TestSendToNetty {
 					InputStream is = isl.get(j);
 					
 					for(int m=0;m<c2;m++) {
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120C0B0F0B265a4a4c593032303231383032303037313231000000000000000000000000000004010001000000000000A4B655");
+																									//LYZH111111111101                                            //垃圾类型
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"120C0B0F0B26"+"4c595a4831313131313131313131303100000000000000000000000000000000"+"04"+"010001000000000000A4B655");
 						try {
 							os.write(bs);
 							is.read(new byte[1024]);

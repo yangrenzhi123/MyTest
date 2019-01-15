@@ -33,6 +33,7 @@ public class MonitorForMysql {
 			PreparedStatement stmt = conn.prepareStatement("select user()");
 			boolean rs = stmt.execute();
 			stmt.close();
+			conn.close();
 			
 			MoniResult result = new MoniResult();
 			result.setName("Mysql");

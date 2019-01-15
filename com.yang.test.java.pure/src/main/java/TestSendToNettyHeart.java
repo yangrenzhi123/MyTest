@@ -13,14 +13,14 @@ public class TestSendToNettyHeart {
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 		int countStart = Integer.parseInt(args[0]);
 		int countEnd = Integer.parseInt(args[1]);
-//		int countStart = 10000;
-//		int countEnd = 10100;
+//		int countStart = 110001;
+//		int countEnd = 120000;
 
 		Map<String, OutputStream> osMap = new HashMap<>();
 		Map<String, InputStream> isMap = new HashMap<>();
 		
 		List<String> deviceNos = new ArrayList<>();
-		for (int i = 0; i < (countEnd - countStart); i++) {
+		for (int i = 0; i < (countEnd - countStart)+1; i++) {
 			String deviceNo = String.format("%014d", i+countStart);
 			String aa = deviceNo.substring(0, 2);
 			String bb = deviceNo.substring(2, 4);
@@ -82,7 +82,7 @@ public class TestSendToNettyHeart {
 			deviceNos.add(deviceNo);
 			
 
-			Socket request = new Socket("192.168.10.238", 3113);
+			Socket request = new Socket("192.168.10.239", 3113);
 			OutputStream os = request.getOutputStream();
 			InputStream is = request.getInputStream();
 			osMap.put(deviceNo, os);
