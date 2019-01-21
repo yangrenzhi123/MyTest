@@ -52,6 +52,11 @@ public class MonitorForService {
 		} catch (Exception e) {
 			result.setResult(0);
 			DemoApplication.result.put(gw, result);
+			try {
+				httpClient.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			return;
 		}
 
@@ -63,6 +68,13 @@ public class MonitorForService {
 		} else {
 			result.setResult(0);
 			DemoApplication.result.put(gw, result);
+		}
+		
+
+		try {
+			httpClient.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 	}
 }

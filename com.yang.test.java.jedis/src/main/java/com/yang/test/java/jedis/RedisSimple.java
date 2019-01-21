@@ -23,8 +23,8 @@ public class RedisSimple {
 		nodes.add(new HostAndPort("192.168.10.22", 7006));
 		JedisCluster j = new JedisCluster(nodes);
 
-		String key = "testKey";
-		j.set(key, "YangRenZhi");
+		String key = "h_equip_dispenser000000600001";
+		//j.set(key, "YangRenZhi");
 		System.out.println(j.get(key));
 
 		j.close();
