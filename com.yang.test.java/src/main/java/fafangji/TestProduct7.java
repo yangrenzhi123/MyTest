@@ -23,7 +23,7 @@ import org.apache.http.util.EntityUtils;
  */
 public class TestProduct7 {
 	static String ip="192.168.10.239";
-	static int count = 400;
+	static int count = 100;
 	
 	static List<Runnable> rl;
 	static CountDownLatch counttime;

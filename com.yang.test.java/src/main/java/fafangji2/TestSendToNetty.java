@@ -1,4 +1,4 @@
-
+package fafangji2;
 
 /**
  * 箱体发送投放记录

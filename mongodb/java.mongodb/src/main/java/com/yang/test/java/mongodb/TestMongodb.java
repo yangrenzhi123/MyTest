@@ -1,13 +1,12 @@
 package com.yang.test.java.mongodb;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 import org.bson.Document;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -26,27 +25,43 @@ public class TestMongodb {
 		//l.add(new ServerAddress("192.168.30.60", 27017));
 		//l.add(new ServerAddress("192.168.30.61", 27017));
 
-		MongoClient mongoClient = new MongoClient("192.168.10.239", 7777);
+		MongoClient mongoClient = new MongoClient("172.28.51.33", 27017);
 		// MongoClient mongoClient = new MongoClient(l);
 
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 
-		MongoCollection c = mgdb.getCollection("test");
+		MongoCollection c = mgdb.getCollection("log");
 		
 //		long a = System.currentTimeMillis();
-//		for(int i=0;i<10000;i++) {
-//			Document doc = Document.parse("{\"myKey\":\"123\"}");
-//			c.insertOne(doc);
-//		}
+		for(int i=0;i<1;i++) {
+			Document doc = Document.parse("{\"myKey\":\"123\"}");
+			c.insertOne(doc);
+		}
 //		System.out.println(System.currentTimeMillis() - a);
 		
+
 		
-		FindIterable<Document> iter = c.find();
-		iter.forEach(new Block<Document>() {
-			public void apply(Document _doc) {
-				System.out.println(_doc.toJson());
-			}
-		});
+		Calendar s = Calendar.getInstance();
+		s.set(Calendar.HOUR_OF_DAY, 0);
+		s.set(Calendar.MINUTE, 0);
+		s.set(Calendar.SECOND, 0);
+
+		
+		Calendar e = Calendar.getInstance();
+		e.set(Calendar.DAY_OF_YEAR, e.get(Calendar.DAY_OF_YEAR)+1);
+		e.set(Calendar.HOUR_OF_DAY, 0);
+		e.set(Calendar.MINUTE, 0);
+		e.set(Calendar.SECOND, 0);
+		
+		BasicDBObject query = new BasicDBObject();
+		query.put("receiveTime", new BasicDBObject("$gte", s.getTime()).append("$lt", e.getTime()));
+		System.out.println(c.count(query));
+//		FindIterable<Document> iter = c.find(query);
+//		iter.forEach(new Block<Document>() {
+//			public void apply(Document _doc) {
+//				System.out.println(_doc.toJson());
+//			}
+//		});
 
 		mongoClient.close();
 	}

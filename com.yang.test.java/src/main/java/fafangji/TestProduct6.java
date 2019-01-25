@@ -22,8 +22,8 @@ import org.apache.http.util.EntityUtils;
 public class TestProduct6 {
 
 
-	static String ip="192.168.8.107";
-	static int count = 400;
+	static String ip="192.168.10.239";
+	static int count = 150;
 	
 	static List<Runnable> rl;
 	static CountDownLatch counttime;
@@ -100,7 +100,7 @@ public class TestProduct6 {
 		
 		totalTime = System.currentTimeMillis();
 		for(int i=0;i<10;i++) {
-			test(0);
+			test(i);
 		}
 		
 		

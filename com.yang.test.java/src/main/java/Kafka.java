@@ -8,15 +8,15 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 @SuppressWarnings("resource")
 public class Kafka {
 	public static void main(String[] args) throws Exception {
-		String group = "yyGroup";
+		String group = "parser_group";
 		
 		
 		Properties props = new Properties();
 
 		
 		
-		String topic = "test";
-		props.put("bootstrap.servers", "192.168.10.19:9092");
+		String topic = "TCP_GREENLIFE2";
+		props.put("bootstrap.servers", "192.168.10.239:9092");
 
 		
 		
@@ -36,7 +36,7 @@ public class Kafka {
 		while (true) {
 			ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
 			for (ConsumerRecord<String, String> record : records) {
-				System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
+				//System.out.printf("partition = %d, offset = %d, key = %s, value = %s\n", record.partition(), record.offset(), record.key(), record.value());
 			}
 		}
 	}

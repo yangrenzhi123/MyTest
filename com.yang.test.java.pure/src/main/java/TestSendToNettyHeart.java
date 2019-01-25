@@ -11,10 +11,10 @@ import java.util.Map;
 public class TestSendToNettyHeart {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-		int countStart = Integer.parseInt(args[0]);
-		int countEnd = Integer.parseInt(args[1]);
-//		int countStart = 110001;
-//		int countEnd = 120000;
+//		int countStart = Integer.parseInt(args[0]);
+//		int countEnd = Integer.parseInt(args[1]);
+		int countStart = 1;
+		int countEnd = 10000;
 
 		Map<String, OutputStream> osMap = new HashMap<>();
 		Map<String, InputStream> isMap = new HashMap<>();
