@@ -59,6 +59,10 @@ public class RedisClear {
 		TreeSet<String> keys = keys(j, "*");
 		
 		for (String key : keys) {
+			if(key.endsWith("orderCode")) {
+				continue;
+			}
+			
 			j.del(key);
 		}
 
