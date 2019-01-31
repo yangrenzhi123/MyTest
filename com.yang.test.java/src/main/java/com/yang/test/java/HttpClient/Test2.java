@@ -20,7 +20,6 @@ public class Test2 {
 		HttpResponse response = hc.execute(get);
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);
-		//System.out.println(result);
 
 		String[] ss = result.split("\"");
 		String s = ss[1];
