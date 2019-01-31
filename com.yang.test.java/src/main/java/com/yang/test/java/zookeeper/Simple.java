@@ -7,16 +7,24 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 
 public class Simple {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-		ZooKeeper zk = new ZooKeeper("192.168.30.120:2181,192.168.30.121:2181,192.168.10.10:2181", 12000, new TestWatcher2());
+		ZooKeeper zk = new ZooKeeper("192.168.8.155:2181", 12000, new TestWatcher2());
 
-		List<String> l = zk.getChildren("/", false);
+
+
+		List<String> l = zk.getChildren("/consumers", false);
 		for (String s : l) {
 			System.out.println(s);
 		}
+		
+		
+
+//		byte[] bs = zk.getData("/consumers",true,new Stat());
+//		System.out.println(new String(bs));
 	}
 }
 

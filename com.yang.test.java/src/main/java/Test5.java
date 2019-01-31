@@ -2,7 +2,7 @@ public class Test5 {
 
 	public static void main(String[] args) {
 		
-		double a = 23.71;
+		double a = 20.1;
 		System.out.println("10%:"+a * 1.1);
 		System.out.println("9%:"+a * 1.09);
 		System.out.println("8%:"+a * 1.08);
