@@ -16,7 +16,7 @@ public class RedisPool {
 		config.setMaxIdle(10);
 		
 		// 获得连接池
-		JedisPool jedisPool = new JedisPool(config, "192.168.10.22", 6379);
+		JedisPool jedisPool = new JedisPool(config, "192.168.10.230", 7001);
 		for(int i=0;i<10;i++) {
 			Jedis j = jedisPool.getResource();
 			System.out.println(j.get(key));

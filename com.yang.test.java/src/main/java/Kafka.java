@@ -16,8 +16,7 @@ public class Kafka {
 		
 		
 		String topic = "test";
-		props.put("zookeeper.connect", "192.168.8.155:2181");
-		props.put("bootstrap.servers", "192.168.8.155:9092");
+		props.put("bootstrap.servers", "192.168.10.230:9092");
 
 		
 		
