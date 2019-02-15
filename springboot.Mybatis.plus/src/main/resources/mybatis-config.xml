@@ -15,7 +15,7 @@
         <setting name="useGeneratedKeys" value="true"/>
     </settings>
 
-<!--      <plugins>
+     <plugins>
          <plugin interceptor="com.yang.test.java.springboot.intercept.SqlStatementInterceptor"></plugin>
-     </plugins> -->
+     </plugins>
 </configuration>

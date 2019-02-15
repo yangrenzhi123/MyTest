@@ -8,7 +8,7 @@ spring:
 mybatis-plus:
   typeAliasesPackage: com.yang.test.java.springboot.entity
   mapperLocations: classpath:mapper/*.xml
-  config-location: classpath:mybatis-config.xml
+#  config-location: classpath:mybatis-config.xml
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #  configuration:

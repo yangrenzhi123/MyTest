@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,11 +14,13 @@ import com.baomidou.mybatisplus.extension.plugins.tenant.TenantHandler;
 import com.baomidou.mybatisplus.extension.plugins.tenant.TenantSqlParser;
 import com.google.common.collect.Lists;
 import com.yang.test.java.springboot.ApiContext;
+import com.yang.test.java.springboot.intercept.SqlStatementInterceptor;
 
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
 
 @Configuration
+@AutoConfigureBefore
 @MapperScan("com.yang.test.java.springboot.dao")
 public class MybatisPlusConfig {
 
@@ -58,14 +61,21 @@ public class MybatisPlusConfig {
                 });
         paginationInterceptor.setSqlParserList(Lists.newArrayList(tenantSqlParser));
         return paginationInterceptor;
-    }
+	}
 
-    // 性能分析插件
-//    @Bean(name = "performanceInterceptor")
-//    public PerformanceInterceptor performanceInterceptor() {
-//    	PerformanceInterceptor a = new PerformanceInterceptor();
-//    	a.setFormat(false);
-//    	a.setMaxTime(5000);
-//    	return a;
-//    }
+	// 性能分析插件
+	@Bean(name = "performanceInterceptor")
+	public PerformanceInterceptor performanceInterceptor() {
+		PerformanceInterceptor a = new PerformanceInterceptor();
+		a.setFormat(false);
+		a.setMaxTime(5000);
+		return a;
+	}
+
+	// 自定义插件
+	@Bean(name = "sqlStatementInterceptor")
+	public SqlStatementInterceptor sqlStatementInterceptor() {
+		SqlStatementInterceptor a = new SqlStatementInterceptor();
+		return a;
+	}
 }
