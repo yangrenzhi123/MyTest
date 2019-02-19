@@ -17,7 +17,7 @@ public class Kafka2 {
 		
 		
 		
-		String topic = "test";
+		String topic = "TCP_GREENLIFE2";
 		properties.put("metadata.broker.list", "192.168.10.230:9092");
 
 		

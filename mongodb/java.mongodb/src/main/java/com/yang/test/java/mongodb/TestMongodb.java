@@ -21,7 +21,7 @@ public class TestMongodb {
 //		 l.add(new ServerAddress("192.168.30.121", 27017));
 //		 l.add(new ServerAddress("192.168.10.10", 27017));
 
-		MongoClient mongoClient = new MongoClient("192.168.10.239", 27017);
+		MongoClient mongoClient = new MongoClient("192.168.10.230", 27017);
 		// MongoClient mongoClient = new MongoClient(l);
 
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
@@ -49,13 +49,13 @@ public class TestMongodb {
 		e.set(Calendar.MINUTE, 0);
 		e.set(Calendar.SECOND, 0);
 		
-		BasicDBObject query = new BasicDBObject();
-		query.put("receiveTime", new BasicDBObject("$gte", s.getTime()).append("$lt", e.getTime()));
-		query.put("status", new BasicDBObject("$eq", 0));
+//		BasicDBObject query = new BasicDBObject();
+//		query.put("receiveTime", new BasicDBObject("$gte", s.getTime()).append("$lt", e.getTime()));
+//		query.put("status", new BasicDBObject("$eq", 0));
 		
 //		System.out.println(c.count(query));
 		
-		FindIterable<Document> iter = c.find(query).limit(1000000);
+		FindIterable<Document> iter = c.find(/*query*/).limit(1000000);
 		iter.forEach(new Block<Document>() {
 			public void apply(Document _doc) {
 				System.out.println(_doc.toJson());
