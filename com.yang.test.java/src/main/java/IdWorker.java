@@ -14,6 +14,7 @@ public class IdWorker{
         }
         System.out.printf("worker starting. timestamp left shift %d, datacenter id bits %d, worker id bits %d, sequence bits %d, workerid %d",
                 timestampLeftShift, datacenterIdBits, workerIdBits, sequenceBits, workerId);
+        System.out.println();
 
         this.workerId = workerId;
         this.datacenterId = datacenterId;
@@ -87,7 +88,7 @@ public class IdWorker{
     //---------------测试---------------
     public static void main(String[] args) {
         IdWorker worker = new IdWorker(1,1,1);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println(worker.nextId());
         }
     }

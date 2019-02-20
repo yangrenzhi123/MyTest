@@ -8,3 +8,5 @@
 */out
 *.iml
 com.yang.test.java.spring.cloud/consul.producer/target/classes/META-INF/maven/com.yang.test.java/consul.producer/pom.properties
+mongodb/java.mongodb/.classpath
+mongodb/java.mongodb/.project

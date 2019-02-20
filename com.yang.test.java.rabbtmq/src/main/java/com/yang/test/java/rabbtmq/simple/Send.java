@@ -9,9 +9,9 @@ public class Send {
 	public static void main(String[] argv) throws Exception {
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("172.28.51.33");
-		factory.setUsername("test");
-		factory.setPassword("test");
-		factory.setVirtualHost("test");
+		factory.setUsername("admin");
+		factory.setPassword("admin");
+		factory.setVirtualHost("/");
 
 		Connection connection = factory.newConnection();
 
