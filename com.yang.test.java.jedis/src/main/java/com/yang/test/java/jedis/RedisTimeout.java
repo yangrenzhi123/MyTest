@@ -21,6 +21,8 @@ public class RedisTimeout {
 			System.out.println(a);
 
 			Thread.sleep(1000);
+			
+			j.set(key, System.currentTimeMillis()+"");
 		}
 		j.close();
 	}
