@@ -73,7 +73,7 @@ public class MybatisPlusConfig {
 	}
 
 	// 自定义插件
-	@Bean(name = "sqlStatementInterceptor")
+	//@Bean(name = "sqlStatementInterceptor")
 	public SqlStatementInterceptor sqlStatementInterceptor() {
 		SqlStatementInterceptor a = new SqlStatementInterceptor();
 		return a;

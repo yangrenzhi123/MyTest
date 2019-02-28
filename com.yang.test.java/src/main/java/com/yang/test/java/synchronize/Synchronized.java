@@ -1,4 +1,4 @@
-package com.yang.test.java;
+package com.yang.test.java.synchronize;
 
 /**
  * 测试java对象锁的效果

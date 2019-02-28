@@ -12,7 +12,7 @@ import org.apache.http.util.EntityUtils;
 
 public class Test3 {
 
-	public static void main(String[] args) throws ClientProtocolException, IOException {
+	public static void doo() throws ClientProtocolException, IOException {
 		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz002739");
 
 		HttpClient hc = HttpClients.createDefault();

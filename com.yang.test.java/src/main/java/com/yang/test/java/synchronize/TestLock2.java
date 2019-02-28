@@ -1,7 +1,11 @@
+package com.yang.test.java.synchronize;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class TestLock {
+public class TestLock2 {
+
+	ReentrantLock lock = new ReentrantLock();
 
 	public static int i = 0;
 
@@ -11,7 +15,7 @@ public class TestLock {
 		for (int i = 0; i < 10000; i++) {
 			Thread t = new Thread(new Runnable() {
 				public void run() {
-					new TestLock().t();
+					new TestLock2().t();
 				}
 			});
 			l.add(t);
@@ -25,7 +29,14 @@ public class TestLock {
 		System.out.println(i);
 	}
 
-	public synchronized void t() {
-		i = i + 1;
+	public void t() {
+		try {
+			lock.lock();
+			i = i + 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			lock.unlock();
+		}
 	}
 }

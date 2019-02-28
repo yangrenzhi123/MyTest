@@ -1,4 +1,4 @@
-package com.yang.test.java;
+package com.yang.test.java.synchronize;
 
 public class Synchronized2 {
 	public static void main(String[] args) throws InterruptedException {
