@@ -11,11 +11,11 @@ nohup java -DconfigFilePath=/opt/check/config.xml -jar /opt/check/com.lyzh.check
 <config>
 	<frequency>30000</frequency>
 	<start>1</start>
-	<processes><!-- 
+	<processes>
 		<process>
-			<port>9092</port>
-			<exec>sh /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties</exec>
+			<port>3306</port>
+			<exec>docker start mysql</exec>
 			<execTime>10000</execTime>
-		</process> -->
+		</process>
 	</processes>
 </config>
