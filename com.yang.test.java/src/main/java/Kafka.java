@@ -8,15 +8,15 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 @SuppressWarnings("resource")
 public class Kafka {
 	public static void main(String[] args) throws Exception {
-		String group = "test_group";
+		String group = "test";
 		
 		
 		Properties props = new Properties();
 
 		
 		
-		String topic = "TCP_GREENLIFE2";
-		props.put("bootstrap.servers", "192.168.10.230:9092");
+		String topic = "test";
+		props.put("bootstrap.servers", "192.168.10.19:9092");
 
 		
 		

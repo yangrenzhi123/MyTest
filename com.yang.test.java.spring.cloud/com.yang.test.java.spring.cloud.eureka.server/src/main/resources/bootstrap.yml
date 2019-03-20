@@ -18,8 +18,3 @@ security:
 eureka:
   server:
     enableSelfPreservation: false #false删除不可用实例
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
