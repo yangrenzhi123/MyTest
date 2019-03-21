@@ -24,7 +24,7 @@ public class UserController {
 	public void hello2() {
 		userDao1.insert();
 		
-		if (2!=1) throw new RuntimeException();
+		//if (2!=1) throw new RuntimeException();
 		
 		userDao2.insert();
 	}

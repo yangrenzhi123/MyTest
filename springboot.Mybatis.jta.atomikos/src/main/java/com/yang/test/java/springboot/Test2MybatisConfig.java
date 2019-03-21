@@ -11,7 +11,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import com.atomikos.jdbc.AtomikosDataSourceBean;
@@ -25,10 +24,11 @@ public class Test2MybatisConfig {
     public DataSource testDatasource() throws SQLException {
         MysqlXADataSource mysqlXADataSource=new MysqlXADataSource();
         mysqlXADataSource.setUrl("jdbc:mysql://192.168.10.10:3306/t2");
-        mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);
         mysqlXADataSource.setPassword("123456");
         mysqlXADataSource.setUser("root");
         mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);
+        mysqlXADataSource.setUseSSL(false);
+        
 
         AtomikosDataSourceBean atomikosDataSourceBean=new AtomikosDataSourceBean();
         atomikosDataSourceBean.setXaDataSource(mysqlXADataSource);
