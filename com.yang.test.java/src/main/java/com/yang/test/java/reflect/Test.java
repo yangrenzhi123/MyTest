@@ -5,8 +5,7 @@ import java.util.Date;
 
 public class Test {
 
-	public static void main(String[] args)
-			throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
+	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
 		long l = System.currentTimeMillis();
 		
 		A a = new A();
