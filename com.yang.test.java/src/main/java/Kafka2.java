@@ -17,8 +17,8 @@ public class Kafka2 {
 		
 		
 		
-		String topic = "test";
-		properties.put("metadata.broker.list", "192.168.10.19:9092");
+		String topic = "REQUEST_INFO_DATA";
+		properties.put("metadata.broker.list", "192.168.8.70:9092");
 
 		
 		
