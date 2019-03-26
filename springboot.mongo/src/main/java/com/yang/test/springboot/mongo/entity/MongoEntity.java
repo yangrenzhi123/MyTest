@@ -1,5 +1,7 @@
 package com.yang.test.springboot.mongo.entity;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 public class MongoEntity {
@@ -7,8 +9,8 @@ public class MongoEntity {
 	@Id
 	private String _id;
 	private String data;
-	private String status;
-	private String receiveTime;
+	private Integer status;
+	private Date receiveTime;
 
 	public String get_id() {
 		return _id;
@@ -22,21 +24,20 @@ public class MongoEntity {
 	public void setData(String data) {
 		this.data = data;
 	}
-	public String getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	public String getReceiveTime() {
+	public Date getReceiveTime() {
 		return receiveTime;
 	}
-	public void setReceiveTime(String receiveTime) {
+	public void setReceiveTime(Date receiveTime) {
 		this.receiveTime = receiveTime;
 	}
 	@Override
 	public String toString() {
-		return "MongoEntity [_id=" + _id + ", data=" + data + ", status=" + status + ", receiveTime=" + receiveTime
-				+ "]";
+		return "MongoEntity [_id=" + _id + ", data=" + data + ", status=" + status + ", receiveTime=" + receiveTime + "]";
 	}
 }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>大华视频测试</title>
+<script src="http://115.236.86.196/project/js/plugins/jquery.min.js?v=2.1.4"></script>
+</head>
+<body>
+<div>
+<a class="operatebtn" title="实时预览" href="javascript:setVideo('192.168.8.122','37777','admin','admin123','0')">实时预览</a>
+ |
+<a class="operatebtn" title="视频回放" href="javascript:setplayback('192.168.8.122','37777','admin','admin123','0','2019-03-09 09:00:00')">视频回放</a>
+</div>
+<div id="msg">
+	
+</div>
+            <div class="modal-body">
+                <div id="mainContent">
+                    <div id="viewbox" class="viewbox">
+                        <div class="smallocxdiv" id="NetPlayOCX">
+                            <object classid="CLSID:30209FBC-57EB-4F87-BF3E-740E3D8019D2" standby="正在请求数据流..." id="HIKOBJECT1" class="ocxBody" name="HIKOBJECT1"></object>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+<script>
+
+//OCX控件对象
+var m_bDVRControl = null;
+function setVideo(m_strDVRIP,m_strDVRPORT,m_strDVRUSERNAME,m_strDVRPASSWORD,m_strDVRCHANNEL){
+	if (document.getElementById("HIKOBJECT1").object == null) {
+        $('#msg').html("播放控件加载失败");
+        m_bDVRControl = null;
+        return;
+    }
+    else {
+        m_bDVRControl = document.getElementById("HIKOBJECT1");
+    }
+
+    //初始化窗体大小
+    var width = "542px";
+    var height = "410px";
+	$('.viewbox').width(width);
+    $('.viewbox').height(height);
+    $('#HIKOBJECT1').width(width);
+    $('#HIKOBJECT1').height(height);
+	
+	var nChannel = parseInt(m_strDVRCHANNEL);
+	var bSuccess = m_bDVRControl.SetDeviceInfo(m_strDVRIP, m_strDVRPORT, nChannel, m_strDVRUSERNAME, m_strDVRPASSWORD);
+
+	if (bSuccess) {
+        bSuccess = m_bDVRControl.StartPlay();
+    }else{
+		$('#msg').html("视频连接失败");
+	}
+}
+
+function setplayback(m_strDVRIP,m_strDVRPORT,m_strDVRUSERNAME,m_strDVRPASSWORD,m_strDVRCHANNEL,strDate){
+	if (document.getElementById("HIKOBJECT1").object == null) {
+        $('#msg').html("播放控件加载失败");
+        m_bDVRControl = null;
+        return;
+    }
+    else {
+        m_bDVRControl = document.getElementById("HIKOBJECT1");
+    }
+
+    //初始化窗体大小
+    var width = "542px";
+    var height = "410px";
+	$('.viewbox').width(width);
+    $('.viewbox').height(height);
+    $('#HIKOBJECT1').width(width);
+    $('#HIKOBJECT1').height(height);
+	
+	var nChannel = parseInt(m_strDVRCHANNEL);
+	var bSuccess = m_bDVRControl.SetDeviceInfo(m_strDVRIP, m_strDVRPORT, nChannel, m_strDVRUSERNAME, m_strDVRPASSWORD);
+
+	if (bSuccess) {
+		if(strDate!=undefined)
+        {
+            strDate = strDate.replace(/-/g,  "/")
+            var strDate = new Date(strDate);
+            var t = strDate.getTime();
+            //t -= 5000; //一个小时的毫秒数
+            t -= 25000; //一个小时的毫秒数
+            d = new Date(t);
+            var startTime = d.Format("yyyy-MM-dd hh:mm:ss");
+            var t2 = strDate.getTime();
+            //t2 += 10000; //一个小时的毫秒数
+            t2 += 100000; //一个小时的毫秒数
+            d2 = new Date(t2);
+            var endTime = d2.Format("yyyy-MM-dd hh:mm:ss");
+            console.log(startTime+"---"+endTime+'---'+nChannel);
+
+            success = m_bDVRControl.PlayBackByTime(nChannel,startTime,endTime);
+
+        }
+        else {
+            bSuccess = m_bDVRControl.StartPlay();
+        }
+    }else{
+		$('#msg').html("视频连接失败");
+	}
+}
+
+// 对Date的扩展，将 Date 转化为指定格式的String   
+// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，   
+// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)   
+// 例子：   
+// (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423   
+// (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18   
+Date.prototype.Format = function(fmt)   
+{ //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+}
+</script>
+</html>

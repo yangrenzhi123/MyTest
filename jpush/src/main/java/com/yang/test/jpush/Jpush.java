@@ -5,7 +5,10 @@ import cn.jiguang.common.resp.APIConnectionException;
 import cn.jiguang.common.resp.APIRequestException;
 import cn.jpush.api.JPushClient;
 import cn.jpush.api.push.PushResult;
+import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
+import cn.jpush.api.push.model.audience.Audience;
+import cn.jpush.api.push.model.notification.Notification;
 
 public class Jpush {
 
@@ -14,7 +17,12 @@ public class Jpush {
 		String appKey = "729d0a0b7fc81a1442f04075";
 		JPushClient jpc = new JPushClient(masterSecret, appKey, null, ClientConfig.getInstance());
 
-		PushPayload p = PushPayload.alertAll("i am a content");
+		//PushPayload p = PushPayload.alertAll("i am a content");
+		PushPayload p = PushPayload.newBuilder()
+        .setPlatform(Platform.all())
+        .setAudience(Audience.alias("1.0.0"))
+        .setNotification(Notification.alert("i am a content2"))
+        .build();
 
 		try {
 			PushResult r = jpc.sendPush(p);

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>大华视频测试</title>
+<script src="http://115.236.86.196/project/js/plugins/jquery.min.js?v=2.1.4"></script>
+</head>
+<body>
+<div>
+<a class="operatebtn" title="视频播放" href="javascript:setVideo('124.160.79.205','61575','admin','zjly@2019','0')">视频播放-万陈花苑</a>
+</div>
+<div id="msg">
+	
+</div>
+            <div class="modal-body">
+                <div id="mainContent">
+                    <div id="viewbox" class="viewbox">
+                        <div class="smallocxdiv" id="NetPlayOCX">
+                            <object classid="CLSID:30209FBC-57EB-4F87-BF3E-740E3D8019D2" standby="正在请求数据流..." id="HIKOBJECT1" class="ocxBody" name="HIKOBJECT1"></object>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+<script>
+
+//OCX控件对象
+var m_bDVRControl = null;
+function setVideo(m_strDVRIP,m_strDVRPORT,m_strDVRUSERNAME,m_strDVRPASSWORD,m_strDVRCHANNEL){
+	if (document.getElementById("HIKOBJECT1").object == null) {
+        $('#msg').html("播放控件加载失败");
+        m_bDVRControl = null;
+        return;
+    }
+    else {
+        m_bDVRControl = document.getElementById("HIKOBJECT1");
+    }
+
+    //初始化窗体大小
+    var width = "542px";
+    var height = "410px";
+	$('.viewbox').width(width);
+    $('.viewbox').height(height);
+    $('#HIKOBJECT1').width(width);
+    $('#HIKOBJECT1').height(height);
+	
+	var nChannel = parseInt(m_strDVRCHANNEL);
+	var bSuccess = m_bDVRControl.SetDeviceInfo(m_strDVRIP, m_strDVRPORT, nChannel, m_strDVRUSERNAME, m_strDVRPASSWORD);
+
+	if (bSuccess) {
+        bSuccess = m_bDVRControl.StartPlay();
+    }else{
+		$('#msg').html("视频连接失败");
+	}
+}
+
+</script>
+</html>
