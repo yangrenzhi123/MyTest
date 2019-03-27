@@ -49,20 +49,18 @@ class HelloController {
 		m1.setData("1");
 		m1.setStatus(1);
 		m1.setReceiveTime(new Date());
-		
+
 		List<MongoEntity> l = new ArrayList<MongoEntity>();
 		l.add(m1);
 		l.add(m2);
 		l.add(m3);
-		
+
 		try {
 			mongoTemplate.insert(l, "test");
-		}catch(Exception e) {
+		} catch (org.springframework.dao.DuplicateKeyException e) {
 			e.printStackTrace();
 		}
 	}
-	
-
 
 	@GetMapping("/q")
 	public MongoEntity q() {
