@@ -20,8 +20,8 @@ public class Jpush {
 		//PushPayload p = PushPayload.alertAll("i am a content");
 		PushPayload p = PushPayload.newBuilder()
         .setPlatform(Platform.all())
-        .setAudience(Audience.alias("1.0.0"))
-        .setNotification(Notification.alert("i am a content2"))
+        .setAudience(Audience.alias("1.0.0")) //箱体编号+大屏App设备编号
+        .setNotification(Notification.alert("1"))
         .build();
 
 		try {

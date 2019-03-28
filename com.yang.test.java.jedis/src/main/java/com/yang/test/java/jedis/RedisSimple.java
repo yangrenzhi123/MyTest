@@ -32,9 +32,14 @@ public class RedisSimple {
 
 		String key = "h_equipment00012180100178";
 //		j.set(key, "YangRenZhi");
-		System.out.println(j.get(key));
+//		System.out.println(j.get(key));
 //		System.out.println(j.hgetAll(key));
 
+		Set<String> ss = j.keys("*");
+		for(String s : ss) {
+			System.out.println(s);
+		}
+		
 		j.close();
 	}
 }

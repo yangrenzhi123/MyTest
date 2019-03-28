@@ -8,8 +8,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD5 {
 
-	public static void main(String[] args) throws NoSuchAlgorithmException {
-		t1();
+	public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
+		md5ForFile();
 	}
 
 	public static void t1() throws NoSuchAlgorithmException {
@@ -30,12 +30,14 @@ public class MD5 {
 	public static void md5ForFile() throws NoSuchAlgorithmException, IOException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 
-		File a = new File("C:/1.zip");
-
+		File a = new File("C:/1.sql");
 		InputStream is = new FileInputStream(a);
-		//md.update(is.readAllBytes());
 		System.out.println(new BigInteger(1, md.digest()).toString(16));
+		is.close();
 
+		a = new File("C:/2.sql");
+		is = new FileInputStream(a);
+		System.out.println(new BigInteger(1, md.digest()).toString(16));
 		is.close();
 	}
 }

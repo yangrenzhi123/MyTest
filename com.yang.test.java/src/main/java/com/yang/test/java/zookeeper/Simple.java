@@ -12,11 +12,11 @@ import org.apache.zookeeper.data.Stat;
 public class Simple {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-		ZooKeeper zk = new ZooKeeper("192.168.10.230:2181", 12000, new TestWatcher2());
+		ZooKeeper zk = new ZooKeeper("192.168.8.70:2181", 12000, new TestWatcher2());
 
 
 
-		List<String> l = zk.getChildren("/brokers/topics", false);
+		List<String> l = zk.getChildren("/cluster", false);
 		for (String s : l) {
 			System.out.println(s);
 		}

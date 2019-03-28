@@ -7,9 +7,8 @@
 </head>
 <body>
 <div>
-<a class="operatebtn" title="实时预览" href="javascript:setVideo('192.168.8.122','37777','admin','admin123','0')">实时预览</a>
- |
-<a class="operatebtn" title="视频回放" href="javascript:setplayback('192.168.8.122','37777','admin','admin123','0','2019-03-09 09:00:00')">视频回放</a>
+<a class="operatebtn" title="视频播放" href="javascript:setVideo('124.160.79.205','61581','admin','admin123','0')">视频播放-理想湾真实摄像头</a> ||
+<a class="operatebtn" title="视频回放" href="javascript:setplayback('124.160.79.205','61581','admin','admin123','0','2019-03-28 10:00:53')">视频回放-理想湾真实摄像头</a>
 </div>
 <div id="msg">
 	
@@ -55,7 +54,6 @@ function setVideo(m_strDVRIP,m_strDVRPORT,m_strDVRUSERNAME,m_strDVRPASSWORD,m_st
 		$('#msg').html("视频连接失败");
 	}
 }
-
 function setplayback(m_strDVRIP,m_strDVRPORT,m_strDVRUSERNAME,m_strDVRPASSWORD,m_strDVRCHANNEL,strDate){
 	if (document.getElementById("HIKOBJECT1").object == null) {
         $('#msg').html("播放控件加载失败");

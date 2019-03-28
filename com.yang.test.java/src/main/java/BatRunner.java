@@ -16,7 +16,7 @@ public class BatRunner {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
-					Process p = Runtime.getRuntime().exec("ping mail.163.com -t");
+					Process p = Runtime.getRuntime().exec("netstat -ano | findstr 8416");
 					console(p);
 				} catch (IOException e) {
 				}
