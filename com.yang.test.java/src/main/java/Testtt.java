@@ -5,9 +5,14 @@ public class Testtt {
 
 	public static void main(String[] args) {
 		Calendar instance = Calendar.getInstance();
-		instance.set(Calendar.DAY_OF_MONTH, 1);
-		instance.set(Calendar.HOUR, 0);
-		Date min = instance.getTime();
-		System.out.println(min);
+		instance.set(Calendar.HOUR_OF_DAY, 0);
+		instance.set(Calendar.MINUTE, 0);
+		instance.set(Calendar.SECOND, 0);
+		System.out.println(instance.getTime().getTime());
+		instance = Calendar.getInstance();
+		instance.set(Calendar.HOUR_OF_DAY, 18);
+		instance.set(Calendar.MINUTE, 0);
+		instance.set(Calendar.SECOND, 0);
+		System.out.println(instance.getTime().getTime());
 	}
 }

@@ -5,3 +5,13 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: ["health","info","shutdown"]

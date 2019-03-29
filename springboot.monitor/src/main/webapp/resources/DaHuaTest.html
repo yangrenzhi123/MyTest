@@ -28,19 +28,19 @@ function init(){
 	obj.DPSDK_SetControlButtonShowMode(1, 0);
 	obj.DPSDK_SetControlButtonShowMode(2, 0);
 
-    var nRet = obj.DPSDK_Login("27.155.84.64", 9000, "system", "admin123");
+    var nRet = obj.DPSDK_Login("124.160.79.205", 9000, "system", "admin123");
 	alert("登陆结果："+nRet);
 	
 	var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
 	var nStreamType = 1;
 	var nMediaType = 1;
 	var nTransType = 1;
-	var szCameraId = "1000515$1$0$0"
+	var szCameraId = "1000614$0$0"
 	
 	/* 实时 */
-	var nRet = obj.DPSDK_StartRealplayByWndNo(gWndId, nWndNo, szCameraId, nStreamType, nMediaType, nTransType);
+	//var nRet = obj.DPSDK_StartRealplayByWndNo(gWndId, nWndNo, szCameraId, nStreamType, nMediaType, nTransType);
 	/* 回放 */
-	/* obj.DPSDK_StartTimePlaybackByWndNo(0, 3, szCameraId, 2, 1551801600, 1551887999); */
+	obj.DPSDK_StartTimePlaybackByWndNo(0, 3, szCameraId, 2, 1553702400, 1553767200);
 }
 </script>
 </html>

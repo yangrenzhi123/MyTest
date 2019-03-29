@@ -43,11 +43,11 @@ public class DemoApplication {
 		timer.schedule(new TimerTask() {
 			public void run() {
 				try {
-//					monitorForMysql.execute();
-//					monitorForKafka.execute();
-//					monitorForRedis.execute();
-//					monitorForService.execute();
-//					monitorForDevice.execute();
+					monitorForMysql.execute();
+					monitorForKafka.execute();
+					monitorForRedis.execute();
+					monitorForService.execute();
+					monitorForDevice.execute();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

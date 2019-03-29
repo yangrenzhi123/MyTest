@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 
 @Service
@@ -19,16 +20,23 @@ public class MonitorForRedis {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
+		Jedis j1 = null;
+		JedisCluster j2 = null;
+		
 		String s = config.getRedis();
-
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		for (String it : s.split(",")) {
-			String[] ss = it.split(":");
-			String ip = ss[0];
-			String po = ss[1];
-			nodes.add(new HostAndPort(ip, Integer.parseInt(po)));
+		if(s.contains(",")) {
+			Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+			for (String it : s.split(",")) {
+				String[] ss = it.split(":");
+				String ip = ss[0];
+				String po = ss[1];
+				nodes.add(new HostAndPort(ip, Integer.parseInt(po)));
+			}
+			j2 = new JedisCluster(nodes);
+		}else {
+			String[] ss = s.split(":");
+			j1 = new Jedis(ss[0], Integer.parseInt(ss[1]));
 		}
-		JedisCluster j = new JedisCluster(nodes);
 
 		String key = "testKey";
 
@@ -36,7 +44,13 @@ public class MonitorForRedis {
 		result.setName("Redis");
 		result.setCheckTime(new Date());
 		try {
-			j.get(key);
+			if(j1 != null) {
+				j1.get(key);
+				j1.close();
+			}else {
+				j2.get(key);
+				j2.close();
+			}
 			result.setResult(1);
 			DemoApplication.result.put(s, result);
 		} catch (Exception e) {
@@ -44,6 +58,5 @@ public class MonitorForRedis {
 			result.setResult(0);
 			DemoApplication.result.put(s, result);
 		}
-		j.close();
 	}
 }
