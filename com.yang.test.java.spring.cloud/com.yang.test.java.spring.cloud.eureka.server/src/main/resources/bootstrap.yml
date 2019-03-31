@@ -17,7 +17,7 @@ security:
     enabled: false
 eureka:
   server:
-    enableSelfPreservation: false #false删除不可用实例
+    enable-self-preservation: false #false删除不可用实例
   client:
     register-with-eureka: false
     fetch-registry: false
