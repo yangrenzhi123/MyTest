@@ -7,10 +7,10 @@ spring:
     config:
       uri: http://localhost:8889
   rabbitmq:
-    host: 127.0.0.1
+    host: 172.28.51.33
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: admin
     virtual-host: /
 endpoints:
   shutdown:

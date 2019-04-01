@@ -7,6 +7,6 @@ import com.alicp.jetcache.anno.Cached;
 public interface UserService {
 
 	@CachePenetrationProtect //表示在多线程环境中同步加载数据
-	@Cached(name = "UserService.getUserById", cacheType = CacheType.REMOTE, expire = 3600)
+	@Cached(name = "UserService.getUserById", cacheType = CacheType.BOTH, localExpire= 10, expire = 2592000)
 	String getUserById(String userId);
 }

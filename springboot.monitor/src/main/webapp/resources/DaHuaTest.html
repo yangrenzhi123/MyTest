@@ -11,9 +11,16 @@
 </body>
 <script>
 function init(){
+	alert("v:1234")
+	
 	var obj = document.getElementById("DPSDK_OCX");
-
-	var gWndId = obj.DPSDK_CreateSmartWnd(0, 0, 100, 100);
+	var gWndId = null;
+	try {
+		gWndId = obj.DPSDK_CreateSmartWnd(0, 0, 100, 100);
+	}catch(err){
+	     alert(err) // 可执行
+	     alert(123) // 可执行
+	}
 
 	obj.DPSDK_SetWndCount(gWndId, 1); 
 	obj.DPSDK_SetSelWnd(gWndId, 0); 
@@ -36,7 +43,8 @@ function init(){
 	/* 实时 */
 	//var nRet = obj.DPSDK_StartRealplayByWndNo(gWndId, nWndNo, szCameraId, nStreamType, nMediaType, nTransType);
 	/* 回放 */
-	obj.DPSDK_StartTimePlaybackByWndNo(gWndId, nWndNo, szCameraId, 2, 1553788800, 1553824800);
+	var nRet = obj.DPSDK_StartTimePlaybackByWndNo(gWndId, nWndNo, szCameraId, 2, 1553788800, 1553875200);
+	alert(nRet);
 }
 </script>
 </html>

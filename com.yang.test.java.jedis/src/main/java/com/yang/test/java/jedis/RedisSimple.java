@@ -30,15 +30,15 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.30.62", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-		String key = "h_equipment00012180100178";
+		String key = "UserService.getUserById[\"123\"]";
 //		j.set(key, "YangRenZhi");
-//		System.out.println(j.get(key));
+		System.out.println(j.get(key));
 //		System.out.println(j.hgetAll(key));
 
-		Set<String> ss = j.keys("*");
-		for(String s : ss) {
-			System.out.println(s);
-		}
+//		Set<String> ss = j.keys("*");
+//		for(String s : ss) {
+//			System.out.println(s);
+//		}
 		
 		j.close();
 	}

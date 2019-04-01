@@ -51,7 +51,7 @@ class HelloController {
 		HttpClientBuilder builder = HttpClientBuilder.create();
 		builder.setConnectionManager(connManager);
 		builder.setDefaultRequestConfig(config);
-		builder.setRetryHandler(new DefaultHttpRequestRetryHandler(1, true));
+		builder.setRetryHandler(new DefaultHttpRequestRetryHandler(0, false));
 		return builder;
 	}
 }
