@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -42,9 +43,9 @@ public class Checkor {
 				PConfig config = getConfig();
 				
 
-				logger.info("scan started");
+				logger.info("-----------------scan started--------------------");
 				
-				for(final Process process : config.getProcesses().getProcess()){
+				A: for(final Process process : config.getProcesses().getProcess()){
 					PConfig pc = getConfig();
 					logger.info(pc.getStart() + "" + start);
 					if(!new Integer(1).equals(pc.getStart()) || start != true){
@@ -56,6 +57,26 @@ public class Checkor {
 						suspend = 0;
 					}
 
+					List<String> l = process.getPremise();
+					if(l != null && l.size() > 0) {
+						for(String premise : l) {
+							String[] ipport = premise.split(":");
+							String ip = ipport[0];
+							String po = ipport[1];
+							
+							Socket socket = new Socket();
+							try{
+								socket.connect(new InetSocketAddress(ip, Integer.parseInt(po)), 3000);
+							}catch(SocketTimeoutException e){
+								logger.info("前提："+premise+"不满足");
+								continue A;
+							}catch(ConnectException e){
+								logger.info("前提："+premise+"不满足");
+								continue A;
+							}
+							socket.close();
+						}
+					}
 					Socket socket = new Socket();
 					
 					boolean timeout = false;

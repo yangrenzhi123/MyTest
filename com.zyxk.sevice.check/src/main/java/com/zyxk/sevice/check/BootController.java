@@ -12,16 +12,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.zyxk.sevice.check.filter.ExceptionFilter;
 
 @Controller
 @EnableAutoConfiguration
@@ -38,7 +34,7 @@ public class BootController {
 //        registration.setOrder(1);//设置优先级
 //        return registration;
 //    }
-	
+
 	public static void main(String[] args) throws Exception {
 		new Thread(new Runnable() {
 			public void run() {
@@ -54,27 +50,28 @@ public class BootController {
 	public String runStatus() throws IOException, JAXBException {
 		PConfig c = Checkor.getConfig();
 		Integer start = c.getStart();
-		
-		if(start == 1 && Checkor.start == true) {
+
+		if (start == 1 && Checkor.start == true) {
 			return "运行中";
-		}else {
+		} else {
 			return "停止运行";
 		}
 	}
-	
+
 	@RequestMapping("/serviceStatus")
 	@ResponseBody
 	public List<String> status() throws IOException, JAXBException {
 		List<String> out = new ArrayList<String>();
 
 		PConfig c = Checkor.getConfig();
-		if (c != null && c.getProcesses() != null && c.getProcesses().getProcess() != null && c.getProcesses().getProcess().size() > 0) {
+		if (c != null && c.getProcesses() != null && c.getProcesses().getProcess() != null
+				&& c.getProcesses().getProcess().size() > 0) {
 			for (Process element : c.getProcesses().getProcess()) {
-				String[] command = {"/bin/sh", "-c", "netstat -anp | grep -w LISTEN | grep -w "+element.getPort()};
+				String[] command = { "/bin/sh", "-c", "netstat -anp | grep -w LISTEN | grep -w " + element.getPort() };
 				java.lang.Process p = Runtime.getRuntime().exec(command);
 
 				out.add("[[element.getPort()]]");
-				
+
 				BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
 				String line;
 				while ((line = br.readLine()) != null) {
@@ -93,58 +90,63 @@ public class BootController {
 		return out;
 	}
 
-    @RequestMapping("/ps")
-    @ResponseBody
-    public List<String> page1(String cmd) throws IOException{
-    	List<String> out = new ArrayList<String>();
-    	
-    	
-    	if(StringUtils.isEmpty(cmd)) {
-    		cmd = "netstat -anp | grep LISTEN";
-    	}
-    	java.lang.Process p = Runtime.getRuntime().exec(cmd);
+	@RequestMapping("/ps")
+	@ResponseBody
+	public List<String> page1(String cmd) throws IOException {
+		List<String> out = new ArrayList<String>();
+
+		if (StringUtils.isEmpty(cmd)) {
+			cmd = "netstat -anp | grep LISTEN";
+		}
+		java.lang.Process p = Runtime.getRuntime().exec(cmd);
 		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
 		String line;
 		while ((line = br.readLine()) != null) {
 			out.add(line);
 		}
 		br.close();
-		
+
 		br = new BufferedReader(new InputStreamReader(p.getErrorStream(), "GBK"));
 		while ((line = br.readLine()) != null) {
 			out.add(line);
 		}
 		br.close();
 		return out;
-    }
+	}
 
-    @RequestMapping("/console")
-    public ModelAndView test2() throws IOException{
-        ModelAndView mav = new ModelAndView("console");
-        return mav;
-    }
+	@RequestMapping("/console")
+	public ModelAndView test2() {
+		ModelAndView mav = new ModelAndView("console");
+		return mav;
+	}
 
 	@RequestMapping("/0")
 	@ResponseBody
-	void end() throws IOException, JAXBException {
+	void end() {
 		Checkor.start = false;
 	}
 
 	@RequestMapping("/1")
 	@ResponseBody
-	void start() throws IOException, JAXBException {
+	void start() {
 		Checkor.start = true;
 	}
 
 	@RequestMapping("/suspend")
 	@ResponseBody
-	void suspend() throws IOException, JAXBException {
+	void suspend() {
 		Checkor.suspend = 60000;
 	}
 
 	@RequestMapping("/suspend/{value}")
 	@ResponseBody
-	void suspend2(@PathVariable(value = "value") int value) throws IOException, JAXBException {
+	void suspend2(@PathVariable(value = "value") int value) {
 		Checkor.suspend = value;
+	}
+
+	@RequestMapping("/getSuspend")
+	@ResponseBody
+	long suspend2() {
+		return Checkor.suspend;
 	}
 }

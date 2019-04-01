@@ -1,7 +1,10 @@
 package com.zyxk.sevice.check;
 
+import java.util.List;
+
 public class Process {
 
+	List<String> premise;
 	private String ip;
 	private Integer port;
 	private String exec;
@@ -37,6 +40,14 @@ public class Process {
 
 	public void setExecTime(Long execTime) {
 		this.execTime = execTime;
+	}
+
+	public List<String> getPremise() {
+		return premise;
+	}
+
+	public void setPremise(List<String> premise) {
+		this.premise = premise;
 	}
 
 	@Override
