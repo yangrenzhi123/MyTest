@@ -1,0 +1,29 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>使用video.js实现rtmp流的直播播放</title>
+<link href="http://vjs.zencdn.net/5.19/video-js.min.css"
+	rel="stylesheet">
+<script src="http://vjs.zencdn.net/5.19/video.min.js"></script> <script
+	src="https://cdn.jsdelivr.net/npm/videojs-flash@2/dist/videojs-flash.min.js"></script>
+</head>
+<body>
+	<video id="my-player"
+		class="video-jsvjs-default-skinvjs-big-play-centered" controls
+		preload="auto" autoplay="autoplay"
+		poster="//vjs.zencdn.net/v/oceans.png" width="500" height="400"
+		data-setup='{}'>
+		<source src='rtmp://172.28.51.33/live/test' type='rtmp/flv' />
+	</video>
+	<script type="text/javascript">
+		//设置flash路径,用于在videojs发现浏览器不支持HTML5播放器的时候自动唤起flash播放器
+		videojs.options.flash.swf = 'https://cdn.bootcss.com/videojs-swf/5.4.1/video-js.swf';
+		varplayer = videojs('my-player');//my-player为页面video元素的id
+		player.play();//播放
+		//1.播放player.play()
+		//2.停止player.pause()
+		//3.暂停player.pause()
+	</script>
+</body>
+</html>
