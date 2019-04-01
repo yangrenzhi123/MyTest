@@ -14,9 +14,6 @@ ribbon:
   ReadTimeout: 10000
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
-  
-  
-  
 feign:
   httpclient:
     enabled: true
