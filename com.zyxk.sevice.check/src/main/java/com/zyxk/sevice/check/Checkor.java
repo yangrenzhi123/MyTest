@@ -78,7 +78,6 @@ public class Checkor {
 						}
 					}
 					Socket socket = new Socket();
-					
 					boolean timeout = false;
 					try{
 						socket.connect(new InetSocketAddress(process.getIp() != null ? process.getIp() : "127.0.0.1", process.getPort()), 3000);
@@ -94,7 +93,13 @@ public class Checkor {
 						if(p != null){
 							p.destroy();
 						}
-						final java.lang.Process p2 = Runtime.getRuntime().exec(process.getExec());
+						java.lang.Process pp = null;
+						if(process.getDirectory() != null) {
+							pp = Runtime.getRuntime().exec(process.getExec(), new String[] {}, new File(process.getDirectory()));
+						}else {
+							pp = Runtime.getRuntime().exec(process.getExec());
+						}
+						final java.lang.Process p2 = pp;
 						new Thread(new Runnable() {
 							public void run() {
 								try {

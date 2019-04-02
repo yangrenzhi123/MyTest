@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Process {
 
-	List<String> premise;
+	private String directory;
+	private List<String> premise;
 	private String ip;
 	private Integer port;
 	private String exec;
@@ -48,6 +49,14 @@ public class Process {
 
 	public void setPremise(List<String> premise) {
 		this.premise = premise;
+	}
+
+	public String getDirectory() {
+		return directory;
+	}
+
+	public void setDirectory(String directory) {
+		this.directory = directory;
 	}
 
 	@Override

@@ -13,13 +13,7 @@ nohup java -DconfigFilePath=/opt/check/config.xml -jar /opt/check/com.lyzh.check
 	<start>1</start>
 	<processes>
 		<process>
-			<premise>127.0.0.1:3100</premise>
-			<premise>127.0.0.1:3101</premise>
-			<port>3306</port>
-			<exec>docker start mysql</exec>
-			<execTime>10000</execTime>
-		</process>
-		<process>
+			<directory>directory</directory>
 			<premise>127.0.0.1:3100</premise>
 			<premise>127.0.0.1:3101</premise>
 			<port>3306</port>
