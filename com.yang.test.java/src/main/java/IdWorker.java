@@ -83,14 +83,13 @@ public class IdWorker{
 
     private long timeGen(){
         return System.currentTimeMillis();
-    }
+	}
 
-    //---------------测试---------------
-    public static void main(String[] args) {
-        IdWorker worker = new IdWorker(1,1,1);
-        for (int i = 0; i < 10; i++) {
-            System.out.println(worker.nextId());
-        }
-    }
-
+	// ---------------测试---------------
+	public static void main(String[] args) {
+		IdWorker worker = new IdWorker(2, 1, 1);
+		for (int i = 0; i < 10; i++) {
+			System.out.println(worker.nextId());
+		}
+	}
 }
