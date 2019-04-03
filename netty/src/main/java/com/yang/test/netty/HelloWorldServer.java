@@ -40,17 +40,13 @@ public class HelloWorldServer {
 		try {
 
 			Properties properties = new Properties();
-		    // 服务器ip:端口号，集群用逗号分隔
 			properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.30.151:9092,192.168.30.152:9092,192.168.30.153:9092");
-	        // key序列化指定类
 			properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-	        // value序列化指定类
 			properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-			
 			KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 			
 			final HelloWorldServerHandler hnd = new HelloWorldServerHandler();
-			hnd.setProducer(producer);
+			//hnd.setProducer(producer);
 			
 			ServerBootstrap sbs = new ServerBootstrap().group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).localAddress(new InetSocketAddress(port)).childHandler(new ChannelInitializer<SocketChannel>() {
 				protected void initChannel(SocketChannel ch) throws Exception {
