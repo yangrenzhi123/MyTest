@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 public class MD5 {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-		md5ForFile();
+		t4();
 	}
 
 	public static void t1() throws NoSuchAlgorithmException {
