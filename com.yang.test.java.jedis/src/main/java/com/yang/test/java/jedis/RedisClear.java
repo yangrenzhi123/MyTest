@@ -47,12 +47,14 @@ public class RedisClear {
 //		nodes.add(new HostAndPort("192.168.10.22", 7005));
 //		nodes.add(new HostAndPort("192.168.10.22", 7006));
 
-		nodes.add(new HostAndPort("192.168.30.62", 7001));
-		nodes.add(new HostAndPort("192.168.30.62", 7002));
-		nodes.add(new HostAndPort("192.168.30.62", 7003));
-		nodes.add(new HostAndPort("192.168.30.62", 7004));
-		nodes.add(new HostAndPort("192.168.30.62", 7005));
-		nodes.add(new HostAndPort("192.168.30.62", 7006));
+//		nodes.add(new HostAndPort("192.168.30.62", 7001));
+//		nodes.add(new HostAndPort("192.168.30.62", 7002));
+//		nodes.add(new HostAndPort("192.168.30.62", 7003));
+//		nodes.add(new HostAndPort("192.168.30.62", 7004));
+//		nodes.add(new HostAndPort("192.168.30.62", 7005));
+//		nodes.add(new HostAndPort("192.168.30.62", 7006));
+		
+		nodes.add(new HostAndPort("192.168.10.230", 7001));
 		
 		JedisCluster j = new JedisCluster(nodes);
 

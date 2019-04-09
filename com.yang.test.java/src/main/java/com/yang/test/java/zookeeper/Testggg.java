@@ -12,10 +12,42 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
-/**
- * Created by liuyang on 2017/4/20.
- */
-public class DistributedLock implements Lock, Watcher {
+
+
+
+public class Testggg {
+    static int n = 500;
+
+    public static void secskill() {
+        System.out.println(--n);
+    }
+
+    public static void main(String[] args) {
+        
+        Runnable runnable = new Runnable() {
+            public void run() {
+            	TLock lock = null;
+                try {
+                    lock = new TLock("172.28.51.33:2181", "test1");
+                    lock.lock();
+                    secskill();
+                    System.out.println(Thread.currentThread().getName() + "正在运行");
+                } finally {
+                    if (lock != null) {
+                        lock.unlock();
+                    }
+                }
+            }
+        };
+
+        for (int i = 0; i < 1; i++) {
+            Thread t = new Thread(runnable);
+            t.start();
+        }
+    }
+}
+
+class TLock implements Lock, Watcher {
 	private ZooKeeper zk = null;
 	// 根节点
 	private String ROOT_LOCK = "/locks";
@@ -36,7 +68,7 @@ public class DistributedLock implements Lock, Watcher {
 	 * @param config   连接的url
 	 * @param lockName 竞争资源
 	 */
-	public DistributedLock(String config, String lockName) {
+	public TLock(String config, String lockName) {
 		this.lockName = lockName;
 		try {
 			// 连接zookeeper
@@ -178,36 +210,4 @@ public class DistributedLock implements Lock, Watcher {
 			super(e);
 		}
 	}
-}
-
-class Testttt {
-    static int n = 500;
-
-    public static void secskill() {
-        System.out.println(--n);
-    }
-
-    public static void main(String[] args) {
-        
-        Runnable runnable = new Runnable() {
-            public void run() {
-                DistributedLock lock = null;
-                try {
-                    lock = new DistributedLock("127.0.0.1:2181", "test1");
-                    lock.lock();
-                    secskill();
-                    System.out.println(Thread.currentThread().getName() + "正在运行");
-                } finally {
-                    if (lock != null) {
-                        lock.unlock();
-                    }
-                }
-            }
-        };
-
-        for (int i = 0; i < 10; i++) {
-            Thread t = new Thread(runnable);
-            t.start();
-        }
-    }
 }
