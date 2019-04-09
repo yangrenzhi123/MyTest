@@ -10,7 +10,7 @@ public class SimpleClient2 {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 
-		Socket request = new Socket("127.0.0.1", 8080);
+		Socket request = new Socket("127.0.0.1", 3113);
 
 		OutputStream os = request.getOutputStream();
 
