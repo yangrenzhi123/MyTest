@@ -1,0 +1,339 @@
+<!doctype html>  
+<!--[if IE 6]>
+<html id="ie6" class="is_ie">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" class="is_ie">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" class="is_ie">
+<![endif]-->
+<!--[if IE 9]>
+<html id="ie9" class="is_ie">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html>
+<!--<![endif]-->
+<head>
+	<title>TEST WEB PAGE for media plugin</title>  
+	<meta charset="utf-8"/>
+	<meta description="It would be very helpful if you can send me a good, simple HTML page with some JavaScript that demonstrates the player and record player usage. All of the above I’ve extracted from camera’s own web UI and they work fine in 3.0.0.1."/>
+	<meta author="if you want to know more,please send a mail for technical support.">
+	<meta version="0.0.1">
+	<style type="text/css">
+		.fn-hide{display: none;}
+		.fn-fl{float: left;}
+		.fn-w800{width: 800px;}
+		input{width:150px;}
+		h1,h2{font-size: 14px;}
+		.importent{font-weight: 600;color:red;}
+	</style>
+</head>
+<body>
+	<h1>plugin demo for important clientele</h1>
+	<div class="fn-fl" id="ocx_wrap">
+		<object id="ocx" type="application/media-plugin-version-3.0.0.2" width="400" height="300" style="background-color:#000000">
+		</object>
+	</div>
+	<div class="fn-fl fn-w800">
+		<ul>
+			<li class="fn-hide">
+				<input type="button" name="check" value="check plugin" onclick="plugin.checkPlugin()"> 
+				<span>wheather plugin has installed correctly or not</span>
+			</li>
+			<li>
+				<input type="button" name="login" value="login plugin" onclick="plugin.login(0)"> 
+				<span class="importent">step 1: you must login the device  before do anything.</span>
+			</li>
+			<li>
+				<input type="button" name="login" value="logout plugin" onclick="plugin.login(1)"> 
+				<span>step last: you need logout the device after all works.</span>
+			</li>
+		</ul>
+		<div id="operations" class="fn-hide">
+			<ol>
+				<li>
+					<input type="button" name="connect" value="open" onclick="plugin.connect(true)"> 
+					<span>step 2: connect to videoSource to see the video.you can set preview mode before open video.<span class="importent">you must open the video</span> before clasing some function.</span>
+				</li>
+				<li>
+					<input type="button" name="connect" value="close" onclick="plugin.connect(false)"> 
+					<span>step 2.1: disconnect from the videoSource when you don't need to see the video.</span>
+				</li>
+				<li>
+					<input type="button" name="mode" value="preview mode" onclick="plugin.setMode(0)"> 
+					<input type="button" name="mode" value="setting mode" onclick="plugin.setMode(1)"> 
+					<span>step 3: change mode if you need.</span>
+				</li>
+				<li>
+					<input type="button" name="connect" value="set devide mode" onclick="plugin.setDevideMode()" disabled="disabled"> 
+					<span>invalid!</span>
+				</li>
+				<li>
+					<input type="button" name="path" value="set path" onclick="plugin.path('c:\doc')">
+					<span>set path first then you can get path--->'c:\doc'</span>
+				</li>	
+				<li>
+					<input type="button" name="path" value="get path" onclick="plugin.path('')">
+					<span>path now in the plugin is---></span><input type="text" id="pathGet" ><span></span>
+				</li>
+				<li>
+					<input type="text" id="pathChoose" onclick="plugin.pathDialog()">
+					<span>click this input to choose a floder</span>
+				</li>
+				<li>
+					<input type="button" name="mode" value="start talk" onclick="plugin.talk(1)"> 
+					<input type="button" name="mode" value="stop talk" onclick="plugin.talk(0)"> 
+					<span>step +: start talk or stop talk.</span>
+				</li>
+				<li>
+					<input type="button" name="mode" value="start largen part" onclick="plugin.control(5,1)"> 
+					<input type="button" name="mode" value="stop largen part" onclick="plugin.control(5,0)"> 
+					<span>step +:mouse down and move on the plguin ater start this function</span>
+				</li>
+				<li>
+					<input type="button" name="audio" value="start audio" onclick="plugin.control(1,1)"> 
+					<input type="button" name="audio" value="stop audio" onclick="plugin.control(1,0)"> 
+					<span>step +:i don't konw this function clearly.</span>
+				</li>
+				<li>
+					<input type="button" name="getPicSize" value="GetPicSize()" onclick="plugin.getPicSize()">
+					<span id="GetPicSizeSpan">GetPicSize()--></span>
+				</li>
+				<li>
+					<select id="videoFormat">
+						<option value="1">dav</option>
+						<option value="2">avi</option>
+						<option value="3">asf</option>
+					</select>
+					<input type="button" name="record" value="start recording" onclick="plugin.record(true)">
+					<input type="button" name="record" value="stop recording" onclick="plugin.record(false)">
+					<span>choose a video format then start recording,you can see the video recored at 'c:\doc'</span>
+				</li>
+				<li>
+					<input type="button" name="getPlayTime" value="Get Playtime" onclick="plugin.getPlayTime()"> 
+					<span>get time every seconds,close video to see time changes.<span id="getPlayTime"></span></span>
+					
+				</li>		
+			</ol>
+			<hr>
+			<h2>play back</h2>
+			<ol>
+				<li>
+					<input type="button" name="setModuleMode" value="Set Playback Mode" onclick="plugin.setMode(3)"> 
+					<span>Set Playback Mode  before anything about playback.</span>
+				</li>
+				<li>
+					<input type="button" name="stopPlayBack" value="Stop Playback" onclick="plugin.stopPlayBack()"> 
+					<span>Stop Playback</span>
+				</li>
+				<li>
+					<input type="button" name="playSetVolume" value="Play Set Volume" onclick="plugin.playSetVolume(-50)"> 
+					<span>voice range : [-100,0]</span>
+				</li>
+				<li>
+					<input type="button" name="playBackByRecordFileEx" value="Playback By Record File" onclick="plugin.playBackByRecordFileEx()">
+					<span>as you konw.</span>
+				</li>
+				<li>
+					<input type="button" name="PlayOpenSound" value="Play Open Sound" onclick="plugin.playOpenSound()"> 
+					<span>Enable or not, switch</span>
+				</li>
+			</ol>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+var browse = {};
+//免费赠送一种检测IE浏览器的方法。A method to check weather the browser id IE for FREE.
+browse.ie = document.getElementsByTagName('html')[0].className == 'is_ie'  ? true :false;
+var reg = /(msie\s|trident.*rv:)([\w.]+)/;
+browse.ieTest = reg.exec(navigator.userAgent.toLowerCase());
+browse.ie = browse.ieTest!=null ? true : false;
+
+var plugin = {
+
+	ocx:null,
+	domOperations:null,
+	init:function(){
+		this.ocx = document.getElementById('ocx');
+		this.domOperations =  document.getElementById('operations');
+		this.bind();
+	},
+	bind:function(){
+		//AddEventListener -->a way to handle some async datas whick ocx developer thought out.
+		this.ocx.AddEventListener('FileDialogInfo', this._FileDialogInfo);
+	},
+	checkPlugin:function(bool){
+		if(browse.ie){//if brower is IE 
+			var ocxdomWrap = document.getElementById('ocx_wrap');
+			var htmlStr = '<object id="ocx" width="400" height="300" classid="CLSID:ED1EDBF5-CCC7-4171-A559-6578BD6D3002">'
+			+ '<param name="lVideoWindNum" value="1">'
+            + '<param name="VideoWindBarColor" value="414141">'
+            + '<param name="VideoWindTextColor" value="9c9c9c">'
+        	+ '</object>';
+        	ocxdomWrap.innerHTML = htmlStr;
+		}else{
+		    var mimetype = navigator.mimeTypes["application/media-plugin-version-3.0.0.2"];
+		    if(mimetype){
+		        if(mimetype.enabledPlugin){
+					bool && alert('plugin has been installed');
+		        }
+		    }else{
+				alert("there isn't a plugin fit for this program");
+		    }
+		}
+	},
+	login:function(num){
+		var loginParams = {
+			ip: '124.160.79.205',
+			port:61574,
+			uname:'admin',
+			pwd:'admin123'
+		};
+		if(loginParams.ip == '172.29.2.170'){
+			alert('Edit device ip first before use this demo(line 185 in index.html).');
+			return;
+		}
+		// params 1   --> ip
+		// params 2   --> port
+		// params 3   --> username
+		// params 4   --> password
+		// params 5   --> a switch -->  0:login; 1:logout
+		this.ocx.LoginDeviceEx(loginParams.ip, loginParams.port, loginParams.uname, loginParams.pwd,num);
+		this._uichangeLogin(num);
+	},
+	connect:function(bool){
+		var num = bool?0:1;
+		// params 1 --> a switch -->  0:open video;  1:close video.
+		// params 2 --> means what？i don't konw
+		this.ocx.ConnectRealVideo(num,0);
+	},
+	setMode:function(num){
+		//params1 --> a switch --> 0:preview; 1: setting
+		this.ocx.SetModuleMode(num);
+	},
+	setDevideMode:function(){
+		// params 1 --> 0   never change.
+		// params 2 --> 1   something about cookie
+		// plugin developer say: SetDeviceMode is invalid.
+		this.ocx.SetDeviceMode(0,1);
+	},
+	//choose right params to use the function correctly~~~
+	control:function(arg1,arg2){
+		this.ocx.SubVideoWndCtrl(arg1,arg2);
+		//function --> Digital Zoom (translate into Chinese:局部放大功能)
+		//arg1 ---> 5  never change
+		//arg2 ---> a switch  1:start;0:stop.
+		//====================================================
+		//function --> Audio(in preview) (translate into Chinese:预览界面声音功能)
+		//arg1 ---> 1  never change
+		//arg2 ---> a switch  1:start;0:stop.
+		//====================================================
+		//function --> local recording( translate into Chinese:本地录像？)
+		//arg1 ---> 3  never change
+		//arg2 ---> a switch  1:start dav;2:start avi;3:start asf;0:stop;
+		// open the floder which function GetConfigPath(2) returns.
+		//====================================================
+		//show more info need your requirement
+	},
+	pathDialog:function(){
+		//async datas will come in function "addEventListener 'FileDialogInfo'"
+		this.ocx.ShowFileBrowse();
+	},
+	path:function(route){
+		if(route==''){
+			// params 1 --> 2 never change.
+			// returns  --> routes you have beem set before
+			var result = this.ocx.GetConfigPath(2);
+			if(result == ''){
+				alert('Set path brfore get path every time you load the demo~');
+			}
+			var dom = document.getElementById('pathGet');
+			dom.value = result;
+		}else{
+			// params 1 --> 2 never change.
+			// params 2 --> routes you want
+			this.ocx.SetConfigPath(2, route);
+		}
+	},
+	talk:function(num){
+		if(num == 1){//before start talk, you should set some config into plugin.
+			//config 1 is the audio congfig of the device
+			this.ocx.SetConfig("audio", '{"Bitrate":64,"Channels":[0],"Compression":"AAC","Depth":16,"Frequency":48000,"Mode":0,"Pack":"DHAV"}');
+			//config 2 seams never change.
+			this.ocx.SetConfig("audio",'{"Enable":true,"Port":80}');
+		}
+
+		// params 1 --> a switch  0:stop talk; 1-->start talk
+		this.ocx.ControlTalking(num);
+	},
+	getPicSize:function(){
+		var size = this.ocx.GetPicSize();
+		var dom = document.getElementById('GetPicSizeSpan');
+		dom.innerHTML = size;
+	},
+	record:function(bool){
+		var result = this.ocx.GetConfigPath(2);
+		if(result == ''){
+			this.ocx.SetConfigPath(2, "c:\\doc");//set a path to storage the video
+		}
+		if(bool){
+			var num = document.getElementById('videoFormat').value - 0;
+			this.control(3,num);
+		}else{
+			this.control(3,0);
+		}
+	},
+	getPlayTime:function(){
+		// result s    
+		// playing    -->  '2012-10-12 03:02:00'
+		// stop 	  -->  '2012-10-12 03:02:00stop'
+		// can't play --> you can use addEventlistener('PlaybackRecordfileFailed',yourfunction)  to know when play failed
+		var s = this.ocx.GetPlayTime();//use this method when the video is play state
+		var dom = document.getElementById('getPlayTime');
+		dom.innerText = s;
+		setTimeout(plugin.getPlayTime, 900);
+	},
+	stopPlayBack:function(){
+		this.ocx.StopPlayBack();
+	},
+	playSetVolume:function(){
+		this.ocx.PlaySetVolume(-50);
+	},
+	playBackByRecordFileEx:function(){
+		var fileinfo = {
+			// here you should reference '<<大华信息交换格式-存储分册>>16.1.2'  media file info format
+			// StartTime:'...',
+			// EndTime:'...',
+			// Duration:'...',
+			// Type:'...',
+			// FilePath:'...'
+			// ,'...':'...'
+		};
+		var json = JSON.stringify(fileinfo);
+		var time = '2012-10-12 03:02:00';
+		this.ocx.PlayBackByRecordFileEx(json,time);
+	},
+	playOpenSound:function(){
+		this.ocx.PlayOpenSound();// reset voice control in plugin???
+	},
+	
+	_FileDialogInfo:function(fileName, path, filter){
+		// console.log('program comes here after you choose a path or a file');
+		var dom = document.getElementById('pathChoose');
+		dom.value = path;
+	},
+	_uichangeLogin:function(num){
+		if(!num){
+			this.domOperations.className = '';
+		}else{
+			this.domOperations.className = 'fn-hide';
+		}
+	}
+};
+plugin.checkPlugin(false);
+plugin.init();
+
+</script>
+</html>
