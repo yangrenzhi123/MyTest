@@ -14,10 +14,15 @@ public class SimpleClient2 {
 
 		OutputStream os = request.getOutputStream();
 
-		os.write(1);
-
+		os.write("1".getBytes());
 		byte[] b = new byte[1024];
 		InputStream is = request.getInputStream();
+		is.read(b);
+		System.out.println(new String(b));
+		
+		os.write("1".getBytes());
+		b = new byte[1024];
+		is = request.getInputStream();
 		is.read(b);
 		System.out.println(new String(b));
 		
