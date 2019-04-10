@@ -11,10 +11,10 @@ import java.util.List;
 public class CompareNum {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL1 = "jdbc:mysql://192.168.10.20:3306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
-	static final String DB_URL2 = "jdbc:mysql://192.168.10.22:3306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL1 = "jdbc:mysql://192.168.10.228:3306/saas_lyzh?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL2 = "jdbc:mysql://192.168.10.229:3306/saas_lyzh?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
-	static final String PASS = "Lenovo@@7788";
+	static final String PASS = "123456";
 
 	static final int num = 10;
 	static final List<Connection> l = new ArrayList<Connection>();
@@ -30,9 +30,14 @@ public class CompareNum {
 				"h_dictionary",
 				"h_dispenser_goods",
 				"h_dispenser_order",
+				"h_dispenser_replenish",
 				"h_equip_bin",
+				"h_equip_bin_info",
 				"h_equip_dispenser",
+				"h_equip_electbalance",
+				"h_equip_fixedvideo",
 				"h_equipment",
+				"h_equipment_update",
 				"h_equipment_version",
 				"h_exchange_record",
 				"h_fee_name",
@@ -47,11 +52,15 @@ public class CompareNum {
 				"h_inspect_rule",
 				"h_menu",
 				"h_merchant",
+				"h_message_sms",
+				"h_message_template",
+				"h_notice",
 				"h_operate_user",
 				"h_order",
 				"h_order_detail",
 				"h_order_garbage",
 				"h_order_menu",
+				"h_order_menu_actions",
 				"h_order_region",
 				"h_order_store",
 				"h_product",
@@ -62,21 +71,27 @@ public class CompareNum {
 				"h_product_menu",
 				"h_product_module",
 				"h_recycle_abnormal",
+				"h_recycle_change_record",
 				"h_recycle_record",
 				"h_recycle_rule",
 				"h_region",
+				"h_replenish_content",
 				"h_result",
 				"h_role",
 				"h_role_menu",
+				"h_score_change_record",
 				"h_score_record",
+				"h_script_version",
+				"h_script_version_record",
 				"h_store",
+				"h_store_order",
 				"h_tenant",
 				"h_tenant_account",
 				"h_tenant_consult",
 				"h_tenant_group",
-				"h_tenant_product",
 				"h_tenant_role",
 				"h_tenant_role_pro_menu",
+				"h_tenant_role_pro_menu_actions",
 				"h_tenant_role_sys_menu",
 				"h_tenant_user",
 				"h_tenant_user_community",

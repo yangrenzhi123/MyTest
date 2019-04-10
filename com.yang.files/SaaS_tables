@@ -1,64 +1,79 @@
-<table name="h_account" dataNode="dn1" />
-<table name="h_account_role" dataNode="dn1" />
-<table name="h_community" dataNode="dn1" />
-<table name="h_device" dataNode="dn1" />
-<table name="h_device_file" dataNode="dn1" />
-<table name="h_device_type" dataNode="dn1" />
-<table name="h_dictionary" dataNode="dn1" />
-<table name="h_dispenser_goods" dataNode="dn1" />
-<table name="h_dispenser_order" dataNode="dn1" />
-<table name="h_equip_bin" dataNode="dn1" />
-<table name="h_equip_dispenser" dataNode="dn1" />
-<table name="h_equipment" dataNode="dn1" />
-<table name="h_equipment_version" dataNode="dn1" />
-<table name="h_exchange_record" dataNode="dn1" />
-<table name="h_fee_name" dataNode="dn1" />
-<table name="h_file" dataNode="dn1" />
-<table name="h_free_bag_rule" dataNode="dn1" />
-<table name="h_garbage_class" dataNode="dn1" />
-<table name="h_garbagebag_pull" dataNode="dn1" />
-<table name="h_group_account" dataNode="dn1" />
-<table name="h_highest_rule" dataNode="dn1" />
-<table name="h_inspect_record" dataNode="dn1" />
-<table name="h_inspect_record_image" dataNode="dn1" />
-<table name="h_inspect_rule" dataNode="dn1" />
-<table name="h_menu" dataNode="dn1" />
-<table name="h_merchant" dataNode="dn1" />
-<table name="h_operate_user" dataNode="dn1" />
-<table name="h_order" dataNode="dn1" />
-<table name="h_order_detail" dataNode="dn1" />
-<table name="h_order_garbage" dataNode="dn1" />
-<table name="h_order_menu" dataNode="dn1" />
-<table name="h_order_region" dataNode="dn1" />
-<table name="h_order_store" dataNode="dn1" />
-<table name="h_product" dataNode="dn1" />
-<table name="h_product_detail" dataNode="dn1" />
-<table name="h_product_detail_promotion" dataNode="dn1" />
-<table name="h_product_device" dataNode="dn1" />
-<table name="h_product_group" dataNode="dn1" />
-<table name="h_product_menu" dataNode="dn1" />
-<table name="h_product_module" dataNode="dn1" />
-<table name="h_recycle_abnormal" dataNode="dn1" />
-<table name="h_recycle_record" dataNode="dn1" />
-<table name="h_recycle_rule" dataNode="dn1" />
-<table name="h_region" dataNode="dn1" />
-<table name="h_result" dataNode="dn1" />
-<table name="h_role" dataNode="dn1" />
-<table name="h_role_menu" dataNode="dn1" />
-<table name="h_score_record" dataNode="dn1" />
-<table name="h_store" dataNode="dn1" />
-<table name="h_tenant" dataNode="dn1" />
-<table name="h_tenant_account" dataNode="dn1" />
-<table name="h_tenant_consult" dataNode="dn1" />
-<table name="h_tenant_group" dataNode="dn1" />
-<table name="h_tenant_product" dataNode="dn1" />
-<table name="h_tenant_role" dataNode="dn1" />
-<table name="h_tenant_role_pro_menu" dataNode="dn1" />
-<table name="h_tenant_role_sys_menu" dataNode="dn1" />
-<table name="h_tenant_user" dataNode="dn1" />
-<table name="h_tenant_user_community" dataNode="dn1" />
-<table name="h_tenant_user_role" dataNode="dn1" />
-<table name="h_threshold_rule" dataNode="dn1" />
-<table name="h_threshold_rule_info" dataNode="dn1" />
-<table name="h_throw_rule" dataNode="dn1" />
-<table name="h_throw_rule_info" dataNode="dn1" />
+"h_account",
+"h_account_role",
+"h_community",
+"h_device",
+"h_device_file",
+"h_device_type",
+"h_dictionary",
+"h_dispenser_goods",
+"h_dispenser_order",
+"h_dispenser_replenish",
+"h_equip_bin",
+"h_equip_bin_info",
+"h_equip_dispenser",
+"h_equip_electbalance",
+"h_equip_fixedvideo",
+"h_equipment",
+"h_equipment_update",
+"h_equipment_version",
+"h_exchange_record",
+"h_fee_name",
+"h_file",
+"h_free_bag_rule",
+"h_garbage_class",
+"h_garbagebag_pull",
+"h_group_account",
+"h_highest_rule",
+"h_inspect_record",
+"h_inspect_record_image",
+"h_inspect_rule",
+"h_menu",
+"h_merchant",
+"h_message_sms",
+"h_message_template",
+"h_notice",
+"h_operate_user",
+"h_order",
+"h_order_detail",
+"h_order_garbage",
+"h_order_menu",
+"h_order_menu_actions",
+"h_order_region",
+"h_order_store",
+"h_product",
+"h_product_detail",
+"h_product_detail_promotion",
+"h_product_device",
+"h_product_group",
+"h_product_menu",
+"h_product_module",
+"h_recycle_abnormal",
+"h_recycle_change_record",
+"h_recycle_record",
+"h_recycle_rule",
+"h_region",
+"h_replenish_content",
+"h_result",
+"h_role",
+"h_role_menu",
+"h_score_change_record",
+"h_score_record",
+"h_script_version",
+"h_script_version_record",
+"h_store",
+"h_store_order",
+"h_tenant",
+"h_tenant_account",
+"h_tenant_consult",
+"h_tenant_group",
+"h_tenant_role",
+"h_tenant_role_pro_menu",
+"h_tenant_role_pro_menu_actions",
+"h_tenant_role_sys_menu",
+"h_tenant_user",
+"h_tenant_user_community",
+"h_tenant_user_role",
+"h_threshold_rule",
+"h_threshold_rule_info",
+"h_throw_rule",
+"h_throw_rule_info",
