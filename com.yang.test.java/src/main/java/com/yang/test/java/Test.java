@@ -23,9 +23,9 @@ public class Test {
 		//System.out.println(convertHexToString("4C595A4831353038383635323039303100000000000000000000000000000000"));
 		//System.out.println(strTo16("LYZH150886520901"));
 		
-		jinzhi();
+		//jinzhi();
 		
-		//System.out.println(hexString2Bytes("FF")[0]);
+		System.out.println(hexString2Bytes("FF")[0]);
 		//System.out.println((byte) 0xFF);
 		
 		//test();

@@ -15,8 +15,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 @Component
 public class NettyServer {
 
-    private final EventLoopGroup bossGroup = new NioEventLoopGroup();
-    private final EventLoopGroup workerGroup = new NioEventLoopGroup();
+    private final EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+    private final EventLoopGroup workerGroup = new NioEventLoopGroup(2);
 
     private Channel channel;
 
