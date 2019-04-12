@@ -18,11 +18,10 @@ public class SimpleClient3 {
 						OutputStream os = request.getOutputStream();
 
 						os.write("1".getBytes());
+						os.write("23".getBytes());
+						
 						byte[] b = new byte[1024];
 						InputStream is = request.getInputStream();
-						is.read(b);
-						System.out.println(new String(b));
-						is = request.getInputStream();
 						is.read(b);
 						System.out.println(new String(b));
 

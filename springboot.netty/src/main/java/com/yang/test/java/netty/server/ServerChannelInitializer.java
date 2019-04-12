@@ -10,9 +10,9 @@ public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> 
 	@Override
 	protected void initChannel(SocketChannel socketChannel) {
 		// 解码编码
-		socketChannel.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
+		//socketChannel.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
 		socketChannel.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
-
+		socketChannel.pipeline().addLast(new PacketDecoder());
 		socketChannel.pipeline().addLast(new ServerHandler());
 	}
 }
