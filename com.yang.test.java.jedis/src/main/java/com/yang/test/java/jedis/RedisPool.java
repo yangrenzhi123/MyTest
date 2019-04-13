@@ -12,15 +12,22 @@ public class RedisPool {
 		
 		
 		JedisPoolConfig config = new JedisPoolConfig();
-		config.setMaxTotal(30);
-		config.setMaxIdle(10);
+		config.setMaxTotal(2);
+		config.setMaxIdle(1);
+		config.setMaxWaitMillis(2000);
 		
 		// 获得连接池
-		JedisPool jedisPool = new JedisPool(config, "192.168.10.230", 7001);
-		for(int i=0;i<10;i++) {
-			Jedis j = jedisPool.getResource();
-			System.out.println(j.get(key));
-			j.close();
+		JedisPool jedisPool = new JedisPool(config, "172.28.51.33", 6379);
+		for(int i=0;i<1000;i++) {
+			Jedis j = null;
+			try {
+				j = jedisPool.getResource();
+				System.out.println(j.get(key));
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally {
+				if(j != null) j.close();
+			}
 		}
 		jedisPool.close();
 		
