@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -8,19 +9,11 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 @SuppressWarnings("resource")
 public class Kafka {
 	public static void main(String[] args) throws Exception {
-		String group = "test";
-		
-		
 		Properties props = new Properties();
 
-		
-		
-		String topic = "TCP_GREENLIFE2";
-		props.put("bootstrap.servers", "192.168.10.240:9092");
-
-		
-		
-		
+		String group = "test2";
+		String topic = "test";
+		props.put("bootstrap.servers", "192.168.8.70:9092");
 		
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");
@@ -34,7 +27,7 @@ public class Kafka {
 		System.out.println("Subscribed to topic " + topic);
 
 		while (true) {
-			ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
+			ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(10));
 			for (ConsumerRecord<String, String> record : records) {
 				System.out.printf("partition = %d, offset = %d, key = %s, value = %s\n", record.partition(), record.offset(), record.key(), record.value());
 			}

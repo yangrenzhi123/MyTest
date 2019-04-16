@@ -1,30 +1,27 @@
 import java.util.Properties;
 
-import kafka.javaapi.producer.Producer;
-import kafka.producer.KeyedMessage;
-import kafka.producer.ProducerConfig;
-import kafka.serializer.StringEncoder;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 
-
-@SuppressWarnings({"deprecation", "unchecked", "rawtypes"})
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class Kafka2 {
 
 	public static void main(String[] args) {
+
 		Properties properties = new Properties();
-		properties.put("serializer.class", StringEncoder.class.getName());
+		properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+		properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-		
-		
-		
-		
 		String topic = "test";
-		properties.put("metadata.broker.list", "192.168.10.240:9092");
+		properties.put("bootstrap.servers", "192.168.8.70:9092");
 
-		
-		
-		
-		
-		Producer producer = new Producer<String, String>(new ProducerConfig(properties));
-		producer.send(new KeyedMessage<String, String>(topic, "110"));
+		Producer producer = new KafkaProducer<String, String>(properties);
+		int i = 0;
+		for (; i < 100; i++) {
+			producer.send(new ProducerRecord<String, String>(topic, i + ""));
+		}
+		System.out.println(i);
+		producer.close();
 	}
 }

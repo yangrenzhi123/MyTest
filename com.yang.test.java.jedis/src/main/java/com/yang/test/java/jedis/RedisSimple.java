@@ -47,16 +47,16 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.10.240", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-		String key = "h_equipment00012180702795";
+		String key = "consumerAppLoginCode:13958088637";
 //		j.select(3);
-//		System.out.println(j.get(key));
+		System.out.println(j.get(key));
 //		j.del(key);
 
 //		Map<String, String> m = new HashMap<String, String>();
 //		m.put("1", "1");
 //		j.hmset(key, m);
 
-		System.out.println(j.hgetAll(key));
+//		System.out.println(j.hgetAll(key));
 
 		j.close();
 	}
