@@ -17,7 +17,7 @@ public class Test3 {
 	}
 	
 	public static void doo() throws ClientProtocolException, IOException {
-		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz002739");
+		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz000856");
 
 		HttpClient hc = HttpClients.createDefault();
 
