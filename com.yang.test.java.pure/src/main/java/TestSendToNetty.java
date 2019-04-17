@@ -12,25 +12,8 @@ import java.util.concurrent.CountDownLatch;
 public class TestSendToNetty {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-//		int c1 = Integer.parseInt(args[0]);
-//		int c2 = Integer.parseInt(args[1]);
-		
-		int c1 = 1; //设备数
-		int c2 = 10000; //发送次数
-
-		
-
-//		List<String> devices = new ArrayList<String>();
-//		FileReader fr = new FileReader("D:\\Readline");
-//		BufferedReader bf = new BufferedReader(fr);
-//		String str; // 按行读取字符串
-//		while ((str = bf.readLine()) != null) {
-//			devices.add(str);
-//		}
-//		bf.close();
-		
-		
-		
+		int c1 = 40000; //设备数
+		int c2 = 100; //发送次数
 
 		long a = System.currentTimeMillis();
 		List<OutputStream> osl = new ArrayList<OutputStream>();
@@ -52,7 +35,7 @@ public class TestSendToNetty {
 		
 		List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < c1; i++) {
-			String deviceNo = String.format("%014d", 61000000000001L+i);
+			String deviceNo = String.format("%014d", 04170000000000L+i);
 			String aa = deviceNo.substring(0, 2);
 			String bb = deviceNo.substring(2, 4);
 			String cc = deviceNo.substring(4, 6);
@@ -124,7 +107,7 @@ public class TestSendToNetty {
 					
 					for(int m=0;m<c2;m++) {
 																								   //时间1301120F0B04                  //LYZH181225000101                         //垃圾类型
-						byte[] bs = hexString2Bytes("554000E00102"+/*deviceNos.get(j)*/"00000011223366"+timeTo16()+"4c595a4831383132323530303031303100000000000000000000000000000000"+"04"+"E80300000000000000A4B655");
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+timeTo16()+"4c595a4831383132323530303031303100000000000000000000000000000000"+"04"+"E80300000000000000A4B655");
 						try {
 							os.write(bs);
 							is.read(new byte[1024]);
