@@ -13,14 +13,14 @@ public class TestSendToNetty {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 		int c1 = 40000; //设备数
-		int c2 = 100; //发送次数
+		int c2 = 1; //发送次数
 
 		long a = System.currentTimeMillis();
 		List<OutputStream> osl = new ArrayList<OutputStream>();
 		List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
 		for (int i = 0; i < c1; i++) {
-			Socket request = new Socket("192.168.30.121", 3113);
+			Socket request = new Socket("192.168.10.239", 3113);
 			OutputStream os = request.getOutputStream();
 			InputStream is = request.getInputStream();
 			isl.add(is);
@@ -204,7 +204,6 @@ public class TestSendToNetty {
 			ssHex = "0" + ssHex;
 		}
 		String ret = yerHex + monHex + daHex + hhHex + mmHex + ssHex;
-		//System.out.println("当前时间===="+ret);
 		return ret;
 	}
 }
