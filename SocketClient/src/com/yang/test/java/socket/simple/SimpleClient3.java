@@ -17,8 +17,12 @@ public class SimpleClient3 {
 
 						OutputStream os = request.getOutputStream();
 
-						os.write("1".getBytes());
-						os.write("23".getBytes());
+						String s = "";
+						for(int i=0;i<2048;i++) {
+							s = s + "1";
+						}
+						
+						os.write(s.getBytes());
 						
 						byte[] b = new byte[1024];
 						InputStream is = request.getInputStream();

@@ -14,14 +14,12 @@ public class Kafka2 {
 		properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
 		String topic = "test";
-		properties.put("bootstrap.servers", "192.168.8.70:9092");
+		properties.put("bootstrap.servers", "192.168.10.230:9092");
 
 		Producer producer = new KafkaProducer<String, String>(properties);
-		int i = 0;
-		for (; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			producer.send(new ProducerRecord<String, String>(topic, i + ""));
 		}
-		System.out.println(i);
 		producer.close();
 	}
 }

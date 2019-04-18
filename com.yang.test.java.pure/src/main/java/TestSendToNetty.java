@@ -7,13 +7,31 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 public class TestSendToNetty {
 
+	public static String[] ss1 = new String[] {
+			"0001","0002","0003","0004","0005","0006","0007","0008","0009","0010",
+			"0011","0012","0013","0014","0015","0016","0017","0018","0019","0020",
+	};
+	public static String[] ss2 = new String[] {
+			"01","02","03","04","05","06","07","08","09","10",
+			"11","12","13","14","15","16","17","18","19","20",
+	};
+	public static String[] ss3 = new String[] {
+			"0001","0002","0003","0004","0005","0006","0007","0008","0009","0010",
+			"0011","0012","0013","0014","0015","0016","0017","0018","0019","0020",
+	};
+	
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-		int c1 = 40000; //设备数
-		int c2 = 1; //发送次数
+		String[] ljlx = new String[] {"01", "02", "03", "04", "05", "06", "0A", "0B", "0C", "0D"};
+		Random r = new Random();
+		
+		int n = Integer.parseInt(args[0]);
+		int c1 = 10000; //设备数
+		int c2 = Integer.parseInt(args[1]); //发送次数
 
 		long a = System.currentTimeMillis();
 		List<OutputStream> osl = new ArrayList<OutputStream>();
@@ -35,7 +53,7 @@ public class TestSendToNetty {
 		
 		List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < c1; i++) {
-			String deviceNo = String.format("%014d", 04170000000000L+i);
+			String deviceNo = String.format("%014d", 4170000000000L+i+(n*10000));
 			String aa = deviceNo.substring(0, 2);
 			String bb = deviceNo.substring(2, 4);
 			String cc = deviceNo.substring(4, 6);
@@ -106,20 +124,31 @@ public class TestSendToNetty {
 					InputStream is = isl.get(j);
 					
 					for(int m=0;m<c2;m++) {
-																								   //时间1301120F0B04                  //LYZH181225000101                         //垃圾类型
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+timeTo16()+"4c595a4831383132323530303031303100000000000000000000000000000000"+"04"+"E80300000000000000A4B655");
+						String s = timeTo16()/*时间1301120F0B04*/+rqcodeTo16("LYZH"+ss1[r.nextInt(ss1.length)]+ss2[r.nextInt(ss2.length)]+ss3[r.nextInt(ss3.length)]+"01")/*LYZH000102018301*/+ljlx[r.nextInt(ljlx.length)]/*垃圾类型*/+turnHex(intToHex(r.nextInt(1000)))+"00"/*重量*/+"000000000000A4B655";
+						StringBuilder sb = new StringBuilder();
+						for(int i=0;i<s.length()/2;i++) {
+							String s1 = s.substring(i*2, (i+1)*2);
+							if(s1.equals("55")) {
+								s1 = "5401";
+							}
+							if(s1.equals("54")) {
+								s1 = "5402";
+							}
+							sb.append(s1);
+						}
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)/*"00000102014001"*/+sb.toString()+"55");
 						try {
 							os.write(bs);
 							is.read(new byte[1024]);
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-						
+						/*
 						try {
 							Thread.sleep(1000);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
-						}
+						}*/
 					}
 					latch.countDown();
 				}
@@ -156,6 +185,26 @@ public class TestSendToNetty {
 			}
 			return b;
 		}
+	}
+	
+	public static String turnHex(String hex) {
+		String s2 = hex.substring(0, 2);
+		String s1 = hex.substring(2, 4);
+		return s1 + s2;
+	}
+	
+	public static String intToHex(int i) {
+		String s = Integer.toHexString(i).toUpperCase();
+		if (s.length() == 1) {
+			s = "000" + s;
+		}
+		if (s.length() == 2) {
+			s = "00" + s;
+		}
+		if (s.length() == 3) {
+			s = "0" + s;
+		}
+		return s;
 	}
 	
 	private static byte charToByte(char c) {
@@ -205,5 +254,24 @@ public class TestSendToNetty {
 		}
 		String ret = yerHex + monHex + daHex + hhHex + mmHex + ssHex;
 		return ret;
+	}
+	
+	/*
+	 * 获取_rqcode 16进制   32位 不足补0
+	 */
+	public static String rqcodeTo16(String s) {
+	    String str = "";
+	    for (int i = 0; i < s.length(); i++) {
+	        int ch = (int) s.charAt(i);
+	        String s4 = Integer.toHexString(ch);
+	        str = str + s4;
+	    }
+	    if(str.length()<64) {
+	    	int num = 64-str.length();
+	    	for(int i = 0;i<num;i++) {
+	    		str = str+"0";
+	    	}
+	    }
+	    return str;
 	}
 }

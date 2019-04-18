@@ -11,9 +11,9 @@ public class Kafka {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
-		String group = "test2";
+		String group = "test";
 		String topic = "test";
-		props.put("bootstrap.servers", "192.168.8.70:9092");
+		props.put("bootstrap.servers", "192.168.30.120:9092");
 		
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");
