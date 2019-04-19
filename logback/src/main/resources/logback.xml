@@ -40,7 +40,7 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
 	<root level="INFO">
 		<appender-ref ref="FILE" />
 	</root>
-	<root level="INFO">
+	<root level="DEBUG">
 		<appender-ref ref="MY_FILE" />
 	</root>
 </configuration>
