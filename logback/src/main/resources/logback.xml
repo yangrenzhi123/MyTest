@@ -29,18 +29,19 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
 			<MaxFileSize>10MB</MaxFileSize>
 		</triggeringPolicy>
+		<!-- <filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> -->
 	</appender>
     <appender name="MY_FILE" class="com.yang.logback.MongoDBAppender">
     </appender>
 
 	<!-- 日志输出级别 -->
-	<root level="DEBUG">
+	<root level="DEBUG"><!-- 
 		<appender-ref ref="STDOUT" />
-	</root>
-	<root level="INFO">
+		<appender-ref ref="MY_FILE" /> -->
 		<appender-ref ref="FILE" />
-	</root>
-	<root level="DEBUG">
-		<appender-ref ref="MY_FILE" />
 	</root>
 </configuration>

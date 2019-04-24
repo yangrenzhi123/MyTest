@@ -13,16 +13,16 @@ public class ThreadPool {
 			}
 		});
 		p.shutdown();
-		
 
 		p = Executors.newFixedThreadPool(10);
-		p.execute(new Runnable() {
-			public void run() {
-				System.out.println(1);
-			}
-		});
+		for (int i = 0; i < 100; i++) {
+			p.execute(new Runnable() {
+				public void run() {
+					System.out.println(1);
+				}
+			});
+		}
 		p.shutdown();
-		
 
 		p = Executors.newWorkStealingPool(10);
 		p.execute(new Runnable() {
