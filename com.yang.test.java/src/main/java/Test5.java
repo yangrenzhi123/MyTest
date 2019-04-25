@@ -1,7 +1,7 @@
 public class Test5 {
 
 	public static void main(String[] args) {
-		double a = 279;
+		double a = 15.69;
 		System.out.println("10%:" + a * 1.1);
 		System.out.println("9%:" + a * 1.09);
 		System.out.println("8%:" + a * 1.08);
