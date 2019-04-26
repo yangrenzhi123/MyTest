@@ -22,8 +22,8 @@ import org.apache.http.util.EntityUtils;
 public class TestProduct5 {
 
 
-	static String ip="192.168.10.239";
-	static int count = 1000;
+	static String ip="127.0.0.1";
+	static int count = 1;
 	
 	static List<Runnable> rl;
 	static CountDownLatch counttime;
@@ -57,9 +57,9 @@ public class TestProduct5 {
 						CloseableHttpClient hc = hcl.get(j);
 						
 						String orderNo = UUID.randomUUID().toString().replaceAll("-", "");
-						final HttpGet p = new HttpGet("http://"+ip+":3114/NewVendingMachine/check?mchinesn=12345678912345&ordersn="+orderNo+"&timestamp=1545793115&code=LYZH123456789801&sign=6794F8DF8F1B13FFCC3BDB7B8D2B6147");
+						final HttpGet p = new HttpGet("http://"+ip+":3114/NewVendingMachine/check?mchinesn=000101018001&ordersn="+orderNo+"&timestamp=1545793115&code=LYZH000101016601&sign=6794F8DF8F1B13FFCC3BDB7B8D2B6147");
 						p.setHeader("Connection", "Keep-Alive");
-						final HttpGet p1 = new HttpGet("http://"+ip+":3114/NewVendingMachine/checkresult?mchinesn=12345678912345&ordersn="+orderNo+"&timestamp=1545793121&goodsCode=ZJLY02021807078389&sign=7C30E9DCBB56A7FCCF603298D3F60AD5&mark=00000");
+						final HttpGet p1 = new HttpGet("http://"+ip+":3114/NewVendingMachine/checkresult?mchinesn=000101018001&ordersn="+orderNo+"&timestamp=1545793121&goodsCode=ZJLY02021807078389&sign=7C30E9DCBB56A7FCCF603298D3F60AD5&mark=00000");
 						p1.setHeader("Connection", "Keep-Alive");
 						
 						
@@ -99,7 +99,7 @@ public class TestProduct5 {
 		}
 		
 		totalTime = System.currentTimeMillis();
-		for(int i=0;i<40;i++) {
+		for(int i=0;i<1;i++) {
 			test(i);
 		}
 		
