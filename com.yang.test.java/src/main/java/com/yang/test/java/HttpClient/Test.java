@@ -40,7 +40,7 @@ public class Test {
 	static CloseableHttpClient httpClient = null;
 	
 	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		getJsapi();
+		testPooling();
 	}
 	public static void getAccessToken() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -64,21 +64,18 @@ public class Test {
         Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
                 .register("https", sslsf)
                 .register("http", new PlainConnectionSocketFactory())
-                .build();
-        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-        cm.setMaxTotal(2);
-        cm.setDefaultMaxPerRoute(2);
+				.build();
+		PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+		cm.setMaxTotal(2);
+		cm.setDefaultMaxPerRoute(2);
 
-		CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(cm).build();
-		HttpGet get = new HttpGet("http://jinnianshilongnian.iteye.com/blog/2089792");
-		httpClient.execute(get);
+		CloseableHttpClient hc = HttpClients.custom().setConnectionManager(cm).build();
+		HttpGet get = new HttpGet("https://jinnianshilongnian.iteye.com/blog/2089792");
+		hc.execute(get);
+
+		hc = HttpClients.custom().setConnectionManager(cm).build();
+		//get = new HttpGet("https://jinnianshilongnian.iteye.com/blog/2089792");
 		System.out.println(1);
-		
-
-		httpClient = HttpClients.custom().setConnectionManager(cm).build();
-		get = new HttpGet("http://172.28.51.33:8081/login?from=%2F");
-		httpClient.execute(get);
-		System.out.println(2);
 	}
 	
 	/** 一请求一连接 */
