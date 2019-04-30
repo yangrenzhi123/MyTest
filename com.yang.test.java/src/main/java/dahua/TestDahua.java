@@ -4,11 +4,11 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
-import com.sun.jna.CallbackThreadInitializer;
-import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 
 import main.java.com.netsdk.common.SavePath;
@@ -21,12 +21,15 @@ public class TestDahua {
 
 	private static DisConnect disConnect = new DisConnect();
 	private static HaveReConnect haveReConnect = new HaveReConnect();
+	private CountDownLatch latch = null;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		new TestDahua().doIt();
 	}
 
-	public void doIt() {
+	public void doIt() throws InterruptedException {
+		latch = new CountDownLatch(1);
+		
 		LoginModule.init(disConnect, haveReConnect);
 		
 		//Native.setCallbackThreadInitializer(m_CaptureReceiveCB, new CallbackThreadInitializer(false, false, "snapPicture callback thread"));
@@ -39,12 +42,15 @@ public class TestDahua {
 
 		LLong m_hPlayHandle = LoginModule.netsdk.CLIENT_RealPlayEx(LoginModule.m_hLoginHandle, 0, null, 0);
 		CapturePictureModule.remoteCapturePicture(0);
+		latch.await(60, TimeUnit.SECONDS);
 		
-//		try {
-//			Thread.sleep(10000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		latch = new CountDownLatch(1);
+		CapturePictureModule.remoteCapturePicture(0);
+		latch.await(60, TimeUnit.SECONDS);
+		
+		latch = new CountDownLatch(1);
+		CapturePictureModule.remoteCapturePicture(0);
+		latch.await(60, TimeUnit.SECONDS);
 		
 		LoginModule.netsdk.CLIENT_StopRealPlayEx(m_hPlayHandle);
 		LoginModule.logout();
@@ -73,6 +79,7 @@ public class TestDahua {
 					e.printStackTrace();
 				}
 			}
+			latch.countDown();
 		}
 	}
 

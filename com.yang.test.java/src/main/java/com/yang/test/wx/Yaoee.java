@@ -17,12 +17,13 @@ import org.apache.http.util.EntityUtils;
 public class Yaoee {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		messageSend2();
+		messageTemplateSend();
 	}
 
+	/** access_token被踢掉之后，5分钟失效 */
 	public static void getAccessToken() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet request = new HttpGet("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxcc79d67b43519897&secret=4a9bb164fc23668193b3263ebfbb71ee");
+		HttpGet request = new HttpGet("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxa6ed663216b05946&secret=e4567c9f72a22d381d1bb8e52e74dc8c");
 		HttpResponse response = httpClient.execute(request);
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);
@@ -55,7 +56,7 @@ public class Yaoee {
 	 */
 	public static void messageSend() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=16_2Ef0e_lXwRktUV0akjMxA4UuRHiDrehwLa5BOkUXhr7yu3pJPZ7ahOCZLHVpS3F22Prrvg7b7TtakR1tv4tp1jic0hYU3wMGC2hCzyifKzjH-CLuvwBeVieejaKDDaTTy3zaHv3ARnUd-_e4DHDjAFAQUQ");
+		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=21_geIKKQOTAPzzU4eljSK79QtLs98M69lS48zhhqUjfqBkhlW3Np0OxODfTWz01NxPGI8wP2uheYcnJ2rL00dQfDPF4slPd3svv1oBSBA8F7P9BklgdqM9-LD6ihSk25fk9zhzJPpfgj3EqB80EFWfAIAWXO");
 		
 		String data = 
 		"{"+
@@ -101,7 +102,7 @@ public class Yaoee {
 
 	public static void messageTemplateSend() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=16_bnyP6wy9oVNlOE-rjQj6x9GcxPm685nkujRf10Y5t2UkFHc3lz0Asge8xh-SRVQAL37Rnirys4UR5u0CS1BYVePoLSIsdkfiQyDxA9L54m6ZGq3GBY3Bzk4as7J18ABL29JQaXaj8FB2HwsNNVFbAJAYGQ");
+		HttpPost post = new HttpPost("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=21_geIKKQOTAPzzU4eljSK79QtLs98M69lS48zhhqUjfqBkhlW3Np0OxODfTWz01NxPGI8wP2uheYcnJ2rL00dQfDPF4slPd3svv1oBSBA8F7P9BklgdqM9-LD6ihSk25fk9zhzJPpfgj3EqB80EFWfAIAWXO");
 		
 		String data = 
 		      "{"+
