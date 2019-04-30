@@ -35,12 +35,10 @@ public class TestDahua {
 		//Native.setCallbackThreadInitializer(m_CaptureReceiveCB, new CallbackThreadInitializer(false, false, "snapPicture callback thread"));
 		boolean result = LoginModule.login("124.160.79.205", 61574, "admin", "admin123");
 		System.out.println("登陆结果：" + result);
-		
 
 		CapturePictureModule.setSnapRevCallBack(m_CaptureReceiveCB);
-		
-
 		LLong m_hPlayHandle = LoginModule.netsdk.CLIENT_RealPlayEx(LoginModule.m_hLoginHandle, 0, null, 0);
+
 		CapturePictureModule.remoteCapturePicture(0);
 		latch.await(60, TimeUnit.SECONDS);
 		
