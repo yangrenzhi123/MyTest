@@ -32,6 +32,8 @@ public class RsaTest2 {
 		byte[] publicKey = Base64.decodeBase64(pKey);
 		System.out.println(System.currentTimeMillis() - a);
 
+		
+		System.out.println(new String(publicKey));
 
 		a = System.currentTimeMillis();
 		byte[] code2 = RsaTest2.encryptByPublicKey(str.getBytes(), publicKey);
