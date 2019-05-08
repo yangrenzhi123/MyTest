@@ -77,9 +77,9 @@ public class Utils {
 		} else if(osPrefix.toLowerCase().startsWith("win32-amd64") ) {
 			loadLibrary = "C:/libs/win64/";
 		} else if(osPrefix.toLowerCase().startsWith("linux-i386")) {
-			loadLibrary = "";
+			loadLibrary = "/libs";
 		}else if(osPrefix.toLowerCase().startsWith("linux-amd64")) {
-			loadLibrary = "";
+			loadLibrary = "/libs";
 		}
 		
 		System.out.printf("[Load %s Path : %s]\n", library, loadLibrary + library);
