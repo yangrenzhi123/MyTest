@@ -21,7 +21,7 @@ public class IdWorker{
         this.sequence = sequence;
     }
 
-    private long twepoch = 1288834974657L;
+    private long twepoch = 1546272000000L;
 
     private long workerIdBits = 5L;
     private long datacenterIdBits = 5L;
