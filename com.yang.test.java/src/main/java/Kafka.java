@@ -12,8 +12,8 @@ public class Kafka {
 		Properties props = new Properties();
 
 		String group = "test";
-		String topic = "equip_HeartBeat";
-		props.put("bootstrap.servers", "192.168.10.230:9092");
+		String topic = "TCP_GREENLIFE_AO";
+		props.put("bootstrap.servers", "192.168.30.120:9092");
 		
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");

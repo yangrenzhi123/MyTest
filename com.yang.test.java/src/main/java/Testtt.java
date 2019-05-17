@@ -1,16 +1,13 @@
-
-import java.time.*;
-import java.time.temporal.TemporalAdjusters;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Testtt {
 
-	
-	
 	public static void main(String[] args) {
-		LocalDateTime of = LocalDateTime.of(LocalDate.now().with(TemporalAdjusters.firstDayOfNextMonth()), LocalTime.of(0, 0, 0));
-		Duration between = Duration.between(LocalDateTime.now(), of);
-		System.out.println(between.getSeconds());
-		int second = (int) between.getSeconds();
-		System.out.println(second);
+		Date d = new Date(1288834974657L);
+		
+		DateFormat df= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		System.out.println(df.format(d));
 	}
 }

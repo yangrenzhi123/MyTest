@@ -17,8 +17,8 @@ import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
  * NetSDK JNA接口封装
  */
 public interface NetSDKLib extends Library {
-	NetSDKLib NETSDK_INSTANCE = (NetSDKLib)Native.loadLibrary(Utils.getLoadLibrary("dhnetsdk"), NetSDKLib.class);
-	NetSDKLib CONFIG_INSTANCE = (NetSDKLib)Native.loadLibrary(Utils.getLoadLibrary("dhconfigsdk"), NetSDKLib.class);
+	//NetSDKLib NETSDK_INSTANCE = (NetSDKLib)Native.loadLibrary(Utils.getLoadLibrary("dhnetsdk"), NetSDKLib.class);
+	//NetSDKLib CONFIG_INSTANCE = (NetSDKLib)Native.loadLibrary(Utils.getLoadLibrary("dhconfigsdk"), NetSDKLib.class);
 	
 	public static class LLong extends IntegerType {
 		private static final long serialVersionUID = 1L;
