@@ -125,7 +125,8 @@ public class CompareNum {
 			rs.next();
 			int b = rs.getInt("num");
 			
-			System.out.println((a == b ? "一致": "不一致") + ",表"+s+","+a+"-"+b+"，差值：("+(a-b)+")");
+			
+			System.out.println((a == b ? "一致": "不一致") + ",表"+s+","+a+"-"+b+(a != b ? "，差值：("+(a-b)+")" : ""));
 		}
 		
 		stmt2.close();
