@@ -3,8 +3,6 @@ package dahua;
 import java.awt.AWTEvent;
 import java.io.File;
 import java.util.Date;
-import java.util.UUID;
-import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 
 import javax.swing.SwingUtilities;
@@ -30,7 +28,7 @@ public class TestAlarmCapture {
 				TestAlarmCapture testAlarmCapture = new TestAlarmCapture();
 				try {
 					NetSDKLib netsdk = (NetSDKLib)Native.loadLibrary(Utils.getLoadLibrary("dhnetsdk"), NetSDKLib.class);
-					testAlarmCapture.monitorAlarmAndCapture(61574, netsdk);
+					testAlarmCapture.monitorAlarmAndCapture(61560, netsdk);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -81,11 +79,10 @@ public class TestAlarmCapture {
 
 		NetSDKLib.NET_DEVICEINFO_Ex m_stDeviceInfo = new NetSDKLib.NET_DEVICEINFO_Ex();
 		IntByReference nError = new IntByReference(0);
-		NetSDKLib.LLong m_hLoginHandle = netsdk.CLIENT_LoginEx2("124.160.79.205", port, "admin", "admin123", 0, null, m_stDeviceInfo, nError);
+		NetSDKLib.LLong m_hLoginHandle = netsdk.CLIENT_LoginEx2("124.160.79.206", port, "admin", "admin123", 0, null, m_stDeviceInfo, nError);
 
 		// 报警
 		new Thread(() -> {
-			cbMessage.m_hLoginHandle = m_hLoginHandle;
 			netsdk.CLIENT_SetDVRMessCallBack(cbMessage, null);
 
 			if (!netsdk.CLIENT_StartListenEx(m_hLoginHandle)) {
@@ -138,32 +135,29 @@ public class TestAlarmCapture {
 
 	private fAlarmDataCB cbMessage = new fAlarmDataCB();
 	private class fAlarmDataCB implements NetSDKLib.fMessCallBack{
-		public NetSDKLib.LLong m_hLoginHandle;
-		
 		public boolean invoke(int lCommand, NetSDKLib.LLong lLoginID, Pointer pStuEvent, int dwBufLen, String strDeviceIP, NativeLong nDevicePort, Pointer dwUser) {
+			System.out.println(lCommand);
+			
 			switch (lCommand) {
 				case NetSDKLib.NET_ALARM_ALARM_EX:break;
 				case NetSDKLib.NET_MOTION_ALARM_EX:{
-					System.out.println(m_hLoginHandle);
-					
-					byte []alarm = new byte[dwBufLen];
-					pStuEvent.read(0, alarm, 0, dwBufLen);
-					
-					System.out.print(alarm[0]);System.out.print(alarm[1]);System.out.print(alarm[2]);System.out.println(alarm[3]);
-					/*for (int i = 0; i < dwBufLen; i++) {
-						if (alarm[i] == 1) {
-							AlarmEventInfo alarmEventInfo = new AlarmEventInfo(i, lCommand, AlarmStatus.ALARM_START);
-							//if (!data.contains(alarmEventInfo)) {
-								System.out.println("动态检测报警开始，data 添加 alarmEventInfo，" + strDeviceIP+":"+nDevicePort);
-							//	data.add(alarmEventInfo);
-							//}
-						}else {
-							AlarmEventInfo alarmEventInfo = new AlarmEventInfo(i, lCommand, AlarmStatus.ALARM_STOP);
-							//if (data.remove(alarmEventInfo)) {
-								System.out.println("动态检测报警结束，data 移除 alarmEventInfo，" + strDeviceIP + ":" + nDevicePort);
-							//}
-						}
-					}*/
+					System.out.println(1);
+					break;
+				}
+				case NetSDKLib.EVENT_IVS_FACEDETECT:{ //
+					System.out.println(2);
+					break;
+				}
+				case NetSDKLib.EVENT_IVS_FACERECOGNITION:{
+					System.out.println(3);
+					break;
+				}
+				case NetSDKLib.EVENT_IVS_FACEANALYSIS:{
+					System.out.println(3);
+					break;
+				}
+				case 8587:{
+					System.out.println(4);
 					break;
 				}
 				case NetSDKLib.NET_VIDEOLOST_ALARM_EX:break;
