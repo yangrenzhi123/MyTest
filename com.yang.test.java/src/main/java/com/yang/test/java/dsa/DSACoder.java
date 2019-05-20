@@ -182,21 +182,22 @@ public class DSACoder {
 		byte[] data = inputStr.getBytes();
 
 		// 构建密钥
-		Map<String, Object> keyMap = DSACoder.initKey();
-
+		//Map<String, Object> keyMap = DSACoder.initKey();
 		// 获得密钥
-		String publicKey = DSACoder.getPublicKey(keyMap);
-		String privateKey = DSACoder.getPrivateKey(keyMap);
+		//String publicKey = DSACoder.getPublicKey(keyMap);
+		//String privateKey = DSACoder.getPrivateKey(keyMap);
+		String publicKey = "MIIBuDCCASwGByqGSM44BAEwggEfAoGBAP1/U4EddRIpUt9KnC7s5Of2EbdSPO9EAMMeP4C2USZpRV1AIlH7WT2NWPq/xfW6MPbLm1Vs14E7gB00b/JmYLdrmVClpJ+f6AR7ECLCT7up1/63xhv4O1fnxqimFQ8E+4P208UewwI1VBNaFpEy9nXzrith1yrv8iIDGZ3RSAHHAhUAl2BQjxUjC8yykrmCouuEC/BYHPUCgYEA9+GghdabPd7LvKtcNrhXuXmUr7v6OuqC+VdMCz0HgmdRWVeOutRZT+ZxBxCBgLRJFnEj6EwoFhO3zwkyjMim4TwWeotUfI0o4KOuHiuzpnWRbqN/C/ohNWLx+2J6ASQ7zKTxvqhRkImog9/hWuWfBpKLZl6Ae1UlZAFMO/7PSSoDgYUAAoGBAI8gRDWAG8EBKFTFjXTe3KD0Q8BhukU1Z0bZ0k6eFmIilmRyMRa0A0R4XkBVVkzlXoaMryG9/BsVsmnX49yFGtdCGUUDwX81mayneiYd8Eu6Hv2HV84v6Edh4tvYdbEqqkQIsI0MNO1easxJD+XyRucnapeW3NGdXzl9nxow09wO";
+		String privateKey = "MIIBTAIBADCCASwGByqGSM44BAEwggEfAoGBAP1/U4EddRIpUt9KnC7s5Of2EbdSPO9EAMMeP4C2USZpRV1AIlH7WT2NWPq/xfW6MPbLm1Vs14E7gB00b/JmYLdrmVClpJ+f6AR7ECLCT7up1/63xhv4O1fnxqimFQ8E+4P208UewwI1VBNaFpEy9nXzrith1yrv8iIDGZ3RSAHHAhUAl2BQjxUjC8yykrmCouuEC/BYHPUCgYEA9+GghdabPd7LvKtcNrhXuXmUr7v6OuqC+VdMCz0HgmdRWVeOutRZT+ZxBxCBgLRJFnEj6EwoFhO3zwkyjMim4TwWeotUfI0o4KOuHiuzpnWRbqN/C/ohNWLx+2J6ASQ7zKTxvqhRkImog9/hWuWfBpKLZl6Ae1UlZAFMO/7PSSoEFwIVAIfgflNWPn69EkbnVLtN9MxXnpmX";
 
-		System.err.println("公钥:\r" + publicKey);
-		System.err.println("私钥:\r" + privateKey);
+		System.out.println("公钥：" + publicKey);
+		System.out.println("私钥：" + privateKey);
 
 		// 产生签名
 		String sign = DSACoder.sign(data, privateKey);
-		System.err.println("签名:\r" + sign);
+		System.out.println("签名：" + sign);
 
 		// 验证签名
 		boolean status = DSACoder.verify(data, publicKey, sign);
-		System.err.println("状态:\r" + status);
+		System.out.println("状态：" + status);
 	}
 }

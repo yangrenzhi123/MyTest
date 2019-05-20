@@ -10,6 +10,9 @@ import java.security.interfaces.ECPrivateKey;
 import java.security.interfaces.ECPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+
+import org.apache.commons.codec.binary.Base64;
+
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 
 @SuppressWarnings({ "restriction" })
@@ -21,6 +24,14 @@ public class ECDSA {
 		jdkECDSA();
 	}
 
+	public static byte[] decryptBASE64(String key) {
+		return Base64.decodeBase64(key);
+	}
+
+	public static String encryptBASE64(byte[] key) {
+		return Base64.encodeBase64String(key);
+	}
+	
 	public static void jdkECDSA() {
 		try {
 			// 1.初始化密钥
@@ -31,7 +42,9 @@ public class ECDSA {
 			ECPrivateKey ecPrivateKey = (ECPrivateKey) keyPair.getPrivate();
 
 			// 2.执行签名
-			PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(ecPrivateKey.getEncoded());
+			byte[] privateKeyByte = ecPrivateKey.getEncoded();
+			PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(privateKeyByte);
+			System.out.println("私钥：" + encryptBASE64(privateKeyByte));
 			KeyFactory keyFactory = KeyFactory.getInstance("EC");
 			PrivateKey privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
 			Signature signature = Signature.getInstance("SHA1withECDSA");
@@ -41,7 +54,9 @@ public class ECDSA {
 			System.out.println("签名：" + HexBin.encode(res));
 
 			// 3.验证签名
-			X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(ecPublicKey.getEncoded());
+			byte[] publicKeyByte = ecPublicKey.getEncoded();
+			X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(publicKeyByte);
+			System.out.println("公钥：" + encryptBASE64(publicKeyByte));
 			keyFactory = KeyFactory.getInstance("EC");
 			PublicKey publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
 			signature = Signature.getInstance("SHA1withECDSA");

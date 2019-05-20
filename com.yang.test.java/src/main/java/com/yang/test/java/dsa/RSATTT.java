@@ -11,9 +11,9 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
+import org.apache.commons.codec.binary.Base64;
 
-@SuppressWarnings({"restriction", "static-access"})
+@SuppressWarnings({ "static-access"})
 public class RSATTT {
 
 	private static String src = "我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是";
@@ -22,6 +22,14 @@ public class RSATTT {
 		jdkRSA();
 	}
 
+	public static byte[] decryptBASE64(String key) {
+		return Base64.decodeBase64(key);
+	}
+
+	public static String encryptBASE64(byte[] key) {
+		return Base64.encodeBase64String(key);
+	}
+	
 	public static void jdkRSA() {
 		try {
 			String signatureStr = "SHA1withRSA";
@@ -36,6 +44,7 @@ public class RSATTT {
 
 			// 2.执行签名
 			byte[] privateKeyByte = rsaPrivateKey.getEncoded();
+			System.out.println("私钥："+encryptBASE64(privateKeyByte));
 			System.out.println("私钥长度："+privateKeyByte.length);
 			PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(privateKeyByte);
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -44,12 +53,13 @@ public class RSATTT {
 			signature.initSign(privateKey);
 			signature.update(src.getBytes());
 			byte[] res = signature.sign();
-			System.out.println("签名长度："+res.length);
-			String sign = HexBin.encode(res);
+			String sign = encryptBASE64(res);
 			System.out.println("签名：" + sign + "，长度：" + sign.length());
+			System.out.println("签名长度："+res.length);
 
 			// 3.验证签名
 			byte[] publicKeyByte = rsaPublicKey.getEncoded();
+			System.out.println("公钥："+encryptBASE64(publicKeyByte));
 			System.out.println("公钥长度："+publicKeyByte.length);
 			X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(publicKeyByte);
 			keyFactory.getInstance("RSA");
