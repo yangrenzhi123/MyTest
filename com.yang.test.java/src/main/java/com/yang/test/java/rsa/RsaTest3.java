@@ -13,7 +13,7 @@ import org.apache.commons.codec.binary.Base64;
 public class RsaTest3 {
 	// 非对称密钥算法
 	public static final String KEY_ALGORITHM = "RSA";
-	private static final int KEY_SIZE = 512;
+	private static final int KEY_SIZE = 1024;
 	// 公钥
 	private static final String PUBLIC_KEY = "RSAPublicKey";
 	// 私钥
@@ -49,6 +49,8 @@ public class RsaTest3 {
 		Map<String, Object> keyMap = RsaTest3.initKey();
 		// 公钥
 		byte[] publicKey = RsaTest3.getPublicKey(keyMap);
-		System.out.println("公钥：/n" + Base64.encodeBase64String(publicKey));
+		System.out.println("公钥长度：" + publicKey.length);
+		String encode = Base64.encodeBase64String(publicKey);
+		System.out.println("公钥：" + encode + "，长度："+encode.length());
 	}
 }

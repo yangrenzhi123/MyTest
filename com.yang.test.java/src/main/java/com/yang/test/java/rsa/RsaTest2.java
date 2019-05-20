@@ -24,13 +24,13 @@ public class RsaTest2 {
 		String pKey = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJYKxMfKaNqPFLh1v5/woFfFDH01C/o4RBgjdQTBoWqy7Bih2DlxUim18BzcXhlK9HSam3W2T4FaKZ8fHF7AMtMCAwEAAQ==";
 		System.out.println("公钥：" + pKey);
 
-		String str = "我是原文，我是原文，我是原文！";
+		String str = "我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！我是原文，我是原文，我是原文！";
 		System.out.println("原文:" + str);
 
 		// 使用公钥对数据进行签名
 		long a = System.currentTimeMillis();
 		byte[] publicKey = Base64.decodeBase64(pKey);
-		System.out.println(System.currentTimeMillis() - a);
+		System.out.println("公钥长度："+publicKey.length);
 
 		
 		System.out.println(new String(publicKey));
