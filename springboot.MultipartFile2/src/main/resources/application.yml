@@ -1,5 +1,12 @@
 server:
   port: 6666
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8788
+        prefer-ip: true
+        
 management:
   endpoints:
     web:
