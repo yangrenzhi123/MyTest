@@ -14,7 +14,6 @@ import com.sun.jna.ptr.IntByReference;
 
 import main.java.com.netsdk.common.Res;
 import main.java.com.netsdk.lib.NetSDKLib;
-import main.java.com.netsdk.lib.ToolKits;
 import main.java.com.netsdk.lib.Utils;
 
 public class TestAlarmCapture {
@@ -57,7 +56,7 @@ public class TestAlarmCapture {
         if (!path.exists()) {
             path.mkdir();
         }
-		String logPath = path.getAbsoluteFile().getParent() + "\\sdklog\\" + ToolKits.getDate() + ".log";
+		String logPath = path.getAbsoluteFile().getParent() + "\\sdklog\\" + System.currentTimeMillis() + ".log";
 		setLog.nPrintStrategy = 0;
 		setLog.bSetFilePath = 1;
 		System.arraycopy(logPath.getBytes(), 0, setLog.szLogFilePath, 0, logPath.getBytes().length);

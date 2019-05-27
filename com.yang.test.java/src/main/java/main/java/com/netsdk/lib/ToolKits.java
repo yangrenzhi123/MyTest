@@ -22,17 +22,12 @@ import javax.swing.filechooser.FileFilter;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import com.sun.jna.ptr.IntByReference;
 
-import dahua.TestAlarmCapture;
-import main.java.com.netsdk.common.ErrorCode;
 import main.java.com.netsdk.common.PaintPanel;
-import main.java.com.netsdk.demo.module.LoginModule;
-import main.java.com.netsdk.lib.NetSDKLib.LLong;
 
 public class ToolKits {
-	//static NetSDKLib netsdkapi = NetSDKLib.NETSDK_INSTANCE;
-	//static NetSDKLib configapi = NetSDKLib.CONFIG_INSTANCE;
+	// static NetSDKLib netsdkapi = NetSDKLib.NETSDK_INSTANCE;
+	// static NetSDKLib configapi = NetSDKLib.CONFIG_INSTANCE;
 	
   	/***************************************************************************************************
   	 *                          				工具方法       	 										   *
@@ -209,7 +204,7 @@ public class ToolKits {
 		String path = "";
 		String os = System.getProperty("os.name");
 		if(os.toLowerCase().startsWith("win")) {
-			path = "./libs/";
+			path = "C:/libs/";
 		} else if(os.toLowerCase().startsWith("linux")) {
 			path = "";
 		}
@@ -313,7 +308,7 @@ public class ToolKits {
 	/*
 	 * 用选择器选择图片, 获取图片路径，并在界面显示
 	 */
-	public static String openPictureFile(PaintPanel paintPanel) {	
+	public static String openPictureFile(PaintPanel paintPanel) {
     	try {
             UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
         } catch (Exception e) {
@@ -445,10 +440,92 @@ public class ToolKits {
 	
         return memory;
 	}
-
-
 	
+	/**
+	 * 登录设备设备错误状态, 用于界面显示
+	 */
+	public static String getErrorCodeShow() {
+		// return ErrorCode.getErrorCode(LoginModule.netsdk.CLIENT_GetLastError());
+		return "";
+	}
+	
+	/**
+	 * 获取接口错误码和错误信息，用于打印
+	 * @return
+	 */
+	public static String getErrorCodePrint() {
+		// return "\n{error code: (0x80000000|" + (LoginModule.netsdk.CLIENT_GetLastError() & 0x7fffffff) +").参考  NetSDKLib.java }"
+		// 		+ " - {error info:" + ErrorCode.getErrorCode(LoginModule.netsdk.CLIENT_GetLastError()) + "}\n";
+		return "";
+	}
+	
+	/**
+	 * 获取单个配置
+	 * @param hLoginHandle 登陆句柄
+	 * @param nChn 通道号，-1 表示全通道
+	 * @param strCmd 配置名称
+	 * @param cmdObject 配置对应的结构体对象
+	 * @return 成功返回 true 
+	 */
+	public static boolean GetDevConfig(NetSDKLib.LLong hLoginHandle, int nChn, String strCmd, Structure cmdObject) {
+		/*boolean result = false;
+		IntByReference error = new IntByReference(0);
+		int nBufferLen = 2*1024*1024;
+	    byte[] strBuffer = new byte[nBufferLen];
+	   
+	    if(netsdkapi.CLIENT_GetNewDevConfig( hLoginHandle, strCmd , nChn, strBuffer, nBufferLen,error,3000)) {  
+	    	cmdObject.write();
+			if (configapi.CLIENT_ParseData(strCmd, strBuffer, cmdObject.getPointer(),
+					cmdObject.size(), null)) {
+				cmdObject.read();
+	     		result = true;
+	     	} else {
+	     		System.err.println("Parse " + strCmd + " Config Failed!" + ToolKits.getErrorCodePrint());
+	     		result = false;
+		 	}
+	    } else {
+			 System.err.printf("Get %s Config Failed!Last Error = %s\n" , strCmd , getErrorCodePrint());
+			 result = false;
+		}
+			
+	    return result;*/
+		return true;
+	}
+	
+	/**
+	 * 设置单个配置
+	 * @param hLoginHandle 登陆句柄
+	 * @param nChn 通道号，-1 表示全通道
+	 * @param strCmd 配置名称
+	 * @param cmdObject 配置对应的结构体对象
+	 * @return 成功返回 true
+	 */
+	public static boolean SetDevConfig(NetSDKLib.LLong hLoginHandle, int nChn, String strCmd, Structure cmdObject) {
+        /*boolean result = false;
+    	int nBufferLen = 2*1024*1024;
+        byte szBuffer[] = new byte[nBufferLen];
+        for(int i=0; i<nBufferLen; i++)szBuffer[i]=0;
+    	IntByReference error = new IntByReference(0);
+    	IntByReference restart = new IntByReference(0); 
 
+		cmdObject.write();
+		if (configapi.CLIENT_PacketData(strCmd, cmdObject.getPointer(), cmdObject.size(),
+				szBuffer, nBufferLen)) {	
+			cmdObject.read();
+        	if( netsdkapi.CLIENT_SetNewDevConfig(hLoginHandle, strCmd , nChn , szBuffer, nBufferLen, error, restart, 3000)) {
+        		result = true;
+        	} else {
+        		 System.err.printf("Set %s Config Failed! Last Error = %s\n" , strCmd , getErrorCodePrint());
+	        	 result = false;
+        	}
+        } else {
+        	System.err.println("Packet " + strCmd + " Config Failed!" + getErrorCodePrint());
+         	result = false;
+        }
+        
+        return result;*/
+		return true;
+    }
 	
     // Win下，将GBK String类型的转为Pointer
     public static Pointer GetGBKStringToPointer(String src) {	
@@ -480,7 +557,7 @@ public class ToolKits {
 	
 	/**
 	 * 数组拷贝， 用于先获取，再设置(src → dst)
-	 * @param b
+	 * @param src
 	 * @param dst
 	 */
 	public static void ByteArrayToByteArray(byte[] src, byte[] dst) {
