@@ -18,8 +18,8 @@ import javax.crypto.spec.DESKeySpec;
  */
 public class DESUtil {
 	public static void main(String[] args) throws Exception {
-		String mw = DESUtil.encryption("你好", "fdfefe43");
-		String ww = DESUtil.decryption(mw, "fdfefe43");	
+		String mw = DESUtil.encryption("你好", "fdfefe4311");
+		String ww = DESUtil.decryption(mw, "fdfefe4311");	
 		System.out.println(ww);
 	}
 	
