@@ -9,4 +9,9 @@ public class UserServiceImpl implements UserService {
 		System.out.println("进入方法 getUserById");
 		return userId;
 	}
+
+	public String getUserById(String userId, String userId2) {
+		System.out.println("进入方法 getUserById");
+		return userId;
+	}
 }

@@ -28,6 +28,6 @@ class HelloController {
 	
 	@GetMapping("/{id}")
 	public String hello2(@PathVariable ("id") String id) {
-		return userService.getUserById(id);
+		return userService.getUserById(id, id);
 	}
 }

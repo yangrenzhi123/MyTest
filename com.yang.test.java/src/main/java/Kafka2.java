@@ -13,8 +13,8 @@ public class Kafka2 {
 		properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-		String topic = "equip_HeartBeat";
-		properties.put("bootstrap.servers", "192.168.10.240:9092");
+		String topic = "test";
+		properties.put("bootstrap.servers", "192.168.30.120:9092");
 
 		Producer producer = new KafkaProducer<String, String>(properties);
 		for (int i = 0; i < 10; i++) {

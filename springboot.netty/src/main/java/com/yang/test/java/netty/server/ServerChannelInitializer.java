@@ -14,5 +14,9 @@ public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> 
 		socketChannel.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
 		socketChannel.pipeline().addLast(new PacketDecoder());
 		socketChannel.pipeline().addLast(new ServerHandler());
+		
+		
+		//https://blog.csdn.net/guo_xl/article/details/85933678
+		//https://blog.csdn.net/zhushuai1221/article/details/79709591
 	}
 }

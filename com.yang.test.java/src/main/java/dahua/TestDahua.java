@@ -36,7 +36,7 @@ public class TestDahua {
 
 		netsdk.CLIENT_SetSnapRevCallBack(m_CaptureReceiveCB, null);
 		
-		NetSDKLib.LLong m_hLoginHandle = netsdk.CLIENT_LoginEx2("124.160.79.205", 61143, "admin", "admin", 0, null, new NetSDKLib.NET_DEVICEINFO_Ex(), new IntByReference(0));
+		NetSDKLib.LLong m_hLoginHandle = netsdk.CLIENT_LoginEx2("124.160.79.205", 61803, "admin", "admin", 0, null, new NetSDKLib.NET_DEVICEINFO_Ex(), new IntByReference(0));
 		NetSDKLib.LLong m_hPlayHandle = netsdk.CLIENT_RealPlayEx(m_hLoginHandle, 0, null, 0);
 
 		remoteCapturePicture(0, netsdk, m_hLoginHandle);
