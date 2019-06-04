@@ -1,10 +1,10 @@
+package com.yang.test.java.encryption.symmetric;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -76,37 +76,28 @@ public class DesTest {
 		fis.close();
 		bos.close();
 	}
-	
-	public static void simple() throws IOException {
-		byte[] b1 = new byte[] {49};
-		
-		File file = new File("D:/1.txt");
-		OutputStream fos = new FileOutputStream(file);
-		
-		fos.write(b1);
-		fos.close();
-	}
 
 	public static void simpleEncrypt() throws InterruptedException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
 		byte[] key = KEY.getBytes();
 		DESKeySpec desKey = new DESKeySpec(key);
 		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, SecretKeyFactory.getInstance("DES").generateSecret(desKey), new IvParameterSpec(key));
-		byte[] t = cipher.doFinal("12345678123456781234567".getBytes());
-		System.out.println(t.length);
+		byte[] t = cipher.doFinal("1234567".getBytes());
 		
 		
 		String s = new String(t);
 		System.out.println(s);
+		
+		simpleDecrypt(t);
 	}
 
-	public static void test4() throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
+	public static void simpleDecrypt(byte[] beDecrypt) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
 		byte[] key = KEY.getBytes();
 		
 		DESKeySpec desKey = new DESKeySpec(key);
 		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 		cipher.init(Cipher.DECRYPT_MODE, SecretKeyFactory.getInstance("DES").generateSecret(desKey), new IvParameterSpec(key));
-		byte[] b = cipher.doFinal("2esxXE87E+XYIleb/dcNwA==".getBytes());
+		byte[] b = cipher.doFinal(beDecrypt);
 		
 
 		String s = new String(b);
