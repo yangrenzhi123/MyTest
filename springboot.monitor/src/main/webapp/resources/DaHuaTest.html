@@ -11,7 +11,7 @@
 </body>
 <script>
 function init(){
-	alert("v:1234")
+	alert("v:8")
 	
 	var obj = document.getElementById("DPSDK_OCX");
 	var gWndId = null;
@@ -38,12 +38,12 @@ function init(){
 	var nStreamType = 1;
 	var nMediaType = 1;
 	var nTransType = 1;
-	var szCameraId = "1000614$0$0"
+	var szCameraId = "1000985$0$0"
 	
 	/* 实时 */
 	//var nRet = obj.DPSDK_StartRealplayByWndNo(gWndId, nWndNo, szCameraId, nStreamType, nMediaType, nTransType);
 	/* 回放 */
-	var nRet = obj.DPSDK_StartTimePlaybackByWndNo(gWndId, nWndNo, szCameraId, 2, 1553788800, 1553875200);
+	var nRet = obj.DPSDK_StartTimePlaybackByWndNo(gWndId, nWndNo, szCameraId, 2, 1559802660, 1559802720);
 	alert(nRet);
 }
 </script>
