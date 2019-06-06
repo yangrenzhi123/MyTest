@@ -53,8 +53,7 @@ public class IdWorker2{
 
         if (timestamp < lastTimestamp) {
             System.err.printf("clock is moving backwards.  Rejecting requests until %d.", lastTimestamp);
-            throw new RuntimeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds",
-                    lastTimestamp - timestamp));
+            throw new RuntimeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
         }
 
         if (lastTimestamp == timestamp) {
@@ -90,23 +89,27 @@ public class IdWorker2{
 
 	// ---------------测试---------------
 	public static void main(String[] args) {
-		IdWorker2 w1 = new IdWorker2(1, 1, 1);
-		IdWorker2 w2 = new IdWorker2(2, 1, 1);
+		System.out.println(1 << 3);
+		System.out.println(2 << 3);
 		
-		Thread t = new Thread(new Runnable() {
-			public void run() {
-				Object[] o = w1.nextId();
-				System.out.println(o[0]+"-------"+o[1]);
-			}
-		});
-		Thread t2 = new Thread(new Runnable() {
-			public void run() {
-				Object[] o = w2.nextId();
-				System.out.println(o[0]+"-------"+o[1]);
-			}
-		});
 		
-		t.start();
-		t2.start();
+//		IdWorker2 w1 = new IdWorker2(1, 1, 1);
+//		IdWorker2 w2 = new IdWorker2(2, 1, 1);
+//		
+//		Thread t = new Thread(new Runnable() {
+//			public void run() {
+//				Object[] o = w1.nextId();
+//				System.out.println(o[0]+"-------"+o[1]);
+//			}
+//		});
+//		Thread t2 = new Thread(new Runnable() {
+//			public void run() {
+//				Object[] o = w2.nextId();
+//				System.out.println(o[0]+"-------"+o[1]);
+//			}
+//		});
+//		
+//		t.start();
+//		t2.start();
 	}
 }
