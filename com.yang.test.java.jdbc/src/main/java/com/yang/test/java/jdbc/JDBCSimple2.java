@@ -11,7 +11,7 @@ import java.util.List;
 public class JDBCSimple2 {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL2 = "jdbc:mysql://172.28.51.33:3308?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true";
+	static final String DB_URL2 = "jdbc:mysql://172.28.51.33:3308?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "123456";
 
