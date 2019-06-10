@@ -20,6 +20,7 @@ public class Config {
 	private List<String> uiPlatform;
 	private List<String> device;
 	private List<String> third;
+	private List<String> disk;
 	private String mongodb;
 	
 
@@ -77,5 +78,11 @@ public class Config {
 	}
 	public void setKafka(String kafka) {
 		this.kafka = kafka;
+	}
+	public List<String> getDisk() {
+		return disk;
+	}
+	public void setDisk(List<String> disk) {
+		this.disk = disk;
 	}
 }

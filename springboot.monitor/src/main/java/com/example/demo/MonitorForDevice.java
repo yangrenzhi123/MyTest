@@ -7,10 +7,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +22,6 @@ public class MonitorForDevice {
 			String[] ss = gw.split(":");
 			common(ss[0], Integer.parseInt(ss[1]), "箱体服务");
 		}
-		
-
-		List<String> uiConsoles = config.getThird();
-		for(String uiConsole : uiConsoles) {
-			String[] ss = uiConsole.split(":");
-			common(ss[0], Integer.parseInt(ss[1]), "发放机服务");
-		}
-		
 
 		String mongodb = config.getMongodb();
 		String[] ss = mongodb.split(":");

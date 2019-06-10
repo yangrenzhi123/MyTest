@@ -20,23 +20,26 @@ public class MonitorForService {
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
 		List<String> gws = config.getGw();
-		for(String gw : gws) {
+		for (String gw : gws) {
 			common(gw, "后端网关");
 		}
-		
 
 		List<String> uiConsoles = config.getUiConsole();
-		for(String uiConsole : uiConsoles) {
+		for (String uiConsole : uiConsoles) {
 			common(uiConsole, "运维端");
 		}
-		
 
 		List<String> uiPlatforms = config.getUiPlatform();
-		for(String uiPlatform : uiPlatforms) {
+		for (String uiPlatform : uiPlatforms) {
 			common(uiPlatform, "租户端");
 		}
+
+		List<String> thirds = config.getThird();
+		for (String third : thirds) {
+			common(third, "发放机服务");
+		}
 	}
-	
+
 	private void common(String gw, String name) {
 		HttpGet get = new HttpGet("http://" + gw);
 
@@ -69,7 +72,6 @@ public class MonitorForService {
 			result.setResult(0);
 			DemoApplication.result.put(gw, result);
 		}
-		
 
 		try {
 			httpClient.close();
