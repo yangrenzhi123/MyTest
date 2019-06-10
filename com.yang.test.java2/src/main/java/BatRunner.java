@@ -4,16 +4,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class BatRunner {
-
 	public static void main(String[] args) throws IOException, InterruptedException {
-		String[] cmdA = { "/bin/sh", "-c", "df -h | awk '{print $5}'" }; // 这个样子可以带参数
-		Process p = Runtime.getRuntime().exec(cmdA);
+		Process p = Runtime.getRuntime().exec("df -h | awk '{print $1}'");
 		console(p);
 		error(p);
 	}
 
 	private static void console(Process p) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "UTF-8"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream(), "GBK"));
 		String line;
 		while ((line = br.readLine()) != null) {
 			System.out.println(line);
@@ -22,7 +20,7 @@ public class BatRunner {
 	}
 
 	private static void error(Process p) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(p.getErrorStream(), "UTF-8"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(p.getErrorStream(), "GBK"));
 		String line;
 		while ((line = br.readLine()) != null) {
 			System.out.println(line);
