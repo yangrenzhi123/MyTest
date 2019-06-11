@@ -9,6 +9,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.UUID;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -24,9 +25,9 @@ public class DesTest {
 
 	public static void main(String[] args) throws Exception {
 //		encrypt("C:/1.png", "C:/2.png");
-//		decrypt("C:/2.png", "C:/3.png");
+		decrypt("C:/Users/yrz/OneDrive/工资条/201904.png", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".png");
 		
-		simpleEncrypt();
+//		simpleEncrypt();
 	}
 
 	public static void encrypt(String source, String target) throws Exception {
