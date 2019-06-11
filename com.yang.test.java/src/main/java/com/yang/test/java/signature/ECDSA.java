@@ -13,9 +13,6 @@ import java.security.spec.X509EncodedKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
-
-@SuppressWarnings({ "restriction" })
 public class ECDSA {
 
 	private static String src = "我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是";
@@ -34,21 +31,21 @@ public class ECDSA {
 	
 	public static void jdkECDSA() {
 //		SHA1withECDSA
-//		私钥：MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCDKyuPTd3fqxj3JiuC+LjHpu1BNUJ3CAzNKWk85OkuKQA==
-//		签名：3046022100F7DB1982A69217AABC7F8C3C8E8B325D275D424091FBC438FB1021A637E0ED6D022100E0516C5FC8602251AE9ABA8EE34EB09B8F0E86EBE7468F96B05F3E9C6CC609F6
-//		公钥：MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE4kZzizUnz2g4D+VxhFv43UkHaWF+IkpdQ3DJDH6sS9Tb6/kZhNrYEHimLSZF2ToCBnZg0UOBytKlKTOf7DkTSA==
+//		私钥：MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCBnMFiczsIsDskq7We4E/YRVyJmwzIUfnLpcieKpAiHUQ==
+//		签名：MEUCIQC8FPKm1R99s8KZd2p+cO79pcyk2CSH6C8YSukH6i6N8wIgItpM+lFefQce5ePCFtQvPIa0Zj67ySaM7CROv+MEYI4=
+//		公钥：MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKYHIKPbQEqzWnSUBO9LJIs6ghk1sw5XxMPn52vUJHnFUJAmGLnfPgYjPyh1p7P+rgHZQr82fROUy8Gt+qhtb3Q==
 //		验证：true
 		
 //		SHA256withECDSA
-//		私钥：MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCCcN0ske2U1aW5QU1ez10UoadnrjPAtstQarPbwFjNC4Q==
-//		签名：3046022100B44917942EBE23C45480E3DA4A6647D38E29E6D6FC18D7F121354175B8A2DF07022100BDD75EB90BD2C463CF2455C2312F832BCBA459D05910D4B4A1619B3BD2FF2C25
-//		公钥：MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE59jtLL+HSYRqOLYDVQvgrKAn8pzx0KM9HrvuATwbshGBEIV9xp0KuhDLrBc4lLNNTc8kzo2pRjyewPLakvwlNA==
+//		私钥：MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCBPqih96bCL7lRiSjxMRHj6RHC5o4K6jcSpYZZs0wUbJg==
+//		签名：MEYCIQCx2tBg3VRNzpDE5OBfltmz/oKfY2zMYGcoMfNPcD/pmgIhAIh3Mag35yKYFumb5AaG3QdXu2zRFQ/ov7xpC2ViZJRj
+//		公钥：MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE3HjmXWNHAJCBlmvrEsrdLsVTJ+7O4ld0UwlgROJLLnAfzqf57kADO9vObMiDZNlLVWUxWiV4Bd9LphYVZ/IacQ==
 //		验证：true
 		
 		
 		
 		try {
-			String sf = "SHA1withECDSA";
+			String sf = "SHA256withECDSA";
 			
 			// 1.初始化密钥
 			KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC");
@@ -67,7 +64,7 @@ public class ECDSA {
 			signature.initSign(privateKey);
 			signature.update(src.getBytes());
 			byte[] res = signature.sign();
-			System.out.println("签名：" + HexBin.encode(res));
+			System.out.println("签名：" + encryptBASE64(res));
 
 			// 3.验证签名
 			byte[] publicKeyByte = ecPublicKey.getEncoded();
