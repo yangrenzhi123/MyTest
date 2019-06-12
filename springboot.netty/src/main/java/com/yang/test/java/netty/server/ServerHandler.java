@@ -9,7 +9,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<Object> {
 
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, Object msg) {
-		System.out.println(ctx.channel().id());
+		System.out.println("通道(" + ctx.channel().id() + ")，开始处理");
 
 		System.out.println("server receive message：" + msg);
 		//ctx.channel().writeAndFlush("服务器收到信息：" + msg);
@@ -18,16 +18,18 @@ public class ServerHandler extends SimpleChannelInboundHandler<Object> {
 		ctx.channel().writeAndFlush(resp);
 		
 		// ctx.close(); //会主动关闭通道
+		
+		ctx.fireChannelRead(msg);
 	}
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) {
-		System.out.println("channelActive>>>>>>>>");
+		System.out.println("通道(" + ctx.channel().id() + ")，channelActive>>>>>>>>");
 	}
 
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-		System.out.println(ctx.channel().id() + "断开连接");
+		System.out.println("通道(" + ctx.channel().id() + ")，断开连接");
 	}
 
 	public static byte[] hexString2Bytes(String hex) {
