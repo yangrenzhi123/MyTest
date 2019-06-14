@@ -8,4 +8,8 @@ public class ObjectFactory {
 	public PackageCodeList createPackageCodeList() {
 		return new PackageCodeList();
 	}
+
+	public Messages createMessages() {
+		return new Messages();
+	}
 }
