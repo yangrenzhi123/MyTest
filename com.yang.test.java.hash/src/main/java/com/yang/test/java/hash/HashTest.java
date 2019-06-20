@@ -1,3 +1,4 @@
+package com.yang.test.java.hash;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,10 +7,30 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5 {
+public class HashTest {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-		t4();
+		md5();
+		sha1();
+		sha256();
+	}
+
+	public static void md5() throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update("123456".getBytes());
+		System.out.println(new BigInteger(1, md.digest()).toString(16)); // 16表示16进制
+	}
+
+	public static void sha1() throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-1");
+		md.update("123456".getBytes());
+		System.out.println(new BigInteger(1, md.digest()).toString(16)); // 16表示16进制
+	}
+
+	public static void sha256() throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		md.update("123456".getBytes());
+		System.out.println(new BigInteger(1, md.digest()).toString(16)); // 16表示16进制
 	}
 
 	public static void t1() throws NoSuchAlgorithmException {
@@ -19,12 +40,6 @@ public class MD5 {
 		md.update(stringSignTemp.getBytes());
 		String sign = new BigInteger(1, md.digest()).toString(16).toUpperCase();
 		System.out.println(sign);
-	}
-
-	public static void t4() throws NoSuchAlgorithmException {
-		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update("123456".getBytes());
-		System.out.println(new BigInteger(1, md.digest()).toString(16));
 	}
 
 	public static void md5ForFile() throws NoSuchAlgorithmException, IOException {
