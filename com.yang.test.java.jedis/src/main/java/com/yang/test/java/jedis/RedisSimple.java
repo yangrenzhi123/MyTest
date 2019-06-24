@@ -51,9 +51,9 @@ public class RedisSimple {
 		String key = "h_equipment00013190308005";
 //		j.del(key);
 		System.out.println(j.hgetAll(key));
-		
+
 //		j.set(key, key, "NX", "EX", 2*60);
-		
+
 //		Map<String, String> m = new HashMap<String, String>();
 //		m.put("1", "1");
 //		j.hmset(key, m);

@@ -24,8 +24,8 @@ public class DesTest {
 	private static final String KEY = "12345678";
 
 	public static void main(String[] args) throws Exception {
-//		encrypt("C:/1.png", "C:/2.png");
-		decrypt("C:/Users/yrz/OneDrive/工资条/201904.png", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".png");
+		encrypt("C:/Windows/Temp/新建文件夹/微信图片_20190624192835.png", "C:/Users/yrz/OneDrive/工资条/201905.png");
+		decrypt("C:/Users/yrz/OneDrive/工资条/201905.png", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".png");
 		
 //		simpleEncrypt();
 	}

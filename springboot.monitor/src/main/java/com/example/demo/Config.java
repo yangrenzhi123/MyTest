@@ -22,8 +22,6 @@ public class Config {
 	private List<String> third;
 	private List<String> disk;
 	private String mongodb;
-	
-
 
 	public String getMongodb() {
 		return mongodb;
