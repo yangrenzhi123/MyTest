@@ -29,8 +29,15 @@ public class HashTest {
 
 	public static void sha256() throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		md.update("123456".getBytes());
-		System.out.println(new BigInteger(1, md.digest()).toString(16)); // 16表示16进制
+		md.update("0f20d06bb7917782f1cdcd5e795c19e0f54a742e898a5b53ee817f40355037cf15617056693185Hey im the third block" .getBytes());
+		String hash = new BigInteger(1, md.digest()).toString(16); // 16表示16进制
+		StringBuilder sb = new StringBuilder(hash);
+		int i = 64 - hash.length();
+		while (i > 0) {
+			sb.insert(0, "0");
+			i--;
+		}
+		System.out.println(sb.toString());
 	}
 
 	public static void t1() throws NoSuchAlgorithmException {
