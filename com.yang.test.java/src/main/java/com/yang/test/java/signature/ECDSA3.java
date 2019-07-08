@@ -18,9 +18,9 @@ public class ECDSA3 {
 		String sf = "SHA1withECDSA";
 
 		// 公钥
-		String publicKeyStr = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE1wVfIjS3ttdFG43bEUEANr+H7XdiIR+lHwtzBllDgmpVIoM/F3w8pmmJw19RAlICmLkM/BMv7o8pSrjK8fXY8w==";
-		String sign = "MEQCIHRWpXWwWHe9fF6+gY8CeFo7YVYNVxVSPIy2rxfhYJZ+AiB3QF6HpU6NdJokaU7UnH9D7Xdji7WCPeKqa4jVRPL9yg==";
-		String plaintext = "LYHZP00001CX01ZJLY012015100006741139078741067042816";
+		String publicKeyStr = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkufAcKuERJlJXno+SSbq23CPRpfot0sOUSD8xWWLfh8qdUwYRjrsy0ARmDZK1mrZ+/FCUtlfBWUgLVuK4BnKUA==";
+		String sign = "MEUCIA5k1vANus6Ib2+0Gr2Bd1gVTsCFrJq1YkmkxXH0v8ZsAiEAzKrHnls8zQ6pPLXo/Mlqa1e0k0f08U0uaVTs5u3N60k=";
+		String plaintext = "114702489670281216018676340124";
 
 		// 验证签名
 		byte[] publicKeyByte = decryptBASE64(publicKeyStr);
