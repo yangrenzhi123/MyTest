@@ -16,4 +16,7 @@
         from user_t
         where id = #{id,jdbcType=INTEGER}
     </select>
+	<insert id="insert">
+        insert into a(id, name) values(2147483647, 'li11li');
+    </insert>
 </mapper>
