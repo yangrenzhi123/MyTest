@@ -52,11 +52,11 @@ public class MonitorForRedis {
 				j2.close();
 			}
 			result.setResult(1);
-			DemoApplication.result.put(s, result);
+			MonitorStartup.result.put(s, result);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result.setResult(0);
-			DemoApplication.result.put(s, result);
+			MonitorStartup.result.put(s, result);
 		}
 	}
 }

@@ -40,10 +40,10 @@ public class MonitorForDevice {
 			
 
 			result.setResult(1);
-			DemoApplication.result.put(ip+":"+port, result);
+			MonitorStartup.result.put(ip+":"+port, result);
 		} catch (Exception e) {
 			result.setResult(0);
-			DemoApplication.result.put(ip+":"+port, result);
+			MonitorStartup.result.put(ip+":"+port, result);
 			return;
 		}
 	}

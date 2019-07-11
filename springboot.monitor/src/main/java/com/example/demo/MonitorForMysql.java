@@ -41,7 +41,7 @@ public class MonitorForMysql {
 			} catch (Exception e) {
 				logger.error("", e);
 				result.setResult(0);
-				DemoApplication.result.put(infos[0] + " " + infos[1] + " ******", result);
+				MonitorStartup.result.put(infos[0] + " " + infos[1] + " ******", result);
 				continue;
 			}
 
@@ -53,10 +53,10 @@ public class MonitorForMysql {
 
 			if (rs) {
 				result.setResult(1);
-				DemoApplication.result.put(infos[0] + " " + infos[1] + " ******", result);
+				MonitorStartup.result.put(infos[0] + " " + infos[1] + " ******", result);
 			} else {
 				result.setResult(0);
-				DemoApplication.result.put(infos[0] + " " + infos[1] + " ******", result);
+				MonitorStartup.result.put(infos[0] + " " + infos[1] + " ******", result);
 			}
 		}
 	}

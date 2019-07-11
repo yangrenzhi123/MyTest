@@ -54,7 +54,7 @@ public class MonitorForService {
 			response = httpClient.execute(get);
 		} catch (Exception e) {
 			result.setResult(0);
-			DemoApplication.result.put(gw, result);
+			MonitorStartup.result.put(gw, result);
 			try {
 				httpClient.close();
 			} catch (IOException e1) {
@@ -67,10 +67,10 @@ public class MonitorForService {
 
 		if (code == 200) {
 			result.setResult(1);
-			DemoApplication.result.put(gw, result);
+			MonitorStartup.result.put(gw, result);
 		} else {
 			result.setResult(0);
-			DemoApplication.result.put(gw, result);
+			MonitorStartup.result.put(gw, result);
 		}
 
 		try {

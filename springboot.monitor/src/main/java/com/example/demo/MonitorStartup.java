@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /** 注意Controller包在同包或者子包下 */
 @SpringBootApplication
-public class DemoApplication {
+public class MonitorStartup {
 
 	@Autowired
 	MonitorForMysql monitorForMysql;
@@ -36,6 +36,8 @@ public class DemoApplication {
 	MonitorForService monitorForService;
 	@Autowired
 	MonitorForDevice monitorForDevice;
+	@Autowired
+	MonitorForDisk monitorForDisk;
 
 	@Bean
 	public String getInitor() {
@@ -48,6 +50,7 @@ public class DemoApplication {
 					monitorForRedis.execute();
 					monitorForService.execute();
 					monitorForDevice.execute();
+					monitorForDisk.execute();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -60,7 +63,7 @@ public class DemoApplication {
 	public static final Map<String, MoniResult> result = new HashMap<String, MoniResult>();
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(MonitorStartup.class, args);
 	}
 }
 
@@ -75,7 +78,7 @@ class HelloController {
 		List<String> l = new ArrayList<>();
 		DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-		Iterator<Entry<String, MoniResult>> iter = DemoApplication.result.entrySet().iterator();
+		Iterator<Entry<String, MoniResult>> iter = MonitorStartup.result.entrySet().iterator();
 		while (iter.hasNext()) {
 			Map.Entry<String, MoniResult> entry = (Map.Entry<String, MoniResult>) iter.next();
 			Object key = entry.getKey();

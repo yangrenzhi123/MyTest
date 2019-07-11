@@ -5,10 +5,13 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,34 +22,18 @@ public class MonitorForDisk {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
-		List<String> gws = config.getGw();
-		for (String gw : gws) {
-			common(gw, "后端网关");
-		}
-
-		List<String> uiConsoles = config.getUiConsole();
-		for (String uiConsole : uiConsoles) {
-			common(uiConsole, "运维端");
-		}
-
-		List<String> uiPlatforms = config.getUiPlatform();
-		for (String uiPlatform : uiPlatforms) {
-			common(uiPlatform, "租户端");
-		}
-
-		List<String> thirds = config.getThird();
-		for (String third : thirds) {
-			common(third, "发放机服务");
+		List<String> diskes = config.getDisk();
+		for (String disk : diskes) {
+			common(disk);
 		}
 	}
 
-	private void common(String gw, String name) {
-		HttpGet get = new HttpGet("http://" + gw);
+	private void common(String disk) throws ParseException, IOException {
+		HttpGet get = new HttpGet("http://" + disk);
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 
 		MoniResult result = new MoniResult();
-		result.setName(name);
 		result.setCheckTime(new Date());
 
 		HttpResponse response = null;
@@ -54,7 +41,7 @@ public class MonitorForDisk {
 			response = httpClient.execute(get);
 		} catch (Exception e) {
 			result.setResult(0);
-			DemoApplication.result.put(gw, result);
+			MonitorStartup.result.put(disk, result);
 			try {
 				httpClient.close();
 			} catch (IOException e1) {
@@ -67,11 +54,15 @@ public class MonitorForDisk {
 
 		if (code == 200) {
 			result.setResult(1);
-			DemoApplication.result.put(gw, result);
+			MonitorStartup.result.put(disk, result);
 		} else {
 			result.setResult(0);
-			DemoApplication.result.put(gw, result);
+			MonitorStartup.result.put(disk, result);
 		}
+
+		HttpEntity httpEntity = response.getEntity();
+		String persent = EntityUtils.toString(httpEntity);
+		result.setName("磁盘最高占用比" + persent + "%");
 
 		try {
 			httpClient.close();
