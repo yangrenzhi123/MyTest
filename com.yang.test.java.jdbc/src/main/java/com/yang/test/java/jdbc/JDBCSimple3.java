@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class JDBCSimple3 {
 
@@ -14,9 +12,6 @@ public class JDBCSimple3 {
 	static final String DB_URL2 = "jdbc:mysql://192.168.10.228:3306/saas_lyzh?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true";
 	static final String USER = "root";
 	static final String PASS = "123456";
-
-	static final int num = 10;
-	static final List<Connection> l = new ArrayList<Connection>();
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName(DRIVER);

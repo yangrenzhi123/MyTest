@@ -6,9 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableAutoConfiguration
 @SpringBootApplication
-public class Swagger {
+public class SwaggerStartup {
 
+	/** UI展示地址 /swagger-ui.html */
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Swagger.class, args);
+		SpringApplication.run(SwaggerStartup.class, args);
 	}
 }
