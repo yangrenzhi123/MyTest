@@ -87,7 +87,7 @@ public class IdWorker{
 
 	// ---------------测试---------------
 	public static void main(String[] args) {
-		IdWorker worker = new IdWorker(2, 1, 1);
+		IdWorker worker = new IdWorker(0, 0, 0);
 		for (int i = 0; i < 10; i++) {
 			System.out.println(worker.nextId());
 		}

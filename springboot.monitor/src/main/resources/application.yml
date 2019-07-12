@@ -1,5 +1,7 @@
 server:
   port: 9999
+  tomcat:
+    basedir: /media/monitor
 spring:
   mvc:
     view:

@@ -4,6 +4,6 @@ import java.text.ParseException;
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(Long.MAX_VALUE);
+		System.out.println(System.currentTimeMillis());
 	}
 }
