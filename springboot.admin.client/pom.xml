@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.yang.test.java</groupId>
-	<artifactId>springboot.MultipartFile</artifactId>
+	<artifactId>springboot.admin.client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -43,7 +43,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>springboot.MultipartFile</finalName>
+		<finalName>springboot.admin.client</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
