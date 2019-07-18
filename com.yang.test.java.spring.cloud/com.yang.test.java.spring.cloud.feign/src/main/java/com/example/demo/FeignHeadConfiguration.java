@@ -29,9 +29,10 @@ public class FeignHeadConfiguration {
 				HttpServletRequest request = attrs.getRequest();
 				String hd_flag = request.getHeader("hd_flag");
 				if ("1".equals(hd_flag)) {
-					System.out.println(hd_flag);
 					RibbonFilterContextHolder.getCurrentContext().add("lancher", "1");
 					requestTemplate.header("hd_flag", "1");
+				}else {
+					RibbonFilterContextHolder.getCurrentContext().add("lancher", "0");
 				}
 			}
 

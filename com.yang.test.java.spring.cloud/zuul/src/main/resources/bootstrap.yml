@@ -8,6 +8,12 @@ server:
 zuul:
   routes:
     api-a:
+      path: /api-a/**
+      serviceId: noun
+    api-b:
+      path: /api-b/**
+      serviceId: noun
+    api-c:
       path: /
       serviceId: noun
   semaphore:

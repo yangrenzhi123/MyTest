@@ -12,14 +12,14 @@ public class RedisSimple {
 	public static void main(String[] args) throws IOException {
 //		Jedis j = new Jedis("192.168.10.240", 6379);
 
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.20", 7001));
-		nodes.add(new HostAndPort("192.168.10.20", 7002));
-		nodes.add(new HostAndPort("192.168.10.20", 7003));
-		nodes.add(new HostAndPort("192.168.10.22", 7004));
-		nodes.add(new HostAndPort("192.168.10.22", 7005));
-		nodes.add(new HostAndPort("192.168.10.22", 7006));
-		JedisCluster j = new JedisCluster(nodes);
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("192.168.10.20", 7001));
+//		nodes.add(new HostAndPort("192.168.10.20", 7002));
+//		nodes.add(new HostAndPort("192.168.10.20", 7003));
+//		nodes.add(new HostAndPort("192.168.10.22", 7004));
+//		nodes.add(new HostAndPort("192.168.10.22", 7005));
+//		nodes.add(new HostAndPort("192.168.10.22", 7006));
+//		JedisCluster j = new JedisCluster(nodes);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.30.62", 7001));
@@ -39,22 +39,22 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.10.229", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.10.240", 7001));
-//		nodes.add(new HostAndPort("192.168.10.240", 7002));
-//		nodes.add(new HostAndPort("192.168.10.240", 7003));
-//		nodes.add(new HostAndPort("192.168.10.240", 7004));
-//		nodes.add(new HostAndPort("192.168.10.240", 7005));
-//		nodes.add(new HostAndPort("192.168.10.240", 7006));
-//		JedisCluster j = new JedisCluster(nodes);
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.10.240", 7001));
+		nodes.add(new HostAndPort("192.168.10.240", 7002));
+		nodes.add(new HostAndPort("192.168.10.240", 7003));
+		nodes.add(new HostAndPort("192.168.10.240", 7004));
+		nodes.add(new HostAndPort("192.168.10.240", 7005));
+		nodes.add(new HostAndPort("192.168.10.240", 7006));
+		JedisCluster j = new JedisCluster(nodes);
 
-		String key = "h_operate_user:1ab4b295-cadc-4827-88f2-bd21db24b008";
-		//j.set(key, "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkufAcKuERJlJXno+SSbq23CPRpfot0sOUSD8xWWLfh8qdUwYRjrsy0ARmDZK1mrZ+/FCUtlfBWUgLVuK4BnKUA==");
+		String key = "mallOnline:verifycode:000002";
+		j.set(key, "000002");
 		System.out.println(j.get(key));
 		
 
 //		j.del(key);
-		System.out.println(j.mget(key));
+//		System.out.println(j.mget(key));
 
 //		j.set(key, key, "NX", "EX", 2*60);
 

@@ -11,3 +11,13 @@ eureka:
     prefer-ip-address: true
     metadata-map:
       lancher: 1
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: ["health","info","shutdown"]

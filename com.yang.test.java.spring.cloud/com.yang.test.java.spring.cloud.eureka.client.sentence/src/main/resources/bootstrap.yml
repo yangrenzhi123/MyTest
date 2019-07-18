@@ -12,4 +12,7 @@ endpoints:
 eureka:
   instance:
     prefer-ip-address: true
+    metadata-map:
+      lancher: 0
+      a: 0
 words: you,me,he8r

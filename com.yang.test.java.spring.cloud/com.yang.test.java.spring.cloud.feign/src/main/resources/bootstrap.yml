@@ -11,7 +11,7 @@ spring:
     config:
       uri: http://localhost:8889
 server:
-  port: 8030
+  port: 8031
 eureka:
   client:
     service-url:
@@ -20,7 +20,7 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     metadata-map:
-      lancher: 1
+      lancher: 0
 ribbon:
   ReadTimeout: 10000
 management:
