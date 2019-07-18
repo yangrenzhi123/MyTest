@@ -10,3 +10,6 @@
 com.yang.test.java.spring.cloud/consul.producer/target/classes/META-INF/maven/com.yang.test.java/consul.producer/pom.properties
 mongodb/java.mongodb/.classpath
 mongodb/java.mongodb/.project
+*.prefs
+com.yang.test.java.spring.cloud/zuul/.classpath
+com.yang.test.java.spring.cloud/zuul/.project
