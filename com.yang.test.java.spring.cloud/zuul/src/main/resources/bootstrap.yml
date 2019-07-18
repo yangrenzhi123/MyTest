@@ -8,8 +8,8 @@ server:
 zuul:
   routes:
     api-a:
-      path: /**
-      serviceId: mmb-eureka-client-provider
+      path: /
+      serviceId: noun
   semaphore:
     max-semaphores: 10000
 ribbon:

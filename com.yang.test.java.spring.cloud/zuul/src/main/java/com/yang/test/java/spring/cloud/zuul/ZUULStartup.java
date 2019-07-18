@@ -12,7 +12,7 @@ import org.springframework.web.filter.ShallowEtagHeaderFilter;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableZuulProxy
-public class TestZuul {
+public class ZUULStartup {
 
 	@Bean
 	public Filter shallowEtagHeaderFilter() {
@@ -20,6 +20,6 @@ public class TestZuul {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestZuul.class, args);
+		SpringApplication.run(ZUULStartup.class, args);
 	}
 }

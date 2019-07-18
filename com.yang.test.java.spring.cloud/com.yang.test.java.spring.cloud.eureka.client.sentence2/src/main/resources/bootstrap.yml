@@ -6,3 +6,8 @@ spring:
   cloud:
     config:
       uri: http://localhost:8889
+eureka:
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      lancher: 1

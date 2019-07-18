@@ -13,19 +13,24 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class Controller {
 
-    /*无负载均衡效果*/
-    @Autowired
-    private DiscoveryClient client;
+	/* 无负载均衡效果 */
+	@Autowired
+	private DiscoveryClient client;
 
-    /*带负载均衡效果*/
-    @Autowired
-    private LoadBalancerClient balanceClient;
+	/* 带负载均衡效果 */
+	@Autowired
+	private LoadBalancerClient balanceClient;
 
 	@RequestMapping("/")
+	public String index() {
+		return "1";
+	}
+
+	@RequestMapping("/11111111111111")
 	public String getWord() {
 		ServiceInstance si = balanceClient.choose("mmb-eureka-client-provider");
 		URI uri = si.getUri();
 		System.out.println(uri);
-        return new RestTemplate().getForObject(uri,String.class);
+		return new RestTemplate().getForObject(uri, String.class);
 	}
 }

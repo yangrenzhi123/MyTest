@@ -1,7 +1,13 @@
-server:
-  port: 8764
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-words: you,me,her
+  instance:
+    ip-address: 127.0.0.1
+spring:
+  rabbitmq:
+    host: 172.28.51.33
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /

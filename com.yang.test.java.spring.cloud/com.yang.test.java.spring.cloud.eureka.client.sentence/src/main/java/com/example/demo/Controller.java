@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,13 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class Controller {
 
-	@Value("${words}")
-	private String words;
-
 	@RequestMapping("/")
 	public String getWord() throws InterruptedException {
-		System.out.println("words:"+words);
-		
-		return "1";
+		return "0";
 	}
 }

@@ -11,7 +11,7 @@ public class WordServiceImpl implements WordService {
 	@Autowired
 	NounClient nounClient;
 
-	@HystrixCommand(fallbackMethod = "getFallbackNoun")
+	//@HystrixCommand(fallbackMethod = "getFallbackNoun")
 	public String getNoun(String uuid) {
 		return nounClient.getWord(uuid);
 	}

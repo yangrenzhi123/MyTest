@@ -1,6 +1,17 @@
+server:
+  port: 8764
 spring:
   application:
     name: mmb-eureka-client-consumer
   cloud:
     config:
       uri: http://localhost:8889
+endpoints:
+  shutdown:
+    enabled: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      lancher: 1
+words: you,me,her

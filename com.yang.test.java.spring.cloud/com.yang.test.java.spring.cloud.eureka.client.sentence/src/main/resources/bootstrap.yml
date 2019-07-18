@@ -6,12 +6,10 @@ spring:
   cloud:
     config:
       uri: http://localhost:8889
-  rabbitmq:
-    host: 172.28.51.33
-    port: 5672
-    username: admin
-    password: admin
-    virtual-host: /
 endpoints:
   shutdown:
     enabled: true
+eureka:
+  instance:
+    prefer-ip-address: true
+words: you,me,he8r
