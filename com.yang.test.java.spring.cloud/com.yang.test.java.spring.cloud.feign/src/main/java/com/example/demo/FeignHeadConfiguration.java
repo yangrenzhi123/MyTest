@@ -31,9 +31,9 @@ public class FeignHeadConfiguration {
 				if ("1".equals(hd_flag)) {
 					RibbonFilterContextHolder.getCurrentContext().add("lancher", "1");
 					requestTemplate.header("hd_flag", "1");
-				}else {
+				}/*else {
 					RibbonFilterContextHolder.getCurrentContext().add("lancher", "0");
-				}
+				}*/
 			}
 
 			requestTemplate.header("headerId2", UUID.randomUUID().toString());
