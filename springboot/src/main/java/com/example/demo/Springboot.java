@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.zookeeper.KeeperException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,19 +21,7 @@ public class Springboot {
 class HelloController {
 
 	@RequestMapping("/")
-	public Dto hello2(@RequestBody Dto dto) {
-		return dto;
-	}
-}
-
-class Dto {
-	private byte[] data;
-
-	public byte[] getData() {
-		return data;
-	}
-
-	public void setData(byte[] data) {
-		this.data = data;
+	public String index() {
+		return "1";
 	}
 }
