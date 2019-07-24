@@ -1,11 +1,11 @@
+*.project
+*.classpath
 */target
 */*/target
-*/.project
 */bin
 */.settings
 **/.idea
-*/.classpath
 */out
 *.iml
 *.prefs
-*/*/.cache
+*.cache
