@@ -26,7 +26,7 @@ public class DesTest {
 	public static void main(String[] args) throws Exception {
 		String resultPng = "201906.png";
 		
-		encrypt("C:/Windows/Temp/新建文件夹/微信图片_20190725143612.png", "C:/Users/yrz/OneDrive/工资条/"+resultPng);
+		encrypt("C:/Windows/Temp/新建文件夹/微信图片_20190730111920.jpg", "C:/Users/yrz/OneDrive/工资条/"+resultPng);
 		decrypt("C:/Users/yrz/OneDrive/工资条/"+resultPng, "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".png");
 		
 //		simpleEncrypt();
