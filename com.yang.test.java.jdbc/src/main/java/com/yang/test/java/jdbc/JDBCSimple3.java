@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,8 @@ public class JDBCSimple3 {
 	static final List<Connection> l = new ArrayList<Connection>();
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		DecimalFormat df = new DecimalFormat("00,0000,0000");
+		
 		Class.forName(DRIVER);
 
 		Connection conn = DriverManager.getConnection(DB_URL2, USER, PASS);
@@ -33,9 +36,9 @@ public class JDBCSimple3 {
 			String s6 = rs.getString("slave_sql_running");
 			String s7 = rs.getString("last_error");
 			System.out.println(s1);
-			System.out.println(s2);
+			System.out.println(df.format(Long.parseLong(s2)));
 			System.out.println(s3);
-			System.out.println(s4);
+			System.out.println(df.format(Long.parseLong(s4)));
 			System.out.println(s5);
 			System.out.println(s6);
 			System.out.println("错误日志：" + s7);
