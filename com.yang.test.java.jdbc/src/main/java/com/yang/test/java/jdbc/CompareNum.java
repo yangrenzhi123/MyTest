@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class CompareNum {
 	static final String PASS = "Lenovo@@7788";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		DecimalFormat df = new DecimalFormat("####,####");
 		Class.forName(DRIVER);
 
 		Connection conn2 = DriverManager.getConnection(DB_URL1, USER, PASS);
@@ -44,8 +46,8 @@ public class CompareNum {
 			rs.next();
 			int b = rs.getInt("num");
 			
-			
-			System.out.println((a == b ? "一致": "不一致") + ",表"+table+","+a+"-"+b+(a != b ? "，差值：("+(a-b)+")" : ""));
+
+			System.out.println((a == b ? "一致": "不一致") + "，表"+table+"，"+df.format(a)+"---"+df.format(b)+(a != b ? "，差值：("+(a-b)+")" : ""));
 		}
 		
 		stmt2.close();
