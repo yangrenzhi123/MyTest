@@ -5,7 +5,7 @@ import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class Kafka2 {
+public class KafkaSender {
 
 	public static void main(String[] args) {
 
