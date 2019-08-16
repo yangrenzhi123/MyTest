@@ -17,7 +17,7 @@ public class Kafka2 {
 		properties.put("bootstrap.servers", "192.168.8.70:9092");
 
 		Producer producer = new KafkaProducer<String, String>(properties);
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 1; i++) {
 			producer.send(new ProducerRecord<String, String>(topic, i + ""));
 		}
 		producer.close();
