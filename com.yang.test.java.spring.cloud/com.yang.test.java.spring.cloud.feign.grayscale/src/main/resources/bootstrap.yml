@@ -1,16 +1,28 @@
-server:
-  port: 8763
 spring:
   application:
-    name: mmb-eureka-client-provider
+    name: noun
+  rabbitmq:
+    host: 192.168.197.81
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
   cloud:
     config:
       uri: http://localhost:8889
+server:
+  port: 8032
 eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true
+    ip-address: 127.0.0.1
     metadata-map:
       api-version: 1
+ribbon:
+  ReadTimeout: 10000
 management:
   endpoint:
     shutdown:

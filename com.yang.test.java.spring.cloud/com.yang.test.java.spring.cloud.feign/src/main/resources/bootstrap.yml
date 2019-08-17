@@ -2,7 +2,7 @@ spring:
   application:
     name: noun
   rabbitmq:
-    host: 172.28.51.33
+    host: 192.168.197.81
     port: 5672
     username: admin
     password: admin
@@ -20,7 +20,7 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     metadata-map:
-      lancher: 0
+      api-version: 0
 ribbon:
   ReadTimeout: 10000
 management:

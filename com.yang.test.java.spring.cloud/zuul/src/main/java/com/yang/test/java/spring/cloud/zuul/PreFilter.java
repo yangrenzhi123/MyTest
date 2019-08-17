@@ -7,6 +7,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Configuration;
 
 import com.netflix.zuul.ZuulFilter;
@@ -39,16 +40,16 @@ public class PreFilter extends ZuulFilter {
 	public Object run() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
-		
+
 		String s = request.getRequestURI();
 
 		if (s.startsWith("/api-a/")) {
-
 			RibbonFilterContext c = RibbonFilterContextHolder.getCurrentContext();
-			if("1".equals(request.getHeader("hd_flag"))) {
-				c.add("lancher", "1");
+			String apiVersion = request.getHeader("api-version");
+			if (StringUtils.isNotEmpty(apiVersion)) {
+				c.add("api-version", apiVersion);
 			}else {
-				c.add("lancher", "0");
+				c.add("api-version", "0");
 			}
 		}
 		return null;

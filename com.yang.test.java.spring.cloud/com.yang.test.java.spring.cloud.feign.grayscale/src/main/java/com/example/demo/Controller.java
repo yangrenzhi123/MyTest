@@ -49,6 +49,6 @@ public class Controller {
 
 	@RequestMapping("/test")
 	public @ResponseBody String test() {
-		return "success";
+		return "success gray";
 	}
 }

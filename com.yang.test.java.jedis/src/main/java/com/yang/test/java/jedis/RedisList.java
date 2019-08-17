@@ -6,7 +6,7 @@ import redis.clients.jedis.Jedis;
 
 public class RedisList {
 	public static void main(String[] args) throws IOException {
-		Jedis j = new Jedis("172.28.51.33", 6379);
+		Jedis j = new Jedis("192.168.197.81", 6379);
 
 		StringBuilder sb = new StringBuilder();
 		for(int i=0;i<10000;i++) {

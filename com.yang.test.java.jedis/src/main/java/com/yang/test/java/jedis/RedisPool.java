@@ -21,7 +21,7 @@ public class RedisPool {
 		config.setMaxWaitMillis(2000);
 		
 		// 获得连接池
-		JedisPool jedisPool = new JedisPool(config, "172.28.51.33", 6379);
+		JedisPool jedisPool = new JedisPool(config, "192.168.197.81", 6379);
 		for(int i=0;i<1000;i++) {
 			Jedis j = null;
 			try {

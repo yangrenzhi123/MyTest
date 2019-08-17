@@ -12,7 +12,7 @@ import org.apache.zookeeper.data.Stat;
 public class Simple {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-		ZooKeeper zk = new ZooKeeper("172.28.51.33:2181", 12000, new TestWatcher2());
+		ZooKeeper zk = new ZooKeeper("192.168.197.81:2181", 12000, new TestWatcher2());
 
 
 

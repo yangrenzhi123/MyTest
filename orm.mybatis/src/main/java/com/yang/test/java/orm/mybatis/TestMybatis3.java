@@ -15,7 +15,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 public class TestMybatis3 {
 	
 	public static void main(String[] args) throws IOException {
-		DataSource dataSource = new PooledDataSource("com.mysql.jdbc.Driver", "jdbc:mysql://172.28.51.33:3307/test?characterEncoding=utf-8", "root", "123456");
+		DataSource dataSource = new PooledDataSource("com.mysql.jdbc.Driver", "jdbc:mysql://192.168.197.81:3307/test?characterEncoding=utf-8", "root", "123456");
 		Environment environment = new Environment("test", new JdbcTransactionFactory(), dataSource);
 		
 		
