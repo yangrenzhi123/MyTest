@@ -41,7 +41,7 @@ public class JDBCSimple3 {
 			System.out.println(df.format(Long.parseLong(s4)));
 			System.out.println(s5);
 			System.out.println(s6);
-			System.out.println("错误日志：" + s7);
+			System.out.print("错误日志：" + s7);
 		}
 		stmt.close();
 	}
