@@ -1,10 +1,22 @@
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(URLDecoder.decode("%E7%94%A8%E6%88%B7%E5%B7%B2%E6%B3%A8%E5%86%8C", "utf8"));
+		long a = System.currentTimeMillis();
+		System.out.println(new Random().nextInt(20000000));
+		System.out.println(System.currentTimeMillis() - a);
+
+//		List<Integer> l = new ArrayList<Integer>();
+//		l.add(new Integer(0));
+//		l.add(new Integer(1));
+//		l.remove(1);
+//		for (Integer a : l) {
+//			System.out.println(a);
+//		}
 	}
 }
