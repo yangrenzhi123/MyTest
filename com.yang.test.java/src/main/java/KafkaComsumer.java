@@ -13,7 +13,7 @@ public class KafkaComsumer {
 
 		String group = "test";
 		String topic = "test";
-		props.put("bootstrap.servers", "192.168.8.70:9092");
+		props.put("bootstrap.servers", "192.168.10.23:9092");
 		
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");
