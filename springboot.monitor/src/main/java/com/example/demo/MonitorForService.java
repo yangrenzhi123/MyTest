@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -19,6 +20,11 @@ public class MonitorForService {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
+		List<String> daos = config.getDao();
+		for (String dao : daos) {
+			common(dao, "DAO服务");
+		}
+
 		List<String> gws = config.getGw();
 		for (String gw : gws) {
 			common(gw, "后端网关");
@@ -40,8 +46,12 @@ public class MonitorForService {
 		}
 	}
 
-	private void common(String gw, String name) {
-		HttpGet get = new HttpGet("http://" + gw);
+	private void common(String url, String name) throws IOException {
+		int timeout = 5000;
+		RequestConfig rc = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(5000).setConnectionRequestTimeout(5000).build();
+		
+		HttpGet get = new HttpGet("http://" + url);
+		get.setConfig(rc);
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 
@@ -54,7 +64,7 @@ public class MonitorForService {
 			response = httpClient.execute(get);
 		} catch (Exception e) {
 			result.setResult(0);
-			MonitorStartup.result.put(gw, result);
+			MonitorStartup.result.put(url, result);
 			try {
 				httpClient.close();
 			} catch (IOException e1) {
@@ -67,16 +77,13 @@ public class MonitorForService {
 
 		if (code == 200) {
 			result.setResult(1);
-			MonitorStartup.result.put(gw, result);
+			MonitorStartup.result.put(url, result);
 		} else {
 			result.setResult(0);
-			MonitorStartup.result.put(gw, result);
+			MonitorStartup.result.put(url, result);
 		}
 
-		try {
-			httpClient.close();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+
+		httpClient.close();
 	}
 }

@@ -45,11 +45,11 @@ public class MonitorStartup {
 		timer.schedule(new TimerTask() {
 			public void run() {
 				try {
-					monitorForMysql.execute();
-					monitorForKafka.execute();
-					monitorForRedis.execute();
+//					monitorForMysql.execute();
+//					monitorForKafka.execute();
+//					monitorForRedis.execute();
 					monitorForService.execute();
-					monitorForDevice.execute();
+//					monitorForDevice.execute();
 					monitorForDisk.execute();
 				} catch (Exception e) {
 					e.printStackTrace();
