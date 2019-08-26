@@ -20,6 +20,7 @@ public class Config {
 	private List<String> uiPlatform;
 	private List<String> device;
 	private List<String> dao;
+	private List<String> ca;
 	private List<String> third;
 	private List<String> disk;
 	private String mongodb;
@@ -89,5 +90,11 @@ public class Config {
 	}
 	public void setDao(List<String> dao) {
 		this.dao = dao;
+	}
+	public List<String> getCa() {
+		return ca;
+	}
+	public void setCa(List<String> ca) {
+		this.ca = ca;
 	}
 }

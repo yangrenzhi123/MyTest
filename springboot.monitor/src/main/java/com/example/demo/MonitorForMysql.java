@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -42,6 +44,9 @@ public class MonitorForMysql {
 				logger.error("", e);
 				result.setResult(0);
 				MonitorStartup.result.put(infos[0] + " " + infos[1] + " ******", result);
+
+				DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				TestDingding.test("检测时间：" + yyyy.format(result.getCheckTime()) + "，结果：" + (result.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + result.getName() + "，备注：" + result.getName());
 				continue;
 			}
 
@@ -57,6 +62,9 @@ public class MonitorForMysql {
 			} else {
 				result.setResult(0);
 				MonitorStartup.result.put(infos[0] + " " + infos[1] + " ******", result);
+
+				DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				TestDingding.test("检测时间：" + yyyy.format(result.getCheckTime()) + "，结果：" + (result.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + result.getName() + "，备注：" + result.getName());
 			}
 		}
 	}

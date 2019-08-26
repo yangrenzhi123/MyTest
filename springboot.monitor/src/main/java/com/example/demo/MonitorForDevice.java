@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +46,9 @@ public class MonitorForDevice {
 		} catch (Exception e) {
 			result.setResult(0);
 			MonitorStartup.result.put(ip+":"+port, result);
+
+			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			TestDingding.test("检测时间：" + yyyy.format(result.getCheckTime()) + "，结果：" + (result.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + result.getName() + "，备注：" + result.getName());
 			return;
 		}
 	}

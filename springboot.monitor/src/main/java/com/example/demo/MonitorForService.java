@@ -2,6 +2,8 @@ package com.example.demo;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +22,11 @@ public class MonitorForService {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
+		List<String> cas = config.getCa();
+		for (String ca : cas) {
+			common(ca, "CA服务");
+		}
+		
 		List<String> daos = config.getDao();
 		for (String dao : daos) {
 			common(dao, "DAO服务");
@@ -81,6 +88,9 @@ public class MonitorForService {
 		} else {
 			result.setResult(0);
 			MonitorStartup.result.put(url, result);
+
+			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			TestDingding.test("检测时间：" + yyyy.format(result.getCheckTime()) + "，结果：" + (result.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + result.getName() + "，备注：" + result.getName());
 		}
 
 

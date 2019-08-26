@@ -2,6 +2,8 @@ package com.example.demo;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -57,6 +59,9 @@ public class MonitorForRedis {
 			e.printStackTrace();
 			result.setResult(0);
 			MonitorStartup.result.put(s, result);
+
+			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			TestDingding.test("检测时间：" + yyyy.format(result.getCheckTime()) + "，结果：" + (result.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + result.getName() + "，备注：" + result.getName());
 		}
 	}
 }
