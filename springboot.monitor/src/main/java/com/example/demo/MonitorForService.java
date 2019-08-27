@@ -22,11 +22,45 @@ public class MonitorForService {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
+		List<String> platformList = config.getPlatform();
+		if(platformList != null) {
+			for (String platform : platformList) {
+				common(platform, "Platform服务");
+			}
+		}
+		
+		List<String> schedulerList = config.getScheduler();
+		if(schedulerList != null) {
+			for (String scheduler : schedulerList) {
+				common(scheduler, "Scheduler服务");
+			}
+		}
+
+		List<String> nmss = config.getNms();
+		for (String nms : nmss) {
+			common(nms, "NMS服务");
+		}
+
+		List<String> files = config.getFile();
+		for (String file : files) {
+			common(file, "FILE服务");
+		}
+
+		List<String> fls = config.getFl();
+		for (String fl : fls) {
+			common(fl, "FL服务");
+		}
+
+		List<String> dcs = config.getDc();
+		for (String dc : dcs) {
+			common(dc, "DC服务");
+		}
+
 		List<String> cas = config.getCa();
 		for (String ca : cas) {
 			common(ca, "CA服务");
 		}
-		
+
 		List<String> daos = config.getDao();
 		for (String dao : daos) {
 			common(dao, "DAO服务");
@@ -77,12 +111,18 @@ public class MonitorForService {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+
+			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			TestDingding.test("检测时间：" + yyyy.format(result.getCheckTime()) + "，结果：" + (result.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + result.getName() + "，备注：" + result.getName());
 			return;
 		}
 
 		int code = response.getStatusLine().getStatusCode();
 
 		if (code == 200) {
+			result.setResult(1);
+			MonitorStartup.result.put(url, result);
+		} else if(code == 404){
 			result.setResult(1);
 			MonitorStartup.result.put(url, result);
 		} else {

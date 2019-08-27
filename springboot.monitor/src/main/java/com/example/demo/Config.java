@@ -23,6 +23,12 @@ public class Config {
 	private List<String> ca;
 	private List<String> third;
 	private List<String> disk;
+	private List<String> dc;
+	private List<String> fl;
+	private List<String> file;
+	private List<String> nms;
+	private List<String> scheduler;
+	private List<String> platform;
 	private String mongodb;
 
 	public String getMongodb() {
@@ -96,5 +102,41 @@ public class Config {
 	}
 	public void setCa(List<String> ca) {
 		this.ca = ca;
+	}
+	public List<String> getDc() {
+		return dc;
+	}
+	public void setDc(List<String> dc) {
+		this.dc = dc;
+	}
+	public List<String> getFl() {
+		return fl;
+	}
+	public void setFl(List<String> fl) {
+		this.fl = fl;
+	}
+	public List<String> getFile() {
+		return file;
+	}
+	public void setFile(List<String> file) {
+		this.file = file;
+	}
+	public List<String> getNms() {
+		return nms;
+	}
+	public void setNms(List<String> nms) {
+		this.nms = nms;
+	}
+	public List<String> getScheduler() {
+		return scheduler;
+	}
+	public void setScheduler(List<String> scheduler) {
+		this.scheduler = scheduler;
+	}
+	public List<String> getPlatform() {
+		return platform;
+	}
+	public void setPlatform(List<String> platform) {
+		this.platform = platform;
 	}
 }
