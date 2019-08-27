@@ -1,4 +1,4 @@
-package com.yang.test.java.jdbc;
+package com.yang.test.java.jdbc.zs;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompareNum3 {
+public class CompareNum22to84 {
 
 	static final String schema = "lyzhhw4";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";

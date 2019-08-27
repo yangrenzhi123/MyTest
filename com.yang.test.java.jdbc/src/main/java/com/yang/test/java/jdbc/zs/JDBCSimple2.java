@@ -1,4 +1,4 @@
-package com.yang.test.java.jdbc;
+package com.yang.test.java.jdbc.zs;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
