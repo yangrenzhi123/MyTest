@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompareNum {
+public class CompareNum20to22 {
 
 	static final String schema = "lyzhhw4";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
