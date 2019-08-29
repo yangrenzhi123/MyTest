@@ -24,8 +24,6 @@ public class UserController {
 	@GetMapping("/")
 	@ResponseBody
 	public void hello() throws InterruptedException {
-		int i = 0;
-
 		while (true) {
 			long a = System.currentTimeMillis();
 			List<RecycleRecord> l = userDao.page();
@@ -38,10 +36,6 @@ public class UserController {
 			}
 
 			exchangeRecordService.exec(l);
-
-			if (i++ < 10) {
-				break;
-			}
 		}
 	}
 }

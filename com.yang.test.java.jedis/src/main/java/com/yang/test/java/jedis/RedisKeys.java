@@ -14,12 +14,12 @@ public class RedisKeys {
 		Jedis j5 = new Jedis("192.168.10.22", 7005);
 		Jedis j6 = new Jedis("192.168.10.22", 7006);
 
-		Set<String> s1 = j1.keys("h_equipment*");
-		Set<String> s2 = j2.keys("h_equipment*");
-		Set<String> s3 = j3.keys("h_equipment*");
-		Set<String> s4 = j4.keys("h_equipment*");
-		Set<String> s5 = j5.keys("h_equipment*");
-		Set<String> s6 = j6.keys("h_equipment*");
+		Set<String> s1 = j1.keys("h_tenant_group_map:*");
+		Set<String> s2 = j2.keys("h_tenant_group_map:*");
+		Set<String> s3 = j3.keys("h_tenant_group_map:*");
+		Set<String> s4 = j4.keys("h_tenant_group_map:*");
+		Set<String> s5 = j5.keys("h_tenant_group_map:*");
+		Set<String> s6 = j6.keys("h_tenant_group_map:*");
 		
 		for(String s : s1) {
 			System.out.println(j1.get(s));

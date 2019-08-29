@@ -1,6 +1,9 @@
-package com.yang.test.java.jedis;
+package com.yang.test.java.jedis.clear.zs;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -11,7 +14,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 
-public class RedisKeys3 {
+public class RedisBatGet {
 
 	public static TreeSet<String> keys(JedisCluster jedisCluster, String pattern) {
 		TreeSet<String> keys = new TreeSet<>();
@@ -44,16 +47,29 @@ public class RedisKeys3 {
 
 		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
 
-		for (String key : keys) {
-			if (key.equals("h_equipment00013190308005")) {
-				continue;
-			}
+		
 
+		System.out.println("------------------------------------START-----------------------------------------");
+		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/tmp/zhzt.txt"),"UTF-8"));
+		
+		int i = 0;int ii=0;
+		for (String key : keys) {
+			i++;
+			
 			Map<String, String> m = j.hgetAll(key);
-			if (m != null && m.get("\"redis_flag\"") != null && m.get("\"redis_flag\"").equals("1")) {
-				;
+			if(m.toString().contains("\"zhzt\"=0,")) {
+				ii++;
+				
+
+	            out.write( ("'" +m.get("\"tenantgroupid\"") + "',").replaceAll("\"", "") );
+	            out.newLine();
 			}
 		}
+		out.flush();
+		out.close();
+		System.out.println(i);
+		System.out.println(ii);
+		System.out.println("------------------------------------END-----------------------------------------");
 
 		j.close();
 	}

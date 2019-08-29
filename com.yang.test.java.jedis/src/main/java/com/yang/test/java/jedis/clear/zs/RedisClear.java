@@ -1,4 +1,4 @@
-package com.yang.test.java.jedis;
+package com.yang.test.java.jedis.clear.zs;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -11,11 +11,11 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 
-public class RedisKeys3 {
+public class RedisClear {
 
 	public static TreeSet<String> keys(JedisCluster jedisCluster, String pattern) {
-		TreeSet<String> keys = new TreeSet<>();
-		Map<String, JedisPool> clusterNodes = jedisCluster.getClusterNodes();
+		TreeSet<String> keys = new TreeSet<>(); // 获取所有的节点
+		Map<String, JedisPool> clusterNodes = jedisCluster.getClusterNodes(); // 遍历节点 获取所有符合条件的KEY
 		for (String k : clusterNodes.keySet()) {
 			JedisPool jp = clusterNodes.get(k);
 			Jedis connection = jp.getResource();
@@ -32,6 +32,13 @@ public class RedisKeys3 {
 
 	public static void main(String[] args) throws IOException {
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		
+//		nodes.add(new HostAndPort("192.168.10.240", 7001));
+//		nodes.add(new HostAndPort("192.168.10.240", 7002));
+//		nodes.add(new HostAndPort("192.168.10.240", 7003));
+//		nodes.add(new HostAndPort("192.168.10.240", 7004));
+//		nodes.add(new HostAndPort("192.168.10.240", 7005));
+//		nodes.add(new HostAndPort("192.168.10.240", 7006));
 
 		nodes.add(new HostAndPort("192.168.10.20", 7001));
 		nodes.add(new HostAndPort("192.168.10.20", 7002));
@@ -40,19 +47,25 @@ public class RedisKeys3 {
 		nodes.add(new HostAndPort("192.168.10.22", 7005));
 		nodes.add(new HostAndPort("192.168.10.22", 7006));
 
+//		nodes.add(new HostAndPort("192.168.30.62", 7001));
+//		nodes.add(new HostAndPort("192.168.30.62", 7002));
+//		nodes.add(new HostAndPort("192.168.30.62", 7003));
+//		nodes.add(new HostAndPort("192.168.30.62", 7004));
+//		nodes.add(new HostAndPort("192.168.30.62", 7005));
+//		nodes.add(new HostAndPort("192.168.30.62", 7006));
+
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
-
+		TreeSet<String> keys = keys(j, "h_operate_user:*");
+		
 		for (String key : keys) {
-			if (key.equals("h_equipment00013190308005")) {
-				continue;
-			}
-
-			Map<String, String> m = j.hgetAll(key);
-			if (m != null && m.get("\"redis_flag\"") != null && m.get("\"redis_flag\"").equals("1")) {
-				;
-			}
+//			if(key.endsWith("orderCode")) {
+//				continue;
+//			}
+			
+			System.out.println(key);
+			
+			//j.del(key);
 		}
 
 		j.close();
