@@ -14,7 +14,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 
-public class RedisBatGet {
+public class RedisBatGet2 {
 
 	public static TreeSet<String> keys(JedisCluster jedisCluster, String pattern) {
 		TreeSet<String> keys = new TreeSet<>();
@@ -63,8 +63,6 @@ public class RedisBatGet {
 
 	            out.write( ("'" +m.get("\"tenantgroupid\"") + "',").replaceAll("\"", "") );
 	            out.newLine();
-	            
-	            //j.del(key);
 			}
 		}
 		out.flush();

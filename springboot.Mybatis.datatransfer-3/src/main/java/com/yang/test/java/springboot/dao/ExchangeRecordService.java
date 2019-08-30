@@ -14,7 +14,7 @@ public class ExchangeRecordService {
 
 	@Resource
 	private UserDao userDao;
-	
+
 	@Transactional
 	public void exec(List<RecycleRecord> l) {
 		long b = System.currentTimeMillis();
@@ -24,8 +24,8 @@ public class ExchangeRecordService {
 		long c = System.currentTimeMillis();
 		userDao.updateBatch(l);
 		long cc = System.currentTimeMillis() - c;
-		
 
 		System.out.println("插入耗时：" + bb + "，更新耗时：" + cc);
+		System.out.println("");
 	}
 }

@@ -63,7 +63,7 @@ public class RedisClear {
 //				continue;
 //			}
 			
-			System.out.println(key);
+			System.out.println(key+"："+j.get(key));
 			
 			//j.del(key);
 		}

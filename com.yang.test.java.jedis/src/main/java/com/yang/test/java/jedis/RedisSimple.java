@@ -12,16 +12,16 @@ import redis.clients.jedis.JedisCluster;
 
 public class RedisSimple {
 	public static void main(String[] args) throws IOException {
-//		Jedis j = new Jedis("172.31.73.185", 6379);
+		Jedis j = new Jedis("192.168.10.90", 7001);
 
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.20", 7001));
-		nodes.add(new HostAndPort("192.168.10.20", 7002));
-		nodes.add(new HostAndPort("192.168.10.20", 7003));
-		nodes.add(new HostAndPort("192.168.10.22", 7004));
-		nodes.add(new HostAndPort("192.168.10.22", 7005));
-		nodes.add(new HostAndPort("192.168.10.22", 7006));
-		JedisCluster j = new JedisCluster(nodes);
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("192.168.10.20", 7001));
+//		nodes.add(new HostAndPort("192.168.10.20", 7002));
+//		nodes.add(new HostAndPort("192.168.10.20", 7003));
+//		nodes.add(new HostAndPort("192.168.10.22", 7004));
+//		nodes.add(new HostAndPort("192.168.10.22", 7005));
+//		nodes.add(new HostAndPort("192.168.10.22", 7006));
+//		JedisCluster j = new JedisCluster(nodes);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.30.62", 7001));
@@ -51,10 +51,10 @@ public class RedisSimple {
 //		JedisCluster j = new JedisCluster(nodes);
 
 //		j.del(key);
-		Map<String, String> m = j.hgetAll("h_tenant_group_map:LYZH190107982701");
-		if(m.toString().contains("\"zhzt\"=0,")) {
-			System.out.println("'" +m.get("\"tenantgroupid\"") + "',");
-		}
+		Map<String, String> m = j.hgetAll("h_tenant_group_map:LYZH180314815801");
+		System.out.println(m);
+		m = j.hgetAll("h_tenant_group_map:LYZH180314815802");
+		System.out.println(m);
 
 //		j.set(key, key, "NX", "EX", 2*60);
 
