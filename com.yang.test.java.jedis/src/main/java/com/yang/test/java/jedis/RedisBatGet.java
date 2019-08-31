@@ -1,4 +1,4 @@
-package com.yang.test.java.jedis.clear.zs;
+package com.yang.test.java.jedis;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -35,14 +35,12 @@ public class RedisBatGet {
 
 	public static void main(String[] args) throws IOException {
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-
-		nodes.add(new HostAndPort("192.168.10.20", 7001));
-		nodes.add(new HostAndPort("192.168.10.20", 7002));
-		nodes.add(new HostAndPort("192.168.10.20", 7003));
-		nodes.add(new HostAndPort("192.168.10.22", 7004));
-		nodes.add(new HostAndPort("192.168.10.22", 7005));
-		nodes.add(new HostAndPort("192.168.10.22", 7006));
-
+		nodes.add(new HostAndPort("192.168.10.240", 7001));
+		nodes.add(new HostAndPort("192.168.10.240", 7002));
+		nodes.add(new HostAndPort("192.168.10.240", 7003));
+		nodes.add(new HostAndPort("192.168.10.240", 7004));
+		nodes.add(new HostAndPort("192.168.10.240", 7005));
+		nodes.add(new HostAndPort("192.168.10.240", 7006));
 		JedisCluster j = new JedisCluster(nodes);
 
 		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
@@ -52,26 +50,17 @@ public class RedisBatGet {
 		System.out.println("------------------------------------START-----------------------------------------");
 		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/tmp/zhzt.txt"),"UTF-8"));
 		
-		int i = 0;int ii=0;
+		int i = 0;
 		for (String key : keys) {
 			i++;
 			
 			Map<String, String> m = j.hgetAll(key);
-			if(m.toString().contains("\"zhzt\"=0,")) {
-				ii++;
-				
-
-	            //out.write( ("'" +m.get("\"tenantgroupid\"") + "',").replaceAll("\"", "") );
-	            out.write(m.toString());
-	            out.newLine();
-	            
-	            //j.del(key);
-			}
+            out.write("key："+key+"，value："+m.toString());
+            out.newLine();
 		}
 		out.flush();
 		out.close();
 		System.out.println(i);
-		System.out.println(ii);
 		System.out.println("------------------------------------END-----------------------------------------");
 
 		j.close();
