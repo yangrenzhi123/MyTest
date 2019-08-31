@@ -49,14 +49,14 @@ public class RedisBatGet {
 
 		System.out.println("------------------------------------START-----------------------------------------");
 		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/tmp/zhzt.txt"),"UTF-8"));
-		
+
 		int i = 0;
 		for (String key : keys) {
 			i++;
-			
+
 			Map<String, String> m = j.hgetAll(key);
-            out.write("key："+key+"，value："+m.toString());
-            out.newLine();
+			out.write("key：" + key + "，value：" + m.toString());
+			out.newLine();
 		}
 		out.flush();
 		out.close();
