@@ -42,11 +42,9 @@ public class RedisKeysOrderCode {
 
 		JedisCluster j = new JedisCluster(nodes);
 
-		//TreeSet<String> keys = keys(j, "orderCode:*");
-		TreeSet<String> keys = keys(j, "consumerAppLoginCode:15040102369");
-
+		TreeSet<String> keys = keys(j, "orderCode:*");
 		for (String key : keys) {
-			System.out.println("key：" + key + "，value：" + j.get(key));
+			System.out.println("key：" + key + "，value：");
 		}
 
 		j.close();
