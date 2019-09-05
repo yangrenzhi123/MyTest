@@ -15,6 +15,7 @@ public class LogbackTest {
 			throw new RuntimeException("123");
 		} catch (Exception e) {
 			logger.error("出错", e);
+			System.out.println();
 		}
 	}
 }

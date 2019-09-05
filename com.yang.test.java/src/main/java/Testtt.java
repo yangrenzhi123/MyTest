@@ -1,9 +1,7 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Testtt {
 
@@ -12,7 +10,10 @@ public class Testtt {
 //		System.out.println(new Random().nextInt(20000000));
 //		System.out.println(System.currentTimeMillis() - a);
 
-		System.out.println(UUID.randomUUID().toString().replaceAll("-", ""));
+//		System.out.println(UUID.randomUUID().toString().replaceAll("-", ""));
+		
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567584746930L)));
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567588346930L)));
 		
 //		List<Integer> l = new ArrayList<Integer>();
 //		l.add(new Integer(0));

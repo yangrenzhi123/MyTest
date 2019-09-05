@@ -36,12 +36,17 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
 		</filter> -->
 	</appender>
     <appender name="MY_FILE" class="com.yang.logback.MongoDBAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
     </appender>
 
 	<!-- 日志输出级别 -->
-	<root level="DEBUG"><!-- 
+	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="MY_FILE" /> -->
-		<appender-ref ref="FILE" />
+		<appender-ref ref="MY_FILE" /><!-- 
+		<appender-ref ref="FILE" /> -->
 	</root>
 </configuration>
