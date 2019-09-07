@@ -6,7 +6,10 @@ import java.util.concurrent.Executors;
 public class ThreadPool {
 
 	public static void main(String[] args) throws InterruptedException {
-		ExecutorService p = Executors.newCachedThreadPool();
+		ExecutorService p = null;
+		
+		//创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
+		p = Executors.newCachedThreadPool();
 		p.execute(new Runnable() {
 			public void run() {
 				System.out.println(1);
@@ -14,6 +17,7 @@ public class ThreadPool {
 		});
 		p.shutdown();
 
+		//创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
 		p = Executors.newFixedThreadPool(10);
 		for (int i = 0; i < 100; i++) {
 			p.execute(new Runnable() {
