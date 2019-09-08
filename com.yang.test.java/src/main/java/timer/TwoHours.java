@@ -33,10 +33,10 @@ public class TwoHours {
 						sb.append("6、阿里巴巴签到赚元宝\r\n");
 						sb.append("7、省钱快报签到\r\n");
 						sb.append("8、给老公买袜子\r\n");
-						TestDingding.test("123");
+						TestDingding.test(sb.toString());
 					}
 				}
 			}
-		}, 0, 30000);
+		}, 0, 60000);
 	}
 }
