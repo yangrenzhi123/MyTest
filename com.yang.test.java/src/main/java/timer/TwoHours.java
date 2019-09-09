@@ -31,7 +31,7 @@ public class TwoHours {
 					TestDingding.test(sb.toString());
 				}
 
-				if (hour == 13 && (minute == 56 || minute == 57)) {
+				if (hour == 12 && (minute == 56 || minute == 57)) {
 					StringBuilder sb = new StringBuilder();
 					sb.append("1、支付宝一波操作\r\n");
 					TestDingding.test(sb.toString());
