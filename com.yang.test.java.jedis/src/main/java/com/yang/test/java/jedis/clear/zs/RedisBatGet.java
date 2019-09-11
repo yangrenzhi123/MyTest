@@ -61,8 +61,8 @@ public class RedisBatGet {
 				ii++;
 				
 
-	            //out.write( ("'" +m.get("\"tenantgroupid\"") + "',").replaceAll("\"", "") );
-	            out.write(m.toString());
+	            out.write( ("'" +m.get("\"tenantgroupid\"") + "',").replaceAll("\"", "") );
+//	            out.write(m.toString());
 	            out.newLine();
 	            
 	            //j.del(key);

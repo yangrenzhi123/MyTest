@@ -1,4 +1,4 @@
-package com.yang.test.java.jedis.clear.zs;
+package com.yang.test.java.jedis;
 
 import java.io.IOException;
 import java.util.HashSet;
