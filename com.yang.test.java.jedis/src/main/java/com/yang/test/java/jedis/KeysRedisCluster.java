@@ -11,7 +11,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 
-public class RedisKeys3 {
+public class KeysRedisCluster {
 
 	public static TreeSet<String> keys(JedisCluster jedisCluster, String pattern) {
 		TreeSet<String> keys = new TreeSet<>();
@@ -33,26 +33,19 @@ public class RedisKeys3 {
 	public static void main(String[] args) throws IOException {
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 
-		nodes.add(new HostAndPort("192.168.10.20", 7001));
-		nodes.add(new HostAndPort("192.168.10.20", 7002));
-		nodes.add(new HostAndPort("192.168.10.20", 7003));
-		nodes.add(new HostAndPort("192.168.10.22", 7004));
-		nodes.add(new HostAndPort("192.168.10.22", 7005));
-		nodes.add(new HostAndPort("192.168.10.22", 7006));
+		nodes.add(new HostAndPort("192.168.10.240", 7001));
+		nodes.add(new HostAndPort("192.168.10.240", 7002));
+		nodes.add(new HostAndPort("192.168.10.240", 7003));
+		nodes.add(new HostAndPort("192.168.10.240", 7004));
+		nodes.add(new HostAndPort("192.168.10.240", 7005));
+		nodes.add(new HostAndPort("192.168.10.240", 7006));
 
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
+		TreeSet<String> keys = keys(j, "h_tenant_group_phone_one:*");
 
 		for (String key : keys) {
-			if (key.equals("h_equipment00013190308005")) {
-				continue;
-			}
-
-			Map<String, String> m = j.hgetAll(key);
-			if (m != null && m.get("\"redis_flag\"") != null && m.get("\"redis_flag\"").equals("1")) {
-				;
-			}
+			System.out.println(key);
 		}
 
 		j.close();
