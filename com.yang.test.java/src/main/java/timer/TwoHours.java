@@ -13,13 +13,13 @@ public class TwoHours {
 				Calendar now = Calendar.getInstance();
 				int hour = now.get(Calendar.HOUR_OF_DAY);
 				int minute = now.get(Calendar.MINUTE);
-				if (hour >= 7 && hour <= 22 && (minute == 58 || minute == 59)) {
+				if (hour >= 7 && hour <= 22 && minute == 58) {
 					if (hour % 2 == 1) {
 						TestDingding.test("领时段奖励了，快快快！！！");
 					}
 				}
 
-				if (hour == 21 && (minute == 58 || minute == 59)) {
+				if (hour == 21 && minute == 58) {
 					StringBuilder sb = new StringBuilder();
 					sb.append("1、浙江移动步数签到\r\n");
 					sb.append("2、浙江移动APP签到\r\n");
@@ -31,9 +31,15 @@ public class TwoHours {
 					TestDingding.test(sb.toString());
 				}
 
-				if (hour == 12 && (minute == 56 || minute == 57)) {
+				if (hour == 12 && minute == 57) {
 					StringBuilder sb = new StringBuilder();
-					sb.append("1、支付宝一波操作\r\n");
+					sb.append("赶紧来一波支付宝一波操作");
+					TestDingding.test(sb.toString());
+				}
+
+				if ((hour == 9 || hour == 13) && minute == 57) {
+					StringBuilder sb = new StringBuilder();
+					sb.append("元宝换红包了，快快快！！！");
 					TestDingding.test(sb.toString());
 				}
 			}
