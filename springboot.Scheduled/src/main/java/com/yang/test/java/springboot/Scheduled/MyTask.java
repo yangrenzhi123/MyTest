@@ -1,23 +1,53 @@
 package com.yang.test.java.springboot.Scheduled;
 
+import java.util.Calendar;
+
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MyTask {
 
-	// 秒（0~59）
-	// 分钟（0~59）
-	// 小时（0~23）
-	// 天（月）（0~31，但是你需要考虑你月的天数）
-	// 月（0~11）
-	// 天（星期）（1~7 1=SUN 或 SUN，MON，TUE，WED，THU，FRI，SAT）
-	// 年份（1970－2099）
-	@Scheduled(cron = "0/10 * * * * *")
+	public static final String one = "https://oapi.dingtalk.com/robot/send?access_token=4a308218f4d9d08762a3faec3bfcd7673030cb6556091a72567129448991ec7f";
+	public static final String two = "https://oapi.dingtalk.com/robot/send?access_token=f3fbb81e09ce87f39afc8af9567e315310811b18e10de8a7666e3ed1660b3b94";
+
+	@Scheduled(cron = "0 * * * * *") // 每分钟的第0秒执行
 	public void work() throws InterruptedException {
-		System.out.println(System.currentTimeMillis());
-		
-		
-		Thread.sleep(100000L);
+		Calendar now = Calendar.getInstance();
+		int hour = now.get(Calendar.HOUR_OF_DAY);
+		int minute = now.get(Calendar.MINUTE);
+		if (hour >= 7 && hour <= 22 && minute == 58) {
+			if (hour % 2 == 1) {
+				TestDingding.test("领时段奖励了，快快快！！！", two);
+			}
+		}
+
+		if (hour == 21 && minute == 58) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("1、浙江移动步数签到\r\n");
+			sb.append("2、浙江移动APP签到\r\n");
+			sb.append("3、DT加油签到\r\n");
+			sb.append("4、惠头条签到\r\n");
+			sb.append("5、阿里巴巴签到赚元宝\r\n");
+			sb.append("6、省钱快报签到\r\n");
+			sb.append("7、给老公买袜子\r\n");
+			TestDingding.test(sb.toString(), two);
+		}
+
+		if (hour == 12 && minute == 57) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("赶紧来一波支付宝一波操作");
+			TestDingding.test(sb.toString(), two);
+		}
+
+		if ((hour == 9 || hour == 13) && minute == 57) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("元宝换红包了，快快快！！！");
+			TestDingding.test(sb.toString(), two);
+		}
+
+		if (hour >= 7 && hour <= 22 && minute == 58) {
+			TestDingding.test("头条开宝箱了，快快快！！！", one);
+		}
 	}
 }
