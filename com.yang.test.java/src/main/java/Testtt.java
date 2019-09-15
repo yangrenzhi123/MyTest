@@ -11,6 +11,8 @@ public class Testtt {
 
 		System.out.println(UUID.randomUUID().toString());
 		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
 		
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567584746930L)));
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567588346930L)));

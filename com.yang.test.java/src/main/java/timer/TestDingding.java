@@ -62,9 +62,7 @@ public class TestDingding {
 		return result;
 	}
 
-	public static void test(String content) {
-		String dingDingToken = "https://oapi.dingtalk.com/robot/send?access_token=f3fbb81e09ce87f39afc8af9567e315310811b18e10de8a7666e3ed1660b3b94";
-
+	public static void test(String content, String dingDingToken) {
 		Map<String, Object> text = new HashMap<>();
 		text.put("content", content);
 
@@ -77,6 +75,6 @@ public class TestDingding {
 	}
 	
 	public static void main(String[] args) {
-		TestDingding.test("临涣焦化：VOCs排放浓度大于上限：61.89");
+		TestDingding.test("临涣焦化：VOCs排放浓度大于上限：61.89", "https://oapi.dingtalk.com/robot/send?access_token=f3fbb81e09ce87f39afc8af9567e315310811b18e10de8a7666e3ed1660b3b94");
 	}
 }
