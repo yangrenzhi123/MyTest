@@ -13,7 +13,7 @@ import com.github.benmanes.caffeine.cache.LoadingCache;
 public class TestCaffeine {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		t3();
+		t0();
 	}
 	
 	//手动
