@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yang.test.java.springboot.dao2.UserDao2" >
-	<select id="sflszhInScorerecordid" parameterType="java.util.List" resultType="HScoreRecord">
-		select *, (select b.sflszh from h_tenant_group b where a.tenantgroupid = b.tenantgroupid) as sflszh from h_score_record a where a.scorerecordid 
-		in (<foreach collection="list" item="item" index="index" separator=",">#{item.scorerecordid}</foreach>)
+	<select id="sflszhInScorerecordid" parameterType="java.util.List" resultType="entity.HScoreRecord">
+		select *, b.sflszh, b.zhnc, b.zhhh
+		from h_score_record a 
+		LEFT JOIN h_tenant_group b ON a.tenantgroupid = b.tenantgroupid 
+		where a.scorerecordid in (<foreach collection="list" item="item" index="index" separator=",">#{item.scorerecordid}</foreach>)
 	</select>
 </mapper>

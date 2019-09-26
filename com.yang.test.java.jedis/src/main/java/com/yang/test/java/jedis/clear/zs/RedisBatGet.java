@@ -1,9 +1,6 @@
 package com.yang.test.java.jedis.clear.zs;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -50,28 +47,12 @@ public class RedisBatGet {
 		
 
 		System.out.println("------------------------------------START-----------------------------------------");
-		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/tmp/zhzt.txt"),"UTF-8"));
-		
-		int i = 0;int ii=0;
 		for (String key : keys) {
-			i++;
-			
 			Map<String, String> m = j.hgetAll(key);
 			if(m.toString().contains("\"zhzt\"=0,")) {
-				ii++;
-				
-
-	            out.write( ("'" +m.get("\"tenantgroupid\"") + "',").replaceAll("\"", "") );
-//	            out.write(m.toString());
-	            out.newLine();
-	            
-	            //j.del(key);
+	            j.del(key);
 			}
 		}
-		out.flush();
-		out.close();
-		System.out.println(i);
-		System.out.println(ii);
 		System.out.println("------------------------------------END-----------------------------------------");
 
 		j.close();

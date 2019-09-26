@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootMybatisStartup {
+public class DataUpdateStartup {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootMybatisStartup.class, args);
+		SpringApplication.run(DataUpdateStartup.class, args);
 	}
 }

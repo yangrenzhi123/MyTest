@@ -23,10 +23,11 @@ public class Test1MybatisConfig {
     @Bean(name="test1Datasource")
     public DataSource testDatasource() throws SQLException {
         MysqlXADataSource mysqlXADataSource=new MysqlXADataSource();
-        mysqlXADataSource.setUrl("jdbc:mysql://192.168.10.10:3306/t1");
+        mysqlXADataSource.setUrl("jdbc:mysql://192.168.10.228:3308/dw_lyzh");
         mysqlXADataSource.setPassword("123456");
         mysqlXADataSource.setUser("root");
         mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);
+        mysqlXADataSource.setAllowMultiQueries(true);
         mysqlXADataSource.setUseSSL(false);
 
         AtomikosDataSourceBean atomikosDataSourceBean=new AtomikosDataSourceBean();

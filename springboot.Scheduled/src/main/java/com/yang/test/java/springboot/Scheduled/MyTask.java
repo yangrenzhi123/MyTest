@@ -11,7 +11,7 @@ public class MyTask {
 	public static final String one = "https://oapi.dingtalk.com/robot/send?access_token=a65a69eef72e755b53addd74c884422a0679344998f32af72e9f803cadb1a4f9";
 	public static final String two = "https://oapi.dingtalk.com/robot/send?access_token=f28fa1eef8ada46134bb763176a6570a9c4d3f242904f4fd1bc71025346aa363";
 
-	//@Scheduled(cron = "0 * * * * *") // 每分钟的第0秒执行
+	////@Scheduled(cron = "0 * * * * *") // 每分钟的第0秒执行
 	public void work() throws InterruptedException {
 		Calendar now = Calendar.getInstance();
 		int hour = now.get(Calendar.HOUR_OF_DAY);
