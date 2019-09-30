@@ -99,7 +99,6 @@ public class Lyzh {
 		
 		
 		//-----------------------------生活垃圾----------------------------------------------
-		
 		c("http://hfyhxm.lyzhyun.com:8000/api-fl/lifegarbagethrow/l.do", cookie, 
 		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"jlly\":null,\"ljlx\":null,\"yhlx\":null,\"dateStart\":\"2019-09-01 00:00:00\",\"dateEnd\":\"2019-09-30 23:59:59\",\"zhnc\":null,\"sjhm\":null,\"qrcode\":null,\"queryType\":1,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
 		"生活垃圾-前端分类-投放查询，查询层级(中国)");
@@ -119,6 +118,44 @@ public class Lyzh {
 		c("http://hfyhxm.lyzhyun.com:8000/api-fl/inspectrecord/l/byMonth.do", cookie, 
 		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"xjyf\":null,\"xjy\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
 		"生活垃圾-前端分类-月巡检查询，查询层级(中国)");
+		
+		//-----------------------------可回收物----------------------------------------------
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/recyclerecord/l/toufang.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"ljlx\":null,\"yhlx\":null,\"sblx\":null,\"dateStart\":\"2019-09-01 00:00:00\",\"dateEnd\":\"2019-09-30 23:59:59\",\"zsxm\":null,\"sjhm\":null,\"qrcode\":null,\"queryType\":1,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"可回收物-前端减量-投放查询，查询层级(中国)");
+		
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/recyclerecord/l/sj.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"ljlx\":null,\"dateStart\":\"2019-09-01 00:00:00\",\"dateEnd\":\"2019-09-30 23:59:59\",\"zhnc\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"可回收物-前端减量-收集员收集查询，查询层级(中国)");
+		
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/dailyRecovery/l.do", cookie, 
+		"{\"pageNum\":1,\"qycs\":\"5\",\"nzbm\":\"001\",\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"hassub\":\"1\",\"communityid\":null,\"kssj\":\"2019-09-01 00:00:00\",\"jssj\":\"2019-09-30 23:59:59\",\"sslx\":\"1\",\"cxlx\":\"1\",\"garbageclassid\":\"0\",\"pxlx\":\"1\",\"pxzl\":\"2\",\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"可回收物-前端减量-日垃圾汇总，查询层级(中国)");
+		
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/monthRecovery/l.do", cookie, 
+		"{\"pageNum\":1,\"qycs\":\"5\",\"nzbm\":\"001\",\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"hassub\":\"1\",\"communityid\":null,\"kssj\":\"2019-09\",\"jssj\":\"2019-09\",\"sslx\":\"1\",\"cxlx\":\"1\",\"garbageclassid\":\"00\",\"pxlx\":\"1\",\"pxzl\":\"2\",\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"可回收物-前端减量-月垃圾汇总，查询层级(中国)");
+		
+		//-----------------------------积分管理----------------------------------------------
+		c("http://hfyhxm.lyzhyun.com:8000/api-platform/scorerecord/owner/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"createtimestr\":\"2019-09\",\"zhnc\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"积分管理-报表查询-业主积分查询，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-platform/scorerecord/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"createtime\":\"2019-09-30 23:59:59\",\"jfly\":null,\"zhnc\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"积分管理-报表查询-日积分明细查询，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/exchange/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"communityid\":null,\"createtime\":\"2019-09-01 00:00:00\",\"lastmodifytime\":\"2019-09-30 23:59:59\",\"dhfs\":null,\"shzt\":null,\"zhnc\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"积分管理-报表查询-积分兑换查询，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/sumIntegral/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"startTime\":null,\"endTime\":null,\"likeName\":null,\"likeAccountNumber\":null,\"likePhone\":null,\"likeQrCode\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"积分管理-报表查询-积分汇总查询，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/monthIntegral/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"createtime\":\"2019-09\",\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"积分管理-报表查询-月度新增积分汇总，查询层级(中国)");
 	}
 
 	public static void c(String url, String cookie, String json, String title) throws ClientProtocolException, IOException {
