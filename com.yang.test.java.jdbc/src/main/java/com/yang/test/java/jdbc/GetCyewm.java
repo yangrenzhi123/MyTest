@@ -11,7 +11,7 @@ import java.util.List;
 public class GetCyewm {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://192.168.10.228:3306/saas_lyzh?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true";
+	static final String DB_URL = "jdbc:mysql://192.168.10.228:3306/online_saas_lyzh_230?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true";
 	static final String USER = "root";
 	static final String PASS = "123456";
 
@@ -25,7 +25,7 @@ public class GetCyewm {
 		Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		conn.setAutoCommit(true);
 
-		String getTables = "select cyewm from h_tenant_group where cyewm is not null";
+		String getTables = "select cyewm from h_tenant_group where cyewm is not null limit 10000";
 		PreparedStatement getTablesPre = conn.prepareStatement(getTables);
 		ResultSet rs = getTablesPre.executeQuery();
 

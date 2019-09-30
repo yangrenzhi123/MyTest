@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyTask {
 
-	public static final String one = "https://oapi.dingtalk.com/robot/send?access_token=a65a69eef72e755b53addd74c884422a0679344998f32af72e9f803cadb1a4f9";
-	public static final String two = "https://oapi.dingtalk.com/robot/send?access_token=f28fa1eef8ada46134bb763176a6570a9c4d3f242904f4fd1bc71025346aa363";
+	public static final String one = "https://oapi.dingtalk.com/robot/send?access_token=ad88aa82594ae1d596d07282c54eb08a59134e793ce8e49827c76901e19a0a0f";
+	public static final String two = "https://oapi.dingtalk.com/robot/send?access_token=6984fb55d6496efb1927696ac3c33eb7163ef83454a2dc2998b8cf29bf9af192";
 
-	////@Scheduled(cron = "0 * * * * *") // 每分钟的第0秒执行
+	@Scheduled(cron = "0 * * * * *") // 每分钟的第0秒执行
 	public void work() throws InterruptedException {
 		Calendar now = Calendar.getInstance();
 		int hour = now.get(Calendar.HOUR_OF_DAY);

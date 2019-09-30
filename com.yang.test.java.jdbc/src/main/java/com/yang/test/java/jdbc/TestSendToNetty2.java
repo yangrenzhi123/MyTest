@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
-public class TestSendToNetty {
+public class TestSendToNetty2 {
 
 	public static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
 	public static int count;
@@ -23,22 +23,14 @@ public class TestSendToNetty {
 		long c = System.currentTimeMillis();
 		List<String> sbbhList = GetSbbh.getSbbh();
 		System.out.println("sbbh加载完毕，耗时" + (System.currentTimeMillis() - c));
-		
-		System.out.println("开始加载Cyewm...");
-		long b = System.currentTimeMillis();
-		List<String> cyewmList = GetCyewm.getCyewm();
-		System.out.println("Cyewm加载完毕，耗时" + (System.currentTimeMillis() - b));
-		
-		String[] ljlx = new String[] {"01", "02", "03", "04", "05", "06", "0A", "0B", "0C", "0D"};
-		Random r = new Random();
-		
+
 		int c1 = 10; //设备数
 		int size = sbbhList.size();
 		if(size < c1) {
 			c1 = size;
 		}
 		
-		int c2 = 10;//Integer.parseInt(args[1]); //发送次数
+		int c2 = 100;
 
 		long a = System.currentTimeMillis();
 		List<OutputStream> osl = new ArrayList<OutputStream>();
@@ -129,10 +121,13 @@ public class TestSendToNetty {
 		for (int i = 0; i < c1; i++) {
 			OutputStream os = osl.get(i);
 			InputStream is = isl.get(i);
+			System.out.println(deviceNos.get(i));
+			
 			byte[] bs = hexString2Bytes("552000A00002" + deviceNos.get(i) + "31322C3534303237383738342C302C30030455");
 			os.write(bs);
 			byte[] registryResult = new byte[1024];
 			is.read(registryResult);
+			System.out.println("注册结果："+new String(registryResult));
 		}
 		
 		
@@ -142,31 +137,11 @@ public class TestSendToNetty {
 			final int j = i;
 			Thread t = new Thread(new Runnable() {
 				public void run() {
-					Random a = new Random();
 					OutputStream os = osl.get(j);
 					InputStream is = isl.get(j);
 
 					for(int m=0;m<c2;m++) {
-						int z = a.nextInt(cyewmList.size());
-						String s = 
-						timeTo16()
-						+rqcodeTo16(cyewmList.get(z))
-						+ljlx[r.nextInt(ljlx.length)]/*垃圾类型*/
-						+turnHex(intToHex(r.nextInt(1000)))
-						+"00"/*重量*/
-						+"00000000000000000000A4B6";
-						StringBuilder sb = new StringBuilder();
-						for(int i=0;i<s.length()/2;i++) {
-							String s1 = s.substring(i*2, (i+1)*2);
-							if(s1.equals("55")) {
-								s1 = "5401";
-							}
-							if(s1.equals("54")) {
-								s1 = "5402";
-							}
-							sb.append(s1);
-						}
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+sb.toString()+"55");
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+"13091A13072A4C595A4831353132313138393137303100000000000000000000000000000000052D010000000000000000000000A4B655");
 						
 						try {
 							os.write(bs);

@@ -29,23 +29,23 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.30.62", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.10.228", 7001));
-//		nodes.add(new HostAndPort("192.168.10.228", 7002));
-//		nodes.add(new HostAndPort("192.168.10.228", 7003));
-//		nodes.add(new HostAndPort("192.168.10.229", 7004));
-//		nodes.add(new HostAndPort("192.168.10.229", 7005));
-//		nodes.add(new HostAndPort("192.168.10.229", 7006));
-//		JedisCluster j = new JedisCluster(nodes);
-
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.240", 7001));
-		nodes.add(new HostAndPort("192.168.10.240", 7002));
-		nodes.add(new HostAndPort("192.168.10.240", 7003));
-		nodes.add(new HostAndPort("192.168.10.240", 7004));
-		nodes.add(new HostAndPort("192.168.10.240", 7005));
-		nodes.add(new HostAndPort("192.168.10.240", 7006));
+		nodes.add(new HostAndPort("192.168.10.228", 7001));
+		nodes.add(new HostAndPort("192.168.10.228", 7002));
+		nodes.add(new HostAndPort("192.168.10.228", 7003));
+		nodes.add(new HostAndPort("192.168.10.229", 7004));
+		nodes.add(new HostAndPort("192.168.10.229", 7005));
+		nodes.add(new HostAndPort("192.168.10.229", 7006));
 		JedisCluster j = new JedisCluster(nodes);
+
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("192.168.10.240", 7001));
+//		nodes.add(new HostAndPort("192.168.10.240", 7002));
+//		nodes.add(new HostAndPort("192.168.10.240", 7003));
+//		nodes.add(new HostAndPort("192.168.10.240", 7004));
+//		nodes.add(new HostAndPort("192.168.10.240", 7005));
+//		nodes.add(new HostAndPort("192.168.10.240", 7006));
+//		JedisCluster j = new JedisCluster(nodes);
 
 		
 //		List<String> l = new ArrayList<>();
@@ -54,8 +54,20 @@ public class RedisSimple {
 //			j.del(key);
 //		}
 		
-		
-		System.out.println(j.get("h_tenant_group_phone_one:13713696211"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181004834"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181004859"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181004748"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181004608"));
+		System.out.println(j.hgetAll("h_equipment_map:00012180903898"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181105241"));
+		System.out.println(j.hgetAll("h_equipment_map:00012180904510"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181104959"));
+		System.out.println(j.hgetAll("h_equipment_map:00012180904447"));
+		System.out.println(j.hgetAll("h_equipment_map:00012180904483"));
+		System.out.println(j.hgetAll("h_equipment_map:00012180904238"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181004803"));
+		System.out.println(j.hgetAll("h_equipment_map:00012180702759"));
+		System.out.println(j.hgetAll("h_equipment_map:00012181004747"));
 		
 //		Map<String, String> m = j.hgetAll("h_tenant_group_phone_one:13713696211");
 //		System.out.println(m);

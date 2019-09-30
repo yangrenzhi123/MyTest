@@ -14,6 +14,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
@@ -33,11 +34,6 @@ public class DSACoder2 {
 	 * </pre>
 	 */
 	private static final int KEY_SIZE = 1024;
-
-	/**
-	 * 默认种子
-	 */
-	private static final String DEFAULT_SEED = "0f22507a10bbddd07d8a3082122966e3";
 
 	private static final String PUBLIC_KEY = "DSAPublicKey";
 	private static final String PRIVATE_KEY = "DSAPrivateKey";
@@ -141,7 +137,7 @@ public class DSACoder2 {
 	 * @throws Exception
 	 */
 	public static Map<String, Object> initKey() throws Exception {
-		return initKey(DEFAULT_SEED);
+		return initKey(UUID.randomUUID().toString().replaceAll("-", ""));
 	}
 
 	/**

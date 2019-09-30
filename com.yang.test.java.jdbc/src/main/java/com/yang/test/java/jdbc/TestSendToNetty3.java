@@ -1,4 +1,5 @@
 package com.yang.test.java.jdbc;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,37 +11,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 
-public class TestSendToNetty {
+public class TestSendToNetty3 {
 
 	public static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
 	public static int count;
 	public static int totalCount;
-	
+
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException, ClassNotFoundException, SQLException {
 		System.out.println("开始加载sbbh...");
 		long c = System.currentTimeMillis();
 		List<String> sbbhList = GetSbbh.getSbbh();
 		System.out.println("sbbh加载完毕，耗时" + (System.currentTimeMillis() - c));
-		
-		System.out.println("开始加载Cyewm...");
-		long b = System.currentTimeMillis();
-		List<String> cyewmList = GetCyewm.getCyewm();
-		System.out.println("Cyewm加载完毕，耗时" + (System.currentTimeMillis() - b));
-		
-		String[] ljlx = new String[] {"01", "02", "03", "04", "05", "06", "0A", "0B", "0C", "0D"};
-		Random r = new Random();
-		
-		int c1 = 10; //设备数
+
+		int c1 = 10; // 设备数
 		int size = sbbhList.size();
-		if(size < c1) {
+		if (size < c1) {
 			c1 = size;
 		}
-		
-		int c2 = 10;//Integer.parseInt(args[1]); //发送次数
 
-		long a = System.currentTimeMillis();
 		List<OutputStream> osl = new ArrayList<OutputStream>();
 		List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
@@ -52,13 +41,7 @@ public class TestSendToNetty {
 			osl.add(os);
 			sl.add(request);
 		}
-		System.out.println("连接耗时："+(System.currentTimeMillis() - a));
 
-		
-
-		final CountDownLatch latch = new CountDownLatch(c1);
-		
-		
 		List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < c1; i++) {
 			int z = new Random().nextInt(sbbhList.size());
@@ -124,82 +107,21 @@ public class TestSendToNetty {
 			sbbhList.remove(z);
 		}
 		
-		
-
 		for (int i = 0; i < c1; i++) {
 			OutputStream os = osl.get(i);
 			InputStream is = isl.get(i);
+			System.out.println(deviceNos.get(i));
+			
 			byte[] bs = hexString2Bytes("552000A00002" + deviceNos.get(i) + "31322C3534303237383738342C302C30030455");
 			os.write(bs);
 			byte[] registryResult = new byte[1024];
 			is.read(registryResult);
+			System.out.println("注册结果："+new String(registryResult));
 		}
 		
+		Thread.sleep(30000L);
 		
-		a = System.currentTimeMillis();
-		List<Thread> tl = new ArrayList<Thread>();
-		for (int i = 0; i < c1; i++) {
-			final int j = i;
-			Thread t = new Thread(new Runnable() {
-				public void run() {
-					Random a = new Random();
-					OutputStream os = osl.get(j);
-					InputStream is = isl.get(j);
-
-					for(int m=0;m<c2;m++) {
-						int z = a.nextInt(cyewmList.size());
-						String s = 
-						timeTo16()
-						+rqcodeTo16(cyewmList.get(z))
-						+ljlx[r.nextInt(ljlx.length)]/*垃圾类型*/
-						+turnHex(intToHex(r.nextInt(1000)))
-						+"00"/*重量*/
-						+"00000000000000000000A4B6";
-						StringBuilder sb = new StringBuilder();
-						for(int i=0;i<s.length()/2;i++) {
-							String s1 = s.substring(i*2, (i+1)*2);
-							if(s1.equals("55")) {
-								s1 = "5401";
-							}
-							if(s1.equals("54")) {
-								s1 = "5402";
-							}
-							sb.append(s1);
-						}
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+sb.toString()+"55");
-						
-						try {
-							os.write(bs);
-							is.read(new byte[1024]);
-						} catch (Exception e) {
-							count++;
-							latch.countDown();
-							throw new RuntimeException(e);
-						}
-						
-						totalCount++;
-					}
-					latch.countDown();
-				}
-			});
-			tl.add(t);
-		}
-		System.out.println("线程创建耗时："+(System.currentTimeMillis() - a));
-
-		a = System.currentTimeMillis();
-		for(Thread t : tl) {
-			t.start();
-		}
-		latch.await();
-		System.out.println("执行耗时："+(System.currentTimeMillis() - a));
-		
-
-		System.out.println("爆了"+count+"个");
-		System.out.println("成功总次数"+totalCount+"个");
-		
-		System.out.println("30秒后开始关闭链接");
-		Thread.sleep(30000);
-		for(Socket request : sl) {
+		for (Socket request : sl) {
 			request.close();
 		}
 	}
@@ -221,13 +143,13 @@ public class TestSendToNetty {
 			return b;
 		}
 	}
-	
+
 	public static String turnHex(String hex) {
 		String s2 = hex.substring(0, 2);
 		String s1 = hex.substring(2, 4);
 		return s1 + s2;
 	}
-	
+
 	public static String intToHex(int i) {
 		String s = Integer.toHexString(i).toUpperCase();
 		if (s.length() == 1) {
@@ -241,11 +163,11 @@ public class TestSendToNetty {
 		}
 		return s;
 	}
-	
+
 	private static byte charToByte(char c) {
 		return (byte) "0123456789ABCDEF".indexOf(c);
 	}
-	
+
 	/*
 	 * 获取当前时间的16进制
 	 */
@@ -290,23 +212,23 @@ public class TestSendToNetty {
 		String ret = yerHex + monHex + daHex + hhHex + mmHex + ssHex;
 		return ret;
 	}
-	
+
 	/*
-	 * 获取_rqcode 16进制   32位 不足补0
+	 * 获取_rqcode 16进制 32位 不足补0
 	 */
 	public static String rqcodeTo16(String s) {
-	    String str = "";
-	    for (int i = 0; i < s.length(); i++) {
-	        int ch = (int) s.charAt(i);
-	        String s4 = Integer.toHexString(ch).toUpperCase();
-	        str = str + s4;
-	    }
-	    if(str.length()<64) {
-	    	int num = 64-str.length();
-	    	for(int i = 0;i<num;i++) {
-	    		str = str+"0";
-	    	}
-	    }
-	    return str;
+		String str = "";
+		for (int i = 0; i < s.length(); i++) {
+			int ch = (int) s.charAt(i);
+			String s4 = Integer.toHexString(ch).toUpperCase();
+			str = str + s4;
+		}
+		if (str.length() < 64) {
+			int num = 64 - str.length();
+			for (int i = 0; i < num; i++) {
+				str = str + "0";
+			}
+		}
+		return str;
 	}
 }

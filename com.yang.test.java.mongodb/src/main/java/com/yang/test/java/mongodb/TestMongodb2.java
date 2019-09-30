@@ -8,7 +8,7 @@ import com.mongodb.client.MongoDatabase;
 public class TestMongodb2 {
 
 	public static void main(String[] args) {
-		MongoClient mongoClient = new MongoClient("192.168.10.239", 27017);
+		MongoClient mongoClient = new MongoClient("192.168.10.19", 27017);
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 
 		MongoCollection c = null;
