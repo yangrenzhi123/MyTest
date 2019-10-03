@@ -40,6 +40,7 @@ public class Test1MybatisConfig {
 		atomikosDataSourceBean.setMaxIdleTime(60); // 设置池中未使用的过量连接应该保留的最大秒数。
 		atomikosDataSourceBean.setMaintenanceInterval(60);
 		atomikosDataSourceBean.setBorrowConnectionTimeout(30);// 获取链接的最大等待时间，秒。
+		atomikosDataSourceBean.setTestQuery("select 1");
 		return atomikosDataSourceBean;
 	}
 

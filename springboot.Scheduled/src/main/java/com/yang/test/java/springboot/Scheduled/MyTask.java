@@ -28,27 +28,27 @@ public class MyTask {
 			}
 		}
 
-		if (hour == 21 && minute == 58) {
-			StringBuilder sb = new StringBuilder();
-			sb.append("1、浙江移动步数签到\r\n");
-			sb.append("2、惠头条签到\r\n");
-			sb.append("3、阿里巴巴签到赚元宝\r\n");
-			sb.append("4、省钱快报签到\r\n");
-			TestDingding.test(sb.toString(), two);
+		if (hour == 11 && minute == 58) {
+//			StringBuilder sb = new StringBuilder();
+//			sb.append("1、浙江移动步数签到\r\n");
+//			sb.append("惠头条签到\r\n");
+//			sb.append("阿里巴巴签到赚元宝\r\n");
+//			sb.append("省钱快报签到\r\n");
+//			TestDingding.test(sb.toString(), two);
 			TestDingding.test("DT加油签到", one);
 			
 
 			
-			int a = now.get(Calendar.DAY_OF_MONTH);
-			for(int i=0;i<15;i++) {
-				if(a == (i+1)) {
-					TestDingding.test("浙江移动APP签到", two);
-				}
-			}
-			
-			if(a == 18) {
-				TestDingding.test("浙江移动APP 18日幸运签到礼", two);
-			}
+//			int a = now.get(Calendar.DAY_OF_MONTH);
+//			for(int i=0;i<15;i++) {
+//				if(a == (i+1)) {
+//					TestDingding.test("浙江移动APP签到", two);
+//				}
+//			}
+//			
+//			if(a == 18) {
+//				TestDingding.test("浙江移动APP 18日幸运签到礼", two);
+//			}
 		}
 
 		if (hour == 12 && minute == 57) {
