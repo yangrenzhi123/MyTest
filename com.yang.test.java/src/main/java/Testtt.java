@@ -1,18 +1,20 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.Calendar;
+import java.util.UUID;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
+//		throw new RuntimeException(new NullPointerException());
+		
 //		long a = System.currentTimeMillis();
 //		System.out.println(new Random().nextInt(20000000));
 //		System.out.println(System.currentTimeMillis() - a);
 
-//		System.out.println(UUID.randomUUID().toString());
-//		System.out.println(UUID.randomUUID().toString());
-//		System.out.println(UUID.randomUUID().toString());
-//		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
 		
 //		Calendar a = Calendar.getInstance();
 //		System.out.println(a.get(Calendar.DAY_OF_MONTH));
@@ -25,8 +27,8 @@ public class Testtt {
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(a.getTime()));
 		
 
-		Calendar a = Calendar.getInstance();
-		System.out.println(a.get(Calendar.DAY_OF_WEEK));
+//		Calendar a = Calendar.getInstance();
+//		System.out.println(a.get(Calendar.DAY_OF_WEEK));
 		
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567584746930L)));
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567588346930L)));

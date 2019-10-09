@@ -16,7 +16,6 @@ public class TestSendToNetty {
 
 	public static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
 	public static int count;
-	public static int totalCount;
 	
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException, ClassNotFoundException, SQLException {
 		System.out.println("开始加载sbbh...");
@@ -32,13 +31,13 @@ public class TestSendToNetty {
 		String[] ljlx = new String[] {"01", "02", "03", "04", "05", "06", "0A", "0B", "0C", "0D"};
 		Random r = new Random();
 		
-		int c1 = 10; //设备数
+		int c1 = 100; //设备数
 		int size = sbbhList.size();
 		if(size < c1) {
 			c1 = size;
 		}
 		
-		int c2 = 10;//Integer.parseInt(args[1]); //发送次数
+		int c2 = 100;//Integer.parseInt(args[1]); //发送次数
 
 		long a = System.currentTimeMillis();
 		List<OutputStream> osl = new ArrayList<OutputStream>();
@@ -177,7 +176,6 @@ public class TestSendToNetty {
 							throw new RuntimeException(e);
 						}
 						
-						totalCount++;
 					}
 					latch.countDown();
 				}
@@ -195,7 +193,6 @@ public class TestSendToNetty {
 		
 
 		System.out.println("爆了"+count+"个");
-		System.out.println("成功总次数"+totalCount+"个");
 		
 		System.out.println("30秒后开始关闭链接");
 		Thread.sleep(30000);
