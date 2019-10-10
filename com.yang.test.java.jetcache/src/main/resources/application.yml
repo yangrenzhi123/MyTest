@@ -10,4 +10,9 @@ jetcache:
         type: redis.lettuce
         keyConvertor: fastjson
         uri:
-          - redis://192.168.30.120:6379
+          - redis://192.168.10.20:7001
+          - redis://192.168.10.20:7002
+          - redis://192.168.10.20:7003
+          - redis://192.168.10.22:7004
+          - redis://192.168.10.22:7005
+          - redis://192.168.10.22:7006

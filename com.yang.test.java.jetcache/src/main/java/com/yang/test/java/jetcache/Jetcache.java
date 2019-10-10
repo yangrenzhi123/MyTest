@@ -30,4 +30,10 @@ class HelloController {
 	public String hello2(@PathVariable ("id") String id) {
 		return userService.getUserById(id, id);
 	}
+	
+	@GetMapping("/test")
+	public void test() {
+		RegionDTO a = userService.findRegionDTOOne();
+		System.out.println(a);
+	}
 }

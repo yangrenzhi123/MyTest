@@ -175,13 +175,17 @@ public class DSACoder2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String inputStr = "我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是";
+		String inputStr = "1234567890";
 		byte[] data = inputStr.getBytes();
 
 		// 构建密钥
-		Map<String, Object> keyMap = DSACoder2.initKey();
-		String publicKey = DSACoder2.getPublicKey(keyMap);
-		String privateKey = DSACoder2.getPrivateKey(keyMap);
+//		Map<String, Object> keyMap = DSACoder2.initKey();
+//		String publicKey = DSACoder2.getPublicKey(keyMap);
+//		String privateKey = DSACoder2.getPrivateKey(keyMap);
+		
+
+		String publicKey = "308201b73082012c06072a8648ce3804013082011f02818100fd7f53811d75122952df4a9c2eece4e7f611b7523cef4400c31e3f80b6512669455d402251fb593d8d58fabfc5f5ba30f6cb9b556cd7813b801d346ff26660b76b9950a5a49f9fe8047b1022c24fbba9d7feb7c61bf83b57e7c6a8a6150f04fb83f6d3c51ec3023554135a169132f675f3ae2b61d72aeff22203199dd14801c70215009760508f15230bccb292b982a2eb840bf0581cf502818100f7e1a085d69b3ddecbbcab5c36b857b97994afbbfa3aea82f9574c0b3d0782675159578ebad4594fe67107108180b449167123e84c281613b7cf09328cc8a6e13c167a8b547c8d28e0a3ae1e2bb3a675916ea37f0bfa213562f1fb627a01243bcca4f1bea8519089a883dfe15ae59f06928b665e807b552564014c3bfecf492a03818400028180551ece221e9c7b3490dbcd8eac05f430a3e0fbf580a14fc426894392fc107bcade47ef0d2e021663d3dc1178a68e74a80c926af9a8da2ed3427653ceebfa6acc3a00d509e6331c3bd2538a0e161d8cbb88517ae4e89b2e708e397daf1bf000f9a729b43aef8d7666a71cabddf1c0697826d55244684bfab400eea2f7dc726681";
+		String privateKey = "3082014b0201003082012c06072a8648ce3804013082011f02818100fd7f53811d75122952df4a9c2eece4e7f611b7523cef4400c31e3f80b6512669455d402251fb593d8d58fabfc5f5ba30f6cb9b556cd7813b801d346ff26660b76b9950a5a49f9fe8047b1022c24fbba9d7feb7c61bf83b57e7c6a8a6150f04fb83f6d3c51ec3023554135a169132f675f3ae2b61d72aeff22203199dd14801c70215009760508f15230bccb292b982a2eb840bf0581cf502818100f7e1a085d69b3ddecbbcab5c36b857b97994afbbfa3aea82f9574c0b3d0782675159578ebad4594fe67107108180b449167123e84c281613b7cf09328cc8a6e13c167a8b547c8d28e0a3ae1e2bb3a675916ea37f0bfa213562f1fb627a01243bcca4f1bea8519089a883dfe15ae59f06928b665e807b552564014c3bfecf492a04160214782b174ebf61eb4e82a1f36b68a7df5ddde71e2f";
 
 		System.out.println("公钥：" + publicKey);
 		System.out.println("私钥：" + privateKey);
@@ -191,7 +195,7 @@ public class DSACoder2 {
 		System.out.println("签名：" + sign);
 
 		// 验证签名
-		boolean status = DSACoder2.verify(data, publicKey, sign);
+		boolean status = DSACoder2.verify(data, publicKey, sign/*"302c021427dd66a8d16498db72e0601c78ee9bd80b995c340214638ec184d47323d367ad605efb8378667963bf60"*/);
 		System.out.println("状态：" + status);
 	}
 }

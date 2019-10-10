@@ -178,7 +178,7 @@ public class DSACoder {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String inputStr = "我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是我是原文我是原文我是";
+		String inputStr = "123467890";
 		byte[] data = inputStr.getBytes();
 
 		// 构建密钥

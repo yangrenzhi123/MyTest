@@ -11,7 +11,7 @@ import org.apache.http.impl.client.HttpClients;
 public class Lyzh {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
-		String cookie = "lyzh-saas=s%3ABoUzPPL1F-TATKi0Ds27cZPewX25-Pz-.nkCilGcoO0JRcf4LJBuSStJZlkGQZIU6eyTdN%2FsPlX4";
+		String cookie = "lyzh-saas=s%3AZ124aKMnUOMFIf6urV7x_N7gyJD_k4b1.%2BiTLFme9HgQQFNaXhvdOouto%2BNtdf03kagqKjp3lTuo";
 		
 		HttpPost post = null;
 		StringEntity entity = null;
@@ -156,6 +156,54 @@ public class Lyzh {
 		c("http://hfyhxm.lyzhyun.com:8000/api-fl/monthIntegral/l.do", cookie, 
 		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"createtime\":\"2019-09\",\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
 		"积分管理-报表查询-月度新增积分汇总，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/scorechangerecord/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"zhnc\":null,\"zhhh\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"积分管理-积分调整-调整积分，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/scorechangerecord/jf/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"createtime\":\"2019-10-01 00:00:00\",\"lastmodifytime\":\"2019-10-10 23:59:59\",\"tzyy\":null,\"zhnc\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"积分管理-积分调整-调整明细查询，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/recyclerecord/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"ljlx\":null,\"cjlx\":null,\"dateStart\":\"2019-10-01 00:00:00\",\"dateEnd\":\"2019-10-10 23:59:59\",\"zsxm\":null,\"sjhm\":null,\"qrcode\":null,\"queryType\":1,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-数据监管-减重查询，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/recycleabnormal/l.do", cookie, 
+		"{\"pageNum\":1,\"nzbm\":\"001\",\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"orderid\":null,\"ljlx\":null,\"yclx\":null,\"jlzt\":0,\"begintime\":\"2019-10-01 00:00:00\",\"endtime\":\"2019-10-10 23:59:59\",\"zsxm\":null,\"sjhm\":null,\"qrcode\":null,\"queryType\":1,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-数据监管-数据审核，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/recyclechangerecord/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"ljlx\":null,\"sblx\":null,\"yhlx\":null,\"begintime\":\"2019-10-01 00:00:00\",\"endtime\":\"2019-10-10 23:59:59\",\"zhnc\":null,\"sjhm\":null,\"qrcode\":null,\"queryType\":1,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-数据监管-数据调整记录，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/operateuser/l.do", cookie, 
+		"{\"pageNum\":1,\"qycs\":\"5\",\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"orderid\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-运营卡管理，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/inspect/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"ljlx\":null,\"dateStart\":\"2019-10-01 00:00:00\",\"dateEnd\":\"2019-10-10 23:59:59\",\"zhnc\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-设备巡检查询，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/replenishrecord/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"communityid\":null,\"begintime\":\"2019-10-01 00:00:00\",\"endtime\":\"2019-10-10 23:59:59\",\"sbbh\":null,\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-发放机运营-新发放机上货记录，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/equipdispenser/jy/l.do", cookie, 
+		"{\"pageNum\":1,\"communityid\":null,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"createtime\":\"2019-10-01 00:00:00\",\"lastmodifytime\":\"2019-10-10 23:59:59\",\"sbbh\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-发放机运营-发放机商品交易记录，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-fl/oldDispenserUpsocket/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"startime\":\"2019-10-01 00:00:00\",\"endtime\":\"2019-10-10 23:59:59\",\"shrxm\":null,\"ffjmc\":null,\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"运营管理-发放机运营-老款发放机上货记录，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-score/recycleRulePoint/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"orderid\":null,\"flmca\":null,\"flmcb\":null,\"qycs\":\"5\",\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"系统管理-规则配置-回收规则，查询层级(中国)");
+
+		c("http://hfyhxm.lyzhyun.com:8000/api-score/highestrule/l.do", cookie, 
+		"{\"pageNum\":1,\"regionid\":\"babb5342-6ade-4158-b070-baf1d18dae1c\",\"qylx\":\"1\",\"communityid\":null,\"orderid\":null,\"qycs\":\"5\",\"productid\":\"58fd4d48-cbe5-430c-8cca-8b5b39469bd5\",\"pageSize\":10,\"orderSjly\":0}",
+		"系统管理-规则配置-最高奖励设置，查询层级(中国)");
 	}
 
 	public static void c(String url, String cookie, String json, String title) throws ClientProtocolException, IOException {
