@@ -1,7 +1,9 @@
 package com.yang.test.java.mongodb;
 
 import java.io.IOException;
-import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.bson.Document;
 import org.codehaus.jackson.JsonParseException;
@@ -22,7 +24,7 @@ public class TestMongodb {
 	public static final ObjectMapper mapper = new ObjectMapper();
 	public static long byteNum = 0;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		//List<ServerAddress> l = new ArrayList<ServerAddress>();
 		
 //		 l.add(new ServerAddress("192.168.30.120", 27017));
@@ -34,7 +36,7 @@ public class TestMongodb {
 
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 
-		MongoCollection c = mgdb.getCollection("gwRequestInfo");
+		MongoCollection c = mgdb.getCollection("gwRequestInfo1");
 		
 //		long a = System.currentTimeMillis();
 //		for(int i=0;i<1;i++) {
@@ -45,20 +47,10 @@ public class TestMongodb {
 		
 
 		
-		Calendar s = Calendar.getInstance();
-		s.set(Calendar.HOUR_OF_DAY, 0);
-		s.set(Calendar.MINUTE, 0);
-		s.set(Calendar.SECOND, 0);
-
-		
-		Calendar e = Calendar.getInstance();
-		e.set(Calendar.DAY_OF_YEAR, e.get(Calendar.DAY_OF_YEAR)+1);
-		e.set(Calendar.HOUR_OF_DAY, 0);
-		e.set(Calendar.MINUTE, 0);
-		e.set(Calendar.SECOND, 0);
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		BasicDBObject query = new BasicDBObject();
-		query.put("startTime", new BasicDBObject("$gte", s.getTime()).append("$lt", e.getTime()));
+		query.put("startTime", new BasicDBObject("$gte", df.parse("2019-10-17")).append("$lt", df.parse("2019-10-18")));
 		
 		System.out.println(c.count(query));
 		
