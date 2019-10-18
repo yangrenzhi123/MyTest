@@ -23,7 +23,7 @@ public class TestSchedule {
 
 @Component
 class MyTask2 {
-	//@Scheduled(cron = "0 * * * * *")
+	//@Scheduled(cron = "0 43 8 18 9 *")
 	public void work() {
 		System.out.println(2);
 	}
