@@ -36,7 +36,7 @@ public class TestMongodb {
 
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 
-		MongoCollection c = mgdb.getCollection("gwRequestInfo1");
+		MongoCollection c = mgdb.getCollection("gwRequestInfo");
 		
 //		long a = System.currentTimeMillis();
 //		for(int i=0;i<1;i++) {
@@ -50,7 +50,7 @@ public class TestMongodb {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		BasicDBObject query = new BasicDBObject();
-		query.put("startTime", new BasicDBObject("$gte", df.parse("2019-10-17")).append("$lt", df.parse("2019-10-18")));
+		query.put("startTime", new BasicDBObject("$gte", df.parse("2019-10-20")).append("$lt", df.parse("2019-10-21")));
 		
 		System.out.println(c.count(query));
 		
