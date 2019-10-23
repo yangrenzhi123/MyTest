@@ -4,6 +4,13 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bson.Document;
 import org.codehaus.jackson.JsonParseException;
@@ -17,12 +24,14 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-@SuppressWarnings({"rawtypes", "unchecked", "deprecation"})
+@SuppressWarnings({ "rawtypes", "unchecked", "deprecation" })
 public class TestMongodb {
 
 
 	public static final ObjectMapper mapper = new ObjectMapper();
 	public static long byteNum = 0;
+	
+	public static final Map<String, Long> uriCount = new HashMap();
 	
 	public static void main(String[] args) throws ParseException {
 		//List<ServerAddress> l = new ArrayList<ServerAddress>();
@@ -50,7 +59,7 @@ public class TestMongodb {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		BasicDBObject query = new BasicDBObject();
-		query.put("startTime", new BasicDBObject("$gte", df.parse("2019-10-20")).append("$lt", df.parse("2019-10-21")));
+		query.put("startTime", new BasicDBObject("$gte", df.parse("2019-10-22")).append("$lt", df.parse("2019-10-23")));
 		
 		System.out.println(c.count(query));
 		
@@ -59,6 +68,27 @@ public class TestMongodb {
 			public void apply(Document _doc) {
 				GwRequestInfo grades = null;
 				try {
+					String uri = (String)_doc.get("URI");
+					if(uri.startsWith("/api-file/images")) {
+						Long a = uriCount.get("/api-file/images");
+						if(a == null) {
+							a = 1L;
+							uriCount.put("/api-file/images", a);
+						}else {
+							a = a + 1;
+							uriCount.put("/api-file/images", a);
+						}
+					}else {
+						Long a = uriCount.get(uri);
+						if(a == null) {
+							a = 1L;
+							uriCount.put(uri, a);
+						}else {
+							a = a + 1;
+							uriCount.put(uri, a);
+						}
+					}
+					
 					grades = mapper.readValue(_doc.toJson(), GwRequestInfo.class);
 				} catch (JsonParseException e) {
 					e.printStackTrace();
@@ -73,5 +103,20 @@ public class TestMongodb {
 		System.out.println(byteNum);
 
 		mongoClient.close();
+
+
+		
+		List<Long> l = new ArrayList<>();
+		Iterator<Entry<String, Long>> zz = uriCount.entrySet().iterator();
+		while (zz.hasNext()) {
+			Map.Entry<String, Long> entry = (Map.Entry<String, Long>) zz.next();
+			Object key = entry.getKey();
+			Long val = (Long) entry.getValue();
+			System.out.println(key + "：" + val);
+			l.add(val);
+		}
+		
+		Collections.sort(l);
+		System.out.println(l);
 	}
 }

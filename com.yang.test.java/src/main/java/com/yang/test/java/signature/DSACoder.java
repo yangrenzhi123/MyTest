@@ -178,7 +178,7 @@ public class DSACoder {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String inputStr = "123467890";
+		String inputStr = "qwertyuiopasdfghjklzxcvbnm0123456789";
 		byte[] data = inputStr.getBytes();
 
 		// 构建密钥
@@ -197,7 +197,7 @@ public class DSACoder {
 		System.out.println("签名：" + sign);
 
 		// 验证签名
-		boolean status = DSACoder.verify(data, publicKey, sign);
+		boolean status = DSACoder.verify(data, publicKey, /*sign*/encryptBASE64("302C02143CC54842707ACA9BA5A81FE98F6D55A4F6805ED30214567DEA67B6BC8825D0565D7D6C3CD2073D8BC5F6".getBytes()));
 		System.out.println("状态：" + status);
 	}
 }

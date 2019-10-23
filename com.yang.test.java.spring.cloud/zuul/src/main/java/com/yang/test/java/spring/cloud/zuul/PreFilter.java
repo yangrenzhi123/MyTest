@@ -20,7 +20,6 @@ import io.jmnarloch.spring.cloud.ribbon.support.RibbonFilterContextHolder;
 public class PreFilter extends ZuulFilter {
 
 	@Override
-
 	public int filterOrder() {
 		return PRE_DECORATION_FILTER_ORDER - 1;
 	}
