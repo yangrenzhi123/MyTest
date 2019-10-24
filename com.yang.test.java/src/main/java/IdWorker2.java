@@ -21,7 +21,7 @@ public class IdWorker2{
         this.sequence = sequence;
     }
 
-    private long twepoch = 1288834974657L;
+    private long twepoch = 1571846400000L;
 
     private long workerIdBits = 5L;
     private long datacenterIdBits = 5L;
@@ -87,29 +87,9 @@ public class IdWorker2{
         return System.currentTimeMillis();
 	}
 
-	// ---------------测试---------------
 	public static void main(String[] args) {
-		System.out.println(1 << 3);
-		System.out.println(2 << 3);
-		
-		
-//		IdWorker2 w1 = new IdWorker2(1, 1, 1);
-//		IdWorker2 w2 = new IdWorker2(2, 1, 1);
-//		
-//		Thread t = new Thread(new Runnable() {
-//			public void run() {
-//				Object[] o = w1.nextId();
-//				System.out.println(o[0]+"-------"+o[1]);
-//			}
-//		});
-//		Thread t2 = new Thread(new Runnable() {
-//			public void run() {
-//				Object[] o = w2.nextId();
-//				System.out.println(o[0]+"-------"+o[1]);
-//			}
-//		});
-//		
-//		t.start();
-//		t2.start();
+		IdWorker2 w1 = new IdWorker2(1, 1, 1);
+		Object[] o = w1.nextId();
+		System.out.println(o[0]+"-------"+o[1]);
 	}
 }
