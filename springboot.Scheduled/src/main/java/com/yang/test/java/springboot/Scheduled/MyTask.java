@@ -17,41 +17,16 @@ public class MyTask {
 		int hour = now.get(Calendar.HOUR_OF_DAY);
 		int minute = now.get(Calendar.MINUTE);
 		int weekDay = now.get(Calendar.DAY_OF_WEEK);
-		
-		if(weekDay == 6 && hour == 10 && minute == 59) {
+
+		if (weekDay == 6 && hour == 10 && minute == 59) {
 			TestDingding.test("中石油，周末欢乐享", one);
-		}
-		
-		if (hour >= 7 && hour <= 22 && minute == 59) {
-			if (hour % 2 == 1) {
-				TestDingding.test("领时段奖励了，快快快！！！", two);
-			}
 		}
 
 		if (hour == 11 && minute == 58) {
-//			StringBuilder sb = new StringBuilder();
-//			sb.append("1、浙江移动步数签到\r\n");
-//			sb.append("惠头条签到\r\n");
-//			sb.append("阿里巴巴签到赚元宝\r\n");
-//			sb.append("省钱快报签到\r\n");
-//			TestDingding.test(sb.toString(), two);
 			TestDingding.test("DT加油签到", one);
-			
-
-			
-//			int a = now.get(Calendar.DAY_OF_MONTH);
-//			for(int i=0;i<15;i++) {
-//				if(a == (i+1)) {
-//					TestDingding.test("浙江移动APP签到", two);
-//				}
-//			}
-//			
-//			if(a == 18) {
-//				TestDingding.test("浙江移动APP 18日幸运签到礼", two);
-//			}
 		}
 
-		if (hour == 12 && minute == 57) {
+		if (hour == 12 && minute == 59) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("赶紧来一波支付宝一波操作");
 			TestDingding.test(sb.toString(), one);
