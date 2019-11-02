@@ -11,9 +11,9 @@ import java.util.List;
 
 public class GetDataNum {
 
-	static final String schema = "online_saas_lyzh_230";
+	static final String schema = "online_1008_1kw";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL1 = "jdbc:mysql://192.168.10.229:3306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL1 = "jdbc:mysql://192.168.10.90:3308/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "123456";
 
@@ -28,7 +28,7 @@ public class GetDataNum {
 
 		PreparedStatement stmt2 = null;
 		for(String table : tables) {
-			if(table.startsWith("vw_")) {
+			if(table.startsWith("vw_") || table.equals("h_exchange_record")) {
 				continue;
 			}
 			
