@@ -1,7 +1,6 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.UUID;
 
 public class Testtt {
 
@@ -12,10 +11,10 @@ public class Testtt {
 //		System.out.println(new Random().nextInt(20000000));
 //		System.out.println(System.currentTimeMillis() - a);
 
-//		System.out.println(UUID.randomUUID().toString());
-//		System.out.println(UUID.randomUUID().toString());
-//		System.out.println(UUID.randomUUID().toString());
-//		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
 		
 //		Calendar a = Calendar.getInstance();
 //		System.out.println(a.get(Calendar.DAY_OF_MONTH));
@@ -31,7 +30,7 @@ public class Testtt {
 		
 //		System.out.println(168895696601088L >> 22);
 		
-		System.out.println(1571846400000L + 40267872);
+//		System.out.println(1571846400000L + 40267872);
 		
 
 //		Calendar a = Calendar.getInstance();

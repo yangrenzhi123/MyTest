@@ -4,4 +4,20 @@
 	<select id="page" parameterType="Long" resultType="entity.ScoreRecord">
 		select * from h_score_record where scorerecordzzid > #{start} order by scorerecordzzid limit 10000
 	</select>
+	
+	<select id="limitRecyleRecord" parameterType="Long" resultType="entity.RecyleRecord">
+		select * from h_recycle_record where recyclerecordzzid > #{start} order by recyclerecordzzid limit 10000
+	</select>
+	
+	<select id="limitRecycleLoseweight" parameterType="Long" resultType="entity.RecycleLoseweight">
+		select * from h_recycle_loseweight where recycleloseweightzzid > #{start} order by recycleloseweightzzid limit 10000
+	</select>
+	
+	<select id="limitGarbagebagPull" parameterType="Long" resultType="entity.GarbagebagPull">
+		select * from h_garbagebag_pull where garbagebagpullzzid > #{start} order by garbagebagpullzzid limit 10000
+	</select>
+	
+	<select id="limitInspectRecord" parameterType="Long" resultType="entity.InspectRecord">
+		select * from h_inspect_record where inspectrecordzzid > #{start} order by inspectrecordzzid limit 10000
+	</select>
 </mapper>

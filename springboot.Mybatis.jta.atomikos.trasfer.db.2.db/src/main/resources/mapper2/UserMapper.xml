@@ -36,4 +36,161 @@
 		(#{item.scorerecordid},#{item.tenantid},#{item.productid},#{item.regionid},#{item.communityid},#{item.tenantgroupid},#{item.wybz},#{item.bgjf},#{item.jfly},#{item.ljlx},#{item.yhlx},#{item.bglx},#{item.sfjfdh},#{item.companyid},#{item.flmx},#{item.glbm},#{item.glid},#{item.bgms},#{item.ddlsh},#{item.createuser},#{item.createtime},#{item.active},#{item.scorerecordzzid},#{item.qy_projectid},#{item.etl},#{item.growth_value},#{item.growth_value_singleprice})
 		</foreach>
 	</insert>
+	
+	
+	<insert id="insertBatchRecyleRecord" parameterType="java.util.List">
+		insert into h_recycle_record (
+			recyclerecordid,
+			tenantid,
+			productid,
+			orderid,
+			regionid,
+			communityid,
+			yzqyid,
+			yxxqid,
+			cjlx,
+			sbbh,
+			equipmentid,
+			tfbz,
+			yhlx,
+			tenantgroupid,
+			operateuserid,
+			ljlx,
+			hsms,
+			tdqzl,
+			tdhzl,
+			tdzl,
+			yszl,
+			tddj,
+			hdjf,
+			sdjf,
+			tffs,
+			jlly,
+			sjly,
+			dxfssl,
+			tfsj,
+			growth_value,
+			growth_value_singleprice,
+			createuser,
+			createtime,
+			active,
+			recyclerecordzzid,
+			qy_projectid,
+			etl,
+			gdspid
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.recyclerecordid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.yzqyid},#{item.yxxqid},#{item.cjlx},#{item.sbbh},#{item.equipmentid},#{item.tfbz},#{item.yhlx},#{item.tenantgroupid},#{item.operateuserid},#{item.ljlx},#{item.hsms},#{item.tdqzl},#{item.tdhzl},#{item.tdzl},#{item.yszl},#{item.tddj},#{item.hdjf},#{item.sdjf},#{item.tffs},#{item.jlly},#{item.sjly},#{item.dxfssl},#{item.tfsj},#{item.growth_value},#{item.growth_value_singleprice},#{item.createuser},#{item.createtime},#{item.active},#{item.recyclerecordzzid},#{item.qy_projectid},#{item.etl},#{item.gdspid})
+		</foreach>
+	</insert>
+	
+	<insert id="insertBatchRecycleLoseweight" parameterType="java.util.List">
+		insert into h_recycle_loseweight (
+			recycleloseweightid,
+			tenantid,
+			productid,
+			orderid,
+			regionid,
+			communityid,
+			yzqyid,
+			yxxqid,
+			cjlx,
+			sbbh,
+			equipmentid,
+			tfbz,
+			yhlx,
+			tenantgroupid,
+			operateuserid,
+			ljlx,
+			hsms,
+			tdqzl,
+			tdhzl,
+			tdzl,
+			yszl,
+			tddj,
+			hdjf,
+			sdjf,
+			tffs,
+			jlly,
+			sjly,
+			dxfssl,
+			tfsj,
+			growth_value,
+			growth_value_singleprice,
+			createuser,
+			createtime,
+			active,
+			recycleloseweightzzid,
+			qy_projectid,
+			gdspid
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.recycleloseweightid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.yzqyid},#{item.yxxqid},#{item.cjlx},#{item.sbbh},#{item.equipmentid},#{item.tfbz},#{item.yhlx},#{item.tenantgroupid},#{item.operateuserid},#{item.ljlx},#{item.hsms},#{item.tdqzl},#{item.tdhzl},#{item.tdzl},#{item.yszl},#{item.tddj},#{item.hdjf},#{item.sdjf},#{item.tffs},#{item.jlly},#{item.sjly},#{item.dxfssl},#{item.tfsj},#{item.growth_value},#{item.growth_value_singleprice},#{item.createuser},#{item.createtime},#{item.active},#{item.recycleloseweightzzid},#{item.qy_projectid},#{item.gdspid})
+		</foreach>
+	</insert>
+	
+	
+	
+	<insert id="insertBatchGarbagebagPull" parameterType="java.util.List">
+		insert into h_garbagebag_pull (
+			garbagebagpullid,
+			tenantid,
+			productid,
+			orderid,
+			regionid,
+			communityid,
+			tenantgroupid,
+			operateuserid,
+			equipmentid,
+			sbbh,
+			fdjlx,
+			yhlylx,
+			ljdewm,
+			ljdlx,
+			lyfs,
+			lysj,
+			dsfljd,
+			createuser,
+			createtime,
+			active,
+			qy_projectid,
+			garbagebagpullzzid,
+			cjlx,
+			tfzt,
+			gdspid
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.garbagebagpullid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.tenantgroupid},#{item.operateuserid},#{item.equipmentid},#{item.sbbh},#{item.fdjlx},#{item.yhlylx},#{item.ljdewm},#{item.ljdlx},#{item.lyfs},#{item.lysj},#{item.dsfljd},#{item.createuser},#{item.createtime},#{item.active},#{item.qy_projectid},#{item.garbagebagpullzzid},#{item.cjlx},#{item.tfzt},#{item.gdspid})
+		</foreach>
+	</insert>
+	
+	
+	
+	<insert id="insertBatchInspectRecord" parameterType="java.util.List">
+		insert into h_inspect_record (
+			inspectrecordid,
+			tenantid,
+			productid,
+			regionid,
+			communityid,
+			tenantuserid,
+			wybz,
+			tenantgroupid,
+			ljlx,
+			xjjf,
+			dfyy,
+			createuser,
+			createtime,
+			active,
+			qy_projectid,
+			inspectrecordzzid
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.inspectrecordid},#{item.tenantid},#{item.productid},#{item.regionid},#{item.communityid},#{item.tenantuserid},#{item.wybz},#{item.tenantgroupid},#{item.ljlx},#{item.xjjf},#{item.dfyy},#{item.createuser},#{item.createtime},#{item.active},#{item.qy_projectid},#{item.inspectrecordzzid})
+		</foreach>
+	</insert>
 </mapper>

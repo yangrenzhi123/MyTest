@@ -33,7 +33,7 @@ public class Test1MybatisConfig {
         AtomikosDataSourceBean atomikosDataSourceBean=new AtomikosDataSourceBean();
         atomikosDataSourceBean.setXaDataSource(mysqlXADataSource);
         atomikosDataSourceBean.setUniqueResourceName("test1Datasource");
-		atomikosDataSourceBean.setMaxPoolSize(1);
+		atomikosDataSourceBean.setMaxPoolSize(5);
 		atomikosDataSourceBean.setMinPoolSize(1);
 		atomikosDataSourceBean.setLoginTimeout(60);
 		atomikosDataSourceBean.setReapTimeout(30);
