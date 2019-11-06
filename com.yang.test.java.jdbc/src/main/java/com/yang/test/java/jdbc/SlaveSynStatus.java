@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 public class SlaveSynStatus {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL2 = "jdbc:mysql://192.168.10.228:5306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL2 = "jdbc:mysql://192.168.10.223:5306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "lyzhhw4performancetesting";
 

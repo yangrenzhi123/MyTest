@@ -31,6 +31,7 @@ public class RedisClear {
 	}
 
 	public static void main(String[] args) throws IOException {
+		System.setProperty("java.net.preferIPv4Stack" , "true");
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 		
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));
@@ -40,12 +41,12 @@ public class RedisClear {
 //		nodes.add(new HostAndPort("192.168.10.240", 7005));
 //		nodes.add(new HostAndPort("192.168.10.240", 7006));
 
-		nodes.add(new HostAndPort("192.168.10.20", 7001));
-		nodes.add(new HostAndPort("192.168.10.20", 7002));
-		nodes.add(new HostAndPort("192.168.10.20", 7003));
-		nodes.add(new HostAndPort("192.168.10.22", 7004));
-		nodes.add(new HostAndPort("192.168.10.22", 7005));
-		nodes.add(new HostAndPort("192.168.10.22", 7006));
+//		nodes.add(new HostAndPort("192.168.10.20", 7001));
+//		nodes.add(new HostAndPort("192.168.10.20", 7002));
+//		nodes.add(new HostAndPort("192.168.10.20", 7003));
+//		nodes.add(new HostAndPort("192.168.10.22", 7004));
+//		nodes.add(new HostAndPort("192.168.10.22", 7005));
+//		nodes.add(new HostAndPort("192.168.10.22", 7006));
 
 //		nodes.add(new HostAndPort("192.168.30.62", 7001));
 //		nodes.add(new HostAndPort("192.168.30.62", 7002));
@@ -54,18 +55,19 @@ public class RedisClear {
 //		nodes.add(new HostAndPort("192.168.30.62", 7005));
 //		nodes.add(new HostAndPort("192.168.30.62", 7006));
 
+		nodes.add(new HostAndPort("192.168.10.228", 7001));
+		nodes.add(new HostAndPort("192.168.10.228", 7002));
+		nodes.add(new HostAndPort("192.168.10.228", 7003));
+		nodes.add(new HostAndPort("192.168.10.229", 7004));
+		nodes.add(new HostAndPort("192.168.10.229", 7005));
+		nodes.add(new HostAndPort("192.168.10.229", 7006));
+		
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_operate_user:*");
+		TreeSet<String> keys = keys(j, "h_community_xn_map*");
 		
 		for (String key : keys) {
-//			if(key.endsWith("orderCode")) {
-//				continue;
-//			}
-			
-			System.out.println(key+"："+j.get(key));
-			
-			//j.del(key);
+			j.del(key);
 		}
 
 		j.close();

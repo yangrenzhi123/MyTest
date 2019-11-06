@@ -58,7 +58,7 @@ public class UserController {
 					}
 				}
 			}
-		}, "ScoreRecord数据转移线程").start();
+		}, "ScoreRecord数据转移线程");//.start();
 
 		new Thread(new Runnable() {
 			public void run() {
@@ -91,11 +91,11 @@ public class UserController {
 					}
 				}
 			}
-		}, "RecyleRecord数据转移线程").start();
+		}, "RecyleRecord数据转移线程");//.start();
 
 		new Thread(new Runnable() {
 			public void run() {
-				long start = 87555711;
+				long start = 108775711;
 				while (true) {
 					try {
 						long a = System.currentTimeMillis();
@@ -120,12 +120,13 @@ public class UserController {
 					}
 				}
 			}
-		}, "RecycleLoseweight数据转移线程");//.start();
+		}, "RecycleLoseweight数据转移线程").start();
 
 		new Thread(new Runnable() {
 			public void run() {
 				long start = 0;
 				while (true) {
+					int i = 0;
 					try {
 						long a = System.currentTimeMillis();
 						List<GarbagebagPull> l = userDao1.limitGarbagebagPull(start);
@@ -145,7 +146,12 @@ public class UserController {
 							start = last.getGarbagebagpullzzid();
 						}
 					}catch(Exception e) {
-						TestDingding.test("GarbagebagPull，异常");
+						e.printStackTrace();
+						if(i++ > 5) TestDingding.test("GarbagebagPull，异常");
+						try {
+							Thread.sleep(10000);
+						} catch (InterruptedException e1) {
+						}
 					}
 				}
 			}

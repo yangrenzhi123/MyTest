@@ -30,12 +30,12 @@ public class RedisSimple {
 //		JedisCluster j = new JedisCluster(nodes);
 
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.228", 7001));
-		nodes.add(new HostAndPort("192.168.10.228", 7002));
-		nodes.add(new HostAndPort("192.168.10.228", 7003));
-		nodes.add(new HostAndPort("192.168.10.229", 7004));
-		nodes.add(new HostAndPort("192.168.10.229", 7005));
-		nodes.add(new HostAndPort("192.168.10.229", 7006));
+		nodes.add(new HostAndPort("192.168.10.228", 27001));
+		nodes.add(new HostAndPort("192.168.10.228", 27002));
+		nodes.add(new HostAndPort("192.168.10.228", 27003));
+		nodes.add(new HostAndPort("192.168.10.229", 27004));
+		nodes.add(new HostAndPort("192.168.10.229", 27005));
+		nodes.add(new HostAndPort("192.168.10.229", 27006));
 		JedisCluster j = new JedisCluster(nodes);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
@@ -57,9 +57,8 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("h_tenant_group_phone_one:13713696211");
 //		System.out.println(m);
 
-		
 		System.out.println(j.get("h_region_xn_map:f8d8957c-73a0-48c2-a95f-2b81d84a6a7f"));
-		//j.del("h_region_xn_map:f8d8957c-73a0-48c2-a95f-2b81d84a6a7f");
+		j.del("h_region_xn_map:f8d8957c-73a0-48c2-a95f-2b81d84a6a7f");
 		System.out.println(j.get("h_region_xn_map:f8d8957c-73a0-48c2-a95f-2b81d84a6a7f"));
 		
 //		j.set(key, key, "NX", "EX", 2*60);
