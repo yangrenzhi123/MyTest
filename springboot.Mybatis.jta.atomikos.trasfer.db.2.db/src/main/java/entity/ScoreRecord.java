@@ -26,7 +26,7 @@ public class ScoreRecord {
 	private Long scorerecordzzid;
 	private String qy_projectid;
 
-	private String etl;
+	private Integer etl;
 	private String growth_value;
 	private String growth_value_singleprice;
 
@@ -222,11 +222,11 @@ public class ScoreRecord {
 		this.qy_projectid = qy_projectid;
 	}
 
-	public String getEtl() {
+	public Integer getEtl() {
 		return etl;
 	}
 
-	public void setEtl(String etl) {
+	public void setEtl(Integer etl) {
 		this.etl = etl;
 	}
 

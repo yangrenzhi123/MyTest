@@ -11,7 +11,7 @@
     </update>
 
 	<insert id="insertBatch" parameterType="java.util.List">
-		insert into h_score_record (
+		insert into h_score_record2 (
 			scorerecordid,
 			tenantid,
 			productid,

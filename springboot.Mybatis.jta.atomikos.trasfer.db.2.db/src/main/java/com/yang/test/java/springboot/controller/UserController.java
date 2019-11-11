@@ -1,5 +1,6 @@
 package com.yang.test.java.springboot.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -27,6 +28,53 @@ public class UserController {
 
 	@Bean
 	public Integer init() {
+		new Thread(new Runnable() {
+			public void run() {
+				long start = 240612513;
+				while (true) {
+					int i = 0;
+					try {
+						long a = System.currentTimeMillis();
+						List<ScoreRecord> l = userDao1.page(start);
+						long aa = System.currentTimeMillis() - a;
+
+						if(l.size() == 0) {
+							break;
+						}
+						
+						List<ScoreRecord> ll = new ArrayList<ScoreRecord>();
+						for(ScoreRecord item : l) {
+							if(item.getEtl() == null) {
+								ll.add(item);
+							}
+						}
+
+						ScoreRecord last = l.get(l.size() - 1);
+						
+						if(ll.size() == 0) {
+							start = last.getScorerecordzzid();
+							continue;
+						}
+						
+						long b = System.currentTimeMillis();
+						userDao2.updateBatch(ll);
+						long bb = System.currentTimeMillis() - b;
+
+						System.out.println("ScoreRecord，查询耗时：" + aa + "，插入耗时：" + bb + "，查询条数：" + l.size() + "，处理条数：" + ll.size() + "，最后一条记录ID：" + last.getScorerecordzzid());
+						start = last.getScorerecordzzid();
+					}catch(Exception e) {
+						e.printStackTrace();
+						if(i++ > 5) TestDingding.test("ScoreRecord，异常");
+						try {
+							Thread.sleep(10000);
+						} catch (InterruptedException e1) {
+						}
+					}
+				}
+			}
+		}, "ScoreRecord，ETL字段NULL修改为0线程").start();
+		
+		
 		new Thread(new Runnable() {
 			public void run() {
 				long start = 194181509;
@@ -120,7 +168,7 @@ public class UserController {
 					}
 				}
 			}
-		}, "RecycleLoseweight数据转移线程").start();
+		}, "RecycleLoseweight数据转移线程");//.start();
 
 		new Thread(new Runnable() {
 			public void run() {

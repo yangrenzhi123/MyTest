@@ -1,10 +1,10 @@
 spring:
   datasource:
     username: root
-    password: 123456
+    password: lyzhhw4performancetesting
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.10.228:3306/online_saas_lyzh_230?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
 mybatis:
   typeAliasesPackage: com.yang.test.java.springboot.entity
   mapperLocations: classpath:mapper/*.xml
