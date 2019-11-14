@@ -26,48 +26,6 @@ public class UserController {
 		this.sleep = sle;
 	}
 
-	@GetMapping("/start/{s}")
-	@ResponseBody
-	public void hello(@PathVariable("s") Long start) throws InterruptedException {
-		while (true) {
-			int i = 0;
-			try {
-				if (sleep > 0) {
-					Thread.sleep(sleep * 1000);
-				}
-
-				long a = System.currentTimeMillis();
-				List<ScoreRecord> l = userDao.page(start);
-				long aa = System.currentTimeMillis() - a;
-
-				long b = System.currentTimeMillis();
-				userDao.insertBatch(l);
-				long bb = System.currentTimeMillis() - b;
-
-				ScoreRecord last = l.get(l.size() - 1);
-
-				System.out.println("查询耗时：" + aa + "，插入耗时：" + bb);
-				System.out.println("数据条数：" + l.size());
-				System.out.println("最后一条记录ID：" + last.getScorerecordzzid());
-
-				if (l.size() == 0) {
-					break;
-				} else {
-					start = last.getScorerecordzzid();
-				}
-			}catch(Exception e) {
-				e.printStackTrace();
-				if(i++ > 5) TestDingding.test("ScoreRecord，异常");
-				try {
-					Thread.sleep(10000);
-				} catch (InterruptedException e1) {
-				}
-			}
-		}
-	}
-	
-
-
 	@GetMapping("/cleanETL/{start}")
 	@ResponseBody
 	public void cleanETL(@PathVariable("start") Long start) throws InterruptedException {

@@ -2,11 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yang.test.java.springboot.dao.UserDao">
 	<select id="page" parameterType="Long" resultType="ScoreRecord">
-		select * from h_score_record where scorerecordzzid >= #{start} order by scorerecordzzid limit 10000
+		select * from h_score_record where scorerecordzzid > #{start} order by scorerecordzzid limit 10000
 	</select>
 
+    <update id="cleanETL" parameterType="java.util.List">
+        update h_score_record set etl = NULL where scorerecordzzid in
+        (<foreach collection="list" item="item" index="index" separator=",">#{item.scorerecordzzid}</foreach>)
+    </update>
+
 	<insert id="insertBatch" parameterType="java.util.List">
-		insert into h_score_record2 (
+		insert into h_score_record3 (
 			scorerecordid,
 			tenantid,
 			productid,
@@ -30,36 +35,14 @@
 			createtime,
 			active,
 			scorerecordzzid,
-			qy_projectid
+			qy_projectid,
+			etl,
+			growth_value,
+			growth_value_singleprice
 		)
 		values
 		<foreach collection="list" item="item" index="index" separator=",">
-		(
-			#{item.scorerecordid},
-			#{item.tenantid},
-			#{item.productid},
-			#{item.regionid},
-			#{item.communityid},
-			#{item.tenantgroupid},
-			#{item.wybz},
-			#{item.bgjf},
-			#{item.jfly},
-			#{item.ljlx},
-			#{item.yhlx},
-			#{item.bglx},
-			#{item.sfjfdh},
-			#{item.companyid},
-			#{item.flmx},
-			#{item.glbm},
-			#{item.glid},
-			#{item.bgms},
-			#{item.ddlsh},
-			#{item.createuser},
-			#{item.createtime},
-			#{item.active},
-			#{item.scorerecordzzid},
-			#{item.qy_projectid}
-		)
+		(#{item.scorerecordid},#{item.tenantid},#{item.productid},#{item.regionid},#{item.communityid},#{item.tenantgroupid},#{item.wybz},#{item.bgjf},#{item.jfly},#{item.ljlx},#{item.yhlx},#{item.bglx},#{item.sfjfdh},#{item.companyid},#{item.flmx},#{item.glbm},#{item.glid},#{item.bgms},#{item.ddlsh},#{item.createuser},#{item.createtime},#{item.active},#{item.scorerecordzzid},#{item.qy_projectid},#{item.etl},#{item.growth_value},#{item.growth_value_singleprice})
 		</foreach>
 	</insert>
 </mapper>

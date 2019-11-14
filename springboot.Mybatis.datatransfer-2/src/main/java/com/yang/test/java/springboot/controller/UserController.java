@@ -26,9 +26,9 @@ public class UserController {
 		this.sleep = sle;
 	}
 
-	@GetMapping("/start/{s}")
+	@GetMapping("/cleanETL/{start}")
 	@ResponseBody
-	public void hello(@PathVariable("s") Long start) throws InterruptedException {
+	public void cleanETL(@PathVariable("start") Long start) throws InterruptedException {
 		while (true) {
 			if (sleep > 0) {
 				Thread.sleep(sleep * 1000);
@@ -39,16 +39,55 @@ public class UserController {
 			long aa = System.currentTimeMillis() - a;
 
 			long b = System.currentTimeMillis();
-			userDao.insertBatch(l);
+			userDao.cleanETL(l);
 			long bb = System.currentTimeMillis() - b;
 
 			ScoreRecord last = l.get(l.size() - 1);
 
-			System.out.println("查询耗时：" + aa + "，插入耗时：" + bb);
+			System.out.println("查询耗时：" + aa + "，更新耗时：" + bb);
 			System.out.println("数据条数：" + l.size());
+			System.out.println("单次耗时：" + (System.currentTimeMillis() - a));
 			System.out.println("最后一条记录ID：" + last.getScorerecordzzid());
+			System.out.println();
 
-			if (l.size() < 10000) {
+			if (l.size() < 5000) {
+				break;
+			} else {
+				start = last.getScorerecordzzid();
+			}
+		}
+	}
+	
+	
+
+	
+
+
+	@GetMapping("/updateHEtlScoreRecord/{start}")
+	@ResponseBody
+	public void updateHEtlScoreRecord(@PathVariable("start") Long start) throws InterruptedException {
+		while (true) {
+			if (sleep > 0) {
+				Thread.sleep(sleep * 1000);
+			}
+
+			long a = System.currentTimeMillis();
+			List<ScoreRecord> l = userDao.page(start);
+			long aa = System.currentTimeMillis() - a;
+
+			long b = System.currentTimeMillis();
+			userDao.cleanETL(l);
+			long bb = System.currentTimeMillis() - b;
+
+			ScoreRecord last = l.get(l.size() - 1);
+
+			System.out.println("查询耗时：" + aa + "，更新耗时：" + bb);
+			System.out.println("数据条数：" + l.size());
+			System.out.println("单次耗时：" + (System.currentTimeMillis() - a));
+			System.out.println("最后一条记录ID：" + last.getScorerecordzzid());
+			System.out.println();
+
+			if (l.size() < 5000) {
 				break;
 			} else {
 				start = last.getScorerecordzzid();

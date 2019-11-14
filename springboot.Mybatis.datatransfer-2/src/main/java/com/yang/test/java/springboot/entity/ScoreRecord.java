@@ -26,6 +26,10 @@ public class ScoreRecord {
 	private Long scorerecordzzid;
 	private String qy_projectid;
 
+	private String etl;
+	private String growth_value;
+	private String growth_value_singleprice;
+
 	public String getScorerecordid() {
 		return scorerecordid;
 	}
@@ -216,5 +220,29 @@ public class ScoreRecord {
 
 	public void setQy_projectid(String qy_projectid) {
 		this.qy_projectid = qy_projectid;
+	}
+
+	public String getEtl() {
+		return etl;
+	}
+
+	public void setEtl(String etl) {
+		this.etl = etl;
+	}
+
+	public String getGrowth_value() {
+		return growth_value;
+	}
+
+	public void setGrowth_value(String growth_value) {
+		this.growth_value = growth_value;
+	}
+
+	public String getGrowth_value_singleprice() {
+		return growth_value_singleprice;
+	}
+
+	public void setGrowth_value_singleprice(String growth_value_singleprice) {
+		this.growth_value_singleprice = growth_value_singleprice;
 	}
 }

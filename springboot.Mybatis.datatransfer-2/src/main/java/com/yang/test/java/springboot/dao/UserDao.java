@@ -7,6 +7,8 @@ import com.yang.test.java.springboot.entity.ScoreRecord;
 public interface UserDao {
 
 	List<ScoreRecord> page(Long start);
-	
+
 	void insertBatch(List<ScoreRecord> l);
+
+	void cleanETL(List<ScoreRecord> l);
 }

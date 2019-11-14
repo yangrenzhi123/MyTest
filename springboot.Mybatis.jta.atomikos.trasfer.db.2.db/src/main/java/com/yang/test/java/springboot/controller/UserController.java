@@ -30,6 +30,156 @@ public class UserController {
 	public Integer init() {
 		new Thread(new Runnable() {
 			public void run() {
+				long start = 0;
+				long j = 0;
+				while (true) {
+					int i = 0;
+					try {
+						long a = System.currentTimeMillis();
+						List<ScoreRecord> l = userDao1.page(start);
+						long aa = System.currentTimeMillis() - a;
+
+						if(l.size() == 0) {
+							break;
+						}
+						
+						List<ScoreRecord> ll = new ArrayList<ScoreRecord>();
+						for(ScoreRecord item : l) {
+							if(item.getScorerecordzzid() % 5 == 2) {
+								ll.add(item);
+							}
+						}
+
+						ScoreRecord last = l.get(l.size() - 1);
+						
+						if(ll.size() == 0) {
+							start = last.getScorerecordzzid();
+							continue;
+						}
+						
+						long b = System.currentTimeMillis();
+						userDao1.deleteBatch(ll);
+						long bb = System.currentTimeMillis() - b;
+
+						System.out.println("h_score_record，查询耗时：" + aa + "，删除耗时：" + bb + "，查询条数：" + l.size() + "，处理条数：" + ll.size() + "，最后一条记录ID：" + last.getScorerecordzzid());
+						start = last.getScorerecordzzid();
+						
+						j = j + ll.size();
+						if(j > 40000000) {
+							break;
+						}
+					}catch(Exception e) {
+						e.printStackTrace();
+						if(i++ > 5) TestDingding.test("ScoreRecord，异常");
+						try {
+							Thread.sleep(10000);
+						} catch (InterruptedException e1) {
+						}
+					}
+				}
+			}
+		}, "h_score_record，清理线程").start();
+
+		new Thread(new Runnable() {
+			public void run() {
+				long start = 0;
+				long j = 0;//25357660
+				while (true) {
+					int i = 0;
+					try {
+						long a = System.currentTimeMillis();
+						List<RecyleRecord> l = userDao1.limitRecyleRecord(start);
+						long aa = System.currentTimeMillis() - a;
+
+						if(l.size() == 0) {
+							break;
+						}
+						
+						List<RecyleRecord> ll = new ArrayList<>();
+						for(RecyleRecord item : l) {
+							if(item.getRecyclerecordzzid() % 5 == 2) {
+								ll.add(item);
+							}
+						}
+
+						RecyleRecord last = l.get(l.size() - 1);
+						
+						if(ll.size() == 0) {
+							start = last.getRecyclerecordzzid();
+							continue;
+						}
+						
+						long b = System.currentTimeMillis();
+						userDao1.deleteRecyleRecordBatch(ll);
+						long bb = System.currentTimeMillis() - b;
+
+						System.out.println("h_recycle_record，查询耗时：" + aa + "，删除耗时：" + bb + "，查询条数：" + l.size() + "，处理条数：" + ll.size() + "，最后一条记录ID：" + last.getRecyclerecordzzid());
+						start = last.getRecyclerecordzzid();
+						
+						j = j + ll.size();
+						if(j > 25357660) {
+							break;
+						}
+					}catch(Exception e) {
+						e.printStackTrace();
+						if(i++ > 5) TestDingding.test("h_recycle_record，异常");
+						try {
+							Thread.sleep(10000);
+						} catch (InterruptedException e1) {
+						}
+					}
+				}
+			}
+		}, "h_recycle_record，清理线程");//.start();
+
+		new Thread(new Runnable() {
+			public void run() {
+				long start = 100000000;
+				while (true) {
+					int i = 0;
+					try {
+						long a = System.currentTimeMillis();
+						List<RecycleLoseweight> l = userDao1.limitRecycleLoseweight(start);
+						long aa = System.currentTimeMillis() - a;
+
+						if(l.size() == 0) {
+							break;
+						}
+						
+						List<RecycleLoseweight> ll = new ArrayList<>();
+						for(RecycleLoseweight item : l) {
+							if(item.getRecycleloseweightzzid() % 5 == 1) {
+								ll.add(item);
+							}
+						}
+
+						RecycleLoseweight last = l.get(l.size() - 1);
+						
+						if(ll.size() == 0) {
+							start = last.getRecycleloseweightzzid();
+							continue;
+						}
+						
+						long b = System.currentTimeMillis();
+						userDao1.deleteRecycleLoseweightBatch(ll);
+						long bb = System.currentTimeMillis() - b;
+
+						System.out.println("h_recycle_loseweight，查询耗时：" + aa + "，删除耗时：" + bb + "，查询条数：" + l.size() + "，处理条数：" + ll.size() + "，最后一条记录ID：" + last.getRecycleloseweightzzid());
+						start = last.getRecycleloseweightzzid();
+					}catch(Exception e) {
+						e.printStackTrace();
+						if(i++ > 5) TestDingding.test("h_recycle_record，异常");
+						try {
+							Thread.sleep(10000);
+						} catch (InterruptedException e1) {
+						}
+					}
+				}
+			}
+		}, "h_recycle_loseweight，清理线程");//.start();
+		
+		new Thread(new Runnable() {
+			public void run() {
 				long start = 240612513;
 				while (true) {
 					int i = 0;
@@ -72,7 +222,7 @@ public class UserController {
 					}
 				}
 			}
-		}, "ScoreRecord，ETL字段NULL修改为0线程").start();
+		}, "ScoreRecord，ETL字段NULL修改为0线程");//.start();
 		
 		
 		new Thread(new Runnable() {

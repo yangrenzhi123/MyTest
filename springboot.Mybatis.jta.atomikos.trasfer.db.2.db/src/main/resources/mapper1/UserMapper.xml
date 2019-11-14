@@ -4,14 +4,23 @@
 	<select id="page" parameterType="Long" resultType="entity.ScoreRecord">
 		select * from h_score_record where scorerecordzzid > #{start} order by scorerecordzzid limit 10000
 	</select>
+	<update id="deleteBatch" parameterType="java.util.List">
+		delete from h_score_record where scorerecordzzid in (<foreach collection="list" item="item" index="index" separator=",">#{item.scorerecordzzid}</foreach>)
+	</update>
 	
 	<select id="limitRecyleRecord" parameterType="Long" resultType="entity.RecyleRecord">
 		select * from h_recycle_record where recyclerecordzzid > #{start} order by recyclerecordzzid limit 10000
 	</select>
+	<update id="deleteRecyleRecordBatch" parameterType="java.util.List">
+		delete from h_recycle_record where recyclerecordzzid in (<foreach collection="list" item="item" index="index" separator=",">#{item.recyclerecordzzid}</foreach>)
+	</update>
 	
 	<select id="limitRecycleLoseweight" parameterType="Long" resultType="entity.RecycleLoseweight">
 		select * from h_recycle_loseweight where recycleloseweightzzid > #{start} order by recycleloseweightzzid limit 10000
 	</select>
+	<update id="deleteRecycleLoseweightBatch" parameterType="java.util.List">
+		delete from h_recycle_loseweight where recycleloseweightzzid in (<foreach collection="list" item="item" index="index" separator=",">#{item.recycleloseweightzzid}</foreach>)
+	</update>
 	
 	<select id="limitGarbagebagPull" parameterType="Long" resultType="entity.GarbagebagPull">
 		select * from h_garbagebag_pull where garbagebagpullzzid > #{start} order by garbagebagpullzzid limit 10000

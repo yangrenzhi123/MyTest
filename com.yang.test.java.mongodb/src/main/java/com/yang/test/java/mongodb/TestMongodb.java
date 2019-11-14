@@ -59,7 +59,7 @@ public class TestMongodb {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		BasicDBObject query = new BasicDBObject();
-		query.put("startTime", new BasicDBObject("$gte", df.parse("2019-10-30")).append("$lt", df.parse("2019-10-31")));
+		query.put("startTime", new BasicDBObject("$gte", df.parse("2019-10-31")).append("$lt", df.parse("2019-11-01")));
 		
 		System.out.println(c.count(query));
 		

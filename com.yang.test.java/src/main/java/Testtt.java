@@ -5,16 +5,35 @@ import java.util.UUID;
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
+		System.out.println(0%5);
+		System.out.println(1%5);
+		System.out.println(2%5);
+		System.out.println(3%5);
+		System.out.println(4%5);
+		System.out.println(5%5);
+		System.out.println(6%5);
+		System.out.println(7%5);
+		System.out.println(8%5);
+		System.out.println(9%5);
+		System.out.println(10%5);
+		System.out.println(11%5);
+		System.out.println(12%5);
+		System.out.println(13%5);
+		System.out.println(14%5);
+		System.out.println(15%5);
+		System.out.println(16%5);
+		
+		
 //		throw new RuntimeException(new NullPointerException());
 		
 //		long a = System.currentTimeMillis();
 //		System.out.println(new Random().nextInt(20000000));
 //		System.out.println(System.currentTimeMillis() - a);
 
-		System.out.println(UUID.randomUUID().toString());
-		System.out.println(UUID.randomUUID().toString());
-		System.out.println(UUID.randomUUID().toString());
-		System.out.println(UUID.randomUUID().toString());
+//		System.out.println(UUID.randomUUID().toString());
+//		System.out.println(UUID.randomUUID().toString());
+//		System.out.println(UUID.randomUUID().toString());
+//		System.out.println(UUID.randomUUID().toString());
 		
 //		Calendar a = Calendar.getInstance();
 //		System.out.println(a.get(Calendar.DAY_OF_MONTH));
