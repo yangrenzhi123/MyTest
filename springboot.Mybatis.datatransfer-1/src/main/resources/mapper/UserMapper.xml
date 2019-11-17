@@ -5,13 +5,8 @@
 		select * from h_score_record where scorerecordzzid > #{start} and scorerecordzzid <![CDATA[<=]]> 120000000 order by scorerecordzzid limit 10000
 	</select>
 
-    <update id="cleanETL" parameterType="java.util.List">
-        update h_score_record set etl = NULL where scorerecordzzid in
-        (<foreach collection="list" item="item" index="index" separator=",">#{item.scorerecordzzid}</foreach>)
-    </update>
-
 	<insert id="insertBatch" parameterType="java.util.List">
-		insert into h_score_record3 (
+		insert into h_score_record2 (
 			scorerecordid,
 			tenantid,
 			productid,
@@ -45,4 +40,9 @@
 		(#{item.scorerecordid},#{item.tenantid},#{item.productid},#{item.regionid},#{item.communityid},#{item.tenantgroupid},#{item.wybz},#{item.bgjf},#{item.jfly},#{item.ljlx},#{item.yhlx},#{item.bglx},#{item.sfjfdh},#{item.companyid},#{item.flmx},#{item.glbm},#{item.glid},#{item.bgms},#{item.ddlsh},#{item.createuser},#{item.createtime},#{item.active},#{item.scorerecordzzid},#{item.qy_projectid},#{item.etl},#{item.growth_value},#{item.growth_value_singleprice})
 		</foreach>
 	</insert>
+
+    <update id="cleanETL" parameterType="java.util.List">
+        update h_score_record set etl = NULL where scorerecordzzid in
+        (<foreach collection="list" item="item" index="index" separator=",">#{item.scorerecordzzid}</foreach>)
+    </update>
 </mapper>

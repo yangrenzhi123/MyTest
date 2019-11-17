@@ -28,7 +28,7 @@ public class SpringbootMybatisStartup {
 	public Integer init() {
 		new Thread(new Runnable() {
 			public void run() {
-				long start = 19596362;
+				long start = 0;
 				int i = 0;
 				while (true) {
 					try {
