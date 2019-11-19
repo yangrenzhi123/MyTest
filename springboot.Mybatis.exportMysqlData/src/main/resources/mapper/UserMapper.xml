@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.test.java.springboot.dao.UserDao">
+	<select id="page" parameterType="Long" resultType="ScoreRecord">
+		select * from h_score_record where scorerecordzzid > #{start} and scorerecordzzid <![CDATA[<=]]> 120000000 order by scorerecordzzid limit 10000
+	</select>
+	<select id="limitRecycleRecord" parameterType="Long" resultType="RecycleRecord">
+		select * from h_recycle_record where recyclerecordzzid > #{start} and recyclerecordzzid <![CDATA[<=]]> 10000 order by recyclerecordzzid limit 10000
+	</select>
+</mapper>

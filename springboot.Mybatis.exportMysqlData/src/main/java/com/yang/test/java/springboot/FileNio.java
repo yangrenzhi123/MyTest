@@ -1,11 +1,10 @@
-package com.yang.test.java.nio;
+package com.yang.test.java.springboot;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
-@SuppressWarnings("resource")
 public class FileNio {
 
 	public static void main(String[] args) throws IOException {
@@ -32,5 +31,7 @@ public class FileNio {
 //				System.out.print(new String(content));
 //			} while (bytesRead != -1);
 		}
+		
+		f.close();
 	}
 }
