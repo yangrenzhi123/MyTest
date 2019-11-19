@@ -42,12 +42,10 @@ public class RedisClear {
 
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
+		TreeSet<String> keys = keys(j, "h_tenant_group_phone_one:*");
 
 		for (String key : keys) {
-			System.out.println(key);
-
-			// j.del(key);
+			j.del(key);
 		}
 
 		j.close();

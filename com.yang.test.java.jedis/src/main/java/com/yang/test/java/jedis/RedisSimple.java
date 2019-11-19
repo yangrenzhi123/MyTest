@@ -11,14 +11,14 @@ public class RedisSimple {
 	public static void main(String[] args) throws IOException {
 //		Jedis j = new Jedis("192.168.10.90", 7001);
 
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.10.20", 7001));
-//		nodes.add(new HostAndPort("192.168.10.20", 7002));
-//		nodes.add(new HostAndPort("192.168.10.20", 7003));
-//		nodes.add(new HostAndPort("192.168.10.22", 7004));
-//		nodes.add(new HostAndPort("192.168.10.22", 7005));
-//		nodes.add(new HostAndPort("192.168.10.22", 7006));
-//		JedisCluster j = new JedisCluster(nodes);
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.10.20", 7001));
+		nodes.add(new HostAndPort("192.168.10.20", 7002));
+		nodes.add(new HostAndPort("192.168.10.20", 7003));
+		nodes.add(new HostAndPort("192.168.10.22", 7004));
+		nodes.add(new HostAndPort("192.168.10.22", 7005));
+		nodes.add(new HostAndPort("192.168.10.22", 7006));
+		JedisCluster j = new JedisCluster(nodes);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.30.62", 7001));
@@ -29,14 +29,14 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.30.62", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.228", 27001));
-		nodes.add(new HostAndPort("192.168.10.228", 27002));
-		nodes.add(new HostAndPort("192.168.10.228", 27003));
-		nodes.add(new HostAndPort("192.168.10.229", 27004));
-		nodes.add(new HostAndPort("192.168.10.229", 27005));
-		nodes.add(new HostAndPort("192.168.10.229", 27006));
-		JedisCluster j = new JedisCluster(nodes);
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("192.168.10.228", 27001));
+//		nodes.add(new HostAndPort("192.168.10.228", 27002));
+//		nodes.add(new HostAndPort("192.168.10.228", 27003));
+//		nodes.add(new HostAndPort("192.168.10.229", 27004));
+//		nodes.add(new HostAndPort("192.168.10.229", 27005));
+//		nodes.add(new HostAndPort("192.168.10.229", 27006));
+//		JedisCluster j = new JedisCluster(nodes);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));
@@ -57,9 +57,12 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("h_tenant_group_phone_one:13713696211");
 //		System.out.println(m);
 
-		System.out.println(j.get("h_region_xn_map:f8d8957c-73a0-48c2-a95f-2b81d84a6a7f"));
-		j.del("h_region_xn_map:f8d8957c-73a0-48c2-a95f-2b81d84a6a7f");
-		System.out.println(j.get("h_region_xn_map:f8d8957c-73a0-48c2-a95f-2b81d84a6a7f"));
+		System.out.println(j.get("h_tenant_group:LYZH190811701401"));
+		System.out.println(j.get("h_tenant_group:LYZH190811701402"));
+		j.del("h_tenant_group:LYZH190811701401");
+		j.del("h_tenant_group:LYZH190811701402");
+		System.out.println(j.get("h_tenant_group:LYZH190811701401"));
+		System.out.println(j.get("h_tenant_group:LYZH190811701402"));
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 

@@ -20,12 +20,12 @@ public class TestServiceTest {
     @Autowired
     private TestService testService;
 
-    @Test
+    //@Test
     public void insertOne(){
         testService.insertOne();
     }
 
-    @Test
+    //@Test
     public void getAll(){
         testService.getAll();
     }
