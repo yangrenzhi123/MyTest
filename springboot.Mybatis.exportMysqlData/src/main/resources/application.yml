@@ -8,3 +8,5 @@ spring:
 mybatis:
   typeAliasesPackage: com.yang.test.java.springboot.entity
   mapperLocations: classpath:mapper/*.xml
+server:
+  port: 17789

@@ -8,5 +8,5 @@ import com.yang.test.java.springboot.entity.ScoreRecord;
 public interface UserDao {
 
 	List<ScoreRecord> page(Long start);
-	List<RecycleRecord> limitRecycleRecord(Long start);
+	List<RecycleRecord> limitRecycleRecord(Long start, long end);
 }

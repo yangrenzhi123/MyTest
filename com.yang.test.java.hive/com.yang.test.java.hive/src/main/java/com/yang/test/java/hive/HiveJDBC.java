@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class HiveJDBC {
 
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";
-    private static String url = "jdbc:hive2://192.168.40.14:10000/default";
+    private static String url = "jdbc:hive2://192.168.10.90:10000/default";
     private static String user = "root";
     private static String password = "";
     private static Connection conn = null;
@@ -27,38 +27,47 @@ public class HiveJDBC {
 		String sql = null;
 		
 
-/*        sql = "drop table if exists h_recycle_record";
+        /*sql = "drop table if exists h_recycle_record";
         System.out.println("Running: " + sql);
         stmt.execute(sql);
         
 
         sql = "create table h_recycle_record(recyclerecordid String,tenantid String,productid String,orderid String,regionid String,communityid String,yzqyid String,yxxqid String,cjlx String,sbbh String,equipmentid String,tfbz String,yhlx String,tenantgroupid String,operateuserid String,ljlx String,hsms String,tdqzl String,tdhzl String,tdzl String,yszl String,tddj String,hdjf String,sdjf String,tffs String,jlly String,sjly String,dxfssl String,tfsj String,growth_value String,growth_value_singleprice String,createuser String,createtime String,active String,recyclerecordzzid bigint,qy_projectid String,etl String,gdspid String) row format delimited fields terminated by '\t'";
         System.out.println("Running: " + sql);
-		stmt.execute(sql);
+		stmt.execute(sql);*/
+		
+
+        sql = "desc h_recycle_record";
+        System.out.println("Running: " + sql);
+        rs = stmt.executeQuery(sql);
+        while (rs.next()) {
+            System.out.println(rs.getString(1) + "\t" + rs.getString(2));
+        }
 
 		
-		String filePath = "/home/h_recycle_record_1_10000";
-		sql = "load data local inpath '" + filePath + "' overwrite into table h_recycle_record";
+		/*String filePath = "/home/h_recycle_record_1_10000000";
+		sql = "load data local inpath '" + filePath + "' into table h_recycle_record";
+		//sql = "load data local inpath '" + filePath + "' overwrite into table h_recycle_record";
 		System.out.println("Running: " + sql);
 		long a = System.currentTimeMillis();
 		stmt.execute(sql);
 		System.out.println("数据导入耗时：" + (System.currentTimeMillis() - a));*/
         
-		sql = "insert into table h_recycle_record select * from h_recycle_record";
+		/*sql = "insert into table h_recycle_record select * from h_recycle_record";
 		System.out.println("Running: " + sql);
 		long a = System.currentTimeMillis();
 		stmt.execute(sql);
-		System.out.println("数据insert into耗时：" + (System.currentTimeMillis() - a));
+		System.out.println("数据insert into耗时：" + (System.currentTimeMillis() - a));*/
 		
 
-        sql = "select * from h_recycle_record";
+        /*sql = "select * from h_recycle_record";
         System.out.println("Running: " + sql);
         rs = stmt.executeQuery(sql);
         System.out.println("员工编号" + "\t" + "员工姓名");
         while (rs.next()) {
             //System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
             System.out.println(rs.getString(1) + "\t" + rs.getString(2));
-        }
+        }*/
         
 
 		if (rs != null) {
@@ -71,17 +80,6 @@ public class HiveJDBC {
 			conn.close();
 		}
 	}
-
-    // 查看表结构
-    //@Test
-    public void descTable() throws Exception {
-        String sql = "desc emp";
-        System.out.println("Running: " + sql);
-        rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            System.out.println(rs.getString(1) + "\t" + rs.getString(2));
-        }
-    }
 
     // 创建数据库
     //@Test

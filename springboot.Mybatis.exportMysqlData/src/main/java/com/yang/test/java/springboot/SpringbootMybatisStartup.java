@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -28,22 +29,26 @@ public class SpringbootMybatisStartup {
 
 	@Resource
 	private UserDao userDao;
+	
+    @Value("${startnum}")
+    private long start;
+    @Value("${endnum}")
+    private long end;
 
 	@Bean
 	public Integer init() throws FileNotFoundException {
 
-		RandomAccessFile f = new RandomAccessFile("C:/h_recycle_record_1_10000", "rw");
+		RandomAccessFile f = new RandomAccessFile("/home/h_recycle_record_"+(start+1)+"_"+end, "rw");
 		FileChannel fileChannel = f.getChannel();
 		ByteBuffer buf = ByteBuffer.allocate(1024);
 		
 		new Thread(new Runnable() {
 			public void run() {
-				long start = 0;
 				int i = 0;
 				while (true) {
 					try {
 						long a = System.currentTimeMillis();
-						List<RecycleRecord> l = userDao.limitRecycleRecord(start);
+						List<RecycleRecord> l = userDao.limitRecycleRecord(start, end);
 						long aa = System.currentTimeMillis() - a;
 
 						if(l.size() == 0) {
