@@ -147,13 +147,13 @@ public class TestSendToNetty {
 
 					for(int m=0;m<c2;m++) {
 						int z = a.nextInt(cyewmList.size());
-						String s = 
-						timeTo16()
-						+rqcodeTo16(cyewmList.get(z))
-						+ljlx[r.nextInt(ljlx.length)]/*垃圾类型*/
-						+turnHex(intToHex(r.nextInt(1000)))
-						+"00"/*重量*/
-						+"00000000000000000000A4B6";
+						StringBuilder s = new StringBuilder();
+						s.append(timeTo16());
+						s.append(rqcodeTo16(cyewmList.get(z)));
+						s.append(ljlx[r.nextInt(ljlx.length)]);//垃圾类型
+						s.append(turnHex(intToHex(r.nextInt(1000))));
+						s.append("00");
+						s.append("000000000000");
 						StringBuilder sb = new StringBuilder();
 						for(int i=0;i<s.length()/2;i++) {
 							String s1 = s.substring(i*2, (i+1)*2);
@@ -165,7 +165,7 @@ public class TestSendToNetty {
 							}
 							sb.append(s1);
 						}
-						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+sb.toString()+"55");
+						byte[] bs = hexString2Bytes("554000E00102"+deviceNos.get(j)+sb.toString()+"A4B655");
 						
 						try {
 							os.write(bs);

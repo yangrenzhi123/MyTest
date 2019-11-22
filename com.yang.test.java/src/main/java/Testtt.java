@@ -1,27 +1,28 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(0%5);
-		System.out.println(1%5);
-		System.out.println(2%5);
-		System.out.println(3%5);
-		System.out.println(4%5);
-		System.out.println(5%5);
-		System.out.println(6%5);
-		System.out.println(7%5);
-		System.out.println(8%5);
-		System.out.println(9%5);
-		System.out.println(10%5);
-		System.out.println(11%5);
-		System.out.println(12%5);
-		System.out.println(13%5);
-		System.out.println(14%5);
-		System.out.println(15%5);
-		System.out.println(16%5);
+//		System.out.println(0%5);
+//		System.out.println(1%5);
+//		System.out.println(2%5);
+//		System.out.println(3%5);
+//		System.out.println(4%5);
+//		System.out.println(5%5);
+//		System.out.println(6%5);
+//		System.out.println(7%5);
+//		System.out.println(8%5);
+//		System.out.println(9%5);
+//		System.out.println(10%5);
+//		System.out.println(11%5);
+//		System.out.println(12%5);
+//		System.out.println(13%5);
+//		System.out.println(14%5);
+//		System.out.println(15%5);
+//		System.out.println(16%5);
 		
 		
 //		throw new RuntimeException(new NullPointerException());
@@ -55,7 +56,7 @@ public class Testtt {
 //		Calendar a = Calendar.getInstance();
 //		System.out.println(a.get(Calendar.DAY_OF_WEEK));
 		
-//		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567584746930L)));
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1288834974000L)));
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567588346930L)));
 		
 //		System.out.println(URLDecoder.decode("%7B%22equipNo%22%3A%22000000000331%22%2C%22type%22%3A%222%22%2C%22phone%22%3A%22LYZH151211144001%22%7D", "utf8"));
