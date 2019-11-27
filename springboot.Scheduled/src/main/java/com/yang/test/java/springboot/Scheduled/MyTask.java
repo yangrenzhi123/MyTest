@@ -22,24 +22,9 @@ public class MyTask {
 			TestDingding.test("中石油，周末欢乐享", one);
 		}
 
-		if (hour == 11 && minute == 58) {
-			TestDingding.test("DT加油签到", one);
-		}
-
 		if (hour == 12 && minute == 59) {
-			StringBuilder sb = new StringBuilder();
-			sb.append("赶紧来一波支付宝一波操作");
-			TestDingding.test(sb.toString(), one);
-		}
-
-		if ((hour == 9 || hour == 13) && minute == 59) {
-			StringBuilder sb = new StringBuilder();
-			sb.append("元宝换红包了，快快快！！！");
-			TestDingding.test(sb.toString(), two);
-		}
-
-		if (hour >= 7 && hour <= 22 && minute == 59) {
-			TestDingding.test("头条开宝箱了，快快快！！！", one);
+			TestDingding.test("赶紧来一波支付宝一波操作", one);
+			TestDingding.test("DT加油签到", one);
 		}
 	}
 }

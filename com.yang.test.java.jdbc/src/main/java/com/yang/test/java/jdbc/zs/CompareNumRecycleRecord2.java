@@ -25,7 +25,7 @@ public class CompareNumRecycleRecord2 {
 		Connection conn2 = DriverManager.getConnection(DB_URL1, USER, PASS);
 		conn2.setAutoCommit(true);
 		
-		List<String> tables = new ArrayList<>();tables.add("h_recycle_record");
+		List<String> tables = new ArrayList<>();tables.add("h_recycle_loseweight");
 
 		Connection conn = DriverManager.getConnection(DB_URL2, USER, PASS);
 		conn.setAutoCommit(true);
