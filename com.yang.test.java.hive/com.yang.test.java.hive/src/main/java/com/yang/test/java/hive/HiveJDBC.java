@@ -37,15 +37,15 @@ public class HiveJDBC {
 		stmt.execute(sql);*/
 		
 
-        sql = "desc h_recycle_record";
+        /*sql = "desc h_recycle_record";
         System.out.println("Running: " + sql);
         rs = stmt.executeQuery(sql);
         while (rs.next()) {
             System.out.println(rs.getString(1) + "\t" + rs.getString(2));
-        }
+        }*/
 
 		
-		/*String filePath = "/home/h_recycle_record_1_10000000";
+		/*String filePath = "/home/h_recycle_record_100000001_186196962";
 		sql = "load data local inpath '" + filePath + "' into table h_recycle_record";
 		//sql = "load data local inpath '" + filePath + "' overwrite into table h_recycle_record";
 		System.out.println("Running: " + sql);
@@ -60,14 +60,14 @@ public class HiveJDBC {
 		System.out.println("数据insert into耗时：" + (System.currentTimeMillis() - a));*/
 		
 
-        /*sql = "select * from h_recycle_record";
+        sql = "select * from h_recycle_record limit 10";
         System.out.println("Running: " + sql);
         rs = stmt.executeQuery(sql);
-        System.out.println("员工编号" + "\t" + "员工姓名");
+        System.out.println("ID" + "\t" + "收集类型" + "\t" + "投放时间");
         while (rs.next()) {
-            //System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
-            System.out.println(rs.getString(1) + "\t" + rs.getString(2));
-        }*/
+            System.out.println(rs.getString("recyclerecordid") + "\t" + rs.getString("sjly") + "\t" + rs.getString("tfsj"));
+//            System.out.println(rs.getString(1) + "\t" + rs.getString(2));
+        }
         
 
 		if (rs != null) {

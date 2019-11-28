@@ -1,15 +1,52 @@
 package com.yang.test.java.elasticsearch;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.http.HttpHost;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.get.GetRequest;
+import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.xcontent.XContentType;
 
+@SuppressWarnings("deprecation")
 public class Elasticsearch {
 
 	public static void main(String[] args) throws IOException {
 		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.8.70", 9200, "http")));
+
+
+		BulkRequest bulkRequest = new BulkRequest();
+		
+		IndexRequest request = new IndexRequest("posts", "doc", "3");
+		String jsonString = "{" + "\"user\":\"kimchy\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
+		request.source(jsonString, XContentType.JSON);
+		//client.index(request, RequestOptions.DEFAULT);
+
+		bulkRequest.add(request);
+		
+		request = new IndexRequest("posts", "doc", "4");
+		jsonString = "{" + "\"user\":\"kimchy2\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
+		request.source(jsonString, XContentType.JSON);
+		//client.index(request, RequestOptions.DEFAULT);
+
+		bulkRequest.add(request);
+		
+		client.bulk(bulkRequest, RequestOptions.DEFAULT);
+		
+        GetRequest r = new GetRequest("posts", "doc", "3");
+        GetResponse p = client.get(r, RequestOptions.DEFAULT);
+        Map<String, Object> source = p.getSource();
+        System.out.println(source);
+        r = new GetRequest("posts", "doc", "4");
+        p = client.get(r, RequestOptions.DEFAULT);
+        source = p.getSource();
+        System.out.println(source);
+		
 		client.close();
 	}
 }

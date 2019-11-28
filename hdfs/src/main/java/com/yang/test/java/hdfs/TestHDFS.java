@@ -16,9 +16,11 @@ public class TestHDFS {
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(new URI("hdfs://192.168.10.228:8020"), conf, "root");
 
-		fs.copyFromLocalFile(false, true, new Path("C:/test.xml"), new Path("/demo1/test.xml"));
+//		fs.copyFromLocalFile(false, true, new Path("C:/test.xml"), new Path("/demo1/test.xml"));
+//		fs.copyToLocalFile(false, new Path("/demo1/test.xml"), new Path("C:/test2.xml"), true);
+		
 
-		fs.copyToLocalFile(false, new Path("/demo1/test.xml"), new Path("C:/test2.xml"), true);
+		fs.copyFromLocalFile(false, true, new Path("C:/1.txt"), new Path("/home/1.txt"));
 		fs.close();
 	}
 }
