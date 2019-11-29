@@ -76,6 +76,11 @@ public class MonitorForService {
 			common(uiConsole, "运维端");
 		}
 
+		List<String> etls = config.getEtl();
+		for (String etl : etls) {
+			common(etl, "ETL");
+		}
+
 		List<String> uiPlatforms = config.getUiPlatform();
 		for (String uiPlatform : uiPlatforms) {
 			common(uiPlatform, "租户端");

@@ -27,6 +27,7 @@ public class Config {
 	private List<String> fl;
 	private List<String> file;
 	private List<String> nms;
+	private List<String> etl;
 	private List<String> scheduler;
 	private List<String> platform;
 	private String mongodb;
@@ -138,5 +139,11 @@ public class Config {
 	}
 	public void setPlatform(List<String> platform) {
 		this.platform = platform;
+	}
+	public List<String> getEtl() {
+		return etl;
+	}
+	public void setEtl(List<String> etl) {
+		this.etl = etl;
 	}
 }

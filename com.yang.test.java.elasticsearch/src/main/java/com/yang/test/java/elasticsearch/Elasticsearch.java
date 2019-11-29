@@ -22,15 +22,22 @@ public class Elasticsearch {
 
 		BulkRequest bulkRequest = new BulkRequest();
 		
-		IndexRequest request = new IndexRequest("posts", "doc", "3");
-		String jsonString = "{" + "\"user\":\"kimchy\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
+		IndexRequest request = new IndexRequest("posts", "doc", "a");
+		String jsonString = "{" + "\"user\":\"kimchya\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
 		request.source(jsonString, XContentType.JSON);
 		//client.index(request, RequestOptions.DEFAULT);
 
 		bulkRequest.add(request);
 		
-		request = new IndexRequest("posts", "doc", "4");
-		jsonString = "{" + "\"user\":\"kimchy2\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
+		request = new IndexRequest("posts", "doc", "b");
+		jsonString = "{" + "\"user\":\"kimchyb\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
+		request.source(jsonString, XContentType.JSON);
+		//client.index(request, RequestOptions.DEFAULT);
+
+		bulkRequest.add(request);
+		
+		request = new IndexRequest("posts", "doc", "c");
+		jsonString = "{" + "\"user\":\"kimchyc\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
 		request.source(jsonString, XContentType.JSON);
 		//client.index(request, RequestOptions.DEFAULT);
 
@@ -38,11 +45,15 @@ public class Elasticsearch {
 		
 		client.bulk(bulkRequest, RequestOptions.DEFAULT);
 		
-        GetRequest r = new GetRequest("posts", "doc", "3");
+        GetRequest r = new GetRequest("posts", "doc", "a");
         GetResponse p = client.get(r, RequestOptions.DEFAULT);
         Map<String, Object> source = p.getSource();
         System.out.println(source);
-        r = new GetRequest("posts", "doc", "4");
+        r = new GetRequest("posts", "doc", "b");
+        p = client.get(r, RequestOptions.DEFAULT);
+        source = p.getSource();
+        System.out.println(source);
+        r = new GetRequest("posts", "doc", "c");
         p = client.get(r, RequestOptions.DEFAULT);
         source = p.getSource();
         System.out.println(source);

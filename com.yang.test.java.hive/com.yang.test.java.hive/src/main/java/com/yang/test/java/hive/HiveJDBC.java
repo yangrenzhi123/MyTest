@@ -26,6 +26,13 @@ public class HiveJDBC {
 		
 		String sql = null;
 		
+        sql = "show databases";
+        System.out.println("Running: " + sql);
+        rs = stmt.executeQuery(sql);
+        while (rs.next()) {
+            System.out.println(rs.getString(1));
+        }
+		
 
         /*sql = "drop table if exists h_recycle_record";
         System.out.println("Running: " + sql);
@@ -60,14 +67,14 @@ public class HiveJDBC {
 		System.out.println("数据insert into耗时：" + (System.currentTimeMillis() - a));*/
 		
 
-        sql = "select * from h_recycle_record limit 10";
+        /*sql = "select * from h_recycle_record limit 10";
         System.out.println("Running: " + sql);
         rs = stmt.executeQuery(sql);
         System.out.println("ID" + "\t" + "收集类型" + "\t" + "投放时间");
         while (rs.next()) {
             System.out.println(rs.getString("recyclerecordid") + "\t" + rs.getString("sjly") + "\t" + rs.getString("tfsj"));
-//            System.out.println(rs.getString(1) + "\t" + rs.getString(2));
-        }
+            //System.out.println(rs.getString(1) + "\t" + rs.getString(2));
+        }*/
         
 
 		if (rs != null) {
@@ -87,17 +94,6 @@ public class HiveJDBC {
         String sql = "create database hive_jdbc_test";
         System.out.println("Running: " + sql);
         stmt.execute(sql);
-    }
-
-    // 查询所有数据库
-    //@Test
-    public void showDatabases() throws Exception {
-        String sql = "show databases";
-        System.out.println("Running: " + sql);
-        rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            System.out.println(rs.getString(1));
-        }
     }
 
     // 查询所有表
