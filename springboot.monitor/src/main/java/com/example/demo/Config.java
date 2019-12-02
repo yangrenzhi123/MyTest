@@ -28,6 +28,7 @@ public class Config {
 	private List<String> file;
 	private List<String> nms;
 	private List<String> etl;
+	private List<String> cs;
 	private List<String> scheduler;
 	private List<String> platform;
 	private String mongodb;
@@ -145,5 +146,11 @@ public class Config {
 	}
 	public void setEtl(List<String> etl) {
 		this.etl = etl;
+	}
+	public List<String> getCs() {
+		return cs;
+	}
+	public void setCs(List<String> cs) {
+		this.cs = cs;
 	}
 }

@@ -1,3 +1,4 @@
+package com.yang.test.java.kafka.withtransaction;
 import java.util.Properties;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -23,8 +24,8 @@ public class KafkaSender {
 		producer.beginTransaction();
 		producer.send(new ProducerRecord<String, String>(topic, "0"));
 		producer.send(new ProducerRecord<String, String>(topic, "1"));
-		producer.abortTransaction();
-		//producer.commitTransaction();
+		//producer.abortTransaction();
+		producer.commitTransaction();
 		producer.close();
 	}
 }

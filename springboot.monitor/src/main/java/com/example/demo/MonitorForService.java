@@ -81,6 +81,11 @@ public class MonitorForService {
 			common(etl, "ETL");
 		}
 
+		List<String> css = config.getCs();
+		for (String cs : css) {
+			common(cs, "CS");
+		}
+
 		List<String> uiPlatforms = config.getUiPlatform();
 		for (String uiPlatform : uiPlatforms) {
 			common(uiPlatform, "租户端");

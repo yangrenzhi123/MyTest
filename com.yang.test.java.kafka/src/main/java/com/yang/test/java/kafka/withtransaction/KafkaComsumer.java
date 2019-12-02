@@ -1,3 +1,4 @@
+package com.yang.test.java.kafka.withtransaction;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
@@ -17,7 +18,7 @@ public class KafkaComsumer {
 		
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");
-		props.put("isolation.level", "read_committed");
+		props.put("isolation.level", "read_committed"); //读提交，否则事务无效
 		props.put("auto.commit.interval.ms", "1000");
 		props.put("session.timeout.ms", "30000");
 		props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");

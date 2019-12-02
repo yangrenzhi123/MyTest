@@ -18,7 +18,7 @@ public class MyTask {
 		int minute = now.get(Calendar.MINUTE);
 		int weekDay = now.get(Calendar.DAY_OF_WEEK);
 
-		if (weekDay == 6 && hour == 10 && minute == 59) {
+		if (weekDay == 6 && hour == 11 && minute == 59) {
 			TestDingding.test("中石油，周末欢乐享", one);
 		}
 

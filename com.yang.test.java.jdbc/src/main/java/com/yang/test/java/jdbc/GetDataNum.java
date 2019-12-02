@@ -11,11 +11,11 @@ import java.util.List;
 
 public class GetDataNum {
 
-	static final String schema = "online_1008_1kw";
+	static final String schema = "lyzhhw4";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL1 = "jdbc:mysql://192.168.10.90:3308/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL1 = "jdbc:mysql://192.168.10.229:5306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
-	static final String PASS = "123456";
+	static final String PASS = "lyzhhw4performancetesting";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		DecimalFormat df = new DecimalFormat("####,####");
@@ -26,6 +26,7 @@ public class GetDataNum {
 		
 		List<String> tables = getTables(conn2);
 
+		int total = 0;
 		PreparedStatement stmt2 = null;
 		for(String table : tables) {
 			if(table.startsWith("vw_") || table.equals("h_exchange_record")) {
@@ -39,8 +40,10 @@ public class GetDataNum {
 			
 
 			System.out.println("表"+table+"，"+df.format(a));
+			total = total + a;
 		}
 		
+		System.out.println("总数据量：" + total);
 		stmt2.close();
 	}
 
