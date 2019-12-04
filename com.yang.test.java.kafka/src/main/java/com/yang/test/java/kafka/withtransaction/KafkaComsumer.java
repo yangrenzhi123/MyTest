@@ -12,14 +12,17 @@ public class KafkaComsumer {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
-		String group = "test";
-		String topic = "test";
+		String group = "group4test";
+		String topic = "test2";
 		props.put("bootstrap.servers", "192.168.10.239:9092");
 		
 		props.put("group.id", group);
-		props.put("enable.auto.commit", "true");
-		props.put("isolation.level", "read_committed"); //读提交，否则事务无效
-		props.put("auto.commit.interval.ms", "1000");
+
+		props.put("enable.auto.commit", "false");
+//		props.put("enable.auto.commit", "true");
+//		props.put("auto.commit.interval.ms", "60000");
+		
+//		props.put("isolation.level", "read_committed"); //读提交，否则事务无效
 		props.put("session.timeout.ms", "30000");
 		props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 		props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
