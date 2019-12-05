@@ -29,7 +29,7 @@ import scala.Tuple2;
 public class App {
 	public static void main(String[] args) {
         // 构建SparkStreaming上下文
-        SparkConf conf = new SparkConf().setAppName("BlazeDemo").setMaster("spark://192.168.10.228:7077");
+        SparkConf conf = new SparkConf().setAppName("BlazeDemo").setMaster("local");
 
         // 每隔5秒钟，sparkStreaming作业就会收集最近5秒内的数据源接收过来的数据
         JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(5));
@@ -49,12 +49,12 @@ public class App {
         //消费者ID，随意指定
         kafkaParams.put("group.id", "test");
         //指定从latest(最新,其他版本的是largest这里不行)还是smallest(最早)处开始读取数据
-        kafkaParams.put("auto.offset.reset", "latest");
+        kafkaParams.put("auto.offset.reset", "earliest");
         //如果true,consumer定期地往zookeeper写入每个分区的offset
         kafkaParams.put("enable.auto.commit", false);
 
         Collection<String> topics = new HashSet<>();
-        topics.add("test");
+        topics.add("test2");
 
 
         try {
