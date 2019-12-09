@@ -30,11 +30,11 @@ public class TestSendToNetty2 {
 			c1 = size;
 		}
 		
-		int c2 = 100;
+		final int c2 = 100;
 
 		long a = System.currentTimeMillis();
-		List<OutputStream> osl = new ArrayList<OutputStream>();
-		List<InputStream> isl = new ArrayList<InputStream>();
+		final List<OutputStream> osl = new ArrayList<OutputStream>();
+		final List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
 		for (int i = 0; i < c1; i++) {
 			Socket request = new Socket("192.168.10.239", 3113);
@@ -51,7 +51,7 @@ public class TestSendToNetty2 {
 		final CountDownLatch latch = new CountDownLatch(c1);
 		
 		
-		List<String> deviceNos = new ArrayList<>();
+		final List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < c1; i++) {
 			int z = new Random().nextInt(sbbhList.size());
 			String deviceNo = sbbhList.get(z);

@@ -20,7 +20,7 @@ public class TestHDFS {
 //		fs.copyToLocalFile(false, new Path("/demo1/test.xml"), new Path("C:/test2.xml"), true);
 		
 
-		fs.copyFromLocalFile(false, true, new Path("C:/1.txt"), new Path("/home/1.txt"));
+		fs.copyFromLocalFile(false, true, new Path("C:/1.txt"), new Path("/spark/historyLog/1.txt"));
 		fs.close();
 	}
 }

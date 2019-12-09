@@ -3,7 +3,6 @@ import java.util.Properties;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -16,9 +15,9 @@ public class KafkaSender {
 		properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 //		properties.put("transactional.id", "test-transactional");
 //		properties.put("acks", "all");
-		properties.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
+//		properties.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
 
-		String topic = "ttt";
+		String topic = "ggggg";
 		properties.put("bootstrap.servers", "192.168.10.239:9092");
 
 		Producer producer = new KafkaProducer<String, String>(properties);

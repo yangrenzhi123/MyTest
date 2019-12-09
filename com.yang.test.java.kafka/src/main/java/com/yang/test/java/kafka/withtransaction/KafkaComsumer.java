@@ -12,12 +12,12 @@ public class KafkaComsumer {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
-		String group = "group4testtttggtt";
-		String topic = "test2";
-		props.put("bootstrap.servers", "192.168.10.239:9092");
+		String group = "score08";
+		String topic = "TENANT_GROUP_SCORE_ACCOUNT";
+		props.put("bootstrap.servers", "192.168.10.19:9092");
 		
 		props.put("group.id", group);
-		props.put("auto.offset.reset", "earliest");
+		props.put("auto.offset.reset", "earliest"); //earliest 和 latest都是新group有明显的差别，在新group的前提下，earliest是从头消费，latest从Consumer Offset消费
 
 //		props.put("enable.auto.commit", "false");
 		props.put("enable.auto.commit", "true");

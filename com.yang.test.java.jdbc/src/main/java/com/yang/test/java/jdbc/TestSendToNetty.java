@@ -25,11 +25,11 @@ public class TestSendToNetty {
 		
 		System.out.println("开始加载Cyewm...");
 		long b = System.currentTimeMillis();
-		List<String> cyewmList = GetCyewm.getCyewm();
+		final List<String> cyewmList = GetCyewm.getCyewm();
 		System.out.println("Cyewm加载完毕，耗时" + (System.currentTimeMillis() - b));
 		
-		String[] ljlx = new String[] {"01", "02", "03", "04", "05", "06", "0A", "0B", "0C", "0D"};
-		Random r = new Random();
+		final String[] ljlx = new String[] {"01", "02", "03", "04", "05", "06", "0A", "0B", "0C", "0D"};
+		final Random r = new Random();
 		
 		int c1 = 100; //设备数
 		int size = sbbhList.size();
@@ -37,11 +37,11 @@ public class TestSendToNetty {
 			c1 = size;
 		}
 		
-		int c2 = 100;//Integer.parseInt(args[1]); //发送次数
+		final int c2 = 100;//Integer.parseInt(args[1]); //发送次数
 
 		long a = System.currentTimeMillis();
-		List<OutputStream> osl = new ArrayList<OutputStream>();
-		List<InputStream> isl = new ArrayList<InputStream>();
+		final List<OutputStream> osl = new ArrayList<OutputStream>();
+		final List<InputStream> isl = new ArrayList<InputStream>();
 		List<Socket> sl = new ArrayList<Socket>();
 		for (int i = 0; i < c1; i++) {
 			Socket request = new Socket("192.168.10.239", 3113);
@@ -58,7 +58,7 @@ public class TestSendToNetty {
 		final CountDownLatch latch = new CountDownLatch(c1);
 		
 		
-		List<String> deviceNos = new ArrayList<>();
+		final List<String> deviceNos = new ArrayList<>();
 		for (int i = 0; i < c1; i++) {
 			int z = new Random().nextInt(sbbhList.size());
 			String deviceNo = sbbhList.get(z);
