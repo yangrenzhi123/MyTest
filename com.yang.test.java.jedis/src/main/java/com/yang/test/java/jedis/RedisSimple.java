@@ -57,12 +57,9 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("h_tenant_group_phone_one:13713696211");
 //		System.out.println(m);
 
-		System.out.println(j.get("h_tenant_group:LYZH190811701401"));
-		System.out.println(j.get("h_tenant_group:LYZH190811701402"));
-		j.del("h_tenant_group:LYZH190811701401");
-		j.del("h_tenant_group:LYZH190811701402");
-		System.out.println(j.get("h_tenant_group:LYZH190811701401"));
-		System.out.println(j.get("h_tenant_group:LYZH190811701402"));
+		System.out.println(j.hgetAll("h_equipment_map:00012180904526"));
+		//j.del("h_equipment_map:00012180904526");
+		System.out.println(j.hgetAll("h_equipment_map:00012180904526"));
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 

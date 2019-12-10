@@ -11,13 +11,13 @@ import java.sql.Statement;
  */
 public class HiveJDBC {
 
-    private static String driverName = "org.apache.hive.jdbc.HiveDriver";
-    private static String url = "jdbc:hive2://192.168.10.90:10000/default";
-    private static String user = "root";
-    private static String password = "";
-    private static Connection conn = null;
-    private static Statement stmt = null;
-    private static ResultSet rs = null;
+	private static String driverName = "org.apache.hive.jdbc.HiveDriver";
+	private static String url = "jdbc:hive2://172.18.39.230:10000/default";
+	private static String user = "root";
+	private static String password = "";
+	private static Connection conn = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName(driverName);

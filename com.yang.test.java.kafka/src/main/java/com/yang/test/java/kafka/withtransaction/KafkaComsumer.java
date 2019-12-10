@@ -12,7 +12,7 @@ public class KafkaComsumer {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
-		String group = "score08";
+		String group = "score14";
 		String topic = "TENANT_GROUP_SCORE_ACCOUNT";
 		props.put("bootstrap.servers", "192.168.10.19:9092");
 		

@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompareNumRecycleRecord {
+public class CompareNum90to228 {
 
 	static final String schema = "lyzhhw4";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -25,7 +25,7 @@ public class CompareNumRecycleRecord {
 		Connection conn2 = DriverManager.getConnection(DB_URL1, USER, PASS);
 		conn2.setAutoCommit(true);
 		
-		List<String> tables = new ArrayList<>();tables.add("h_tenant_group");
+		List<String> tables = getTables(conn2);
 
 		Connection conn = DriverManager.getConnection(DB_URL2, USER, PASS);
 		conn.setAutoCommit(true);
@@ -46,11 +46,25 @@ public class CompareNumRecycleRecord {
 			rs.next();
 			int b = rs.getInt("num");
 			
-			
+
 			System.out.println((a == b ? "一致": "不一致") + "，表"+table+"，"+df.format(a)+"---"+df.format(b)+(a != b ? "，差值：("+(a-b)+")" : ""));
 		}
 		
 		stmt2.close();
 		stmt.close();
+	}
+
+	public static List<String> getTables(Connection conn) throws SQLException {
+		List<String> l = new ArrayList<>();
+
+		String getTables = "select table_name from information_schema.tables where table_schema='"+schema+"'";
+		PreparedStatement getTablesPre = conn.prepareStatement(getTables);
+		ResultSet rs = getTablesPre.executeQuery();
+
+		while (rs.next()) {
+			l.add(rs.getString(1));
+		}
+		getTablesPre.close();
+		return l;
 	}
 }
