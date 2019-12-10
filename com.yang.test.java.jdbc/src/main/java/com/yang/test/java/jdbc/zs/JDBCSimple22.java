@@ -19,6 +19,10 @@ public class JDBCSimple22 {
 	static final List<Connection> l = new ArrayList<Connection>();
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		doIt();
+	}
+	
+	public static void doIt() throws ClassNotFoundException, SQLException {
 		DecimalFormat df = new DecimalFormat("00,0000,0000");
 		
 		Class.forName(DRIVER);
@@ -41,7 +45,8 @@ public class JDBCSimple22 {
 			System.out.println(df.format(Long.parseLong(s4)));
 			System.out.println(s5);
 			System.out.println(s6);
-			System.out.print("错误日志：" + s7);
+			System.out.println("错误日志：" + s7);
+			System.out.println();
 		}
 		stmt.close();
 	}
