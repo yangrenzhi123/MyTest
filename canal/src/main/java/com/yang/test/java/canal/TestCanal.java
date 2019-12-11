@@ -17,7 +17,7 @@ public class TestCanal {
 
 	public static void main(String args[]) {
 		// 创建链接
-		CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("172.28.51.33", 11111), "example", "", "");
+		CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("172.18.39.225", 11111), "example", "", "");
 		int batchSize = 1000;
 		int emptyCount = 0;
 		try {
@@ -55,8 +55,7 @@ public class TestCanal {
 
 	private static void printEntry(List<Entry> entrys) {
 		for (Entry entry : entrys) {
-			if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN
-					|| entry.getEntryType() == EntryType.TRANSACTIONEND) {
+			if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN || entry.getEntryType() == EntryType.TRANSACTIONEND) {
 				continue;
 			}
 
@@ -64,24 +63,23 @@ public class TestCanal {
 			try {
 				rowChage = RowChange.parseFrom(entry.getStoreValue());
 			} catch (Exception e) {
-				throw new RuntimeException("ERROR ## parser of eromanga-event has an error , data:" + entry.toString(),
-						e);
+				throw new RuntimeException("ERROR ## parser of eromanga-event has an error , data:" + entry.toString(), e);
 			}
 
 			EventType eventType = rowChage.getEventType();
-			System.out.println(String.format("================> binlog[%s:%s] , name[%s,%s] , eventType : %s",
-					entry.getHeader().getLogfileName(), entry.getHeader().getLogfileOffset(),
-					entry.getHeader().getSchemaName(), entry.getHeader().getTableName(), eventType));
+			System.out.println(String.format("================> binlog[%s:%s] , name[%s,%s] , eventType : %s", entry.getHeader().getLogfileName(), entry.getHeader().getLogfileOffset(), entry.getHeader().getSchemaName(), entry.getHeader().getTableName(), eventType));
 
 			for (RowData rowData : rowChage.getRowDatasList()) {
 				if (eventType == EventType.DELETE) {
+					System.out.println("--------------------------> DELETE");
 					printColumn(rowData.getBeforeColumnsList());
 				} else if (eventType == EventType.INSERT) {
+					System.out.println("--------------------------> INSERT");
 					printColumn(rowData.getAfterColumnsList());
 				} else {
-					System.out.println("-------> before");
+					System.out.println("--------------------------> before");
 					printColumn(rowData.getBeforeColumnsList());
-					System.out.println("-------> after");
+					System.out.println("--------------------------> after");
 					printColumn(rowData.getAfterColumnsList());
 				}
 			}
@@ -92,5 +90,6 @@ public class TestCanal {
 		for (Column column : columns) {
 			System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
 		}
+		System.out.println();
 	}
 }
