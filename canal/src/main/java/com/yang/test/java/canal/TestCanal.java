@@ -23,7 +23,6 @@ public class TestCanal {
 		try {
 			connector.connect();
 			connector.subscribe(".*\\..*");
-			connector.rollback();
 			int totalEmtryCount = 1200;
 			while (emptyCount < totalEmtryCount) {
 				Message message = connector.getWithoutAck(batchSize); // 获取指定数量的数据

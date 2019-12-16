@@ -17,12 +17,11 @@ import com.alibaba.otter.canal.protocol.exception.CanalClientException;
 public class TestCanal2 {
 
 	public static void main(String args[]) {
-		CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("172.17.17.129", 11111), "example", "", "");
+		CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("192.168.194.65", 11111), "example", "", "");
 		int batchSize = 1000;
 
 		connector.connect();
-		connector.subscribe(".*\\..*");
-		connector.rollback();
+		connector.subscribe("lyzhhw4.test"); //instance.properties
 		while (true) {
 			long batchId = 0;
 			Message message = null;
@@ -70,7 +69,7 @@ public class TestCanal2 {
 			}
 
 			EventType eventType = rowChage.getEventType();
-			System.out.println(String.format("================> batchId["+batchId+"]，binlog[%s:%s]，name[%s,%s]，eventType : %s", entry.getHeader().getLogfileName(), entry.getHeader().getLogfileOffset(), entry.getHeader().getSchemaName(), entry.getHeader().getTableName(), eventType));
+			System.out.println(String.format("batchId["+batchId+"]，binlog[%s:%s]，name[%s,%s]，eventType : %s"+"，数据量：" + rowChage.getRowDatasList().size(), entry.getHeader().getLogfileName(), entry.getHeader().getLogfileOffset(), entry.getHeader().getSchemaName(), entry.getHeader().getTableName(), eventType));
 
 			if(entry.getHeader().getTableName().equals("h_recycle_record")) {
 				for (RowData rowData : rowChage.getRowDatasList()) {
@@ -80,28 +79,17 @@ public class TestCanal2 {
 					} else if (eventType == EventType.INSERT) {
 						System.out.println("--------------------------> INSERT");
 						printColumn(rowData.getAfterColumnsList());
+					} else if (eventType == EventType.CREATE) {
+						System.out.println("--------------------------> CREATE");
 					} else {
-						System.out.println("--------------------------> before");
+						System.out.println("--------------------------> BEFORE");
 						printColumn(rowData.getBeforeColumnsList());
-						System.out.println("--------------------------> after");
+						System.out.println("--------------------------> AFTER");
 						printColumn(rowData.getAfterColumnsList());
 					}
 				}
 			}
 		}
-	}
-
-	private static String getColumn(List<Column> columns, String columnName) {
-		String result = null;
-
-		for (Column column : columns) {
-			if (column.getName().equals(columnName)) {
-				result = column.getValue();
-				break;
-			}
-		}
-
-		return result;
 	}
 
 	private static void printColumn(List<Column> columns) {
