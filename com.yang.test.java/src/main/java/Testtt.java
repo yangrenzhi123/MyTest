@@ -1,12 +1,27 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(Long.MAX_VALUE);
+		List<Integer> from = new ArrayList<>();
+		from.add(1);
+		from.add(2);
+		from.add(3);
+		from.add(4);
+		from.add(5);
+		from.add(6);
+		List<Integer> to = new ArrayList<>();
+		//并行
+		from.parallelStream();
+		//串行
+		//from.stream();
+		System.out.println(to);
+		
+//		System.out.println(Long.MAX_VALUE);
 		
 //		System.out.println(0%5);
 //		System.out.println(1%5);

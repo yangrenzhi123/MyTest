@@ -55,16 +55,16 @@ public class RedisClear {
 //		nodes.add(new HostAndPort("192.168.30.62", 7005));
 //		nodes.add(new HostAndPort("192.168.30.62", 7006));
 
-		nodes.add(new HostAndPort("192.168.10.228", 7001));
-		nodes.add(new HostAndPort("192.168.10.228", 7002));
-		nodes.add(new HostAndPort("192.168.10.228", 7003));
-		nodes.add(new HostAndPort("192.168.10.229", 7004));
-		nodes.add(new HostAndPort("192.168.10.229", 7005));
-		nodes.add(new HostAndPort("192.168.10.229", 7006));
+		nodes.add(new HostAndPort("192.168.10.228", 27001));
+		nodes.add(new HostAndPort("192.168.10.228", 27002));
+		nodes.add(new HostAndPort("192.168.10.228", 27003));
+		nodes.add(new HostAndPort("192.168.10.229", 27004));
+		nodes.add(new HostAndPort("192.168.10.229", 27005));
+		nodes.add(new HostAndPort("192.168.10.229", 27006));
 		
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_community_xn_map*");
+		TreeSet<String> keys = keys(j, "h_recycle_record_day_*");
 		
 		for (String key : keys) {
 			j.del(key);
