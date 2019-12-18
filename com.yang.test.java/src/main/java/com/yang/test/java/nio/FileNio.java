@@ -9,8 +9,9 @@ import java.nio.channels.FileChannel;
 public class FileNio {
 
 	public static void main(String[] args) throws IOException {
-		RandomAccessFile f = new RandomAccessFile("C:/1.txt", "rw");
-		FileChannel fileChannel = f.getChannel();
+		RandomAccessFile raf = new RandomAccessFile("C:/1.txt", "rw");
+		raf.seek(raf.length()); //不覆盖源文件
+		FileChannel fileChannel = raf.getChannel();
 		ByteBuffer buf = ByteBuffer.allocate(1024);
 
 		for (int i = 0; i < 10; i++) {

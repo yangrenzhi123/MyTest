@@ -69,7 +69,7 @@ public class TestCanal2 {
 			}
 
 			EventType eventType = rowChage.getEventType();
-			System.out.println(String.format("batchId["+batchId+"]，binlog[%s:%s]，name[%s,%s]，eventType : %s"+"，数据量：" + rowChage.getRowDatasList().size(), entry.getHeader().getLogfileName(), entry.getHeader().getLogfileOffset(), entry.getHeader().getSchemaName(), entry.getHeader().getTableName(), eventType));
+			System.out.println(String.format("batchId["+batchId+"]，binlog[%s:%s]，name[%s,%s]，eventType : %s，数据量：" + rowChage.getRowDatasList().size(), entry.getHeader().getLogfileName(), entry.getHeader().getLogfileOffset(), entry.getHeader().getSchemaName(), entry.getHeader().getTableName(), eventType));
 
 			if(entry.getHeader().getTableName().equals("h_recycle_record")) {
 				for (RowData rowData : rowChage.getRowDatasList()) {
