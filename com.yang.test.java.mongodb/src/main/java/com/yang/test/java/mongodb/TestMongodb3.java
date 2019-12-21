@@ -34,20 +34,27 @@ public class TestMongodb3 {
 		Document insert = new Document();
 		insert.put("_id", 1);
 		insert.put("name", "kobe");
-		//InsertOneModel<Document> iom = new InsertOneModel<Document>(insert);
+		InsertOneModel<Document> iom1 = new InsertOneModel<Document>(insert);
+		insert = new Document();
+		insert.put("_id", 2);
+		insert.put("name", "kobe");
+		InsertOneModel<Document> iom2 = new InsertOneModel<Document>(insert);
 		
 
 		Document update = new Document();
 		update.put("_id", 3);
 		Document updated = new Document();
 		updated.put("name", "James");
-		UpdateManyModel<Document> umm1 = new UpdateManyModel<Document>(update, new Document("$set", updated), new UpdateOptions().upsert(true));
+		UpdateManyModel<Document> umm = new UpdateManyModel<Document>(update, new Document("$set", updated), new UpdateOptions().upsert(true));
 
-		//DeleteManyModel<Document> dmm = new DeleteManyModel<Document>(new Document("name", "James"));
+		DeleteManyModel<Document> dmm1 = new DeleteManyModel<Document>(new Document("_id", 1));
+		DeleteManyModel<Document> dmm2 = new DeleteManyModel<Document>(new Document("_id", 3));
 
-		//requests.add(iom);
-		requests.add(umm1);
-		//requests.add(dmm);
+		requests.add(iom1);
+		requests.add(iom2);
+		requests.add(umm);
+		requests.add(dmm1);
+		requests.add(dmm2);
 		BulkWriteResult bulkWriteResult = mongoCollection.bulkWrite(requests);
 		System.out.println(bulkWriteResult.toString());
 

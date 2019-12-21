@@ -2,17 +2,23 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
+//		Map<Integer, Long> m = new HashMap<>();
+//		m.put(new Integer(1), 1L);
+//		m.put(new Integer(1), 2L);
+//		System.out.println(m.get(1));
+		
+		
 		List<String> l = new ArrayList<>();
 		l.add("1");
 		l.add("2");
 		l.add("3");
 		l.add("4");
 		System.out.println("lyzhhw4." + String.join(",lyzhhw4.", l));
+		System.out.println(String.join(",", l));
 		
 		
 //		List<Integer> from = new ArrayList<>();
