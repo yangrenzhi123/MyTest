@@ -17,22 +17,24 @@ public class ThreadPool {
 		};
 		Runnable r = new Runnable() {
 			public void run() {
-				GetAllThread.countByName("线程池中的某线程");
+				System.out.println(1);
 			}
 		};
 		p = Executors.newCachedThreadPool(tf);
 		p.execute(r);
+		p.execute(r);
 		p.shutdown();
 
 		//创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
-		p = Executors.newFixedThreadPool(10);
-		for (int i = 0; i < 100; i++) {
-			p.execute(new Runnable() {
-				public void run() {
-					System.out.println(1);
-				}
-			});
-		}
+		Runnable r1 = new Runnable() {
+			public void run() {
+				System.out.println(1);
+			}
+		};
+		p = Executors.newFixedThreadPool(2);
+		p.execute(r1);
+		p.execute(r1);
+		p.execute(r1);
 		p.shutdown();
 
 		p = Executors.newWorkStealingPool(10);
