@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yang.test.springboot.dao.RecycleRecordDAO" >
+	<select id="limitRecycleRecord" resultType="com.yang.test.springboot.mongo.entity.RecycleRecordDTO">
+		select * from h_recycle_record where recyclerecordzzid > #{start} and recyclerecordzzid <![CDATA[<=]]> #{maxid} order by recyclerecordzzid limit #{limit}
+	</select>
+</mapper>

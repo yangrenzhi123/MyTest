@@ -5,8 +5,8 @@ import java.sql.SQLException;
 public class SlaveSynStatusMain {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		SlaveSynStatus.doIt();
-		SlaveSynStatus2.doIt();
-		SlaveSynStatus3.doIt();
+		SlaveSynStatus228.doIt();
+		SlaveSynStatus229.doIt();
+		SlaveSynStatus223.doIt();
 	}
 }

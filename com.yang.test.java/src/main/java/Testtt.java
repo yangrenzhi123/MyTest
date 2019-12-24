@@ -1,18 +1,28 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		Calendar start = Calendar.getInstance();
-		start.set(2019, 0, 1);
-		System.out.println(new SimpleDateFormat("yyyyMMdd").format(start.getTime()));
-		start.add(Calendar.DAY_OF_YEAR, 1);
-		System.out.println(new SimpleDateFormat("yyyyMMdd").format(start.getTime()));
-		start.add(Calendar.DAY_OF_YEAR, 1);
-		System.out.println(new SimpleDateFormat("yyyyMMdd").format(start.getTime()));
+		System.out.println(",1,2,3,4,".contains(",2,"));
+		
+		
+		// 获取月份
+//		LocalDateTime l = LocalDateTime.parse("2019-02-01 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//		System.out.println(l.getMonthValue());
+		
+		
+//		Calendar start = Calendar.getInstance();
+//		start.set(2019, 0, 1);
+//		System.out.println(new SimpleDateFormat("yyyyMMdd").format(start.getTime()));
+//		start.add(Calendar.DAY_OF_YEAR, 1);
+//		System.out.println(new SimpleDateFormat("yyyyMMdd").format(start.getTime()));
+//		start.add(Calendar.DAY_OF_YEAR, 1);
+//		System.out.println(new SimpleDateFormat("yyyyMMdd").format(start.getTime()));
 		
 		
 //		Map<Integer, Long> m = new HashMap<>();
