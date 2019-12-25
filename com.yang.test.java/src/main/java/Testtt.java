@@ -1,14 +1,16 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(",1,2,3,4,".contains(",2,"));
+
+		LocalDate l = LocalDate.parse("2019-12-25", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		
+		
+//		System.out.println(",1,2,3,4,".contains(",2,"));
 		
 		
 		// 获取月份

@@ -23,8 +23,11 @@ public class MyTask {
 		}
 
 		if (hour == 12 && minute == 59) {
-			TestDingding.test("赶紧来一波支付宝一波操作", one);
 			TestDingding.test("DT加油签到", one);
+		}
+
+		if ((hour == 10 && minute == 9) || (hour == 15 && minute == 14) || (hour == 20 && minute == 19)) {
+			TestDingding.test("抢免息喽", one);
 		}
 	}
 }
