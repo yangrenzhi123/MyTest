@@ -2,11 +2,16 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-
+		String a = null;
+		String b = null;
+		System.out.println(Objects.equals(a, b));
+		
+		
 		LocalDate l = LocalDate.parse("2019-12-25", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		
 		

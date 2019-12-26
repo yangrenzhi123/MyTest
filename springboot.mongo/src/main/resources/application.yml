@@ -1,11 +1,9 @@
 spring:
   data:
     mongodb:
-      primary:
-        uri: mongodb://192.168.10.228:27017/test_rhb_5
       one:
-        uri: mongodb://192.168.10.228:27017/test_rhb_5
+        uri: mongodb://192.168.10.225:27017/test_source
       two:
-        uri: mongodb://192.168.10.229:27017/test_rhb_5
+        uri: mongodb://192.168.10.228:27017/test_source
       three:
-        uri: mongodb://192.168.10.225:27017/test_rhb_5
+        uri: mongodb://192.168.10.229:27017/test_source
