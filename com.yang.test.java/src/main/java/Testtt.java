@@ -1,18 +1,20 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Objects;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		String a = null;
-		String b = null;
-		System.out.println(Objects.equals(a, b));
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1577387794000L)));
 		
 		
-		LocalDate l = LocalDate.parse("2019-12-25", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//		String a = null;
+//		String b = null;
+//		System.out.println(Objects.equals(a, b));
+		
+		
+//		LocalDate l = LocalDate.parse("2019-12-25", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		
 		
 //		System.out.println(",1,2,3,4,".contains(",2,"));

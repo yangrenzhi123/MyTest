@@ -14,7 +14,7 @@ public class CompareNum90to228 {
 	static final String schema = "lyzhhw4";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	static final String DB_URL1 = "jdbc:mysql://192.168.10.90:4306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
-	static final String DB_URL2 = "jdbc:mysql://192.168.10.228:5306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL2 = "jdbc:mysql://192.168.10.223:5306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "lyzhhw4performancetesting";
 
