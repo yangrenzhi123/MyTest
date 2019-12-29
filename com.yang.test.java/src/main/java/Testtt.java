@@ -6,7 +6,9 @@ import java.util.Date;
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1577387794000L)));
+		System.out.println("123".hashCode());
+		System.out.println(new String("123").hashCode());
+		System.out.println("123".hashCode());
 		
 		
 //		String a = null;
