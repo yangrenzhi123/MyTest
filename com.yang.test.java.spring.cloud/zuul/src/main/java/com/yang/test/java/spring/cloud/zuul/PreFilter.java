@@ -37,7 +37,7 @@ public class PreFilter extends ZuulFilter {
 
 	@Override
 	public Object run() {
-		RequestContext ctx = RequestContext.getCurrentContext();
+/*		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 
 		String s = request.getRequestURI();
@@ -50,7 +50,7 @@ public class PreFilter extends ZuulFilter {
 			}else {
 				c.add("api-version", "0");
 			}
-		}
+		}*/
 		return null;
 	}
 }
