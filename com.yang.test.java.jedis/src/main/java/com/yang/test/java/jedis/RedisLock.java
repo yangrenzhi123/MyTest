@@ -14,8 +14,8 @@ public class RedisLock {
 		
 		
 		//如果存在则不做任何动作
-		String a = j.set("testKey", "YangRenZhi", "NX", "PX", 6000);
-		System.out.println("a:" + a);
+		//String a = j.set("testKey", "YangRenZhi", "NX", "PX", 6000);
+		//System.out.println("a:" + a);
 
 
 		

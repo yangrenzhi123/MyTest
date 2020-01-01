@@ -14,15 +14,15 @@ import redis.clients.jedis.JedisPool;
 public class RedisClear {
 
 	public static TreeSet<String> keys(JedisCluster jedisCluster, String pattern) {
-		TreeSet<String> keys = new TreeSet<>(); // 获取所有的节点
-		Map<String, JedisPool> clusterNodes = jedisCluster.getClusterNodes(); // 遍历节点 获取所有符合条件的KEY
+		TreeSet<String> keys = new TreeSet<>();
+		Map<String, JedisPool> clusterNodes = jedisCluster.getClusterNodes();
 		for (String k : clusterNodes.keySet()) {
 			JedisPool jp = clusterNodes.get(k);
+
 			Jedis connection = jp.getResource();
+
 			try {
 				keys.addAll(connection.keys(pattern));
-			} catch (Exception e) {
-				e.printStackTrace();
 			} finally {
 				connection.close();
 			}
@@ -42,11 +42,22 @@ public class RedisClear {
 
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
-
+		TreeSet<String> keys;
+		keys = keys(j, "mongoCountCache:H_TENANT_GROUP_*");
 		for (String key : keys) {
 			j.del(key);
+			System.out.println(key);
 		}
+//		keys = keys(j, "h_tenant_group_greenuser_day_yw_*");
+//		for (String key : keys) {
+//			j.del(key);
+//			System.out.println(key);
+//		}
+//		keys = keys(j, "h_tenant_group_greenuser_day_*");
+//		for (String key : keys) {
+//			j.del(key);
+//			System.out.println(key);
+//		}
 
 		j.close();
 	}

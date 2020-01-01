@@ -9,9 +9,9 @@ import java.sql.SQLException;
 public class ShowProcesslist {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL2 = "jdbc:mysql://192.168.10.90:4306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL2 = "jdbc:mysql://192.168.10.240:3307?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
-	static final String PASS = "lyzhhw4performancetesting";
+	static final String PASS = "123456";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		doIt();
@@ -30,7 +30,7 @@ public class ShowProcesslist {
 			String host = rs.getString("host");
 			String db = rs.getString("db");
 			String info = rs.getString("info");
-			if(info != null && (info.toLowerCase().contains("update") || info.toLowerCase().contains("insert") || info.toLowerCase().contains("delete"))) {
+			if(host != null && (host.contains("33900") || host.contains("33900"))) {
 				System.out.println(id + "\t" + user + "\t" + host + "\t" + db + "\t" + info);
 			}
 		}

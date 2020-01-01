@@ -47,23 +47,13 @@ public class RedisBatGet2 {
 
 		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
 
-		
-
 		System.out.println("------------------------------------START-----------------------------------------");
-		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/tmp/zhzt.txt"),"UTF-8"));
-		
-		int i = 0;int ii=0;
-		for (String key : keys) {
-			i++;
-			
-			Map<String, String> m = j.hgetAll(key);
-			if(m.toString().contains("\"zhzt\"=0,")) {
-				ii++;
-				
+		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/tmp/zhzt.txt"), "UTF-8"));
 
-	            out.write( ("'" +m.get("\"tenantgroupid\"") + "',").replaceAll("\"", "") );
-	            out.newLine();
-			}
+		int i = 0;
+		int ii = 0;
+		for (String key : keys) {
+			System.out.println(key);
 		}
 		out.flush();
 		out.close();
