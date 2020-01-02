@@ -43,6 +43,8 @@ public class RedisClear {
 		JedisCluster j = new JedisCluster(nodes);
 
 		TreeSet<String> keys;
+		
+		long a = System.currentTimeMillis();
 		keys = keys(j, "mongoCountCache:H_TENANT_GROUP_*");
 		for (String key : keys) {
 			j.del(key);
@@ -58,6 +60,7 @@ public class RedisClear {
 //			j.del(key);
 //			System.out.println(key);
 //		}
+		System.out.println("耗时：" + (System.currentTimeMillis() - a));
 
 		j.close();
 	}

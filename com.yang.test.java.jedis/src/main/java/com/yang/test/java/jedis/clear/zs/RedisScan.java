@@ -42,7 +42,7 @@ public class RedisScan {
 				jedis.del(trueKey);
 			}
 			long t2 = System.currentTimeMillis();
-			System.out.println("删除" + list.size() + "条数据，耗时: " + (t2 - t1) + "毫秒,cursor:" + cursor);
+			System.out.println("删除" + list.size() + "条数据，耗时: " + (t2 - t1) + "毫秒，cursor:" + cursor);
 			if ("0".equals(cursor)) {
 				break;
 			}
