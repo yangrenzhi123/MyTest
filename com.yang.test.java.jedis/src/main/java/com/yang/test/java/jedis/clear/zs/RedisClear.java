@@ -45,21 +45,21 @@ public class RedisClear {
 		TreeSet<String> keys;
 		
 		long a = System.currentTimeMillis();
-		keys = keys(j, "mongoCountCache:H_TENANT_GROUP_*");
+//		keys = keys(j, "mongoCountCache:H_TENANT_GROUP_*");
+//		for (String key : keys) {
+//			j.del(key);
+//			System.out.println(key);
+//		}
+		keys = keys(j, "h_tenant_group_greenuser_day_yw_*");
 		for (String key : keys) {
 			j.del(key);
 			System.out.println(key);
 		}
-//		keys = keys(j, "h_tenant_group_greenuser_day_yw_*");
-//		for (String key : keys) {
-//			j.del(key);
-//			System.out.println(key);
-//		}
-//		keys = keys(j, "h_tenant_group_greenuser_day_*");
-//		for (String key : keys) {
-//			j.del(key);
-//			System.out.println(key);
-//		}
+		keys = keys(j, "h_tenant_group_greenuser_day_*");
+		for (String key : keys) {
+			j.del(key);
+			System.out.println(key);
+		}
 		System.out.println("耗时：" + (System.currentTimeMillis() - a));
 
 		j.close();

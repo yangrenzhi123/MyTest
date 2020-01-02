@@ -15,7 +15,7 @@ public class UserController {
 	@Resource
 	private UserDao userDao;
 
-	@GetMapping("/")
+	@GetMapping("/test")
 	@ResponseBody
 	public void hello() {
 		try {

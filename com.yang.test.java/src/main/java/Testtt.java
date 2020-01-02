@@ -6,9 +6,11 @@ import java.util.Date;
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println("123".hashCode());
-		System.out.println(new String("123").hashCode());
-		System.out.println("123".hashCode());
+		try {
+			throw new RuntimeException("123");
+		} finally {
+			System.out.println(1);
+		}
 		
 		
 //		String a = null;
