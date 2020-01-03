@@ -63,7 +63,28 @@ public class MonitorForService {
 
 		List<String> daos = config.getDao();
 		for (String dao : daos) {
-			common(dao, "DAO服务");
+			int code = common2(dao);
+			if(code != 200 && code != 404) {
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+				}
+				code = common2(dao);
+			}
+
+			MoniResult result = new MoniResult();
+			result.setName("DAO服务");
+			result.setCheckTime(new Date());
+			if(code != 200 && code != 404) {
+				result.setResult(0);
+				MonitorStartup.result.put(dao, result);
+
+				DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				TestDingding.test("检测时间：" + yyyy.format(result.getCheckTime()) + "，结果：" + (result.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + result.getName() + "，备注：" + result.getName());
+			}else {
+				result.setResult(1);
+				MonitorStartup.result.put(dao, result);
+			}
 		}
 
 		List<String> gws = config.getGw();
@@ -97,9 +118,41 @@ public class MonitorForService {
 		}
 	}
 
+	
+	private int common2(String url) {
+		int timeout = 5000;
+		RequestConfig rc = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).setConnectionRequestTimeout(timeout).build();
+		
+		HttpGet get = new HttpGet("http://" + url);
+		get.setConfig(rc);
+		
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		
+		HttpResponse response = null;
+		int code;
+		try {
+			response = httpClient.execute(get);
+		} catch (IOException e) {
+			code = 500;
+			return code;
+		} catch (Exception e) {
+			code = 500;
+			return code;
+		} finally {
+			try {
+				httpClient.close();
+			} catch (IOException e) {
+				code = 500;
+				return code;
+			}
+		}
+		code = response.getStatusLine().getStatusCode();
+		return code;
+	}
+	
 	private void common(String url, String name) throws IOException {
 		int timeout = 5000;
-		RequestConfig rc = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(5000).setConnectionRequestTimeout(5000).build();
+		RequestConfig rc = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).setConnectionRequestTimeout(timeout).build();
 		
 		HttpGet get = new HttpGet("http://" + url);
 		get.setConfig(rc);

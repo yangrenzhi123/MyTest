@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.yang.test.java.springcloud;
 
 public interface WordService {
 

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.yang.test.java.springcloud.rpc;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestHeader;

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.yang.test.java.springcloud.controller;
 
 import java.net.URI;
 import java.util.UUID;
@@ -10,6 +10,9 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.yang.test.java.springcloud.WordService;
+import com.yang.test.java.springcloud.rpc.NounClient;
 
 import feign.Feign;
 import feign.gson.GsonDecoder;
