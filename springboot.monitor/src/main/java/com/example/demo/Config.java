@@ -18,6 +18,7 @@ public class Config {
 	private List<String> gw;
 	private List<String> uiConsole;
 	private List<String> uiPlatform;
+	private List<String> canal;
 	private List<String> device;
 	private List<String> dao;
 	private List<String> ca;
@@ -29,6 +30,7 @@ public class Config {
 	private List<String> nms;
 	private List<String> etl;
 	private List<String> cs;
+	private List<String> canalClient;
 	private List<String> scheduler;
 	private List<String> platform;
 	private String mongodb;
@@ -152,5 +154,17 @@ public class Config {
 	}
 	public void setCs(List<String> cs) {
 		this.cs = cs;
+	}
+	public List<String> getCanal() {
+		return canal;
+	}
+	public void setCanal(List<String> canal) {
+		this.canal = canal;
+	}
+	public List<String> getCanalClient() {
+		return canalClient;
+	}
+	public void setCanalClient(List<String> canalClient) {
+		this.canalClient = canalClient;
 	}
 }
