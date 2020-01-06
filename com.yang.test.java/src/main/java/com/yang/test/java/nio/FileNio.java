@@ -5,7 +5,6 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
-@SuppressWarnings("resource")
 public class FileNio {
 
 	public static void main(String[] args) throws IOException {
@@ -33,5 +32,7 @@ public class FileNio {
 //				System.out.print(new String(content));
 //			} while (bytesRead != -1);
 		}
+		
+		raf.close();
 	}
 }

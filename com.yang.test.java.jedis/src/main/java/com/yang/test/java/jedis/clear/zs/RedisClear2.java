@@ -46,7 +46,7 @@ public class RedisClear2 {
 		int i = 0;
 
 		long a = System.currentTimeMillis();
-		keys = keys(j, "h_dispenser_order_third_day_*");
+		keys = keys(j, "deqingUnPushedUser:*");
 		for (String key : keys) {
 			j.del(key);
 			System.out.println(key);

@@ -57,9 +57,9 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("h_tenant_group_phone_one:13713696211");
 //		System.out.println(m);
 
-		System.out.println(j.hgetAll("h_equipment_map:00012180904526"));
-		//j.del("h_equipment_map:00012180904526");
-		System.out.println(j.hgetAll("h_equipment_map:00012180904526"));
+//		System.out.println(j.hgetAll("h_equipment_map:00012180904526"));
+		j.del("deqingUnPushPointChangeRecord");
+//		System.out.println(j.hgetAll("h_equipment_map:00012180904526"));
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 
