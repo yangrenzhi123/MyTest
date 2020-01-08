@@ -22,13 +22,20 @@ public class MonitorForService {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
+		List<String> consoleList = config.getConsole();
+		if (consoleList != null) {
+			for (String console : consoleList) {
+				common(console, "console_JAVA服务");
+			}
+		}
+
 		List<String> canalClientList = config.getCanalClient();
-		if(canalClientList != null) {
+		if (canalClientList != null) {
 			for (String canalClient : canalClientList) {
 				common(canalClient, "canal_JAVA服务");
 			}
 		}
-		
+
 		List<String> platformList = config.getPlatform();
 		if(platformList != null) {
 			for (String platform : platformList) {

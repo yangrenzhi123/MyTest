@@ -31,6 +31,7 @@ public class Config {
 	private List<String> etl;
 	private List<String> cs;
 	private List<String> canalClient;
+	private List<String> console;
 	private List<String> scheduler;
 	private List<String> platform;
 	private String mongodb;
@@ -166,5 +167,11 @@ public class Config {
 	}
 	public void setCanalClient(List<String> canalClient) {
 		this.canalClient = canalClient;
+	}
+	public List<String> getConsole() {
+		return console;
+	}
+	public void setConsole(List<String> console) {
+		this.console = console;
 	}
 }

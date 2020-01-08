@@ -1,16 +1,18 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		try {
-			throw new RuntimeException("123");
-		} finally {
-			System.out.println(1);
-		}
+		List<String> l = new ArrayList<>();
+		l.add("1");
+		l.add("2");
+		Gson g = new Gson();
+		System.out.println(g.toJson(l));
 		
 		
 //		String a = null;
