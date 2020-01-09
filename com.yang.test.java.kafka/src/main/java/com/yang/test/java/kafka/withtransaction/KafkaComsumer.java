@@ -14,7 +14,7 @@ public class KafkaComsumer {
 		Properties props = new Properties();
 
 		String group = "MysqlDataChangeGroup";
-		String topic = "MysqlDataChange_h_tenant_group";
+		String topic = "MysqlDataChange_h_recycle_record";
 		props.put("bootstrap.servers", "192.168.10.239:9092");
 
 		props.put("group.id", group);

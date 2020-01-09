@@ -1,18 +1,17 @@
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		List<String> l = new ArrayList<>();
-		l.add("1");
-		l.add("2");
-		Gson g = new Gson();
-		System.out.println(g.toJson(l));
+		Map<String, String> s = new HashMap<>();
+		s.put("1", "1");
+		s.put("2", "2");
+		System.out.println(s);
+		s.clear();
+		System.out.println(s);
 		
 		
 //		String a = null;
