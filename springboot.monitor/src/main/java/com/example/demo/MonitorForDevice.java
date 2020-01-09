@@ -19,6 +19,11 @@ public class MonitorForDevice {
 	Config config;
 
 	public void execute() throws ClassNotFoundException, SQLException, IOException {
+		List<String> zkList = config.getZk();
+		for(String zk : zkList) {
+			String[] ss = zk.split(":");
+			common(ss[0], Integer.parseInt(ss[1]), "Zookeeper");
+		}
 		List<String> canals = config.getCanal();
 		for(String canal : canals) {
 			String[] ss = canal.split(":");

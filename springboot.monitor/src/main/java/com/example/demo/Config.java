@@ -18,6 +18,7 @@ public class Config {
 	private List<String> gw;
 	private List<String> uiConsole;
 	private List<String> uiPlatform;
+	private List<String> zk;
 	private List<String> canal;
 	private List<String> device;
 	private List<String> dao;
@@ -173,5 +174,11 @@ public class Config {
 	}
 	public void setConsole(List<String> console) {
 		this.console = console;
+	}
+	public List<String> getZk() {
+		return zk;
+	}
+	public void setZk(List<String> zk) {
+		this.zk = zk;
 	}
 }
