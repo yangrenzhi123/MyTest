@@ -31,7 +31,6 @@ public class RedisClear {
 	}
 
 	public static void main(String[] args) throws IOException {
-		System.setProperty("java.net.preferIPv4Stack" , "true");
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 		
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));

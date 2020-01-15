@@ -35,14 +35,8 @@ public class Config {
 	private List<String> console;
 	private List<String> scheduler;
 	private List<String> platform;
-	private String mongodb;
+	private List<String> mongodbs;
 
-	public String getMongodb() {
-		return mongodb;
-	}
-	public void setMongodb(String mongodb) {
-		this.mongodb = mongodb;
-	}
 	public List<String> getDevice() {
 		return device;
 	}
@@ -180,5 +174,11 @@ public class Config {
 	}
 	public void setZk(List<String> zk) {
 		this.zk = zk;
+	}
+	public List<String> getMongodbs() {
+		return mongodbs;
+	}
+	public void setMongodbs(List<String> mongodbs) {
+		this.mongodbs = mongodbs;
 	}
 }

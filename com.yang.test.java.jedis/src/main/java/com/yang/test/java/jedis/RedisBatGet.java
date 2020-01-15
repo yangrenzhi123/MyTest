@@ -1,9 +1,6 @@
 package com.yang.test.java.jedis;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -43,25 +40,12 @@ public class RedisBatGet {
 		nodes.add(new HostAndPort("192.168.10.240", 7006));
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
+		TreeSet<String> keys = keys(j, "mongoCountCache:*");
 
-		
-
-		System.out.println("------------------------------------START-----------------------------------------");
-		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/tmp/zhzt.txt"),"UTF-8"));
-
-		int i = 0;
 		for (String key : keys) {
-			i++;
-
-			Map<String, String> m = j.hgetAll(key);
-			out.write("key：" + key + "，value：" + m.toString());
-			out.newLine();
+			System.out.println(j.get(key));
+//			j.del(key);
 		}
-		out.flush();
-		out.close();
-		System.out.println(i);
-		System.out.println("------------------------------------END-----------------------------------------");
 
 		j.close();
 	}

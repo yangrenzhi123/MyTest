@@ -30,7 +30,7 @@ public class ShowProcesslist {
 			String host = rs.getString("host");
 			String db = rs.getString("db");
 			String info = rs.getString("info");
-			if(info != null && (info.contains("h_inspect_record") || info.contains("h_inspect_record"))) {
+			if(info != null && (info.contains("h_score_record") || info.contains("h_score_record"))) {
 				System.out.println(id + "\t" + user + "\t" + host + "\t" + db + "\t" + info);
 			}
 		}

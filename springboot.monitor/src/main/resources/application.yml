@@ -7,6 +7,9 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+  security:
+    user: 
+      password: 90c3debd-0562-4de4-89fb-6a05c9f9ee2b
 management:
   endpoint:
     shutdown:

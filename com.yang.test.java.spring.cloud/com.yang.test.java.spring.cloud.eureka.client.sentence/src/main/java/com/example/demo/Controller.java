@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
 	@RequestMapping("/")
-	public String getWord() throws InterruptedException {
+	public String getWord() {
 		return "0";
+	}
+
+	@RequestMapping("/formdata")
+	public String formdata(String test) {
+		return test;
 	}
 }

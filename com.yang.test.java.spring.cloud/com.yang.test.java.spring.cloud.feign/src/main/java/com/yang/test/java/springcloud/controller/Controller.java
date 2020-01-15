@@ -54,4 +54,9 @@ public class Controller {
 	public @ResponseBody String test() {
 		return "2";
 	}
+
+	@RequestMapping("/formdata")
+	public @ResponseBody String formdata() {
+		return nounClient.formdata("123");
+	}
 }
