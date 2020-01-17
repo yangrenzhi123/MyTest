@@ -13,7 +13,7 @@ public class GetDataNum {
 
 	static final String schema = "lyzhhw4";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL1 = "jdbc:mysql://192.168.10.229:5306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL1 = "jdbc:mysql://192.168.10.90:4306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "lyzhhw4performancetesting";
 
@@ -26,17 +26,17 @@ public class GetDataNum {
 		
 		List<String> tables = getTables(conn2);
 
-		int total = 0;
+		long total = 0;
 		PreparedStatement stmt2 = null;
 		for(String table : tables) {
-			if(table.startsWith("vw_") || table.equals("h_exchange_record")) {
+			if(table.startsWith("vw_")) {
 				continue;
 			}
 			
 			stmt2 = conn2.prepareStatement("select count(1) as num from "+ table);
 			ResultSet rs2 = stmt2.executeQuery();
 			rs2.next();
-			int a = rs2.getInt("num");
+			long a = rs2.getLong("num");
 			
 
 			System.out.println("表"+table+"，"+df.format(a));

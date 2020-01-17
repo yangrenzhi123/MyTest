@@ -66,7 +66,7 @@ public class TestDingding {
 		String dingDingToken = "https://oapi.dingtalk.com/robot/send?access_token=e0579969cafea588e71a3ee9175bd9b508895a3847b0a3dc23be615e06ef2755";
 
 		Map<String, Object> text = new HashMap<>();
-		text.put("content", "小爱同学说：" + content);
+		text.put("content", content);
 
 		Map<String, Object> json = new HashMap<>();
 		json.put("msgtype", "text");

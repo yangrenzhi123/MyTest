@@ -6,12 +6,7 @@ import java.util.Map;
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		Map<String, String> s = new HashMap<>();
-		s.put("1", "1");
-		s.put("2", "2");
-		System.out.println(s);
-		s.clear();
-		System.out.println(s);
+		System.out.println(Integer.MAX_VALUE);
 		
 		
 //		String a = null;
