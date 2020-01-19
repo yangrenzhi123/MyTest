@@ -25,7 +25,7 @@ public class Test1MybatisConfig {
         MysqlXADataSource mysqlXADataSource=new MysqlXADataSource();
         mysqlXADataSource.setUrl("jdbc:mysql://192.168.10.90:4306/lyzhhw4");
         mysqlXADataSource.setUser("root");
-        mysqlXADataSource.setPassword("fasdfadfasfasfd");
+        mysqlXADataSource.setPassword("lyzhhw4performancetesting");
         mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);
         mysqlXADataSource.setAllowMultiQueries(true);
         mysqlXADataSource.setUseSSL(false);

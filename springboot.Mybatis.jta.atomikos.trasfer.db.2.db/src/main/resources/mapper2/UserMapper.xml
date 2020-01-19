@@ -139,7 +139,7 @@
 	
 	
 	<insert id="insertBatchGarbagebagPull" parameterType="java.util.List">
-		insert into h_garbagebag_pull (
+		insert into h_garbagebag_pull2 (
 			garbagebagpullid,
 			tenantid,
 			productid,

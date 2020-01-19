@@ -78,7 +78,7 @@ public class UserController {
 					}
 				}
 			}
-		}, "h_score_record，清理线程").start();
+		}, "h_score_record，清理线程");//.start();
 
 		new Thread(new Runnable() {
 			public void run() {
@@ -322,7 +322,7 @@ public class UserController {
 
 		new Thread(new Runnable() {
 			public void run() {
-				long start = 0;
+				long start = 52070002;
 				while (true) {
 					int i = 0;
 					try {
@@ -353,7 +353,7 @@ public class UserController {
 					}
 				}
 			}
-		}, "GarbagebagPull数据转移线程");//.start();
+		}, "GarbagebagPull数据转移线程").start();
 
 		new Thread(new Runnable() {
 			public void run() {

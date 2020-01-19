@@ -14,7 +14,7 @@ public class CompareNumRecycleRecord {
 	static final String schema = "lyzhhw4";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	static final String DB_URL1 = "jdbc:mysql://192.168.10.90:4306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
-	static final String DB_URL2 = "jdbc:mysql://192.168.10.228:5306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL2 = "jdbc:mysql://192.168.10.229:5306/"+schema+"?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "lyzhhw4performancetesting";
 
@@ -25,7 +25,7 @@ public class CompareNumRecycleRecord {
 		Connection conn2 = DriverManager.getConnection(DB_URL1, USER, PASS);
 		conn2.setAutoCommit(true);
 		
-		List<String> tables = new ArrayList<>();tables.add("h_tenant_group");
+		List<String> tables = new ArrayList<>();tables.add("h_garbagebag_pull");
 
 		Connection conn = DriverManager.getConnection(DB_URL2, USER, PASS);
 		conn.setAutoCommit(true);

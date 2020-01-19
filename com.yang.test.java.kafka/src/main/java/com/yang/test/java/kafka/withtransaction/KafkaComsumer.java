@@ -13,8 +13,8 @@ public class KafkaComsumer {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
-		String group = "MysqlDataChangeGroup";
-		String topic = "MysqlDataChange_h_recycle_record";
+		String group = "guan";
+		String topic = "MysqlDataChange_h_garbagebag_pull";
 		props.put("bootstrap.servers", "192.168.10.239:9092");
 
 		props.put("group.id", group);

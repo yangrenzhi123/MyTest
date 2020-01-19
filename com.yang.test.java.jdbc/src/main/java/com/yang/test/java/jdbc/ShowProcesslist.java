@@ -28,10 +28,10 @@ public class ShowProcesslist {
 			String id = rs.getString("id");
 			String user = rs.getString("user");
 			String host = rs.getString("host");
-			String db = rs.getString("db");
+			String state = rs.getString("state");
 			String info = rs.getString("info");
-			if(info != null && (info.contains("h_score_record") || info.contains("h_score_record"))) {
-				System.out.println(id + "\t" + user + "\t" + host + "\t" + db + "\t" + info);
+			if(info != null && (info.contains("h_garbagebag_pull") || info.contains("h_garbagebag_pull"))) {
+				System.out.println(id + "\t" + user + "\t" + host + "\t" + state + "\t" + info);
 			}
 		}
 		stmt.close();
