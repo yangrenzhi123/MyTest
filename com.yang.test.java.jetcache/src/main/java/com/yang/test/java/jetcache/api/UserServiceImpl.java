@@ -2,7 +2,7 @@ package com.yang.test.java.jetcache.api;
 
 import org.springframework.stereotype.Service;
 
-import com.yang.test.java.jetcache.RegionDTO;
+import com.lyzh.msa.framework.common.dto.console.ReceiveBagStatisticalResponseDTO;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 		return userId;
 	}
 
-    public RegionDTO findRegionDTOOne(){
+    public ReceiveBagStatisticalResponseDTO findRegionDTOOne(){
         return null;
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
 import com.alicp.jetcache.anno.config.EnableMethodCache;
+import com.lyzh.msa.framework.common.dto.console.ReceiveBagStatisticalResponseDTO;
 import com.yang.test.java.jetcache.api.UserService;
 
 @SpringBootApplication
@@ -25,15 +26,16 @@ class HelloController {
 
 	@Autowired
 	UserService userService;
-	
+
 	@GetMapping("/{id}")
-	public String hello2(@PathVariable ("id") String id) {
+	public String hello2(@PathVariable("id") String id) {
 		return userService.getUserById(id, id);
 	}
-	
+
 	@GetMapping("/test")
 	public void test() {
-		RegionDTO a = userService.findRegionDTOOne();
+		ReceiveBagStatisticalResponseDTO a = userService.findRegionDTOOne();
 		System.out.println(a);
+		System.out.println(a.getReceiveBagFamilyCount() + "，" + a.getReceiveBagCount());
 	}
 }

@@ -9,5 +9,6 @@ public class SlaveSynStatusMain {
 		JDBCSimple224.doIt();
 		JDBCSimple26.doIt();
 		JDBCSimple2243307.doIt();
+		JDBCSimple263307.doIt();
 	}
 }
