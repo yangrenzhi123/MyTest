@@ -12,10 +12,12 @@ import com.yang.test.java.springboot.TestDingding;
 import com.yang.test.java.springboot.dao1.UserDao1;
 import com.yang.test.java.springboot.dao2.UserDao2;
 
+import entity.DispenserReplenish;
 import entity.GarbagebagPull;
 import entity.InspectRecord;
 import entity.RecycleLoseweight;
 import entity.RecyleRecord;
+import entity.ReplenishContent;
 import entity.ScoreRecord;
 
 @Controller
@@ -353,7 +355,7 @@ public class UserController {
 					}
 				}
 			}
-		}, "GarbagebagPull数据转移线程").start();
+		}, "GarbagebagPull数据转移线程");//.start();
 
 		new Thread(new Runnable() {
 			public void run() {
@@ -383,6 +385,66 @@ public class UserController {
 				}
 			}
 		}, "InspectRecord数据转移线程");//.start();
+
+		new Thread(new Runnable() {
+			public void run() {
+				long start = 96181570;
+				while (true) {
+					try {
+						long a = System.currentTimeMillis();
+						List<DispenserReplenish> l = userDao1.limitDispenserReplenish(start);
+						long aa = System.currentTimeMillis() - a;
+
+						long b = System.currentTimeMillis();
+						userDao2.insertBatchDispenserReplenish(l);
+						long bb = System.currentTimeMillis() - b;
+
+						DispenserReplenish last = l.get(l.size() - 1);
+
+						System.out.println("DispenserReplenish，查询耗时：" + aa + "，插入耗时：" + bb + "，数据条数：" + l.size() + "，最后一条记录ID：" + last.getDispenserreplenishzzid());
+
+						if (l.size() < 10000) {
+							break;
+						} else {
+							start = last.getDispenserreplenishzzid();
+						}
+					}catch(Exception e) {
+						TestDingding.test("DispenserReplenish，异常");
+					}
+				}
+			}
+		}, "DispenserReplenish数据转移线程");//.start();
+		
+
+
+		new Thread(new Runnable() {
+			public void run() {
+				long start = 0;
+				while (true) {
+					try {
+						long a = System.currentTimeMillis();
+						List<ReplenishContent> l = userDao1.limitReplenishContent(start);
+						long aa = System.currentTimeMillis() - a;
+
+						long b = System.currentTimeMillis();
+						userDao2.insertBatchReplenishContent(l);
+						long bb = System.currentTimeMillis() - b;
+
+						ReplenishContent last = l.get(l.size() - 1);
+
+						System.out.println("ReplenishContent，查询耗时：" + aa + "，插入耗时：" + bb + "，数据条数：" + l.size() + "，最后一条记录ID：" + last.getReplenishcontentid());
+
+						if (l.size() < 10000) {
+							break;
+						} else {
+							start = last.getReplenishcontentid();
+						}
+					}catch(Exception e) {
+						TestDingding.test("DispenserReplenish，异常");
+					}
+				}
+			}
+		}, "ReplenishContent数据转移线程").start();
 		return 1;
 	}
 }

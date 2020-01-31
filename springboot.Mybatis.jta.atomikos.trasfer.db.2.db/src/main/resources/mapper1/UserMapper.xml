@@ -29,4 +29,12 @@
 	<select id="limitInspectRecord" parameterType="Long" resultType="entity.InspectRecord">
 		select * from h_inspect_record where inspectrecordzzid > #{start} order by inspectrecordzzid limit 10000
 	</select>
+	
+	<select id="limitDispenserReplenish" parameterType="Long" resultType="entity.DispenserReplenish">
+		select * from h_dispenser_replenish where dispenserreplenishzzid > #{start} order by dispenserreplenishzzid limit 10000
+	</select>
+	
+	<select id="limitReplenishContent" parameterType="Long" resultType="entity.ReplenishContent">
+		select * from h_replenish_content where replenishcontentid > #{start} order by replenishcontentid limit 10000
+	</select>
 </mapper>

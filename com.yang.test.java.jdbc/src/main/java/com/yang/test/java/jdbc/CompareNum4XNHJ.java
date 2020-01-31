@@ -37,7 +37,7 @@ public class CompareNum4XNHJ {
 		conn4.setAutoCommit(true);
 
 		for (String table : tables) {
-			if (table.startsWith("vw_")) {
+			if (table.startsWith("vw_") || table.startsWith("h_etl_")) {
 				continue;
 			}
 

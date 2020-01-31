@@ -2,10 +2,12 @@ package com.yang.test.java.springboot.dao2;
 
 import java.util.List;
 
+import entity.DispenserReplenish;
 import entity.GarbagebagPull;
 import entity.InspectRecord;
 import entity.RecycleLoseweight;
 import entity.RecyleRecord;
+import entity.ReplenishContent;
 import entity.ScoreRecord;
 
 public interface UserDao2 {
@@ -16,4 +18,6 @@ public interface UserDao2 {
 	void insertBatchRecycleLoseweight(List<RecycleLoseweight> l);
 	void insertBatchGarbagebagPull(List<GarbagebagPull> l);
 	void insertBatchInspectRecord(List<InspectRecord> l);
+	void insertBatchDispenserReplenish(List<DispenserReplenish> l);
+	void insertBatchReplenishContent(List<ReplenishContent> l);
 }

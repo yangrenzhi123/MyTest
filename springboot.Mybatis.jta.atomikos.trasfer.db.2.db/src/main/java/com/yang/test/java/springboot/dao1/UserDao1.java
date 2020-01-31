@@ -2,10 +2,12 @@ package com.yang.test.java.springboot.dao1;
 
 import java.util.List;
 
+import entity.DispenserReplenish;
 import entity.GarbagebagPull;
 import entity.InspectRecord;
 import entity.RecycleLoseweight;
 import entity.RecyleRecord;
+import entity.ReplenishContent;
 import entity.ScoreRecord;
 
 public interface UserDao1 {
@@ -18,4 +20,6 @@ public interface UserDao1 {
 	void deleteRecycleLoseweightBatch(List<RecycleLoseweight> l);
 	List<GarbagebagPull> limitGarbagebagPull(Long start);
 	List<InspectRecord> limitInspectRecord(Long start);
+	List<DispenserReplenish> limitDispenserReplenish(Long start);
+	List<ReplenishContent> limitReplenishContent(Long start);
 }
