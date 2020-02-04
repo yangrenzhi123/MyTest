@@ -36,7 +36,7 @@ public class CompareNum20to2243307 {
 			if(table.startsWith("vw_")) {
 				continue;
 			}
-			
+
 			stmt2 = conn2.prepareStatement("select count(1) as num from "+ table);
 			ResultSet rs2 = stmt2.executeQuery();
 			rs2.next();
