@@ -1,0 +1,23 @@
+server:
+  port: 8082
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: default.messages
+          binder: local_rabbit
+        output:
+          destination: default.messages
+          binder: local_rabbit
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.8.70
+                port: 5672
+                username: admin
+                password: admin
+                virtual-host: /

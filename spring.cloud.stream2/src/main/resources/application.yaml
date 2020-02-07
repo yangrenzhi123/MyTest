@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        log_input:
+          destination: kite.log.messages
+          binder: local_rabbit
+          group: logConsumer-group1
+        log_output:
+          destination: kite.log.messages
+          binder: local_rabbit
+          group: logConsumer-group1
+        log_format_input:
+          destination: kite.log.format.messages
+          binder: local_rabbit
+          group: logFormat-group1
+        log_format_output:
+          destination: kite.log.format.messages
+          binder: local_rabbit
+          group: logFormat-group1
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.8.70
+                port: 5672
+                username: admin
+                password: admin
+                virtual-host: /
