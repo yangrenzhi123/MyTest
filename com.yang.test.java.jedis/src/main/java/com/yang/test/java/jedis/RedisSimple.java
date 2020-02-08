@@ -1,12 +1,15 @@
 package com.yang.test.java.jedis;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
-import redis.clients.jedis.Jedis;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.JedisCluster;
 
 public class RedisSimple {
 	public static void main(String[] args) throws IOException {
-		Jedis j = new Jedis("192.168.30.120", 6379);
+//		Jedis j = new Jedis("192.168.30.120", 6379);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.20", 7001));
@@ -26,14 +29,14 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.10.240", 7006));
 //		JedisCluster j = new JedisCluster(nodes);
 
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.10.228", 27001));
-//		nodes.add(new HostAndPort("192.168.10.228", 27002));
-//		nodes.add(new HostAndPort("192.168.10.228", 27003));
-//		nodes.add(new HostAndPort("192.168.10.229", 27004));
-//		nodes.add(new HostAndPort("192.168.10.229", 27005));
-//		nodes.add(new HostAndPort("192.168.10.229", 27006));
-//		JedisCluster j = new JedisCluster(nodes);
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.10.228", 27001));
+		nodes.add(new HostAndPort("192.168.10.228", 27002));
+		nodes.add(new HostAndPort("192.168.10.228", 27003));
+		nodes.add(new HostAndPort("192.168.10.229", 27004));
+		nodes.add(new HostAndPort("192.168.10.229", 27005));
+		nodes.add(new HostAndPort("192.168.10.229", 27006));
+		JedisCluster j = new JedisCluster(nodes);
 
 //		List<String> l = new ArrayList<>();
 //		l.add("h_tenant_group_map:LYZH110227001701");
