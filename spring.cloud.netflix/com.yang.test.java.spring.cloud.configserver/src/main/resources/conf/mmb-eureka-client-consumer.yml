@@ -6,7 +6,7 @@ eureka:
     ip-address: 127.0.0.1
 spring:
   rabbitmq:
-    host: 192.168.197.81
+    host: 192.168.8.70
     port: 5672
     username: admin
     password: admin

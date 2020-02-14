@@ -5,7 +5,9 @@ spring:
     name: mmb-eureka-client-consumer
   cloud:
     config:
-      uri: http://localhost:8889
+      uri: http://localhost:8888
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
 endpoints:
   shutdown:
     enabled: true

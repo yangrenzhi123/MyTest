@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.yang.test.java.spring.cloud.eureka.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.yang.test.java.spring.cloud.eureka.server;
 
 import org.springframework.cloud.bus.event.RefreshListener;
 import org.springframework.cloud.bus.event.RefreshRemoteApplicationEvent;
