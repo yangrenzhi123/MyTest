@@ -1,0 +1,22 @@
+server:
+  port: 8888
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+spring: 
+  profiles: 
+    active: native
+  security:
+    user:
+      name: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
+  rabbitmq:
+    host: 192.168.8.70
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /

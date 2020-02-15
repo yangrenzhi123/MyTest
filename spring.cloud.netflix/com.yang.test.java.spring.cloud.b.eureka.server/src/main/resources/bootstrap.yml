@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: ytEurekaServer
+  security:
+    user:
+      name: eureka
+      password: 123456
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
+  rabbitmq:
+    host: 192.168.8.70
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
+server:
+  port: 8761
+eureka:
+  server:
+    enable-self-preservation: true #开启自我保护，eureka检查与所有服务的通信，如果低于某个值，则eureka本身网络出现异常。
+    eviction-interval-timer-in-ms: 5000 #默认60秒
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka

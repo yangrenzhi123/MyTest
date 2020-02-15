@@ -1,0 +1,29 @@
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # ，表示eureka client发送心跳给server端的频率。如果在leaseExpirationDurationInSeconds后，server端没有收到client的心跳，则将摘除该instance。除此之外，如果该instance实现了HealthCheckCallback，并决定让自己unavailable的话，则该instance也不会接收到流量。默认30秒
+    lease-expiration-duration-in-seconds: 15 #表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该,默认为90秒,如果该值太大，则很可能将流量转发过去的时候，该instance已经不存活了。如果该值设置太小了，则instance则很可能因为临时的网络抖动而被摘除掉。该值至少应该大于leaseRenewalIntervalInSeconds
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+spring:
+  rabbitmq:
+    host: 192.168.8.70
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
+words: you,me,he8r
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: ["health","info","shutdown"]

@@ -1,23 +1,14 @@
-server:
-  port: 8763
 spring:
   application:
     name: mmb-eureka-client-provider
   cloud:
     config:
-      uri: http://localhost:8889
+      uri: http://localhost:8888
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
+server:
+  port: 8763
 eureka:
   instance:
-    prefer-ip-address: true
     metadata-map:
       api-version: 1
-management:
-  endpoint:
-    shutdown:
-      enabled: true
-    health:
-      show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: ["health","info","shutdown"]

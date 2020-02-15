@@ -21,12 +21,12 @@ public class Controller {
 	@Autowired
 	private LoadBalancerClient balanceClient;
 
-	@RequestMapping("/")
+	@RequestMapping("/1111111")
 	public String index() {
 		return "1";
 	}
 
-	@RequestMapping("/11111111111111")
+	@RequestMapping("/")
 	public String getWord() {
 		ServiceInstance si = balanceClient.choose("mmb-eureka-client-provider");
 		URI uri = si.getUri();
