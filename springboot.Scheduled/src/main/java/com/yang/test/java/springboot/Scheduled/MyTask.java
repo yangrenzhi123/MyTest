@@ -16,11 +16,6 @@ public class MyTask {
 		Calendar now = Calendar.getInstance();
 		int hour = now.get(Calendar.HOUR_OF_DAY);
 		int minute = now.get(Calendar.MINUTE);
-		int weekDay = now.get(Calendar.DAY_OF_WEEK);
-
-		if (weekDay == 6 && hour == 11 && minute == 59) {
-			TestDingding.test("中石油，周末欢乐享", one);
-		}
 
 		if (hour == 12 && minute == 59) {
 			TestDingding.test("DT加油签到", one);
