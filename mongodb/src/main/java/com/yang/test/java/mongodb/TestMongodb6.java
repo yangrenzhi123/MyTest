@@ -15,12 +15,23 @@ public class TestMongodb6 {
 		MongoClient mongoClient = new MongoClient("192.168.10.229", 27017);
 		final MongoDatabase mgdb = mongoClient.getDatabase("test_source");
 
-		MongoCollection<Document> mc = mgdb.getCollection("h_score_record_day_20191227");
+		MongoCollection<Document> mc = mgdb.getCollection("alarmDataInfo_20181201");
+
+		long totalBytes = 0;
+		long totalCount = 0;
+
 		MongoCursor<Document> datas = mc.find().iterator();
 		while (datas.hasNext()) {
-			System.out.println(datas.next().toJson());
+			String json = datas.next().toJson();
+
+			//System.out.println(json);
+
+			totalBytes = totalBytes + json.getBytes("GBK").length;
+			totalCount++;
 		}
 
 		mongoClient.close();
+
+		System.out.println("totalBytes：" + totalBytes + "，" + totalBytes / 1024 / 1024 + "MB，数据总条数：" + totalCount);
 	}
 }
