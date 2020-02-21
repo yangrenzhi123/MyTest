@@ -36,6 +36,7 @@ public class Config {
 	private List<String> scheduler;
 	private List<String> platform;
 	private List<String> mongodbs;
+	private String dingDingToken;
 
 	public List<String> getDevice() {
 		return device;
@@ -180,5 +181,11 @@ public class Config {
 	}
 	public void setMongodbs(List<String> mongodbs) {
 		this.mongodbs = mongodbs;
+	}
+	public String getDingDingToken() {
+		return dingDingToken;
+	}
+	public void setDingDingToken(String dingDingToken) {
+		this.dingDingToken = dingDingToken;
 	}
 }
