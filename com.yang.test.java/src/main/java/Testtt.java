@@ -1,14 +1,10 @@
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Testtt {
-
+	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(Integer.MAX_VALUE);
-		
-		
 //		String a = null;
 //		String b = null;
 //		System.out.println(Objects.equals(a, b));

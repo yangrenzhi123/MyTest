@@ -10,4 +10,9 @@ public class Controller {
 	public String getWord() {
 		return "1";
 	}
+
+	@RequestMapping("/test")
+	public String test() {
+		return "1";
+	}
 }

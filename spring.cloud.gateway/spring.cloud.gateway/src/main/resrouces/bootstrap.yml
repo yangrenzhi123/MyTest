@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: spring.cloud.gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
+    gateway:
+      routes:
+      - id: api-a
+        uri: lb://mmb-eureka-client-provider
+        predicates:
+        - Path=/test/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka
+  instance: 
+    prefer-ip-address: true
+    ip-address: 127.0.0.1

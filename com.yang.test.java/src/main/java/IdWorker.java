@@ -86,10 +86,21 @@ public class IdWorker{
 	}
 
 	// ---------------测试---------------
-	public static void main(String[] args) {
+	public static void main2(String[] args) {
 		IdWorker worker = new IdWorker(0, 0, 0);
 		for (int i = 0; i < 10; i++) {
 			System.out.println(worker.nextId());
 		}
+	}
+	
+	public static void main(String[] args) {
+		long a = System.currentTimeMillis();
+		long b = a - 1546272000000L;
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(Long.toBinaryString(b));
+		long c = b << 22;
+		System.out.println(c);
+		System.out.println(Long.toBinaryString(c));
 	}
 }

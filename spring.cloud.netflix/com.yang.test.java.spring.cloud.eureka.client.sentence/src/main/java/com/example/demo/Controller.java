@@ -13,8 +13,8 @@ public class Controller {
 		return "0";
 	}
 
-	@RequestMapping("/formdata")
-	public String formdata(String test) {
-		return test;
+	@RequestMapping("/test")
+	public String test() {
+		return "0";
 	}
 }
