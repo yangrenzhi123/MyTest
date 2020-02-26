@@ -5,6 +5,9 @@ import java.text.ParseException;
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
+		System.out.println(Long.MAX_VALUE/1024/1024/1024/1024);
+		
+		
 //		String a = null;
 //		String b = null;
 //		System.out.println(Objects.equals(a, b));
