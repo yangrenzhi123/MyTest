@@ -46,7 +46,7 @@ public class RedisClear2 {
 		int i = 0;
 
 		long a = System.currentTimeMillis();
-		keys = keys(j, "h_throw_rule_map:*");
+		keys = keys(j, "h_exchange_score_record_day_*");
 		for (String key : keys) {
 			j.del(key);
 			System.out.println(key);
