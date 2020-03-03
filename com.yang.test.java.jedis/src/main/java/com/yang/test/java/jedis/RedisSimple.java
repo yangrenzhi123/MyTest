@@ -1,16 +1,21 @@
 package com.yang.test.java.jedis;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
-import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisSimple {
 	public static void main(String[] args) throws IOException {
-//		Jedis j = new Jedis("172.17.202.149", 6379);
+		JedisPoolConfig config = new JedisPoolConfig();
+		config.setMaxTotal(30);
+		config.setMaxIdle(10);
+		config.setMaxWaitMillis(2000);
+		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
+		Jedis j = jp.getResource();
+		
+//		Jedis j = new Jedis("172.17.202.156", 7002);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.20", 7001));
@@ -39,17 +44,17 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.10.229", 27006));
 //		JedisCluster j = new JedisCluster(nodes);
 		
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("172.17.202.151", 7001));
-		nodes.add(new HostAndPort("172.17.202.156", 7002));
-		nodes.add(new HostAndPort("172.17.202.158", 7003));
-		nodes.add(new HostAndPort("172.17.202.148", 7004));
-		nodes.add(new HostAndPort("172.17.202.152", 7005));
-		nodes.add(new HostAndPort("172.17.202.147", 7006));
-		nodes.add(new HostAndPort("172.17.202.155", 7007));
-		nodes.add(new HostAndPort("172.17.202.150", 7008));
-		nodes.add(new HostAndPort("172.17.202.153", 7009));
-		JedisCluster j = new JedisCluster(nodes);
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("172.17.202.151", 7001));
+//		nodes.add(new HostAndPort("172.17.202.156", 7002));
+//		nodes.add(new HostAndPort("172.17.202.158", 7003));
+//		nodes.add(new HostAndPort("172.17.202.148", 7004));
+//		nodes.add(new HostAndPort("172.17.202.152", 7005));
+//		nodes.add(new HostAndPort("172.17.202.147", 7006));
+//		nodes.add(new HostAndPort("172.17.202.155", 7007));
+//		nodes.add(new HostAndPort("172.17.202.150", 7008));
+//		nodes.add(new HostAndPort("172.17.202.153", 7009));
+//		JedisCluster j = new JedisCluster(nodes);
 
 //		List<String> l = new ArrayList<>();
 //		l.add("h_tenant_group_map:LYZH110227001701");
@@ -61,7 +66,7 @@ public class RedisSimple {
 //		System.out.println(m);
 
 
-		j.set("testKeyyy6", "test124");
+//		j.set("testKeyyy", "654321");
 		System.out.println(j.get("testKeyyy"));
 		
 //		Set<String> keys = j.keys("*");
@@ -77,5 +82,6 @@ public class RedisSimple {
 //		j.hmset(key, m);
 
 		j.close();
+		jp.close();
 	}
 }

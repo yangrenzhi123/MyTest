@@ -18,23 +18,14 @@ public class JDBCSimple6 {
 		Connection conn = DriverManager.getConnection(DB_URL2, USER, PASS);
 		conn.setAutoCommit(true);
 		
-		for(int i = 0;i<10000;i++) {
-			t1(conn, i*10000+1, (i+1)*10000);
-			t2(conn, i*10000+1, (i+1)*10000);
+		for(int i = 0;i<30000;i++) {
+			t1(conn, i*10000, (i+1)*10000);
 			System.out.println("位置标记：" + i);
 		}
 	}
 	
 	public static void t1(Connection conn, long start, long end) throws SQLException {
-		PreparedStatement stmt = conn.prepareStatement("update h_inspect_record set regionid = 'd9765bf6-91c2-4339-bd5e-f70e54e89cae' where communityid like '512%' and inspectrecordzzid >= "+start+" and inspectrecordzzid <= " + end);
-		long a = System.currentTimeMillis();
-		boolean rs = stmt.execute();
-		stmt.close();
-		System.out.println(rs + "," + (System.currentTimeMillis() - a));
-	}
-	
-	public static void t2(Connection conn, long start, long end) throws SQLException {
-		PreparedStatement stmt = conn.prepareStatement("update h_inspect_record set regionid = '55b50a03-5927-4868-afe4-2c834effcb21' where communityid like '511%' and inspectrecordzzid >= "+start+" and inspectrecordzzid <= " + end);
+		PreparedStatement stmt = conn.prepareStatement("UPDATE h_inspect_record SET communityid = 'eb872fee-5b9e-4980-8564-1be17ca4a6e4' WHERE tenantid = '5c6545ac-15c4-4631-8a7e-194011997865' AND communityid = '42017' and inspectrecordzzid > "+start+" and inspectrecordzzid <= " + end);
 		long a = System.currentTimeMillis();
 		boolean rs = stmt.execute();
 		stmt.close();

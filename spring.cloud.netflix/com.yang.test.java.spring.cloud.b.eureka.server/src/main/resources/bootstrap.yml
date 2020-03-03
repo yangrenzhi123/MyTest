@@ -21,7 +21,7 @@ server:
 eureka:
   server:
     enable-self-preservation: true #开启自我保护，eureka检查与所有服务的通信，如果低于某个值，则eureka本身网络出现异常。
-    eviction-interval-timer-in-ms: 5000 #默认60秒
+    eviction-interval-timer-in-ms: 5000 #默认60秒，每隔 多少时间 扫描服务列表，移除失效服务。
   client:
     register-with-eureka: false
     fetch-registry: false

@@ -21,8 +21,7 @@ import org.apache.http.util.EntityUtils;
 
 public class TestProduct5 {
 
-
-	static String ip="192.168.10.239";
+	static String ip = "127.0.0.1:3114";//"192.168.10.239";
 	static int count = 500;
 	
 	static List<Runnable> rl;
@@ -57,9 +56,13 @@ public class TestProduct5 {
 						CloseableHttpClient hc = hcl.get(j);
 						
 						String orderNo = UUID.randomUUID().toString().replaceAll("-", "");
-						final HttpGet p = new HttpGet("http://"+ip+":3114/NewVendingMachine/check?mchinesn=000101018001&ordersn="+orderNo+"&timestamp=1545793115&code=LYZH000101016601&sign=6794F8DF8F1B13FFCC3BDB7B8D2B6147");
+
+						String mySign = "1545793115" + "LYZH2015" + orderNo;
+						String sign = MD5Util.MD5Encode(mySign, "UTF-8").toUpperCase();
+						
+						final HttpGet p = new HttpGet("http://"+ip+"/NewVendingMachine/check?mchinesn=10051001080004&ordersn="+orderNo+"&timestamp=1545793115&code=LYZH511000000401&sign="+sign);
 						p.setHeader("Connection", "Keep-Alive");
-						final HttpGet p1 = new HttpGet("http://"+ip+":3114/NewVendingMachine/checkresult?mchinesn=000101018001&ordersn="+orderNo+"&timestamp=1545793121&goodsCode=ZJLY02021807078389&sign=7C30E9DCBB56A7FCCF603298D3F60AD5&mark=00000");
+						final HttpGet p1 = new HttpGet("http://"+ip+"/NewVendingMachine/checkresult?mchinesn=10051001080004&ordersn="+orderNo+"&timestamp=1545793115&goodsCode=ZJLY01021801016100&sign="+sign+"&mark=00000");
 						p1.setHeader("Connection", "Keep-Alive");
 						
 						

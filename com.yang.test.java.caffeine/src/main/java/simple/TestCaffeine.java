@@ -12,22 +12,52 @@ import com.github.benmanes.caffeine.cache.LoadingCache;
 
 public class TestCaffeine {
 
+	static Cache<Integer, Integer> a = Caffeine.newBuilder().expireAfterWrite(60, TimeUnit.SECONDS).maximumSize(Long.MAX_VALUE).build();
+	
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		t0();
 	}
 	
 	//手动
 	public static void t0() {
-		Cache<Integer, Object> a = Caffeine.newBuilder().expireAfterWrite(10, TimeUnit.SECONDS).maximumSize(100).build();
+		Integer num = a.getIfPresent(1);
+		if(num == null) {
+			num = 0;
+		}
+		if(num < 4) {
+			a.put(1, num + 1);
+		}
 		
-		a.put(1, "123");
-		a.put(2, "456");
 
-		System.out.println(a.getIfPresent(1));
-		System.out.println(a.getIfPresent(2));
-		a.invalidateAll();
-		System.out.println(a.getIfPresent(1));
-		System.out.println(a.getIfPresent(2));
+		num = a.getIfPresent(1);
+		if(num == null) {
+			num = 0;
+		}
+		if(num < 4) {
+			a.put(1, num + 1);
+		}
+		
+
+		num = a.getIfPresent(1);
+		if(num == null) {
+			num = 0;
+		}
+		if(num < 4) {
+			a.put(1, num + 1);
+		}
+		
+
+		num = a.getIfPresent(1);
+		if(num == null) {
+			num = 0;
+		}
+		if(num < 3) {
+			a.put(1, num + 1);
+		}else {
+			System.out.println("超限");
+		}
+		
+		System.out.println(num);
 	}
 
 	//手动

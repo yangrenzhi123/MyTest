@@ -1,10 +1,15 @@
-package fafangji;
+package com.yang.test.java.jdbc;
+
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.http.HttpEntity;
@@ -16,15 +21,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-/**
- * 测试积分查询
- * 
- * 
- */
-public class TestProduct7 {
-	static String ip="127.0.0.1:3114";
+public class FaFangJi {
+
+	static String ip = "127.0.0.1:3114";
 	static int mans = 500;
-	static int doCiShu = 10;
+	static int doCiShu = 50;
 	
 	static List<Runnable> rl;
 	static CountDownLatch counttime;
@@ -38,10 +39,17 @@ public class TestProduct7 {
 	
 	static long totalTime;
 	
-	public static void main(String[] args) throws InterruptedException, IOException {
+	public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException, SQLException {
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
-
+		List<String> ffjList = GetFaFangJi.getSbbh();
+		int ffjSize = ffjList.size();
+		System.out.println("发放机数量：" + ffjSize);
+		List<String> cyewmList = GetCyewm.getCyewm();
+		int cyewmSize = cyewmList.size();
+		System.out.println("二维码数量：" + cyewmSize);
+		
+		Random r = new Random();
 
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < mans; i++) {
@@ -55,12 +63,24 @@ public class TestProduct7 {
 			rl.add(new Runnable() {
 				public void run() {
 					try {
-						String mySign = "1545793115" + "LYZH2015" + "LYZH511000269901";
-						String sign = MD5Util.MD5Encode(mySign, "UTF-8").toUpperCase();
+						int ffjIndex = r.nextInt(ffjSize);
+						int cyewmIndex = r.nextInt(cyewmSize);
+						
 						
 						CloseableHttpClient hc = hcl.get(j);
-						final HttpGet p = new HttpGet("http://"+ip+"/NewVendingMachine/getOrder?mchinesn=10051018080064&timestamp=1545793115&code=LYZH511000269901&sign="+sign);
+						
+						String orderNo = UUID.randomUUID().toString().replaceAll("-", "");
+
+						String mySign = "1545793115" + "LYZH2015" + orderNo;
+						String sign = MD5Util.MD5Encode(mySign, "UTF-8").toUpperCase();
+						
+						String mchinesn = ffjList.get(ffjIndex);
+						String cyewm = cyewmList.get(cyewmIndex);
+						
+						final HttpGet p = new HttpGet("http://"+ip+"/NewVendingMachine/check?mchinesn="+mchinesn+"&ordersn="+orderNo+"&timestamp=1545793115&code="+cyewm+"&sign="+sign);
 						p.setHeader("Connection", "Keep-Alive");
+						final HttpGet p1 = new HttpGet("http://"+ip+"/NewVendingMachine/checkresult?mchinesn="+mchinesn+"&ordersn="+orderNo+"&timestamp=1545793115&goodsCode=ZJLY01021801016100&sign="+sign+"&mark=00000");
+						p1.setHeader("Connection", "Keep-Alive");
 						
 						
 						HttpResponse response = hc.execute(p);
@@ -69,6 +89,15 @@ public class TestProduct7 {
 						if(!content.startsWith("{\"code\":\"0\"")) {
 							System.out.println(content);
 						}
+						
+
+						response = hc.execute(p1);
+						httpEntity = response.getEntity();
+						content = EntityUtils.toString(httpEntity, "utf-8");
+						if(!content.startsWith("{\"code\":\"0\"")) {
+							System.out.println(content);
+						}
+						
 
 						int httpCode = response.getStatusLine().getStatusCode();
 						if(httpCode == 500) {

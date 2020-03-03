@@ -1,11 +1,11 @@
-import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(Long.MAX_VALUE/1024/1024/1024/1024);
+		System.out.println(URLEncoder.encode("成", "gbk").replaceAll("%", "").toLowerCase());
 		
 		
 //		String a = null;
@@ -86,7 +86,7 @@ public class Testtt {
 //		throw new RuntimeException(new NullPointerException());
 		
 //		long a = System.currentTimeMillis();
-//		System.out.println(new Random().nextInt(20000000));
+//		System.out.println(new Random().nextInt(2));
 //		System.out.println(System.currentTimeMillis() - a);
 
 //		System.out.println(UUID.randomUUID().toString());

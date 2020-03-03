@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +18,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.index.Index;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +51,49 @@ class HelloController {
 	private MongoTemplate threeMongoTemplate;
 
 
+    @PostConstruct
+    public void init() {
+    	Set<String> collectionNames = oneMongoTemplate.getCollectionNames();
+    	
+    	long a = System.currentTimeMillis();System.out.println("开始执行...");long max = 0;
+    	for(String collectionName : collectionNames) {
+    		if(!collectionName.startsWith("ffasdfafdasdfadfadfas")) continue;
+    		
+        	long b = System.currentTimeMillis();System.out.println("开始执行" + collectionName);
+    		try {
+        		oneMongoTemplate.indexOps(collectionName).dropIndex("p_c_zhhh_zhnc_sjhm");
+        		oneMongoTemplate.indexOps(collectionName).dropIndex("p_c_zhnc_sjhm");
+        		oneMongoTemplate.indexOps(collectionName).dropIndex("p_c_sjhm");
+    		}catch(Exception e) {
+    			System.out.println();
+    		}
+    		
+            Index index1 = new Index()
+                    .on("communityid", Sort.Direction.ASC)
+                    .on("zhhh", Sort.Direction.ASC)
+                    .on("zhnc", Sort.Direction.ASC)
+                    .on("sjhm", Sort.Direction.ASC).named("p_c_zhhh_zhnc_sjhm");
+            Index index2 = new Index()
+                    .on("communityid", Sort.Direction.ASC)
+                    .on("zhnc", Sort.Direction.ASC)
+                    .on("sjhm", Sort.Direction.ASC).named("p_c_zhnc_sjhm");
+            Index index3 = new Index()
+                    .on("communityid", Sort.Direction.ASC)
+                    .on("sjhm", Sort.Direction.ASC).named("p_c_sjhm");
+            
+            oneMongoTemplate.indexOps(collectionName).ensureIndex(index1);
+            oneMongoTemplate.indexOps(collectionName).ensureIndex(index2);
+            oneMongoTemplate.indexOps(collectionName).ensureIndex(index3);
+            long distance = System.currentTimeMillis() - b;
+            if(distance > max) {
+            	max = distance;
+            }
+        	System.out.println("执行完毕，耗时：" + (distance));
+    	}
+    	System.out.println("执行完毕，总耗时：" + (System.currentTimeMillis() - a) + "，单次最大耗时：" + max);
+    }
+	
+	
 	@GetMapping("/q1")
 	public void q1() {
 		Criteria criteria = Criteria.where("regionid")
@@ -176,5 +224,15 @@ class HelloController {
 			e.printStackTrace();
 		}
 		System.out.println("总耗时：" + (System.currentTimeMillis() - b));
+	}
+}
+
+class Max {
+	private int max;
+	public int getMax() {
+		return max;
+	}
+	public void setMax(int max) {
+		this.max = max;
 	}
 }
