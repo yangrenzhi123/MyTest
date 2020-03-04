@@ -1,0 +1,54 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.239
+jetcache:
+  remote:
+    default:
+      uri:
+        - redis://192.168.10.228:27001
+        - redis://192.168.10.228:27002
+        - redis://192.168.10.228:27003
+        - redis://192.168.10.229:27004
+        - redis://192.168.10.229:27005
+        - redis://192.168.10.229:27006
+spring:
+  profiles:
+    active: dev
+  data:
+    mongodb:
+      uri: mongodb://192.168.10.239:27017/test
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          username: kjh
+          password: b7ed5835e4fc
+          url: jdbc:mysql://192.168.10.90:4306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+        slave:
+          username: kjh
+          password: b7ed5835e4fc
+          url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+        slowquery:
+          username: kjh
+          password: b7ed5835e4fc
+          url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+  kafka:
+    producer:
+      bootstrap-servers: 192.168.10.239:9092
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+      group: tao14
+      auto.offset.reset: earliest
+      enable.auto.commit: false
+      auto.commit.interval.ms: 1000
+      session.timeout.ms: 60000
+      key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+  zipkin:
+    baseUrl: http://192.168.10.240:9411

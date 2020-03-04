@@ -27,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 @SpringBootApplication
 public class MonitorStartup {
 
+	static int suspend = 0;
+	
 	@Autowired
 	MonitorForMysql monitorForMysql;
 	@Autowired
@@ -46,12 +48,14 @@ public class MonitorStartup {
 		timer.schedule(new TimerTask() {
 			public void run() {
 				try {
-					monitorForMysql.execute();
-					monitorForKafka.execute();
-					monitorForRedis.execute();
-					monitorForService.execute();
-					monitorForDevice.execute();
-					monitorForDisk.execute();
+					if(suspend == 0) {
+						monitorForMysql.execute();
+						monitorForKafka.execute();
+						monitorForRedis.execute();
+						monitorForService.execute();
+						monitorForDevice.execute();
+						monitorForDisk.execute();
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -91,10 +95,23 @@ class HelloController {
 		Collections.sort(l);
 		return l;
 	}
+	@GetMapping("/getSuspend")
+	public int getSuspend() throws ClassNotFoundException, SQLException {
+		return MonitorStartup.suspend;
+	}
 
 	@RequestMapping("/")
 	public ModelAndView index() throws IOException {
 		ModelAndView mav = new ModelAndView("console");
 		return mav;
+	}
+
+	@GetMapping("/suspend/0")
+	public void suspend0() throws IOException {
+		MonitorStartup.suspend = 0;
+	}
+	@GetMapping("/suspend/1")
+	public void suspend1() throws IOException {
+		MonitorStartup.suspend = 1;
 	}
 }

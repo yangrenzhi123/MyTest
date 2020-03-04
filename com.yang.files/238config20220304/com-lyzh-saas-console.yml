@@ -1,0 +1,47 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.223
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  kafka:
+    producer:
+      bootstrap-servers: 192.168.10.239:9092
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+  redis:
+    timeout: 30000ms
+    password:
+    database: 0
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+    lettuce:
+      pool:
+        max-active: 100
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+jpush:
+  recyclebox:
+    masterSecret: e826403e2ed31a1d603f5b0a
+    appKey: 729d0a0b7fc81a1442f04075
+  sortingbox:
+    masterSecret: 0bae80e0dc7025aff7434a33
+    appKey: a687e89cd94ea7b380dca96d
+  message:
+    masterSecret: a740abbc3b31173e4b6176a1
+    appKey: 96c70a7179ae965228cdb4d0
+    pushdelay: 10
+  sendsms:
+    enabled: false
+    defaultphone: 13989866460
+
+
+#闪屏页对接新华社广告联盟基础信息   -by anpeiyong 2019-12-25
+xhs:
+  clientId: PDBfmT1bHc
+  clientSecret: QAZ46WA3hFRa9JiFaIDOQrnO00mfJ3P6
+  getURI: https://api.yidaolai.com/ydl-test/adv/auth/thirdAd/getAd

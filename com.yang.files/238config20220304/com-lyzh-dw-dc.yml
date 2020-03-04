@@ -1,0 +1,39 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          username: server
+          password: 345c0467b656
+          url: jdbc:mysql://192.168.10.90:4306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+        slave:
+          username: readonlylyzh
+          password: 123456
+          url: jdbc:mysql://192.168.10.223:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+  data:
+    mongodb:
+      uri: mongodb://192.168.10.239:27017/test
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+  kafka:
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+jetcache:
+  remote:
+      default:
+        uri:
+          - redis://192.168.10.228:27001
+          - redis://192.168.10.228:27002
+          - redis://192.168.10.228:27003
+          - redis://192.168.10.229:27004
+          - redis://192.168.10.229:27005
+          - redis://192.168.10.229:27006

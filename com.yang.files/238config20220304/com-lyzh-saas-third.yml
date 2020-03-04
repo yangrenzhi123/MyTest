@@ -1,0 +1,88 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.239
+spring:
+  timer:
+    PushOurYz2ThirdTimers: 0 0 0 1/1 * ?
+    pushFfjInfo: 0 0 0 1/1 * ?
+    pushFfjStatus: 0 0 0 1/1 * ?
+    getStreet: 0 0 0 1/1 * ?
+    getCommunityData: 0 0 0 1/1 * ?
+    getCommunity_Block: 0 0 0 1/1 * ?
+    pushRecycleData: 0 0 0/1 * * ?
+    pushGarbagPulleData: 0 0 0/1 * * ?
+    pushFfjUpRecord: 0 0 0/1 * * ?
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    primary:
+      username: dev_user
+      password: zjly@2015
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.10.246:3306/greenlife_dev?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+    secondary:
+      username: css
+      password: zjly@2019
+      url: jdbc:sqlserver://192.168.20.243:1433;databaseName=lyzh_gar
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  data:
+    mongodb:
+     uri: mongodb://192.168.10.239:27017/test
+  kafka:
+    producer:
+      bootstrap-servers: 192.168.10.239:9092
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+  redis-two:
+    host: 192.168.10.226
+    port: 6379
+    database: 1
+jetcache:
+  remote:
+      default:
+        uri:
+          - redis://192.168.10.228:27001
+          - redis://192.168.10.228:27002
+          - redis://192.168.10.228:27003
+          - redis://192.168.10.229:27004
+          - redis://192.168.10.229:27005
+          - redis://192.168.10.229:27006
+wx:
+  appID: wxa6ed663216b05946
+  appSecret: e4567c9f72a22d381d1bb8e52e74dc8c
+  token: hh_weixin
+  auth:
+    tokenExpireTime: 3600
+    jsSdkTicketExpireTime: 3600
+fhl:
+  app_url: http://ldx.fhlts.com
+pushurl:
+  commonurl: http://ljfl.couragetech.cn/api
+  sentkey: admin:123456
+mobileapp:
+  sendsms:
+    enabled: false
+  review:
+    enabled: true
+    phone: "11122223333"
+    smscode: "0000"
+    expireSeconds: 3600
+aiface:
+  address: http://192.168.30.54:9080
+group_id: SAAS
+ai_platform: 0
+huge:
+  appId: lianyunzhihui
+  secret: lianyunzhihuiappsecret
+  inspectionUrl: http://112.16.72.26:8090/api/inspection/addInspectionRecord
+  pushForHuGeUrl: http://cm.hugehuge.cn:8090/api/participate/addParticipateRecord
+duiba:
+  app_key: 2BLc6LPAvo3JaDTZGKQYCBQ95Vzg
+  app_secret: 3USETG1nhcAjAsWUmvP2rUrdYgxL

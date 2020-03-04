@@ -7,6 +7,8 @@
 <title>监控</title>
 </head>
 <body>
+	<div>运行状态</div>
+	<div id="suspend"></div>
 	<div id="content"></div>
 </body>
 <script src="/resources/jquery/jquery-1.7.2.min.js"></script>
@@ -23,6 +25,16 @@
 			},
 			error : function(a) {
 				$("#content").html("访问失败");
+			}
+		});
+
+		$.ajax({
+			url : "/getSuspend",
+			success : function(result) {
+				$("#suspend").html(result);
+			},
+			error : function(a) {
+				$("#suspend").html("访问失败");
 			}
 		});
 	}

@@ -1,0 +1,33 @@
+server:
+  port: 3130
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  timer:
+    #每天凌晨0点1分执行(巡检投放数据按天统计)
+    dayInspectStatistic: 0 1 0 * * ?
+    #统计指定日期的数据(格式yyyy-MM-dd 例如：2019-08-30,默认空统计昨天的数据)
+    appointDayStatistic:
+    #每月1号凌晨0点2分执行(巡检投放数据按月统计)
+    monthInspectStatistic: 0 2 0 1 * ?
+    #统计指定月份的数据(格式yyyy-MM 例如：2019-08,默认空统计上月的数据)
+    appointMonthStatistic:
+  profiles:
+    active: dev
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          username: server
+          password: 345c0467b656
+          url: jdbc:mysql://192.168.10.90:4306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+        slave:
+          username: readonlylyzh
+          password: 123456
+          url: jdbc:mysql://192.168.10.223:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true

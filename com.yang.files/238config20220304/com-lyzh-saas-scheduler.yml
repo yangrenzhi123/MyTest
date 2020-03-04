@@ -1,0 +1,63 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  timer:
+    equipOnLineDelAlarmTimer: 0 0/50 * * * ?
+    gRecycleRecordTimer: 0 0/50 * * * ?
+    merchantScoreStatisticsTimer: 0 0/1 * * * ?
+    projectScoreStatisticsTimer: 0 0/1 * * * ?
+    integralDailyReportTimer: 0 0/50 * * * ?
+    garbagebagPullTfztTimer: 0 0/5 * * * ?
+    serverMonitoringTimer: 0 0/5 * * * ? #服务器监控定时任务
+    serviceMonitoringTimer: 0 0/5 * * * ? #服务监控定时任务
+    checkJpushStatusTimer: 0 */3 * * * ?
+    everyDayOneBagTimer: 0/10 * * * * ?
+    
+    takePartTimer: 0 0/10 * * * ?
+    syncAccountTimer: 0 0 0 * * ?
+    takepartsize: 10000
+    flashScreenPageTimer: 0 */10 * * * ?    #闪屏页定时统计展示量、点击量 【每10分钟统计一次】
+# 处理旧数据 上线后只开启一次后关闭，runStatus是否开启
+merchantScoreStatistics:
+  startDate: 2019-01-01
+  endDate: 2019-09-01
+  runStatus: 1  #是否运行
+projectScoreStatistics:
+  startDate: 2019-01-01
+  endDate: 2019-09-01
+  runStatus: 1  #是否运行
+integralDailyReport:
+  startTime: 2019-09-19
+  endTime: 2019-09-19
+  runStatus: 1  #是否运行
+everyDayOneBag:
+  currentTransferMaxSize: 10000
+
+dhVideo:
+  capture:
+    enable: false
+#启动填报系统任务key
+drs:
+  plankey: 4923b9fe9c4d14d319dc4ad8e0d7e68c
+  drsPublishPlanScheduler: 0 */5 * * * ?  #每5分钟执行一次
+  drsStatisticsPlanScheduler: 0 */10 * * * ?  #每10分钟执行一次
+  drsRemindPlanScheduler: 0 */10 * * * ?  #每10分钟执行一次
+monitoring:
+  server:
+    zabbix_url: http://192.168.10.101/zabbix/api_jsonrpc.php
+    zabbix_user: Admin
+    zabbix_password: zabbix
+  service:
+    eureka_url: http://192.168.10.19:3100/eureka/apps
+  alarm:
+    time_interval: 120 #报警时间间隔（单位分钟）
+
+log:
+  info:
+    to: file_info

@@ -1,0 +1,24 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.239
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+  data:
+    mongodb:
+      uri: mongodb://192.168.10.239:27017/test
+deployment:
+  scheme:
+    open: true
+    private:
+      # 生活垃圾投放查
+      shljtfcx: 2
+      # 可回收物投放查询
+      khswtfcx: 1
+

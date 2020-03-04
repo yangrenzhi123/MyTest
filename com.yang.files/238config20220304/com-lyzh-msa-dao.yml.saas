@@ -1,0 +1,14 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+zuul:
+  routes:
+    api:
+      path: /**
+      serviceId: com-lyzh-msa-dao-service

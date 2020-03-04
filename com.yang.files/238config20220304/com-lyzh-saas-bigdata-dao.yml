@@ -1,0 +1,106 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+server:
+  port: 3137
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  datasource:
+    dynamic:
+      druid:
+        initial-size: 10
+        max-active: 1000
+        min-idle: 10
+        max-wait: 10000
+      primary: master
+      datasource:
+        master:
+          username: server
+          password: 345c0467b656
+          url: jdbc:mysql://192.168.10.90:4306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+        slave:
+          username: readonlylyzh
+          password: 123456
+          url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+        slowquery:
+          username: readonlylyzh
+          password: 123456
+          url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+
+
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+    standalone:
+      host: 192.168.10.90
+      port: 6379
+      database: 0
+
+  data:
+    mongodb:
+      primary:
+        uri: mongodb://192.168.10.28:27017/test238
+      first:
+        uri: mongodb://192.168.10.28:27017/test238
+        firstSourceList: 1,4,7,10 
+      second:
+        uri: mongodb://192.168.10.28:27017/test238
+        secondSourceList: 2,5,8,11
+      third:
+        uri: mongodb://192.168.10.28:27017/test238
+        thirdSourceList: 3,6,9,12
+      tenantgroup:
+        uri: mongodb://192.168.10.28:27017/test238
+      tenantscoreaccount:
+        uri: mongodb://192.168.10.28:27017/test238
+  session:
+    store-type: none
+  kafka:
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+jetcache:
+  remote:
+      default:
+        uri:
+          - redis://192.168.10.228:27001
+          - redis://192.168.10.228:27002
+          - redis://192.168.10.228:27003
+          - redis://192.168.10.229:27004
+          - redis://192.168.10.229:27005
+          - redis://192.168.10.229:27006
+register:
+  sendscore: 100
+  sendczz: 10
+mobileapp:
+  sendsms:
+    enabled: false
+  review:
+    enabled: true
+    phone: "11122223333"
+    smscode: "0000"
+    expireSeconds: 3600
+
+
+kafka-topic:
+  count:
+    tenant: "COUNT_TENANT"
+
+
+
+
+
+log:
+  info:
+    to: file_info
+shenyangapp:
+  account: 7681
+  code: h079r8hj
+  appid: 1138327587899183104
+  apikey: 6f5c40dc88182090d8065df3b530ff10
+  single_send_url: http://116.62.244.37/yqx/v1/sms/single_send 
+  batch_send_url: http://116.62.244.37/yqx/v1/sms/batch_send 

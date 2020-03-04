@@ -1,0 +1,50 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  mysql: 
+    master: 
+      username: server
+      password: 345c0467b656
+      url: jdbc:mysql://192.168.10.90:4306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+    slave: 
+      username: readonlylyzh
+      password: 123456
+      url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+    dw: 
+      username: server
+      password: 345c0467b656
+      url: jdbc:mysql://192.168.10.90:4306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+    dw2:
+      username: server
+      password: 345c0467b656
+      url: jdbc:mysql://192.168.10.90:6306/dw?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+  data:
+    mongodb:
+      primary:
+        uri: mongodb://192.168.10.239:27017/test
+      first:
+        uri: mongodb://192.168.10.225:27017/test_source
+        firstSourceList: 1,4,7,10
+      second:
+        uri: mongodb://192.168.10.228:27017/test_source
+        secondSourceList: 2,5,8,11
+      third:
+        uri: mongodb://192.168.10.229:27017/test_source
+        thirdSourceList: 3,6,9,12
+      tenantgroup:
+        uri: mongodb://192.168.10.228:27017/test_tenantgroup
+      tenantscoreaccount:
+        uri: mongodb://192.168.10.229:27017/test_tenantscoreaccount
+  redis:
+    cluster:
+      nodes: 192.168.10.90:6379
+dingding:
+  dingDingToken: https://oapi.dingtalk.com/robot/send?access_token=8874707fda4e8569b033f1e61ffb24c33536dc7ce2ed142e58e0c46b7d058d8f
+
+

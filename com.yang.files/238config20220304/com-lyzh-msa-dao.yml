@@ -1,0 +1,29 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+zuul:
+  routes:
+    api:
+      path: /**
+      serviceId: com-lyzh-msa-dao-service
+    api-1:
+      path: /dao/fl/frequencyAnalysis/list
+      serviceId: com-lyzh-saas-bigdata-dao
+    api-2:
+      path: /dao/fl/garbagebagPull/garbagePullAnalysis
+      serviceId: com-lyzh-saas-bigdata-dao
+    api-3:
+      path: /dao/fl/recoveryAnalysis/find
+      serviceId: com-lyzh-saas-bigdata-dao
+    api-4:
+      path: /dao/fl/recoveryAnalysis/findtop
+      serviceId: com-lyzh-saas-bigdata-dao
+    api-6:
+      path: /dao/fl/garbagebagPull/weekGarbageBagPull
+      serviceId: com-lyzh-saas-bigdata-dao

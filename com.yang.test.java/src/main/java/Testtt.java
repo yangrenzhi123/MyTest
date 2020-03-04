@@ -1,11 +1,16 @@
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
-		System.out.println(URLEncoder.encode("成", "gbk").replaceAll("%", "").toLowerCase());
+		
+
+		DecimalFormat df = new DecimalFormat("0.############");
+		double a = 0.0000000002966*200;
+		System.out.println(df.format(a));
 		
 		
 //		String a = null;

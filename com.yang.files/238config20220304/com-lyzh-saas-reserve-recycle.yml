@@ -1,0 +1,53 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.239
+jetcache:
+  remote:
+    default:
+      uri:
+        - redis://192.168.10.228:27001
+        - redis://192.168.10.228:27002
+        - redis://192.168.10.228:27003
+        - redis://192.168.10.229:27004
+        - redis://192.168.10.229:27005
+        - redis://192.168.10.229:27006
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: readonlylyzh
+    password: 123456
+  data:
+    mongodb:
+      primary:
+        uri: mongodb://192.168.10.239:27017/test
+      first:
+        uri: mongodb://192.168.10.225:27017/test_source
+        firstSourceList: 1,4,7,10
+      second:
+        uri: mongodb://192.168.10.228:27017/test_source
+        secondSourceList: 2,5,8,11
+      third:
+        uri: mongodb://192.168.10.229:27017/test_source
+        thirdSourceList: 3,6,9,12
+      tenantgroup:
+        uri: mongodb://192.168.10.228:27017/test_tenantgroup
+      tenantscoreaccount:
+        uri: mongodb://192.168.10.229:27017/test_tenantscoreaccount
+  kafka:
+    producer:
+      bootstrap-servers: 192.168.10.239:9092
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+  zipkin:
+    baseUrl: http://192.168.30.153:9411
+log:
+  info:
+    to: file_info

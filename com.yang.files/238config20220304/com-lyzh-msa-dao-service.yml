@@ -1,0 +1,109 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+spring:
+  profiles:
+    active: dev
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          username: server
+          password: 345c0467b656
+          url: jdbc:mysql://192.168.10.90:4306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+        slave:
+          username: readonlylyzh
+          password: 123456
+        slowquery:
+          username: readonlylyzh
+          password: 123456
+          url: jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+  data:
+    mongodb:
+      primary:
+        uri: mongodb://192.168.10.239:27017/test
+      first:
+        uri: mongodb://192.168.10.225:27017/test_source
+        firstSourceList: 1,4,7,10
+      second:
+        uri: mongodb://192.168.10.228:27017/test_source
+        secondSourceList: 2,5,8,11
+      third:
+        uri: mongodb://192.168.10.229:27017/test_source
+        thirdSourceList: 3,6,9,12
+      tenantgroup:
+        uri: mongodb://192.168.10.228:27017/test_tenantgroup
+      tenantscoreaccount:
+        uri: mongodb://192.168.10.229:27017/test_tenantscoreaccount
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+    standalone:
+      host: 192.168.10.90
+      port: 6379
+      database: 0
+  kafka:
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+    producer:
+      bootstrap-servers: 192.168.10.239:9092
+jetcache:
+  remote:
+      default:
+        uri:
+          - redis://192.168.10.228:27001
+          - redis://192.168.10.228:27002
+          - redis://192.168.10.228:27003
+          - redis://192.168.10.229:27004
+          - redis://192.168.10.229:27005
+          - redis://192.168.10.229:27006
+register:
+  sendscore: 100
+  sendczz: 100
+mobileapp:
+  sendsms:
+    enabled: true # true APP用户获取验证码将会真实发送，false则不发送，默认是0000
+  review:
+    enabled: true #是否开启app审核通道
+    phone: "11122223333" #默认手机号码
+    smscode: "0000" #默认验证码
+    expireSeconds: 3600 #缓存有效时间（秒）
+shenyangapp:
+  account: 7681
+  code: h079r8hj
+  appid: 1138327587899183104 #自测用
+  apikey: 6f5c40dc88182090d8065df3b530ff10
+  single_send_url: http://116.62.244.37/yqx/v1/sms/single_send #单条短信发送
+  batch_send_url: http://116.62.244.37/yqx/v1/sms/batch_send #多条短信单内容发送
+timer:
+  recoveryAnalysis: 0 0 1 * * ?
+kafka-topic:
+  count:
+    tenant: "COUNT_TENANT"
+zuul:
+  routes:
+    api-1:
+      path: /dao/fl/frequencyAnalysis/list
+      serviceId: com-lyzh-msa-dao-2
+    api-2:
+      path: /dao/fl/garbagebagPull/garbagePullAnalysis
+      serviceId: com-lyzh-msa-dao-2
+    api-3:
+      path: /dao/fl/recoveryAnalysis/find
+      serviceId: com-lyzh-msa-dao-2
+    api-4:
+      path: /dao/fl/recoveryAnalysis/findtop
+      serviceId: com-lyzh-msa-dao-2
+    api-a:
+      path: /**
+      serviceId: com-lyzh-msa-dao
+jpush:
+  message:
+    masterSecret: a740abbc3b31173e4b6176a1
+    appKey: 96c70a7179ae965228cdb4d0
+log:
+  info:
+    to: file_info

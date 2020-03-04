@@ -1,0 +1,29 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+canal:
+  topicnameprex: ONLINE_CANAL_
+spring:
+  kafka:
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      bootstrap-servers: 192.168.30.120:9092
+  otter:
+    host: 192.168.10.238
+    port: 11111
+
+Process:
+  h_recycle_record: communityid
+  h_garbagebag_pull: communityid
+  h_inspect_record: communityid
+  h_recycle_loseweight: communityid
+  h_community: communityid
+  h_region: regionid
+  h_tenant_account: tenantaccountid
+  h_tenant_group: tenantgroupid
+  h_garbage_class: garbageclassid

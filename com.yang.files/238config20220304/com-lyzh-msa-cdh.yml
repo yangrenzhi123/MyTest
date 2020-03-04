@@ -1,0 +1,25 @@
+mysql:
+  username: root
+  password: Lenovo@@7788
+  jdbcUrl: jdbc:mysql:\/\/192.168.10.29:3308\/lyzhhw4
+hbase:
+  dbnamelast: _dev
+hive:
+  dbname: dev
+ods:
+  dbname: dev_ods
+canal:
+  topicnameprex: ONLINE_CANAL_
+  host: 192.168.30.120:9092
+  incsyngroupid: dev27
+mongodb:
+  host: 192.168.10.28:27017
+  dbname: dev
+zookeeper:
+  quorum: cdh01,cdh02,cdh03
+namenode1:
+  name: namenode160
+  host: cdh01
+namenode2:
+  name: namenode174
+  host: cdh02

@@ -21,7 +21,7 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class DesTest {
 
-	private static final String KEY = "12345678";
+	private static final String KEY = "自定义";
 
 	public static void main(String[] args) throws Exception {
 		encrypt("C:/Windows/Temp/新建文件夹/工资条.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");

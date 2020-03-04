@@ -1,0 +1,24 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+  redis-two:
+    host: 192.168.10.226
+    port: 6379
+    database: 1
+mobileapp:
+  sendsms:
+    enabled: false # true APP用户获取验证码将会真实发送，false则不发送，默认是0000
+  review:
+    enabled: true #是否开启app审核通道
+    phone: "11122223333" #默认手机号码
+    smscode: "0000" #默认验证码
+    expireSeconds: 3600 #缓存有效时间（秒）

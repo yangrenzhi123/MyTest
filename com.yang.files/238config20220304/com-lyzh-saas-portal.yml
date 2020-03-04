@@ -1,0 +1,27 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.238
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  kafka:
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+    producer:
+      bootstrap-servers: 192.168.10.239:9092
+  redis:
+    cluster:
+      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+aiface:
+  address: http://192.168.30.54:9080
+group_id: SAAS #SAAS 人脸组可以自行配置
+ai_platform: 0 #0 百度 , 1 自研
+#闪屏页对接新华社广告联盟
+xhs:
+  clientId: PDBfmT1bHc
+  clientSecret: QAZ46WA3hFRa9JiFaIDOQrnO00mfJ3P6
+  clickURI: https://api.yidaolai.com/ydl-test/adv/auth/thirdOperate/click
+

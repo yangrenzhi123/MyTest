@@ -1,0 +1,15 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.10.238
+server:
+  port: 3115
+spring:
+  zipkin:
+    baseUrl: http://192.168.10.240:9411
+  sleuth:
+    sampler:
+      probability: 1.0

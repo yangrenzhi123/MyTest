@@ -1,0 +1,13 @@
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: 192.168.10.239:9092
+    consumer:
+      bootstrap-servers: 192.168.10.239:9092
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.238:3100/eureka
+  instance:
+    ip-address: 192.168.10.239
+    prefer-ip-address: true
