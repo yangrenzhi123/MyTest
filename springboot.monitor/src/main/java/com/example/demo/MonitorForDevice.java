@@ -76,8 +76,10 @@ public class MonitorForDevice {
 			result.setResult(1);
 			MonitorStartup.result.put(ip+":"+port, result);
 			
-			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 MongoDB 耗时"+distance+"ms，耗时过长，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			if(distance > 1000) {
+				DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 MongoDB 耗时"+distance+"ms，耗时过长，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			}
 		}catch(Exception e) {
 			result.setName("MongoDB");
 			result.setResult(0);

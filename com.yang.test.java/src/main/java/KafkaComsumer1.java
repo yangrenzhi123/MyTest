@@ -11,10 +11,9 @@ public class KafkaComsumer1 {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
-		String group = "t2";
-		String topic = "ggggg";
-		props.put("bootstrap.servers", "192.168.10.239:9092");
-		props.put("zookeeper.connect", "192.168.10.239:2181");
+		String group = "test";
+		String topic = "t1";
+		props.put("bootstrap.servers", "192.168.8.70:9093");
 
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");

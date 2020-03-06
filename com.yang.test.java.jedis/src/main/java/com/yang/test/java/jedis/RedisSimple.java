@@ -1,6 +1,7 @@
 package com.yang.test.java.jedis;
 
 import java.io.IOException;
+import java.util.Set;
 
 import redis.clients.jedis.Jedis;
 
@@ -13,7 +14,7 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 		
-		Jedis j = new Jedis("172.17.202.156", 7002);
+		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.20", 7001));
@@ -64,14 +65,14 @@ public class RedisSimple {
 //		System.out.println(m);
 
 
-		j.set("get_alarmdatazzid_dao", "1000000");
-		System.out.println(j.get("get_alarmdatazzid_dao"));
+//		j.set("get_alarmdatazzid_dao", "1000000");
+//		System.out.println(j.get("get_alarmdatazzid_dao"));
 		
-//		Set<String> keys = j.keys("*");
-//		for(String key : keys) {
-//			System.out.println(j.get(key));
-//			//j.del(key);
-//		}
+		Set<String> keys = j.keys("h_dispenser_order_third_*");
+		for(String key : keys) {
+			System.out.println(j.get(key));
+			j.del(key);
+		}
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 
