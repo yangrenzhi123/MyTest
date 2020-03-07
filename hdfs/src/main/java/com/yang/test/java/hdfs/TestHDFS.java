@@ -16,19 +16,19 @@ public class TestHDFS {
 	/*/opt/modules/app/hadoop-2.6.5/data/tmp/dfs/data/current/BP-2097822308-192.168.18.231-1573805007663/current/finalized/subdir0/subdir0*/
 	public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
 		Configuration conf = new Configuration();
-		FileSystem fs = FileSystem.get(new URI("hdfs://172.17.199.133:8020"), conf, "root");
+		FileSystem fs = FileSystem.get(new URI("hdfs://172.17.199.130:8020"), conf, "root");
 
 //		fs.copyFromLocalFile(false, true, new Path("C:/test.xml"), new Path("/demo1/test.xml"));
-//		fs.copyToLocalFile(false, new Path("/demo1/test.xml"), new Path("C:/test2.xml"), true);
+		fs.copyToLocalFile(false, new Path("/input/1.txt"), new Path("C:/1.txt"), true);
 		
 
 		//fs.copyFromLocalFile(false, true, new Path("C:/1.txt"), new Path("/output2/1.txt"));
 		
-		RemoteIterator<LocatedFileStatus> l = fs.listFiles(new Path("/output2"), true);
-		while(l.hasNext()) {
-			LocatedFileStatus i = l.next();
-			System.out.println(i.toString());
-		}
+//		RemoteIterator<LocatedFileStatus> l = fs.listFiles(new Path("/output2"), true);
+//		while(l.hasNext()) {
+//			LocatedFileStatus i = l.next();
+//			System.out.println(i.toString());
+//		}
 		
 //		fs.delete(new Path("/output2"), true);
 		fs.close();

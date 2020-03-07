@@ -38,7 +38,7 @@ public class Test3 {
 	}
 
 	public static void doo() throws ClientProtocolException, IOException {
-		double begin = 10.57;
+		double begin = 10.73;
 		
 		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz000856");
 
@@ -77,7 +77,7 @@ public class Test3 {
 			double persent = newerDouble / last;
 			System.out.println(persent + "，" + (newerDouble / begin));
 			
-			if(persent >= 1.003) {
+			if(persent >= 1.005) {
 				TestDingding.test("增速：" + persent + "，" + (newerDouble / begin));
 			}
 			last = newerDouble;
