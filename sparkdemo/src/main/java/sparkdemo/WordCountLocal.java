@@ -23,7 +23,7 @@ import scala.Tuple2;
 
 public class WordCountLocal {
 	private static String driverName = "org.apache.hive.jdbc.HiveDriver";
-    private static String url = "jdbc:hive2://192.168.10.90:10000/default";
+    private static String url = "jdbc:hive2://hive:10000/default";
     private static String user = "root";
     private static String password = "";
     private static Connection conn = null;
@@ -31,6 +31,8 @@ public class WordCountLocal {
     private static ResultSet rs = null;
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException{
+		String master = args[0];
+		
 		List list = new ArrayList<>();
 		Class.forName(driverName);
 		conn = DriverManager.getConnection(url, user, password);
@@ -45,7 +47,8 @@ public class WordCountLocal {
 		/**
 		 * 第一步 ，创建SparkConf setMaster 设置 集群 master的url 如果设置为local 表示在本地运行
 		 */
-		SparkConf conf = new SparkConf().setAppName("WorldCountLocal").setMaster("spark://test4228:7077");
+		SparkConf conf = new SparkConf().setAppName("WorldCountLocal").setMaster(master).set("deploy-mode", "cluster"); //yarn-cluster
+//		SparkConf conf = new SparkConf().setAppName("WorldCountLocal").setMaster("spark://hspark1:7077");
 		/**
 		 * 第二步 创建SparkContext 对象 在spark 中SparkContext 是spark 所有功能的入口 无论使用的是java scala
 		 * 甚至py 编写都必须有一个SparkContext 它的主要作用包括初始化spark
