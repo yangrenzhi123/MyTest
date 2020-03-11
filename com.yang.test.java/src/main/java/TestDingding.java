@@ -76,6 +76,6 @@ public class TestDingding {
 	}
 	
 	public static void main(String[] args) {
-		TestDingding.test("小爱提醒您，VOCs排放浓度大于上限：61.89");
+		TestDingding.test("增速");
 	}
 }

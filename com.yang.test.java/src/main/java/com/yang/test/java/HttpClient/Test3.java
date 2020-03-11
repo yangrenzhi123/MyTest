@@ -38,7 +38,7 @@ public class Test3 {
 	}
 
 	public static void doo() throws ClientProtocolException, IOException {
-		double begin = 10.22;
+		double begin = 10.63;
 		
 		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz000856");
 
@@ -77,7 +77,7 @@ public class Test3 {
 			double persent = newerDouble / last;
 			System.out.println(persent + "，" + (newerDouble / begin));
 			
-			if(persent >= 1.005) {
+			if(persent >= 1.003) {
 				TestDingding.test("增速：" + persent + "，" + (newerDouble / begin));
 			}
 			last = newerDouble;
@@ -138,7 +138,7 @@ class TestDingding {
 	}
 
 	public static void test(String content) {
-		String dingDingToken = "https://oapi.dingtalk.com/robot/send?access_token=66658794d73b90e4f80daf738c1cdef72995feb8cadb4f07bfa080f90eb8ef7e";
+		String dingDingToken = "https://oapi.dingtalk.com/robot/send?access_token=ad88aa82594ae1d596d07282c54eb08a59134e793ce8e49827c76901e19a0a0f";
 
 		Map<String, Object> text = new HashMap<>();
 		text.put("content", content);

@@ -21,13 +21,13 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class DesTest {
 
-	private static final String KEY = "自定义";
+	private static final String KEY = "14275386";
 
 	public static void main(String[] args) throws Exception {
-		encrypt("C:/Windows/Temp/新建文件夹/工资条.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
-		decrypt("C:/Users/yrz/OneDrive/工资条/工资条.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
+//		encrypt("C:/Windows/Temp/新建文件夹/工资条.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
+//		decrypt("C:/Users/yrz/OneDrive/工资条/工资条.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
 		
-//		simpleEncrypt();
+		simpleEncrypt();
 	}
 
 	public static void encrypt(String source, String target) throws Exception {
