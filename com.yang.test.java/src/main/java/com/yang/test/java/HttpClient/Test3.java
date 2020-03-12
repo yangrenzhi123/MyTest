@@ -33,12 +33,12 @@ public class Test3 {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 		}
 	}
 
 	public static void doo() throws ClientProtocolException, IOException {
-		double begin = 10.63;
+		double begin = 10.81;
 		
 		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz000856");
 
