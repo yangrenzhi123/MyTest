@@ -4,7 +4,7 @@ import com.rabbitmq.client.*;
 
 import java.io.IOException;
 
-public class Recv {
+public class Recv2 {
 
 	public final static String QUEUE_NAME = "hello2";
 
@@ -12,8 +12,8 @@ public class Recv {
 
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("192.168.8.70");
-		factory.setUsername("guest");
-		factory.setPassword("guest");
+		factory.setUsername("admin");
+		factory.setPassword("admin");
 		factory.setVirtualHost("/");
 
 		Connection connection = factory.newConnection();
@@ -27,11 +27,27 @@ public class Recv {
 		Consumer consumer = new DefaultConsumer(channel) {
 			@Override
 			public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-				String message = new String(body, "UTF-8");
-				System.out.println(" [x] Received '" + message + "'");
+				while(true) {
+					try {
+						String message = new String(body, "UTF-8");
+						System.out.println(" [x] Received '" + message + "'");
+
+						if(message.equals("02442")) throw new RuntimeException("123");
+						
+						channel.basicAck(envelope.getDeliveryTag(), true);
+					}catch(Exception e) {
+						channel.basicCancel(consumerTag);
+						
+						try {
+							Thread.sleep(1000);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
 			}
 		};
 
-		channel.basicConsume(QUEUE_NAME, true, consumer);
+		channel.basicConsume(QUEUE_NAME, false, consumer); //false表示手工提交
 	}
 }

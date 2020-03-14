@@ -77,7 +77,7 @@ public class Test3 {
 			double persent = newerDouble / last;
 			System.out.println(persent + "，" + (newerDouble / begin));
 			
-			if(persent >= 1.003) {
+			if(persent >= 1.005) {
 				TestDingding.test("增速：" + persent + "，" + (newerDouble / begin));
 			}
 			last = newerDouble;

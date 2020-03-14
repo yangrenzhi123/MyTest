@@ -8,7 +8,7 @@ public class Send {
 
 	public static void main(String[] argv) throws Exception {
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("172.28.51.33");
+		factory.setHost("192.168.8.70");
 		factory.setUsername("admin");
 		factory.setPassword("admin");
 		factory.setVirtualHost("/");
@@ -18,7 +18,7 @@ public class Send {
 		Channel channel = connection.createChannel();
 
 		channel.queueDeclare(Recv.QUEUE_NAME, false, false, false, null);
-		String message = "Hello World2";
+		String message = "2";
 		channel.basicPublish("", Recv.QUEUE_NAME, null, message.getBytes("UTF-8"));
 		System.out.println(" [x] Sent '" + message + "'");
 		channel.close();

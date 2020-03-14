@@ -46,7 +46,8 @@ public class RedisClear2 {
 		int i = 0;
 
 		long a = System.currentTimeMillis();
-		keys = keys(j, "h_recycle_record_*");
+		keys = keys(j, "h_equip_dispenser:*");
+//		keys = keys(j, "h_recycle_record_*");
 		for (String key : keys) {
 			j.del(key);
 			System.out.println(key);
