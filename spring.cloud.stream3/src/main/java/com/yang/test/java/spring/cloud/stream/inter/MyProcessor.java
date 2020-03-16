@@ -17,14 +17,14 @@ public interface MyProcessor {
 
 	String LOG_FORMAT_OUTPUT = "log_format_output";
 
-	@Input(MESSAGE_INPUT)
-	SubscribableChannel logInput();
+//	@Input(MESSAGE_INPUT)
+//	SubscribableChannel logInput();
 
 	@Output(MESSAGE_OUTPUT)
 	MessageChannel logOutput();
 
-//	@Input(LOG_FORMAT_INPUT)
-//	SubscribableChannel logFormatInput();
+	@Input(LOG_FORMAT_INPUT)
+	SubscribableChannel logFormatInput();
 
 	@Output(LOG_FORMAT_OUTPUT)
 	MessageChannel logFormatOutput();

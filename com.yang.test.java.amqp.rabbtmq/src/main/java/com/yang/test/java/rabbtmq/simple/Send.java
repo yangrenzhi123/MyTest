@@ -18,7 +18,7 @@ public class Send {
 		Channel channel = connection.createChannel();
 
 		channel.queueDeclare(Recv.QUEUE_NAME, false, false, false, null);
-		String message = "2";
+		String message = "13";
 		channel.basicPublish("", Recv.QUEUE_NAME, null, message.getBytes("UTF-8"));
 		System.out.println(" [x] Sent '" + message + "'");
 		channel.close();

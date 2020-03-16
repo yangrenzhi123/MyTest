@@ -10,9 +10,9 @@ import com.yang.test.java.spring.cloud.stream.inter.MyProcessor;
 
 @SpringBootApplication
 @EnableBinding(value = {MyProcessor.class})
-public class SpringCloudStream {
+public class SpringCloudStream2 {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		SpringApplication.run(SpringCloudStream.class, args);
+		SpringApplication.run(SpringCloudStream2.class, args);
 	}
 }

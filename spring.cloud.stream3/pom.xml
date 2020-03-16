@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.yang.test.java</groupId>
-	<artifactId>spring.cloud.dataflow.source</artifactId>
-	<version>0.0.1-RELEASE</version>
+	<artifactId>spring.cloud.stream3</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>spring.cloud.stream</name>
@@ -35,32 +35,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-stream-test-support</artifactId><!-- <scope>test</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId><!-- <scope>test</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId><!-- <scope>test</scope> -->
-		</dependency>
 	</dependencies>
-
-	<distributionManagement>
-		<repository>
-			<id>maven-releases</id>
-			<name>Nexus Release Repository</name>
-			<url>http://192.168.10.82:8081/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>maven-snapshots</id>
-			<url>http://192.168.10.82:8081/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-
 	<build>
 		<plugins>
 			<plugin>

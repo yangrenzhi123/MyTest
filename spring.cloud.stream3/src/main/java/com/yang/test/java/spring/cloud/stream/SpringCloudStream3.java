@@ -4,11 +4,15 @@ import java.io.IOException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+
+import com.yang.test.java.spring.cloud.stream.inter.MyProcessor;
 
 @SpringBootApplication
-public class SpringCloudStream {
+@EnableBinding(value = {MyProcessor.class})
+public class SpringCloudStream3 {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		SpringApplication.run(SpringCloudStream.class, args);
+		SpringApplication.run(SpringCloudStream3.class, args);
 	}
 }
