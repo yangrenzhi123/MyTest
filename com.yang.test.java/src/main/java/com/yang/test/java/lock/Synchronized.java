@@ -1,17 +1,23 @@
-package com.yang.test.java.synchronize;
+package com.yang.test.java.lock;
 
-public class Synchronized4String {
+/**
+ * 测试java对象锁的效果
+ * 
+ */
+public class Synchronized {
 
-	public static Synchronized4String s = new Synchronized4String();
-	
 	public static void main(String[] args) throws InterruptedException {
+		
+		
 		new Thread(new R1()).start();
 		new Thread(new R2()).start();
 	}
 
 	private static class R1 implements Runnable {
+		
 		public void run() {
-			synchronized ("123") {
+			String s = 1+""+1+""+1;
+			synchronized (s) {
 				System.out.println(1);
 			}
 		}
@@ -19,8 +25,7 @@ public class Synchronized4String {
 
 	private static class R2 implements Runnable {
 		public void run() {
-			String s = new String("123");
-			s = s.intern();
+			String s = 1+""+1+""+1;
 			synchronized (s) {
 				System.out.println(2);
 			}

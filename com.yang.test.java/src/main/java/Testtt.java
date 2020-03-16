@@ -2,20 +2,14 @@ import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
+import org.springframework.util.Assert;
 import org.springframework.util.StopWatch;
 
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException, InterruptedException {
-		StopWatch sw = new StopWatch();
-		sw.start("我开始了");
-		Thread.sleep(1000L);
-		sw.stop();
-		System.out.println(sw);
-		sw.start("我第二次开始了");
-		Thread.sleep(1000L);
-		sw.stop();
-		System.out.println(sw);
+		Object o = null;
+		Assert.notNull(o, "BeanDefinitionRegistry must not be null");
 
 //		DecimalFormat df = new DecimalFormat("0.############");
 //		double a = 0.0000000002966*200;

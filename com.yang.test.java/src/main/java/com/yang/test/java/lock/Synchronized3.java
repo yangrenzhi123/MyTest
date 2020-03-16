@@ -1,4 +1,4 @@
-package com.yang.test.java.synchronize;
+package com.yang.test.java.lock;
 
 public class Synchronized3 {
 
