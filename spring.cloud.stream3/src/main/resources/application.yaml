@@ -1,6 +1,6 @@
 server:
   port: 8082
-spring:
+spring1:
   cloud:
     stream:
       bindings:

@@ -15,7 +15,7 @@ public interface MyProcessor {
 
 	String LOG_FORMAT_INPUT = "log_format_input";
 
-	String LOG_FORMAT_OUTPUT = "log_format_output";
+	String LOG_FORMAT_OUTPUT = "log_format_input";
 
 	@Input(MESSAGE_INPUT)
 	SubscribableChannel logInput();

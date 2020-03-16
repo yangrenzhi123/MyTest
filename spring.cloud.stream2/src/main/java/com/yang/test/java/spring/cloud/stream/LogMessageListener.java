@@ -17,7 +17,7 @@ public class LogMessageListener {
 	 * @return
 	 */
 	@StreamListener(MyProcessor.MESSAGE_INPUT)
-	@SendTo(MyProcessor.LOG_FORMAT_OUTPUT)
+	@SendTo(MyProcessor.LOG_FORMAT_INPUT)
 	public String processLogMessage(String message) {
 		System.out.println("接收到原始消息：" + message);
 		return "「" + message + "」";
