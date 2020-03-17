@@ -1,0 +1,6 @@
+server:
+  thread:
+    max-thread: 1
+  undertow:
+    io-threads: 1
+    worker-threads: 1

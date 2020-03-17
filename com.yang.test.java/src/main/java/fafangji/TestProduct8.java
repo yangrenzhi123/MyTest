@@ -19,7 +19,7 @@ import org.apache.http.util.EntityUtils;
 public class TestProduct8 {
 
 	static String ip = "127.0.0.1:8080";// "192.168.10.239";
-	static int count = 8;
+	static int count = 9;
 
 	static List<Runnable> rl;
 	static CountDownLatch counttime;
@@ -80,7 +80,7 @@ public class TestProduct8 {
 		}
 
 		totalTime = System.currentTimeMillis();
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 1; i++) {
 			test(i);
 		}
 
