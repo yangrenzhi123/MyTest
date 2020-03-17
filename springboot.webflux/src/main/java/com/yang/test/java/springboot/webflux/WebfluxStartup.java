@@ -1,4 +1,4 @@
-package com.yang.test.java.springboot.webflow;
+package com.yang.test.java.springboot.webflux;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -10,10 +10,10 @@ import reactor.core.publisher.Mono;
 
 /*https://zhuanlan.zhihu.com/p/91477669*/
 @SpringBootApplication
-public class WebFlowStartup {
+public class WebfluxStartup {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebFlowStartup.class, args);
+		SpringApplication.run(WebfluxStartup.class, args);
 	}
 }
 
