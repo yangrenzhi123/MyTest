@@ -12,7 +12,7 @@ public class KafkaComsumer {
 		Properties props = new Properties();
 
 		String group = "test";
-		String topic = "t1";
+		String topic = "accesslog";
 		props.put("bootstrap.servers", "192.168.8.70:9092");
 		
 		props.put("group.id", group);

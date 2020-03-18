@@ -38,7 +38,7 @@ public class Test3 {
 	}
 
 	public static void doo() throws ClientProtocolException, IOException {
-		double begin = 10.51;
+		double begin = 11.25;
 		
 		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz000856");
 

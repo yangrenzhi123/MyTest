@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +21,17 @@ public class Springboot {
 class HelloController {
 
 	@RequestMapping("/")
-	public String index() {
-		return "";
+	public int index() {
+		return GetAllThread.countByStartwith("http-nio-8080-exec-");
+	}
+
+	@RequestMapping("/1")
+	public String success() {
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return "success";
 	}
 }

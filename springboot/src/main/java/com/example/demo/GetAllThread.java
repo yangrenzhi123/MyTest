@@ -1,4 +1,4 @@
-package com.yang.test.java.threadpool;
+package com.example.demo;
 
 public class GetAllThread {
 

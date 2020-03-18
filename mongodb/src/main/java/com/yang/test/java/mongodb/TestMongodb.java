@@ -20,6 +20,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.mongodb.BasicDBObject;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
+import com.mongodb.client.ClientSession;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -46,6 +47,10 @@ public class TestMongodb {
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 
 		MongoCollection c = mgdb.getCollection("gwRequestInfo");
+		
+		ClientSession cs = mongoClient.startSession();
+		cs.startTransaction();
+		cs.commitTransaction();
 		
 //		long a = System.currentTimeMillis();
 //		for(int i=0;i<1;i++) {

@@ -1,3 +1,4 @@
+package com.yang.test.java.id;
 public class IdWorker2{
 
     private long workerId;

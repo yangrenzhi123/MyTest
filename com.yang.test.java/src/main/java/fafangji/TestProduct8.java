@@ -19,7 +19,7 @@ import org.apache.http.util.EntityUtils;
 public class TestProduct8 {
 
 	static String ip = "127.0.0.1:8080";// "192.168.10.239";
-	static int count = 9;
+	static int count = 1000;
 
 	static List<Runnable> rl;
 	static CountDownLatch counttime;
@@ -50,7 +50,7 @@ public class TestProduct8 {
 					try {
 						CloseableHttpClient hc = hcl.get(j);
 
-						HttpGet p = new HttpGet("http://" + ip + "/hello");
+						HttpGet p = new HttpGet("http://" + ip + "/1");
 						p.setHeader("Connection", "Keep-Alive");
 
 						HttpResponse response = hc.execute(p);
@@ -80,7 +80,7 @@ public class TestProduct8 {
 		}
 
 		totalTime = System.currentTimeMillis();
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 5; i++) {
 			test(i);
 		}
 
