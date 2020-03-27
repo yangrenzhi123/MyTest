@@ -57,28 +57,23 @@ public class MonitorForDevice {
 		String collectionName = "t_4_monitor";
 		
 		try {
-			MongoClient mongoClient = new MongoClient(ip, port);
-			final MongoDatabase mgdb = mongoClient.getDatabase("test");
-			MongoCollection<Document> mc = mgdb.getCollection(collectionName);
-
-			
-			long b = System.currentTimeMillis();
-			MongoCursor<Document> datas = mc.find().iterator();
-			while (datas.hasNext()) {
-				@SuppressWarnings("unused")
-				String json = datas.next().toJson();
-			}
-			long distance = System.currentTimeMillis() - b;
-			
-			mongoClient.close();
-
-			result.setName("MongoDB(检测耗时"+distance+"ms)");
-			result.setResult(1);
-			MonitorStartup.result.put(ip+":"+port, result);
-			
+			long distance = testMongo(ip, port, collectionName);
 			if(distance > 1000) {
-				DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-				TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 MongoDB 耗时"+distance+"ms，耗时过长，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+				Thread.sleep(10000);
+				
+				distance = testMongo(ip, port, collectionName);
+				if(distance > 1000) {
+					DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 MongoDB("+ip+") 耗时"+distance+"ms，耗时过长，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+				}else {
+					result.setName("MongoDB(检测耗时"+distance+"ms)");
+					result.setResult(1);
+					MonitorStartup.result.put(ip+":"+port, result);
+				}
+			}else {
+				result.setName("MongoDB(检测耗时"+distance+"ms)");
+				result.setResult(1);
+				MonitorStartup.result.put(ip+":"+port, result);
 			}
 		}catch(Exception e) {
 			result.setName("MongoDB");
@@ -86,9 +81,27 @@ public class MonitorForDevice {
 			MonitorStartup.result.put(ip+":"+port, result);
 
 			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 MongoDB 发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 MongoDB("+ip+") 发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
 			return;
 		}
+	}
+	
+	private long testMongo(String ip, int port, String collectionName) {
+		MongoClient mongoClient = new MongoClient(ip, port);
+		final MongoDatabase mgdb = mongoClient.getDatabase("test");
+		MongoCollection<Document> mc = mgdb.getCollection(collectionName);
+
+		
+		long b = System.currentTimeMillis();
+		MongoCursor<Document> datas = mc.find().iterator();
+		while (datas.hasNext()) {
+			@SuppressWarnings("unused")
+			String json = datas.next().toJson();
+		}
+		
+		mongoClient.close();
+		long distance = System.currentTimeMillis() - b;
+		return distance;
 	}
 	
 	private void common(String ip, int port, String name) {
