@@ -1,15 +1,27 @@
 import java.io.UnsupportedEncodingException;
-import java.text.DecimalFormat;
 import java.text.ParseException;
-
-import org.springframework.util.Assert;
-import org.springframework.util.StopWatch;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException, InterruptedException {
-		Object o = null;
-		Assert.notNull(o, "BeanDefinitionRegistry must not be null");
+		Calendar day = Calendar.getInstance();
+		day.set(Calendar.YEAR, 2019);
+		day.set(Calendar.MONTH, 0);
+		day.set(Calendar.DAY_OF_MONTH, 1);
+		
+		SimpleDateFormat yyyy_MM_dd = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat yyyyMMdd = new SimpleDateFormat("yyyyMMdd");
+		
+		for(int i=0;i<750;i++) {
+			System.out.println("PARTITION p"+yyyyMMdd.format(day.getTime())+" VALUES LESS THAN (TO_DAYS('"+yyyy_MM_dd.format(day.getTime())+"')),");
+			day.add(Calendar.DAY_OF_MONTH, 1);
+		}
+		
+		
+//		Object o = null;
+//		Assert.notNull(o, "BeanDefinitionRegistry must not be null");
 
 //		DecimalFormat df = new DecimalFormat("0.############");
 //		double a = 0.0000000002966*200;
@@ -125,7 +137,7 @@ public class Testtt {
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1288834974000L)));
 //		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date(1567588346930L)));
 		
-//		System.out.println(URLDecoder.decode("%7B%22equipNo%22%3A%22000000000331%22%2C%22type%22%3A%222%22%2C%22phone%22%3A%22LYZH151211144001%22%7D", "utf8"));
+//		System.out.println(URLDecoder.decode("$", "utf8"));
 		
 //		List<Integer> l = new ArrayList<Integer>();
 //		l.add(new Integer(0));

@@ -82,11 +82,12 @@
 			recyclerecordzzid,
 			qy_projectid,
 			etl,
-			gdspid
+			gdspid,
+			jljf
 		)
 		values
 		<foreach collection="list" item="item" index="index" separator=",">
-		(#{item.recyclerecordid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.yzqyid},#{item.yxxqid},#{item.cjlx},#{item.sbbh},#{item.equipmentid},#{item.tfbz},#{item.yhlx},#{item.tenantgroupid},#{item.operateuserid},#{item.ljlx},#{item.hsms},#{item.tdqzl},#{item.tdhzl},#{item.tdzl},#{item.yszl},#{item.tddj},#{item.hdjf},#{item.sdjf},#{item.tffs},#{item.jlly},#{item.sjly},#{item.dxfssl},#{item.tfsj},#{item.growth_value},#{item.growth_value_singleprice},#{item.createuser},#{item.createtime},#{item.active},#{item.recyclerecordzzid},#{item.qy_projectid},#{item.etl},#{item.gdspid})
+		(#{item.recyclerecordid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.yzqyid},#{item.yxxqid},#{item.cjlx},#{item.sbbh},#{item.equipmentid},#{item.tfbz},#{item.yhlx},#{item.tenantgroupid},#{item.operateuserid},#{item.ljlx},#{item.hsms},#{item.tdqzl},#{item.tdhzl},#{item.tdzl},#{item.yszl},#{item.tddj},#{item.hdjf},#{item.sdjf},#{item.tffs},#{item.jlly},#{item.sjly},#{item.dxfssl},#{item.tfsj},#{item.growth_value},#{item.growth_value_singleprice},#{item.createuser},#{item.createtime},#{item.active},#{item.recyclerecordzzid},#{item.qy_projectid},#{item.etl},#{item.gdspid},#{item.jljf})
 		</foreach>
 	</insert>
 	

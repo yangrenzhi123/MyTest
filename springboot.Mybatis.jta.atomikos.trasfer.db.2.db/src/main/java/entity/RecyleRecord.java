@@ -40,6 +40,7 @@ public class RecyleRecord {
 	private String qy_projectid;
 	private String etl;
 	private String gdspid;
+	private String jljf;
 	public String getRecyclerecordid() {
 		return recyclerecordid;
 	}
@@ -267,5 +268,11 @@ public class RecyleRecord {
 	}
 	public void setGdspid(String gdspid) {
 		this.gdspid = gdspid;
+	}
+	public String getJljf() {
+		return jljf;
+	}
+	public void setJljf(String jljf) {
+		this.jljf = jljf;
 	}
 }

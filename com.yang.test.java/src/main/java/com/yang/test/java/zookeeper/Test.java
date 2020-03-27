@@ -14,22 +14,21 @@ import org.apache.zookeeper.data.Stat;
 public class Test {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-		ZooKeeper zk = new ZooKeeper("127.0.0.1:2001", 12000, new TestWatcher());
-		String registryPath = "/test";
+		ZooKeeper zk = new ZooKeeper("172.18.28.133:2181", 12000, new TestWatcher());
 
-		if(zk.exists(registryPath, false) == null){
-			zk.create(registryPath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+		List<String> l = zk.getChildren("/", false);
+		
+		for(String s : l) {
+			if(s.equals("hbase")) {
+				List<String> l2 = zk.getChildren("/"+s, false);
+				for(String s2 : l2) {
+					System.out.println(s2);
+				}
+			}
 		}
-
-		//创建节点
-		zk.create("/test/address-", "192.168.5.152:8080".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-		zk.create("/test/address-", "192.168.5.152:8080".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 		
-		List<String> l = zk.getChildren("/test", false);
-		
-		byte[] bs = zk.getData("/test/" + l.get(0),true,new Stat());
-		System.out.println(new String(bs));
-		Thread.sleep(1000000000);
+		byte[] bs = zk.getData("/hbase/master",true,new Stat());
+		System.out.println("结果值：" + new String(bs));
 	}
 }
 

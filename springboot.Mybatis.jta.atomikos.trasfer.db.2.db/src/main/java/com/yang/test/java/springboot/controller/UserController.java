@@ -262,7 +262,7 @@ public class UserController {
 
 		new Thread(new Runnable() {
 			public void run() {
-				long start = 143028368;
+				long start = 0;
 				while (true) {
 					try {
 						long a = System.currentTimeMillis();

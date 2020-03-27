@@ -8,7 +8,7 @@ import com.lyzh.msa.framework.common.dto.console.ReceiveBagStatisticalResponseDT
 public interface UserService {
 
 	@CachePenetrationProtect // 表示在多线程环境中同步加载数据
-	@Cached(name = "UserService.getUserById", cacheType = CacheType.BOTH, localExpire = 10, expire = 2592000)
+	@Cached(name = "h_equip_dispenser:", key = "#userId", cacheType = CacheType.LOCAL, expire = 60) // 60秒
 	String getUserById(String userId);
 
 	@CachePenetrationProtect // 表示在多线程环境中同步加载数据
