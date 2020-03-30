@@ -19,7 +19,7 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 		
-//		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
+		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.20", 7001));
@@ -48,21 +48,21 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("192.168.10.229", 27006));
 //		JedisCluster j = new JedisCluster(nodes);
 		
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("172.17.19.44", 7001));
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("172.17.19.44", 7001));
 //		nodes.add(new HostAndPort("172.17.19.35", 7002));
-		nodes.add(new HostAndPort("172.17.19.40", 7003));
-		nodes.add(new HostAndPort("172.17.19.37", 7004));
+//		nodes.add(new HostAndPort("172.17.19.40", 7003));
+//		nodes.add(new HostAndPort("172.17.19.37", 7004));
 //		nodes.add(new HostAndPort("172.17.202.152", 7005));
-		nodes.add(new HostAndPort("172.17.19.39", 7006));
-		nodes.add(new HostAndPort("172.17.19.34", 7007));
+//		nodes.add(new HostAndPort("172.17.19.39", 7006));
+//		nodes.add(new HostAndPort("172.17.19.34", 7007));
 //		nodes.add(new HostAndPort("172.17.19.43", 7008));
-		nodes.add(new HostAndPort("172.17.19.45", 7009));
+//		nodes.add(new HostAndPort("172.17.19.45", 7009));
 //		JedisCluster j = new JedisCluster(nodes);
 		//connectionTimeout：表示连接超时时间
 		//soTimeout：表示读取数据超时时间
 		//maxAttempts：超时重试次数
-		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
+//		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
 //		List<String> l = new ArrayList<>();
 //		l.add("h_tenant_group_map:LYZH110227001701");
@@ -73,20 +73,20 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("h_threshold_rule_map6a70acdf-33e5-4b9f-8e39-d839aef905ac:3");
 //		System.out.println(m);
 
-		String key = "h_threshold_rule_map:17848293-ae28-4168-abf3-c085546a7cc1:3";
-		System.out.println(j.get(key));
+//		String key = "h_threshold_rule_map:17848293-ae28-4168-abf3-c085546a7cc1:3";
+//		System.out.println(j.get(key));
 		
 //		j.set("get_alarmdatazzid_dao", "1000000");
 //		System.out.println(j.get("get_alarmdatazzid_dao"));
 		
-//		int i = 0;
-//		long a = System.currentTimeMillis();
-//		Set<String> keys = j.keys("h_recycle_record_day_*");
-//		for(String key : keys) {
-//			j.del(key);
-//			i = i + 1;
-//		}
-//		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
+		long a = System.currentTimeMillis();
+		int i = 0;
+		Set<String> keys = j.keys("h_garbage_bag_pull_day_*");
+		for(String key : keys) {
+			j.del(key);
+			i = i + 1;
+		}
+		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 

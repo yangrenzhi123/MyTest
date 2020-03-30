@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yang.test.java.springboot.dao.UserDao">
+	<select id="limitRecycleRecord" parameterType="Long" resultType="com.yang.test.java.springboot.entity.RecyleRecord">
+		select * from h_recycle_record where recyclerecordzzid > #{start} order by recyclerecordzzid limit 10000
+	</select>
+	<insert id="insertBatchRecycleRecord" parameterType="java.util.List">
+		insert into h_recycle_record_#{month} (
+			recyclerecordid,
+			tenantid,
+			productid,
+			orderid,
+			regionid,
+			communityid,
+			yzqyid,
+			yxxqid,
+			cjlx,
+			sbbh,
+			equipmentid,
+			tfbz,
+			yhlx,
+			tenantgroupid,
+			operateuserid,
+			ljlx,
+			hsms,
+			tdqzl,
+			tdhzl,
+			tdzl,
+			yszl,
+			tddj,
+			hdjf,
+			sdjf,
+			tffs,
+			jlly,
+			sjly,
+			dxfssl,
+			tfsj,
+			growth_value,
+			growth_value_singleprice,
+			createuser,
+			createtime,
+			active,
+			recyclerecordzzid,
+			qy_projectid,
+			etl,
+			gdspid,
+			jljf
+		)
+		values
+		<foreach collection="l" item="item" index="index" separator=",">
+		(#{item.recyclerecordid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.yzqyid},#{item.yxxqid},
+			#{item.cjlx},#{item.sbbh},#{item.equipmentid},#{item.tfbz},#{item.yhlx},#{item.tenantgroupid},#{item.operateuserid},#{item.ljlx},
+			#{item.hsms},#{item.tdqzl},#{item.tdhzl},#{item.tdzl},#{item.yszl},#{item.tddj},#{item.hdjf},#{item.sdjf},#{item.tffs},#{item.jlly},
+			#{item.sjly},#{item.dxfssl},#{item.tfsj},#{item.growth_value},#{item.growth_value_singleprice},#{item.createuser},#{item.createtime},
+			#{item.active},#{item.recyclerecordzzid},#{item.qy_projectid},#{item.etl},#{item.gdspid},#{item.jljf})
+		</foreach>
+	</insert>
+
+
+
 	<select id="page" parameterType="Long" resultType="ScoreRecord">
 		select * from h_score_record where scorerecordzzid > #{start} and scorerecordzzid <![CDATA[<=]]> 120000000 order by scorerecordzzid limit 10000
 	</select>
