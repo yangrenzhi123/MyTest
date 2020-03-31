@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yang.test.java.springboot.dao.UserDao">
 	<select id="limitRecycleRecord" parameterType="Long" resultType="com.yang.test.java.springboot.entity.RecyleRecord">
-		select * from h_recycle_record where recyclerecordzzid > #{start} order by recyclerecordzzid limit 10000
+		select * from h_recycle_record where recyclerecordzzid > #{start} and recyclerecordzzid <![CDATA[>]]> 100000000 and recyclerecordzzid <![CDATA[<=]]> 200000000 order by recyclerecordzzid limit 10000
 	</select>
 	<insert id="insertBatchRecycleRecord" parameterType="java.util.List">
 		insert into h_recycle_record_#{month} (

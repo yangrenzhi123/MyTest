@@ -62,7 +62,7 @@ public class TestDingding {
 	}
 
 	public static void test(String content) {
-		String dingDingToken = "https://oapi.dingtalk.com/robot/send?access_token=ad88aa82594ae1d596d07282c54eb08a59134e793ce8e49827c76901e19a0a0f";
+		String dingDingToken = "https://oapi.dingtalk.com/robot/send?access_token=cd06730d9003367bd4ec170ed3c8a582730adda6a98981ca93fe093edf39c6b5";
 
 		Map<String, Object> text = new HashMap<>();
 		text.put("content", content);

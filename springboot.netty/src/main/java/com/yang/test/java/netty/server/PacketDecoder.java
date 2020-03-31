@@ -12,6 +12,7 @@ public class PacketDecoder extends ByteToMessageDecoder {
 	protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 		int size = in.readableBytes();
 		if (size > 0) {
+			System.out.println("size：" + size);
 			byte[] b = new byte[size];
 			in.readBytes(b);
 

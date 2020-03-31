@@ -36,9 +36,29 @@ public class SpringbootMybatisStartup {
 
 	@Bean
 	public Integer init2() {
+		Calendar d20200101 = Calendar.getInstance();
+		d20200101.set(Calendar.YEAR, 2020);
+		d20200101.set(Calendar.MONTH, 0);
+		d20200101.set(Calendar.DAY_OF_MONTH, 1);
+		d20200101.set(Calendar.HOUR_OF_DAY, 0);
+		d20200101.set(Calendar.MINUTE, 0);
+		d20200101.set(Calendar.SECOND, 0);
+		d20200101.set(Calendar.MILLISECOND, 0);
+		long l20200101 = d20200101.getTime().getTime();
+		Calendar d20190101 = Calendar.getInstance();
+		d20190101.set(Calendar.YEAR, 2019);
+		d20190101.set(Calendar.MONTH, 0);
+		d20190101.set(Calendar.DAY_OF_MONTH, 1);
+		d20190101.set(Calendar.HOUR_OF_DAY, 0);
+		d20190101.set(Calendar.MINUTE, 0);
+		d20190101.set(Calendar.SECOND, 0);
+		d20190101.set(Calendar.MILLISECOND, 0);
+		long l20190101 = d20190101.getTime().getTime();
+		
+		
 		new Thread(new Runnable() {
 			public void run() {
-				long start = 22582883;
+				long start = 169065363;
 				int i = 0;
 				while (true) {
 					try {
@@ -49,18 +69,6 @@ public class SpringbootMybatisStartup {
 						if(l.size() == 0) {
 							break;
 						}
-						
-
-						Calendar d20200101 = Calendar.getInstance();
-						d20200101.set(Calendar.YEAR, 2020);
-						d20200101.set(Calendar.MONTH, 0);
-						d20200101.set(Calendar.DAY_OF_MONTH, 1);
-						long l20200101 = d20200101.getTime().getTime();
-						Calendar d20190101 = Calendar.getInstance();
-						d20190101.set(Calendar.YEAR, 2019);
-						d20190101.set(Calendar.MONTH, 0);
-						d20190101.set(Calendar.DAY_OF_MONTH, 1);
-						long l20190101 = d20190101.getTime().getTime();
 						
 						Map<String, List<RecyleRecord>> dataGroup = new HashMap<>();
 						dataGroup.put("2020", new ArrayList<RecyleRecord>());
@@ -99,16 +107,18 @@ public class SpringbootMybatisStartup {
 
 						System.out.println("查询耗时：" + aa + "，插入耗时：" + bb + "，数据条数：" + l.size() + "，最后一条记录ID：" + last.getRecyclerecordzzid());
 						start = last.getRecyclerecordzzid();
+						i = 0;
 					}catch(Exception e) {
 						e.printStackTrace();
-						if(i++ > 5) TestDingding.test("h_recycle_record，数据复制线程，异常");
+						if(i++ > 5) {
+							TestDingding.test("h_recycle_record，数据复制线程，异常");
+							i = 0;
+						}
 						try {
 							Thread.sleep(10000);
 						} catch (InterruptedException e1) {
 						}
 					}
-					
-					i = 0;
 				}
 			}
 		}, "h_recycle_record，数据复制线程").start();

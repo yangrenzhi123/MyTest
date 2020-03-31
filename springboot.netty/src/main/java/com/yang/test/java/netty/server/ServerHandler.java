@@ -19,7 +19,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<Object> {
 		
 		// ctx.close(); //会主动关闭通道
 		
-		ctx.fireChannelRead(msg);
+		//ctx.fireChannelRead(msg);
 	}
 
 	@Override
