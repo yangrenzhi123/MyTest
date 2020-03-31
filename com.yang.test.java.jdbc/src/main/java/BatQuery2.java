@@ -23,7 +23,7 @@ public class BatQuery2 {
 	public static void main(String[] args) throws Exception {
 		Properties pp = new Properties();
 		pp.setProperty("driverClassName", "com.mysql.cj.jdbc.Driver");
-		pp.setProperty("url", "jdbc:mysql://192.168.10.229:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true");
+		pp.setProperty("url", "jdbc:mysql://192.168.10.228:5306/lyzhhw4?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true");
 		pp.setProperty("username", "root");
 		pp.setProperty("password", "lyzhhw4performancetesting");
 		pp.setProperty("maxActive", "4");
