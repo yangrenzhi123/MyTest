@@ -12,8 +12,8 @@ public class KafkaComsumer {
 		Properties props = new Properties();
 
 		String group = "test";
-		String topic = "accesslog";
-		props.put("bootstrap.servers", "192.168.8.70:9092");
+		String topic = "test";
+		props.put("bootstrap.servers", "192.168.10.85:9092");
 		
 		props.put("group.id", group);
 		props.put("enable.auto.commit", "true");

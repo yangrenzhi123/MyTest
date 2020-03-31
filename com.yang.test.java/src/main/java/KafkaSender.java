@@ -12,8 +12,8 @@ public class KafkaSender {
 		properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-		String topic = "t1";
-		properties.put("bootstrap.servers", "192.168.8.70:9093");
+		String topic = "test";
+		properties.put("bootstrap.servers", "192.168.10.85:9092");
 
 		Producer producer = new KafkaProducer<String, String>(properties);
 		producer.send(new ProducerRecord<String, String>(topic, "7"));

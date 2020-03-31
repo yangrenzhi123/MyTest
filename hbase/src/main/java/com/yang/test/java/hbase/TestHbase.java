@@ -13,7 +13,7 @@ public class TestHbase {
 	public static void main(String[] args) throws IOException {
 		Configuration configuration = HBaseConfiguration.create();
 		configuration.set("hbase.zookeeper.property.clientPort", "2181");
-		configuration.set("hbase.zookeeper.quorum", "172.18.28.133");
+		configuration.set("hbase.zookeeper.quorum", "172.18.28.142");
 
 		Connection connection = ConnectionFactory.createConnection(configuration);
 		System.out.println(connection);

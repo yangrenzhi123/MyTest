@@ -11,10 +11,10 @@ import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
-public class Test {
+public class TestZookeeper {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-		ZooKeeper zk = new ZooKeeper("172.18.28.133:2181", 12000, new TestWatcher());
+		ZooKeeper zk = new ZooKeeper("172.18.28.142:2181", 12000, new TestWatcher());
 
 		List<String> l = zk.getChildren("/", false);
 		
