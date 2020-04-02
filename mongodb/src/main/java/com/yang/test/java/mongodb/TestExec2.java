@@ -30,13 +30,15 @@ public class TestExec2 {
 			
 			CommandResult resultSet = db.getCollection(collectionName).getStats();
 			Object size = resultSet.get("size");
+			Object count = resultSet.get("count");
+			Object avgObjSize = resultSet.get("avgObjSize");
 			if(size instanceof Double) {
 				long v = ((Double)size).longValue();
 				totalSize = totalSize + v;
-				System.out.println(collectionName + "，" + v);
+				System.out.println(collectionName + "，" + v + "，数据量：" + count + "行，单条数据容量：" + avgObjSize + "字节");
 			}else {
 				totalSize = totalSize + (int)size;
-				System.out.println(collectionName + "，" + (int)size);
+				System.out.println(collectionName + "，" + (int)size + "，数据量：" + count + "行，单条数据容量：" + avgObjSize + "字节");
 			}
 		}
 
