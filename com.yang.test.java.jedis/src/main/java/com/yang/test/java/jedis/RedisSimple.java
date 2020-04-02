@@ -19,7 +19,7 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 
-		Jedis j = new Jedis("192.168.8.70", 6379);
+		Jedis j = new Jedis("192.168.10.229", 6379);
 		
 //		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 

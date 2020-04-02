@@ -29,14 +29,9 @@ public class TestMongodb5 {
 		MongoCursor<String> mc = mi.iterator();
 		while (mc.hasNext()) {
 			String collectionName = mc.next();
-			buf.clear();
-			buf.put(("l.add(\"" + collectionName + "\");" +"\r\n").getBytes());
-			buf.flip();
-			while (buf.hasRemaining()) {
-				fileChannel.write(buf);
-			}
 
-//			MongoCollection<Document> mongoCollection = mgdb.getCollection(collectionName);
+			MongoCollection<Document> mongoCollection = mgdb.getCollection(collectionName);
+
 //			ListIndexesIterable<Document> lii = mongoCollection.listIndexes();
 //			MongoCursor<Document> mcnei = lii.iterator();
 //			StringBuilder sb = new StringBuilder();

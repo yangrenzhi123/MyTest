@@ -25,8 +25,8 @@ public class TestTransaction {
 		l.add(new ServerAddress("m1", 27017));
 		l.add(new ServerAddress("m2", 27017));
 		l.add(new ServerAddress("m3", 27017));
-
 		MongoClient mongoClient = new MongoClient(l);
+
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 		MongoCollection c1 = mgdb.getCollection("t1");
 		MongoCollection c2 = mgdb.getCollection("t2");
@@ -34,7 +34,7 @@ public class TestTransaction {
 		ClientSession cs = mongoClient.startSession();
 		cs.startTransaction();
 		try {
-			doUpdate(mongoClient, cs, c1, c2);
+			doInsert(mongoClient, cs, c1, c2);
 			cs.commitTransaction();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -59,7 +59,6 @@ public class TestTransaction {
 	/** 不会加锁 */
 	public static void doInsert(MongoClient mongoClient, ClientSession cs, MongoCollection c1, MongoCollection c2) {
 		Document insert = new Document();
-		insert.put("_id", 2);
 		insert.put("name", "kobe");
 		c1.insertOne(cs, insert);
 
@@ -69,7 +68,6 @@ public class TestTransaction {
 //		}
 		
 		insert = new Document();
-		insert.put("_id", 2);
 		insert.put("name", "kobe");
 		c2.insertOne(cs, insert);
 	}
