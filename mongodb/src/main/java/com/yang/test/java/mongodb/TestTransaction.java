@@ -12,6 +12,7 @@ import com.mongodb.client.ClientSession;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.InsertOneModel;
 import com.mongodb.client.model.UpdateManyModel;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.WriteModel;
@@ -22,19 +23,26 @@ public class TestTransaction {
 	/** 重点提示：db.adminCommand({setFeatureCompatibilityVersion:'4.0'})*/
 	public static void main(String[] args) throws ParseException {
 		List<ServerAddress> l = new ArrayList<ServerAddress>();
-		l.add(new ServerAddress("m1", 27017));
-		l.add(new ServerAddress("m2", 27017));
-		l.add(new ServerAddress("m3", 27017));
+//		l.add(new ServerAddress("m1", 27017));
+//		l.add(new ServerAddress("m2", 27017));
+//		l.add(new ServerAddress("m3", 27017));
+		l.add(new ServerAddress("192.168.10.228", 28017));
+		l.add(new ServerAddress("192.168.10.90", 28017));
+		l.add(new ServerAddress("192.168.10.240", 28018));
 		MongoClient mongoClient = new MongoClient(l);
 
-		MongoDatabase mgdb = mongoClient.getDatabase("test");
-		MongoCollection c1 = mgdb.getCollection("t1");
+		MongoDatabase mgdb = mongoClient.getDatabase("test238");
+		MongoCollection c1 = mgdb.getCollection("h_vote_record_activityid_4_test");
 		MongoCollection c2 = mgdb.getCollection("t2");
 		
 		ClientSession cs = mongoClient.startSession();
 		cs.startTransaction();
 		try {
-			doInsert(mongoClient, cs, c1, c2);
+//			doInsert(mongoClient, cs, c1, c2);
+			doBulkInsert(mongoClient, cs, c1);
+			doBulkInsert(mongoClient, cs, c1);
+			doBulkInsert(mongoClient, cs, c1);
+			doBulkInsert(mongoClient, cs, c1);
 			cs.commitTransaction();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -95,5 +103,22 @@ public class TestTransaction {
 //		if(a == 1) {
 //			throw new RuntimeException();
 //		}
+	}
+	
+	public static void doBulkInsert(MongoClient mongoClient, ClientSession cs, MongoCollection c1) {
+		long a = System.currentTimeMillis();
+		List<InsertOneModel<Document>> l = new ArrayList<>();
+		for (int i = 0; i < 500; i++) {
+			Document insert = new Document();
+			insert.put("signuprecordid", 1245187673384161280L);
+			insert.put("status", 0);
+			insert.put("tenantaccountid", "a9c9ed23-f05d-4ac7-82ce-46d04c962e71");
+			insert.put("tplx", 0);
+			insert.put("tpsj", 1586160995526L);
+			InsertOneModel<Document> iom = new InsertOneModel<Document>(insert);
+			l.add(iom);
+		}
+		c1.bulkWrite(cs, l);
+		System.out.println("500插入耗时：" + (System.currentTimeMillis() - a));
 	}
 }
