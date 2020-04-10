@@ -10,9 +10,9 @@ import java.sql.SQLException;
 public class ShowProcesslist2 {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://192.168.10.90:4306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL = "jdbc:mysql://192.168.10.89:3306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
-	static final String PASS = "lyzhhw4performancetesting";
+	static final String PASS = "123456";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException, InterruptedException {
 		doIt();
