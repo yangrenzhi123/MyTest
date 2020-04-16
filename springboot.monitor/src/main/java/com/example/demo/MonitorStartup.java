@@ -89,7 +89,7 @@ class HelloController {
 			Object key = entry.getKey();
 			MoniResult val = (MoniResult) entry.getValue();
 
-			l.add("检测时间：" + yyyy.format(val.getCheckTime()) + "，结果：" + (val.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，" + val.getName() + "，备注：" + key);
+			l.add(val.getName() + "，检测时间：" + yyyy.format(val.getCheckTime()) + "，结果：" + (val.getResult() == 1 ? "成功" : "<span style='color:red'>失败</span>") + "，备注：" + key);
 		}
 		
 		Collections.sort(l);

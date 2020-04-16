@@ -6,7 +6,7 @@ public class SpeedTest {
 			String p0 = args[0];
 			threadNum = Integer.parseInt(p0);
 		}else {
-			threadNum = 2;
+			threadNum = 1;
 		}
 
 		try {

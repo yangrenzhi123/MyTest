@@ -65,17 +65,18 @@ public class RedisSimple {
 		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
-//		List<String> l = new ArrayList<>();
-//		l.add("jpush:identifycode:17867930259");
-//		for(String key : l) {
-//			j.del(key);
-//		}
+		List<String> l = new ArrayList<>();
+		l.add("h_tenant_group:LYZH181217623001");
+		l.add("h_tenant_group:LYZH181217618301");
+		for(String key : l) {
+			j.del(key);
+		}
 
 //		Map<String, String> m = j.hgetAll("h_threshold_rule_map6a70acdf-33e5-4b9f-8e39-d839aef905ac:3");
 //		System.out.println(m);
 
-		String key = "jpush:identifycode:17867930259";
-		System.out.print(j.get(key));
+//		String key = "jpush:identifycode:17867930259";
+//		System.out.print(j.get(key));
 		
 //		String key = "jpush:identifycode:17867930259";
 //		j.set(key, "www.baidu.com");
@@ -83,7 +84,7 @@ public class RedisSimple {
 		
 //		long a = System.currentTimeMillis();
 //		int i = 0;
-//		Set<String> keys = j.keys("h_garbage_bag_pull_day_*");
+//		Set<String> keys = j.keys("h_dispenser_replenish_day_*");
 //		for(String key : keys) {
 //			j.del(key);
 //			i = i + 1;
