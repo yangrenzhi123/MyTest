@@ -18,9 +18,9 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 
-//		Jedis j = new Jedis("192.168.10.229", 6379);
+//		Jedis j = new Jedis("192.168.10.92", 6379);
 		
-//		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
+//		Jedis j = new Jedis("192.168.10.92", 6379);j.select(1);
 
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 		nodes.add(new HostAndPort("192.168.10.20", 7001));
@@ -66,8 +66,7 @@ public class RedisSimple {
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
 		List<String> l = new ArrayList<>();
-		l.add("h_tenant_group:LYZH181217623001");
-		l.add("h_tenant_group:LYZH181217618301");
+		l.add("h_equipment_map:00012181105200");
 		for(String key : l) {
 			j.del(key);
 		}
@@ -84,7 +83,7 @@ public class RedisSimple {
 		
 //		long a = System.currentTimeMillis();
 //		int i = 0;
-//		Set<String> keys = j.keys("h_dispenser_replenish_day_*");
+//		Set<String> keys = j.keys("1111111_*");
 //		for(String key : keys) {
 //			j.del(key);
 //			i = i + 1;

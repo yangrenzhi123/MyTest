@@ -64,6 +64,8 @@ public class TestHbase {
 			}
 		}
 		
+		//table.get(gets)
+		
 //		Get get = new Get(v);
 //		Result result = table.get(get);
 //		Cell[] cells = result.rawCells();
