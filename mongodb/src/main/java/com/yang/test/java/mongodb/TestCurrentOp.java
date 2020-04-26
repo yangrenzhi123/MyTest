@@ -12,7 +12,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
 @SuppressWarnings("unchecked")
-public class TestMongodb7 {
+public class TestCurrentOp {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 //		RandomAccessFile raf = new RandomAccessFile("C:/1.txt", "rw");

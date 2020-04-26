@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 public class RecycleRecordDTO {
+	private ObjectId _id;
 	private String zsxm;
 	private String sjhm;
 	private String sblx;
@@ -786,5 +789,40 @@ public class RecycleRecordDTO {
 
 	public void setDjdw(String djdw) {
 		this.djdw = djdw;
+	}
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
+	@Override
+	public String toString() {
+		return "RecycleRecordDTO [_id=" + _id + ", zsxm=" + zsxm + ", sjhm=" + sjhm + ", sblx=" + sblx + ", ddmc="
+				+ ddmc + ", cjmc=" + cjmc + ", flmc=" + flmc + ", zhnc=" + zhnc + ", sbmc=" + sbmc + ", qylx=" + qylx
+				+ ", ryxm=" + ryxm + ", sjczfs=" + sjczfs + ", tzhzl=" + tzhzl + ", yzm=" + yzm + ", sjd=" + sjd
+				+ ", sblxmc=" + sblxmc + ", tzhzlkg=" + tzhzlkg + ", jzTotalWeight=" + jzTotalWeight
+				+ ", jzTotalRecord=" + jzTotalRecord + ", tdzzl=" + tdzzl + ", sjly=" + sjly + ", tdzts=" + tdzts
+				+ ", gdspid=" + gdspid + ", fllx=" + fllx + ", recycleloseweightid=" + recycleloseweightid
+				+ ", recycleloseweightzzid=" + recycleloseweightzzid + ", recyclerecordid=" + recyclerecordid
+				+ ", tenantid=" + tenantid + ", productid=" + productid + ", orderid=" + orderid + ", regionid="
+				+ regionid + ", communityid=" + communityid + ", sbbh=" + sbbh + ", equipmentid=" + equipmentid
+				+ ", tfbz=" + tfbz + ", yhlx=" + yhlx + ", tenantgroupid=" + tenantgroupid + ", operateuserid="
+				+ operateuserid + ", ljlx=" + ljlx + ", tdqzl=" + tdqzl + ", tdhzl=" + tdhzl + ", tdzl=" + tdzl
+				+ ", tdzlf=" + tdzlf + ", hdjf=" + hdjf + ", sdjf=" + sdjf + ", tddj=" + tddj + ", tffs=" + tffs
+				+ ", jlly=" + jlly + ", growthValue=" + growthValue + ", growthValueSingleprice="
+				+ growthValueSingleprice + ", createuser=" + createuser + ", phoneNum=" + phoneNum + ", dxfsrs="
+				+ dxfsrs + ", createtime=" + createtime + ", yxxqid=" + yxxqid + ", spip=" + spip + ", spdk=" + spdk
+				+ ", sptd=" + sptd + ", spid=" + spid + ", yhm=" + yhm + ", yhmm=" + yhmm + ", qrcode=" + qrcode
+				+ ", cyewm=" + cyewm + ", qtewm=" + qtewm + ", zhhh=" + zhhh + ", queryType=" + queryType + ", cjlx="
+				+ cjlx + ", maxCursor=" + maxCursor + ", recyclerecordzzid=" + recyclerecordzzid
+				+ ", recyclerecordzzids=" + recyclerecordzzids + ", zh=" + zh + ", yzmc=" + yzmc + ", tenantaccountid="
+				+ tenantaccountid + ", cxsj=" + cxsj + ", tdzlstr=" + tdzlstr + ", appid=" + appid + ", hsms=" + hsms
+				+ ", zldw=" + zldw + ", djdw=" + djdw + ", fzbh=" + fzbh + ", tddj2=" + tddj2 + ", dxfssl=" + dxfssl
+				+ ", tfsj=" + tfsj + ", active=" + active + ", yzqyid=" + yzqyid + ", tenantuserid=" + tenantuserid
+				+ ", ismanager=" + ismanager + "]";
 	}
 }

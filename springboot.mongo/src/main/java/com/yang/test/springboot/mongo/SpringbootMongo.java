@@ -12,6 +12,7 @@ import java.util.concurrent.CountDownLatch;
 
 import javax.annotation.PostConstruct;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.Index;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -50,8 +52,35 @@ class HelloController {
 	@Qualifier(value = "three_MongoTemplate")
 	private MongoTemplate threeMongoTemplate;
 
+	@PostConstruct
+	public void init2() {
+		Set<String> collectionNames = oneMongoTemplate.getCollectionNames();
+		for(String collectionName : collectionNames) {
+			ObjectId objectId = ObjectId.createFromLegacyFormat(0, 0, 0);
+			
+			int i = 0;
+			while (true) {
+				Criteria criteria = Criteria.where("_id").gt(objectId);
+				Query query = new Query();
+				query.addCriteria(criteria);
+				query.limit(100000);
+				query.with(new Sort(Direction.ASC, "_id"));
+				List<RecycleRecordDTO> l = oneMongoTemplate.find(query, RecycleRecordDTO.class, collectionName);
+				if (l.size() > 0) {
+					RecycleRecordDTO last = l.get(l.size() - 1);
+					objectId = last.get_id();
+					System.out.println(last.get_id());
+				}else {
+					break;
+				}
+				i++;
+			}
+			
+			System.out.println(collectionName + "，已结束，量级：" + i*100000);
+		}
+	}
 
-    @PostConstruct
+    //@PostConstruct
     public void init() {
     	Set<String> collectionNames = oneMongoTemplate.getCollectionNames();
     	
@@ -96,7 +125,7 @@ class HelloController {
 	
 	@GetMapping("/q1")
 	public void q1() {
-		Criteria criteria = Criteria.where("regionid")
+		Criteria criteria = Criteria.where("_id").gt(new ObjectId("5e96d0fbebf2f21332f15497"))
 				.in(Arrays.asList("000de5db-aa78-479d-8d70-7b3267811568", "04388528-8eb4-41a8-9589-8cf68a7299d8",
 						"06c7372e-6c09-475c-9f74-cacb2a050ab6", "07a62a5c-7ae5-4305-a414-fba3ea1e4af5",
 						"0c728efd-391a-4496-939d-7777622f8be7", "237c5130-be38-4611-b94c-75a84f19be5f",

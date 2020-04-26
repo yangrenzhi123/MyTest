@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class HiveJDBC {
 
 	private static String driverName = "org.apache.hive.jdbc.HiveDriver";
-	private static String url = "jdbc:hive2://172.18.28.130:10000/default";
+	private static String url = "jdbc:hive2://192.168.13.115:10000/default";
 	private static String user = "root";
 	private static String password = "";
 	private static Connection conn = null;
@@ -26,12 +26,12 @@ public class HiveJDBC {
 		
 		String sql = null;
 
-		sql = "show databases";
-		System.out.println("Running: " + sql);
-		rs = stmt.executeQuery(sql);
-		while (rs.next()) {
-			System.out.println(rs.getString(1));
-		}
+//		sql = "show databases";
+//		System.out.println("Running: " + sql);
+//		rs = stmt.executeQuery(sql);
+//		while (rs.next()) {
+//			System.out.println(rs.getString(1));
+//		}
 		
 //		sql = "drop table if exists test_4_hbase";
 //		System.out.println("Running: " + sql);
@@ -74,14 +74,14 @@ public class HiveJDBC {
 		System.out.println("数据insert into耗时：" + (System.currentTimeMillis() - a));*/
 		
 
-//        sql = "select * from test_4_hbase limit 10";
-//        System.out.println("Running: " + sql);
-//        rs = stmt.executeQuery(sql);
-//        System.out.println("ID" + "\t" + "收集类型" + "\t" + "投放时间");
-//        while (rs.next()) {
-//            System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
-//            //System.out.println(rs.getString(1) + "\t" + rs.getString(2));
-//        }
+        sql = "select * from test_4_hbase limit 10";
+        System.out.println("Running: " + sql);
+        rs = stmt.executeQuery(sql);
+        System.out.println("ID" + "\t" + "收集类型" + "\t" + "投放时间");
+        while (rs.next()) {
+            System.out.println(rs.getInt("id") + "\t" + rs.getString("name"));
+            //System.out.println(rs.getString(1) + "\t" + rs.getString(2));
+        }
         
 
 		if (rs != null) {

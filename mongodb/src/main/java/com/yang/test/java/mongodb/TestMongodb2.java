@@ -68,7 +68,7 @@ public class TestMongodb2 {
 				long a = System.currentTimeMillis();
 				String collectName = "lyznErrorLog";
 				MongoCollection c = mgdb.getCollection(collectName);
-				System.out.println(collectName + "数据量：" + c.count() + "，查询耗时：" + (System.currentTimeMillis() - a));
+				System.out.println(collectName + "数据量：" + c.countDocuments() + "，查询耗时：" + (System.currentTimeMillis() - a));
 				latch.countDown();
 			}
 		}));
