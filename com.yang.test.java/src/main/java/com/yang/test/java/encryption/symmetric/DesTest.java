@@ -24,10 +24,10 @@ public class DesTest {
 	private static final String KEY = "12345678";
 
 	public static void main(String[] args) throws Exception {
-		encrypt("C:/Windows/Temp/新建文件夹/各种账号密码.xlsx", "C:/Users/yrz/OneDrive/各种账号密码.xlsx");
-		decrypt("C:/Users/yrz/OneDrive/各种账号密码.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
+//		encrypt("C:/Windows/Temp/新建文件夹/各种账号密码.xlsx", "C:/Users/yrz/OneDrive/各种账号密码.xlsx");
+//		decrypt("C:/Users/yrz/OneDrive/各种账号密码.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
 		
-//		simpleEncrypt();
+		simpleEncrypt();
 	}
 
 	public static void encrypt(String source, String target) throws Exception {
@@ -83,7 +83,7 @@ public class DesTest {
 		DESKeySpec desKey = new DESKeySpec(key);
 		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, SecretKeyFactory.getInstance("DES").generateSecret(desKey), new IvParameterSpec(key));
-		byte[] t = cipher.doFinal("1234567".getBytes());
+		byte[] t = cipher.doFinal("我是明文".getBytes());
 		
 		
 		String s = new String(t);
