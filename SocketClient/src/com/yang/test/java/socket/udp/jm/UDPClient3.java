@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class UDPClient3 {
 
 	public static void main(String[] args) throws Exception {
-		InetAddress address = InetAddress.getByName("192.168.31.220");
+		InetAddress address = InetAddress.getByName("127.0.0.1");
 		int port = 8800;
 
 		DatagramSocket socket = new DatagramSocket();
