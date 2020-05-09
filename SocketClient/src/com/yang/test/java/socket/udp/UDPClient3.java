@@ -8,8 +8,8 @@ import java.net.InetAddress;
 public class UDPClient3 {
 
 	public static void main(String[] args) throws IOException {
-		byte[] data = "exit".getBytes();
-		DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getByName("localhost"), 5114);
+		byte[] data = "hello".getBytes();
+		DatagramPacket packet = new DatagramPacket(data, data.length, InetAddress.getByName("192.168.0.108"), 10135);
 
 		DatagramSocket socket = new DatagramSocket();
 		socket.send(packet);

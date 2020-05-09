@@ -1,7 +1,9 @@
 package com.yang.test.java.jedis;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import redis.clients.jedis.HostAndPort;
@@ -64,7 +66,18 @@ public class RedisSimple {
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
 //		List<String> l = new ArrayList<>();
-//		l.add("h_equipment_map:00012181105200");
+//		l.add("h_equip_dispenser:000000600292");
+//		l.add("h_equip_dispenser:000000300394");
+//		l.add("h_equip_dispenser:000000300396");
+//		l.add("h_equip_dispenser:000000300379");
+//		l.add("h_equip_dispenser:000000300169");
+//		l.add("h_equip_dispenser:000000300177");
+//		l.add("h_equipment_map:00012180100269");
+//		l.add("h_equipment_map:00032180100304");
+//		l.add("h_equipment_map:00012180803345");
+//		l.add("h_equipment_map:00012180300887");
+//		l.add("h_equipment_map:00012180100372");
+//		l.add("h_equipment_map:00012171001352");
 //		for(String key : l) {
 //			j.del(key);
 //		}
@@ -81,7 +94,7 @@ public class RedisSimple {
 		
 		long a = System.currentTimeMillis();
 		int i = 0;
-		Set<String> keys = j.keys("h_equip_dispenser:000000300*");
+		Set<String> keys = j.keys("h_tenant_group:LYZH*");
 		for(String key : keys) {
 			j.del(key);
 			i = i + 1;
