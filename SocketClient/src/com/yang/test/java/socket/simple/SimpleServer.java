@@ -5,11 +5,11 @@ import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+@SuppressWarnings("resource")
 public class SimpleServer {
 
 	public static void main(String[] args) throws IOException {
 		ServerSocket serverSocket = new ServerSocket(8099);
-		int i = 0;
 		while (true) {
 			final Socket socket = serverSocket.accept();
 			new Thread(new Runnable() {
@@ -18,9 +18,11 @@ public class SimpleServer {
 						A:while(true) {
 							InputStream is = socket.getInputStream();
 							while(true) {
-								byte[] b = new byte[2];
+								int length = 2;
+								
+								byte[] b = new byte[length];
 								int a = is.read(b);
-								int byteArrayAvalibe = 2;
+								int byteArrayAvalibe = length;
 								if(a == -1) {
 									byteArrayAvalibe = byteArrayAvalibe(b);
 								}
@@ -48,12 +50,7 @@ public class SimpleServer {
 					}
 				}
 			}).start();
-
-			if (i++ > 10000) {
-				break;
-			}
 		}
-		serverSocket.close();
 	}
 	
 	public static int byteArrayAvalibe(byte[] b) {
