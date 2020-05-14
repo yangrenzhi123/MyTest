@@ -11,6 +11,7 @@ public class Server {
 		final ServerSocket serverSocket = new ServerSocket(8099);
 		final Socket socket = serverSocket.accept();
 		final InputStream is = socket.getInputStream();
+
 		while (true) {
 			byte[] b = new byte[2];
 			System.out.print("开始读取数据");

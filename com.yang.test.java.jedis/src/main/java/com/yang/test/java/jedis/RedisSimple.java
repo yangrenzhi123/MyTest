@@ -85,21 +85,21 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("h_threshold_rule_map6a70acdf-33e5-4b9f-8e39-d839aef905ac:3");
 //		System.out.println(m);
 
-//		String key = "jpush:identifycode:17867930259";
-//		System.out.print(j.get(key));
+		String key = "h_tenant_score_account_AccountScoreApi1:a0bef298-2052-4ad2-b64b-01a01a356b0a";
+		System.out.print(j.get(key));
 		
 //		String key = "testKey";
 //		j.set(key, "www.baidu.com");
 //		System.out.println(j.get(key));
 		
-		long a = System.currentTimeMillis();
-		int i = 0;
-		Set<String> keys = j.keys("h_tenant_group:LYZH*");
-		for(String key : keys) {
-			j.del(key);
-			i = i + 1;
-		}
-		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
+//		long a = System.currentTimeMillis();
+//		int i = 0;
+//		Set<String> keys = j.keys("h_tenant_group:LYZH*");
+//		for(String key : keys) {
+//			j.del(key);
+//			i = i + 1;
+//		}
+//		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 
