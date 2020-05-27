@@ -35,6 +35,37 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
 			<onMismatch>DENY</onMismatch>
 		</filter> -->
 	</appender>
+	<appender name="LOGSTASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${LOG_HOME}/TestWeb.log.%d{yyyy-MM-dd}.logstash</FileNamePattern>
+			<MaxHistory>30</MaxHistory><!--日志文件保留天数 -->
+		</rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>{
+                    	"message": "%message",
+                        "level": "%level",
+                        "trace": "%X{X-B3-TraceId:-}",
+                        "requestId": "%X{requestId}",
+                        "remoteIp": "%X{remoteIp}",
+                        "span": "%X{X-B3-SpanId:-}",
+                        "parent": "%X{X-B3-ParentSpanId:-}",
+                        "thread": "%thread",
+                        "class": "%logger{40}",
+                        "stack_trace": "%exception{10}"
+					}</pattern>
+                </pattern>
+            </providers>
+        </encoder>
+		<!--日志文件最大的大小 -->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
     <appender name="MY_FILE" class="com.yang.logback.MongoDBAppender">
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>ERROR</level>
@@ -46,7 +77,8 @@ debug: 当此属性设置为true时，将打印出logback内部日志信息，�
 	<!-- 日志输出级别 -->
 	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="MY_FILE" /><!-- 
-		<appender-ref ref="FILE" /> -->
+		<appender-ref ref="FILE" />
+		<appender-ref ref="JSON" /><!-- 
+		<appender-ref ref="MY_FILE" /> -->
 	</root>
 </configuration>

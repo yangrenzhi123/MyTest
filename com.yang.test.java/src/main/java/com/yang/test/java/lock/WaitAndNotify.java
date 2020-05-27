@@ -6,8 +6,8 @@ public class WaitAndNotify {
 
 	public static void main(String[] args) {
 		new Thread(new R1(), "R1").start();
-//		new Thread(new R2(), "R2").start();
-//		new Thread(new R3(), "R3").start();
+		new Thread(new R2(), "R2").start();
+		new Thread(new R3(), "R3").start();
 	}
 
 	private static class R1 implements Runnable {

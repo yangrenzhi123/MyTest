@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.yang.test.java.springboot;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

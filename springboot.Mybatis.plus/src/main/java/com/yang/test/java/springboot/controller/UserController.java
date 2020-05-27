@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yang.test.java.springboot.dao.UserDao;
-import com.yang.test.java.springboot.entity.User;
+import com.yang.test.java.springboot.entity.T;
 
 @Controller
 public class UserController {
@@ -20,7 +20,7 @@ public class UserController {
 	@GetMapping("/")
 	@ResponseBody
 	public int index() {
-		List<User> userList = userDao.selectList(null);
+		List<T> userList = userDao.selectList(null);
 		return userList.size();
 	}
 }

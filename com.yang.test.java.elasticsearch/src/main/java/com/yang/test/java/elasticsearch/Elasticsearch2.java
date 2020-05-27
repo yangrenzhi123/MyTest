@@ -23,7 +23,7 @@ public class Elasticsearch2 {
 	public static void main(String[] args) throws IOException {
 		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.229", 9200, "http")));
 
-		GetRequest r = new GetRequest("logstatshtest", "docl", "GEgjwXEBiMDkxNeh8-XU");
+		GetRequest r = new GetRequest("tsaas-zs-logs", "docl", "GEgjwXEBiMDkxNeh8-XU");
 		GetResponse p = client.get(r, RequestOptions.DEFAULT);
 		Map<String, Object> source = p.getSource();
 
@@ -31,11 +31,13 @@ public class Elasticsearch2 {
 
 		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
 //		sourceBuilder.query(QueryBuilders.matchQuery("message", "2020").fuzziness(Fuzziness.AUTO));
+//		sourceBuilder.query(QueryBuilders.matchQuery("@timestamp", "2020-05-21T10:19:43.197Z").fuzziness(Fuzziness.AUTO));
+//		sourceBuilder.query(QueryBuilders.rangeQuery("@timestamp").gt("2020-05-21T10:00:00.000Z").lt("2020-05-21T11:00:00.000Z"));
 		sourceBuilder.from(0);
-		sourceBuilder.size(5);
+		sourceBuilder.size(100);
 //		sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
 
-		SearchRequest searchRequest = new SearchRequest("logstatshtest");
+		SearchRequest searchRequest = new SearchRequest("tsaas-zs-logs");
 		searchRequest.types("docl");
 		searchRequest.source(sourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);

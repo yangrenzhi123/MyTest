@@ -30,7 +30,7 @@ public class MybatisPlusConfig {
     @Autowired
     private ApiContext apiContext;
 
-    @Bean
+    //@Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
 
