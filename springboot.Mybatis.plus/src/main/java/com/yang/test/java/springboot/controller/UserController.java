@@ -20,7 +20,7 @@ public class UserController {
 	@GetMapping("/")
 	@ResponseBody
 	public int index() {
-		List<T> userList = userDao.selectList(null);
+		List<T> userList = userDao.selectByPrimaryKey(1);
 		return userList.size();
 	}
 }
