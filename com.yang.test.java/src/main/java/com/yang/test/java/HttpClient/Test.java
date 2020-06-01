@@ -40,7 +40,7 @@ public class Test {
 	static CloseableHttpClient httpClient = null;
 	
 	public static void main(String[] args) throws ClientProtocolException, IOException, NoSuchAlgorithmException {
-		testPooling();
+		testSimple();
 	}
 	public static void getAccessToken() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -80,21 +80,14 @@ public class Test {
 	
 	/** 一请求一连接 */
 	public static void testSimple() throws ClientProtocolException, IOException {
-		HttpGet get = new HttpGet("http://192.168.6.231:8089/hbplatform/");
+		HttpGet get = new HttpGet("http://172.18.71.170:4140");
+		get.setHeader("Host", "consul-producer");
 
-		httpClient = HttpClients.createDefault();
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		httpClient.execute(get);
-		
-		System.out.println();
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpResponse response = httpClient.execute(get);
+		HttpEntity httpEntity = response.getEntity();
+		String result = EntityUtils.toString(httpEntity, "utf-8");
+		System.out.println(result);
 	}
 
 	public static void https() throws ClientProtocolException, IOException {

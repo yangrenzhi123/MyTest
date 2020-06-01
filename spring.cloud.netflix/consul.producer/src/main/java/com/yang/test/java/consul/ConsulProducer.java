@@ -13,13 +13,13 @@ public class ConsulProducer {
 
 	@RequestMapping("/")
 	public String home() {
-		return "Hello World";
+		return "Hello World12222";
 	}
 	
 
 	@RequestMapping("/1")
 	public String home1() {
-		return "Hello World";
+		return "Hello World1111";
 	}
 
 	public static void main(String[] args) {

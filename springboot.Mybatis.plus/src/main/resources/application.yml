@@ -14,3 +14,5 @@ mybatis-plus:
 #  configuration:
 #    interceptors:
 #      - com.yang.test.java.springboot.intercept.SqlStatementInterceptor
+test:
+  value: 1

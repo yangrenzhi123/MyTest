@@ -19,7 +19,7 @@ public class TestCurrentOp {
 //		FileChannel fileChannel = raf.getChannel();
 //		ByteBuffer buf = ByteBuffer.allocate(1024);
 		
-		MongoClient mongoClient = new MongoClient("192.168.10.26", 27017);
+		MongoClient mongoClient = new MongoClient("ip", 27017);
 
 		final MongoDatabase mgdb = mongoClient.getDatabase("admin");
 		Document doc = new Document();

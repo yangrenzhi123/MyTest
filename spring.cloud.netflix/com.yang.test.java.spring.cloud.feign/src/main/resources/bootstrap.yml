@@ -10,12 +10,14 @@ spring:
   cloud:
     config:
       uri: http://localhost:8889
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
 server:
   port: 8032
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka:123456@localhost:8761/eureka
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1

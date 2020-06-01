@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yang.test.java.springboot.dao.UserDao;
@@ -22,5 +23,10 @@ public class UserController {
 	public int index() {
 		List<T> userList = userDao.selectByPrimaryKey(1);
 		return userList.size();
+	}
+
+	@RequestMapping("/test")
+	public String test() {
+		return "1";
 	}
 }

@@ -3,7 +3,7 @@ spring:
     name: consul-producer
   cloud:
     consul:
-      host: 172.28.51.33
+      host: 192.168.8.70
       port: 8500
       discovery:
         healthCheckPath: /

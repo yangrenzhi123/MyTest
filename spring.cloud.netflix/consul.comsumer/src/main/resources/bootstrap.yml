@@ -5,7 +5,7 @@ spring:
     name: consul-comsumer
   cloud:
     consul:
-      host: 172.28.51.33
+      host: 192.168.8.70
       port: 8500
       discovery:
         preferIpAddress: true
