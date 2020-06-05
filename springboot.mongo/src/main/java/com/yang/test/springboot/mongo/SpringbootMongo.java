@@ -140,7 +140,7 @@ class HelloController {
 					.and("tfsj").lt(yyyyMMdd.parseObject("20200601"));
 			final Query query = new Query();
 			query.addCriteria(criteria);
-			query.withHint("");
+			//query.withHint("");
 			query.limit(10);
 
 			final List<Object> l = oneMongoTemplate.find(query, Object.class);

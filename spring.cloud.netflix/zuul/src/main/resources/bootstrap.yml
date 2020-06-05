@@ -10,12 +10,15 @@ zuul:
     api-a:
       path: /api-a/1/**
       serviceId: noun1
+      strip-prefix: false
     api-b:
       path: /api-b/2/**
       serviceId: noun2
+      strip-prefix: false
     api-c:
       path: /**
       serviceId: noun3
+      strip-prefix: false
   semaphore:
     max-semaphores: 10000
 ribbon:

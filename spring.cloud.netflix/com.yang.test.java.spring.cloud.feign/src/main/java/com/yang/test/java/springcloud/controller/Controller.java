@@ -50,7 +50,7 @@ public class Controller {
 		return s;
 	}
 
-	@RequestMapping({"/test1", "/test2"})
+	@RequestMapping({"/api-b/2/test1", "/api-b/2/test2"})
 	public @ResponseBody String test() {
 		return "2";
 	}

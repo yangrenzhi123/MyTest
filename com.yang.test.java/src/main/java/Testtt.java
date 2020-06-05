@@ -1,6 +1,7 @@
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.UUID;
 
 public class Testtt {
 	
@@ -22,9 +23,9 @@ public class Testtt {
 //		Object o = null;
 //		Assert.notNull(o, "BeanDefinitionRegistry must not be null");
 
-		DecimalFormat df = new DecimalFormat("00");
-		System.out.println(df.format(1));
-		System.out.println(df.format(12));
+//		DecimalFormat df = new DecimalFormat("00");
+//		System.out.println(df.format(1));
+//		System.out.println(df.format(12));
 		
 		
 //		String a = null;
@@ -108,7 +109,7 @@ public class Testtt {
 //		System.out.println(new Random().nextInt(2));
 //		System.out.println(System.currentTimeMillis() - a);
 
-//		System.out.println(UUID.randomUUID().toString());
+		System.out.println(UUID.randomUUID().toString());
 //		System.out.println(UUID.randomUUID().toString());
 //		System.out.println(UUID.randomUUID().toString());
 //		System.out.println(UUID.randomUUID().toString());

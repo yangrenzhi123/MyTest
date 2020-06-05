@@ -7,7 +7,6 @@ import org.apache.http.client.ClientProtocolException;
 public class Testttt {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
-		Test2.doo();
 		Test3.doo();
 	}
 }

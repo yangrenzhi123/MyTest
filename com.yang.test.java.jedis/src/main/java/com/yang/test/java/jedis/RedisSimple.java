@@ -19,18 +19,18 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 
-//		Jedis j = new Jedis("192.168.10.90", 6379);
+		Jedis j = new Jedis("192.168.30.120", 6379);
 		
 //		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.20", 7001));
-		nodes.add(new HostAndPort("192.168.10.20", 7002));
-		nodes.add(new HostAndPort("192.168.10.20", 7003));
-		nodes.add(new HostAndPort("192.168.10.22", 7004));
-		nodes.add(new HostAndPort("192.168.10.22", 7005));
-		nodes.add(new HostAndPort("192.168.10.22", 7006));
-		JedisCluster j = new JedisCluster(nodes);
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("192.168.10.20", 7001));
+//		nodes.add(new HostAndPort("192.168.10.20", 7002));
+//		nodes.add(new HostAndPort("192.168.10.20", 7003));
+//		nodes.add(new HostAndPort("192.168.10.22", 7004));
+//		nodes.add(new HostAndPort("192.168.10.22", 7005));
+//		nodes.add(new HostAndPort("192.168.10.22", 7006));
+//		JedisCluster j = new JedisCluster(nodes);
 		
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));
@@ -66,16 +66,16 @@ public class RedisSimple {
 		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
-		List<String> l = new ArrayList<>();
-		l.add("jt808_vehicle_terminal:11943903413");
-		for(String key : l) {
-			j.del(key);
-		}
+//		List<String> l = new ArrayList<>();
+//		l.add("testGroup:test");
+//		for(String key : l) {
+//			j.del(key);
+//		}
 
 //		Map<String, String> m = j.hgetAll("h_threshold_rule_map6a70acdf-33e5-4b9f-8e39-d839aef905ac:3");
 //		System.out.println(m);
 
-		String key = "jt808_vehicle_terminal:11943903413";
+		String key = "RiskManagement";
 		System.out.print(j.get(key));
 		
 //		String key = "testKey";
@@ -84,7 +84,7 @@ public class RedisSimple {
 		
 //		long a = System.currentTimeMillis();
 //		int i = 0;
-//		Set<String> keys = j.keys("h_recycle_record_device_day_*");
+//		Set<String> keys = j.keys("h_tenant_group_greenuser_day_*");
 //		for(String key : keys) {
 //			j.del(key);
 //			i = i + 1;

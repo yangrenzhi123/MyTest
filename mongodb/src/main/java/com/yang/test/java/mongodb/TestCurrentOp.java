@@ -19,18 +19,25 @@ public class TestCurrentOp {
 //		FileChannel fileChannel = raf.getChannel();
 //		ByteBuffer buf = ByteBuffer.allocate(1024);
 		
-		MongoClient mongoClient = new MongoClient("ip", 27017);
+		MongoClient mongoClient = new MongoClient("192.168.10.237", 27411);
 
 		final MongoDatabase mgdb = mongoClient.getDatabase("admin");
 		Document doc = new Document();
-		doc.append("currentOp", true);
+		doc.append("currentOp", false);
 		Document result = mgdb.runCommand(doc);
 		List<Document> infos = (List<Document>) result.get("inprog");
 		for (Document item : infos) {
-			System.out.print(item.get("client") + "|");
-			System.out.print(item.get("ns") + "|");
-			System.out.print(item.get("command") + "|");
-			System.out.println(item.get("locks"));
+			if (item.get("ns").toString().startsWith("test.")) {
+				System.out.println(item.get("client") + "，");
+				System.out.println(item.get("shard") + "，");
+				System.out.println(item.get("host") + "，");
+				System.out.println(item.get("ns") + "，");
+				System.out.println(item.get("op") + "，");
+				System.out.println(item.get("secs_running") + "，");
+				System.out.println(item.get("command") + "，");
+				System.out.println(item.get("locks"));
+				System.out.println("----------------------------------------------------------");
+			 }
 		}
 
 //		final MongoDatabase mgdb = mongoClient.getDatabase("test_tenantgroup");
