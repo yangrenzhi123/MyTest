@@ -9,20 +9,20 @@ import com.dingxianginc.ctu.client.model.CtuRequest;
 import com.dingxianginc.ctu.client.model.CtuResponse;
 import com.dingxianginc.ctu.client.model.RiskLevel;
 
-public class FengKong {
+public class FengKong2 {
 
 	public static void main(String[] args) throws Exception {
         /**业务请求数据**/
 		Map<String, Object> data = new HashMap<>();
-		data.put("user_id", 3001);//用户 ID
-		data.put("ext_grouptID", "3001");//居民ID（一张卡对应一个ID）
-		data.put("ext_orderID", "20200608001");//订单编号
+		data.put("user_id", 102);//用户 ID
+		data.put("ext_grouptID", "1024");//居民ID（一张卡对应一个ID）
+		data.put("ext_orderID", "20200606006");//订单编号
+		data.put("ext_rewardScore", 90);//投放奖励积分
 		/*获取流程：01获取前，02获取成功，03获取失败
 		通过：01获取前，02获取成功，03获取失败
 		复审：01获取前，通过02获取成功，拒绝03获取失败
 		拒绝：01获取前，拒绝03获取失败*/
 		data.put("ext_state", "02");
-		data.put("ext_rewardScore", 90);//投放奖励积分
 		
 		data.put("const_id", "exxxxxxwbZsF1PqoflWOyhKLIhAzw9X2");//设备指纹 token，端上获取传入后台
 		data.put("phone_number", "13800138011");//手机号
@@ -54,17 +54,14 @@ public class FengKong {
         request.setData(data);
         request.setFlag("activity_" + System.currentTimeMillis());
         /**创建一个客户端实例**/
-        /**
-			用户可以自定义超时设置 connectTimeout，connectionRequestTimeout，socketTimeout 单位：毫秒
-			默认超时设置均为 2000 毫秒
-			实时决策接入手册
-        */
-		//CtuClient client = new CtuClient("http://192.168.10.76:7776/ctu/event.do", "2ca619fa85132afb3b24629e10db2f19", "4fac986d0cf32ce5430edc53a407b694");
-		CtuClient client = new CtuClient("http://192.168.10.76:7776/ctu/event.do", "2ca619fa85132afb3b24629e10db2f19", "4fac986d0cf32ce5430edc53a407b694", 10, 10, 10);
+        CtuClient client = new CtuClient("http://192.168.10.76:7776/ctu/event.do", "2ca619fa85132afb3b24629e10db2f19", "4fac986d0cf32ce5430edc53a407b694");
+        /**CtuClient client=new CtuClient(url,appKey,appSecret,connectTimeout,connectionRequestTimeout,socketTimeout)
+		         用户可以自定义超时设置 connectTimeout，connectionRequestTimeout，socketTimeout 单位：毫秒
+		         默认超时设置均为 2000 毫秒
+		         实时决策接入手册
+         **/
         /**向风控引擎发送请求，获取引擎返回的结果**/
-		long a = System.currentTimeMillis();
         CtuResponse response = client.checkRisk(request);
-        System.out.println("耗时：" + (System.currentTimeMillis() - a));
         if (RiskLevel.ACCEPT.equals(response.getResult().getRiskLevel())) {
         	System.out.println(1);
             System.out.printf(JSON.toJSONString(response));

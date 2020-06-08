@@ -30,6 +30,10 @@ public class ServiceHiApplication {
 
 	@RequestMapping("/hiEnd")
 	public String info() {
+		if(1==1) {
+			throw new RuntimeException("test");
+		}
+		
 		return "i'm service-hi hiEnd()";
 	}
 }
