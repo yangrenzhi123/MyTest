@@ -20,7 +20,8 @@ import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.IvParameterSpec;
 
 public class DesTest {
-
+	private static final String KEY = "********";
+	
 	public static void main(String[] args) throws Exception {
 //		encrypt("C:/Windows/Temp/新建文件夹/ac8fe6e3900046f1824fc78c21929c6f.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
 		decrypt("C:/Users/yrz/OneDrive/工资条/工资条.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
@@ -102,6 +103,4 @@ public class DesTest {
 		String s = new String(b);
 		System.out.println(s);
 	}
-
-	private static final String KEY = "12345678";
 }

@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 public class Client {
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
-		Socket socket = new Socket("127.0.0.1", 8099);
+		Socket socket = new Socket("192.168.8.70", 8099);
 
 		final OutputStream os = socket.getOutputStream();
 		final InputStream is = socket.getInputStream();
