@@ -14,14 +14,14 @@ public class FengKong {
 	public static void main(String[] args) throws Exception {
         /**业务请求数据**/
 		Map<String, Object> data = new HashMap<>();
-		data.put("user_id", 3001);//用户 ID
-		data.put("ext_grouptID", "3001");//居民ID（一张卡对应一个ID）
-		data.put("ext_orderID", "20200608001");//订单编号
+		data.put("user_id", 3002);//用户 ID
+		data.put("ext_grouptID", "3002");//居民ID（一张卡对应一个ID）
+		data.put("ext_orderID", "20200609002");//订单编号
 		/*获取流程：01获取前，02获取成功，03获取失败
 		通过：01获取前，02获取成功，03获取失败
 		复审：01获取前，通过02获取成功，拒绝03获取失败
 		拒绝：01获取前，拒绝03获取失败*/
-		data.put("ext_state", "02");
+		data.put("ext_state", "01");
 		data.put("ext_rewardScore", 90);//投放奖励积分
 		
 		data.put("const_id", "exxxxxxwbZsF1PqoflWOyhKLIhAzw9X2");//设备指纹 token，端上获取传入后台
@@ -59,8 +59,8 @@ public class FengKong {
 			默认超时设置均为 2000 毫秒
 			实时决策接入手册
         */
-		//CtuClient client = new CtuClient("http://192.168.10.76:7776/ctu/event.do", "2ca619fa85132afb3b24629e10db2f19", "4fac986d0cf32ce5430edc53a407b694");
-		CtuClient client = new CtuClient("http://192.168.10.76:7776/ctu/event.do", "2ca619fa85132afb3b24629e10db2f19", "4fac986d0cf32ce5430edc53a407b694", 10, 10, 10);
+		CtuClient client = new CtuClient("http://192.168.10.76:7776/ctu/event.do", "2ca619fa85132afb3b24629e10db2f19", "4fac986d0cf32ce5430edc53a407b694");
+		//CtuClient client = new CtuClient("http://192.168.10.76:7776/ctu/event.do", "2ca619fa85132afb3b24629e10db2f19", "4fac986d0cf32ce5430edc53a407b694", 10, 10, 10);
         /**向风控引擎发送请求，获取引擎返回的结果**/
 		long a = System.currentTimeMillis();
         CtuResponse response = client.checkRisk(request);
