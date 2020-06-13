@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Component;
@@ -21,9 +22,18 @@ public class TestSchedule {
 }
 
 @Component
-class MyTask2 {
+class MyTask1 {
 	// 秒 分 时 天 月 周，周和月如果同时设置可能会冲突，不设定可以用?表示
-	// @Scheduled(cron = "0 43 8 18 9 *")
+	@Scheduled(cron = "0 * * * * *")
+	public void work() {
+		System.out.println(1);
+	}
+}
+
+
+@Component
+class MyTask2 {
+	 @Scheduled(cron = "0 * * * * *")
 	public void work() {
 		System.out.println(2);
 	}
@@ -31,7 +41,7 @@ class MyTask2 {
 
 @Component
 class MyTask3 {
-	// @Scheduled(cron = "5 * * * * *")
+	 @Scheduled(cron = "0 * * * * *")
 	public void work() {
 		System.out.println(3);
 	}
@@ -47,6 +57,6 @@ class ScheduleConfig implements SchedulingConfigurer {
 
 	@Bean(destroyMethod = "shutdown")
 	public Executor taskExecutor() {
-		return Executors.newScheduledThreadPool(3);
+		return Executors.newScheduledThreadPool(1);
 	}
 }
