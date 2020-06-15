@@ -39,6 +39,7 @@ public class JDBCSimple26 {
 			String s5 = rs.getString("slave_io_running");
 			String s6 = rs.getString("slave_sql_running");
 			String s7 = rs.getString("last_error");
+			String s8 = rs.getString("Seconds_Behind_Master");
 			System.out.println(s1);
 			System.out.println(df.format(Long.parseLong(s2)));
 			System.out.println(s3);
@@ -46,6 +47,7 @@ public class JDBCSimple26 {
 			System.out.println(s5);
 			System.out.println(s6);
 			System.out.println("错误日志：" + s7);
+			System.out.println("Seconds_Behind_Master：" + s8);
 			System.out.println();
 		}
 		stmt.close();

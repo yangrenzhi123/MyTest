@@ -46,7 +46,7 @@ public class ShowProcesslist {
 				String host = rs.getString("host");
 				String state = rs.getString("state");
 				String info = rs.getString("info");
-				if(info != null && (info.contains("h_tenant_group") || info.contains("h_tenant_group"))) {
+				if(info != null && (info.contains("update ") || info.contains("insert ") || info.contains("delete "))) {
 					have = true;
 					
 					String s = id + "\t" + user + "\t" + host + "\t" + state + "\t" + info;

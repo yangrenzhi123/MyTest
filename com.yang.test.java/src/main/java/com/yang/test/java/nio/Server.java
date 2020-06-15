@@ -22,26 +22,21 @@ public class Server implements Runnable {
 	// 选择器，主要用来监控各个通道的事件
 	private Selector selector;
 
-	public Server() {
+	public Server() throws IOException {
 		init();
 	}
 
-	public void init() {
-		try {
-			// 打开第一个服务器通道
-			this.serverSocketChannel = ServerSocketChannel.open();
-			// 告诉程序现在不是阻塞方式的
-			this.serverSocketChannel.configureBlocking(false);
-			// 获取现在与该通道关联的套接字
-			this.serverSocketChannel.socket().bind(new InetSocketAddress("127.0.0.1", this.port));
+	public void init() throws IOException {
+		// 打开第一个服务器通道
+		this.serverSocketChannel = ServerSocketChannel.open();
+		// 告诉程序现在不是阻塞方式的
+		this.serverSocketChannel.configureBlocking(false);
+		// 获取现在与该通道关联的套接字
+		this.serverSocketChannel.socket().bind(new InetSocketAddress("127.0.0.1", this.port));
 
-			// 创建选择器
-			this.selector = SelectorProvider.provider().openSelector();
-			this.serverSocketChannel.register(this.selector, SelectionKey.OP_ACCEPT);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		// 创建选择器
+		this.selector = SelectorProvider.provider().openSelector();
+		this.serverSocketChannel.register(this.selector, SelectionKey.OP_ACCEPT);
 	}
 
 	public void accept(SelectionKey key) throws IOException {
@@ -104,6 +99,8 @@ public class Server implements Runnable {
 					} else if (key.isReadable()) {
 						System.out.println("read");
 						read(key);
+					} else {
+						System.out.println("我是谁，我在哪？");
 					}
 				}
 			} catch (Exception e) {
@@ -112,9 +109,8 @@ public class Server implements Runnable {
 		}
 	}
 
-	public static void main(String[] args) {
-		Server server = new Server();
-		Thread thread = new Thread(server);
+	public static void main(String[] args) throws IOException {
+		Thread thread = new Thread(new Server());
 		thread.start();
 	}
 }
