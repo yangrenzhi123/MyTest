@@ -11,13 +11,10 @@ public class KafkaComsumer {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
-		String group = "test2";
-		String topic = "test2";
-		props.put("bootstrap.servers", "172.17.97.117:9092,172.17.97.121:9092,172.17.97.126:9092");
-//		props.put("bootstrap.servers", "172.17.97.117:9092");
-//		props.put("bootstrap.servers", "172.17.97.121:9092");
-//		props.put("bootstrap.servers", "172.17.97.126:9092");
-		
+		String group = "test";
+		String topic = "test";
+		props.put("bootstrap.servers", "192.168.8.70:9092");
+
 		props.put("group.id", group);
 		props.put("auto.offset.reset", "earliest");
 		props.put("enable.auto.commit", "true");

@@ -83,11 +83,12 @@
 			qy_projectid,
 			etl,
 			gdspid,
-			jljf
+			jljf,
+			sfbl
 		)
 		values
 		<foreach collection="list" item="item" index="index" separator=",">
-		(#{item.recyclerecordid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.yzqyid},#{item.yxxqid},#{item.cjlx},#{item.sbbh},#{item.equipmentid},#{item.tfbz},#{item.yhlx},#{item.tenantgroupid},#{item.operateuserid},#{item.ljlx},#{item.hsms},#{item.tdqzl},#{item.tdhzl},#{item.tdzl},#{item.yszl},#{item.tddj},#{item.hdjf},#{item.sdjf},#{item.tffs},#{item.jlly},#{item.sjly},#{item.dxfssl},#{item.tfsj},#{item.growth_value},#{item.growth_value_singleprice},#{item.createuser},#{item.createtime},#{item.active},#{item.recyclerecordzzid},#{item.qy_projectid},#{item.etl},#{item.gdspid},#{item.jljf})
+		(#{item.recyclerecordid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.regionid},#{item.communityid},#{item.yzqyid},#{item.yxxqid},#{item.cjlx},#{item.sbbh},#{item.equipmentid},#{item.tfbz},#{item.yhlx},#{item.tenantgroupid},#{item.operateuserid},#{item.ljlx},#{item.hsms},#{item.tdqzl},#{item.tdhzl},#{item.tdzl},#{item.yszl},#{item.tddj},#{item.hdjf},#{item.sdjf},#{item.tffs},#{item.jlly},#{item.sjly},#{item.dxfssl},#{item.tfsj},#{item.growth_value},#{item.growth_value_singleprice},#{item.createuser},#{item.createtime},#{item.active},#{item.recyclerecordzzid},#{item.qy_projectid},#{item.etl},#{item.gdspid},#{item.jljf},#{item.sfbl})
 		</foreach>
 	</insert>
 	
@@ -140,7 +141,7 @@
 	
 	
 	<insert id="insertBatchGarbagebagPull" parameterType="java.util.List">
-		insert into h_garbagebag_pull2 (
+		insert into h_garbagebag_pull (
 			garbagebagpullid,
 			tenantid,
 			productid,
@@ -177,26 +178,33 @@
 	
 	<insert id="insertBatchInspectRecord" parameterType="java.util.List">
 		insert into h_inspect_record (
-			inspectrecordid,
-			tenantid,
-			productid,
-			regionid,
-			communityid,
-			tenantuserid,
-			wybz,
-			tenantgroupid,
-			ljlx,
-			xjjf,
-			dfyy,
-			createuser,
-			createtime,
-			active,
-			qy_projectid,
-			inspectrecordzzid
+	  	  inspectrecordid,
+		  tenantid,
+		  productid,
+		  regionid,
+		  communityid,
+		  tenantuserid,
+		  wybz,
+		  tenantgroupid,
+		  ljlx,
+		  xjjf,
+		  growthvalue,
+		  dfyy,
+		  createuser,
+		  createtime,
+		  active,
+		  qy_projectid,
+		  inspectrecordzzid,
+		  cjlx,
+		  sjly,
+		  sbbh,
+		  sblx,
+		  xjbz,
+		  sjlx
 		)
 		values
 		<foreach collection="list" item="item" index="index" separator=",">
-		(#{item.inspectrecordid},#{item.tenantid},#{item.productid},#{item.regionid},#{item.communityid},#{item.tenantuserid},#{item.wybz},#{item.tenantgroupid},#{item.ljlx},#{item.xjjf},#{item.dfyy},#{item.createuser},#{item.createtime},#{item.active},#{item.qy_projectid},#{item.inspectrecordzzid})
+		(#{item.inspectrecordid},#{item.tenantid},#{item.productid},#{item.regionid},#{item.communityid},#{item.tenantuserid},#{item.wybz},#{item.tenantgroupid},#{item.ljlx},#{item.xjjf},#{item.growthvalue},#{item.dfyy},#{item.createuser},#{item.createtime},#{item.active},#{item.qy_projectid},#{item.inspectrecordzzid},#{item.cjlx},#{item.sjly},#{item.sbbh},#{item.sblx},#{item.xjbz},#{item.sjlx})
 		</foreach>
 	</insert>
 	

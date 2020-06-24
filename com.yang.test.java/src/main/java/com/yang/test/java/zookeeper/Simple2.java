@@ -16,21 +16,21 @@ import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Id;
 import org.apache.zookeeper.data.Stat;
 import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
+import org.apache.zookeeper.server.auth.IPAuthenticationProvider;
 
-public class Simple {
+public class Simple2 {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException, NoSuchAlgorithmException {
-		ZooKeeper zk = new ZooKeeper("192.168.8.70:2183", 12000, new TestWatcher2());
+		ZooKeeper zk = new ZooKeeper("192.168.8.70:2183", 12000, new TestWatcher3());
 
-		String scheme = "digest"; //代表采用的某种权限机制
-		zk.addAuthInfo(scheme, "lry:123456".getBytes());
+		String scheme = "ip"; //代表采用的某种权限机制
 		
-		Id id = new Id(scheme, DigestAuthenticationProvider.generateDigest("lry:123456"));
+		Id id = new Id(scheme, "172.17.0.1");
 		ACL acl = new ACL(Perms.ALL, id);
 		List<ACL> acls = new ArrayList<>();
         acls.add(acl);
-        //Stat rootStat = zk.exists("/", true);
-        //zk.setACL("/", acls, rootStat.getVersion());
+        Stat rootStat = zk.exists("/", true);
+        zk.setACL("/", acls, rootStat.getVersion());
         
         List<ACL> rootAcls = zk.getACL("/", new Stat());
         for(ACL acc : rootAcls) {
@@ -56,7 +56,7 @@ public class Simple {
 	}
 }
 
-class TestWatcher2 implements Watcher {
+class TestWatcher3 implements Watcher {
 
 	public void process(WatchedEvent arg0) {
 //		System.out.println(arg0.getState());

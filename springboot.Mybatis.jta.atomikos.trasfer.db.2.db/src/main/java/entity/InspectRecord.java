@@ -1,22 +1,29 @@
 package entity;
 
 public class InspectRecord {
-	private String inspectrecordid;
-	private String tenantid;
-	private String productid;
-	private String regionid;
-	private String communityid;
-	private String tenantuserid;
-	private String wybz;
-	private String tenantgroupid;
-	private String ljlx;
-	private String xjjf;
-	private String dfyy;
-	private String createuser;
-	private String createtime;
-	private String active;
-	private String qy_projectid;
-	private Long inspectrecordzzid;
+	  private String inspectrecordid;
+	  private String tenantid;
+	  private String productid;
+	  private String regionid;
+	  private String communityid;
+	  private String tenantuserid;
+	  private String wybz;
+	  private String tenantgroupid;
+	  private String ljlx;
+	  private String xjjf;
+	  private String growthvalue;
+	  private String dfyy;
+	  private String createuser;
+	  private String createtime;
+	  private String active;
+	  private String qy_projectid;
+	  private Long inspectrecordzzid;
+	  private String cjlx;
+	  private String sjly;
+	  private String sbbh;
+	  private String sblx;
+	  private String xjbz;
+	  private String sjlx;
 	public String getInspectrecordid() {
 		return inspectrecordid;
 	}
@@ -77,6 +84,12 @@ public class InspectRecord {
 	public void setXjjf(String xjjf) {
 		this.xjjf = xjjf;
 	}
+	public String getGrowthvalue() {
+		return growthvalue;
+	}
+	public void setGrowthvalue(String growthvalue) {
+		this.growthvalue = growthvalue;
+	}
 	public String getDfyy() {
 		return dfyy;
 	}
@@ -112,5 +125,41 @@ public class InspectRecord {
 	}
 	public void setInspectrecordzzid(Long inspectrecordzzid) {
 		this.inspectrecordzzid = inspectrecordzzid;
+	}
+	public String getCjlx() {
+		return cjlx;
+	}
+	public void setCjlx(String cjlx) {
+		this.cjlx = cjlx;
+	}
+	public String getSjly() {
+		return sjly;
+	}
+	public void setSjly(String sjly) {
+		this.sjly = sjly;
+	}
+	public String getSbbh() {
+		return sbbh;
+	}
+	public void setSbbh(String sbbh) {
+		this.sbbh = sbbh;
+	}
+	public String getSblx() {
+		return sblx;
+	}
+	public void setSblx(String sblx) {
+		this.sblx = sblx;
+	}
+	public String getXjbz() {
+		return xjbz;
+	}
+	public void setXjbz(String xjbz) {
+		this.xjbz = xjbz;
+	}
+	public String getSjlx() {
+		return sjlx;
+	}
+	public void setSjlx(String sjlx) {
+		this.sjlx = sjlx;
 	}
 }

@@ -41,6 +41,7 @@ public class RecyleRecord {
 	private String etl;
 	private String gdspid;
 	private String jljf;
+	private String sfbl;
 	public String getRecyclerecordid() {
 		return recyclerecordid;
 	}
@@ -274,5 +275,11 @@ public class RecyleRecord {
 	}
 	public void setJljf(String jljf) {
 		this.jljf = jljf;
+	}
+	public String getSfbl() {
+		return sfbl;
+	}
+	public void setSfbl(String sfbl) {
+		this.sfbl = sfbl;
 	}
 }
