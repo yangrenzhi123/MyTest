@@ -233,7 +233,7 @@ public class UserController {
 					}
 				}
 			}
-		}, "InspectRecord数据转移线程").start();
+		}, "InspectRecord数据转移线程");//.start();
 
 		new Thread(new Runnable() {
 			public void run() {
