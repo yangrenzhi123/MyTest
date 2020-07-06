@@ -21,16 +21,16 @@ public class RedisSimple {
 
 //		Jedis j = new Jedis("192.168.30.120", 6379);
 		
-		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
+//		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.10.20", 7001));
-//		nodes.add(new HostAndPort("192.168.10.20", 7002));
-//		nodes.add(new HostAndPort("192.168.10.20", 7003));
-//		nodes.add(new HostAndPort("192.168.10.22", 7004));
-//		nodes.add(new HostAndPort("192.168.10.22", 7005));
-//		nodes.add(new HostAndPort("192.168.10.22", 7006));
-//		JedisCluster j = new JedisCluster(nodes);
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.10.20", 7001));
+		nodes.add(new HostAndPort("192.168.10.20", 7002));
+		nodes.add(new HostAndPort("192.168.10.20", 7003));
+		nodes.add(new HostAndPort("192.168.10.22", 7004));
+		nodes.add(new HostAndPort("192.168.10.22", 7005));
+		nodes.add(new HostAndPort("192.168.10.22", 7006));
+		JedisCluster j = new JedisCluster(nodes);
 		
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));
@@ -66,21 +66,22 @@ public class RedisSimple {
 		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
-		List<String> l = new ArrayList<>();
-		l.add("H_TENANT_GROUP_882948de-f34b-4f1c-b25c-3d13a83fbd39_de6963f8-5e10-4670-ba5c-7fc44f27e979");
-		l.add("H_TENANT_GROUP_882948de-f34b-4f1c-b25c-3d13a83fbd39_e293191a-9871-4ca8-8ee9-b5ec064a22d5");
-		int i = 0;
-		for(String key : l) {
-			i++;
-			j.del(key);
-		}
-		System.out.println("清理数量：" + i);
+//		List<String> l = new ArrayList<>();
+//		l.add("H_TENANT_GROUP_882948de-f34b-4f1c-b25c-3d13a83fbd39_de6963f8-5e10-4670-ba5c-7fc44f27e979");
+//		l.add("H_TENANT_GROUP_882948de-f34b-4f1c-b25c-3d13a83fbd39_e293191a-9871-4ca8-8ee9-b5ec064a22d5");
+//		int i = 0;
+//		for(String key : l) {
+//			i++;
+//			j.del(key);
+//		}
+//		System.out.println("清理数量：" + i);
 
 //		Map<String, String> m = j.hgetAll("h_threshold_rule_map6a70acdf-33e5-4b9f-8e39-d839aef905ac:3");
 //		System.out.println(m);
 
-//		String key = "RiskManagement";
-//		System.out.print(j.get(key));
+		String key = "freeGarbagebagPull:176014715623040";
+		System.out.println(j.get(key));
+		System.out.println(j.ttl(key));
 		
 //		String key = "testKey";
 //		j.set(key, "www.baidu.com");

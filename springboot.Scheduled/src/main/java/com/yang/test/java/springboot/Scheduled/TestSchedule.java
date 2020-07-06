@@ -57,6 +57,6 @@ class ScheduleConfig implements SchedulingConfigurer {
 
 	@Bean(destroyMethod = "shutdown")
 	public Executor taskExecutor() {
-		return Executors.newScheduledThreadPool(1);
+		return Executors.newScheduledThreadPool(3);
 	}
 }

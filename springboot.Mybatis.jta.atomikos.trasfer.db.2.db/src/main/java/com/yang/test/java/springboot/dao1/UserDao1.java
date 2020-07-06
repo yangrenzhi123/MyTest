@@ -3,6 +3,7 @@ package com.yang.test.java.springboot.dao1;
 import java.util.List;
 
 import entity.DispenserReplenish;
+import entity.ExchangeScoreRecord;
 import entity.GarbagebagPull;
 import entity.InspectRecord;
 import entity.RecycleLoseweight;
@@ -22,4 +23,5 @@ public interface UserDao1 {
 	List<InspectRecord> limitInspectRecord(Long start);
 	List<DispenserReplenish> limitDispenserReplenish(Long start);
 	List<ReplenishContent> limitReplenishContent(Long start);
+	List<ExchangeScoreRecord> limitExchangeScoreRecord(Long start);
 }

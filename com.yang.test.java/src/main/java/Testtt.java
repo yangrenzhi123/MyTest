@@ -6,6 +6,16 @@ import java.util.UUID;
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException, InterruptedException {
+//		StringBuilder sb = new StringBuilder();
+//		sb.append("123,");
+//		sb.deleteCharAt(sb.length() - 1);
+//		System.out.println(sb.toString());
+//		sb.delete(0, sb.length());
+//		System.out.println(sb.toString());
+		
+		
+		System.out.println("1\\".replaceAll("\\\\", "\\\\"));
+		
 //		Calendar day = Calendar.getInstance();
 //		day.set(Calendar.YEAR, 2019);
 //		day.set(Calendar.MONTH, 0);

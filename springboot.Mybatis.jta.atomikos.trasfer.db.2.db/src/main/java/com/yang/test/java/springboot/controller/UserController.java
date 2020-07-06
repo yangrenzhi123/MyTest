@@ -13,6 +13,7 @@ import com.yang.test.java.springboot.dao1.UserDao1;
 import com.yang.test.java.springboot.dao2.UserDao2;
 
 import entity.DispenserReplenish;
+import entity.ExchangeScoreRecord;
 import entity.GarbagebagPull;
 import entity.InspectRecord;
 import entity.RecycleLoseweight;
@@ -292,6 +293,35 @@ public class UserController {
 				}
 			}
 		}, "ReplenishContent数据转移线程");//.start();
+		
+		new Thread(new Runnable() {
+			public void run() {
+				long start = 0;
+				while (true) {
+					try {
+						long a = System.currentTimeMillis();
+						List<ExchangeScoreRecord> l = userDao1.limitExchangeScoreRecord(start);
+						long aa = System.currentTimeMillis() - a;
+
+						long b = System.currentTimeMillis();
+						userDao2.insertBatchExchangeScoreRecord(l);
+						long bb = System.currentTimeMillis() - b;
+
+						ExchangeScoreRecord last = l.get(l.size() - 1);
+
+						System.out.println("ExchangeScoreRecord，查询耗时：" + aa + "，插入耗时：" + bb + "，数据条数：" + l.size() + "，最后一条记录ID：" + last.getExchangescorerecordzzid());
+
+						if (l.size() < 10000) {
+							break;
+						} else {
+							start = last.getExchangescorerecordzzid();
+						}
+					}catch(Exception e) {
+						TestDingding.test("ExchangeScoreRecord，异常");
+					}
+				}
+			}
+		}, "ExchangeScoreRecord数据转移线程").start();
 		return 1;
 	}
 }

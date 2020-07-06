@@ -235,8 +235,6 @@
 		(#{item.dispenserreplenishid},#{item.equipmentid},#{item.sbbh},#{item.dwbh},#{item.xlbh},#{item.qybh},#{item.fzrbh},#{item.fzrxm},#{item.bhlx},#{item.shjlx},#{item.shsj},#{item.createuser},#{item.createtime},#{item.active},#{item.regionid},#{item.communityid},#{item.dispenserreplenishzzid})
 		</foreach>
 	</insert>
-	
-	
 	<insert id="insertBatchReplenishContent" parameterType="java.util.List">
 		insert into h_replenish_content (
 			replenishcontentid,
@@ -248,6 +246,47 @@
 		) values
 		<foreach collection="list" item="item" index="index" separator=",">
 		(#{item.replenishcontentid},#{item.dispenserreplenishid},#{item.dispensergoodsid},#{item.spmc},#{item.bhl},#{item.spjg})
+		</foreach>
+	</insert>
+	<insert id="insertBatchExchangeScoreRecord" parameterType="java.util.List">
+		insert into h_exchange_score_record (
+			exchangescorerecordid,
+			tenantid,
+			productid,
+			orderid,
+			transactiontime,
+			scoreaccountid,
+			glbm,
+			glid,
+			jylx,
+			version,
+			kyyezj,
+			kyyejs,
+			djyezj,
+			djyejs,
+			bdhkyye,
+			bdhdjye,
+			bdhzye,
+			czzzj,
+			bdhczz,
+			remark,
+			createuser,
+			createtime,
+			changeownerid,
+			regionid,
+			zhlx,
+			storeid,
+			storeuserid,
+			exchangescorerecordzzid,
+			communityid,
+			ownerid,
+			kyyezjamount,
+			kyyejsamount,
+			djyezjamount,
+			djyejsamount
+		) values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.exchangescorerecordid},#{item.tenantid},#{item.productid},#{item.orderid},#{item.transactiontime},#{item.scoreaccountid},#{item.glbm},#{item.glid},#{item.jylx},#{item.version},#{item.kyyezj},#{item.kyyejs},#{item.djyezj},#{item.djyejs},#{item.bdhkyye},#{item.bdhdjye},#{item.bdhzye},#{item.czzzj},#{item.bdhczz},#{item.remark},#{item.createuser},#{item.createtime},#{item.changeownerid},#{item.regionid},#{item.zhlx},#{item.storeid},#{item.storeuserid},#{item.exchangescorerecordzzid},#{item.communityid},#{item.ownerid},#{item.kyyezjamount},#{item.kyyejsamount},#{item.djyezjamount},#{item.djyejsamount})
 		</foreach>
 	</insert>
 </mapper>
