@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 public class JDBCSimple2243307 {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL2 = "jdbc:mysql://192.168.10.224:3307?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL2 = "jdbc:mysql://192.168.10.91:3307?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "Lenovo@@7788";
 

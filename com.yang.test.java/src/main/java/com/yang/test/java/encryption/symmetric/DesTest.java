@@ -9,6 +9,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Scanner;
 import java.util.UUID;
 
 import javax.crypto.BadPaddingException;
@@ -20,9 +21,13 @@ import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.IvParameterSpec;
 
 public class DesTest {
-	private static final String KEY = "12345678";
+	private static String KEY = "*****";
 	
 	public static void main(String[] args) throws Exception {
+		Scanner scanner = new Scanner(System.in);
+		KEY = scanner.next();
+		scanner.close();
+		
 //		encrypt("C:/Windows/Temp/新建文件夹/ac8fe6e3900046f1824fc78c21929c6f.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
 		decrypt("C:/Users/yrz/OneDrive/各种账号密码.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
 		
