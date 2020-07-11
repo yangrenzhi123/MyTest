@@ -19,7 +19,7 @@ public class UserController {
 	@GetMapping("/")
 	@ResponseBody
     @LcnTransaction //分布式事务注解
-    @Transactional //本地事务注解
+    //@Transactional //本地事务注解
 	public void index() {
 		userDao.insert();
 	}

@@ -16,9 +16,9 @@ public class Sentinels {
 		jedisPoolConfig.setMaxIdle(5);
 		jedisPoolConfig.setMinIdle(5);
 
-		Set<String> sentinels = new HashSet<>(Arrays.asList("172.17.202.154:26379", "172.17.202.148:26379", "172.17.202.152:26379"));
+		Set<String> sentinels = new HashSet<>(Arrays.asList("172.17.153.247:26379", "172.17.153.254:26379", "172.17.153.244:26379"));
 
-		JedisSentinelPool pool = new JedisSentinelPool("mymaster", sentinels, jedisPoolConfig);
+		JedisSentinelPool pool = new JedisSentinelPool("mymaster", sentinels, jedisPoolConfig, "123456");
 
 		Jedis j = pool.getResource();
 

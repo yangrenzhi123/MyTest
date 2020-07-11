@@ -13,7 +13,7 @@ public class KafkaComsumer {
 
 		String group = "test";
 		String topic = "test";
-		props.put("bootstrap.servers", "192.168.8.70:9092");
+		props.put("bootstrap.servers", "192.168.10.19:9092,192.168.10.21:9092,192.168.10.39:9092");
 
 		props.put("group.id", group);
 		props.put("auto.offset.reset", "earliest");

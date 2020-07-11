@@ -24,6 +24,7 @@ public class FeignHeadConfiguration {
 			ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
 			if (attrs != null) {
+				//RequestContextHolder.setRequestAttributes(attrs, true);
 				HttpServletRequest request = attrs.getRequest();
 				String apiVersion = request.getHeader("api-version");
 				if (StringUtils.isNotEmpty(apiVersion)) {
