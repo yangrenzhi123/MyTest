@@ -45,18 +45,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
-			<version>2.3.1.RELEASE</version><!--$NO-MVN-MAN-VER$ -->
-			<exclusions>
+			<!-- <exclusions>
 				<exclusion>
 					<groupId>io.lettuce</groupId>
 					<artifactId>lettuce-core</artifactId>
 				</exclusion>
-			</exclusions>
-		</dependency>
+			</exclusions> -->
+		</dependency><!-- 
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
-			<!--<version>3.3.0</version>$NO-MVN-MAN-VER$ -->
-		</dependency>
+		</dependency> -->
 	</dependencies>
 </project>

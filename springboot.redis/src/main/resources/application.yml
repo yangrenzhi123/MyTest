@@ -1,21 +1,4 @@
-server:
-  port: 7970
 spring:
-  application:
-    name: TransactionManager
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate: 
-      ddl-auto: update
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.8.70:3306/tx-manager?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
-    validationQuery: SELECT 1
-    testWhileIdle: true
-    testOnBorrow: true
-    testOnReturn: false
 #  redis:
 #    cluster:
 #      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
@@ -28,12 +11,13 @@ spring:
   redis:
     host: 192.168.8.70
     port: 6379
-    pool: 
-      maxActive: 10
-      maxWait: -1
-      maxIdle: 5
-      minIdle: 0
-      timeout: 0
+    jedis:
+      pool: 
+        maxActive: 10
+        maxWait: -1
+        maxIdle: 5
+        minIdle: 0
+        timeout: 0
 #  redis:
 #    password: 123456
 #    sentinel:
