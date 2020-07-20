@@ -1,4 +1,4 @@
-package com.yang.test.java.mongodb;
+package com.yang.test.java.mongodb.model;
 
 public class Length {
 

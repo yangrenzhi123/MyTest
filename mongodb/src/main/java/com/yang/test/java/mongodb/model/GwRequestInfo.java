@@ -1,4 +1,4 @@
-package com.yang.test.java.mongodb;
+package com.yang.test.java.mongodb.model;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 

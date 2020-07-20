@@ -13,15 +13,15 @@ import com.mongodb.client.MongoIterable;
 public class TestMongodb6 {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		MongoClient mongoClient = new MongoClient("192.168.10.238", 27017);
-		final MongoDatabase mongoDatabase = mongoClient.getDatabase("recyclerecord");
+		MongoClient mongoClient = new MongoClient("192.168.255.84", 27017);
+		final MongoDatabase mongoDatabase = mongoClient.getDatabase("test");
 		MongoIterable<String> collectionNames = mongoDatabase.listCollectionNames();
 
 		MongoCursor<String> cursor = collectionNames.iterator();
 		while (cursor.hasNext()) {
 			String collectionName = cursor.next();
 			if(collectionName.equals("h_recycle_record")) {
-				continue;
+				//continue;
 			}
 			
 			MongoCollection<Document> mc = mongoDatabase.getCollection(collectionName);

@@ -17,7 +17,7 @@ public class TestCanal {
 
 	public static void main(String args[]) {
 		// 创建链接
-		CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("172.18.39.225", 11111), "example", "", "");
+		CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("192.168.8.70", 11111), "example", "", "");
 		int batchSize = 1000;
 		int emptyCount = 0;
 		try {
