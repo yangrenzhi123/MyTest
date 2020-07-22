@@ -1,3 +1,5 @@
+server:
+  port: 8762
 eureka:
   client:
     healthcheck:
@@ -16,7 +18,11 @@ spring:
     username: admin
     password: admin
     virtual-host: /
-words: you,me,he8r
+  zipkin:
+    baseUrl: http://192.168.8.70:9411
+  sleuth:
+    sampler:
+      probability: 1.0
 management:
   endpoint:
     shutdown:
@@ -27,3 +33,4 @@ management:
     web:
       exposure:
         include: ["health","info","shutdown"]
+words: you,me,he8r

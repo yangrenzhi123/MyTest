@@ -1,4 +1,4 @@
-package com.yang.test.java.springcloud;
+package com.yang.test.java.springcloud.config;
 
 import java.util.UUID;
 
@@ -25,15 +25,15 @@ public class FeignHeadConfiguration {
 
 			if (attrs != null) {
 				//RequestContextHolder.setRequestAttributes(attrs, true);
-				HttpServletRequest request = attrs.getRequest();
-				String apiVersion = request.getHeader("api-version");
-				if (StringUtils.isNotEmpty(apiVersion)) {
-					RibbonFilterContextHolder.getCurrentContext().add("api-version", apiVersion);
-					requestTemplate.header("api-version", apiVersion);
-				}else {
-					RibbonFilterContextHolder.getCurrentContext().add("api-version", "0");
-					requestTemplate.header("api-version", "0");
-				}
+//				HttpServletRequest request = attrs.getRequest();
+//				String apiVersion = request.getHeader("api-version");
+//				if (StringUtils.isNotEmpty(apiVersion)) {
+//					RibbonFilterContextHolder.getCurrentContext().add("api-version", apiVersion);
+//					requestTemplate.header("api-version", apiVersion);
+//				}else {
+//					RibbonFilterContextHolder.getCurrentContext().add("api-version", "0");
+//					requestTemplate.header("api-version", "0");
+//				}
 			}
 
 			requestTemplate.header("headerId2", UUID.randomUUID().toString());

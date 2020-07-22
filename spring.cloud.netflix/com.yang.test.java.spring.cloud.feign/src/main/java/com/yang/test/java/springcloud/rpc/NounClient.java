@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("mmb-eureka-client-provider")
+@FeignClient("com-yang-test-zzl")
 public interface NounClient {
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/provider-test", method = RequestMethod.GET)
 	String getWord(@RequestHeader(value = "headerId") String headerId);
 
 	@RequestMapping("/formdata")

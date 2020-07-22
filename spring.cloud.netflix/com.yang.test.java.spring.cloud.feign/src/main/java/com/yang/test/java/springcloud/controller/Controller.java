@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yang.test.java.springcloud.WordService;
 import com.yang.test.java.springcloud.rpc.NounClient;
+import com.yang.test.java.springcloud.service.WordService;
 
 import feign.Feign;
 import feign.gson.GsonDecoder;
@@ -45,9 +45,37 @@ public class Controller {
 
 	@RequestMapping("/")
 	public @ResponseBody String index() {
-		String flag = UUID.randomUUID().toString();
-		String s = wordService.getNoun(flag);
-		return s;
+		int a = 0;
+		int b = 0;
+		int c = 0;
+		int d = 0;
+		int ee = 0;
+		int f = 0;
+		for (int i = 0; i < 20; i++) {
+			try {
+				String flag = UUID.randomUUID().toString();
+				wordService.getNoun(flag);
+				f++;
+			} catch (feign.RetryableException e) {
+				a++;
+			} catch (RuntimeException e) {
+				Throwable e1 = e.getCause();
+				if (e1 instanceof com.netflix.client.ClientException) {
+					if (e1.getMessage().startsWith("Load balancer does not have available server for client:")) {
+						System.out.println(e1.getMessage());
+						b++;
+					} else {
+						c++;
+					}
+				} else {
+					d++;
+					System.out.println(e.getMessage());
+				}
+			} catch (Exception e) {
+				ee++;
+			}
+		}
+		return a + "，" + b + "，" + c + "，" + d + "，" + ee + "，" + f;
 	}
 
 	@RequestMapping({"/api-b/2/test1", "/api-b/2/test2"})

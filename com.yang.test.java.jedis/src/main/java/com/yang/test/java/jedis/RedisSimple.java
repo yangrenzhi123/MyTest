@@ -66,21 +66,27 @@ public class RedisSimple {
 		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
-//		List<String> l = new ArrayList<>();
-//		l.add("app_version_update");
-//		int i = 0;
-//		for(String key : l) {
-//			i++;
-//			j.del(key);
-//		}
-//		System.out.println("清理数量：" + i);
+		List<String> l = new ArrayList<>();
+		l.add("universalScoreRule_0a325a6c-5bd6-46de-9d16-5ea31efc89e7");
+		l.add("universalScoreRule_15e9c754-0a2d-42a3-a2d7-053997033a84");
+		l.add("universalScoreRule_27aa384c-f92e-4d33-8543-76babee2a165");
+		l.add("universalScoreRule_8e52dfb5-2c0d-434f-80e9-536385943b6b");
+		l.add("universalScoreRule_aee8ad5a-128b-44fe-b874-fc5f31f1ff76");
+		l.add("universalScoreRule_ea58d41b-2d4c-4fd0-8c8f-3413a59b5d81");
+		int i = 0;
+		for(String key : l) {
+			i++;
+			//j.del(key);
+			//j.set(key, "1");
+		}
+		System.out.println("清理数量：" + i);
 
 //		Map<String, String> m = j.hgetAll("h_threshold_rule_map6a70acdf-33e5-4b9f-8e39-d839aef905ac:3");
 //		System.out.println(m);
 
-		String key = "app_version_update";
-		System.out.println(j.get(key));
-		System.out.println(j.ttl(key));
+//		String key = "app_version_update";
+//		System.out.println(j.get(key));
+//		System.out.println(j.ttl(key));
 		
 //		String key = "testKey";
 //		j.set(key, "www.baidu.com");

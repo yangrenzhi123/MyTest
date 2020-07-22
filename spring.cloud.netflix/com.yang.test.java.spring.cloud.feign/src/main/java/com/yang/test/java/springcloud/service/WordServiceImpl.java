@@ -1,4 +1,4 @@
-package com.yang.test.java.springcloud;
+package com.yang.test.java.springcloud.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ public class WordServiceImpl implements WordService {
 	@Autowired
 	NounClient nounClient;
 
-	@HystrixCommand(fallbackMethod = "getFallbackNoun")
+	//@HystrixCommand(fallbackMethod = "getFallbackNoun")
 	public String getNoun(String uuid) {
 		return nounClient.getWord(uuid);
 	}

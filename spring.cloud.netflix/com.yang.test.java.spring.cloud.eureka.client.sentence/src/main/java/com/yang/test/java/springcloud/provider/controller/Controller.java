@@ -1,26 +1,27 @@
-package com.example.demo;
+package com.yang.test.java.springcloud.provider.controller;
 
-import org.bouncycastle.crypto.RuntimeCryptoException;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RefreshScope
 public class Controller {
+
+	public static int i = 0;
 
 	@RequestMapping("/")
 	public String getWord() throws InterruptedException {
+		System.out.println("第" + (++i) + "次进入");
+
+		Thread.sleep(3000);
+
 		return "0";
 	}
 
-	@RequestMapping("/formdata")
+	@RequestMapping("/provider-test")
 	public String test() throws InterruptedException {
-		Integer a = null;
-		if(a.equals("")) {
-			
-		}
-		
+		System.out.println("第" + (++i) + "次进入");
+
+		Thread.sleep(3000);
 		return "0";
 	}
 }

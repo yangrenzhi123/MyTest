@@ -48,7 +48,7 @@ public class RedisClear2 {
 		long a = System.currentTimeMillis();
 //		keys = keys(j, "h_tenant_group:LYZH*");
 //		keys = keys(j, "h_recycle_record_day_*");
-		keys = keys(j, "freeGarbagebagPull:*");
+		keys = keys(j, "inviteRule:*");
 		for (String key : keys) {
 			String value = j.get(key);
 			if(!"1".equals(value)) {

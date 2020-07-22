@@ -1,10 +1,20 @@
 spring:
   application:
-    name: testZuul
+    name: com-yang-test-zzl
+  zipkin:
+    baseUrl: http://192.168.8.70:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
 server:
   port: 8106
-  tomcat:
-    basedir: /tmp
 zuul:
   routes:
     api-a:
@@ -15,18 +25,13 @@ zuul:
       path: /api-b/2/**
       serviceId: noun2
       strip-prefix: false
-    api-c:
-      path: /**
-      serviceId: noun3
+    api-d:
+      path: /provider-test/**
+      serviceId: mmb-eureka-client-provider
       strip-prefix: false
   semaphore:
     max-semaphores: 10000
 ribbon:
-  ReadTimeout: 10000
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka:123456@localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-    ip-address: 127.0.0.1
+  ReadTimeout: 300000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0

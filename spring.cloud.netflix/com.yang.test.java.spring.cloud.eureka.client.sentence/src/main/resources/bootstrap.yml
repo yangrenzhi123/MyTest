@@ -6,9 +6,7 @@ spring:
       uri: http://localhost:8888
       username: user
       password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
-server:
-  port: 8762
-eureka:
-  instance:
-    metadata-map:
-      api-version: 0
+#eureka:
+#  instance:
+#    metadata-map:
+#      api-version: 0

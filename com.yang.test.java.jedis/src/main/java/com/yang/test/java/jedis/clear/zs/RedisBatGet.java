@@ -42,18 +42,14 @@ public class RedisBatGet {
 
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "h_tenant_group_map:*");
+		TreeSet<String> keys = keys(j, "universalScoreRule_*");
 
-		
-
-		System.out.println("------------------------------------START-----------------------------------------");
 		for (String key : keys) {
-			Map<String, String> m = j.hgetAll(key);
-			if(m.toString().contains("\"zhzt\"=0,")) {
-	            j.del(key);
+			String s = j.get(key);
+			if(s.equals("\"1\"")) {
+				System.out.println(key);
 			}
 		}
-		System.out.println("------------------------------------END-----------------------------------------");
 
 		j.close();
 	}

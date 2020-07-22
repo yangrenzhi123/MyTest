@@ -5,9 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-//import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-//import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
@@ -15,10 +12,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 @EnableHystrix
 @EnableHystrixDashboard
-@EnableZuulProxy
-public class FeignApplication {
+public class StartupFeign {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FeignApplication.class, args);
+		SpringApplication.run(StartupFeign.class, args);
 	}
 }
