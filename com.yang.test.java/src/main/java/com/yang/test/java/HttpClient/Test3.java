@@ -40,7 +40,7 @@ public class Test3 {
 	public static void doo() throws ClientProtocolException, IOException {
 		double cost = 11.683;//18200:11.683;
 		double begin = 8.69; //2300
-		double yestoday = 8.42;
+		double yestoday = 8.90;
 		
 		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz000856");
 

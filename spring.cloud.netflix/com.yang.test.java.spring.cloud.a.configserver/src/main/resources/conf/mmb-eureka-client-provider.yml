@@ -19,7 +19,7 @@ spring:
     password: admin
     virtual-host: /
   zipkin:
-    baseUrl: http://192.168.8.70:9411
+    baseUrl: http://192.168.10.240:9411
   sleuth:
     sampler:
       probability: 1.0

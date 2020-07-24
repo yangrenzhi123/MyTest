@@ -32,6 +32,6 @@ zuul:
   semaphore:
     max-semaphores: 10000
 ribbon:
-  ReadTimeout: 300000
+  ReadTimeout: 1000
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
