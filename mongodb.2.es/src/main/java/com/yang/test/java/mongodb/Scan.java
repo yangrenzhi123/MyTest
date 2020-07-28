@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.http.HttpHost;
-import org.bson.BsonTimestamp;
 import org.bson.Document;
 import org.bson.json.Converter;
 import org.bson.json.JsonWriterSettings;
@@ -30,13 +29,16 @@ public class Scan {
 	
 	public static void main(String[] args) throws IOException {
 		final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		final RestHighLevelClient esClient = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.255.90", 9200, "http")));
 		
-		MongoClient mongoClient = new MongoClient("192.168.255.84", 27017);
+		//es数据源
+		final RestHighLevelClient esClient = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.26.199", 9200, "http")));
+		
+		//mongo数据源
+		MongoClient mongoClient = new MongoClient("192.168.26.194", 27017);
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 		MongoCollection mongoCollection = mgdb.getCollection("h_recyle_record");
 
-		long last = 200000000;
+		long last = 0;
 
 		while(true) {
 			int i = 0;
@@ -61,7 +63,7 @@ public class Scan {
 
 				JsonWriterSettings settings = JsonWriterSettings.builder().int64Converter(new Converter<Long>() {
 					public void convert(Long value, StrictJsonWriter writer) {
-						writer.writeNumber("\"" + value.toString() + "\"");
+						writer.writeNumber(value.toString());
 					}
 				}).dateTimeConverter(new Converter<Long>() {
 					public void convert(Long value, StrictJsonWriter writer) {

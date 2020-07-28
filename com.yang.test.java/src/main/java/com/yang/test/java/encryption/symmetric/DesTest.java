@@ -28,8 +28,8 @@ public class DesTest {
 		KEY = scanner.next();
 		scanner.close();
 		
-//		encrypt("C:/Windows/Temp/新建文件夹/ac8fe6e3900046f1824fc78c21929c6f.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
-		decrypt("C:/Users/yrz/OneDrive/各种账号密码.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
+		encrypt("C:/Windows/Temp/新建文件夹/2e4398bd415f4d39b711ed4cc756230a.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
+		decrypt("C:/Users/yrz/OneDrive/工资条/工资条.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
 		
 //		simpleEncrypt();
 	}
