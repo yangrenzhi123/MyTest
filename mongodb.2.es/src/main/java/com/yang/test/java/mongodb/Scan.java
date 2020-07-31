@@ -12,10 +12,16 @@ import org.bson.json.JsonWriterSettings;
 import org.bson.json.StrictJsonWriter;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
@@ -30,23 +36,33 @@ public class Scan {
 	public static void main(String[] args) throws IOException {
 		final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		//es数据源
-		final RestHighLevelClient esClient = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.26.199", 9200, "http")));
+		// es数据源
+		final RestHighLevelClient esClient = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.7", 9200, "http")));
 		
-		//mongo数据源
-		MongoClient mongoClient = new MongoClient("192.168.26.194", 27017);
+		// mongo数据源
+		MongoClient mongoClient = new MongoClient("172.17.134.12", 27017);
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
 		MongoCollection mongoCollection = mgdb.getCollection("h_recyle_record");
 
-		long last = 0;
-
+		// settings
+		JsonWriterSettings settings = JsonWriterSettings.builder().int64Converter(new Converter<Long>() {
+			public void convert(Long value, StrictJsonWriter writer) {
+				writer.writeNumber(value.toString());
+			}
+		}).dateTimeConverter(new Converter<Long>() {
+			public void convert(Long value, StrictJsonWriter writer) {
+				writer.writeNumber("\"" + df.format(new Date(value)) + "\"");
+			}
+		}).build();
+		
 		while(true) {
 			int i = 0;
 			
 			long a = System.currentTimeMillis();
 
-			BulkRequest bulkRequest = new BulkRequest();
+			final long last = getLast(esClient);
 			
+			BulkRequest bulkRequest = new BulkRequest();
 			
 			BasicDBObject query = new BasicDBObject();
 			query.put("_id", new BasicDBObject("$gt", last));
@@ -56,36 +72,42 @@ public class Scan {
 			while(cursor.hasNext()) {
 				
 				Document document = cursor.next();
-				last = document.getLong("_id");
 
 				IndexRequest request = new IndexRequest("test");
-				request.id(last + "");
-
-				JsonWriterSettings settings = JsonWriterSettings.builder().int64Converter(new Converter<Long>() {
-					public void convert(Long value, StrictJsonWriter writer) {
-						writer.writeNumber(value.toString());
-					}
-				}).dateTimeConverter(new Converter<Long>() {
-					public void convert(Long value, StrictJsonWriter writer) {
-						writer.writeNumber("\"" + df.format(new Date(value)) + "\"");
-					}
-				}).build();
+				request.id(document.getLong("_id").toString());
 
 				request.source(document.toJson(settings).replaceAll("-", "").replace("{\"_id\":", "{\"id\":"), XContentType.JSON);
 				bulkRequest.add(request);
 				
 				i++;
 			}
-			
 
 			esClient.bulk(bulkRequest, RequestOptions.DEFAULT);
 			System.out.println("last：" + last + "，耗时：" + (System.currentTimeMillis() - a));
-			
 			
 			if(i < 10000) break;
 		}
 		
 		esClient.close();
 		mongoClient.close();
+	}
+
+	public static long getLast(final RestHighLevelClient esClient) throws IOException {
+		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+		sourceBuilder.from(0);
+		sourceBuilder.size(1);
+		sourceBuilder.sort("id", SortOrder.DESC);
+
+		SearchRequest searchRequest = new SearchRequest("test");
+		searchRequest.source(sourceBuilder);
+		SearchResponse searchResponse = esClient.search(searchRequest, RequestOptions.DEFAULT);
+
+		SearchHits hits = searchResponse.getHits();
+		SearchHit[] searchHits = hits.getHits();
+		if (searchHits.length > 0) {
+			return Long.parseLong(searchHits[0].getId());
+		} else {
+			return 0;
+		}
 	}
 }

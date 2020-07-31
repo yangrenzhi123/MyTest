@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Random;
 
 public class FileNio {
 
@@ -13,8 +14,13 @@ public class FileNio {
 		FileChannel fileChannel = raf.getChannel();
 		ByteBuffer buf = ByteBuffer.allocate(1024);
 
-		for (int i = 0; i < 10; i++) {
-			String newData = i + "\r\n";
+		Random r = new Random();
+		long a = System.currentTimeMillis();
+		
+		for (int i = 0; i < 100000; i++) {
+			int v = r.nextInt(400000000);
+			
+			String newData = (v+1) + "\r\n";
 			buf.clear();
 			buf.put(newData.getBytes());
 			buf.flip();
@@ -33,6 +39,7 @@ public class FileNio {
 //			} while (bytesRead != -1);
 		}
 		
+		System.out.println(System.currentTimeMillis() - a);
 		raf.close();
 	}
 }

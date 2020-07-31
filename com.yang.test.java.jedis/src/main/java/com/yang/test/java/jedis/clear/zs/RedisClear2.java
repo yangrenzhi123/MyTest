@@ -48,14 +48,11 @@ public class RedisClear2 {
 		long a = System.currentTimeMillis();
 //		keys = keys(j, "h_tenant_group:LYZH*");
 //		keys = keys(j, "h_recycle_record_day_*");
-		keys = keys(j, "inviteRule:*");
+		keys = keys(j, "deqingUnPushedInspection*");
 		for (String key : keys) {
-			String value = j.get(key);
-			if(!"1".equals(value)) {
-				System.out.println(key);
-				System.out.println(value);
-				j.del(key);
-			}
+			//System.out.print(key + ":");
+			//System.out.println(j.get(key));
+			j.del(key);
 			i++;
 		}
 		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);

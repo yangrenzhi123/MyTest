@@ -13,10 +13,10 @@ import org.elasticsearch.client.RestHighLevelClient;
 public class EsQueryByid {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.26.199", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.7", 9200, "http")));
 
-		GetRequest r = new GetRequest("test4"/*, "h_recycle_record", "1"*/);
-		r.id("1");
+		GetRequest r = new GetRequest("test");
+		r.id("11521346");
 		GetResponse p = client.get(r, RequestOptions.DEFAULT);
 		Map<String, Object> source = p.getSource();
 

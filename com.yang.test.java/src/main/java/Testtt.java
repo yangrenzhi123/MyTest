@@ -1,11 +1,18 @@
 import java.io.UnsupportedEncodingException;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.UUID;
 
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException, InterruptedException {
+		System.out.print(new String(new byte[] {-17,-69,-65}));
+		
+		for(byte b : "\r\n".getBytes()) {
+			System.out.println(b);
+		}
+		
+//		System.out.println(Long.parseLong("233661665"));
+		
 //		StringBuilder sb = new StringBuilder();
 //		sb.append("123,");
 //		sb.deleteCharAt(sb.length() - 1);
@@ -13,8 +20,7 @@ public class Testtt {
 //		sb.delete(0, sb.length());
 //		System.out.println(sb.toString());
 		
-		
-		System.out.println("1\\".replaceAll("\\\\", "\\\\"));
+//		System.out.println("1\\".replaceAll("\\\\", "\\\\"));
 		
 //		Calendar day = Calendar.getInstance();
 //		day.set(Calendar.YEAR, 2019);
@@ -114,12 +120,8 @@ public class Testtt {
 		
 		
 //		throw new RuntimeException(new NullPointerException());
-		
-//		long a = System.currentTimeMillis();
-//		System.out.println(new Random().nextInt(2));
-//		System.out.println(System.currentTimeMillis() - a);
 
-		System.out.println(UUID.randomUUID().toString());
+//		System.out.println(UUID.randomUUID().toString());
 //		System.out.println(UUID.randomUUID().toString());
 //		System.out.println(UUID.randomUUID().toString());
 //		System.out.println(UUID.randomUUID().toString());

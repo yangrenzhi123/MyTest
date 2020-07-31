@@ -12,18 +12,21 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 
 @SuppressWarnings("deprecation")
 public class EsQuery {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.26.199", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.7", 9200, "http")));
 
 		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
 		sourceBuilder.from(0);
-		sourceBuilder.size(100);
-		sourceBuilder.query(QueryBuilders.rangeQuery("id").lt(10000));
-		sourceBuilder.sort("id");
+		sourceBuilder.size(10);
+		//sourceBuilder.query(QueryBuilders.matchQuery("id", "5"));
+		//sourceBuilder.query(QueryBuilders.rangeQuery("id").lt(10000));
+		//sourceBuilder.sort("id");
+		sourceBuilder.sort("id", SortOrder.DESC);
 		
 		SearchRequest searchRequest = new SearchRequest("test");
 		//searchRequest.types("h_recycle_record");

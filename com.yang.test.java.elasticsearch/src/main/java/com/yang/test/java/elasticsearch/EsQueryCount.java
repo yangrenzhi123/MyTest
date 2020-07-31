@@ -17,21 +17,22 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 public class EsQueryCount {
 
 	public static void main(String[] args) throws IOException {
-		RestClientBuilder rcb = RestClient.builder(new HttpHost("192.168.26.199", 9200, "http"));
+		RestClientBuilder rcb = RestClient.builder(new HttpHost("172.17.134.7", 9200, "http"));
 		
 		final RestHighLevelClient client = new RestHighLevelClient(rcb);
 
 		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-		sourceBuilder.query(QueryBuilders.rangeQuery("id").lt(20000));
+		sourceBuilder.query(QueryBuilders.rangeQuery("id").gt(100000000));
 
 		CountRequest searchRequest = new CountRequest("test");
 		//searchRequest.types("h_recycle_record");
 		searchRequest.source(sourceBuilder);
 
+		final long a = System.currentTimeMillis();
 		client.countAsync(searchRequest, RequestOptions.DEFAULT, new ActionListener<CountResponse>() {
 			public void onResponse(CountResponse response) {
 				long count = response.getCount();
-				System.out.println(count);
+				System.out.println("数量："+count+"耗时："+(System.currentTimeMillis() - a));
 
 				try {
 					client.close();
