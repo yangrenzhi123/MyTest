@@ -48,7 +48,7 @@ public class RedisClear2 {
 		long a = System.currentTimeMillis();
 //		keys = keys(j, "h_tenant_group:LYZH*");
 //		keys = keys(j, "h_recycle_record_day_*");
-		keys = keys(j, "deqingUnPushedInspection*");
+		keys = keys(j, "deqingUnPushedRegion:*");
 		for (String key : keys) {
 			//System.out.print(key + ":");
 			//System.out.println(j.get(key));

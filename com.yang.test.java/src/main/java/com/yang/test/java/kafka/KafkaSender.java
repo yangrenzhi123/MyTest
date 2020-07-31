@@ -1,3 +1,4 @@
+package com.yang.test.java.kafka;
 import java.util.Properties;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -13,10 +14,10 @@ public class KafkaSender {
 		properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
 		String topic = "test";
-		properties.put("bootstrap.servers", "192.168.10.19:9092,192.168.10.21:9092,192.168.10.39:9092");
+		properties.put("bootstrap.servers", "192.168.8.70:9092");
 
 		Producer producer = new KafkaProducer<String, String>(properties);
-		producer.send(new ProducerRecord<String, String>(topic, "5"));
+		producer.send(new ProducerRecord<String, String>(topic, "0"));
 		producer.close();
 	}
 }

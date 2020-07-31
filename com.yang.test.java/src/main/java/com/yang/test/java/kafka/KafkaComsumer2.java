@@ -1,3 +1,4 @@
+package com.yang.test.java.kafka;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
@@ -7,16 +8,15 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 @SuppressWarnings("resource")
-public class KafkaComsumer {
+public class KafkaComsumer2 {
 	public static void main(String[] args) throws Exception {
 		Properties props = new Properties();
 
 		String group = "test";
 		String topic = "test";
-		props.put("bootstrap.servers", "192.168.10.19:9092,192.168.10.21:9092,192.168.10.39:9092");
-
+		props.put("bootstrap.servers", "192.168.10.93:9092");
+		
 		props.put("group.id", group);
-		props.put("auto.offset.reset", "earliest");
 		props.put("enable.auto.commit", "true");
 		props.put("auto.commit.interval.ms", "1000");
 		props.put("session.timeout.ms", "30000");
