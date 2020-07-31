@@ -43,24 +43,20 @@ public class RedisClear {
 		JedisCluster j = new JedisCluster(nodes);
 
 		TreeSet<String> keys;
-		
+		int i = 0;
+
 		long a = System.currentTimeMillis();
-		keys = keys(j, "mongoCountCache:H_TENANT_GROUP_*");
+		keys = keys(j, "h_tenant_group:LYZH*");
+//		keys = keys(j, "h_recycle_record_day_*");
+//		keys = keys(j, "deqingUnPushedRegion:*");
+		System.out.println("keys耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + keys.size());
 		for (String key : keys) {
+			//System.out.print(key + ":");
+			//System.out.println(j.get(key));
 			j.del(key);
-			System.out.println(key);
+			i++;
 		}
-		keys = keys(j, "h_tenant_group_greenuser_day_yw_*");
-		for (String key : keys) {
-			j.del(key);
-			System.out.println(key);
-		}
-		keys = keys(j, "h_tenant_group_greenuser_day_*");
-		for (String key : keys) {
-			j.del(key);
-			System.out.println(key);
-		}
-		System.out.println("耗时：" + (System.currentTimeMillis() - a));
+		System.out.println("总耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
 
 		j.close();
 	}
