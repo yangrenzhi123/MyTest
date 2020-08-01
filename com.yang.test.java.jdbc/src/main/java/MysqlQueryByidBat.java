@@ -14,7 +14,7 @@ import java.util.List;
 public class MysqlQueryByidBat {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://172.17.134.5:3306/test";
+	static final String DB_URL = "jdbc:mysql://172.17.134.10:3306/test";
 	static final String USER = "root";
 	static final String PASS = "123456";
 	

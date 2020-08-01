@@ -67,11 +67,12 @@ public class RedisSimple {
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
 		List<String> l = new ArrayList<>();
-		l.add("h_throw_rulebygroup_new_score:6b0e9307-4317-47d1-b0d8-ccdf628202ae20200730");
+		l.add("h_tenant_group_map:LYZH180317821001");
+		l.add("h_tenant_group_map:LYZH180317821002");
 		int i = 0;
 		for(String key : l) {
-			System.out.println(j.get(key));
-			//j.del(key);
+			//System.out.println(j.get(key));
+			j.del(key);
 			//j.set(key, "1");
 			i++;
 		}
