@@ -12,7 +12,7 @@ import org.elasticsearch.common.xcontent.XContentType;
 public class EsCreateIndex {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.26.199", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.11", 9200, "http")));
 
 		createIndex(client);
 

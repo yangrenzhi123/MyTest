@@ -37,12 +37,12 @@ public class Scan {
 		final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		// es数据源
-		final RestHighLevelClient esClient = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.7", 9200, "http")));
+		final RestHighLevelClient esClient = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.11", 9200, "http")));
 		
 		// mongo数据源
-		MongoClient mongoClient = new MongoClient("172.17.134.12", 27017);
+		MongoClient mongoClient = new MongoClient("172.17.134.10", 27017);
 		MongoDatabase mgdb = mongoClient.getDatabase("test");
-		MongoCollection mongoCollection = mgdb.getCollection("h_recyle_record");
+		MongoCollection mongoCollection = mgdb.getCollection("h_recycle_record");
 
 		// settings
 		JsonWriterSettings settings = JsonWriterSettings.builder().int64Converter(new Converter<Long>() {
