@@ -40,7 +40,7 @@ public class EsQueryByidBat {
 		bf.close();
 		
 		// 准备连接
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.7", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.11", 9200, "http")));
 		GetRequest r = new GetRequest("test");
 		
 		// 开始执行
