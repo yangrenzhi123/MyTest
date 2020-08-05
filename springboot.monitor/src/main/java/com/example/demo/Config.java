@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource("classpath:application.properties")
+//@PropertySource("classpath:application.properties")
+@PropertySource("file:/usr/local/include/config/application.properties")
 @ConfigurationProperties
 public class Config {
 
