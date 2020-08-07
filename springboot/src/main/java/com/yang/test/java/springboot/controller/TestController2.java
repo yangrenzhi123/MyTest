@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
+public class TestController2 {
 
-	@RequestMapping("/")
+	@RequestMapping("/test")
 	public void index() throws Exception {
 	}
 }
