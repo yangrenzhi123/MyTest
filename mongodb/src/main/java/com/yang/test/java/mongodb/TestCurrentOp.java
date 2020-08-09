@@ -17,7 +17,7 @@ public class TestCurrentOp {
 //		FileChannel fileChannel = raf.getChannel();
 //		ByteBuffer buf = ByteBuffer.allocate(1024);
 		
-		MongoClient mongoClient = new MongoClient("192.168.10.26", 27017);
+		MongoClient mongoClient = new MongoClient("192.168.10.222", 27017);
 
 		final MongoDatabase mgdb = mongoClient.getDatabase("admin");
 		Document doc = new Document();
@@ -32,10 +32,10 @@ public class TestCurrentOp {
 				secs_running = (long)o;
 			}
 			
-			//if (item.get("ns").toString().startsWith("test.")) {
-//			if(secs_running > 7000) {
-//				System.out.println(item);
-				System.out.println("client：\t\t" + item.get("client") + "，");
+			if (item.get("client_s") != null) {
+			//if(secs_running > 7000) {
+				System.out.println(item);
+				System.out.println("client：\t\t" + item.get("client_s") + "，");
 				System.out.println("shard：\t\t" + item.get("shard") + "，");
 				System.out.println("host：\t\t" + item.get("host") + "，");
 				System.out.println("ns：\t\t" + item.get("ns") + "，");
@@ -45,7 +45,7 @@ public class TestCurrentOp {
 				System.out.println("locks：\t\t" + item.get("locks"));
 				System.out.println("----------------------------------------------------------");
 				i++;
-//			 }
+			 }
 		}
 		System.out.println("总数量：" + infos.size());
 		System.out.println("符合条件数量：" + i);

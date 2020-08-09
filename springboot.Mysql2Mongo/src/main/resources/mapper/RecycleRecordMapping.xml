@@ -2,6 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yang.test.springboot.dao.RecycleRecordDAO" >
 	<select id="limitRecycleRecord" resultType="com.yang.test.springboot.mongo.entity.RecycleRecordDTO">
-		select * from h_recycle_record where recyclerecordzzid > #{start} and recyclerecordzzid <![CDATA[<=]]> #{maxid} order by recyclerecordzzid limit #{limit}
+		select 
+		
+		
+		tenantgroupid,
+		tenantid,
+		productid,
+		yzqyid as regionid
+		yxxqid as communityid
+		CONVERT(DATE_FORMAT(tfsj,'%Y%m%d'),SIGNED) as cysj,
+		CONCAT(communityid,tenantgroupid,DATE_FORMAT(tfsj,'%Y%m%d')) replacekey
+		
+		
+		from h_recycle_record 
+		
+		
+		
+		
+		where recyclerecordzzid > #{start} and recyclerecordzzid <![CDATA[<=]]> #{maxid} 
+		
+		active = 1 and yhlx = 0
+		
+		
+		order by recyclerecordzzid limit #{limit}
 	</select>
 </mapper>
