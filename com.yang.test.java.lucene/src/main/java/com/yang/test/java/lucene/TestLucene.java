@@ -19,7 +19,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-public class App {
+public class TestLucene {
 
 	public static void main(String[] args) throws IOException, ParseException {
 		Analyzer analyzer = new StandardAnalyzer();
@@ -31,17 +31,20 @@ public class App {
 		IndexWriter iwriter = new IndexWriter(directory, config);
 		
 		// 四、将内容存储到索引
-		Document doc = new Document();
-		String text = "This is the text to be indexed.";
-		doc.add(new Field("fieldname", text, TextField.TYPE_STORED));
-		iwriter.addDocument(doc);
+		Document doc = null;
+		
 		doc = new Document();
-		text = "This is the text to be fasdfafdasdfadf2.";
-		doc.add(new Field("fieldname", text, TextField.TYPE_STORED));
+		doc.add(new Field("fieldname", "This is the text to be indexed.", TextField.TYPE_STORED));
 		iwriter.addDocument(doc);
-		text = "This is the text to be fasdfafdasdfadf.";
-		doc.add(new Field("fieldname", text, TextField.TYPE_STORED));
+		
+		doc = new Document();
+		doc.add(new Field("fieldname", "This is the text to be fasdfafdasdfadf2.", TextField.TYPE_STORED));
 		iwriter.addDocument(doc);
+
+		doc = new Document();
+		doc.add(new Field("fieldname", "This is the text to be fasdfafdasdfadf.", TextField.TYPE_STORED));
+		iwriter.addDocument(doc);
+		
 		iwriter.close();
 		
 		
