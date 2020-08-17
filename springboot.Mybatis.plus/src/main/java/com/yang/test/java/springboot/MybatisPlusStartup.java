@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.yang.test.java.springboot.dao")
-public class SpringbootMybatisStartup {
+public class MybatisPlusStartup {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootMybatisStartup.class, args);
+		SpringApplication.run(MybatisPlusStartup.class, args);
 	}
 }

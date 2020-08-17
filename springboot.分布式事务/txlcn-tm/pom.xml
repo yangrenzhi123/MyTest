@@ -8,10 +8,8 @@
 		<artifactId>tx-lcn</artifactId>
 		<version>5.0.2.RELEASE</version>
 	</parent>
-
 	<artifactId>txlcn-tm</artifactId>
 	<packaging>jar</packaging>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.codingapi.txlcn</groupId>

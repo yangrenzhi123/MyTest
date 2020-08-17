@@ -14,8 +14,4 @@
          as some drivers deny compatibility but still work -->
         <setting name="useGeneratedKeys" value="true"/>
     </settings>
-
-<!--      <plugins>
-         <plugin interceptor="com.yang.test.java.springboot.intercept.SqlStatementInterceptor"></plugin>
-     </plugins> -->
 </configuration>

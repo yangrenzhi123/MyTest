@@ -18,7 +18,7 @@
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Finchley.RELEASE</version>
+		<version>Hoxton.SR7</version>
 	</parent>
 
 	<dependencies>
@@ -55,7 +55,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
+				<version>Hoxton.SR7</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
