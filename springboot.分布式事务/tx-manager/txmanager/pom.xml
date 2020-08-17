@@ -28,11 +28,11 @@
 			<groupId>com.codingapi.txlcn</groupId>
 			<artifactId>txlcn-tm</artifactId>
 			<version>5.0.2.RELEASE</version>
-		</dependency>
+		</dependency><!-- 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
+		</dependency> -->
 		
 		
 		<dependency>
