@@ -1,13 +1,10 @@
 spring:
   datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.10.10:3306/t?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.10.240:3307/saas_lyzh?useUnicode=true&characterEncoding=UTF-8
 mybatis:
   typeAliasesPackage: com.yang.test.java.springboot.entity
   mapperLocations: classpath:mapper/*.xml
-#  configuration:
-#    interceptors:
-#      - com.yang.test.java.springboot.intercept.SqlStatementInterceptor
