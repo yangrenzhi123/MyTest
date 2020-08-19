@@ -35,70 +35,21 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.1</version>
-				<configuration>
-					<!--当单元测试不通过的时候任然生成测试报告 -->
-					<testFailureIgnore>true</testFailureIgnore>
-				</configuration>
-			</plugin>
-
-			<!-- 用mvn ant生成格式更友好的report -->
-			<plugin>
-				<groupId>org.jvnet.maven-antrun-extended-plugin</groupId>
-				<artifactId>maven-antrun-extended-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>test-reports</id>
-						<phase>test</phase>
-						<configuration>
-							<tasks>
-								<junitreport
-									todir="${basedir}/target/surefire-reports">
-									<fileset dir="${basedir}/target/surefire-reports">
-										<include name="**/*.xml" />
-									</fileset>
-									<report format="frames"
-										todir="${basedir}/target/antrun-reports" />
-								</junitreport>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-junit</artifactId>
-						<version>1.8.0</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-trax</artifactId>
-						<version>1.8.0</version>
-					</dependency>
-				</dependencies>
-			</plugin>
 			<!--生成测试覆盖率的插件 -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.5</version>
+				<version>0.8.3</version>
+				<configuration>
+					<includes>
+						<include>com/**/*</include>
+					</includes>
+				</configuration>
 				<executions>
 					<execution>
-						<id>prepare-agent</id>
+						<id>pre-test</id>
 						<goals>
 							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>check</id>
-						<goals>
-							<goal>check</goal>
 						</goals>
 					</execution>
 					<execution>
@@ -107,10 +58,6 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
-						<configuration>
-							<dataFile>target/jacoco.exec</dataFile>
-							<outputDirectory>target/jacoco-report</outputDirectory><!--生成的报告保存在这个文件夹下 -->
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
