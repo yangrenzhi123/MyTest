@@ -28,7 +28,7 @@ public class DesTest {
 		KEY = scanner.next();
 		scanner.close();
 		
-		encrypt("C:/Windows/Temp/新建文件夹/2e4398bd415f4d39b711ed4cc756230a.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
+		encrypt("C:/Windows/Temp/新建文件夹/68d8358009064019b5217d03d3cc9bb1.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
 		decrypt("C:/Users/yrz/OneDrive/工资条/工资条.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
 		
 //		simpleEncrypt();

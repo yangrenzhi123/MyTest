@@ -81,27 +81,27 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("appCityInfo");
 //		System.out.println(m);
 
-//		String key = "mongoCountCache:H_TENANT_GROUP_06c2bfce-5b47-47a0-ae21-6f741b11dcab_a7fbfcb5-7ef1-409b-b54e-bedf54801523-635059997";
-//		System.out.println(j.get(key));
-//		System.out.println(j.ttl(key));
+		String key = "daas_new_push:jiangning_token:";
+		System.out.println(j.get(key));
+		System.out.println(j.ttl(key));
 		
 //		String key = "testKey";
 //		j.set(key, "www.baidu.com");
 //		System.out.println(j.get(key));
 		
-		long a = System.currentTimeMillis();
-		int i = 0;
-		Set<String> keys = j.keys("h_every_day_one_bag_day_*");
-		for(String key : keys) {
-			try {
-				System.out.println(key + "：" + j.get(key));
-			}catch(Exception e) {
-				System.out.println(key + "：" + j.hgetAll(key));
-			}
-			//j.del(key);
-			i = i + 1;
-		}
-		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
+//		long a = System.currentTimeMillis();
+//		int i = 0;
+//		Set<String> keys = j.keys("h_every_day_one_bag_day_*");
+//		for(String key : keys) {
+//			try {
+//				System.out.println(key + "：" + j.get(key));
+//			}catch(Exception e) {
+//				System.out.println(key + "：" + j.hgetAll(key));
+//			}
+//			//j.del(key);
+//			i = i + 1;
+//		}
+//		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 
