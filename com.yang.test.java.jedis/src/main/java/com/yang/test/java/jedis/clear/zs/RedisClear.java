@@ -46,15 +46,15 @@ public class RedisClear {
 		int i = 0;
 
 		long a = System.currentTimeMillis();
-		keys = keys(j, "h_tenant_group:LYZH*");
-		keys = keys(j, "h_tenant_group:LYZH*");
+//		keys = keys(j, "h_tenant_group:LYZH*");
+		keys = keys(j, "H_TENANT_GROUP_*");
 //		keys = keys(j, "h_recycle_record_day_*");
 //		keys = keys(j, "deqingUnPushedRegion:*");
 		System.out.println("keys耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + keys.size());
 		for (String key : keys) {
-			//System.out.print(key + ":");
+			System.out.print(key + ":");
 			//System.out.println(j.get(key));
-			j.del(key);
+			//j.del(key);
 			i++;
 		}
 		System.out.println("总耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);

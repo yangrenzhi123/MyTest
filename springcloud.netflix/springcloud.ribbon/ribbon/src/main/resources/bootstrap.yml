@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: test-ribbon
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
+  zipkin:
+    baseUrl: http://192.168.8.70:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+    #ip-address: 127.0.0.1
