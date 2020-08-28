@@ -12,7 +12,7 @@ public class Controller {
 	public String getWord() throws InterruptedException {
 		System.out.println("第" + (++i) + "次进入");
 
-		Thread.sleep(3000);
+		Thread.sleep(500);
 
 		return "0";
 	}
@@ -21,7 +21,7 @@ public class Controller {
 	public String test() throws InterruptedException {
 		System.out.println("第" + (++i) + "次进入");
 
-		Thread.sleep(3000);
+		Thread.sleep(500);
 		return "0";
 	}
 }

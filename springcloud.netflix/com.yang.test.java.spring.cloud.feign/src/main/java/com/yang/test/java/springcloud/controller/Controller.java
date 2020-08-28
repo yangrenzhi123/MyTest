@@ -85,6 +85,6 @@ public class Controller {
 
 	@RequestMapping("/formdata")
 	public @ResponseBody String formdata() {
-		return nounClient.formdata("123");
+		return wordService.getNoun(UUID.randomUUID().toString());
 	}
 }

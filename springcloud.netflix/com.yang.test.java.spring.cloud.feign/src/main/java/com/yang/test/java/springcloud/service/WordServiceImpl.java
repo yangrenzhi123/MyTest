@@ -12,12 +12,12 @@ public class WordServiceImpl implements WordService {
 	@Autowired
 	NounClient nounClient;
 
-	//@HystrixCommand(fallbackMethod = "getFallbackNoun")
+	@HystrixCommand(fallbackMethod = "getFallbackNoun")
 	public String getNoun(String uuid) {
 		return nounClient.getWord(uuid);
 	}
 
 	public String getFallbackNoun(String uuid) {
-		return "1234";
+		return "已熔断";
 	}
 }

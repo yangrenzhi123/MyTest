@@ -28,8 +28,14 @@ eureka:
     #ip-address: 127.0.0.1
     metadata-map:
       api-version: 0
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "localhost"
+feign:
+  hystrix:
+    enabled: true
 ribbon:
-  ReadTimeout: 300000
+  ReadTimeout: 1000
   MaxAutoRetries: 0
   MaxAutoRetriesNextServer: 0
 management:
