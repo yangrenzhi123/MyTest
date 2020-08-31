@@ -22,7 +22,7 @@ public class RedisSimple {
 
 //		Jedis j = new Jedis("192.168.226.209", 6379);
 		
-		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
+		Jedis j = new Jedis("192.168.8.70", 6379);j.select(1);
 
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.20", 7001));
@@ -91,13 +91,13 @@ public class RedisSimple {
 		
 		long a = System.currentTimeMillis();
 		int i = 0;
-		Set<String> keys = j.keys("mongoCountCache:H_TENANT_GROUP_*");
+		Set<String> keys = j.keys("*");
 		for(String key : keys) {
-			/*try {
+			try {
 				System.out.println(key + "：" + j.get(key));
 			}catch(Exception e) {
 				System.out.println(key + "：" + j.hgetAll(key));
-			}*/
+			}
 			j.del(key);
 			i = i + 1;
 		}

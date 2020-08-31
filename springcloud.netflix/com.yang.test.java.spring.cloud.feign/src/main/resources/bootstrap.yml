@@ -31,9 +31,9 @@ eureka:
 hystrix:
   dashboard:
     proxy-stream-allow-list: "localhost"
-feign:
-  hystrix:
-    enabled: true
+#feign:
+#  hystrix:
+#    enabled: true
 ribbon:
   ReadTimeout: 1000
   MaxAutoRetries: 0

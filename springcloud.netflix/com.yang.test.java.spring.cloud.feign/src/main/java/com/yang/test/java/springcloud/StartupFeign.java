@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 
+//http://localhost:8032/hystrix.stream
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients

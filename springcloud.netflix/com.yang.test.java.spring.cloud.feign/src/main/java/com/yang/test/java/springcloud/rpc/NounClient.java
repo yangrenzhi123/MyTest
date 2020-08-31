@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient("mmb-eureka-client-provider")
 public interface NounClient {
 
-	@RequestMapping(value = "/provider-test", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	String getWord(@RequestHeader(value = "headerId") String headerId);
-
-	@RequestMapping("/")
-	String formdata();
 }
