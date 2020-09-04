@@ -15,6 +15,7 @@ public class RedisScan {
 	public static void main(String[] args) throws IOException {
 		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 
+		String key = "{yrz_test}:*";
 		nodes.add(new HostAndPort("192.168.10.20", 7001));
 		nodes.add(new HostAndPort("192.168.10.20", 7002));
 		nodes.add(new HostAndPort("192.168.10.20", 7003));
@@ -24,14 +25,10 @@ public class RedisScan {
 
 		JedisCluster jedis = new JedisCluster(nodes);
 
-		jedis.set("{yrz_test}:tttttest", "1");
-		jedis.set("{yrz_test}:tttttesr", "2");
-
 		String cursor = ScanParams.SCAN_POINTER_START;
-		String key = "{yrz_test}:*";
 		ScanParams scanParams = new ScanParams();
 		scanParams.match(key);
-		scanParams.count(1000);
+		scanParams.count(1000); // 指定游标扫描数量 不易太大，测试5000以上会产生10ms的慢日志,建议不要超过1000
 		while (true) {
 			ScanResult<String> scanResult = jedis.scan(cursor, scanParams);
 			cursor = scanResult.getCursor();
@@ -39,6 +36,8 @@ public class RedisScan {
 			long t1 = System.currentTimeMillis();
 			for (int m = 0; m < list.size(); m++) {
 				String trueKey = list.get(m);
+
+				// 业务操作
 				jedis.del(trueKey);
 			}
 			long t2 = System.currentTimeMillis();
