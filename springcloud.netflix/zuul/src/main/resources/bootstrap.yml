@@ -25,9 +25,13 @@ zuul:
       path: /api-b/2/**
       serviceId: noun2
       strip-prefix: false
-    api-d:
+    api-c:
       path: /provider-test/**
       serviceId: mmb-eureka-client-provider
+      strip-prefix: false
+    api-d:
+      path: /api-file/**
+      serviceId: noun2
       strip-prefix: false
   semaphore:
     max-semaphores: 10000

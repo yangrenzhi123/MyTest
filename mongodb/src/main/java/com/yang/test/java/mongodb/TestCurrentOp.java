@@ -29,7 +29,7 @@ public class TestCurrentOp {
 			//if(secs_running > 7000) {
 			//if (item.get("client_s") != null) {
 			//if (!"local.oplog.rs".equals(item.get("ns"))) {
-				System.out.println(item);
+				System.out.println(item.toJson());
 				System.out.println("client：\t\t" + item.get("client") + "，");
 				System.out.println("client_s：\t" + item.get("client_s") + "，");
 				System.out.println("shard：\t\t" + item.get("shard") + "，");
