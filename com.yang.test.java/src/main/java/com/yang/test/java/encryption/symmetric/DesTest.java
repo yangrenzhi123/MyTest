@@ -28,10 +28,10 @@ public class DesTest {
 		KEY = scanner.next();
 		scanner.close();
 		
-		encrypt("C:/Windows/Temp/新建文件夹/68d8358009064019b5217d03d3cc9bb1.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
-		decrypt("C:/Users/yrz/OneDrive/工资条/工资条.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
+		encrypt("C:/Windows/Temp/新建文件夹/ce421a525f2c412a816ed8a94cd6e8cd.xlsx", "C:/Users/yrz/OneDrive/各种账号密码.xlsx");
+		decrypt("C:/Users/yrz/OneDrive/各种账号密码.xlsx", "C:/Windows/Temp/新建文件夹/"+UUID.randomUUID().toString().replaceAll("-", "")+".xlsx");
 		
-//		simpleEncrypt();
+		//simpleEncrypt();
 	}
 
 	public static void encrypt(String source, String target) throws Exception {
