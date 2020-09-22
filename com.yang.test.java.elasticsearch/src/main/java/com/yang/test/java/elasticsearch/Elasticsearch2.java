@@ -21,24 +21,23 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 public class Elasticsearch2 {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.229", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.92", 9400, "http")));
 
-		GetRequest r = new GetRequest("tsaas-zs-logs", "docl", "GEgjwXEBiMDkxNeh8-XU");
-		GetResponse p = client.get(r, RequestOptions.DEFAULT);
-		Map<String, Object> source = p.getSource();
-
-		System.out.println(source);
+//		GetRequest r = new GetRequest("tsaas-zs-logs", "docl", "GEgjwXEBiMDkxNeh8-XU");
+//		GetResponse p = client.get(r, RequestOptions.DEFAULT);
+//		Map<String, Object> source = p.getSource();
+//		System.out.println(source);
 
 		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
 //		sourceBuilder.query(QueryBuilders.matchQuery("message", "2020").fuzziness(Fuzziness.AUTO));
 //		sourceBuilder.query(QueryBuilders.matchQuery("@timestamp", "2020-05-21T10:19:43.197Z").fuzziness(Fuzziness.AUTO));
 //		sourceBuilder.query(QueryBuilders.rangeQuery("@timestamp").gt("2020-05-21T10:00:00.000Z").lt("2020-05-21T11:00:00.000Z"));
 		sourceBuilder.from(0);
-		sourceBuilder.size(100);
+		sourceBuilder.size(10);
 //		sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
 
-		SearchRequest searchRequest = new SearchRequest("tsaas-zs-logs");
-		searchRequest.types("docl");
+		SearchRequest searchRequest = new SearchRequest("zipkin-span-2020-09-17");
+		//searchRequest.types("Doc");
 		searchRequest.source(sourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
 		SearchHits hits = searchResponse.getHits();

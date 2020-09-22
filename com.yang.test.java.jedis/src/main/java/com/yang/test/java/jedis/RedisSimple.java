@@ -20,19 +20,19 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 
-		Jedis j = new Jedis("192.168.30.120", 6379);
+//		Jedis j = new Jedis("192.168.30.120", 6379);
 		
 //		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 //		Jedis j = new Jedis("192.168.30.120", 6379);j.select(1);
 
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.10.20", 7001));
-//		nodes.add(new HostAndPort("192.168.10.20", 7002));
-//		nodes.add(new HostAndPort("192.168.10.20", 7003));
-//		nodes.add(new HostAndPort("192.168.10.22", 7004));
-//		nodes.add(new HostAndPort("192.168.10.22", 7005));
-//		nodes.add(new HostAndPort("192.168.10.22", 7006));
-//		JedisCluster j = new JedisCluster(nodes);
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.10.20", 7001));
+		nodes.add(new HostAndPort("192.168.10.20", 7002));
+		nodes.add(new HostAndPort("192.168.10.20", 7003));
+		nodes.add(new HostAndPort("192.168.10.22", 7004));
+		nodes.add(new HostAndPort("192.168.10.22", 7005));
+		nodes.add(new HostAndPort("192.168.10.22", 7006));
+		JedisCluster j = new JedisCluster(nodes);
 		
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));
@@ -82,7 +82,7 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("appCityInfo");
 //		System.out.println(m);
 
-//		String key = "daas_new_push:jiangning_token:";
+//		String key = "ShaoXingDaasPushService";
 //		System.out.println(j.get(key));
 //		System.out.println(j.ttl(key));
 		
@@ -90,19 +90,19 @@ public class RedisSimple {
 //		j.set(key, "www.baidu.com");
 //		System.out.println(j.get(key));
 		
-		long a = System.currentTimeMillis();
-		int i = 0;
-		Set<String> keys = j.keys("h_garbage_bag_pull_day_*");
-		for(String key : keys) {
-			try {
-				System.out.println(key + "：" + j.get(key));
-			}catch(Exception e) {
-				System.out.println(key + "：" + j.hgetAll(key));
-			}
-			j.del(key);
-			i = i + 1;
-		}
-		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
+//		long a = System.currentTimeMillis();
+//		int i = 0;
+//		Set<String> keys = j.keys("ShaoXingDaasPushService*");
+//		for(String key : keys) {
+//			try {
+//				System.out.println(key + "：" + j.get(key));
+//			}catch(Exception e) {
+//				System.out.println(key + "：" + j.hgetAll(key));
+//			}
+//			//j.del(key);
+//			i = i + 1;
+//		}
+//		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
 		
 //		j.set(key, key, "NX", "EX", 2*60);
 

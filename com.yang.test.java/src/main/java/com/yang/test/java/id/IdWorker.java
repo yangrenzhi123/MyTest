@@ -22,7 +22,8 @@ public class IdWorker{
         this.sequence = sequence;
     }
 
-    private long twepoch = 1546272000000L;
+    //private long twepoch = 1546272000000L;
+    private long twepoch = 1288834974657L;
 
     private long workerIdBits = 5L;
     private long datacenterIdBits = 5L;
@@ -88,7 +89,7 @@ public class IdWorker{
 
 	// ---------------测试---------------
 	public static void main2(String[] args) {
-		IdWorker worker = new IdWorker(0, 0, 0);
+		IdWorker worker = new IdWorker(1, 4, 0);
 		for (int i = 0; i < 10; i++) {
 			System.out.println(worker.nextId());
 		}
@@ -96,7 +97,7 @@ public class IdWorker{
 	
 	public static void main(String[] args) {
 		long a = System.currentTimeMillis();
-		long b = a - 1546272000000L;
+		long b = a - 1288834974657L;
 		System.out.println(a);
 		System.out.println(b);
 		System.out.println(Long.toBinaryString(b));
