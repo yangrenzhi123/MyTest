@@ -5,11 +5,13 @@ import java.util.UUID;
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException, InterruptedException {
-		System.out.print(new String(new byte[] {-17,-69,-65}));
-		
-		for(byte b : "\r\n".getBytes()) {
-			System.out.println(b);
-		}
+		String a1 = "a";
+		String a2 = "a";
+		String a3 = new String("a");
+		String a4 = new String("a");
+		System.out.println(a1 == a2);
+		System.out.println(a3 == a4);
+		System.out.println();
 		
 //		System.out.println(Long.parseLong("233661665"));
 		
