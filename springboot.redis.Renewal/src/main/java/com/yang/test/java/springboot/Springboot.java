@@ -20,15 +20,23 @@ public class Springboot {
 class TestController {
 
 	@Autowired
-	RedisService redisService;
+	DistributedLockService distributedLockService;
 
 	@RequestMapping("/")
 	public void index() throws Exception {
 		try {
-			redisService.getDistributedLock("testKey");
+			String lock = distributedLockService.getDistributedLock("testKey");
+
+			// 业务
+			if (lock == null) {
+				return;
+			}
+			if ("OK".equals(lock)) {
+				// 成功获得锁
+			}
 			System.out.println(1);
 		} finally {
-			redisService.releaseDistributedLock("testKey");
+			distributedLockService.releaseDistributedLock("testKey");
 		}
 	}
 }

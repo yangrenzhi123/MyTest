@@ -6,7 +6,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
 
 @Service
-public class RedisService {
+public class DistributedLockService {
 
 	Jedis j = new Jedis("192.168.30.120", 6379);
 

@@ -21,7 +21,7 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 
-		Jedis j = new Jedis("192.168.8.70", 6379);
+		Jedis j = new Jedis("192.168.30.120", 6379);
 		
 //		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 //		Jedis j = new Jedis("192.168.30.120", 6379);j.select(1);
@@ -114,9 +114,13 @@ public class RedisSimple {
 //		sp.ex(60);
 //		System.out.println(j.set(key, "test", sp));
 //		Thread.sleep(5000);
-		j.expire(key, 60);
-//		System.out.println(j.get(key));
-//		System.out.println(j.ttl(key));
+//		j.expire(key, 60);
+		try {
+			System.out.println(key + "：" + j.get(key));
+		}catch(Exception e) {
+			System.out.println(key + "：" + j.hgetAll(key));
+		}
+		System.out.println(j.ttl(key));
 
 //		Map<String, String> m = new HashMap<String, String>();
 //		m.put("1", "1");
