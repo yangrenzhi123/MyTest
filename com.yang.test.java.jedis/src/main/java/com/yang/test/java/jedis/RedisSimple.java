@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
@@ -22,7 +24,6 @@ public class RedisSimple {
 //		Jedis j = jp.getResource();
 
 		Jedis j = new Jedis("192.168.30.120", 6379);
-		
 //		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 //		Jedis j = new Jedis("192.168.30.120", 6379);j.select(1);
 
@@ -63,10 +64,10 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("172.17.19.34", 7007));
 //		nodes.add(new HostAndPort("172.17.19.43", 7008));
 //		nodes.add(new HostAndPort("172.17.19.45", 7009));
-//		JedisCluster j = new JedisCluster(nodes);
-		//connectionTimeout：表示连接超时时间
-		//soTimeout：表示读取数据超时时间
-		//maxAttempts：超时重试次数
+//		//JedisCluster j = new JedisCluster(nodes);
+//		//connectionTimeout：表示连接超时时间
+//		//soTimeout：表示读取数据超时时间
+//		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
 //		List<String> l = new ArrayList<>();
@@ -87,9 +88,9 @@ public class RedisSimple {
 //		System.out.println(j.get(key));
 //		System.out.println(j.ttl(key));
 		
-//		String key = "testKey";
-//		j.set(key, "www.baidu.com");
-//		System.out.println(j.get(key));
+		String key = "testKey";
+		j.set(key, "2");
+		System.out.println(j.get(key));
 		
 //		long a = System.currentTimeMillis();
 //		int i = 0;
@@ -108,19 +109,19 @@ public class RedisSimple {
 
 		// NX是不存在时才set， XX是存在时才set， EX是秒，PX是毫秒
 		//j.set("testKey", "test", "NX", "EX", 2*60);
-		String key = "testKey";
+//		String key = "testKey";
 //		SetParams sp = SetParams.setParams();
 //		sp.nx();
 //		sp.ex(60);
 //		System.out.println(j.set(key, "test", sp));
 //		Thread.sleep(5000);
 //		j.expire(key, 60);
-		try {
-			System.out.println(key + "：" + j.get(key));
-		}catch(Exception e) {
-			System.out.println(key + "：" + j.hgetAll(key));
-		}
-		System.out.println(j.ttl(key));
+//		try {
+//			System.out.println(key + "：" + j.get(key));
+//		}catch(Exception e) {
+//			System.out.println(key + "：" + j.hgetAll(key));
+//		}
+//		System.out.println(j.ttl(key));
 
 //		Map<String, String> m = new HashMap<String, String>();
 //		m.put("1", "1");

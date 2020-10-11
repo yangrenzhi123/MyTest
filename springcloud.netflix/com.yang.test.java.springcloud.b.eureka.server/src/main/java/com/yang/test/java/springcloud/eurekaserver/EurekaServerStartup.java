@@ -1,4 +1,4 @@
-package com.yang.test.java.spring.cloud.eureka.server;
+package com.yang.test.java.springcloud.eurekaserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

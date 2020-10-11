@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class JDBCSimple22 {
 
@@ -14,9 +12,6 @@ public class JDBCSimple22 {
 	static final String DB_URL2 = "jdbc:mysql://192.168.10.22:3306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "Lenovo@@7788";
-
-	static final int num = 10;
-	static final List<Connection> l = new ArrayList<Connection>();
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		doIt();

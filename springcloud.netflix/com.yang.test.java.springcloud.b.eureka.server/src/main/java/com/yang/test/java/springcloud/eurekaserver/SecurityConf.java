@@ -1,4 +1,4 @@
-package com.yang.test.java.spring.cloud.eureka.server;
+package com.yang.test.java.springcloud.eurekaserver;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
