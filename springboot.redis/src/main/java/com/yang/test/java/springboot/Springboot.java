@@ -13,25 +13,22 @@ import org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoCo
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisNode;
-import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettucePool;
+import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import redis.clients.jedis.JedisPoolConfig;
 
 @SpringBootApplication(exclude = { RedisAutoConfiguration.class,RedisRepositoriesAutoConfiguration.class })
 public class Springboot {
 
 	@Value("${spring.redis.default.type}")
 	private int springRedisType;
-	@Value("${spring.redis.default.host:127.0.0.1}")
+	@Value("${spring.redis.default.host:disabled}")
 	private String springRedisHost;
 	@Value("${spring.redis.default.port:6379}")
 	private Integer springRedisPort;
@@ -40,7 +37,7 @@ public class Springboot {
 
 	@Value("${spring.redis.two.type}")
 	private int springRedisTwoType;
-	@Value("${spring.redis.two.host:127.0.0.1}")
+	@Value("${spring.redis.two.host:disabled}")
 	private String springRedisTwoHost;
 	@Value("${spring.redis.two.port:6379}")
 	private Integer springRedisTwoPort;
@@ -48,27 +45,48 @@ public class Springboot {
     @Bean
     public GenericObjectPoolConfig genericObjectPoolConfig() {
         GenericObjectPoolConfig genericObjectPoolConfig = new GenericObjectPoolConfig();
-        genericObjectPoolConfig.setMaxIdle(3);
-        genericObjectPoolConfig.setMinIdle(3);
+        genericObjectPoolConfig.setMaxIdle(20);
+        genericObjectPoolConfig.setMinIdle(20);
         genericObjectPoolConfig.setMaxTotal(20);
         genericObjectPoolConfig.setMaxWaitMillis(10000);
         return genericObjectPoolConfig;
     }
 	
-//	@Bean(value = "defaultLettuceConnectionFactory")
-//	public LettuceConnectionFactory defaultLettuceConnectionFactory() {
-//		if(springRedisType == 0) {
-//			return null;
-//		}else if(springRedisType == 1) {
-//			return null;
-//		}else if(springRedisType == 2) {
-//			return null;
-//		}else {
-//			throw new RuntimeException("type is null");
-//		}
-//	}
+	@Bean(value = "defaultLettuceConnectionFactory")
+	public LettuceConnectionFactory defaultLettuceConnectionFactory(GenericObjectPoolConfig poolConfig) {
+		if(springRedisType == 0) {
+			if(springRedisHost.equals("disabled")) {
+				throw new RuntimeException("type is 0 but spring.redis.cluster.nodes is null");
+			}
+			
+			LettucePoolingClientConfiguration lettucePoolingClientConfiguration = LettucePoolingClientConfiguration.builder().poolConfig(poolConfig).build();
+			
+			RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+			redisStandaloneConfiguration.setHostName(springRedisHost);
+			redisStandaloneConfiguration.setDatabase(0);
+			redisStandaloneConfiguration.setPort(springRedisPort);
+			return new LettuceConnectionFactory(redisStandaloneConfiguration, lettucePoolingClientConfiguration);
+		}else if(springRedisType == 1) {
+			return null;
+		}else if(springRedisType == 2) {
+			if(springRedisClusterNodes.equals("disabled")) {
+				throw new RuntimeException("type is 2 but spring.redis.default.host is null");
+			}
+			RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration();
+			String[] ipAndPortArray = springRedisClusterNodes.split(",");
+			for(String ipAndPort : ipAndPortArray) {
+				String[] ipOrPortArray = ipAndPort.split(":");
+				redisClusterConfiguration.addClusterNode(new RedisNode(ipOrPortArray[0], Integer.parseInt(ipOrPortArray[1])));
+			}
+
+			LettucePoolingClientConfiguration lettucePoolingClientConfiguration = LettucePoolingClientConfiguration.builder().poolConfig(poolConfig).build();
+			return new LettuceConnectionFactory(redisClusterConfiguration, lettucePoolingClientConfiguration);
+		}else {
+			throw new RuntimeException("type is null");
+		}
+	}
 	@Bean(value = "defaultRedisConnectionFactory")
-	public JedisConnectionFactory jedisConnectionFactory() {
+	public JedisConnectionFactory jedisConnectionFactory(GenericObjectPoolConfig poolConfig) {
 		if(springRedisType == 0) {
 			//JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 			//jedisPoolConfig.setMaxIdle(3);
@@ -86,7 +104,7 @@ public class Springboot {
 			return null;
 		}else if(springRedisType == 2) {
 			if(springRedisClusterNodes.equals("disabled")) {
-				throw new RuntimeException("spring.redis.cluster.nodes is null");
+				throw new RuntimeException("type is 2 but spring.redis.default.host is null");
 			}
 			RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration();
 			String[] ipAndPortArray = springRedisClusterNodes.split(",");
@@ -94,15 +112,16 @@ public class Springboot {
 				String[] ipOrPortArray = ipAndPort.split(":");
 				redisClusterConfiguration.addClusterNode(new RedisNode(ipOrPortArray[0], Integer.parseInt(ipOrPortArray[1])));
 			}
-			return new JedisConnectionFactory(redisClusterConfiguration);
+			JedisClientConfiguration jedisClientConfiguration = JedisClientConfiguration.builder().usePooling().build();
+			return new JedisConnectionFactory(redisClusterConfiguration, jedisClientConfiguration);
 		}else {
 			throw new RuntimeException("type is null");
 		}
 	}
 	@Bean(value = "defaultRedisTemplate")
-	public RedisTemplate<String, Object> defaultRedisTemplate(JedisConnectionFactory defaultRedisConnectionFactory) {
+	public RedisTemplate<String, Object> defaultRedisTemplate(LettuceConnectionFactory defaultLettuceConnectionFactory) {
 		RedisTemplate<String, Object> template = new RedisTemplate<>();
-		template.setConnectionFactory(defaultRedisConnectionFactory);
+		template.setConnectionFactory(defaultLettuceConnectionFactory);
 		template.setKeySerializer(new StringRedisSerializer());
 		template.setValueSerializer(new StringRedisSerializer());
 		return template;
@@ -161,7 +180,7 @@ class TestController {
 		Object o = defaultRedisTemplate.opsForValue().get("testKey");
 		System.out.println("testKey：" + o);
 		
-		o = twoRedisTemplate.opsForValue().get("testKey");
-		System.out.println("testKey：" + o);
+//		o = twoRedisTemplate.opsForValue().get("testKey");
+//		System.out.println("testKey：" + o);
 	}
 }
