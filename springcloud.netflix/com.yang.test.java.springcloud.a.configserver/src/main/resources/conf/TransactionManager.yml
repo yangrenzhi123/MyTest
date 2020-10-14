@@ -1,5 +1,8 @@
 server:
-  port: 7970
+  port: 7971
+tx-lcn:
+  logger:
+    enabled: true
 eureka:
   client:
     healthcheck:

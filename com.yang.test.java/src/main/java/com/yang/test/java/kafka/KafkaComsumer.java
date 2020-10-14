@@ -20,6 +20,10 @@ public class KafkaComsumer {
 		//props.put("enable.auto.commit", "true");
 		//props.put("auto.commit.interval.ms", "1000");
 
+		
+//		max.poll.interval.ms    两次拉取之间的最大间隔时间，默认5分钟
+//		session.timeout.ms      group coordinator 检测consumer奔溃的时间，默认10s
+//		heartbeat.interval.ms    心跳包间隔时间，一般是session.timeout.ms的1/3，默认3s
 		props.put("group.id", group);
 		props.put("auto.offset.reset", "earliest");
 		props.put("session.timeout.ms", "30000");
