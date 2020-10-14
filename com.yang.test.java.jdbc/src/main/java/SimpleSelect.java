@@ -4,10 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Simple {
+public class SimpleSelect {
 	
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL2 = "jdbc:mysql://192.168.8.70:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL2 = "jdbc:mysql://192.168.10.10:3306/t1?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
 	static final String PASS = "123456";
 	
