@@ -13,8 +13,8 @@ public class KafkaComsumer {
 		Properties props = new Properties();
 
 		String group = "test";
-		String topic = "test";
-		props.put("bootstrap.servers", "192.168.8.70:9092");
+		String topic = "TENANT_GROUP_SCORE_ACCOUNT";
+		props.put("bootstrap.servers", "192.168.10.240:9092");
 
 		props.put("enable.auto.commit", "false");
 		//props.put("enable.auto.commit", "true");

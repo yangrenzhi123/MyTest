@@ -4,7 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
-@SpringBootApplication
+import de.codecentric.boot.admin.client.config.SpringBootAdminClientAutoConfiguration;
+
+@SpringBootApplication//(exclude = { SpringBootAdminClientAutoConfiguration.class })
 @EnableConfigServer
 public class ConfigServerStartup {
 

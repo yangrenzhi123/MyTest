@@ -28,12 +28,17 @@ class MyTask1 {
 	public void work() {
 		System.out.println(1);
 	}
-}
 
+	// 秒 分 时 天 月 周，周和月如果同时设置可能会冲突，不设定可以用?表示
+	@Scheduled(cron = "0/1 * * * * ?")
+	public void work2() {
+		System.out.println(4);
+	}
+}
 
 @Component
 class MyTask2 {
-	 @Scheduled(cron = "0 * * * * *")
+	@Scheduled(cron = "0 * * * * *")
 	public void work() {
 		System.out.println(2);
 	}
@@ -41,7 +46,7 @@ class MyTask2 {
 
 @Component
 class MyTask3 {
-	 @Scheduled(cron = "0 * * * * *")
+	@Scheduled(cron = "0 * * * * *")
 	public void work() {
 		System.out.println(3);
 	}
