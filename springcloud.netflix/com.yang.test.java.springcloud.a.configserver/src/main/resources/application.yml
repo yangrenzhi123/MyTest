@@ -1,6 +1,46 @@
 spring:
+  security:
+    enabled: false
+    user:
+      name: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/conf
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8788
+        instance:
+          service-url: http://127.0.0.1:8888
+management:
+  security:
+    enabled: false
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        step: 1m
+        descriptions: true
+  web:
+    server:
+      auto-time-requests: true
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
+    reload:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #<2>
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: txlcn-tm
+Implementation-Version: 5.0.2.RELEASE
+Built-By: yrz
+Implementation-Vendor-Id: com.codingapi.txlcn
+Build-Jdk: 1.8.0_181
+Implementation-URL: https://github.com/codingapi/tx-lcn/txlcn-tm
+Created-By: Maven Integration for Eclipse
+

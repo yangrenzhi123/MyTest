@@ -1,0 +1,57 @@
+server:
+  port: 7970
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+spring:
+  application:
+    name: TransactionManager-2
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    hibernate: 
+#      ddl-auto: update
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.8.70:3306/tx-manager?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+#    username: root
+#    password: 123456
+#    validationQuery: SELECT 1
+#    testWhileIdle: true
+#    testOnBorrow: true
+#    testOnReturn: false
+  redis:
+    host: 192.168.8.70
+    port: 6379
+    pool: 
+      maxActive: 10
+      maxWait: -1
+      maxIdle: 5
+      minIdle: 0
+      timeout: 0
+#  redis:
+#    cluster:
+#      nodes: 192.168.10.228:27001,192.168.10.228:27002,192.168.10.228:27003,192.168.10.229:27004,192.168.10.229:27005,192.168.10.229:27006
+#    lettuce:
+#      pool:
+#        max-active: 1000  #连接池最大连接数（使用负值表示没有限制）
+#        max-idle: 10 # 连接池中的最大空闲连接
+#        min-idle: 5 # 连接池中的最小空闲连接
+#        max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#  redis:
+#    password: 123456
+#    sentinel:
+#      master: mymaster
+#      nodes: 172.17.153.247:26379,172.17.153.254:26379,172.17.153.244:26379

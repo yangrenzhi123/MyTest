@@ -12,7 +12,7 @@ import com.mongodb.client.MongoDatabase;
 public class TestCurrentOp {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		MongoClient mongoClient = new MongoClient("192.168.226.213", 27017);
+		MongoClient mongoClient = new MongoClient("192.168.10.26", 28017);
 
 		final MongoDatabase mgdb = mongoClient.getDatabase("admin");
 		Document doc = new Document();
@@ -28,8 +28,8 @@ public class TestCurrentOp {
 			//}
 			//if(secs_running > 7000) {
 			//if (item.get("client_s") != null) {
-			if (!"local.oplog.rs".equals(item.get("ns"))) {
-				System.out.println(item);
+			//if (!"local.oplog.rs".equals(item.get("ns"))) {
+				System.out.println(item.toJson());
 				System.out.println("client：\t\t" + item.get("client") + "，");
 				System.out.println("client_s：\t" + item.get("client_s") + "，");
 				System.out.println("shard：\t\t" + item.get("shard") + "，");
@@ -42,7 +42,7 @@ public class TestCurrentOp {
 				System.out.println("----------------------------------------------------------");
 				System.out.println();
 				i++;
-			 }
+			 //}
 		}
 		System.out.println("总数量：" + infos.size());
 		System.out.println("符合条件数量：" + i);

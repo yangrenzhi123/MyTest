@@ -10,7 +10,6 @@
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
 		<version>Finchley.RELEASE</version>
-		<relativePath />
 	</parent>
 
 	<dependencies>

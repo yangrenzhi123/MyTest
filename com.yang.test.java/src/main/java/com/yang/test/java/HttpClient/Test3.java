@@ -38,9 +38,8 @@ public class Test3 {
 	}
 
 	public static void doo() throws ClientProtocolException, IOException {
-		double cost = 9.81;//18200:11.683;
-		double begin = 9.81; //2600
-		double yestoday = 10.62;
+		double cost = 11.3;//18200:11.3;
+		double yestoday = 8.48;
 		
 		HttpGet get = new HttpGet("http://hq.sinajs.cn/list=sz000856");
 
@@ -77,10 +76,10 @@ public class Test3 {
 			last = newerDouble;
 		} else {
 			double persent = newerDouble / last;
-			System.out.println(persent + "，" + (newerDouble / yestoday) + "，" + (newerDouble / begin) + "，" + (newerDouble / cost));
+			System.out.println(persent + "，" + (newerDouble / yestoday) + "，" + (newerDouble / cost));
 			
 			if(persent >= 1.005) {
-				TestDingding.test("增速：" + persent + "，" + (newerDouble / yestoday) + "，" + (newerDouble / begin) + "，" + (newerDouble / cost));
+				TestDingding.test("增速：" + persent + "，" + (newerDouble / yestoday) + "，" + (newerDouble / cost));
 			}
 			last = newerDouble;
 		}

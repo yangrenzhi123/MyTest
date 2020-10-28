@@ -31,11 +31,4 @@ class HelloController {
             return s;
         }));
 	}
-
-	@GetMapping("/2")
-	public String hello2() throws InterruptedException {
-		Thread.sleep(1000);
-
-		return "success";
-	}
 }

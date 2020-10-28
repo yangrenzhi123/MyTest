@@ -42,13 +42,12 @@ public class RedisBatGet {
 
 		JedisCluster j = new JedisCluster(nodes);
 
-		TreeSet<String> keys = keys(j, "universalScoreRule_*");
+		TreeSet<String> keys = keys(j, "ShaoXingDaasPushService*");
 
 		for (String key : keys) {
 			String s = j.get(key);
-			if(s.equals("\"1\"")) {
-				System.out.println(key);
-			}
+			System.out.println(key);
+			System.out.println(s);
 		}
 
 		j.close();

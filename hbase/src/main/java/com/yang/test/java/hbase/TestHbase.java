@@ -18,11 +18,12 @@ import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
+/** 程序运行要配置hosts，172.18.6.98 hbase master */
 public class TestHbase {
 	public static void main(String[] args) throws IOException {
 		Configuration configuration = HBaseConfiguration.create();
 		configuration.set("hbase.zookeeper.property.clientPort", "2181");
-		configuration.set("hbase.zookeeper.quorum", "192.168.13.118");
+		configuration.set("hbase.zookeeper.quorum", "192.168.8.70");
 
 		Connection connection = ConnectionFactory.createConnection(configuration);
 		System.out.println(connection);

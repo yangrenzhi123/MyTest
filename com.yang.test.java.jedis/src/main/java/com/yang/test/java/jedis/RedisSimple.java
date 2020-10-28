@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.params.SetParams;
 
 public class RedisSimple {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 //		JedisPoolConfig config = new JedisPoolConfig();
 //		config.setMaxTotal(30);
 //		config.setMaxIdle(10);
@@ -20,18 +23,18 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 
-//		Jedis j = new Jedis("192.168.226.209", 6379);
-		
-		Jedis j = new Jedis("192.168.8.70", 6379);j.select(1);
+//		Jedis j = new Jedis("192.168.8.70", 6379);
+//		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
+//		Jedis j = new Jedis("192.168.30.120", 6379);j.select(1);
 
-//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-//		nodes.add(new HostAndPort("192.168.10.20", 7001));
-//		nodes.add(new HostAndPort("192.168.10.20", 7002));
-//		nodes.add(new HostAndPort("192.168.10.20", 7003));
-//		nodes.add(new HostAndPort("192.168.10.22", 7004));
-//		nodes.add(new HostAndPort("192.168.10.22", 7005));
-//		nodes.add(new HostAndPort("192.168.10.22", 7006));
-//		JedisCluster j = new JedisCluster(nodes);
+		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+		nodes.add(new HostAndPort("192.168.10.20", 7001));
+		nodes.add(new HostAndPort("192.168.10.20", 7002));
+		nodes.add(new HostAndPort("192.168.10.20", 7003));
+		nodes.add(new HostAndPort("192.168.10.22", 7004));
+		nodes.add(new HostAndPort("192.168.10.22", 7005));
+		nodes.add(new HostAndPort("192.168.10.22", 7006));
+		JedisCluster j = new JedisCluster(nodes);
 		
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));
@@ -61,10 +64,10 @@ public class RedisSimple {
 //		nodes.add(new HostAndPort("172.17.19.34", 7007));
 //		nodes.add(new HostAndPort("172.17.19.43", 7008));
 //		nodes.add(new HostAndPort("172.17.19.45", 7009));
-//		JedisCluster j = new JedisCluster(nodes);
-		//connectionTimeout：表示连接超时时间
-		//soTimeout：表示读取数据超时时间
-		//maxAttempts：超时重试次数
+//		//JedisCluster j = new JedisCluster(nodes);
+//		//connectionTimeout：表示连接超时时间
+//		//soTimeout：表示读取数据超时时间
+//		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
 //		List<String> l = new ArrayList<>();
@@ -81,29 +84,44 @@ public class RedisSimple {
 //		Map<String, String> m = j.hgetAll("appCityInfo");
 //		System.out.println(m);
 
-//		String key = "daas_new_push:jiangning_token:";
-//		System.out.println(j.get(key));
-//		System.out.println(j.ttl(key));
+		String key = "lock_executeRecycleRecordKey";
+		System.out.println(j.get(key));
+		System.out.println(j.ttl(key));
 		
 //		String key = "testKey";
-//		j.set(key, "www.baidu.com");
+//		j.set(key, "2");
 //		System.out.println(j.get(key));
 		
-		long a = System.currentTimeMillis();
-		int i = 0;
-		Set<String> keys = j.keys("*");
-		for(String key : keys) {
-			try {
-				System.out.println(key + "：" + j.get(key));
-			}catch(Exception e) {
-				System.out.println(key + "：" + j.hgetAll(key));
-			}
-			j.del(key);
-			i = i + 1;
-		}
-		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
+//		long a = System.currentTimeMillis();
+//		int i = 0;
+//		Set<String> keys = j.keys("*");
+//		for(String key : keys) {
+//			try {
+//				System.out.println(key + "：" + j.get(key));
+//			}catch(Exception e) {
+//				System.out.println(key + "：" + j.hgetAll(key));
+//			}
+//			//j.del(key);
+//			i = i + 1;
+//		}
+//		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
 		
-//		j.set(key, key, "NX", "EX", 2*60);
+
+		// NX是不存在时才set， XX是存在时才set， EX是秒，PX是毫秒
+		//j.set("testKey", "test", "NX", "EX", 2*60);
+//		String key = "testKey";
+//		SetParams sp = SetParams.setParams();
+//		sp.nx();
+//		sp.ex(60);
+//		System.out.println(j.set(key, "test", sp));
+//		Thread.sleep(5000);
+//		j.expire(key, 60);
+//		try {
+//			System.out.println(key + "：" + j.get(key));
+//		}catch(Exception e) {
+//			System.out.println(key + "：" + j.hgetAll(key));
+//		}
+//		System.out.println(j.ttl(key));
 
 //		Map<String, String> m = new HashMap<String, String>();
 //		m.put("1", "1");

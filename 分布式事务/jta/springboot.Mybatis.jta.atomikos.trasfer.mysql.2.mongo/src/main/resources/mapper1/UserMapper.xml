@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.test.java.springboot.dao1.UserDao1">
+	<select id="page" parameterType="Long" resultType="entity.ScoreRecord">
+		select * from h_score_record where scorerecordzzid > #{start} order by scorerecordzzid limit 10000
+	</select>
+	<update id="deleteBatch" parameterType="java.util.List">
+		delete from h_score_record where scorerecordzzid in (<foreach collection="list" item="item" index="index" separator=",">#{item.scorerecordzzid}</foreach>)
+	</update>
+	
+	<select id="limitRecyleRecord" parameterType="Long" resultType="entity.RecyleRecord">
+		select * from h_recycle_record where recyclerecordzzid > #{start} and recyclerecordzzid <![CDATA[<=]]> 400000000  order by recyclerecordzzid limit 10000
+	</select>
+	<update id="deleteRecyleRecordBatch" parameterType="java.util.List">
+		delete from h_recycle_record where recyclerecordzzid in (<foreach collection="list" item="item" index="index" separator=",">#{item.recyclerecordzzid}</foreach>)
+	</update>
+	
+	<select id="limitRecycleLoseweight" parameterType="Long" resultType="entity.RecycleLoseweight">
+		select * from h_recycle_loseweight where recycleloseweightzzid > #{start} order by recycleloseweightzzid limit 10000
+	</select>
+	<update id="deleteRecycleLoseweightBatch" parameterType="java.util.List">
+		delete from h_recycle_loseweight where recycleloseweightzzid in (<foreach collection="list" item="item" index="index" separator=",">#{item.recycleloseweightzzid}</foreach>)
+	</update>
+	
+	<select id="limitGarbagebagPull" parameterType="Long" resultType="entity.GarbagebagPull">
+		select * from h_garbagebag_pull where garbagebagpullzzid > #{start} order by garbagebagpullzzid limit 10000
+	</select>
+	
+	<select id="limitInspectRecord" parameterType="Long" resultType="entity.InspectRecord">
+		select * from h_inspect_record where inspectrecordzzid > #{start} order by inspectrecordzzid limit 10000
+	</select>
+	
+	<select id="limitDispenserReplenish" parameterType="Long" resultType="entity.DispenserReplenish">
+		select * from h_dispenser_replenish where dispenserreplenishzzid > #{start} order by dispenserreplenishzzid limit 10000
+	</select>
+	
+	<select id="limitReplenishContent" parameterType="Long" resultType="entity.ReplenishContent">
+		select * from h_replenish_content where replenishcontentid > #{start} order by replenishcontentid limit 10000
+	</select>
+	
+	<select id="limitExchangeScoreRecord" parameterType="Long" resultType="entity.ExchangeScoreRecord">
+		select * from h_exchange_score_record where exchangescorerecordzzid > #{start} order by exchangescorerecordzzid limit 10000
+	</select>
+</mapper>

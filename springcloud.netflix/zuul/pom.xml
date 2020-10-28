@@ -1,20 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.yang.test.java.spring.cloud</groupId>
-	<artifactId>com.yang.test.java.spring.cloud.zuul</artifactId>
+	<artifactId>springcloud.zuul</artifactId>
 	<packaging>jar</packaging>
-
-	<name>zuul</name>
-	<url>http://maven.apache.org</url>
-
-	<parent>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Hoxton.SR7</version>
-	</parent>
 
 	<dependencies>
 		<dependency>
@@ -47,4 +34,10 @@
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
 	</dependencies>
+
+	<parent>
+		<groupId>com.yang.test.java</groupId>
+		<artifactId>maven.parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 </project>

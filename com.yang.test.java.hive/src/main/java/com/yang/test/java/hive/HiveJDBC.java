@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class HiveJDBC {
 
 	private static String driverName = "org.apache.hive.jdbc.HiveDriver";
-	private static String url = "jdbc:hive2://192.168.13.115:10000/default";
+	private static String url = "jdbc:hive2://192.168.44.195:10000/default";
 	private static String user = "root";
 	private static String password = "";
 	private static Connection conn = null;
@@ -23,7 +23,6 @@ public class HiveJDBC {
 		Class.forName(driverName);
 		conn = DriverManager.getConnection(url, user, password);
 		stmt = conn.createStatement();
-		
 		String sql = null;
 
 //		sql = "show databases";
