@@ -12,9 +12,9 @@ import org.elasticsearch.client.RestHighLevelClient;
 public class EsDeleteIndex {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.26.199", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.92", 9200, "http")));
 
-		DeleteIndexRequest request = new DeleteIndexRequest("test");
+		DeleteIndexRequest request = new DeleteIndexRequest("slowquery-mysql-2020-10-28");
 
 		AcknowledgedResponse response = client.indices().delete(request, RequestOptions.DEFAULT);
 		System.out.println(response.toString());

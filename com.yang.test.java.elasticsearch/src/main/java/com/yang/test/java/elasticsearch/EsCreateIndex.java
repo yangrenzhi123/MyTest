@@ -12,7 +12,7 @@ import org.elasticsearch.common.xcontent.XContentType;
 public class EsCreateIndex {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("172.17.134.11", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.92", 9200, "http")));
 
 		createIndex(client);
 
@@ -21,14 +21,13 @@ public class EsCreateIndex {
 
 	// 创建索引
 	public static void createIndex(RestHighLevelClient client) throws IOException {
-		CreateIndexRequest request = new CreateIndexRequest("test");
+		CreateIndexRequest request = new CreateIndexRequest("slowquery-mysql-2020-10-29");
 		buildIndexMapping(request);
 		client.indices().create(request, RequestOptions.DEFAULT);
 	}
 
 	// 设置index的mapping
 	public static void buildIndexMapping(CreateIndexRequest request) {
-		request.mapping("{\"properties\": {\"id\": {\"type\": \"long\"}}}", XContentType.JSON);
-
+		request.mapping("{\"properties\": {\"sql_text\": {\"type\": \"keyword\"},\"s0\": {\"type\": \"long\"},\"s1\": {\"type\": \"long\"},\"s2\": {\"type\": \"long\"},\"s3\": {\"type\": \"long\"},\"s4\": {\"type\": \"long\"},\"s5\": {\"type\": \"long\"}}}", XContentType.JSON);
 	}
 }
