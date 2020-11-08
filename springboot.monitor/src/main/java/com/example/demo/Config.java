@@ -37,7 +37,9 @@ public class Config {
 	private List<String> scheduler;
 	private List<String> platform;
 	private List<String> mongodbs;
+	private String slowsqlCollections;
 	private String dingDingToken;
+	private String slowsqlCollectionsDingToken;
 
 	public List<String> getDevice() {
 		return device;
@@ -188,5 +190,17 @@ public class Config {
 	}
 	public void setDingDingToken(String dingDingToken) {
 		this.dingDingToken = dingDingToken;
+	}
+	public String getSlowsqlCollections() {
+		return slowsqlCollections;
+	}
+	public void setSlowsqlCollections(String slowsqlCollections) {
+		this.slowsqlCollections = slowsqlCollections;
+	}
+	public String getSlowsqlCollectionsDingToken() {
+		return slowsqlCollectionsDingToken;
+	}
+	public void setSlowsqlCollectionsDingToken(String slowsqlCollectionsDingToken) {
+		this.slowsqlCollectionsDingToken = slowsqlCollectionsDingToken;
 	}
 }

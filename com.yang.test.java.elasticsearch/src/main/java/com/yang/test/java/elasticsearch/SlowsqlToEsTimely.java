@@ -21,7 +21,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
 
-public class SlowsqlToEs {
+public class SlowsqlToEsTimely {
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	static final String DB_URL2 = "jdbc:mysql://"+System.getProperty("mysqlIpAndPort")+"/mysql?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = System.getProperty("mysqlUser");
@@ -56,11 +56,11 @@ public class SlowsqlToEs {
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-		Calendar yestoday = Calendar.getInstance();
-		yestoday.add(Calendar.DAY_OF_YEAR, -1);
+		Calendar tomrrow = Calendar.getInstance();
+		tomrrow.add(Calendar.DAY_OF_YEAR, 1);
 		Calendar today = Calendar.getInstance();
 		
-		String strYestoday = df.format(yestoday.getTime());
+		String strTomrrow = df.format(tomrrow.getTime());
 		String strToday = df.format(today.getTime());
 //		String strYestoday = "2020-11-01";
 //		String strToday = "2020-11-02";
@@ -81,7 +81,7 @@ public class SlowsqlToEs {
 		"	thread_id"+
 		" FROM"+
 		"	mysql.slow_log"+
-		" WHERE '"+strYestoday+"' <= start_time and start_time < '"+strToday+"'"+
+		" WHERE '"+strToday+"' <= start_time and start_time < '"+strTomrrow+"'"+
 		" ORDER BY"+
 		"	query_time DESC";
 		
@@ -89,7 +89,7 @@ public class SlowsqlToEs {
 		BulkRequest bulkRequest = new BulkRequest();
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
-		String indexName = System.getProperty("indexNamePre") + strYestoday;
+		String indexName = System.getProperty("indexNamePre") + strToday;
 		System.out.println("indexName：" + indexName);
 		int i = 0;
 		int j = 0;

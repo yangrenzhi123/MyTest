@@ -5,13 +5,17 @@ import java.util.UUID;
 public class Testtt {
 	
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException, InterruptedException {
-		String a1 = "a";
-		String a2 = "a";
-		String a3 = new String("a");
-		String a4 = new String("a");
-		System.out.println(a1 == a2);
-		System.out.println(a3 == a4);
-		System.out.println();
+		String[] ss = "1:2".split(":");
+		System.out.println(ss[0]);
+		System.out.println(ss[1]);
+		
+//		String a1 = "a";
+//		String a2 = "a";
+//		String a3 = new String("a");
+//		String a4 = new String("a");
+//		System.out.println(a1 == a2);
+//		System.out.println(a3 == a4);
+//		System.out.println();
 		
 //		System.out.println(Long.parseLong("233661665"));
 		

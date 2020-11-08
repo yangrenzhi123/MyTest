@@ -24,6 +24,7 @@ class TestController {
 	@Autowired
 	SampleBean sampleBean;
 	
+	// 请求一次，指标累加一次
 	@RequestMapping("/")
 	public String index() throws Exception {
 		sampleBean.handleMessage();

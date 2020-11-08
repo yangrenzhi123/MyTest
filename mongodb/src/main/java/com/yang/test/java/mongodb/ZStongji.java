@@ -42,11 +42,11 @@ public class ZStongji {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		BasicDBObject query = new BasicDBObject();
-		query.put("startTime", new BasicDBObject("$gte", df.parse("2020-09-03")).append("$lt", df.parse("2020-09-04")));
+		query.put("startTime", new BasicDBObject("$gte", df.parse("2020-11-05")).append("$lt", df.parse("2020-11-06")));
 		
-		System.out.println(c.count(query));
+		//System.out.println(c.count(query));
 		
-		FindIterable<Document> iter = c.find(query);//.limit(100);
+		FindIterable<Document> iter = c.find(query).limit(100);
 		iter.forEach(new Block<Document>() {
 			public void apply(Document _doc) {
 				GwRequestInfo grades = null;
