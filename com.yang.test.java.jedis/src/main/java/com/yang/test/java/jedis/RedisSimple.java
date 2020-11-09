@@ -70,23 +70,23 @@ public class RedisSimple {
 //		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
-//		List<String> l = new ArrayList<>();
-//		l.add("h_tenant_group_map:LYZH180317837501");
-//		int i = 0;
-//		for(String key : l) {
-//			//System.out.println(j.hgetAll(key));
-//			j.del(key);
-//			//j.set(key, "1");
-//			i++;
-//		}
-//		System.out.println("清理数量：" + i);
+		List<String> l = new ArrayList<>();
+		l.add("h_tenant_group:LYZH1b618h2dp001");
+		int i = 0;
+		for(String key : l) {
+			//System.out.println(j.hgetAll(key));
+			j.del(key);
+			//j.set(key, "1");
+			i++;
+		}
+		System.out.println("清理数量：" + i);
 
 //		Map<String, String> m = j.hgetAll("appCityInfo");
 //		System.out.println(m);
 
-		String key = "lock_executeRecycleRecordKey";
-		System.out.println(j.get(key));
-		System.out.println(j.ttl(key));
+//		String key = "h_tenant_group:LYZH1b618h2dp001";
+//		System.out.println(j.get(key));
+//		System.out.println(j.ttl(key));
 		
 //		String key = "testKey";
 //		j.set(key, "2");

@@ -3,7 +3,7 @@ package com.yang.test.java.jetcache.api;
 import com.alicp.jetcache.anno.CachePenetrationProtect;
 import com.alicp.jetcache.anno.CacheType;
 import com.alicp.jetcache.anno.Cached;
-import com.lyzh.msa.framework.common.dto.console.ReceiveBagStatisticalResponseDTO;
+import com.lyzh.msa.framework.common.dto.fl.TenantGroupDTO;
 
 public interface UserService {
 
@@ -16,6 +16,6 @@ public interface UserService {
 	String getUserById(String userId, String userId2);
 
 	@CachePenetrationProtect // 表示在多线程环境中同步加载数据
-    @Cached(name = "receivebagstatistical_ld:", key = "'76efffde-1720-4e5d-934a-44803170cc7b2019-12'",cacheType=CacheType.REMOTE)
-	ReceiveBagStatisticalResponseDTO findRegionDTOOne();
+    @Cached(name = "h_tenant_group:", key = "'LYZH1b618h2dp001'",cacheType=CacheType.REMOTE)
+	TenantGroupDTO findRegionDTOOne();
 }

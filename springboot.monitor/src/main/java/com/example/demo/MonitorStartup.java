@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-/** 注意Controller包在同包或者子包下 */
 @SpringBootApplication(exclude = { MongoAutoConfiguration.class, MongoDataAutoConfiguration.class })
 public class MonitorStartup {
 
@@ -43,6 +42,8 @@ public class MonitorStartup {
 	MonitorForDevice monitorForDevice;
 	@Autowired
 	MonitorForDisk monitorForDisk;
+	@Autowired
+	MonitorForSlowsql monitorForSlowsql;
 
 	@Bean
 	public String getInitor() {
@@ -57,6 +58,7 @@ public class MonitorStartup {
 						monitorForService.execute();
 						monitorForDevice.execute();
 						monitorForDisk.execute();
+						monitorForSlowsql.execute();
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -115,5 +117,14 @@ class HelloController {
 	@GetMapping("/suspend/1")
 	public void suspend1() throws IOException {
 		MonitorStartup.suspend = 1;
+	}
+	@Autowired
+	GaugeBean sampleBean;
+	
+	// 请求一次，指标累加一次
+	@RequestMapping("/tgt")
+	public String index2() throws Exception {
+		sampleBean.handleMessage(3);
+		return "success";
 	}
 }

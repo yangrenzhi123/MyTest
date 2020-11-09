@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
 import com.alicp.jetcache.anno.config.EnableMethodCache;
-import com.lyzh.msa.framework.common.dto.console.ReceiveBagStatisticalResponseDTO;
+import com.lyzh.msa.framework.common.dto.fl.TenantGroupDTO;
 import com.yang.test.java.jetcache.api.UserService;
 
 @SpringBootApplication
@@ -33,8 +33,7 @@ class HelloController {
 
 	@GetMapping("/test")
 	public void test() {
-		ReceiveBagStatisticalResponseDTO a = userService.findRegionDTOOne();
+		TenantGroupDTO a = userService.findRegionDTOOne();
 		System.out.println(a);
-		System.out.println(a.getReceiveBagFamilyCount() + "，" + a.getReceiveBagCount());
 	}
 }

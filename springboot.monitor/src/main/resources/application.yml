@@ -11,12 +11,23 @@ spring:
     user: 
       password: 90c3debd-0562-4de4-89fb-6a05c9f9ee2b
 management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        step: 1m
+        descriptions: true
+  web:
+    server:
+      auto-time-requests: true
   endpoint:
+    health:
+      show-details: ALWAYS
     shutdown:
       enabled: true
-    health:
-      show-details: always
+    reload:
+      enabled: true
   endpoints:
     web:
       exposure:
-        include: ["health","info","shutdown"]
+        include: "*"  #<2>
