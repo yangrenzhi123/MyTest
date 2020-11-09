@@ -120,7 +120,7 @@ public class MonitorForSlowsql {
 		    System.out.println(hit.getSourceAsString());
 		    
 		    String user_host = hit.getSourceAsMap().get("user_host").toString();
-		    //if(user_host.contains("192.168.10.")) {
+		    if(user_host.contains("192.168.10.")) {
 			    String query_time = hit.getSourceAsMap().get("query_time").toString();
 			    if(query_time.startsWith("00:01:")) {
 			    	a++;
@@ -134,11 +134,11 @@ public class MonitorForSlowsql {
 			    	e++;
 			    }else if(query_time.startsWith("00:00:")) {
 			    	// 不计量
-			    	e++;
+			    	//e++;
 			    }else {
 			    	e++;
 			    }
-		    //}
+		    }
 		    last = hit.getSourceAsMap().get("@timestamp").toString();
 		}
 		if(last != null) {
@@ -161,7 +161,7 @@ public class MonitorForSlowsql {
 			gauge.handleMessage(aa);
 			result.setResult(0);
 			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getSlowsqlCollectionsDingToken(), yyyy.format(result.getCheckTime()) + "，检测到新增慢sql（"+aa+"）条，增速");
+			TestDingding.test(config.getSlowsqlCollectionsDingToken(), yyyy.format(result.getCheckTime()) + "，检测到新增1分钟以上慢sql（"+aa+"）条，主从告警");
 		}
 	}
 }

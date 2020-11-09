@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-/** 注意Controller包在同包或者子包下 */
 @SpringBootApplication(exclude = { MongoAutoConfiguration.class, MongoDataAutoConfiguration.class })
 public class MonitorStartup {
 
@@ -53,12 +52,12 @@ public class MonitorStartup {
 			public void run() {
 				try {
 					if(suspend == 0) {
-//						monitorForMysql.execute();
-//						monitorForKafka.execute();
-//						monitorForRedis.execute();
-//						monitorForService.execute();
-//						monitorForDevice.execute();
-//						monitorForDisk.execute();
+						monitorForMysql.execute();
+						monitorForKafka.execute();
+						monitorForRedis.execute();
+						monitorForService.execute();
+						monitorForDevice.execute();
+						monitorForDisk.execute();
 						monitorForSlowsql.execute();
 					}
 				} catch (Exception e) {

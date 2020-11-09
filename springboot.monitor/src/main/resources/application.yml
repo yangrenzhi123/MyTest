@@ -11,8 +11,6 @@ spring:
     user: 
       password: 90c3debd-0562-4de4-89fb-6a05c9f9ee2b
 management:
-  security:
-    enabled: true
   metrics:
     export:
       prometheus:
@@ -33,5 +31,3 @@ management:
     web:
       exposure:
         include: "*"  #<2>
-endpoints:
-  sensitive: false
