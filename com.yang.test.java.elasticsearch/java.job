@@ -1,0 +1,4 @@
+type=javaprocess
+classpath=./lib/*,./dependency/*
+java.class=com.yang.test.java.elasticsearch.SlowsqlToEs
+jvm.args=-Duser.timezone=Asia/Shanghai -DmysqlIpAndPort=192.168.10.22:3306 -DmysqlUser=lyzh_reader -DmysqlPassword=lyzh_reader@123456 -DindexNamePre=slowquery-mysql- -DesIp=192.168.10.92 -DesPort=9200
