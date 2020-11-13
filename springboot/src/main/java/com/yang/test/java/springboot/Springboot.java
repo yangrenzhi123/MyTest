@@ -22,4 +22,10 @@ class TestController {
 	public String index() throws Exception {
 		return "success";
 	}
+
+	@RequestMapping("/alert")
+	public String alert() throws Exception {
+		System.out.println("alert");
+		return "success";
+	}
 }
