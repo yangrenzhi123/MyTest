@@ -30,7 +30,7 @@ public class SampleBean {
 	// 执行指标计算，本处为方法调用一次指标累加一次
 	public void handleMessage() {
 		this.counter.increment();
-		this.gauge.set(r.nextInt(100));
+		this.gauge.decrementAndGet();
 		this.summary.record(r.nextInt(100));
         this.timer.record(()->{
             try {

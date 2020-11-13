@@ -16,9 +16,9 @@ import com.mysql.cj.util.StringUtils;
 public class ShowProcesslist {
 
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://192.168.10.22:3306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+	static final String DB_URL = "jdbc:mysql://192.168.10.10:3306?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
 	static final String USER = "root";
-	static final String PASS = "Lenovo@@7788";
+	static final String PASS = "123456";
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 		doIt();
@@ -27,8 +27,8 @@ public class ShowProcesslist {
 	// 192.168.10.25，积分canal.server
 	// 192.168.10.20，127.0.0.1，sass canal.server
 	public static void doIt() throws ClassNotFoundException, SQLException, IOException {
-		FileChannel fileChannel = getFileChannel();
-		ByteBuffer buf = getByteBuffer();
+//		FileChannel fileChannel = getFileChannel();
+//		ByteBuffer buf = getByteBuffer();
 
 		Class.forName(DRIVER);
 		Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -48,12 +48,12 @@ public class ShowProcesslist {
 				System.out.println(s.length());
 				System.out.println(s);
 
-				buf.clear();
-				buf.put(s.getBytes());
-				buf.flip();
-				while (buf.hasRemaining()) {
-					fileChannel.write(buf);
-				}
+//				buf.clear();
+//				buf.put(s.getBytes());
+//				buf.flip();
+//				while (buf.hasRemaining()) {
+//					fileChannel.write(buf);
+//				}
 			}
 		}
 		stmt.close();

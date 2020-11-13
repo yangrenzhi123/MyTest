@@ -21,7 +21,7 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 public class Elasticsearch2 {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.92", 9400, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.92", 9200, "http")));
 
 //		GetRequest r = new GetRequest("tsaas-zs-logs", "docl", "GEgjwXEBiMDkxNeh8-XU");
 //		GetResponse p = client.get(r, RequestOptions.DEFAULT);
@@ -36,7 +36,7 @@ public class Elasticsearch2 {
 		sourceBuilder.size(10);
 //		sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
 
-		SearchRequest searchRequest = new SearchRequest("zipkin-span-2020-09-17");
+		SearchRequest searchRequest = new SearchRequest("slowquery-timely-mysql-2020-11-12");
 		//searchRequest.types("Doc");
 		searchRequest.source(sourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
