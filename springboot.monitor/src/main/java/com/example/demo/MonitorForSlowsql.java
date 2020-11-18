@@ -100,7 +100,7 @@ public class MonitorForSlowsql {
 		}else {
 			sourceBuilder.query(QueryBuilders.rangeQuery("@timestamp").gt(last).lt(start + "T16:00:00"));
 		}
-		SearchRequest searchRequest = new SearchRequest("slowquery-timely-mysql-"+start);
+		SearchRequest searchRequest = new SearchRequest("slowquery-mysql-"+start);
 		searchRequest.source(sourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
 		SearchHits hits = searchResponse.getHits();

@@ -42,7 +42,7 @@ public class ZStongji {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		BasicDBObject query = new BasicDBObject();
-		query.put("startTime", new BasicDBObject("$gte", df.parse("2020-11-05")).append("$lt", df.parse("2020-11-06")));
+		query.put("startTime", new BasicDBObject("$gte", df.parse("2020-11-16")).append("$lt", df.parse("2020-11-17")));
 		
 		//System.out.println(c.count(query));
 		

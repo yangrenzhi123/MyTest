@@ -2,8 +2,8 @@ spring:
   data:
     mongodb:
       one:
-        uri: mongodb://192.168.10.237:27411/test
+        uri: mongodb://192.168.10.19:27017/test
       two:
-        uri: mongodb://192.168.10.237:27411/test
+        uri: mongodb://192.168.10.19:27017/test
       three:
-        uri: mongodb://192.168.10.237:27411/test
+        uri: mongodb://192.168.10.19:27017/test

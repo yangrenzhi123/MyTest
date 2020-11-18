@@ -31,12 +31,12 @@ public class Elasticsearch2 {
 		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
 //		sourceBuilder.query(QueryBuilders.matchQuery("message", "2020").fuzziness(Fuzziness.AUTO));
 //		sourceBuilder.query(QueryBuilders.matchQuery("@timestamp", "2020-05-21T10:19:43.197Z").fuzziness(Fuzziness.AUTO));
-//		sourceBuilder.query(QueryBuilders.rangeQuery("@timestamp").gt("2020-05-21T10:00:00.000Z").lt("2020-05-21T11:00:00.000Z"));
+//		sourceBuilder.query(QueryBuilders.rangeQuery("@timestamp").gt("2020-11-14T00:00:00.000Z").lt("2020-11-15T00:00:00.000Z"));
 		sourceBuilder.from(0);
 		sourceBuilder.size(10);
 //		sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
 
-		SearchRequest searchRequest = new SearchRequest("slowquery-timely-mysql-2020-11-12");
+		SearchRequest searchRequest = new SearchRequest("slowquery-mongo-2020-11-18");
 		//searchRequest.types("Doc");
 		searchRequest.source(sourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
@@ -46,7 +46,7 @@ public class Elasticsearch2 {
 		for (SearchHit hit : searchHits) {
 		    System.out.print(hit.getId() + "，");
 		    System.out.print(hit.getIndex() + "，");
-		    System.out.print(hit.getType() + "，");
+		    System.out.print(hit.getSourceAsMap().get("@timestamp") + "，");
 		    System.out.println(hit.getSourceAsString());
 		}
 		

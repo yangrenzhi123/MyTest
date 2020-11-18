@@ -91,6 +91,12 @@ public class SlowsqlToEsTimely {
 		ResultSet rs = stmt.executeQuery();
 		String indexName = System.getProperty("indexNamePre") + strToday;
 		System.out.println("indexName：" + indexName);
+		
+		boolean existing = client.indices().exists(new GetIndexRequest(indexName), RequestOptions.DEFAULT);
+		if (existing) {
+			client.indices().delete(new DeleteIndexRequest(indexName), RequestOptions.DEFAULT);
+		}
+		
 		int i = 0;
 		int j = 0;
 		while (rs.next()) {
@@ -149,11 +155,6 @@ public class SlowsqlToEsTimely {
 			Calendar start = Calendar.getInstance();
 			start.setTime(df2.parse(start_time));
 			start.add(Calendar.HOUR_OF_DAY, -8);
-
-			boolean existing = client.indices().exists(new GetIndexRequest(indexName), RequestOptions.DEFAULT);
-			if (existing) {
-				client.indices().delete(new DeleteIndexRequest(indexName), RequestOptions.DEFAULT);
-			}
 
 			IndexRequest request = new IndexRequest(indexName);
 			String jsonString = "{\"@timestamp\":\""+df2.format(start.getTime())+"\",\"start_time\":\""+start_time_s+"\",\"user_host\":\""+user_host+"\",\"lock_time\":\""+lock_time+"\",\"rows_sent\":\""+rows_sent+"\",\"rows_examined\":\""+rows_examined+"\",\"db\":\""+db+"\",\"last_insert_id\":\""+last_insert_id+"\",\"insert_id\":\""+insert_id+"\",\"server_id\":\""+server_id+"\",\"thread_id\":\""+thread_id+"\",\"query_time\":\""+query_time+"\",\"sql_text\":\""+sql_text+"\",\"s0\":"+s0+",\"s1\":"+s1+",\"s2\":"+s2+",\"s3\":"+s3+",\"s4\":"+s4+",\"s5\":"+s5+",\"s6\":"+s6+"}";

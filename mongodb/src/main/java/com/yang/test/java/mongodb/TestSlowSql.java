@@ -32,15 +32,15 @@ public class TestSlowSql {
 		t("192.168.10.222",27028);
 		t("192.168.10.222",27038);
 		t("192.168.10.224",27018);
-//		t("192.168.10.224",27028);
+		//t("192.168.10.224",27028);
 		t("192.168.10.224",27038);
 	}
 	
 	public static void t(String ip, int port) {
 		MongoClient mongoClient = new MongoClient(ip, port);
 
-		final MongoDatabase mgdb = mongoClient.getDatabase("system");
-		final MongoCollection<Document> c = mgdb.getCollection("profile");
+		final MongoDatabase mgdb = mongoClient.getDatabase("test");
+		final MongoCollection<Document> c = mgdb.getCollection("system.profile");
 		FindIterable<Document> iter = c.find().limit(10);
 		MongoCursor<Document> mc = iter.cursor();
 		while (mc.hasNext()) {

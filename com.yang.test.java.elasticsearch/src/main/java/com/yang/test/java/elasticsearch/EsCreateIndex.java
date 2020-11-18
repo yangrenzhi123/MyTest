@@ -12,7 +12,7 @@ import org.elasticsearch.common.xcontent.XContentType;
 public class EsCreateIndex {
 
 	public static void main(String[] args) throws IOException {
-		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.92", 9200, "http")));
+		RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.8.70", 9200, "http")));
 
 		createIndex(client);
 
@@ -21,7 +21,7 @@ public class EsCreateIndex {
 
 	// 创建索引
 	public static void createIndex(RestHighLevelClient client) throws IOException {
-		CreateIndexRequest request = new CreateIndexRequest("slowquery-mysql-2020-10-29");
+		CreateIndexRequest request = new CreateIndexRequest("ytest");
 		buildIndexMapping(request);
 		client.indices().create(request, RequestOptions.DEFAULT);
 	}

@@ -13,17 +13,15 @@ import com.mongodb.client.MongoDatabase;
 public class ListCollectionIndexes {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		MongoClient mongoClient = new MongoClient("192.168.10.19", 27017);
+		MongoClient mongoClient = new MongoClient("192.168.10.227", 27017);
 		final MongoDatabase mgdb = mongoClient.getDatabase("test");
 
-		MongoCollection<Document> mongoCollection = mgdb.getCollection("gwRequestInfo");
+		MongoCollection<Document> mongoCollection = mgdb.getCollection("system.profile");
 
 		ListIndexesIterable<Document> lii = mongoCollection.listIndexes();
 		MongoCursor<Document> mcnei = lii.iterator();
-		StringBuilder sb = new StringBuilder();
 		while (mcnei.hasNext()) {
-			Document d = mcnei.next();
-			sb.append(d.get("name") + "，");
+			System.out.println(mcnei.next());
 		}
 
 		mongoClient.close();
