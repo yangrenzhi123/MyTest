@@ -15,7 +15,7 @@ public class ListDb {
 		while (cursor.hasNext()) {
 			System.out.println(cursor.next());
 		}
-
+		
 		mongoClient.close();
 	}
 }

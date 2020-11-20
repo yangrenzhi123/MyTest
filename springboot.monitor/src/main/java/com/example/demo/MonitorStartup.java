@@ -44,6 +44,8 @@ public class MonitorStartup {
 	MonitorForDisk monitorForDisk;
 	@Autowired
 	MonitorForSlowsql monitorForSlowsql;
+	@Autowired
+	Config config;
 
 	@Bean
 	public String getInitor() {
@@ -59,6 +61,7 @@ public class MonitorStartup {
 						monitorForDevice.execute();
 						monitorForDisk.execute();
 						monitorForSlowsql.execute();
+						if("1".equals(config.getMongoSlowsqlOn())) MongoSlowsqlToEs.execute();
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -113,18 +113,18 @@ public class MonitorForService {
 		if(messages.size() > 0) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("时间：");sb.append(yyyy.format(new Date()));
-			sb.append("\r\n");
+			sb.append("\r");
 			sb.append("服务：com-lyzh-msa-dao-service，服务数量：");sb.append(daos.size());sb.append("个，异常数量：");sb.append(messages.size());sb.append("个。");
-			sb.append("\r\n");
+			sb.append("\r");
 			sb.append("详情如下：");
-			sb.append("\r\n");
+			sb.append("\r");
 			for(DingDingMessageModel message : messages) {
 				sb.append("HttpCode：");sb.append(message.getHttpCode());sb.append("，信息：");sb.append(message.getIp());
-				sb.append("\r\n");
+				sb.append("\r");
 			}
 			sb.append("本次异常将于5分钟后再次检测，若异常已修复，该警告不再提醒。");
-			sb.append("\r\n");
-			sb.append("\r\n");
+			sb.append("\r");
+			sb.append("\r");
 			sb.append("@蔡伟平");
 			TestDingding.test(config.getDingDingToken(), sb.toString());
 		}

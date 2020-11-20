@@ -40,6 +40,7 @@ public class Config {
 	private String slowsqlCollections;
 	private String dingDingToken;
 	private String slowsqlCollectionsDingToken;
+	private String mongoSlowsqlOn;
 
 	public List<String> getDevice() {
 		return device;
@@ -202,5 +203,11 @@ public class Config {
 	}
 	public void setSlowsqlCollectionsDingToken(String slowsqlCollectionsDingToken) {
 		this.slowsqlCollectionsDingToken = slowsqlCollectionsDingToken;
+	}
+	public String getMongoSlowsqlOn() {
+		return mongoSlowsqlOn;
+	}
+	public void setMongoSlowsqlOn(String mongoSlowsqlOn) {
+		this.mongoSlowsqlOn = mongoSlowsqlOn;
 	}
 }

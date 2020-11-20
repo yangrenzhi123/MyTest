@@ -126,10 +126,29 @@ public class SlowsqlToEs {
 			int s4 = 0;
 			int s5 = 0;
 			int s6 = 0;
+			int s00 = 0;
+			int s01 = 0;
+			int s02 = 0;
+			int s03 = 0;
+			int s04 = 0;
+			int s05 = 0;
 			if(!user_host.contains("192.168.10.")) {
 				s6 = 1;
 			}else if(query_time.startsWith("00:00:")) {
 				s0 = 1;
+				if(query_time.startsWith("00:00:0")) {
+					s00 = 1;
+				}else if(query_time.startsWith("00:00:1")) {
+					s01 = 1;
+				}else if(query_time.startsWith("00:00:2")) {
+					s02 = 1;
+				}else if(query_time.startsWith("00:00:3")) {
+					s03 = 1;
+				}else if(query_time.startsWith("00:00:4")) {
+					s04 = 1;
+				}else if(query_time.startsWith("00:00:5")) {
+					s05 = 1;
+				}
 			}else if(query_time.startsWith("00:01:")) {
 				s1 = 1;
 			}else if(query_time.startsWith("00:02:")) {
@@ -157,7 +176,7 @@ public class SlowsqlToEs {
 			start.add(Calendar.HOUR_OF_DAY, -8);
 
 			IndexRequest request = new IndexRequest(indexName);
-			String jsonString = "{\"@timestamp\":\""+df2.format(start.getTime())+"\",\"start_time\":\""+start_time_s+"\",\"user_host\":\""+user_host+"\",\"lock_time\":\""+lock_time+"\",\"rows_sent\":\""+rows_sent+"\",\"rows_examined\":\""+rows_examined+"\",\"db\":\""+db+"\",\"last_insert_id\":\""+last_insert_id+"\",\"insert_id\":\""+insert_id+"\",\"server_id\":\""+server_id+"\",\"thread_id\":\""+thread_id+"\",\"query_time\":\""+query_time+"\",\"sql_text\":\""+sql_text+"\",\"s0\":"+s0+",\"s1\":"+s1+",\"s2\":"+s2+",\"s3\":"+s3+",\"s4\":"+s4+",\"s5\":"+s5+",\"s6\":"+s6+"}";
+			String jsonString = "{\"@timestamp\":\""+df2.format(start.getTime())+"\",\"start_time\":\""+start_time_s+"\",\"user_host\":\""+user_host+"\",\"lock_time\":\""+lock_time+"\",\"rows_sent\":\""+rows_sent+"\",\"rows_examined\":\""+rows_examined+"\",\"db\":\""+db+"\",\"last_insert_id\":\""+last_insert_id+"\",\"insert_id\":\""+insert_id+"\",\"server_id\":\""+server_id+"\",\"thread_id\":\""+thread_id+"\",\"query_time\":\""+query_time+"\",\"sql_text\":\""+sql_text+"\",\"s0\":"+s0+",\"s1\":"+s1+",\"s2\":"+s2+",\"s3\":"+s3+",\"s4\":"+s4+",\"s5\":"+s5+",\"s6\":"+s6+",\"s00\":"+s00+",\"s01\":"+s01+",\"s02\":"+s02+",\"s03\":"+s03+",\"s04\":"+s04+",\"s05\":"+s05+"}";
 			request.source(jsonString, XContentType.JSON);
 			bulkRequest.add(request);
 		}
