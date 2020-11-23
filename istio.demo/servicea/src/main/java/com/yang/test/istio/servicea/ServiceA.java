@@ -31,7 +31,7 @@ class TestController {
 		HttpResponse response = httpClient.execute(request);
 		HttpEntity httpEntity = response.getEntity();
 		String result = EntityUtils.toString(httpEntity);
-		System.out.println(result);
+		System.out.println("successa");
 		return "successa，serviceb：" + result + "，httpcode：" + response.getStatusLine().getStatusCode();
 	}
 }
