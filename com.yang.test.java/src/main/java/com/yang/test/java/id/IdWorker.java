@@ -47,7 +47,9 @@ public class IdWorker{
     }
 
     public long getTimestamp(){
-        return System.currentTimeMillis();
+    	long a = System.currentTimeMillis();
+    	System.out.println("原始毫秒值：" + a);
+        return a;
     }
 
     public synchronized long nextId() {
@@ -84,7 +86,9 @@ public class IdWorker{
     }
 
     private long timeGen(){
-        return System.currentTimeMillis();
+    	long a = System.currentTimeMillis();
+    	System.out.println("原始毫秒值：" + a);
+        return a;
 	}
 
 	// ---------------测试---------------
@@ -96,6 +100,13 @@ public class IdWorker{
 	}
 	
 	public static void main(String[] args) {
+		IdWorker worker = new IdWorker(0, 4, 0);
+		long workerId = worker.nextId();
+		long cc = workerId >> 22;
+		System.out.println("用id反推值：" + (cc + 1288834974657L));
+		System.out.println();
+		
+		
 		long a = System.currentTimeMillis();
 		long b = a - 1288834974657L;
 		System.out.println(a);
