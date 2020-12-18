@@ -17,16 +17,11 @@ import com.yang.test.java.springboot.mybatis.intercept.MybatisSqlInterceptor;
 @MapperScan("com.yang.test.java.springboot.dao")
 public class MybatisStartup {
 
+	@Bean
+	public MybatisSqlInterceptor mybatisSqlInterceptor() {
+		return new MybatisSqlInterceptor();
+	}
 
-	  @Bean
-
-	    public MybatisSqlInterceptor mybatisSqlInterceptor(){
-
-	        return  new MybatisSqlInterceptor();
-
-	    }
-
-	
 	@Bean
 	public SqlSessionFactoryBean createSqlSessionFactory(MybatisSqlInterceptor mybatisSqlInterceptor) throws IOException {
 		DruidDataSource dataSource = new DruidDataSource();

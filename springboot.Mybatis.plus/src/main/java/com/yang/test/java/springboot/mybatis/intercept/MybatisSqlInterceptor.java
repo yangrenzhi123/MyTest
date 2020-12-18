@@ -22,7 +22,9 @@ import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.stereotype.Component;
 
+@Component
 @Intercepts({ 
 	@Signature(type = Executor.class, method = "update", args = { MappedStatement.class, Object.class }),
 	@Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class }),
@@ -39,12 +41,14 @@ public class MybatisSqlInterceptor implements Interceptor {
 		}
 
 		String oType = getOperateType(invocation);
-		if(!"select".equals(oType)) {
+		if(!"insert".equals(oType)) {
 			return invocation.proceed();
 		}
 		
 		// sql交由处理类处理 对sql语句进行处理 此处是范例 不做任何处理
 		String sql2Reset = sql + "\r\n-- 我是注释\r\n";
+		
+		System.out.println(sql2Reset);
 
 		// 包装sql后，重置到invocation中
 		resetSql2Invocation(invocation, sql2Reset);

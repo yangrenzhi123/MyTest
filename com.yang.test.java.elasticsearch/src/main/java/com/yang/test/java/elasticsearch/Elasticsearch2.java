@@ -36,7 +36,7 @@ public class Elasticsearch2 {
 		sourceBuilder.size(10000);
 //		sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
 
-		SearchRequest searchRequest = new SearchRequest("slowquery-mysql-2020-10-24");
+		SearchRequest searchRequest = new SearchRequest("testy-2020.11.07");
 		//searchRequest.types("Doc");
 		searchRequest.source(sourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);

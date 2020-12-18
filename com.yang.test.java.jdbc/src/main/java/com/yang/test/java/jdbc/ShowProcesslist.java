@@ -43,10 +43,11 @@ public class ShowProcesslist {
 			String host = rs.getString("host");
 			String state = rs.getString("state");
 			String info = rs.getString("info") != null ? rs.getString("info").replaceAll("\r", "").replaceAll("\n", "") : "";
-			if (Time > 10 && !StringUtils.isNullOrEmpty(info)) {
-				String s = id + "\t" + Time + "\t" + user + "\t" + host + "\t" + state + "\t" + info + "\r\n";
-				System.out.println(s.length());
-				System.out.println(s);
+			if (!StringUtils.isNullOrEmpty(info)) {
+				//String s = id + "\t" + Time + "\t" + user + "\t" + host + "\t" + state + "\t" + info + "\r\n";
+				String s = info + "\r\n";
+				//System.out.println(s.length());
+				//System.out.println(s);
 
 //				buf.clear();
 //				buf.put(s.getBytes());
@@ -77,7 +78,7 @@ public class ShowProcesslist {
 	}
 
 	public static ByteBuffer getByteBuffer() {
-		ByteBuffer buf = ByteBuffer.allocate(102400);
+		ByteBuffer buf = ByteBuffer.allocate(10240000);
 		return buf;
 	}
 }

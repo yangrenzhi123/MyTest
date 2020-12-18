@@ -16,7 +16,7 @@ public class ListCollectionIndexes {
 		MongoClient mongoClient = new MongoClient("192.168.10.227", 27017);
 		final MongoDatabase mgdb = mongoClient.getDatabase("test");
 
-		MongoCollection<Document> mongoCollection = mgdb.getCollection("system.profile");
+		MongoCollection<Document> mongoCollection = mgdb.getCollection("signInRecord");
 
 		ListIndexesIterable<Document> lii = mongoCollection.listIndexes();
 		MongoCursor<Document> mcnei = lii.iterator();

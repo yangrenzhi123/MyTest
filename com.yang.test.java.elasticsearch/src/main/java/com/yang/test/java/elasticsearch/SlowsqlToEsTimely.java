@@ -10,6 +10,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
@@ -28,22 +30,37 @@ public class SlowsqlToEsTimely {
 	static final String PASS = System.getProperty("mysqlPassword");
 	
 	public static void main(String[] args) throws SQLException, IOException {
-		Connection conn = null;
-		RestHighLevelClient client = null;
-		try {		
-			Class.forName(DRIVER);
-			conn = DriverManager.getConnection(DB_URL2, USER, PASS);
-			conn.setAutoCommit(true);
-			
-			client = new RestHighLevelClient(RestClient.builder(new HttpHost(System.getProperty("esIp"), Integer.parseInt(System.getProperty("esPort")), "http")));
-			
-			t(conn, client);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			public void run() {
+				try {
+					
+					
+					
+					Connection conn = null;
+					RestHighLevelClient client = null;
+					try {		
+						Class.forName(DRIVER);
+						conn = DriverManager.getConnection(DB_URL2, USER, PASS);
+						conn.setAutoCommit(true);
+						
+						client = new RestHighLevelClient(RestClient.builder(new HttpHost(System.getProperty("esIp"), Integer.parseInt(System.getProperty("esPort")), "http")));
+						
+						t(conn, client);
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
 
-		if(conn != null) conn.close();
-		if(client != null) client.close();
+					if(conn != null) conn.close();
+					if(client != null) client.close();
+					
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}, 0, 300000);
 	}
 	
 	public static void t(Connection conn, RestHighLevelClient client) throws ClassNotFoundException, SQLException, IOException, ParseException {
@@ -88,7 +105,9 @@ public class SlowsqlToEsTimely {
 		
 		BulkRequest bulkRequest = new BulkRequest();
 		PreparedStatement stmt = conn.prepareStatement(sql);
+		long a = System.currentTimeMillis();
 		ResultSet rs = stmt.executeQuery();
+		System.out.println("mysql查询耗时：" + (System.currentTimeMillis() - a));
 		String indexName = System.getProperty("indexNamePre") + strToday;
 		System.out.println("indexName：" + indexName);
 		
