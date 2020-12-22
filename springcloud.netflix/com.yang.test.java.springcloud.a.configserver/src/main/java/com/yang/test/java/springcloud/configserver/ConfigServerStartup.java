@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //import de.codecentric.boot.admin.client.config.SpringBootAdminClientAutoConfiguration;
 
-@SpringBootApplication//(exclude = { SpringBootAdminClientAutoConfiguration.class })
+@SpringBootApplication // (exclude = { SpringBootAdminClientAutoConfiguration.class })
 @EnableConfigServer
 public class ConfigServerStartup {
 
@@ -23,7 +23,7 @@ class TestController {
 
 	@Autowired
 	SampleBean sampleBean;
-	
+
 	// 请求一次，指标累加一次
 	@RequestMapping("/")
 	public String index() throws Exception {
