@@ -1,4 +1,4 @@
-package com.yang.test.java.design.patterns.adapter;
+package design.patterns.structure.adapter;
 
 public class ClassAdapterTest {
 

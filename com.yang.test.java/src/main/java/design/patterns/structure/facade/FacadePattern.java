@@ -1,4 +1,4 @@
-package com.yang.test.java.design.patterns.facade;
+package design.patterns.structure.facade;
 
 public class FacadePattern {
 	public static void main(String[] args) {

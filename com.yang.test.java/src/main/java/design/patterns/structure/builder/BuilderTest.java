@@ -1,4 +1,4 @@
-package com.yang.test.java.design.patterns.builder;
+package design.patterns.structure.builder;
 
 public class BuilderTest {
 

@@ -1,4 +1,4 @@
-package com.yang.test.java.design.patterns.decorator;
+package design.patterns.structure.decorator;
 
 public class DecoratorPattern {
 	public static void main(String[] args) {

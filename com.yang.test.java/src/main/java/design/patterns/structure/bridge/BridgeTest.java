@@ -1,4 +1,4 @@
-package com.yang.test.java.design.patterns.bridge;
+package design.patterns.structure.bridge;
 
 public class BridgeTest {
 

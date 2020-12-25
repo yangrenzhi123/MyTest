@@ -1,4 +1,4 @@
-package com.yang.test.java.design.patterns.factory;
+package design.patterns.structure.factory;
 
 public class FactoryMethod {
 	public static void main(String[] args) {
