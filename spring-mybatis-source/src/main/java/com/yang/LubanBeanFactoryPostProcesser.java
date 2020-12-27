@@ -1,7 +1,6 @@
 package com.yang;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
 public class LubanBeanFactoryPostProcesser implements BeanFactoryPostProcessor {
 
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-		BeanDefinition bd = beanFactory.getBeanDefinition("lubanFactoryBean");
-		System.out.println(bd.getBeanClassName());
+
 	}
 }

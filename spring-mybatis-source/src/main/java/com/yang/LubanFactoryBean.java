@@ -5,15 +5,18 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.stereotype.Component;
 
-import com.yang.dao.UserMapper;
-
-@Component
+@SuppressWarnings("rawtypes")
 public class LubanFactoryBean implements FactoryBean<Object> {
 
+	private Class mapper;
+	public LubanFactoryBean(Class mapper) {
+		super();
+		this.mapper = mapper;
+	}
+
 	public Object getObject() throws Exception {
-		return Proxy.newProxyInstance(LubanFactoryBean.class.getClassLoader(), new Class[] {UserMapper.class}, new InvocationHandler() {
+		return Proxy.newProxyInstance(LubanFactoryBean.class.getClassLoader(), new Class[] {mapper}, new InvocationHandler() {
 			
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				System.out.println("test..");
@@ -23,6 +26,6 @@ public class LubanFactoryBean implements FactoryBean<Object> {
 	}
 
 	public Class<?> getObjectType() {
-		return UserMapper.class;
+		return mapper;
 	}
 }
