@@ -59,7 +59,7 @@ public class MonitorStartup {
 						monitorForRedis.execute();
 						monitorForService.execute();
 						monitorForDevice.execute();
-						monitorForDisk.execute();
+						//monitorForDisk.execute();
 						monitorForSlowsql.execute();
 						if("1".equals(config.getMongoSlowsqlOn())) MongoSlowsqlToEs.execute();
 					}
