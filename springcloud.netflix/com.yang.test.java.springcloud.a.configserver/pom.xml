@@ -48,4 +48,13 @@
 		<artifactId>spring-cloud-starter-parent</artifactId>
 		<version>Finchley.RELEASE</version>
 	</parent>
+	<build>
+		<finalName>configserver</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
