@@ -2,6 +2,8 @@ package com.yang.test.java.springboot;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,9 @@ public class Springboot {
 class TestController {
 
 	@RequestMapping("/")
-	public String index() throws Exception {
+	public String index(HttpServletRequest request) throws Exception {
+		System.out.println(request.getHeader("Content-Length"));
+
 		return "success";
 	}
 

@@ -217,8 +217,9 @@ public class MonitorForService {
 				e1.printStackTrace();
 			}
 
+			int code = response.getStatusLine().getStatusCode();
 			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 " + result.getName()  + " 发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到向服务" + result.getName()  + "发起http请求时发生异常，httpcode:"+code+"，将于5分钟后再次检测。若异常已修复，该警告不再提醒。\r\n服务检测地址：http://"+url);
 			return;
 		}
 
@@ -235,7 +236,7 @@ public class MonitorForService {
 			MonitorStartup.result.put(url, result);
 
 			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 " + result.getName()  + " 发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到向服务" + result.getName()  + "发起http请求时发生异常，httpcode:"+code+"，将于5分钟后再次检测。若异常已修复，该警告不再提醒。\r\n服务检测地址：http://"+url);
 		}
 
 

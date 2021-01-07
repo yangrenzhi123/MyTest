@@ -20,10 +20,19 @@ public class SampleBean {
 	Random r = new Random();
 
 	public SampleBean(MeterRegistry registry) {
+	    DistributionSummary summary = DistributionSummary.builder("test_y_gn_beat_summary")
+	            .description("simple distribution summary")
+	            .minimumExpectedValue(1L)
+	            .maximumExpectedValue(100L)
+	            .publishPercentiles(0.5, 0.75, 0.9)
+	            .register(registry);
+		
+		
+		
 		// 注册指标
 		this.counter = registry.counter("test_y_gn_beat_counter");
 		this.gauge = registry.gauge("test_y_gn_beat_gauge", new AtomicInteger(0));
-		this.summary = registry.summary("test_y_gn_beat_summary");
+		this.summary = summary;
 		this.timer = Timer.builder("timer").tag("timer","timer").description("timer").register(registry);
 	}
 
@@ -32,11 +41,11 @@ public class SampleBean {
 		this.counter.increment();
 		this.gauge.decrementAndGet();
 		this.summary.record(r.nextInt(100));
-        this.timer.record(()->{
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            }catch (InterruptedException e){
-            }
-        });
+		this.timer.record(() -> {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+			}
+		});
 	}
 }

@@ -19,6 +19,8 @@ management:
   security:
     enabled: false
   metrics:
+    tags:
+      application: ${spring.application.name}
     export:
       prometheus:
         enabled: true
@@ -42,5 +44,5 @@ info:
   app:
     name: "@project.name@"
     description: "@project.description@"
-    version: "@project.version@"
+    version: "2.1.0"
     spring-boot-version: "@project.parent.version@"

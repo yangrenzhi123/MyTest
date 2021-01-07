@@ -81,7 +81,7 @@ public class MonitorForDevice {
 			MonitorStartup.result.put(ip+":"+port, result);
 
 			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 MongoDB("+ip+") 发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到向MongoDB("+ip+")查询数据发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
 			return;
 		}
 	}
@@ -120,7 +120,7 @@ public class MonitorForDevice {
 			MonitorStartup.result.put(ip+":"+port, result);
 
 			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 " + result.getName()  + " 发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到向" + result.getName()  + "发起连接时发生异常，ip:"+ip+"，port:"+port+"，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
 			return;
 		}
 	}

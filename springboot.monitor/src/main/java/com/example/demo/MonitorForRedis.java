@@ -61,7 +61,7 @@ public class MonitorForRedis {
 			MonitorStartup.result.put(s, result);
 
 			DateFormat yyyy = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到 " + result.getName()  + " 发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
+			TestDingding.test(config.getDingDingToken(), yyyy.format(result.getCheckTime()) + "，检测到向redis("+s+")查询key:testKey时发生异常，将于5分钟后再次检测。若异常已修复，该警告不再提醒。");
 		}
 	}
 }
