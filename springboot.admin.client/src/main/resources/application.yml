@@ -6,9 +6,9 @@ spring:
   boot:
     admin:
       client:
-        url: http://192.168.10.19:8788
+        url: http://127.0.0.1:8788
         instance:
-          service-url: http://192.168.8.70:6666
+          service-url: http://127.0.0.1:6666
 management:
   endpoints:
     web:
