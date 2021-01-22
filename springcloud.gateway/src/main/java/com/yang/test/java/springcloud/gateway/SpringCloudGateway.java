@@ -1,4 +1,4 @@
-package com.yang.test.java.spring.cloud.gateway;
+package com.yang.test.java.springcloud.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

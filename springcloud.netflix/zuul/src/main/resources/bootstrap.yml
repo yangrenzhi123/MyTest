@@ -1,3 +1,5 @@
+server:
+  port: 8106
 spring:
   application:
     name: com-yang-test-zzl
@@ -13,26 +15,15 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
-server:
-  port: 8106
 zuul:
   routes:
     api-a:
       path: /api-a/1/**
-      serviceId: noun1
-      strip-prefix: false
+      serviceId: noun2
     api-b:
       path: /api-b/2/**
       serviceId: noun2
-      strip-prefix: false
-    api-c:
-      path: /provider-test/**
-      serviceId: mmb-eureka-client-provider
-      strip-prefix: false
-    api-d:
-      path: /api-file/**
-      serviceId: noun2
-      strip-prefix: false
+      strip-prefix: false #被调用方以/api-b/2/开头
   semaphore:
     max-semaphores: 10000
 ribbon:

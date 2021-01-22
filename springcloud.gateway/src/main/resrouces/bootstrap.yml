@@ -1,0 +1,67 @@
+spring:
+  zipkin:
+    baseUrl: http://192.168.8.70:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  application:
+    name: spring.cloud.gateway
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8788
+        instance:
+          service-url: http://127.0.0.1:8080
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: user
+      password: 87bcaffc-7b2d-4569-b77e-3df9990a066f
+    gateway:
+      routes:
+      - id: api-a
+        uri: lb://noun2
+        predicates:
+        - Path=/test/**
+        filters:
+            #- StripPrefix=1    #除去第一个/前缀，比如请求/wisdomclass-demo/demo,会去除前缀/wisdomclass-demo,请求到路由服务的 /demo接口
+            - RemoveRequestHeader=Origin #  去除请求头的origin字段，此字段导致post请求 无法进入网关post熔断
+            - name: SpecialHystrix #自定义熔断
+              args:
+                id: SpecialHystrix
+                fallbackUri: forward:/gatewayFallback
+                timeout:
+                  #指定接口超时处理
+                  file-upload-convert: 1000
+                  file-upload-: 1000
+                  file-download-: 1000
+                  course-file-upload-local-: 1000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:123456@localhost:8761/eureka
+  instance: 
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+ribbon:
+  ReadTimeout: 1000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #<2>
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
+    reload:
+      enabled: true
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"

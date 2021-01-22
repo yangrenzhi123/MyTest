@@ -17,7 +17,13 @@ public class Controller {
 	@Autowired
 	private WordService wordService;
 
-	@RequestMapping("/")
+	@RequestMapping("/test")
+	public @ResponseBody String test() throws InterruptedException {
+		Thread.sleep(5000);
+		return "success";
+	}
+
+	@RequestMapping("/tttttt")
 	public @ResponseBody String index() {
 		int a = 0;
 		int b = 0;

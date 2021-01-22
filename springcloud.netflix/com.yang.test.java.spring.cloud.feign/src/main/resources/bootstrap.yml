@@ -11,12 +11,6 @@ spring:
   sleuth:
     sampler:
       probability: 1.0
-  rabbitmq:
-    host: 192.168.8.70
-    port: 5672
-    username: admin
-    password: admin
-    virtual-host: /
 server:
   port: 8032
 eureka:
@@ -25,15 +19,12 @@ eureka:
       defaultZone: http://eureka:123456@localhost:8761/eureka
   instance:
     prefer-ip-address: true
-    #ip-address: 127.0.0.1
+    ip-address: 127.0.0.1
     metadata-map:
       api-version: 0
 hystrix:
   dashboard:
     proxy-stream-allow-list: "localhost"
-#feign:
-#  hystrix:
-#    enabled: true
 ribbon:
   ReadTimeout: 1000
   MaxAutoRetries: 0
