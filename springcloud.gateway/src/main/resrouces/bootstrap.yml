@@ -23,19 +23,7 @@ spring:
         uri: lb://noun2
         predicates:
         - Path=/test/**
-        filters:
-            #- StripPrefix=1    #除去第一个/前缀，比如请求/wisdomclass-demo/demo,会去除前缀/wisdomclass-demo,请求到路由服务的 /demo接口
-            - RemoveRequestHeader=Origin #  去除请求头的origin字段，此字段导致post请求 无法进入网关post熔断
-            - name: SpecialHystrix #自定义熔断
-              args:
-                id: SpecialHystrix
-                fallbackUri: forward:/gatewayFallback
-                timeout:
-                  #指定接口超时处理
-                  file-upload-convert: 1000
-                  file-upload-: 1000
-                  file-download-: 1000
-                  course-file-upload-local-: 1000
+
 eureka:
   client:
     service-url:

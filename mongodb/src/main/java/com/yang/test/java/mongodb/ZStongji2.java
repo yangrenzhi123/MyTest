@@ -43,9 +43,9 @@ public class ZStongji2 {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		BasicDBObject query = new BasicDBObject();
-		query.put("startTime", new BasicDBObject("$gte", df.parse("2020-11-17")).append("$lt", df.parse("2020-11-18")));
+		query.put("startTime", new BasicDBObject("$gte", df.parse("2021-01-21")).append("$lt", df.parse("2021-01-22")));
 		
-		//System.out.println(c.count(query));
+		System.out.println("数据量：" + c.count(query));
 		
 		FindIterable<Document> iter = c.find(query);//.limit(100);
 		iter.forEach(new Block<Document>() {
@@ -101,6 +101,7 @@ public class ZStongji2 {
 			l.add(val);
 		}
 
+		long a = System.currentTimeMillis();
 		Collections.sort(l, new Comparator<Data>() {
 			public int compare(Data o1, Data o2) {
 				if (o1.getCount() > o2.getCount()) {
@@ -113,6 +114,22 @@ public class ZStongji2 {
 			}
 		});
 		System.out.println(l);
+		System.out.println("按照数量排序耗时：" + (System.currentTimeMillis() - a));
+
+		long b = System.currentTimeMillis();
+		Collections.sort(l, new Comparator<Data>() {
+			public int compare(Data o1, Data o2) {
+				if ( (o1.getTotalCosttime()/o1.getCount()) > (o2.getTotalCosttime()/o2.getCount()) ) {
+					return -1;
+				} else if ( (o1.getTotalCosttime()/o1.getCount()) < (o2.getTotalCosttime()/o2.getCount()) ) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+		});
+		System.out.println(l);
+		System.out.println("按照单次排序耗时：" + (System.currentTimeMillis() - b));
 	}
 }
 

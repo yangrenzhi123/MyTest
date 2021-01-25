@@ -1,6 +1,7 @@
 package com.yang.test.java.springboot.webflux;
 
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -37,14 +38,13 @@ class HelloController {
 
 	@GetMapping("/2")
 	public Flux<String> hello2() {
-		Flux<String> result = Flux.fromStream(IntStream.range(0, 1).mapToObj(i -> {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			return "flux-"+i;
-		}));
+		IntStream is = IntStream.range(0, 10);
+
+		Stream<String> stream = is.mapToObj(i -> {
+			return "flux-" + i;
+		});
+
+		Flux<String> result = Flux.fromStream(stream);
 		return result;
 	}
 }
