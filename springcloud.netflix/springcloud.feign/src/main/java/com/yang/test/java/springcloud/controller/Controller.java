@@ -19,6 +19,9 @@ public class Controller {
 
 	@RequestMapping("/test")
 	public @ResponseBody String test() throws InterruptedException {
+		System.out.println("in tst ...");
+		Thread.sleep(2000);
+		
 		return "success test";
 	}
 	@RequestMapping("/test2")

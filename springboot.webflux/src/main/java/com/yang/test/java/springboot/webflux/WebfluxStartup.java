@@ -38,7 +38,7 @@ class HelloController {
 
 	@GetMapping("/2")
 	public Flux<String> hello2() {
-		IntStream is = IntStream.range(0, 10);
+		IntStream is = IntStream.range(0, 10).parallel();
 
 		Stream<String> stream = is.mapToObj(i -> {
 			return "flux-" + i;

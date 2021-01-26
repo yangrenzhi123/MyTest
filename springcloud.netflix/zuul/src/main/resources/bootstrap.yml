@@ -23,7 +23,7 @@ zuul:
     api-b:
       path: /api-b/2/**
       serviceId: noun2
-      strip-prefix: false #被调用方以/api-b/2/开头
+      #strip-prefix: false #被调用方以/api-b/2/开头
   semaphore:
     max-semaphores: 10000
 ribbon:
