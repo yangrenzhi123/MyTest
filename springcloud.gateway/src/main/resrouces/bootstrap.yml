@@ -38,9 +38,9 @@ spring:
                   file-download-: 1000
                   course-file-upload-local-: 1000
       - id: api-b
-        uri: http://localhost:8032
+        uri: https://www.baidu.com
         predicates:
-        - Path=/test2/**
+        - Path=/**
         filters:
             - RemoveRequestHeader=Origin
             - name: SpecialHystrix
@@ -48,10 +48,10 @@ spring:
                 id: SpecialHystrix
                 fallbackUri: forward:/gatewayFallback
                 timeout:
-                  file-upload-convert: 1000
-                  file-upload-: 1000
-                  file-download-: 1000
-                  course-file-upload-local-: 1000
+                  file-upload-convert: 10000
+                  file-upload-: 10000
+                  file-download-: 10000
+                  course-file-upload-local-: 10000
 eureka:
   client:
     service-url:
