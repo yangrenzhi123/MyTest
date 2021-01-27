@@ -29,15 +29,15 @@ public class CompareCount20And91And92 {
 		DecimalFormat df = new DecimalFormat("####,####");
 		Class.forName(DRIVER);
 
-		Connection conn1 = DriverManager.getConnection(DB_URL1, USER, PASS);
+		final Connection conn1 = DriverManager.getConnection(DB_URL1, USER, PASS);
 		conn1.setAutoCommit(true);
-		Connection conn2 = DriverManager.getConnection(DB_URL2, USER, PASS);
+		final Connection conn2 = DriverManager.getConnection(DB_URL2, USER, PASS);
 		conn2.setAutoCommit(true);
-		Connection conn3 = DriverManager.getConnection(DB_URL3, USER, PASS);
+		final Connection conn3 = DriverManager.getConnection(DB_URL3, USER, PASS);
 		conn3.setAutoCommit(true);
 		
 		List<String> tables = getTables(conn1);
-		for(String table : tables) {
+		for(final String table : tables) {
 			if(table.startsWith("vw_")) {
 				continue;
 			}

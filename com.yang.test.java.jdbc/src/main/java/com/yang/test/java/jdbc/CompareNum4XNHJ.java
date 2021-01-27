@@ -24,29 +24,29 @@ public class CompareNum4XNHJ {
 		DecimalFormat df = new DecimalFormat("####,####");
 		Class.forName(DRIVER);
 
-		Connection conn1 = DriverManager.getConnection(DB_URL1, USER, PASS);
+		final Connection conn1 = DriverManager.getConnection(DB_URL1, USER, PASS);
 		conn1.setAutoCommit(true);
 
 		List<String> tables = getTables(conn1);
 
-		Connection conn2 = DriverManager.getConnection(DB_URL2, USER, PASS);
+		final Connection conn2 = DriverManager.getConnection(DB_URL2, USER, PASS);
 		conn2.setAutoCommit(true);
-		Connection conn3 = DriverManager.getConnection(DB_URL3, USER, PASS);
+		final Connection conn3 = DriverManager.getConnection(DB_URL3, USER, PASS);
 		conn3.setAutoCommit(true);
-		Connection conn4 = DriverManager.getConnection(DB_URL4, USER, PASS);
+		final Connection conn4 = DriverManager.getConnection(DB_URL4, USER, PASS);
 		conn4.setAutoCommit(true);
 
-		for (String table : tables) {
+		for (final String table : tables) {
 			if (table.startsWith("vw_") || table.startsWith("h_etl_")) {
 				continue;
 			}
 
 			final CountDownLatch latch = new CountDownLatch(4);
 
-			DB db1 = new DB();
-			DB db2 = new DB();
-			DB db3 = new DB();
-			DB db4 = new DB();
+			final DB db1 = new DB();
+			final DB db2 = new DB();
+			final DB db3 = new DB();
+			final DB db4 = new DB();
 
 			new Thread(new Runnable() {
 				public void run() {

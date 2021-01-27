@@ -28,7 +28,7 @@ public class BatQuery2 {
 		pp.setProperty("password", "lyzhhw4performancetesting");
 		pp.setProperty("maxActive", "4");
 		pp.setProperty("initialSize", "4");
-		DataSource ds = BasicDataSourceFactory.createDataSource(pp);
+		final DataSource ds = BasicDataSourceFactory.createDataSource(pp);
 		
 		
 		int num;

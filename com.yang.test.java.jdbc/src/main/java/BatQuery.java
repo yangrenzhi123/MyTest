@@ -26,11 +26,11 @@ public class BatQuery {
 			num = 12;
 		}
 
-		CountDownLatch latch = new CountDownLatch(num);
+		final CountDownLatch latch = new CountDownLatch(num);
 		
 		// 分配数据库连接
 		Class.forName(DRIVER);
-		List<Connection> conns = new ArrayList<>();
+		final List<Connection> conns = new ArrayList<>();
 		for(int i=0;i<num;i++) {
 			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			conn.setAutoCommit(true);
@@ -38,7 +38,7 @@ public class BatQuery {
 		}
 		
 		// 定义月份
-		List<Integer> monthList = new ArrayList<>(12);
+		final List<Integer> monthList = new ArrayList<>(12);
 		monthList.add(1);
 		monthList.add(2);
 		monthList.add(3);

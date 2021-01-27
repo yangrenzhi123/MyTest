@@ -42,14 +42,14 @@ public class FaFangJi {
 	public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException, SQLException {
 		RequestConfig config = RequestConfig.custom().setConnectTimeout(300000).setConnectionRequestTimeout(300000).setSocketTimeout(300000).build();  
 
-		List<String> ffjList = GetFaFangJi.getSbbh();
-		int ffjSize = ffjList.size();
+		final List<String> ffjList = GetFaFangJi.getSbbh();
+		final int ffjSize = ffjList.size();
 		System.out.println("发放机数量：" + ffjSize);
-		List<String> cyewmList = GetCyewm.getCyewm();
-		int cyewmSize = cyewmList.size();
+		final List<String> cyewmList = GetCyewm.getCyewm();
+		final int cyewmSize = cyewmList.size();
 		System.out.println("二维码数量：" + cyewmSize);
 		
-		Random r = new Random();
+		final Random r = new Random();
 
 		final List<CloseableHttpClient> hcl = new ArrayList<>();
 		for(int i = 0; i < mans; i++) {
