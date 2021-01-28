@@ -9,6 +9,5 @@ import org.springframework.stereotype.Component;
 public class LubanBeanFactoryPostProcesser implements BeanFactoryPostProcessor {
 
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-
 	}
 }
