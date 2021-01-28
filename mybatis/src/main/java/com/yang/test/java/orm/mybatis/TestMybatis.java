@@ -12,9 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class TestMybatis {
 
 	public static void main(String[] args) throws IOException {
-		String resource = "com/yang/test/java/orm/mybatis/mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		InputStream is = Resources.getResourceAsStream("com/yang/test/java/orm/mybatis/mybatis-config.xml");
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
 
 		SqlSession session = sqlSessionFactory.openSession();
 
