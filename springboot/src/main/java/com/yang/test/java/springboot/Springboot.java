@@ -1,6 +1,7 @@
 package com.yang.test.java.springboot;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,14 +23,13 @@ class TestController {
 
 	@RequestMapping("/")
 	public String index(HttpServletRequest request) throws Exception {
-		System.out.println(request.getHeader("Content-Length"));
+		Enumeration<String> e = request.getHeaderNames();
+		while(e.hasMoreElements()) {
+			String header = e.nextElement();
+			System.out.println(header+"：" + request.getHeader(header));
+		}
+		System.out.println();
 
-		return "success";
-	}
-
-	@RequestMapping("/alert")
-	public String alert() throws Exception {
-		System.out.println("alert");
 		return "success";
 	}
 }

@@ -1,4 +1,4 @@
-package com.yang.test.java.HttpClient;
+package com.yang.test.java.httpclient;
 
 import java.io.File;
 import java.io.FileInputStream;
