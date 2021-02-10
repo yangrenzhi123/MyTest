@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.HttpHost;
@@ -42,11 +41,7 @@ public class MongoSlowsqlToEs {
 				writer.writeNumber(value.toString());
 			}
 		}).build();
-		
-		
-		HashMap<String, String> h = new HashMap<>();
-		h.put(arg0, arg1);
-		
+
 		RestHighLevelClient client = null;
 		try {
 			client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.10.92", 9200, "http")));

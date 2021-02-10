@@ -1,18 +1,11 @@
 package com.yang.test.java.validate.test;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.yang.test.java.validate.Notes;
 import com.yang.test.java.validate.Validate;
 
 /**
  *	支付转账 - 企业内部转账 - 请求
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "stream")
 public class PayInnerRequest {
 
 	private String action="DLINETRN";
@@ -64,13 +57,6 @@ public class PayInnerRequest {
 	@Notes(filedCn = "金额")
 	@Validate(requierd = true, maxLength = 15)
 	private Double tranAmount;
-	/**
-	 * 摘要
-	 */
-	@Notes(filedCn = "摘要")
-	@Validate( maxLength = 102)
-	@XmlElement(name = "abstract")
-	private String ebstract;
 	/**
 	 * 备注
 	 */
@@ -148,14 +134,6 @@ public class PayInnerRequest {
 
 	public void setTranAmount(Double tranAmount) {
 		this.tranAmount = tranAmount;
-	}
-
-	public String getEbstract() {
-		return ebstract;
-	}
-
-	public void setAbstract(String ebstract) {
-		this.ebstract = ebstract;
 	}
 
 	public String getMemo() {

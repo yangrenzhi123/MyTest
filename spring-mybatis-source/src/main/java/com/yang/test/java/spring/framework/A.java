@@ -1,7 +1,5 @@
 package com.yang.test.java.spring.framework;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -22,8 +20,5 @@ public class A implements BeanNameAware, BeanFactoryAware {
 	}
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-	}
-	@PostConstruct
-	public void init() {
 	}
 }
