@@ -1,0 +1,15 @@
+# 每个库建立order_info_{0..2}三张表，两个库总计六张表。
+# ds字段分库
+# tenantid字段分表
+CREATE TABLE `order_info_0`  (
+  `id` bigint(19) NOT NULL,
+  `ds` tinyint(2) NOT NULL,
+  `tenantid` int(19) NOT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+
+##
+# 库扩展，表扩展，需要进行手工迁移数据，remod
+##

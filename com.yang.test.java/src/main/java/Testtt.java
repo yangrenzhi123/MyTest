@@ -4,6 +4,6 @@ import java.text.ParseException;
 public class Testtt {
 
 	public static void main(String[] args) throws ParseException, UnsupportedEncodingException, InterruptedException {
-		System.out.println(System.currentTimeMillis());
+		System.out.println(1 & 2);
 	}
 }

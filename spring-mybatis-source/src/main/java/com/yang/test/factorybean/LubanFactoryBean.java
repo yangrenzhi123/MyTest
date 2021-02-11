@@ -1,4 +1,4 @@
-package com.yang;
+package com.yang.test.factorybean;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

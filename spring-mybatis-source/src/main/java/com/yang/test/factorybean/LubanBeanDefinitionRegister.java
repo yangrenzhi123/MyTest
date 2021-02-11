@@ -1,4 +1,4 @@
-package com.yang;
+package com.yang.test.factorybean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class LubanBeanDefinitionRegister implements ImportBeanDefinitionRegistra
 			BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition();
 			
 			BeanDefinition bd = builder.getBeanDefinition();
-			bd.setBeanClassName("com.yang.LubanFactoryBean");
+			bd.setBeanClassName("com.yang.test.factorybean.LubanFactoryBean");
 			bd.getConstructorArgumentValues().addGenericArgumentValue(mapper);
 			
 			registry.registerBeanDefinition(mapper.getName(), bd);

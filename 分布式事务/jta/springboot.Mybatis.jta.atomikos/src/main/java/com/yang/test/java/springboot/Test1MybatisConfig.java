@@ -25,7 +25,7 @@ public class Test1MybatisConfig {
 		MysqlXADataSource mysqlXADataSource = new MysqlXADataSource();
 		// autoReconnect 当数据库连接异常中断时，是否自动重新连接
 		// failOverReadOnly 自动重连成功后，连接是否设置为只读
-		mysqlXADataSource.setUrl("jdbc:mysql://192.168.10.10:3306/t1?autoReconnect=true&failOverReadOnly=false");
+		mysqlXADataSource.setUrl("jdbc:mysql://192.168.43.185:3306/test?autoReconnect=true&failOverReadOnly=false");
 		mysqlXADataSource.setPassword("123456");
 		mysqlXADataSource.setUser("root");
 		mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);

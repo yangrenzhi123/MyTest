@@ -22,7 +22,7 @@ public class Test2MybatisConfig {
 	@Bean(name = "test2Datasource")
 	public DataSource testDatasource() throws SQLException {
 		MysqlXADataSource mysqlXADataSource = new MysqlXADataSource();
-		mysqlXADataSource.setUrl("jdbc:mysql://192.168.10.10:3306/t2?autoReconnect=true&failOverReadOnly=false");
+		mysqlXADataSource.setUrl("jdbc:mysql://192.168.43.185:3307/test?autoReconnect=true&failOverReadOnly=false");
 		mysqlXADataSource.setPassword("123456");
 		mysqlXADataSource.setUser("root");
 		mysqlXADataSource.setPinGlobalTxToPhysicalConnection(true);

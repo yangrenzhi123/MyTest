@@ -4,10 +4,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class A implements BeanNameAware, BeanFactoryAware {
+public class A implements BeanNameAware, BeanFactoryAware, BeanPostProcessor {
 
 	private String beanName;
 

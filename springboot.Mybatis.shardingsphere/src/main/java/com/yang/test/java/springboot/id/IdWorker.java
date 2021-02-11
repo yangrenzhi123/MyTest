@@ -1,4 +1,4 @@
-package com.yang.test.java.id;
+package com.yang.test.java.springboot.id;
 public class IdWorker{
 
     private long workerId;
@@ -46,9 +46,7 @@ public class IdWorker{
     }
 
     public long getTimestamp(){
-    	long a = System.currentTimeMillis();
-    	System.out.println("原始毫秒值：" + a);
-        return a;
+        return System.currentTimeMillis();
     }
 
     public synchronized long nextId() {
