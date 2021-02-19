@@ -20,23 +20,23 @@ import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
 public class Simple {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException, NoSuchAlgorithmException {
-		ZooKeeper zk = new ZooKeeper("192.168.8.70:2183", 12000, new TestWatcher2());
+		ZooKeeper zk = new ZooKeeper("192.168.1.105:2181", 12000, new TestWatcher2());
 
-		String scheme = "digest"; //代表采用的某种权限机制
-		zk.addAuthInfo(scheme, "lry:123456".getBytes());
+//		String scheme = "digest"; //代表采用的某种权限机制
+//		zk.addAuthInfo(scheme, "lry:123456".getBytes());
 		
-		Id id = new Id(scheme, DigestAuthenticationProvider.generateDigest("lry:123456"));
-		ACL acl = new ACL(Perms.ALL, id);
-		List<ACL> acls = new ArrayList<>();
-        acls.add(acl);
+//		Id id = new Id(scheme, DigestAuthenticationProvider.generateDigest("lry:123456"));
+//		ACL acl = new ACL(Perms.ALL, id);
+//		List<ACL> acls = new ArrayList<>();
+//        acls.add(acl);
         //Stat rootStat = zk.exists("/", true);
         //zk.setACL("/", acls, rootStat.getVersion());
         
-        List<ACL> rootAcls = zk.getACL("/", new Stat());
-        for(ACL acc : rootAcls) {
-        	System.out.println("/：" + acc.getPerms());
-        	System.out.println("/：" + acc.getId().getScheme());
-        }
+//        List<ACL> rootAcls = zk.getACL("/", new Stat());
+//        for(ACL acc : rootAcls) {
+//        	System.out.println("/：" + acc.getPerms());
+//        	System.out.println("/：" + acc.getId().getScheme());
+//        }
 
 		//zk.create("/test2", "/test2".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 		//zk.create(registryPath, registryPath.getBytes(), acls/*ZooDefs.Ids.OPEN_ACL_UNSAFE*/, CreateMode.PERSISTENT);
@@ -59,7 +59,7 @@ public class Simple {
 class TestWatcher2 implements Watcher {
 
 	public void process(WatchedEvent arg0) {
-//		System.out.println(arg0.getState());
-//		System.out.println(arg0.getType());
+		System.out.println(arg0.getState());
+		System.out.println(arg0.getType());
 	}
 }
