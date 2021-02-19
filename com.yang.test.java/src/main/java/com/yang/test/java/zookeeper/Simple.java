@@ -1,21 +1,15 @@
 package com.yang.test.java.zookeeper;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooDefs.Perms;
 import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.data.ACL;
-import org.apache.zookeeper.data.Id;
-import org.apache.zookeeper.data.Stat;
-import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
 
 public class Simple {
 
@@ -46,20 +40,28 @@ public class Simple {
 //		byte[] bs = zk.getData(registryPath, true, new Stat());
 //		System.out.println(new String(bs));
 		
-		List<String> l = zk.getChildren("/", true);
-		for (String s : l) {
-			System.out.println(s);
-		}
+		ls(zk, "/");
 
 //		byte[] bs = zk.getData("/test/address-0000000001", true, new Stat());
 //		System.out.println(new String(bs));
+	}
+
+	public static void ls(ZooKeeper zk, String d) throws KeeperException, InterruptedException, UnsupportedEncodingException {
+		System.out.println(URLDecoder.decode(d, "utf8"));
+
+		List<String> l = zk.getChildren(d, true);
+		if (l != null && l.size() > 0) {
+			for (String s : l) {
+				ls(zk, (d.length() > 1 ? d + "/" : d) + s);
+			}
+		}
 	}
 }
 
 class TestWatcher2 implements Watcher {
 
 	public void process(WatchedEvent arg0) {
-		System.out.println(arg0.getState());
-		System.out.println(arg0.getType());
+//		System.out.println(arg0.getState());
+//		System.out.println(arg0.getType());
 	}
 }
