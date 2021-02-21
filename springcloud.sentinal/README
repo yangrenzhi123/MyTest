@@ -1,0 +1,3 @@
+#接入sentinel.dashboard
+-Dcsp.sentinel.dashboard.server=consoleIp:port
+-Dcsp.sentinel.api.port=18080

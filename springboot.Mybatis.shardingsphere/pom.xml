@@ -1,30 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>springboot.Mybatis.shardingsphere</artifactId>
-	<packaging>jar</packaging>
-	
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<maven-jar-plugin.version>3.0.0</maven-jar-plugin.version>
-	</properties>
-
-	<parent>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Hoxton.SR7</version>
-	</parent>
-	
-
 	<dependencies>
 	    <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>4.1.1</version>
         </dependency>
-	
-	
 	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -55,6 +35,20 @@
 			<version>8.0.22</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 	</dependencies>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>springboot.Mybatis.shardingsphere</artifactId>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.0.0</maven-jar-plugin.version>
+	</properties>
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Hoxton.SR10</version>
+	</parent>
 	<build>
 		<finalName>springboot.Mybatis.shardingsphere</finalName>
 		<plugins>
