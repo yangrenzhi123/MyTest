@@ -1,0 +1,37 @@
+<project xmzlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-core</artifactId>
+			<version>1.8.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.alibaba.csp</groupId>
+		    <artifactId>sentinel-transport-simple-http</artifactId>
+		    <version>1.8.1</version>
+		</dependency>
+	</dependencies>
+	<artifactId>all.consumer</artifactId>
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Hoxton.SR10</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.yang.test.java.springcloud</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven-jar-plugin.version>3.0.0</maven-jar-plugin.version>
+	</properties>
+</project>
