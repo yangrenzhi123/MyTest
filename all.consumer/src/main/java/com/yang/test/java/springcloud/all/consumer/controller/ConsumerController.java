@@ -14,11 +14,25 @@ import com.yang.test.java.springboot.dao.UserDao;
 @RestController
 public class ConsumerController {
 
+	public static final InheritableThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
+
 	@Resource
 	private UserDao userDao;
 	
 	@RequestMapping("/")
 	public String index(HttpServletRequest request) throws Exception {
+		threadLocal.set("ok");
+		new Thread(new Runnable() {
+			public void run() {
+				new Thread(new Runnable() {
+					public void run() {
+						System.out.println(threadLocal.get());
+					}
+				}).start();
+			}
+		}).start();
+		
+		
 		Entry entry = null;
 		try {
 			entry = SphU.entry("HelloWorld");
