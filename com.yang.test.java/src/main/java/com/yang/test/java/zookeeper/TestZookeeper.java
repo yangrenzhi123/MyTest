@@ -11,7 +11,7 @@ import org.apache.zookeeper.ZooKeeper;
 public class TestZookeeper {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-		ZooKeeper zk = new ZooKeeper("192.168.8.70:2181", 12000, new TestWatcher());
+		ZooKeeper zk = new ZooKeeper("192.168.1.106:2181", 12000, new TestWatcher());
 
 		List<String> l = zk.getChildren("/", false);
 

@@ -4,4 +4,6 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: localhost:8848
+        server-addr: 192.168.1.106:8847
+      discovery:
+        server-addr: 192.168.1.106:8847

@@ -14,7 +14,7 @@ import org.apache.zookeeper.ZooKeeper;
 public class Simple {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException, NoSuchAlgorithmException {
-		ZooKeeper zk = new ZooKeeper("192.168.1.105:2181", 12000, new TestWatcher2());
+		ZooKeeper zk = new ZooKeeper("192.168.1.106:2001,192.168.1.106:2002,192.168.1.106:2003", 12000, new TestWatcher2());
 
 //		String scheme = "digest"; //代表采用的某种权限机制
 //		zk.addAuthInfo(scheme, "lry:123456".getBytes());
@@ -44,6 +44,8 @@ public class Simple {
 
 //		byte[] bs = zk.getData("/test/address-0000000001", true, new Stat());
 //		System.out.println(new String(bs));
+		
+		zk.close();
 	}
 
 	public static void ls(ZooKeeper zk, String d) throws KeeperException, InterruptedException, UnsupportedEncodingException {
