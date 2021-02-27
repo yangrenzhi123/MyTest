@@ -1,12 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.yang</groupId>
 	<artifactId>com.yang.test.java</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -89,5 +82,17 @@
 			<artifactId>gson</artifactId>
 			<version>2.8.5</version>
 		</dependency>
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>transmittable-thread-local</artifactId>
+		    <version>2.13.0-Beta1</version>
+		</dependency>
 	</dependencies>
+	<version>0.0.1-SNAPSHOT</version>
+		<modelVersion>4.0.0</modelVersion>
+	<groupId>com.yang</groupId>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
