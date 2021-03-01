@@ -1,39 +1,9 @@
 spring:
-  main:
-    allow-bean-definition-overriding: true
-  shardingsphere:
-    props:
-      sql:
-        show: true
-    sharding:
-      tables:
-        order_info:
-          database-strategy: 
-            inline:
-              shardingColumn: ds
-              algorithmExpression: ds-${ds % 2}
-          table-strategy:
-            inline:
-              sharding-column: id
-              algorithm-expression: order_info_$->{id % 3}
-          actual-data-nodes: ds-0.order_info_$->{0..2},ds-1.order_info_$->{0..2}
-          key-generator:
-            column: id
-            type: UidGenerator
-    datasource:
-      names: ds-0,ds-1
-      ds-0:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.1.105:3301/test_0?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
-        username: root
-        password: 123456
-      ds-1:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.1.105:3301/test_1?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
-        username: root
-        password: 123456
-mybatis:
-  typeAliasesPackage: com.yang.test.java.springboot.entity
-  mapperLocations: classpath:mapper/*.xml
+  application:
+    name: cql_dubbo_consumer_demo
+dubbo:
+  registry:
+    #address: zookeeper://192.168.1.105:2181
+    address: nacos://192.168.1.106:8848
+  config-center:
+    timeout: 10000

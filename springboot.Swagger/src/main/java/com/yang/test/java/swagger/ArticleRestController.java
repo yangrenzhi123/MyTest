@@ -1,4 +1,4 @@
-package com.yang.test.swagger;
+package com.yang.test.java.swagger;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
