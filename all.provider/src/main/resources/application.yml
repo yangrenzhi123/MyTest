@@ -40,3 +40,9 @@ mybatis:
 dubbo:
   registry:
     address: nacos://192.168.1.106:8848
+  scan:
+    base-packages: com.yang.test.java.springcloud.service
+  application:
+    name: all.provider
+server:
+  port: 8081

@@ -1,4 +1,4 @@
-package com.cql.tudou;
+package com.yang.test.java.springcloud.service;
 
 public interface DemoService {
 

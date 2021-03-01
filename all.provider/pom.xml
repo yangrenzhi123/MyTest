@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<dependencies>
-        <dependency>
-            <groupId>com.cql.tudou</groupId>
-            <artifactId>all.interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-	
+		<dependency>
+			<groupId>com.cql.tudou</groupId>
+			<artifactId>all.interface</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -14,28 +14,28 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>com.alibaba.csp</groupId>
 			<artifactId>sentinel-core</artifactId>
 			<version>1.8.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.alibaba.csp</groupId>
-		    <artifactId>sentinel-transport-simple-http</artifactId>
-		    <version>1.8.1</version>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-transport-simple-http</artifactId>
+			<version>1.8.1</version>
 		</dependency>
-		
-	    <dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>4.1.1</version>
-        </dependency>
-		
+
+		<dependency>
+			<groupId>org.apache.shardingsphere</groupId>
+			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+			<version>4.1.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-				<version>1.1.23</version>
+			<version>1.1.23</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
@@ -45,14 +45,14 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>5.0.7.RELEASE</version><!--$NO-MVN-MAN-VER$-->
+			<version>5.0.7.RELEASE</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.22</version><!--$NO-MVN-MAN-VER$-->
+			<version>8.0.22</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-spring-boot-starter</artifactId>
@@ -81,14 +81,19 @@
 			<version>${dubbo.version}</version>
 		</dependency>
 		<dependency>
-	        <groupId>com.alibaba</groupId>
-	        <artifactId>dubbo-registry-nacos</artifactId>
-	        <version>2.6.6</version>
-	    </dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-metadata-report-zookeeper</artifactId>
+			<version>${dubbo.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo-registry-nacos</artifactId>
+			<version>2.7.7</version>
+		</dependency>
 		<dependency>
 			<groupId>com.alibaba.nacos</groupId>
 			<artifactId>nacos-client</artifactId>
-			<version>2.0.0-BETA</version>
+			<version>1.1.1</version>
 		</dependency>
 	</dependencies>
 	<artifactId>all.provider</artifactId>
@@ -104,6 +109,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-jar-plugin.version>3.0.0</maven-jar-plugin.version>
-        <dubbo.version>2.7.5</dubbo.version>
+		<dubbo.version>2.7.5</dubbo.version>
 	</properties>
 </project>

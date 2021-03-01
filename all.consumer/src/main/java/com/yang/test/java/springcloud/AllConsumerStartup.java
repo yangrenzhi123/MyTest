@@ -1,4 +1,4 @@
-package com.cql.tudou;
+package com.yang.test.java.springcloud;
 
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.boot.SpringApplication;
@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.yang.test.java.springcloud.service.DemoService;
 
 @SpringBootApplication
 public class AllConsumerStartup implements WebMvcConfigurer {
