@@ -14,7 +14,7 @@ import org.apache.zookeeper.ZooKeeper;
 public class Simple {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException, NoSuchAlgorithmException {
-		ZooKeeper zk = new ZooKeeper("192.168.1.106:2001,192.168.1.106:2002,192.168.1.106:2003", 12000, new TestWatcher2());
+		ZooKeeper zk = new ZooKeeper("hadoop01:2181,hadoop02:2181,hadoop03:2181", 12000, new TestWatcher2());
 
 //		String scheme = "digest"; //代表采用的某种权限机制
 //		zk.addAuthInfo(scheme, "lry:123456".getBytes());
