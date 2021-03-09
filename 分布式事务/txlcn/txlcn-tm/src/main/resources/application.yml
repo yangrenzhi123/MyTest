@@ -14,7 +14,7 @@ spring:
       ddl-auto: update
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.8.70:3306/tx-manager?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://centos-common:3306/tx-manager?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
     validationQuery: SELECT 1
@@ -31,7 +31,7 @@ spring:
 #        min-idle: 5 # 连接池中的最小空闲连接
 #        max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制）
   redis:
-    host: 192.168.8.70
+    host: centos-common
     port: 6379
     pool: 
       maxActive: 10

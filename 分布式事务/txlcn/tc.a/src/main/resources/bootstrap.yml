@@ -17,6 +17,6 @@ tx-lcn:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:123456@172.23.192.1:8761/eureka
+      defaultZone: http://eureka:123456@127.0.0.1:8761/eureka
 server:
   port: 8081
