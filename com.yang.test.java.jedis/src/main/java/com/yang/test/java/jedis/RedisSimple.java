@@ -23,18 +23,18 @@ public class RedisSimple {
 //		JedisPool jp = new JedisPool(config, "172.17.202.149", 7001, 2000, "123456");
 //		Jedis j = jp.getResource();
 
-//		Jedis j = new Jedis("192.168.10.20", 6379);
+		Jedis j = new Jedis("centos-common", 6379);
 //		Jedis j = new Jedis("192.168.10.22", 6379);j.select(1);
 //		Jedis j = new Jedis("192.168.30.120", 6379);j.select(1);
 
-		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
-		nodes.add(new HostAndPort("192.168.10.26", 7001));
-		nodes.add(new HostAndPort("192.168.10.26", 7002));
-		nodes.add(new HostAndPort("192.168.10.26", 7003));
-		nodes.add(new HostAndPort("192.168.10.25", 7004));
-		nodes.add(new HostAndPort("192.168.10.48", 7005));
-		nodes.add(new HostAndPort("192.168.10.13", 7006));
-		JedisCluster j = new JedisCluster(nodes);
+//		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+//		nodes.add(new HostAndPort("192.168.10.26", 7001));
+//		nodes.add(new HostAndPort("192.168.10.26", 7002));
+//		nodes.add(new HostAndPort("192.168.10.26", 7003));
+//		nodes.add(new HostAndPort("192.168.10.25", 7004));
+//		nodes.add(new HostAndPort("192.168.10.48", 7005));
+//		nodes.add(new HostAndPort("192.168.10.13", 7006));
+//		JedisCluster j = new JedisCluster(nodes);
 		
 //		Set<HostAndPort> nodes = new HashSet<HostAndPort>();
 //		nodes.add(new HostAndPort("192.168.10.240", 7001));
@@ -70,26 +70,26 @@ public class RedisSimple {
 //		//maxAttempts：超时重试次数
 //		JedisCluster j = new JedisCluster(nodes, 15000, 10000, 1, "123456", new GenericObjectPoolConfig());
 
-		List<String> l = new ArrayList<>();
-		l.add("h_tenant_group_map:LYZH911206999701");
-		l.add("h_tenant_group_map:LYZH911206999801");
-		l.add("h_tenant_group_map:LYZH911206999901");
-		l.add("h_tenant_group_map:LYZH911207999601");
-		l.add("h_tenant_group_map:LYZH911206999702");
-		l.add("h_tenant_group_map:LYZH911206999802");
-		l.add("h_tenant_group_map:LYZH911206999902");
-		l.add("h_tenant_group_map:LYZH911207999602");
-		int i = 0;
-		for(String key : l) {
-			/*try {
-				System.out.println(key + "：" + j.get(key));
-			}catch(Exception e) {
-				System.out.println(key + "：" + j.hgetAll(key));
-			}*/
-			j.del(key);
-			i++;
-		}
-		System.out.println("清理数量：" + i);
+//		List<String> l = new ArrayList<>();
+//		l.add("h_tenant_group_map:LYZH911206999701");
+//		l.add("h_tenant_group_map:LYZH911206999801");
+//		l.add("h_tenant_group_map:LYZH911206999901");
+//		l.add("h_tenant_group_map:LYZH911207999601");
+//		l.add("h_tenant_group_map:LYZH911206999702");
+//		l.add("h_tenant_group_map:LYZH911206999802");
+//		l.add("h_tenant_group_map:LYZH911206999902");
+//		l.add("h_tenant_group_map:LYZH911207999602");
+//		int i = 0;
+//		for(String key : l) {
+//			/*try {
+//				System.out.println(key + "：" + j.get(key));
+//			}catch(Exception e) {
+//				System.out.println(key + "：" + j.hgetAll(key));
+//			}*/
+//			j.del(key);
+//			i++;
+//		}
+//		System.out.println("清理数量：" + i);
 
 //		Map<String, String> m = j.hgetAll("appCityInfo");
 //		System.out.println(m);
@@ -102,19 +102,19 @@ public class RedisSimple {
 //		j.set(key, "2");
 //		System.out.println(j.get(key));
 		
-//		long a = System.currentTimeMillis();
-//		int i = 0;
-//		Set<String> keys = j.keys("h_garbage_bag_pull_day_*");
-//		for(String key : keys) {
-//			try {
-//				System.out.println(key + "：" + j.get(key));
-//			}catch(Exception e) {
-//				System.out.println(key + "：" + j.hgetAll(key));
-//			}
-//			j.del(key);
-//			i = i + 1;
-//		}
-//		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
+		long a = System.currentTimeMillis();
+		int i = 0;
+		Set<String> keys = j.keys("*");
+		for(String key : keys) {
+			try {
+				System.out.println(key + "：" + j.get(key));
+			}catch(Exception e) {
+				System.out.println(key + "：" + j.hgetAll(key));
+			}
+			//j.del(key);
+			i = i + 1;
+		}
+		System.out.println("耗时：" + (System.currentTimeMillis() - a) + "，数据量：" + i);
 		
 
 		// NX是不存在时才set， XX是存在时才set， EX是秒，PX是毫秒

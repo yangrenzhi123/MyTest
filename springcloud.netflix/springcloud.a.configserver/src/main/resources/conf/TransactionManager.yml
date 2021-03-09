@@ -1,5 +1,5 @@
 server:
-  port: 7971
+  port: 7970
 tx-lcn:
   logger:
     enabled: true
@@ -8,7 +8,7 @@ eureka:
     healthcheck:
       enabled: true
     service-url:
-      defaultZone: http://eureka:123456@localhost:8761/eureka
+      defaultZone: http://eureka:123456@172.23.192.1:8761/eureka
   instance:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 15
@@ -21,7 +21,7 @@ spring:
       ddl-auto: update
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.8.70:3306/tx-manager?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://centos-common:3306/tx-manager?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
     validationQuery: SELECT 1
@@ -29,7 +29,7 @@ spring:
     testOnBorrow: true
     testOnReturn: false
   redis:
-    host: 192.168.8.70
+    host: centos-common
     port: 6379
     pool: 
       maxActive: 10

@@ -28,7 +28,7 @@ public class DesTest {
 		scanner.close();
 		
 		//encrypt("C:/Windows/Temp/新建文件夹/1608875971358.xlsx", "C:/Users/yrz/OneDrive/工资条/工资条.xlsx");
-		decrypt("C:/Users/yangr/OneDrive/各种账号密码.xlsx", "C:/Windows/Temp/新建文件夹/"+System.currentTimeMillis()+".xlsx");
+		decrypt("C:/Users/yangr/OneDrive/各种账号密码.xlsx", "C:/"+System.currentTimeMillis()+".xlsx");
 		
 		//simpleEncrypt();
 	}

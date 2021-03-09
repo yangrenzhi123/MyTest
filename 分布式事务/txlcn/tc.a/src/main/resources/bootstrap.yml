@@ -5,16 +5,18 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.10.10:3306/t1?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://centos-common:3306/test01?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    hikari:
+      maximum-pool-size: 1
 mybatis-plus:
   typeAliasesPackage: com.yang.test.java.springboot.entity
   mapperLocations: classpath:mapper/*.xml
 tx-lcn:
   client:
-    manager-address: 127.0.0.1:8070,127.0.0.1:8071
+    manager-address: 172.23.206.146:8070
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:123456@localhost:8761/eureka
+      defaultZone: http://eureka:123456@172.23.192.1:8761/eureka
 server:
   port: 8081

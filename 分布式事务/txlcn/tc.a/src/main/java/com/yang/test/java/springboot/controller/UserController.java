@@ -29,6 +29,6 @@ public class UserController {
 		
 		tcb.index();
 		
-		//throw new RuntimeException();
+		throw new RuntimeException("test exception");
 	}
 }
