@@ -29,10 +29,6 @@ import org.springframework.stereotype.Component;
 public class WebSocketServer {
 	static Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
-	// 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
-	private static final AtomicInteger OnlineCount = new AtomicInteger(0);
-
-	// concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。若要实现服务端与单一客户端通信的话，可以使用Map来存放，其中Key可以为用户标识
 	public static ConcurrentHashMap<String, List<Session>> sessions = new ConcurrentHashMap<>();
 
 	/**
@@ -51,9 +47,8 @@ public class WebSocketServer {
 		}
 		
 		
-		int cnt = OnlineCount.incrementAndGet();
 		l.add(webSocketsession);
-		logger.info("有客户端连接加入，当前连接数为：{}", cnt);
+		logger.info("有客户端连接加入");
 		sendMessage(webSocketsession, "您已连接成功");
 	}
 
