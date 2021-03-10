@@ -1,0 +1,45 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: Tcb
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://centos-common:3306/test02?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    hikari:
+      maximum-pool-size: 1
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
+mybatis-plus:
+  typeAliasesPackage: com.yang.test.java.springboot.entity
+  mapperLocations: classpath:mapper/*.xml
+seata:
+  enabled: true
+  application-id: rm-b
+  tx-service-group: my_test_tx_group
+  enable-auto-data-source-proxy: true
+  config:
+    type: nacos
+    nacos:
+      namespace:
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      namespace:
+      username: nacos
+      password: nacos
