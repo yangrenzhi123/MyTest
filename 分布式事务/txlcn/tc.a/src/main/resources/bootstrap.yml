@@ -13,10 +13,10 @@ mybatis-plus:
   mapperLocations: classpath:mapper/*.xml
 tx-lcn:
   client:
-    manager-address: 172.23.206.146:8070
+    manager-address: 192.168.1.24:8070
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:123456@127.0.0.1:8761/eureka
+      defaultZone: http://eureka:123456@192.168.1.24:8761/eureka
 server:
   port: 8081
