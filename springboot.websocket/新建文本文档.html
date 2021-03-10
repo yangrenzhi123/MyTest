@@ -28,8 +28,7 @@
             }
 
             ws.onmessage = function(e){
-                var time = new Date();
-                mess.innerHTML+=time+"的消息："+e.data+"<br>"
+                mess.innerHTML+="新的消息："+e.data+"<br>"
             }
         }
     </script>
